@@ -502,7 +502,7 @@ CONFIG_NEUTRON_ML2_VLAN_RANGES=
 # A comma separated list of <tun_min>:<tun_max> tuples enumerating
 # ranges of GRE tunnel IDs that are available for tenant network
 # allocation. Should be an array with tun_max +1 - tun_min > 1000000
-CONFIG_NEUTRON_ML2_TUNNEL_ID_RANGES=
+CONFIG_NEUTRON_ML2_TUNNEL_ID_RANGES=100:200
 
 # Multicast group for VXLAN. If unset, disables VXLAN enable sending
 # allocate broadcast traffic to this multicast group. When left
@@ -550,12 +550,14 @@ CONFIG_NEUTRON_OVS_BRIDGE_IFACES=br-tenant:eth1
 
 # A comma separated list of tunnel ranges for the Neutron openvswitch
 # plugin (eg. 1:1000)
-CONFIG_NEUTRON_OVS_TUNNEL_RANGES=tunnel_ranges
+#CONFIG_NEUTRON_OVS_TUNNEL_RANGES=tunnel_ranges
+CONFIG_NEUTRON_OVS_TUNNEL_RANGES=
 
 # The interface for the OVS tunnel. Packstack will override the IP
 # address used for tunnels on this hypervisor to the IP found on the
 # specified interface. (eg. eth1)
-CONFIG_NEUTRON_OVS_TUNNEL_IF=tunnel_if
+#CONFIG_NEUTRON_OVS_TUNNEL_IF=tunnel_if
+CONFIG_NEUTRON_OVS_TUNNEL_IF=eth1
 
 # VXLAN UDP port
 CONFIG_NEUTRON_OVS_VXLAN_UDP_PORT=4789
