@@ -1,0 +1,3 @@
+glance/images/*
+cinder/cinder-volumes
+nova/instances/_base/*
