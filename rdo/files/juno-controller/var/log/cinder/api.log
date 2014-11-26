@@ -1,0 +1,185 @@
+2014-11-26 02:00:34.343 9917 WARNING cinder.api [-] The v1 api is deprecated and will be removed after the Juno release. You should set enable_v1_api=false and enable_v2_api=true in your cinder.conf file.
+2014-11-26 02:00:34.446 9917 INFO cinder.api.extensions [-] Initializing extension manager.
+2014-11-26 02:00:34.449 9917 INFO cinder.api.extensions [-] Loaded extension: os-admin-actions
+2014-11-26 02:00:34.450 9917 INFO cinder.api.extensions [-] Loaded extension: os-availability-zone
+2014-11-26 02:00:34.451 9917 INFO cinder.api.extensions [-] Loaded extension: backups
+2014-11-26 02:00:34.452 9917 INFO cinder.api.extensions [-] Loaded extension: cgsnapshots
+2014-11-26 02:00:34.453 9917 INFO cinder.api.extensions [-] Loaded extension: consistencygroups
+2014-11-26 02:00:34.453 9917 INFO cinder.api.extensions [-] Loaded extension: os-extended-services
+2014-11-26 02:00:34.454 9917 INFO cinder.api.extensions [-] Loaded extension: os-extended-snapshot-attributes
+2014-11-26 02:00:34.455 9917 INFO cinder.api.extensions [-] Loaded extension: os-hosts
+2014-11-26 02:00:34.455 9917 INFO cinder.api.extensions [-] Loaded extension: os-image-create
+2014-11-26 02:00:34.456 9917 INFO cinder.api.extensions [-] Loaded extension: qos-specs
+2014-11-26 02:00:34.457 9917 INFO cinder.api.extensions [-] Loaded extension: os-quota-class-sets
+2014-11-26 02:00:34.635 9917 INFO cinder.api.extensions [-] Loaded extension: os-quota-sets
+2014-11-26 02:00:34.636 9917 INFO cinder.api.extensions [-] Loaded extension: OS-SCH-HNT
+2014-11-26 02:00:34.637 9917 INFO cinder.api.extensions [-] Loaded extension: scheduler-stats
+2014-11-26 02:00:34.638 9917 INFO cinder.api.extensions [-] Loaded extension: os-services
+2014-11-26 02:00:34.639 9917 INFO cinder.api.extensions [-] Loaded extension: os-snapshot-actions
+2014-11-26 02:00:34.640 9917 INFO cinder.api.extensions [-] Loaded extension: os-types-extra-specs
+2014-11-26 02:00:34.641 9917 INFO cinder.api.extensions [-] Loaded extension: os-types-manage
+2014-11-26 02:00:34.641 9917 INFO cinder.api.extensions [-] Loaded extension: os-used-limits
+2014-11-26 02:00:34.642 9917 INFO cinder.api.extensions [-] Loaded extension: os-volume-actions
+2014-11-26 02:00:34.643 9917 INFO cinder.api.extensions [-] Loaded extension: os-volume-encryption-metadata
+2014-11-26 02:00:34.644 9917 INFO cinder.api.extensions [-] Loaded extension: os-vol-host-attr
+2014-11-26 02:00:34.644 9917 INFO cinder.api.extensions [-] Loaded extension: os-vol-image-meta
+2014-11-26 02:00:34.645 9917 INFO cinder.api.extensions [-] Loaded extension: os-volume-manage
+2014-11-26 02:00:34.646 9917 INFO cinder.api.extensions [-] Loaded extension: os-vol-mig-status-attr
+2014-11-26 02:00:34.647 9917 INFO cinder.api.extensions [-] Loaded extension: os-volume-replication
+2014-11-26 02:00:34.647 9917 INFO cinder.api.extensions [-] Loaded extension: os-vol-tenant-attr
+2014-11-26 02:00:34.649 9917 INFO cinder.api.extensions [-] Loaded extension: os-volume-transfer
+2014-11-26 02:00:34.650 9917 INFO cinder.api.extensions [-] Loaded extension: encryption
+2014-11-26 02:00:34.651 9917 INFO cinder.api.extensions [-] Loaded extension: os-volume-unmanage
+2014-11-26 02:00:34.695 9917 WARNING keystonemiddleware.auth_token [-] Configuring admin URI using auth fragments. This is deprecated, use 'identity_uri' instead.
+2014-11-26 02:00:34.704 9917 INFO cinder.api.extensions [-] Initializing extension manager.
+2014-11-26 02:00:34.705 9917 INFO cinder.api.extensions [-] Loaded extension: os-admin-actions
+2014-11-26 02:00:34.705 9917 INFO cinder.api.extensions [-] Loaded extension: os-availability-zone
+2014-11-26 02:00:34.706 9917 INFO cinder.api.extensions [-] Loaded extension: backups
+2014-11-26 02:00:34.706 9917 INFO cinder.api.extensions [-] Loaded extension: cgsnapshots
+2014-11-26 02:00:34.706 9917 INFO cinder.api.extensions [-] Loaded extension: consistencygroups
+2014-11-26 02:00:34.707 9917 INFO cinder.api.extensions [-] Loaded extension: os-extended-services
+2014-11-26 02:00:34.707 9917 INFO cinder.api.extensions [-] Loaded extension: os-extended-snapshot-attributes
+2014-11-26 02:00:34.708 9917 INFO cinder.api.extensions [-] Loaded extension: os-hosts
+2014-11-26 02:00:34.708 9917 INFO cinder.api.extensions [-] Loaded extension: os-image-create
+2014-11-26 02:00:34.709 9917 INFO cinder.api.extensions [-] Loaded extension: qos-specs
+2014-11-26 02:00:34.709 9917 INFO cinder.api.extensions [-] Loaded extension: os-quota-class-sets
+2014-11-26 02:00:34.710 9917 INFO cinder.api.extensions [-] Loaded extension: os-quota-sets
+2014-11-26 02:00:34.710 9917 INFO cinder.api.extensions [-] Loaded extension: OS-SCH-HNT
+2014-11-26 02:00:34.711 9917 INFO cinder.api.extensions [-] Loaded extension: scheduler-stats
+2014-11-26 02:00:34.711 9917 INFO cinder.api.extensions [-] Loaded extension: os-services
+2014-11-26 02:00:34.711 9917 INFO cinder.api.extensions [-] Loaded extension: os-snapshot-actions
+2014-11-26 02:00:34.712 9917 INFO cinder.api.extensions [-] Loaded extension: os-types-extra-specs
+2014-11-26 02:00:34.712 9917 INFO cinder.api.extensions [-] Loaded extension: os-types-manage
+2014-11-26 02:00:34.712 9917 INFO cinder.api.extensions [-] Loaded extension: os-used-limits
+2014-11-26 02:00:34.713 9917 INFO cinder.api.extensions [-] Loaded extension: os-volume-actions
+2014-11-26 02:00:34.713 9917 INFO cinder.api.extensions [-] Loaded extension: os-volume-encryption-metadata
+2014-11-26 02:00:34.714 9917 INFO cinder.api.extensions [-] Loaded extension: os-vol-host-attr
+2014-11-26 02:00:34.714 9917 INFO cinder.api.extensions [-] Loaded extension: os-vol-image-meta
+2014-11-26 02:00:34.714 9917 INFO cinder.api.extensions [-] Loaded extension: os-volume-manage
+2014-11-26 02:00:34.715 9917 INFO cinder.api.extensions [-] Loaded extension: os-vol-mig-status-attr
+2014-11-26 02:00:34.715 9917 INFO cinder.api.extensions [-] Loaded extension: os-volume-replication
+2014-11-26 02:00:34.716 9917 INFO cinder.api.extensions [-] Loaded extension: os-vol-tenant-attr
+2014-11-26 02:00:34.716 9917 INFO cinder.api.extensions [-] Loaded extension: os-volume-transfer
+2014-11-26 02:00:34.716 9917 INFO cinder.api.extensions [-] Loaded extension: encryption
+2014-11-26 02:00:34.717 9917 INFO cinder.api.extensions [-] Loaded extension: os-volume-unmanage
+2014-11-26 02:00:34.755 9917 WARNING keystonemiddleware.auth_token [-] Configuring admin URI using auth fragments. This is deprecated, use 'identity_uri' instead.
+2014-11-26 02:00:34.759 9917 INFO cinder.wsgi [-] osapi_volume listening on 0.0.0.0:8776
+2014-11-26 02:00:34.759 9917 INFO cinder.openstack.common.service [-] Starting 2 workers
+2014-11-26 02:00:34.761 9917 INFO cinder.openstack.common.service [-] Started child 9960
+2014-11-26 02:00:34.763 9917 INFO cinder.openstack.common.service [-] Started child 9961
+2014-11-26 02:00:34.772 9960 INFO eventlet.wsgi.server [-] (9960) wsgi starting up on http://0.0.0.0:8776/
+2014-11-26 02:00:34.778 9961 INFO eventlet.wsgi.server [-] (9961) wsgi starting up on http://0.0.0.0:8776/
+2014-11-26 02:00:35.281 9961 INFO eventlet.wsgi.server [-] (9961) accepted ('10.0.1.111', 56325)
+2014-11-26 02:00:35.636 9961 INFO cinder.api.openstack.wsgi [req-e2f71b7a-01db-448a-b441-d0b8113929e9 e1eed73df3b74b2297c982970b36b0ee 05065337e2c040618e6abb688c78aec3 - - -] POST http://10.0.1.111:8776/v1/05065337e2c040618e6abb688c78aec3/types
+2014-11-26 02:00:35.815 9961 INFO cinder.api.openstack.wsgi [req-e2f71b7a-01db-448a-b441-d0b8113929e9 e1eed73df3b74b2297c982970b36b0ee 05065337e2c040618e6abb688c78aec3 - - -] http://10.0.1.111:8776/v1/05065337e2c040618e6abb688c78aec3/types returned with HTTP 200
+2014-11-26 02:00:35.816 9961 INFO eventlet.wsgi.server [req-e2f71b7a-01db-448a-b441-d0b8113929e9 e1eed73df3b74b2297c982970b36b0ee 05065337e2c040618e6abb688c78aec3 - - -] 10.0.1.111 - - [26/Nov/2014 02:00:35] "POST /v1/05065337e2c040618e6abb688c78aec3/types HTTP/1.1" 200 337 0.526344
+2014-11-26 02:00:36.222 9960 INFO eventlet.wsgi.server [-] (9960) accepted ('10.0.1.111', 56329)
+2014-11-26 02:00:36.677 9960 INFO cinder.api.openstack.wsgi [req-d95c963c-4ac3-43bd-817e-0c05e4381627 e1eed73df3b74b2297c982970b36b0ee 05065337e2c040618e6abb688c78aec3 - - -] GET http://10.0.1.111:8776/v1/05065337e2c040618e6abb688c78aec3/types
+2014-11-26 02:00:36.784 9960 INFO cinder.api.openstack.wsgi [req-d95c963c-4ac3-43bd-817e-0c05e4381627 e1eed73df3b74b2297c982970b36b0ee 05065337e2c040618e6abb688c78aec3 - - -] http://10.0.1.111:8776/v1/05065337e2c040618e6abb688c78aec3/types returned with HTTP 200
+2014-11-26 02:00:36.785 9960 INFO eventlet.wsgi.server [req-d95c963c-4ac3-43bd-817e-0c05e4381627 e1eed73df3b74b2297c982970b36b0ee 05065337e2c040618e6abb688c78aec3 - - -] 10.0.1.111 - - [26/Nov/2014 02:00:36] "GET /v1/05065337e2c040618e6abb688c78aec3/types HTTP/1.1" 200 341 0.558220
+2014-11-26 02:00:36.799 9960 INFO cinder.api.openstack.wsgi [req-2a88ea3a-2036-4b2e-9778-35b070fe56de e1eed73df3b74b2297c982970b36b0ee 05065337e2c040618e6abb688c78aec3 - - -] GET http://10.0.1.111:8776/v1/05065337e2c040618e6abb688c78aec3/types
+2014-11-26 02:00:36.861 9960 INFO cinder.api.openstack.wsgi [req-2a88ea3a-2036-4b2e-9778-35b070fe56de e1eed73df3b74b2297c982970b36b0ee 05065337e2c040618e6abb688c78aec3 - - -] http://10.0.1.111:8776/v1/05065337e2c040618e6abb688c78aec3/types returned with HTTP 200
+2014-11-26 02:00:36.861 9960 INFO eventlet.wsgi.server [req-2a88ea3a-2036-4b2e-9778-35b070fe56de e1eed73df3b74b2297c982970b36b0ee 05065337e2c040618e6abb688c78aec3 - - -] 10.0.1.111 - - [26/Nov/2014 02:00:36] "GET /v1/05065337e2c040618e6abb688c78aec3/types HTTP/1.1" 200 341 0.063639
+2014-11-26 02:00:36.871 9960 INFO cinder.api.openstack.wsgi [req-6832a4b8-7d31-4efe-8ffb-ee9839cfdd35 e1eed73df3b74b2297c982970b36b0ee 05065337e2c040618e6abb688c78aec3 - - -] POST http://10.0.1.111:8776/v1/05065337e2c040618e6abb688c78aec3/types/1b1848d0-ddbf-4e63-a810-8d960313a6b0/extra_specs
+2014-11-26 02:00:37.001 9960 INFO cinder.api.openstack.wsgi [req-6832a4b8-7d31-4efe-8ffb-ee9839cfdd35 e1eed73df3b74b2297c982970b36b0ee 05065337e2c040618e6abb688c78aec3 - - -] http://10.0.1.111:8776/v1/05065337e2c040618e6abb688c78aec3/types/1b1848d0-ddbf-4e63-a810-8d960313a6b0/extra_specs returned with HTTP 200
+2014-11-26 02:00:37.002 9960 INFO eventlet.wsgi.server [req-6832a4b8-7d31-4efe-8ffb-ee9839cfdd35 e1eed73df3b74b2297c982970b36b0ee 05065337e2c040618e6abb688c78aec3 - - -] 10.0.1.111 - - [26/Nov/2014 02:00:37] "POST /v1/05065337e2c040618e6abb688c78aec3/types/1b1848d0-ddbf-4e63-a810-8d960313a6b0/extra_specs HTTP/1.1" 200 285 0.134019
+2014-11-26 10:47:18.795 9961 INFO eventlet.wsgi.server [-] (9961) accepted ('10.0.1.111', 57564)
+2014-11-26 10:47:19.077 9961 INFO cinder.api.openstack.wsgi [req-dae514b6-94c7-43ed-ae5e-b8648a16961d 7101f09f41d24e4c9bd4d6593f10ac20 5db62f5f55144e94b06be0d688e6d499 - - -] GET http://10.0.1.111:8776/v1/5db62f5f55144e94b06be0d688e6d499/limits
+2014-11-26 10:47:19.148 9961 WARNING cinder.quota [req-dae514b6-94c7-43ed-ae5e-b8648a16961d 7101f09f41d24e4c9bd4d6593f10ac20 5db62f5f55144e94b06be0d688e6d499 - - -] Deprecated: Default quota for resource: snapshots_iscsi is set by the default quota flag: quota_snapshots_iscsi, it is now deprecated. Please use the default quota class for default quota.
+2014-11-26 10:47:19.149 9961 WARNING cinder.quota [req-dae514b6-94c7-43ed-ae5e-b8648a16961d 7101f09f41d24e4c9bd4d6593f10ac20 5db62f5f55144e94b06be0d688e6d499 - - -] Deprecated: Default quota for resource: backup_gigabytes is set by the default quota flag: quota_backup_gigabytes, it is now deprecated. Please use the default quota class for default quota.
+2014-11-26 10:47:19.150 9961 WARNING cinder.quota [req-dae514b6-94c7-43ed-ae5e-b8648a16961d 7101f09f41d24e4c9bd4d6593f10ac20 5db62f5f55144e94b06be0d688e6d499 - - -] Deprecated: Default quota for resource: volumes_iscsi is set by the default quota flag: quota_volumes_iscsi, it is now deprecated. Please use the default quota class for default quota.
+2014-11-26 10:47:19.151 9961 WARNING cinder.quota [req-dae514b6-94c7-43ed-ae5e-b8648a16961d 7101f09f41d24e4c9bd4d6593f10ac20 5db62f5f55144e94b06be0d688e6d499 - - -] Deprecated: Default quota for resource: backups is set by the default quota flag: quota_backups, it is now deprecated. Please use the default quota class for default quota.
+2014-11-26 10:47:19.153 9961 WARNING cinder.quota [req-dae514b6-94c7-43ed-ae5e-b8648a16961d 7101f09f41d24e4c9bd4d6593f10ac20 5db62f5f55144e94b06be0d688e6d499 - - -] Deprecated: Default quota for resource: gigabytes_iscsi is set by the default quota flag: quota_gigabytes_iscsi, it is now deprecated. Please use the default quota class for default quota.
+2014-11-26 10:47:19.175 9961 INFO cinder.api.openstack.wsgi [req-dae514b6-94c7-43ed-ae5e-b8648a16961d 7101f09f41d24e4c9bd4d6593f10ac20 5db62f5f55144e94b06be0d688e6d499 - - -] http://10.0.1.111:8776/v1/5db62f5f55144e94b06be0d688e6d499/limits returned with HTTP 200
+2014-11-26 10:47:19.178 9961 INFO eventlet.wsgi.server [req-dae514b6-94c7-43ed-ae5e-b8648a16961d 7101f09f41d24e4c9bd4d6593f10ac20 5db62f5f55144e94b06be0d688e6d499 - - -] 10.0.1.111 - - [26/Nov/2014 10:47:19] "GET /v1/5db62f5f55144e94b06be0d688e6d499/limits HTTP/1.1" 200 541 0.359576
+2014-11-26 10:48:43.104 9961 INFO eventlet.wsgi.server [-] (9961) accepted ('10.0.1.111', 57620)
+2014-11-26 10:48:43.148 9961 INFO cinder.api.openstack.wsgi [req-458f5136-18a4-447a-bb55-520915dc8047 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] GET http://10.0.1.111:8776/v1/cdd5e77fe2c440cf86afbf1d7b9653a4/limits
+2014-11-26 10:48:43.179 9961 INFO cinder.api.openstack.wsgi [req-458f5136-18a4-447a-bb55-520915dc8047 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] http://10.0.1.111:8776/v1/cdd5e77fe2c440cf86afbf1d7b9653a4/limits returned with HTTP 200
+2014-11-26 10:48:43.180 9961 INFO eventlet.wsgi.server [req-458f5136-18a4-447a-bb55-520915dc8047 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 10.0.1.111 - - [26/Nov/2014 10:48:43] "GET /v1/cdd5e77fe2c440cf86afbf1d7b9653a4/limits HTTP/1.1" 200 541 0.074686
+2014-11-26 10:49:44.232 9961 INFO cinder.openstack.common.service [-] Child caught SIGTERM, exiting
+2014-11-26 10:49:44.234 9961 INFO cinder.wsgi [-] Stopping WSGI server.
+2014-11-26 10:49:44.235 9961 INFO cinder.wsgi [-] WSGI server has stopped.
+2014-11-26 10:49:44.307 9917 INFO cinder.openstack.common.service [-] Caught SIGTERM, stopping children
+2014-11-26 10:49:44.405 9917 INFO cinder.openstack.common.service [-] Waiting on 2 children to exit
+2014-11-26 10:49:44.416 9917 INFO cinder.openstack.common.service [-] Child 9960 killed by signal 15
+2014-11-26 10:49:44.419 9917 INFO cinder.openstack.common.service [-] Child 9961 exited with status 1
+2014-11-26 10:50:40.017 996 WARNING cinder.api [-] The v1 api is deprecated and will be removed after the Juno release. You should set enable_v1_api=false and enable_v2_api=true in your cinder.conf file.
+2014-11-26 10:50:40.826 996 INFO cinder.api.extensions [-] Initializing extension manager.
+2014-11-26 10:50:40.866 996 INFO cinder.api.extensions [-] Loaded extension: os-admin-actions
+2014-11-26 10:50:40.872 996 INFO cinder.api.extensions [-] Loaded extension: os-availability-zone
+2014-11-26 10:50:40.873 996 INFO cinder.api.extensions [-] Loaded extension: backups
+2014-11-26 10:50:40.876 996 INFO cinder.api.extensions [-] Loaded extension: cgsnapshots
+2014-11-26 10:50:40.879 996 INFO cinder.api.extensions [-] Loaded extension: consistencygroups
+2014-11-26 10:50:40.880 996 INFO cinder.api.extensions [-] Loaded extension: os-extended-services
+2014-11-26 10:50:40.881 996 INFO cinder.api.extensions [-] Loaded extension: os-extended-snapshot-attributes
+2014-11-26 10:50:40.882 996 INFO cinder.api.extensions [-] Loaded extension: os-hosts
+2014-11-26 10:50:40.895 996 INFO cinder.api.extensions [-] Loaded extension: os-image-create
+2014-11-26 10:50:40.906 996 INFO cinder.api.extensions [-] Loaded extension: qos-specs
+2014-11-26 10:50:40.918 996 INFO cinder.api.extensions [-] Loaded extension: os-quota-class-sets
+2014-11-26 10:50:42.189 996 INFO cinder.api.extensions [-] Loaded extension: os-quota-sets
+2014-11-26 10:50:42.218 996 INFO cinder.api.extensions [-] Loaded extension: OS-SCH-HNT
+2014-11-26 10:50:42.251 996 INFO cinder.api.extensions [-] Loaded extension: scheduler-stats
+2014-11-26 10:50:42.268 996 INFO cinder.api.extensions [-] Loaded extension: os-services
+2014-11-26 10:50:42.286 996 INFO cinder.api.extensions [-] Loaded extension: os-snapshot-actions
+2014-11-26 10:50:42.299 996 INFO cinder.api.extensions [-] Loaded extension: os-types-extra-specs
+2014-11-26 10:50:42.327 996 INFO cinder.api.extensions [-] Loaded extension: os-types-manage
+2014-11-26 10:50:42.329 996 INFO cinder.api.extensions [-] Loaded extension: os-used-limits
+2014-11-26 10:50:42.331 996 INFO cinder.api.extensions [-] Loaded extension: os-volume-actions
+2014-11-26 10:50:42.334 996 INFO cinder.api.extensions [-] Loaded extension: os-volume-encryption-metadata
+2014-11-26 10:50:42.337 996 INFO cinder.api.extensions [-] Loaded extension: os-vol-host-attr
+2014-11-26 10:50:42.350 996 INFO cinder.api.extensions [-] Loaded extension: os-vol-image-meta
+2014-11-26 10:50:42.372 996 INFO cinder.api.extensions [-] Loaded extension: os-volume-manage
+2014-11-26 10:50:42.374 996 INFO cinder.api.extensions [-] Loaded extension: os-vol-mig-status-attr
+2014-11-26 10:50:42.401 996 INFO cinder.api.extensions [-] Loaded extension: os-volume-replication
+2014-11-26 10:50:42.403 996 INFO cinder.api.extensions [-] Loaded extension: os-vol-tenant-attr
+2014-11-26 10:50:42.435 996 INFO cinder.api.extensions [-] Loaded extension: os-volume-transfer
+2014-11-26 10:50:42.437 996 INFO cinder.api.extensions [-] Loaded extension: encryption
+2014-11-26 10:50:42.439 996 INFO cinder.api.extensions [-] Loaded extension: os-volume-unmanage
+2014-11-26 10:50:42.674 996 WARNING keystonemiddleware.auth_token [-] Configuring admin URI using auth fragments. This is deprecated, use 'identity_uri' instead.
+2014-11-26 10:50:42.826 996 INFO cinder.api.extensions [-] Initializing extension manager.
+2014-11-26 10:50:42.828 996 INFO cinder.api.extensions [-] Loaded extension: os-admin-actions
+2014-11-26 10:50:42.829 996 INFO cinder.api.extensions [-] Loaded extension: os-availability-zone
+2014-11-26 10:50:42.829 996 INFO cinder.api.extensions [-] Loaded extension: backups
+2014-11-26 10:50:42.830 996 INFO cinder.api.extensions [-] Loaded extension: cgsnapshots
+2014-11-26 10:50:42.830 996 INFO cinder.api.extensions [-] Loaded extension: consistencygroups
+2014-11-26 10:50:42.830 996 INFO cinder.api.extensions [-] Loaded extension: os-extended-services
+2014-11-26 10:50:42.831 996 INFO cinder.api.extensions [-] Loaded extension: os-extended-snapshot-attributes
+2014-11-26 10:50:42.831 996 INFO cinder.api.extensions [-] Loaded extension: os-hosts
+2014-11-26 10:50:42.831 996 INFO cinder.api.extensions [-] Loaded extension: os-image-create
+2014-11-26 10:50:42.832 996 INFO cinder.api.extensions [-] Loaded extension: qos-specs
+2014-11-26 10:50:42.832 996 INFO cinder.api.extensions [-] Loaded extension: os-quota-class-sets
+2014-11-26 10:50:42.833 996 INFO cinder.api.extensions [-] Loaded extension: os-quota-sets
+2014-11-26 10:50:42.833 996 INFO cinder.api.extensions [-] Loaded extension: OS-SCH-HNT
+2014-11-26 10:50:42.834 996 INFO cinder.api.extensions [-] Loaded extension: scheduler-stats
+2014-11-26 10:50:42.834 996 INFO cinder.api.extensions [-] Loaded extension: os-services
+2014-11-26 10:50:42.835 996 INFO cinder.api.extensions [-] Loaded extension: os-snapshot-actions
+2014-11-26 10:50:42.835 996 INFO cinder.api.extensions [-] Loaded extension: os-types-extra-specs
+2014-11-26 10:50:42.863 996 INFO cinder.api.extensions [-] Loaded extension: os-types-manage
+2014-11-26 10:50:42.863 996 INFO cinder.api.extensions [-] Loaded extension: os-used-limits
+2014-11-26 10:50:42.864 996 INFO cinder.api.extensions [-] Loaded extension: os-volume-actions
+2014-11-26 10:50:42.864 996 INFO cinder.api.extensions [-] Loaded extension: os-volume-encryption-metadata
+2014-11-26 10:50:42.865 996 INFO cinder.api.extensions [-] Loaded extension: os-vol-host-attr
+2014-11-26 10:50:42.865 996 INFO cinder.api.extensions [-] Loaded extension: os-vol-image-meta
+2014-11-26 10:50:42.865 996 INFO cinder.api.extensions [-] Loaded extension: os-volume-manage
+2014-11-26 10:50:42.866 996 INFO cinder.api.extensions [-] Loaded extension: os-vol-mig-status-attr
+2014-11-26 10:50:42.866 996 INFO cinder.api.extensions [-] Loaded extension: os-volume-replication
+2014-11-26 10:50:42.867 996 INFO cinder.api.extensions [-] Loaded extension: os-vol-tenant-attr
+2014-11-26 10:50:42.867 996 INFO cinder.api.extensions [-] Loaded extension: os-volume-transfer
+2014-11-26 10:50:42.867 996 INFO cinder.api.extensions [-] Loaded extension: encryption
+2014-11-26 10:50:42.868 996 INFO cinder.api.extensions [-] Loaded extension: os-volume-unmanage
+2014-11-26 10:50:43.149 996 WARNING keystonemiddleware.auth_token [-] Configuring admin URI using auth fragments. This is deprecated, use 'identity_uri' instead.
+2014-11-26 10:50:43.152 996 INFO cinder.wsgi [-] osapi_volume listening on 0.0.0.0:8776
+2014-11-26 10:50:43.153 996 INFO cinder.openstack.common.service [-] Starting 2 workers
+2014-11-26 10:50:43.230 2627 INFO eventlet.wsgi.server [-] (2627) wsgi starting up on http://0.0.0.0:8776/
+2014-11-26 10:50:43.232 996 INFO cinder.openstack.common.service [-] Started child 2627
+2014-11-26 10:50:43.235 996 INFO cinder.openstack.common.service [-] Started child 2631
+2014-11-26 10:50:43.286 2631 INFO eventlet.wsgi.server [-] (2631) wsgi starting up on http://0.0.0.0:8776/
+2014-11-26 10:51:04.974 2627 INFO eventlet.wsgi.server [-] (2627) accepted ('10.0.1.111', 42218)
+2014-11-26 10:51:05.311 2627 INFO cinder.api.openstack.wsgi [req-126b9072-b0e6-4547-9d03-8f3d99a5775f 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] GET http://10.0.1.111:8776/v1/cdd5e77fe2c440cf86afbf1d7b9653a4/limits
+2014-11-26 10:51:05.496 2627 WARNING cinder.quota [req-126b9072-b0e6-4547-9d03-8f3d99a5775f 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] Deprecated: Default quota for resource: snapshots_iscsi is set by the default quota flag: quota_snapshots_iscsi, it is now deprecated. Please use the default quota class for default quota.
+2014-11-26 10:51:05.497 2627 WARNING cinder.quota [req-126b9072-b0e6-4547-9d03-8f3d99a5775f 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] Deprecated: Default quota for resource: backup_gigabytes is set by the default quota flag: quota_backup_gigabytes, it is now deprecated. Please use the default quota class for default quota.
+2014-11-26 10:51:05.498 2627 WARNING cinder.quota [req-126b9072-b0e6-4547-9d03-8f3d99a5775f 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] Deprecated: Default quota for resource: volumes_iscsi is set by the default quota flag: quota_volumes_iscsi, it is now deprecated. Please use the default quota class for default quota.
+2014-11-26 10:51:05.498 2627 WARNING cinder.quota [req-126b9072-b0e6-4547-9d03-8f3d99a5775f 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] Deprecated: Default quota for resource: backups is set by the default quota flag: quota_backups, it is now deprecated. Please use the default quota class for default quota.
+2014-11-26 10:51:05.499 2627 WARNING cinder.quota [req-126b9072-b0e6-4547-9d03-8f3d99a5775f 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] Deprecated: Default quota for resource: gigabytes_iscsi is set by the default quota flag: quota_gigabytes_iscsi, it is now deprecated. Please use the default quota class for default quota.
+2014-11-26 10:51:05.513 2627 INFO cinder.api.openstack.wsgi [req-126b9072-b0e6-4547-9d03-8f3d99a5775f 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] http://10.0.1.111:8776/v1/cdd5e77fe2c440cf86afbf1d7b9653a4/limits returned with HTTP 200
+2014-11-26 10:51:05.514 2627 INFO eventlet.wsgi.server [req-126b9072-b0e6-4547-9d03-8f3d99a5775f 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 10.0.1.111 - - [26/Nov/2014 10:51:05] "GET /v1/cdd5e77fe2c440cf86afbf1d7b9653a4/limits HTTP/1.1" 200 541 0.537792

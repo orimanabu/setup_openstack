@@ -1,0 +1,38 @@
+2014-11-26 02:05:53.848 5459 INFO neutron.common.config [-] Logging enabled!
+2014-11-26 02:05:53.898 5465 INFO neutron.wsgi [-] (5465) wsgi starting up on http://0.0.0.0:9697/
+2014-11-26 11:38:52.900 5465 INFO neutron.wsgi [-] (5465) accepted ('10.0.0.2', 53886)
+2014-11-26 11:38:53.864 5465 INFO neutron.wsgi [-] 10.0.0.2 - - [26/Nov/2014 11:38:53] "GET /2009-04-04/meta-data/instance-id HTTP/1.1" 200 127 0.958688
+2014-11-26 11:38:54.051 5465 INFO neutron.wsgi [-] (5465) accepted ('10.0.0.2', 53887)
+2014-11-26 11:38:54.059 5465 INFO neutron.wsgi [-] 10.0.0.2 - - [26/Nov/2014 11:38:54] "GET /2009-04-04/meta-data/public-keys HTTP/1.1" 200 124 0.006694
+2014-11-26 11:38:54.190 5465 INFO neutron.wsgi [-] (5465) accepted ('10.0.0.2', 53888)
+2014-11-26 11:38:54.204 5465 INFO neutron.wsgi [-] 10.0.0.2 - - [26/Nov/2014 11:38:54] "GET /2009-04-04/meta-data/public-keys/0/openssh-key HTTP/1.1" 200 736 0.008000
+2014-11-26 11:38:54.335 5465 INFO neutron.wsgi [-] (5465) accepted ('10.0.0.2', 53889)
+2014-11-26 11:38:54.344 5465 INFO neutron.wsgi [-] 10.0.0.2 - - [26/Nov/2014 11:38:54] "GET /2009-04-04/meta-data/instance-id HTTP/1.1" 200 127 0.008931
+2014-11-26 11:38:54.491 5465 INFO neutron.wsgi [-] (5465) accepted ('10.0.0.2', 53890)
+2014-11-26 11:38:54.507 5465 INFO neutron.wsgi [-] 10.0.0.2 - - [26/Nov/2014 11:38:54] "GET /2009-04-04/meta-data/ami-launch-index HTTP/1.1" 200 117 0.008410
+2014-11-26 11:38:54.660 5465 INFO neutron.wsgi [-] (5465) accepted ('10.0.0.2', 53891)
+2014-11-26 11:38:54.882 5465 INFO neutron.wsgi [-] 10.0.0.2 - - [26/Nov/2014 11:38:54] "GET /2009-04-04/meta-data/instance-type HTTP/1.1" 200 123 0.217092
+2014-11-26 11:38:55.035 5465 INFO neutron.wsgi [-] (5465) accepted ('10.0.0.2', 53892)
+2014-11-26 11:38:55.042 5465 INFO neutron.wsgi [-] 10.0.0.2 - - [26/Nov/2014 11:38:55] "GET /2009-04-04/meta-data/local-ipv4 HTTP/1.1" 200 124 0.006995
+2014-11-26 11:38:55.171 5465 INFO neutron.wsgi [-] (5465) accepted ('10.0.0.2', 53893)
+2014-11-26 11:38:55.770 5465 INFO neutron.wsgi [-] 10.0.0.2 - - [26/Nov/2014 11:38:55] "GET /2009-04-04/meta-data/public-ipv4 HTTP/1.1" 200 116 0.598399
+2014-11-26 11:38:55.897 5465 INFO neutron.wsgi [-] (5465) accepted ('10.0.0.2', 53894)
+2014-11-26 11:38:55.908 5465 INFO neutron.wsgi [-] 10.0.0.2 - - [26/Nov/2014 11:38:55] "GET /2009-04-04/meta-data/public-keys HTTP/1.1" 200 124 0.006412
+2014-11-26 11:38:56.010 5465 INFO neutron.wsgi [-] (5465) accepted ('10.0.0.2', 53895)
+2014-11-26 11:38:56.022 5465 INFO neutron.wsgi [-] 10.0.0.2 - - [26/Nov/2014 11:38:56] "GET /2009-04-04/meta-data/public-keys/0/openssh-key HTTP/1.1" 200 736 0.006956
+2014-11-26 11:38:56.167 5465 INFO neutron.wsgi [-] (5465) accepted ('10.0.0.2', 53896)
+2014-11-26 11:38:56.176 5465 INFO neutron.wsgi [-] 10.0.0.2 - - [26/Nov/2014 11:38:56] "GET /2009-04-04/meta-data/hostname HTTP/1.1" 200 130 0.007495
+2014-11-26 11:38:56.391 5465 INFO neutron.wsgi [-] (5465) accepted ('10.0.0.2', 53897)
+2014-11-26 11:38:56.404 5465 INFO neutron.wsgi [-] 10.0.0.2 - - [26/Nov/2014 11:38:56] "GET /2009-04-04/meta-data/local-hostname HTTP/1.1" 200 130 0.008720
+2014-11-26 11:38:56.550 5465 INFO neutron.wsgi [-] (5465) accepted ('10.0.0.2', 53898)
+2014-11-26 11:38:56.562 5465 INFO neutron.wsgi [-] 10.0.0.2 - - [26/Nov/2014 11:38:56] "GET /2009-04-04/user-data HTTP/1.1" 404 278 0.007190
+2014-11-26 11:38:56.708 5465 INFO neutron.wsgi [-] (5465) accepted ('10.0.0.2', 53899)
+2014-11-26 11:38:56.716 5465 INFO neutron.wsgi [-] 10.0.0.2 - - [26/Nov/2014 11:38:56] "GET /2009-04-04/meta-data/block-device-mapping HTTP/1.1" 200 124 0.007586
+2014-11-26 11:38:56.819 5465 INFO neutron.wsgi [-] (5465) accepted ('10.0.0.2', 53900)
+2014-11-26 11:38:56.826 5465 INFO neutron.wsgi [-] 10.0.0.2 - - [26/Nov/2014 11:38:56] "GET /2009-04-04/meta-data/block-device-mapping/ami HTTP/1.1" 200 119 0.006155
+2014-11-26 11:38:56.931 5465 INFO neutron.wsgi [-] (5465) accepted ('10.0.0.2', 53901)
+2014-11-26 11:38:56.946 5465 INFO neutron.wsgi [-] 10.0.0.2 - - [26/Nov/2014 11:38:56] "GET /2009-04-04/meta-data/block-device-mapping/root HTTP/1.1" 200 124 0.007464
+2014-11-26 11:38:57.085 5465 INFO neutron.wsgi [-] (5465) accepted ('10.0.0.2', 53902)
+2014-11-26 11:38:57.098 5465 INFO neutron.wsgi [-] 10.0.0.2 - - [26/Nov/2014 11:38:57] "GET /2009-04-04/meta-data/public-hostname HTTP/1.1" 200 130 0.008502
+2014-11-26 11:38:57.241 5465 INFO neutron.wsgi [-] (5465) accepted ('10.0.0.2', 53903)
+2014-11-26 11:38:57.253 5465 INFO neutron.wsgi [-] 10.0.0.2 - - [26/Nov/2014 11:38:57] "GET /2009-04-04/meta-data/placement/availability-zone HTTP/1.1" 200 120 0.009916

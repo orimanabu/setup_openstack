@@ -1,0 +1,9 @@
+2014-11-26 02:01:55.153 11511 AUDIT nova.service [-] Starting cert node (version 2014.2-2.el7.centos)
+2014-11-26 02:01:55.692 11511 INFO oslo.messaging._drivers.impl_rabbit [req-b8545ad8-dd30-4380-bfe9-9eb90bf7301a ] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-26 02:01:55.706 11511 INFO oslo.messaging._drivers.impl_rabbit [req-b8545ad8-dd30-4380-bfe9-9eb90bf7301a ] Connected to AMQP server on 10.0.1.111:5672
+2014-11-26 10:48:19.353 11511 WARNING nova.openstack.common.loopingcall [-] task <bound method DbDriver._report_state of <nova.servicegroup.drivers.db.DbDriver object at 0x2d06b50>> run outlasted interval by 2.95 sec
+2014-11-26 10:49:44.326 11511 INFO nova.openstack.common.service [-] Caught SIGTERM, exiting
+2014-11-26 10:50:41.665 1026 AUDIT nova.service [-] Starting cert node (version 2014.2-2.el7.centos)
+2014-11-26 10:50:43.405 1026 WARNING oslo.db.sqlalchemy.session [req-e31f9c54-6f5a-4bc4-a143-5f9c2dedcd96 ] SQL connection failed. -1 attempts left.
+2014-11-26 10:50:53.837 1026 INFO oslo.messaging._drivers.impl_rabbit [req-e31f9c54-6f5a-4bc4-a143-5f9c2dedcd96 ] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-26 10:50:53.903 1026 INFO oslo.messaging._drivers.impl_rabbit [req-e31f9c54-6f5a-4bc4-a143-5f9c2dedcd96 ] Connected to AMQP server on 10.0.1.111:5672

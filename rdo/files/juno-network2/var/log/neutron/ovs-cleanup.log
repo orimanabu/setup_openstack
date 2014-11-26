@@ -1,0 +1,3 @@
+2014-11-26 02:05:26.213 5021 INFO neutron.common.config [-] Logging enabled!
+2014-11-26 02:05:26.359 5021 INFO neutron.agent.ovs_cleanup_util [-] Cleaning br-int
+2014-11-26 02:05:26.456 5021 INFO neutron.agent.ovs_cleanup_util [-] OVS cleanup completed successfully

@@ -1,0 +1,38 @@
+2014-11-26 02:01:48.999 11416 INFO nova.openstack.common.service [-] Starting 2 workers
+2014-11-26 02:01:49.000 11416 INFO nova.openstack.common.service [-] Started child 11427
+2014-11-26 02:01:49.003 11427 AUDIT nova.service [-] Starting conductor node (version 2014.2-2.el7.centos)
+2014-11-26 02:01:49.003 11416 INFO nova.openstack.common.service [-] Started child 11428
+2014-11-26 02:01:49.021 11428 AUDIT nova.service [-] Starting conductor node (version 2014.2-2.el7.centos)
+2014-11-26 02:01:49.750 11427 INFO oslo.messaging._drivers.impl_rabbit [req-4f1be2f8-4f73-4d56-a704-85109f96e429 ] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-26 02:01:49.767 11427 INFO oslo.messaging._drivers.impl_rabbit [req-4f1be2f8-4f73-4d56-a704-85109f96e429 ] Connected to AMQP server on 10.0.1.111:5672
+2014-11-26 02:01:49.958 11428 INFO oslo.messaging._drivers.impl_rabbit [req-a292611e-85d3-4684-8d46-df99b75f46b3 ] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-26 02:01:49.981 11428 INFO oslo.messaging._drivers.impl_rabbit [req-a292611e-85d3-4684-8d46-df99b75f46b3 ] Connected to AMQP server on 10.0.1.111:5672
+2014-11-26 02:03:53.860 11427 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-26 02:03:53.870 11427 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
+2014-11-26 02:03:54.005 11428 INFO oslo.messaging._drivers.impl_rabbit [req-ab82b89c-84b0-4f37-8e01-1caed84c309f ] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-26 02:03:54.016 11428 INFO oslo.messaging._drivers.impl_rabbit [req-ab82b89c-84b0-4f37-8e01-1caed84c309f ] Connected to AMQP server on 10.0.1.111:5672
+2014-11-26 10:49:44.324 11416 INFO nova.openstack.common.service [-] Caught SIGTERM, stopping children
+2014-11-26 10:49:44.331 11416 INFO nova.openstack.common.service [-] Waiting on 2 children to exit
+2014-11-26 10:49:44.325 11427 INFO nova.openstack.common.service [-] Caught SIGTERM, exiting
+2014-11-26 10:49:44.325 11428 INFO nova.openstack.common.service [-] Caught SIGTERM, exiting
+2014-11-26 10:49:44.452 11416 INFO nova.openstack.common.service [-] Child 11427 killed by signal 15
+2014-11-26 10:49:44.452 11416 INFO nova.openstack.common.service [-] Child 11428 killed by signal 15
+2014-11-26 10:50:41.603 1019 INFO nova.openstack.common.service [-] Starting 2 workers
+2014-11-26 10:50:41.631 1019 INFO nova.openstack.common.service [-] Started child 2523
+2014-11-26 10:50:41.632 1019 INFO nova.openstack.common.service [-] Started child 2524
+2014-11-26 10:50:41.717 2523 AUDIT nova.service [-] Starting conductor node (version 2014.2-2.el7.centos)
+2014-11-26 10:50:41.736 2524 AUDIT nova.service [-] Starting conductor node (version 2014.2-2.el7.centos)
+2014-11-26 10:50:43.647 2523 WARNING oslo.db.sqlalchemy.session [req-f9459a3a-2a4c-4ccf-a5d7-97088d5fa357 ] SQL connection failed. -1 attempts left.
+2014-11-26 10:50:43.660 2524 WARNING oslo.db.sqlalchemy.session [req-1679879d-c2a6-4e53-973f-44f28ae20533 ] SQL connection failed. -1 attempts left.
+2014-11-26 10:50:54.049 2523 INFO oslo.messaging._drivers.impl_rabbit [req-f9459a3a-2a4c-4ccf-a5d7-97088d5fa357 ] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-26 10:50:54.065 2523 INFO oslo.messaging._drivers.impl_rabbit [req-f9459a3a-2a4c-4ccf-a5d7-97088d5fa357 ] Connected to AMQP server on 10.0.1.111:5672
+2014-11-26 10:50:54.125 2524 INFO oslo.messaging._drivers.impl_rabbit [req-1679879d-c2a6-4e53-973f-44f28ae20533 ] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-26 10:50:54.143 2524 INFO oslo.messaging._drivers.impl_rabbit [req-1679879d-c2a6-4e53-973f-44f28ae20533 ] Connected to AMQP server on 10.0.1.111:5672
+2014-11-26 10:51:46.273 2523 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-26 10:51:46.285 2523 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
+2014-11-26 10:51:56.262 2524 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-26 10:51:56.277 2524 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
+2014-11-26 11:36:00.154 2523 INFO oslo.messaging._drivers.impl_rabbit [req-ef2b8a5c-b32a-454f-8700-16e3226fbeed ] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-26 11:36:00.164 2523 INFO oslo.messaging._drivers.impl_rabbit [req-ef2b8a5c-b32a-454f-8700-16e3226fbeed ] Connected to AMQP server on 10.0.1.111:5672
+2014-11-26 11:36:26.976 2523 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-26 11:36:26.986 2523 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
