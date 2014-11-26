@@ -18,7 +18,7 @@ function do_command {
 	local silent=""
 	local host="(local)"
 	local ssh_prefix="bash -c"
-	while getopts ":r:s" o; do
+	while getopts ":r:sn" o; do
 		case ${o} in
 		s)	# silent
 			silent=1
@@ -26,6 +26,9 @@ function do_command {
 		r)
 			host=${OPTARG}
 			ssh_prefix="ssh ${ssh_options} ${host}"
+			;;
+		n)
+			ssh_prefix="${ssh_prefix} -n"
 			;;
 		*)
 			do_command_usage

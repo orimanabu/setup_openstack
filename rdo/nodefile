@@ -1,4 +1,4 @@
-10.0.1.111	juno-controller
-10.0.1.121	juno-network1
-10.0.1.122	juno-network2
-10.0.1.131	juno-compute1
+10.0.1.111	juno-controller	controller
+10.0.1.121	juno-network1	network
+10.0.1.122	juno-network2	network
+10.0.1.131	juno-compute1	compute
