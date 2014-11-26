@@ -35,7 +35,9 @@ echo "* gateway: ${gateway}"
 
 case ${op} in
 create)
+	source ${gittop}/keystonerc admin
 	do_command neutron router-create ${router} --ha True
+	source ${gittop}/keystonerc ${tenant}
 	do_command neutron router-gateway-set $(neutron router-list | awk '/'${router}'/ {print $2}') $(neutron net-list | awk '/'${public_network}'/ {print $2}')
 	do_command neutron net-create ${network}
 	do_command neutron subnet-create ${network} ${cidr} --name ${subnet} --enable_dhcp True --allocation-pool start=${pool_start},end=${pool_end} --gateway ${gateway}

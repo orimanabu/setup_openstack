@@ -10,6 +10,22 @@ op=$1; shift
 nodefile=./nodefile
 
 case ${op} in
+get)
+	cat ${nodefile} | while read line; do
+		addr=$(echo ${line} | awk '{print $1}')
+		host=$(echo ${line} | awk '{print $2}')
+		echo "==> ${addr}/${host}"
+		do_command -r ${addr} -n openstack-config --get /etc/neutron/neutron.conf DEFAULT l3_ha
+		do_command -r ${addr} -n openstack-config --get /etc/neutron/neutron.conf DEFAULT max_l3_agents_per_router
+		do_command -r ${addr} -n openstack-config --get /etc/neutron/neutron.conf DEFAULT min_l3_agents_per_router
+		do_command -r ${addr} -n openstack-config --get /etc/neutron/neutron.conf DEFAULT l3_ha_net_cidr
+		do_command -r ${addr} -n openstack-config --get /etc/neutron/l3_agent.ini DEFAULT agent_mode
+		do_command -r ${addr} -n openstack-config --get /etc/neutron/l3_agent.ini DEFAULT ha_confs_path
+		do_command -r ${addr} -n openstack-config --get /etc/neutron/l3_agent.ini DEFAULT ha_vrrp_auth_type
+		do_command -r ${addr} -n openstack-config --get /etc/neutron/l3_agent.ini DEFAULT ha_vrrp_auth_password
+		do_command -r ${addr} -n openstack-config --get /etc/neutron/l3_agent.ini DEFAULT ha_vrrp_advert_int
+	done
+	;;
 set)
 	cat ${nodefile} | while read line; do
 		addr=$(echo ${line} | awk '{print $1}')
