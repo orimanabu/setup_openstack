@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function usage {
-	echo "$0 -n NETWORK -s SUBNET -c CIDR -p PUBLIC_NETWORK -r ROUTER -t TENANT -h OP"
+	echo "$0 -n NETWORK -s SUBNET -c CIDR -p PUBLIC_NETWORK -r ROUTER -t TENANT -v VM -f FLOATINGIP -h OP"
 	exit 1
 }
 
@@ -14,7 +14,7 @@ cidr="192.168.99.0/24"
 public_network=public
 public_network=external
 
-while getopts ":c:n:s:p:r:t:h" o; do
+while getopts ":c:n:s:p:r:t:v:f:h" o; do
 	case ${o} in
 	h)      # ha
 		ha=1
@@ -36,6 +36,12 @@ while getopts ":c:n:s:p:r:t:h" o; do
 		;;
 	t)
 		tenant=${OPTARG}
+		;;
+	v)
+		vm=${OPTARG}
+		;;
+	f)
+		fip=${OPTARG}
 		;;
 	*)
 		echo "unknown option: ${o}"
@@ -104,6 +110,41 @@ delete)
 	do_command neutron net-delete ${network}
 	do_command neutron router-gateway-clear $(neutron router-list | awk '/'${router}'/ {print $2}')
 	do_command neutron router-delete ${router}
+	;;
+floatingip-create-only)
+	if [ x"${network}" == x"" ]; then
+		usage
+	fi
+	source ${gittop}/keystonerc admin
+	do_command neutron floatingip-create --tenant-id $(keystone tenant-list | awk '/'${tenant}'/ {print $2}') ${network}
+	;;
+floatingip-create-and-associate)
+	source ${gittop}/keystonerc admin
+	echo "network:	${network}"
+	echo "vm:	${vm}"
+	echo "fip:	${fip}"
+	if [ x"${network}" == x"" -o x"${vm}" == x"" -o x"${fip}" == x"" ]; then
+		usage
+	fi
+	tenant_id=$(keystone tenant-list | awk '/'${tenant}'/ {print $2}')
+	vmaddr=$(nova show ${vm} | awk '/network/ {print $5}')
+	port_id=$(neutron port-list | awk '/'${vmaddr}'/ {print $2}')
+	do_command neutron floatingip-create --tenant-id ${tenant_id} --port-id ${port_id} --fixed-ip-address ${fip} ${network}
+	;;
+floatingip-associate)
+	echo "vm: ${vm}"
+	echo "floating ip: ${fip}"
+	if [ x"${vm}" == x"" -o x"${fip}" == x"" ]; then
+		usage
+	fi
+	source ${gittop}/keystonerc ${tenant}
+	vmaddr=$(nova show ${vm} | awk '/network/ {print $5}')
+	portid=$(neutron port-list | awk '/'${vmaddr}'/ {print $2}')
+	echo "vmaddr:	${vmaddr}"
+	echo "port id of vm: ${portid}"
+	ipid=$(neutron floatingip-list | awk '/'${fip}'/ {print $2}')
+	echo "floatingip id: ${ipid}"
+	do_command neutron floatingip-associate ${ipid} ${portid}
 	;;
 *)
 	echo "unknown op: ${op}"
