@@ -1,0 +1,17 @@
+#!/bin/bash
+# for RDO/RHELOSP
+
+if [ x"$#" != x"1" ]; then
+	echo "$0 tenant"
+	exit 1
+fi
+name=$1; shift
+controller=10.0.1.111
+region=RegionOne
+
+export OS_USERNAME=${name}
+export OS_TENANT_NAME=${name}
+export OS_PASSWORD=${name}
+export OS_AUTH_URL=http://${controller}:5000/v2.0/
+export OS_REGION_NAME=${region}
+export PS1="[\\u@\\h \\W(keystone_${name})]\\$ "
