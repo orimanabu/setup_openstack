@@ -9,11 +9,12 @@ source subr.sh
 
 #OPTIND
 ha=0
-tenant=test
+tenant=
 cidr="192.168.99.0/24"
 public_network=public
+public_network=external
 
-while getopts ":c:t:h" o; do
+while getopts ":c:n:s:p:r:t:h" o; do
 	case ${o} in
 	h)      # ha
 		ha=1
@@ -30,11 +31,11 @@ while getopts ":c:t:h" o; do
 	p)
 		_public_network=${OPTARG}
 		;;
-	t)
-		tenant=${OPTARG}
-		;;
 	r)
 		_router=${OPTARG}
+		;;
+	t)
+		tenant=${OPTARG}
 		;;
 	*)
 		echo "unknown option: ${o}"
@@ -45,8 +46,7 @@ done
 shift $((OPTIND - 1))
 
 if [ x"$#" != x"1" ]; then
-	echo "$0 op"
-	exit 1
+	usage
 fi
 op=$1; shift
 
@@ -80,13 +80,22 @@ fi
 #exit
 
 case ${op} in
+external-create)
+	source ${gittop}/keystonerc admin
+	do_command neutron net-create ${public_network} --router:external True
+	do_command neutron subnet-create ${public_network} 172.16.99.0/24 --name ${public_network}_subnet --disable-dhcp --gateway 172.16.99.1 --allocation-pool start=172.16.99.100,end=172.16.99.199
+	;;
 create)
 	source ${gittop}/keystonerc admin
-	do_command neutron router-create --tenant-id $(keystone tenant-list | awk '/'${tenant}'/ {print $2}') --ha True ${router}
+	extra_options=""
+	if [ x"${ha}" = x"1" ]; then
+		extra_options="--ha True"
+	fi
+	do_command neutron router-create --tenant-id $(keystone tenant-list | awk '/'${tenant}'/ {print $2}') ${extra_options} ${router}
 	source ${gittop}/keystonerc ${tenant}
 	do_command neutron router-gateway-set $(neutron router-list | awk '/'${router}'/ {print $2}') $(neutron net-list | awk '/'${public_network}'/ {print $2}')
 	do_command neutron net-create ${network}
-	do_command neutron subnet-create ${network} ${cidr} --name ${subnet} --enable_dhcp True --allocation-pool start=${pool_start},end=${pool_end} --gateway ${gateway}
+	do_command neutron subnet-create ${network} ${cidr} --name ${subnet} --enable_dhcp True --gateway ${gateway} --allocation-pool start=${pool_start},end=${pool_end}
 	do_command neutron router-interface-add $(neutron router-list | awk '/'${router}'/ {print $2}') ${subnet}
 	;;
 delete)

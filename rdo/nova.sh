@@ -7,7 +7,7 @@ function usage {
 
 source ./subr.sh
 
-tenant=demo
+tenant=
 region=RegionOne
 image=cirros
 flavor=m1.tiny
@@ -57,7 +57,7 @@ if [ x"${region}" == x"" -o x"${tenant}" = x"" ]; then
 fi
 export OS_REGION_NAME=${region}
 rcfile=${gittop}/keystonerc
-net=${_net:-${tenant}-net}
+net=${_net:-${tenant}_net}
 
 source ${rcfile} ${tenant}
 
