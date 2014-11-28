@@ -1,105 +1,38 @@
-2014-11-26 02:05:28.508 5163 INFO neutron.common.config [-] Logging enabled!
-2014-11-26 02:05:28.518 5163 INFO neutron.openstack.common.service [req-931e301f-9b4a-44d3-82f4-4f6fe65f796f None] Starting 2 workers
-2014-11-26 02:05:28.519 5163 INFO neutron.openstack.common.service [req-931e301f-9b4a-44d3-82f4-4f6fe65f796f None] Started child 5203
-2014-11-26 02:05:28.522 5163 INFO neutron.openstack.common.service [req-931e301f-9b4a-44d3-82f4-4f6fe65f796f None] Started child 5204
-2014-11-26 02:05:28.544 5163 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
-2014-11-26 02:05:28.567 5203 INFO eventlet.wsgi.server [-] (5203) wsgi starting up on http:///:v/
-2014-11-26 02:05:28.577 5204 INFO eventlet.wsgi.server [-] (5204) wsgi starting up on http:///:v/
-2014-11-26 02:05:28.582 5163 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
-2014-11-26 02:05:28.588 5163 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
-2014-11-26 02:05:28.601 5163 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
-2014-11-26 10:49:59.413 5163 ERROR oslo.messaging._drivers.impl_rabbit [-] Failed to publish message to topic 'q-plugin': [Errno 104] Connection reset by peer
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit Traceback (most recent call last):
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/oslo/messaging/_drivers/impl_rabbit.py", line 655, in ensure
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit     return method()
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/oslo/messaging/_drivers/impl_rabbit.py", line 752, in _publish
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit     publisher = cls(self.conf, self.channel, topic=topic, **kwargs)
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/oslo/messaging/_drivers/impl_rabbit.py", line 378, in __init__
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit     **options)
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/oslo/messaging/_drivers/impl_rabbit.py", line 326, in __init__
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit     self.reconnect(channel)
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/oslo/messaging/_drivers/impl_rabbit.py", line 334, in reconnect
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit     routing_key=self.routing_key)
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/kombu/messaging.py", line 83, in __init__
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit     self.revive(self._channel)
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/kombu/messaging.py", line 214, in revive
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit     self.declare()
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/kombu/messaging.py", line 100, in declare
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit     self.exchange.declare()
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/kombu/entity.py", line 163, in declare
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit     nowait=nowait, passive=passive,
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/amqp/channel.py", line 613, in exchange_declare
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit     self._send_method((40, 10), args)
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/amqp/abstract_channel.py", line 56, in _send_method
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit     self.channel_id, method_sig, args, content,
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/amqp/method_framing.py", line 221, in write_method
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit     write_frame(1, channel, payload)
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/amqp/transport.py", line 177, in write_frame
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit     frame_type, channel, size, payload, 0xce,
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/eventlet/greenio.py", line 359, in sendall
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit     tail = self.send(data, flags)
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/eventlet/greenio.py", line 342, in send
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit     total_sent += fd.send(data[total_sent:], flags)
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit error: [Errno 104] Connection reset by peer
-2014-11-26 10:49:59.413 5163 TRACE oslo.messaging._drivers.impl_rabbit 
-2014-11-26 10:49:59.418 5163 INFO oslo.messaging._drivers.impl_rabbit [-] Delaying reconnect for 1.0 seconds...
-2014-11-26 10:50:00.420 5163 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
-2014-11-26 10:50:05.438 5163 ERROR oslo.messaging._drivers.impl_rabbit [-] AMQP server on 10.0.1.111:5672 is unreachable: timed out. Trying again in 1 seconds.
-2014-11-26 10:50:06.440 5163 INFO oslo.messaging._drivers.impl_rabbit [-] Delaying reconnect for 1.0 seconds...
-2014-11-26 10:50:07.442 5163 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
-2014-11-26 10:50:12.461 5163 ERROR oslo.messaging._drivers.impl_rabbit [-] AMQP server on 10.0.1.111:5672 is unreachable: timed out. Trying again in 3 seconds.
-2014-11-26 10:50:15.463 5163 INFO oslo.messaging._drivers.impl_rabbit [-] Delaying reconnect for 1.0 seconds...
-2014-11-26 10:50:16.464 5163 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
-2014-11-26 10:50:21.481 5163 ERROR oslo.messaging._drivers.impl_rabbit [-] AMQP server on 10.0.1.111:5672 is unreachable: timed out. Trying again in 5 seconds.
-2014-11-26 10:50:26.483 5163 INFO oslo.messaging._drivers.impl_rabbit [-] Delaying reconnect for 1.0 seconds...
-2014-11-26 10:50:27.484 5163 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
-2014-11-26 10:50:30.711 5163 ERROR oslo.messaging._drivers.impl_rabbit [-] AMQP server on 10.0.1.111:5672 is unreachable: [Errno 113] EHOSTUNREACH. Trying again in 7 seconds.
-2014-11-26 10:50:37.713 5163 INFO oslo.messaging._drivers.impl_rabbit [-] Delaying reconnect for 1.0 seconds...
-2014-11-26 10:50:38.720 5163 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
-2014-11-26 10:50:38.735 5163 ERROR oslo.messaging._drivers.impl_rabbit [-] AMQP server on 10.0.1.111:5672 is unreachable: [Errno 111] ECONNREFUSED. Trying again in 9 seconds.
-2014-11-26 10:50:47.736 5163 INFO oslo.messaging._drivers.impl_rabbit [-] Delaying reconnect for 1.0 seconds...
-2014-11-26 10:50:48.738 5163 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
-2014-11-26 10:50:48.755 5163 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
-2014-11-26 10:50:48.759 5163 WARNING neutron.openstack.common.loopingcall [-] task run outlasted interval by 19.347032 sec
-2014-11-26 11:38:52.921 5203 INFO eventlet.wsgi.server [-] (5203) accepted ''
-2014-11-26 11:38:52.936 5203 INFO urllib3.connectionpool [-] Starting new HTTP connection (1): 10.0.1.111
-2014-11-26 11:38:53.025 5203 INFO urllib3.connectionpool [-] Starting new HTTP connection (1): 10.0.1.111
-2014-11-26 11:38:53.081 5203 INFO urllib3.connectionpool [-] Starting new HTTP connection (1): 10.0.1.111
-2014-11-26 11:38:53.863 5203 INFO eventlet.wsgi.server [-] 10.0.0.2,<local> - - [26/Nov/2014 11:38:53] "GET /2009-04-04/meta-data/instance-id HTTP/1.1" 200 127 0.940881
-2014-11-26 11:38:54.053 5203 INFO eventlet.wsgi.server [-] (5203) accepted ''
-2014-11-26 11:38:54.057 5203 INFO eventlet.wsgi.server [-] 10.0.0.2,<local> - - [26/Nov/2014 11:38:54] "GET /2009-04-04/meta-data/public-keys HTTP/1.1" 200 124 0.003828
-2014-11-26 11:38:54.196 5203 INFO eventlet.wsgi.server [-] (5203) accepted ''
-2014-11-26 11:38:54.202 5203 INFO eventlet.wsgi.server [-] 10.0.0.2,<local> - - [26/Nov/2014 11:38:54] "GET /2009-04-04/meta-data/public-keys/0/openssh-key HTTP/1.1" 200 736 0.005188
-2014-11-26 11:38:54.336 5203 INFO eventlet.wsgi.server [-] (5203) accepted ''
-2014-11-26 11:38:54.343 5203 INFO eventlet.wsgi.server [-] 10.0.0.2,<local> - - [26/Nov/2014 11:38:54] "GET /2009-04-04/meta-data/instance-id HTTP/1.1" 200 127 0.006190
-2014-11-26 11:38:54.499 5203 INFO eventlet.wsgi.server [-] (5203) accepted ''
-2014-11-26 11:38:54.505 5203 INFO eventlet.wsgi.server [-] 10.0.0.2,<local> - - [26/Nov/2014 11:38:54] "GET /2009-04-04/meta-data/ami-launch-index HTTP/1.1" 200 117 0.004945
-2014-11-26 11:38:54.665 5204 INFO eventlet.wsgi.server [-] (5204) accepted ''
-2014-11-26 11:38:54.678 5204 INFO urllib3.connectionpool [-] Starting new HTTP connection (1): 10.0.1.111
-2014-11-26 11:38:54.754 5204 INFO urllib3.connectionpool [-] Starting new HTTP connection (1): 10.0.1.111
-2014-11-26 11:38:54.813 5204 INFO urllib3.connectionpool [-] Starting new HTTP connection (1): 10.0.1.111
-2014-11-26 11:38:54.880 5204 INFO eventlet.wsgi.server [-] 10.0.0.2,<local> - - [26/Nov/2014 11:38:54] "GET /2009-04-04/meta-data/instance-type HTTP/1.1" 200 123 0.214062
-2014-11-26 11:38:55.036 5204 INFO eventlet.wsgi.server [-] (5204) accepted ''
-2014-11-26 11:38:55.041 5204 INFO eventlet.wsgi.server [-] 10.0.0.2,<local> - - [26/Nov/2014 11:38:55] "GET /2009-04-04/meta-data/local-ipv4 HTTP/1.1" 200 124 0.004407
-2014-11-26 11:38:55.172 5204 INFO eventlet.wsgi.server [-] (5204) accepted ''
-2014-11-26 11:38:55.769 5204 INFO eventlet.wsgi.server [-] 10.0.0.2,<local> - - [26/Nov/2014 11:38:55] "GET /2009-04-04/meta-data/public-ipv4 HTTP/1.1" 200 116 0.596076
-2014-11-26 11:38:55.902 5204 INFO eventlet.wsgi.server [-] (5204) accepted ''
-2014-11-26 11:38:55.907 5204 INFO eventlet.wsgi.server [-] 10.0.0.2,<local> - - [26/Nov/2014 11:38:55] "GET /2009-04-04/meta-data/public-keys HTTP/1.1" 200 124 0.003762
-2014-11-26 11:38:56.016 5204 INFO eventlet.wsgi.server [-] (5204) accepted ''
-2014-11-26 11:38:56.021 5204 INFO eventlet.wsgi.server [-] 10.0.0.2,<local> - - [26/Nov/2014 11:38:56] "GET /2009-04-04/meta-data/public-keys/0/openssh-key HTTP/1.1" 200 736 0.004457
-2014-11-26 11:38:56.169 5204 INFO eventlet.wsgi.server [-] (5204) accepted ''
-2014-11-26 11:38:56.174 5204 INFO eventlet.wsgi.server [-] 10.0.0.2,<local> - - [26/Nov/2014 11:38:56] "GET /2009-04-04/meta-data/hostname HTTP/1.1" 200 130 0.004706
-2014-11-26 11:38:56.396 5203 INFO eventlet.wsgi.server [-] (5203) accepted ''
-2014-11-26 11:38:56.403 5203 INFO eventlet.wsgi.server [-] 10.0.0.2,<local> - - [26/Nov/2014 11:38:56] "GET /2009-04-04/meta-data/local-hostname HTTP/1.1" 200 130 0.006126
-2014-11-26 11:38:56.555 5204 INFO eventlet.wsgi.server [-] (5204) accepted ''
-2014-11-26 11:38:56.560 5204 INFO eventlet.wsgi.server [-] 10.0.0.2,<local> - - [26/Nov/2014 11:38:56] "GET /2009-04-04/user-data HTTP/1.1" 404 176 0.004035
-2014-11-26 11:38:56.709 5204 INFO eventlet.wsgi.server [-] (5204) accepted ''
-2014-11-26 11:38:56.714 5204 INFO eventlet.wsgi.server [-] 10.0.0.2,<local> - - [26/Nov/2014 11:38:56] "GET /2009-04-04/meta-data/block-device-mapping HTTP/1.1" 200 124 0.004197
-2014-11-26 11:38:56.820 5204 INFO eventlet.wsgi.server [-] (5204) accepted ''
-2014-11-26 11:38:56.825 5204 INFO eventlet.wsgi.server [-] 10.0.0.2,<local> - - [26/Nov/2014 11:38:56] "GET /2009-04-04/meta-data/block-device-mapping/ami HTTP/1.1" 200 119 0.003719
-2014-11-26 11:38:56.939 5204 INFO eventlet.wsgi.server [-] (5204) accepted ''
-2014-11-26 11:38:56.944 5204 INFO eventlet.wsgi.server [-] 10.0.0.2,<local> - - [26/Nov/2014 11:38:56] "GET /2009-04-04/meta-data/block-device-mapping/root HTTP/1.1" 200 124 0.004688
-2014-11-26 11:38:57.090 5204 INFO eventlet.wsgi.server [-] (5204) accepted ''
-2014-11-26 11:38:57.097 5204 INFO eventlet.wsgi.server [-] 10.0.0.2,<local> - - [26/Nov/2014 11:38:57] "GET /2009-04-04/meta-data/public-hostname HTTP/1.1" 200 130 0.005853
-2014-11-26 11:38:57.243 5204 INFO eventlet.wsgi.server [-] (5204) accepted ''
-2014-11-26 11:38:57.251 5204 INFO eventlet.wsgi.server [-] 10.0.0.2,<local> - - [26/Nov/2014 11:38:57] "GET /2009-04-04/meta-data/placement/availability-zone HTTP/1.1" 200 120 0.006976
+2014-11-28 23:27:17.093 5743 INFO neutron.common.config [-] Logging enabled!
+2014-11-28 23:27:17.113 5743 INFO neutron.openstack.common.service [req-5762872c-469a-4adb-85ff-8b89c4332e26 None] Starting 2 workers
+2014-11-28 23:27:17.114 5743 INFO neutron.openstack.common.service [req-5762872c-469a-4adb-85ff-8b89c4332e26 None] Started child 5784
+2014-11-28 23:27:17.117 5743 INFO neutron.openstack.common.service [req-5762872c-469a-4adb-85ff-8b89c4332e26 None] Started child 5785
+2014-11-28 23:27:17.142 5743 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:27:17.155 5785 INFO eventlet.wsgi.server [-] (5785) wsgi starting up on http:///:v/
+2014-11-28 23:27:17.179 5784 INFO eventlet.wsgi.server [-] (5784) wsgi starting up on http:///:v/
+2014-11-28 23:27:17.225 5743 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
+2014-11-28 23:27:17.234 5743 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:27:17.247 5743 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
+2014-11-28 23:33:56.641 5743 INFO neutron.openstack.common.service [req-5762872c-469a-4adb-85ff-8b89c4332e26 None] Caught SIGTERM, stopping children
+2014-11-28 23:33:56.642 5743 INFO neutron.openstack.common.service [req-5762872c-469a-4adb-85ff-8b89c4332e26 None] Waiting on 2 children to exit
+2014-11-28 23:33:56.642 5785 INFO neutron.openstack.common.service [req-5762872c-469a-4adb-85ff-8b89c4332e26 None] Child caught SIGTERM, exiting
+2014-11-28 23:33:56.645 5743 INFO neutron.openstack.common.service [req-5762872c-469a-4adb-85ff-8b89c4332e26 None] Child 5785 exited with status 1
+2014-11-28 23:33:56.651 5784 INFO neutron.openstack.common.service [req-5762872c-469a-4adb-85ff-8b89c4332e26 None] Child caught SIGTERM, exiting
+2014-11-28 23:33:56.689 5743 INFO neutron.openstack.common.service [req-5762872c-469a-4adb-85ff-8b89c4332e26 None] Child 5784 exited with status 1
+2014-11-28 23:38:00.435 1113 INFO neutron.common.config [-] Logging enabled!
+2014-11-28 23:38:00.463 1113 INFO neutron.openstack.common.service [req-e8fe4943-07af-48dc-80e2-2dfae1ddbf49 None] Starting 2 workers
+2014-11-28 23:38:00.466 1113 INFO neutron.openstack.common.service [req-e8fe4943-07af-48dc-80e2-2dfae1ddbf49 None] Started child 1817
+2014-11-28 23:38:00.470 1113 INFO neutron.openstack.common.service [req-e8fe4943-07af-48dc-80e2-2dfae1ddbf49 None] Started child 1818
+2014-11-28 23:38:00.509 1113 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:00.581 1113 ERROR oslo.messaging._drivers.impl_rabbit [-] AMQP server on 10.0.1.111:5672 is unreachable: [Errno 111] ECONNREFUSED. Trying again in 1 seconds.
+2014-11-28 23:38:00.690 1817 INFO eventlet.wsgi.server [-] (1817) wsgi starting up on http:///:v/
+2014-11-28 23:38:00.717 1818 INFO eventlet.wsgi.server [-] (1818) wsgi starting up on http:///:v/
+2014-11-28 23:38:01.584 1113 INFO oslo.messaging._drivers.impl_rabbit [-] Delaying reconnect for 1.0 seconds...
+2014-11-28 23:38:02.615 1113 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:02.699 1113 ERROR oslo.messaging._drivers.impl_rabbit [-] AMQP server on 10.0.1.111:5672 is unreachable: [Errno 111] ECONNREFUSED. Trying again in 3 seconds.
+2014-11-28 23:38:05.700 1113 INFO oslo.messaging._drivers.impl_rabbit [-] Delaying reconnect for 1.0 seconds...
+2014-11-28 23:38:06.701 1113 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:06.713 1113 ERROR oslo.messaging._drivers.impl_rabbit [-] AMQP server on 10.0.1.111:5672 is unreachable: [Errno 111] ECONNREFUSED. Trying again in 5 seconds.
+2014-11-28 23:38:11.714 1113 INFO oslo.messaging._drivers.impl_rabbit [-] Delaying reconnect for 1.0 seconds...
+2014-11-28 23:38:12.715 1113 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:12.738 1113 ERROR oslo.messaging._drivers.impl_rabbit [-] AMQP server on 10.0.1.111:5672 is unreachable: [Errno 111] ECONNREFUSED. Trying again in 7 seconds.
+2014-11-28 23:38:19.739 1113 INFO oslo.messaging._drivers.impl_rabbit [-] Delaying reconnect for 1.0 seconds...
+2014-11-28 23:38:20.739 1113 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:20.763 1113 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:20.769 1113 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:20.785 1113 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672

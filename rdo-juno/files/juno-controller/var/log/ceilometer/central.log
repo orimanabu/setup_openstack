@@ -1,0 +1,1568 @@
+2014-11-28 23:31:26.887 18717 INFO ceilometer.pipeline [-] Pipeline config: {'sources': [{'interval': 600, 'meters': ['*'], 'name': 'meter_source', 'sinks': ['meter_sink']}, {'interval': 600, 'meters': ['cpu'], 'name': 'cpu_source', 'sinks': ['cpu_sink']}, {'interval': 600, 'meters': ['disk.read.bytes', 'disk.read.requests', 'disk.write.bytes', 'disk.write.requests'], 'name': 'disk_source', 'sinks': ['disk_sink']}, {'interval': 600, 'meters': ['network.incoming.bytes', 'network.incoming.packets', 'network.outgoing.bytes', 'network.outgoing.packets'], 'name': 'network_source', 'sinks': ['network_sink']}], 'sinks': [{'publishers': ['notifier://'], 'transformers': None, 'name': 'meter_sink'}, {'publishers': ['notifier://'], 'transformers': [{'name': 'rate_of_change', 'parameters': {'target': {'scale': '100.0 / (10**9 * (resource_metadata.cpu_number or 1))', 'type': 'gauge', 'name': 'cpu_util', 'unit': '%'}}}], 'name': 'cpu_sink'}, {'publishers': ['notifier://'], 'transformers': [{'name': 'rate_of_change', 'parameters': {'source': {'map_from': {'name': 'disk\\.(read|write)\\.(bytes|requests)', 'unit': '(B|request)'}}, 'target': {'type': 'gauge', 'map_to': {'name': 'disk.\\1.\\2.rate', 'unit': '\\1/s'}}}}], 'name': 'disk_sink'}, {'publishers': ['notifier://'], 'transformers': [{'name': 'rate_of_change', 'parameters': {'source': {'map_from': {'name': 'network\\.(incoming|outgoing)\\.(bytes|packets)', 'unit': '(B|packet)'}}, 'target': {'type': 'gauge', 'map_to': {'name': 'network.\\1.\\2.rate', 'unit': '\\1/s'}}}}], 'name': 'network_sink'}]}
+2014-11-28 23:31:26.889 18717 INFO ceilometer.pipeline [-] detected decoupled pipeline config format
+2014-11-28 23:31:26.892 18717 INFO ceilometer.publisher.messaging [-] Publishing policy set to default
+2014-11-28 23:31:26.928 18717 INFO ceilometer.publisher.messaging [-] Publishing policy set to default
+2014-11-28 23:31:26.936 18717 INFO ceilometer.pipeline [-] Pipeline cpu_sink: Setup transformer instance rate_of_change with parameter {'target': {'scale': '100.0 / (10**9 * (resource_metadata.cpu_number or 1))', 'type': 'gauge', 'name': 'cpu_util', 'unit': '%'}}
+2014-11-28 23:31:26.937 18717 INFO ceilometer.publisher.messaging [-] Publishing policy set to default
+2014-11-28 23:31:26.943 18717 INFO ceilometer.pipeline [-] Pipeline disk_sink: Setup transformer instance rate_of_change with parameter {'source': {'map_from': {'name': 'disk\\.(read|write)\\.(bytes|requests)', 'unit': '(B|request)'}}, 'target': {'type': 'gauge', 'map_to': {'name': 'disk.\\1.\\2.rate', 'unit': '\\1/s'}}}
+2014-11-28 23:31:26.944 18717 INFO ceilometer.publisher.messaging [-] Publishing policy set to default
+2014-11-28 23:31:26.958 18717 INFO ceilometer.pipeline [-] Pipeline network_sink: Setup transformer instance rate_of_change with parameter {'source': {'map_from': {'name': 'network\\.(incoming|outgoing)\\.(bytes|packets)', 'unit': '(B|packet)'}}, 'target': {'type': 'gauge', 'map_to': {'name': 'network.\\1.\\2.rate', 'unit': '\\1/s'}}}
+2014-11-28 23:31:27.137 18717 INFO ceilometer.agent [-] Polling pollster hardware.memory.total in the context of meter_source
+2014-11-28 23:31:29.247 18717 INFO ceilometer.agent [-] Polling pollster hardware.memory.swap.total in the context of meter_source
+2014-11-28 23:31:29.247 18717 INFO ceilometer.agent [-] Polling pollster image.size in the context of meter_source
+2014-11-28 23:31:29.889 18717 INFO ceilometer.agent [-] Polling pollster hardware.network.outgoing.errors in the context of meter_source
+2014-11-28 23:31:29.890 18717 INFO ceilometer.agent [-] Polling pollster switch.flow.bytes in the context of meter_source
+2014-11-28 23:31:29.890 18717 INFO ceilometer.agent [-] Polling pollster hardware.disk.size.used in the context of meter_source
+2014-11-28 23:31:29.891 18717 INFO ceilometer.agent [-] Polling pollster storage.containers.objects in the context of meter_source
+2014-11-28 23:31:30.097 18717 INFO ceilometer.agent [-] Polling pollster hardware.disk.size.total in the context of meter_source
+2014-11-28 23:31:30.098 18717 INFO ceilometer.agent [-] Polling pollster hardware.system_stats.io.incoming.blocks in the context of meter_source
+2014-11-28 23:31:30.098 18717 INFO ceilometer.agent [-] Polling pollster switch.port.transmit.errors in the context of meter_source
+2014-11-28 23:31:30.099 18717 INFO ceilometer.agent [-] Polling pollster network.services.lb.total.connections in the context of meter_source
+2014-11-28 23:31:30.429 18717 WARNING ceilometer.neutron_client [-] 404 Not Found
+
+The resource could not be found.
+
+   
+2014-11-28 23:31:30.430 18717 INFO ceilometer.agent [-] Polling pollster network.services.firewall in the context of meter_source
+2014-11-28 23:31:30.752 18717 WARNING ceilometer.neutron_client [-] 404 Not Found
+
+The resource could not be found.
+
+   
+2014-11-28 23:31:30.753 18717 INFO ceilometer.agent [-] Polling pollster switch in the context of meter_source
+2014-11-28 23:31:30.754 18717 INFO ceilometer.agent [-] Polling pollster switch.table.active.entries in the context of meter_source
+2014-11-28 23:31:30.754 18717 INFO ceilometer.agent [-] Polling pollster energy in the context of meter_source
+2014-11-28 23:31:30.755 18717 WARNING ceilometer.central.discovery [-] No endpoints found for service energy
+2014-11-28 23:31:30.755 18717 INFO ceilometer.agent [-] Polling pollster storage.objects in the context of meter_source
+2014-11-28 23:31:30.785 18717 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:31:30.813 18717 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
+2014-11-28 23:31:30.816 18717 INFO ceilometer.agent [-] Polling pollster network.services.lb.outgoing.bytes in the context of meter_source
+2014-11-28 23:31:30.817 18717 INFO ceilometer.agent [-] Polling pollster storage.objects.containers in the context of meter_source
+2014-11-28 23:31:30.861 18717 INFO ceilometer.agent [-] Polling pollster switch.port.receive.frame_error in the context of meter_source
+2014-11-28 23:31:30.862 18717 INFO ceilometer.agent [-] Polling pollster network.services.lb.member in the context of meter_source
+2014-11-28 23:31:31.063 18717 WARNING ceilometer.neutron_client [-] 404 Not Found
+
+The resource could not be found.
+
+   
+2014-11-28 23:31:31.064 18717 INFO ceilometer.agent [-] Polling pollster network.services.firewall.policy in the context of meter_source
+2014-11-28 23:31:31.186 18717 WARNING ceilometer.neutron_client [-] 404 Not Found
+
+The resource could not be found.
+
+   
+2014-11-28 23:31:31.187 18717 INFO ceilometer.agent [-] Polling pollster ip.floating in the context of meter_source
+2014-11-28 23:31:31.443 18717 INFO ceilometer.agent [-] Polling pollster network.services.lb.vip in the context of meter_source
+2014-11-28 23:31:31.557 18717 WARNING ceilometer.neutron_client [-] 404 Not Found
+
+The resource could not be found.
+
+   
+2014-11-28 23:31:31.558 18717 INFO ceilometer.agent [-] Polling pollster switch.port in the context of meter_source
+2014-11-28 23:31:31.558 18717 INFO ceilometer.agent [-] Polling pollster hardware.network.outgoing.bytes in the context of meter_source
+2014-11-28 23:31:31.559 18717 INFO ceilometer.agent [-] Polling pollster storage.containers.objects.size in the context of meter_source
+2014-11-28 23:31:31.559 18717 INFO ceilometer.agent [-] Polling pollster hardware.network.ip.incoming.datagrams in the context of meter_source
+2014-11-28 23:31:31.559 18717 INFO ceilometer.agent [-] Polling pollster switch.port.receive.crc_error in the context of meter_source
+2014-11-28 23:31:31.559 18717 INFO ceilometer.agent [-] Polling pollster switch.table in the context of meter_source
+2014-11-28 23:31:31.560 18717 INFO ceilometer.agent [-] Polling pollster network.services.lb.health_monitor in the context of meter_source
+2014-11-28 23:31:31.694 18717 WARNING ceilometer.neutron_client [-] 404 Not Found
+
+The resource could not be found.
+
+   
+2014-11-28 23:31:31.695 18717 INFO ceilometer.agent [-] Polling pollster power in the context of meter_source
+2014-11-28 23:31:31.695 18717 INFO ceilometer.agent [-] Polling pollster switch.flow.packets in the context of meter_source
+2014-11-28 23:31:31.696 18717 INFO ceilometer.agent [-] Polling pollster switch.port.receive.errors in the context of meter_source
+2014-11-28 23:31:31.696 18717 INFO ceilometer.agent [-] Polling pollster switch.port.transmit.packets in the context of meter_source
+2014-11-28 23:31:31.696 18717 INFO ceilometer.agent [-] Polling pollster switch.port.receive.drops in the context of meter_source
+2014-11-28 23:31:31.697 18717 INFO ceilometer.agent [-] Polling pollster switch.port.receive.overrun_error in the context of meter_source
+2014-11-28 23:31:31.697 18717 INFO ceilometer.agent [-] Polling pollster hardware.system_stats.io.outgoing.blocks in the context of meter_source
+2014-11-28 23:31:31.697 18717 INFO ceilometer.agent [-] Polling pollster hardware.network.incoming.bytes in the context of meter_source
+2014-11-28 23:31:31.698 18717 INFO ceilometer.agent [-] Polling pollster storage.objects.size in the context of meter_source
+2014-11-28 23:31:31.709 18717 INFO ceilometer.agent [-] Polling pollster switch.flow.duration.nanoseconds in the context of meter_source
+2014-11-28 23:31:31.710 18717 INFO ceilometer.agent [-] Polling pollster switch.table.lookup.packets in the context of meter_source
+2014-11-28 23:31:31.710 18717 INFO ceilometer.agent [-] Polling pollster hardware.memory.used in the context of meter_source
+2014-11-28 23:31:31.711 18717 INFO ceilometer.agent [-] Polling pollster switch.port.collision.count in the context of meter_source
+2014-11-28 23:31:31.712 18717 INFO ceilometer.agent [-] Polling pollster hardware.cpu.load.1min in the context of meter_source
+2014-11-28 23:31:31.712 18717 INFO ceilometer.agent [-] Polling pollster switch.flow in the context of meter_source
+2014-11-28 23:31:31.713 18717 INFO ceilometer.agent [-] Polling pollster network.services.vpn.connections in the context of meter_source
+2014-11-28 23:31:31.835 18717 WARNING ceilometer.neutron_client [-] 404 Not Found
+
+The resource could not be found.
+
+   
+2014-11-28 23:31:31.836 18717 INFO ceilometer.agent [-] Polling pollster network.services.lb.incoming.bytes in the context of meter_source
+2014-11-28 23:31:31.837 18717 INFO ceilometer.agent [-] Polling pollster switch.port.receive.bytes in the context of meter_source
+2014-11-28 23:31:31.837 18717 INFO ceilometer.agent [-] Polling pollster network.services.lb.active.connections in the context of meter_source
+2014-11-28 23:31:31.838 18717 INFO ceilometer.agent [-] Polling pollster hardware.system_stats.cpu.idle in the context of meter_source
+2014-11-28 23:31:31.838 18717 INFO ceilometer.agent [-] Polling pollster image in the context of meter_source
+2014-11-28 23:31:31.839 18717 INFO ceilometer.agent [-] Polling pollster switch.port.transmit.bytes in the context of meter_source
+2014-11-28 23:31:31.839 18717 INFO ceilometer.agent [-] Polling pollster switch.port.transmit.drops in the context of meter_source
+2014-11-28 23:31:31.840 18717 INFO ceilometer.agent [-] Polling pollster hardware.memory.swap.avail in the context of meter_source
+2014-11-28 23:31:31.840 18717 INFO ceilometer.agent [-] Polling pollster switch.port.receive.packets in the context of meter_source
+2014-11-28 23:31:31.841 18717 INFO ceilometer.agent [-] Polling pollster switch.flow.duration.seconds in the context of meter_source
+2014-11-28 23:31:31.841 18717 INFO ceilometer.agent [-] Polling pollster hardware.cpu.load.15min in the context of meter_source
+2014-11-28 23:31:31.842 18717 INFO ceilometer.agent [-] Polling pollster hardware.network.ip.outgoing.datagrams in the context of meter_source
+2014-11-28 23:31:31.842 18717 INFO ceilometer.agent [-] Polling pollster switch.table.matched.packets in the context of meter_source
+2014-11-28 23:31:31.843 18717 INFO ceilometer.agent [-] Polling pollster network.services.vpn in the context of meter_source
+2014-11-28 23:31:31.964 18717 WARNING ceilometer.neutron_client [-] 404 Not Found
+
+The resource could not be found.
+
+   
+2014-11-28 23:31:31.965 18717 INFO ceilometer.agent [-] Polling pollster network.services.lb.pool in the context of meter_source
+2014-11-28 23:31:31.965 18717 INFO ceilometer.agent [-] Polling pollster hardware.cpu.load.5min in the context of meter_source
+2014-11-28 23:33:49.944 18717 INFO ceilometer.openstack.common.service [-] Caught SIGTERM, exiting
+2014-11-28 23:38:10.621 1066 INFO ceilometer.pipeline [-] Pipeline config: {'sources': [{'interval': 600, 'meters': ['*'], 'name': 'meter_source', 'sinks': ['meter_sink']}, {'interval': 600, 'meters': ['cpu'], 'name': 'cpu_source', 'sinks': ['cpu_sink']}, {'interval': 600, 'meters': ['disk.read.bytes', 'disk.read.requests', 'disk.write.bytes', 'disk.write.requests'], 'name': 'disk_source', 'sinks': ['disk_sink']}, {'interval': 600, 'meters': ['network.incoming.bytes', 'network.incoming.packets', 'network.outgoing.bytes', 'network.outgoing.packets'], 'name': 'network_source', 'sinks': ['network_sink']}], 'sinks': [{'publishers': ['notifier://'], 'transformers': None, 'name': 'meter_sink'}, {'publishers': ['notifier://'], 'transformers': [{'name': 'rate_of_change', 'parameters': {'target': {'scale': '100.0 / (10**9 * (resource_metadata.cpu_number or 1))', 'type': 'gauge', 'name': 'cpu_util', 'unit': '%'}}}], 'name': 'cpu_sink'}, {'publishers': ['notifier://'], 'transformers': [{'name': 'rate_of_change', 'parameters': {'source': {'map_from': {'name': 'disk\\.(read|write)\\.(bytes|requests)', 'unit': '(B|request)'}}, 'target': {'type': 'gauge', 'map_to': {'name': 'disk.\\1.\\2.rate', 'unit': '\\1/s'}}}}], 'name': 'disk_sink'}, {'publishers': ['notifier://'], 'transformers': [{'name': 'rate_of_change', 'parameters': {'source': {'map_from': {'name': 'network\\.(incoming|outgoing)\\.(bytes|packets)', 'unit': '(B|packet)'}}, 'target': {'type': 'gauge', 'map_to': {'name': 'network.\\1.\\2.rate', 'unit': '\\1/s'}}}}], 'name': 'network_sink'}]}
+2014-11-28 23:38:10.687 1066 INFO ceilometer.pipeline [-] detected decoupled pipeline config format
+2014-11-28 23:38:10.690 1066 INFO ceilometer.publisher.messaging [-] Publishing policy set to default
+2014-11-28 23:38:10.757 1066 INFO ceilometer.publisher.messaging [-] Publishing policy set to default
+2014-11-28 23:38:10.760 1066 INFO ceilometer.pipeline [-] Pipeline cpu_sink: Setup transformer instance rate_of_change with parameter {'target': {'scale': '100.0 / (10**9 * (resource_metadata.cpu_number or 1))', 'type': 'gauge', 'name': 'cpu_util', 'unit': '%'}}
+2014-11-28 23:38:10.761 1066 INFO ceilometer.publisher.messaging [-] Publishing policy set to default
+2014-11-28 23:38:10.822 1066 INFO ceilometer.pipeline [-] Pipeline disk_sink: Setup transformer instance rate_of_change with parameter {'source': {'map_from': {'name': 'disk\\.(read|write)\\.(bytes|requests)', 'unit': '(B|request)'}}, 'target': {'type': 'gauge', 'map_to': {'name': 'disk.\\1.\\2.rate', 'unit': '\\1/s'}}}
+2014-11-28 23:38:10.823 1066 INFO ceilometer.publisher.messaging [-] Publishing policy set to default
+2014-11-28 23:38:10.827 1066 INFO ceilometer.pipeline [-] Pipeline network_sink: Setup transformer instance rate_of_change with parameter {'source': {'map_from': {'name': 'network\\.(incoming|outgoing)\\.(bytes|packets)', 'unit': '(B|packet)'}}, 'target': {'type': 'gauge', 'map_to': {'name': 'network.\\1.\\2.rate', 'unit': '\\1/s'}}}
+2014-11-28 23:38:10.896 1066 INFO ceilometer.agent [-] Polling pollster hardware.memory.total in the context of meter_source
+2014-11-28 23:38:10.898 1066 ERROR ceilometer.nova_client [-] HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client Traceback (most recent call last):
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client     return func(*args, **kwargs)
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client     search_opts=search_opts)
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client     self.authenticate()
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client     return self._authenticate(url, body)
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client     raise ConnectionError(e, request=request)
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:10.898 1066 TRACE ceilometer.nova_client 
+2014-11-28 23:38:11.051 1066 ERROR ceilometer.agent [-] Unable to discover resources: None: Max retries exceeded with url: /v2.0/tokens (Caused by redirect)
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 233, in discover
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent     discovered = discoverer.discover(self, param)
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/hardware/discovery.py", line 51, in discover
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent     instances = self.nova_cli.instance_get_all()
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent     return func(*args, **kwargs)
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent     search_opts=search_opts)
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent     self.authenticate()
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent     return self._authenticate(url, body)
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.051 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.064 1066 INFO ceilometer.agent [-] Polling pollster network.services.lb.vip in the context of meter_source
+2014-11-28 23:38:11.065 1066 ERROR ceilometer.central.plugin [-] Skip due to keystone error Authorization Failed: Unable to establish connection to http://10.0.1.111:35357/v2.0/tokens
+2014-11-28 23:38:11.066 1066 INFO ceilometer.agent [-] Polling pollster image.size in the context of meter_source
+2014-11-28 23:38:11.066 1066 ERROR ceilometer.agent [-] Unable to discover resources: 'AuthorizationFailure' object has no attribute 'service_catalog'
+2014-11-28 23:38:11.066 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.066 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 233, in discover
+2014-11-28 23:38:11.066 1066 TRACE ceilometer.agent     discovered = discoverer.discover(self, param)
+2014-11-28 23:38:11.066 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/central/discovery.py", line 41, in discover
+2014-11-28 23:38:11.066 1066 TRACE ceilometer.agent     endpoints = manager.keystone.service_catalog.get_urls(
+2014-11-28 23:38:11.066 1066 TRACE ceilometer.agent AttributeError: 'AuthorizationFailure' object has no attribute 'service_catalog'
+2014-11-28 23:38:11.066 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.069 1066 INFO ceilometer.agent [-] Polling pollster hardware.network.outgoing.errors in the context of meter_source
+2014-11-28 23:38:11.071 1066 ERROR ceilometer.nova_client [-] HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client Traceback (most recent call last):
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client     return func(*args, **kwargs)
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client     search_opts=search_opts)
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client     self.authenticate()
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client     return self._authenticate(url, body)
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.071 1066 TRACE ceilometer.nova_client 
+2014-11-28 23:38:11.072 1066 ERROR ceilometer.agent [-] Unable to discover resources: None: Max retries exceeded with url: /v2.0/tokens (Caused by redirect)
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 233, in discover
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent     discovered = discoverer.discover(self, param)
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/hardware/discovery.py", line 51, in discover
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent     instances = self.nova_cli.instance_get_all()
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent     return func(*args, **kwargs)
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent     search_opts=search_opts)
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent     self.authenticate()
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent     return self._authenticate(url, body)
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.072 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.072 1066 INFO ceilometer.agent [-] Polling pollster switch.flow.bytes in the context of meter_source
+2014-11-28 23:38:11.073 1066 INFO ceilometer.agent [-] Polling pollster hardware.disk.size.used in the context of meter_source
+2014-11-28 23:38:11.074 1066 ERROR ceilometer.nova_client [-] HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client Traceback (most recent call last):
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client     return func(*args, **kwargs)
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client     search_opts=search_opts)
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client     self.authenticate()
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client     return self._authenticate(url, body)
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.074 1066 TRACE ceilometer.nova_client 
+2014-11-28 23:38:11.075 1066 ERROR ceilometer.agent [-] Unable to discover resources: None: Max retries exceeded with url: /v2.0/tokens (Caused by redirect)
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 233, in discover
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent     discovered = discoverer.discover(self, param)
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/hardware/discovery.py", line 51, in discover
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent     instances = self.nova_cli.instance_get_all()
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent     return func(*args, **kwargs)
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent     search_opts=search_opts)
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent     self.authenticate()
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent     return self._authenticate(url, body)
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.075 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.076 1066 INFO ceilometer.agent [-] Polling pollster storage.containers.objects in the context of meter_source
+2014-11-28 23:38:11.077 1066 ERROR ceilometer.agent [-] Unable to discover resources: 'AuthorizationFailure' object has no attribute 'tenants'
+2014-11-28 23:38:11.077 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.077 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 233, in discover
+2014-11-28 23:38:11.077 1066 TRACE ceilometer.agent     discovered = discoverer.discover(self, param)
+2014-11-28 23:38:11.077 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/central/discovery.py", line 61, in discover
+2014-11-28 23:38:11.077 1066 TRACE ceilometer.agent     tenants = manager.keystone.tenants.list()
+2014-11-28 23:38:11.077 1066 TRACE ceilometer.agent AttributeError: 'AuthorizationFailure' object has no attribute 'tenants'
+2014-11-28 23:38:11.077 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.077 1066 WARNING ceilometer.agent [-] Continue after error from storage.containers.objects: 'AuthorizationFailure' object has no attribute 'service_catalog'
+2014-11-28 23:38:11.077 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.077 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 123, in poll_and_publish
+2014-11-28 23:38:11.077 1066 TRACE ceilometer.agent     agent_resources)
+2014-11-28 23:38:11.077 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/objectstore/swift.py", line 169, in get_samples
+2014-11-28 23:38:11.077 1066 TRACE ceilometer.agent     cache, tenants):
+2014-11-28 23:38:11.077 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/objectstore/swift.py", line 83, in _iter_accounts
+2014-11-28 23:38:11.077 1066 TRACE ceilometer.agent     ksclient, tenants))
+2014-11-28 23:38:11.077 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/objectstore/swift.py", line 87, in _get_account_info
+2014-11-28 23:38:11.077 1066 TRACE ceilometer.agent     endpoint = self._get_endpoint(ksclient)
+2014-11-28 23:38:11.077 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/objectstore/swift.py", line 73, in _get_endpoint
+2014-11-28 23:38:11.077 1066 TRACE ceilometer.agent     _Base._ENDPOINT = ksclient.service_catalog.url_for(
+2014-11-28 23:38:11.077 1066 TRACE ceilometer.agent AttributeError: 'AuthorizationFailure' object has no attribute 'service_catalog'
+2014-11-28 23:38:11.077 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.125 1066 INFO ceilometer.agent [-] Polling pollster hardware.disk.size.total in the context of meter_source
+2014-11-28 23:38:11.127 1066 ERROR ceilometer.nova_client [-] HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client Traceback (most recent call last):
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client     return func(*args, **kwargs)
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client     search_opts=search_opts)
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client     self.authenticate()
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client     return self._authenticate(url, body)
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.127 1066 TRACE ceilometer.nova_client 
+2014-11-28 23:38:11.128 1066 ERROR ceilometer.agent [-] Unable to discover resources: None: Max retries exceeded with url: /v2.0/tokens (Caused by redirect)
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 233, in discover
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent     discovered = discoverer.discover(self, param)
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/hardware/discovery.py", line 51, in discover
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent     instances = self.nova_cli.instance_get_all()
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent     return func(*args, **kwargs)
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent     search_opts=search_opts)
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent     self.authenticate()
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent     return self._authenticate(url, body)
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.128 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.128 1066 INFO ceilometer.agent [-] Polling pollster switch.port.transmit.errors in the context of meter_source
+2014-11-28 23:38:11.129 1066 INFO ceilometer.agent [-] Polling pollster network.services.lb.total.connections in the context of meter_source
+2014-11-28 23:38:11.129 1066 ERROR ceilometer.central.plugin [-] Skip due to keystone error Authorization Failed: Unable to establish connection to http://10.0.1.111:35357/v2.0/tokens
+2014-11-28 23:38:11.130 1066 INFO ceilometer.agent [-] Polling pollster network.services.firewall in the context of meter_source
+2014-11-28 23:38:11.130 1066 ERROR ceilometer.central.plugin [-] Skip due to keystone error Authorization Failed: Unable to establish connection to http://10.0.1.111:35357/v2.0/tokens
+2014-11-28 23:38:11.131 1066 INFO ceilometer.agent [-] Polling pollster switch in the context of meter_source
+2014-11-28 23:38:11.131 1066 INFO ceilometer.agent [-] Polling pollster switch.table.active.entries in the context of meter_source
+2014-11-28 23:38:11.132 1066 INFO ceilometer.agent [-] Polling pollster energy in the context of meter_source
+2014-11-28 23:38:11.132 1066 ERROR ceilometer.agent [-] Unable to discover resources: 'AuthorizationFailure' object has no attribute 'service_catalog'
+2014-11-28 23:38:11.132 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.132 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 233, in discover
+2014-11-28 23:38:11.132 1066 TRACE ceilometer.agent     discovered = discoverer.discover(self, param)
+2014-11-28 23:38:11.132 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/central/discovery.py", line 41, in discover
+2014-11-28 23:38:11.132 1066 TRACE ceilometer.agent     endpoints = manager.keystone.service_catalog.get_urls(
+2014-11-28 23:38:11.132 1066 TRACE ceilometer.agent AttributeError: 'AuthorizationFailure' object has no attribute 'service_catalog'
+2014-11-28 23:38:11.132 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.133 1066 INFO ceilometer.agent [-] Polling pollster hardware.system_stats.io.incoming.blocks in the context of meter_source
+2014-11-28 23:38:11.134 1066 ERROR ceilometer.nova_client [-] HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client Traceback (most recent call last):
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client     return func(*args, **kwargs)
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client     search_opts=search_opts)
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client     self.authenticate()
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client     return self._authenticate(url, body)
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.134 1066 TRACE ceilometer.nova_client 
+2014-11-28 23:38:11.304 1066 ERROR ceilometer.agent [-] Unable to discover resources: None: Max retries exceeded with url: /v2.0/tokens (Caused by redirect)
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 233, in discover
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent     discovered = discoverer.discover(self, param)
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/hardware/discovery.py", line 51, in discover
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent     instances = self.nova_cli.instance_get_all()
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent     return func(*args, **kwargs)
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent     search_opts=search_opts)
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent     self.authenticate()
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent     return self._authenticate(url, body)
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.304 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.305 1066 INFO ceilometer.agent [-] Polling pollster storage.objects in the context of meter_source
+2014-11-28 23:38:11.305 1066 ERROR ceilometer.agent [-] Unable to discover resources: 'AuthorizationFailure' object has no attribute 'tenants'
+2014-11-28 23:38:11.305 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.305 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 233, in discover
+2014-11-28 23:38:11.305 1066 TRACE ceilometer.agent     discovered = discoverer.discover(self, param)
+2014-11-28 23:38:11.305 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/central/discovery.py", line 61, in discover
+2014-11-28 23:38:11.305 1066 TRACE ceilometer.agent     tenants = manager.keystone.tenants.list()
+2014-11-28 23:38:11.305 1066 TRACE ceilometer.agent AttributeError: 'AuthorizationFailure' object has no attribute 'tenants'
+2014-11-28 23:38:11.305 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.306 1066 WARNING ceilometer.agent [-] Continue after error from storage.objects: 'AuthorizationFailure' object has no attribute 'service_catalog'
+2014-11-28 23:38:11.306 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.306 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 123, in poll_and_publish
+2014-11-28 23:38:11.306 1066 TRACE ceilometer.agent     agent_resources)
+2014-11-28 23:38:11.306 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/objectstore/swift.py", line 109, in get_samples
+2014-11-28 23:38:11.306 1066 TRACE ceilometer.agent     cache, tenants):
+2014-11-28 23:38:11.306 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/objectstore/swift.py", line 83, in _iter_accounts
+2014-11-28 23:38:11.306 1066 TRACE ceilometer.agent     ksclient, tenants))
+2014-11-28 23:38:11.306 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/objectstore/swift.py", line 87, in _get_account_info
+2014-11-28 23:38:11.306 1066 TRACE ceilometer.agent     endpoint = self._get_endpoint(ksclient)
+2014-11-28 23:38:11.306 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/objectstore/swift.py", line 73, in _get_endpoint
+2014-11-28 23:38:11.306 1066 TRACE ceilometer.agent     _Base._ENDPOINT = ksclient.service_catalog.url_for(
+2014-11-28 23:38:11.306 1066 TRACE ceilometer.agent AttributeError: 'AuthorizationFailure' object has no attribute 'service_catalog'
+2014-11-28 23:38:11.306 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.306 1066 INFO ceilometer.agent [-] Polling pollster network.services.lb.outgoing.bytes in the context of meter_source
+2014-11-28 23:38:11.307 1066 INFO ceilometer.agent [-] Polling pollster storage.objects.containers in the context of meter_source
+2014-11-28 23:38:11.307 1066 ERROR ceilometer.agent [-] Unable to discover resources: 'AuthorizationFailure' object has no attribute 'tenants'
+2014-11-28 23:38:11.307 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.307 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 233, in discover
+2014-11-28 23:38:11.307 1066 TRACE ceilometer.agent     discovered = discoverer.discover(self, param)
+2014-11-28 23:38:11.307 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/central/discovery.py", line 61, in discover
+2014-11-28 23:38:11.307 1066 TRACE ceilometer.agent     tenants = manager.keystone.tenants.list()
+2014-11-28 23:38:11.307 1066 TRACE ceilometer.agent AttributeError: 'AuthorizationFailure' object has no attribute 'tenants'
+2014-11-28 23:38:11.307 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.308 1066 WARNING ceilometer.agent [-] Continue after error from storage.objects.containers: 'AuthorizationFailure' object has no attribute 'service_catalog'
+2014-11-28 23:38:11.308 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.308 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 123, in poll_and_publish
+2014-11-28 23:38:11.308 1066 TRACE ceilometer.agent     agent_resources)
+2014-11-28 23:38:11.308 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/objectstore/swift.py", line 147, in get_samples
+2014-11-28 23:38:11.308 1066 TRACE ceilometer.agent     cache, tenants):
+2014-11-28 23:38:11.308 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/objectstore/swift.py", line 83, in _iter_accounts
+2014-11-28 23:38:11.308 1066 TRACE ceilometer.agent     ksclient, tenants))
+2014-11-28 23:38:11.308 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/objectstore/swift.py", line 87, in _get_account_info
+2014-11-28 23:38:11.308 1066 TRACE ceilometer.agent     endpoint = self._get_endpoint(ksclient)
+2014-11-28 23:38:11.308 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/objectstore/swift.py", line 73, in _get_endpoint
+2014-11-28 23:38:11.308 1066 TRACE ceilometer.agent     _Base._ENDPOINT = ksclient.service_catalog.url_for(
+2014-11-28 23:38:11.308 1066 TRACE ceilometer.agent AttributeError: 'AuthorizationFailure' object has no attribute 'service_catalog'
+2014-11-28 23:38:11.308 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.308 1066 INFO ceilometer.agent [-] Polling pollster hardware.network.outgoing.bytes in the context of meter_source
+2014-11-28 23:38:11.310 1066 ERROR ceilometer.nova_client [-] HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client Traceback (most recent call last):
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client     return func(*args, **kwargs)
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client     search_opts=search_opts)
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client     self.authenticate()
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client     return self._authenticate(url, body)
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.310 1066 TRACE ceilometer.nova_client 
+2014-11-28 23:38:11.311 1066 ERROR ceilometer.agent [-] Unable to discover resources: None: Max retries exceeded with url: /v2.0/tokens (Caused by redirect)
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 233, in discover
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent     discovered = discoverer.discover(self, param)
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/hardware/discovery.py", line 51, in discover
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent     instances = self.nova_cli.instance_get_all()
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent     return func(*args, **kwargs)
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent     search_opts=search_opts)
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent     self.authenticate()
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent     return self._authenticate(url, body)
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.311 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.312 1066 INFO ceilometer.agent [-] Polling pollster switch.port.collision.count in the context of meter_source
+2014-11-28 23:38:11.412 1066 INFO ceilometer.agent [-] Polling pollster switch.port.receive.frame_error in the context of meter_source
+2014-11-28 23:38:11.413 1066 INFO ceilometer.agent [-] Polling pollster network.services.lb.member in the context of meter_source
+2014-11-28 23:38:11.413 1066 ERROR ceilometer.central.plugin [-] Skip due to keystone error Authorization Failed: Unable to establish connection to http://10.0.1.111:35357/v2.0/tokens
+2014-11-28 23:38:11.414 1066 INFO ceilometer.agent [-] Polling pollster network.services.firewall.policy in the context of meter_source
+2014-11-28 23:38:11.414 1066 ERROR ceilometer.central.plugin [-] Skip due to keystone error Authorization Failed: Unable to establish connection to http://10.0.1.111:35357/v2.0/tokens
+2014-11-28 23:38:11.415 1066 INFO ceilometer.agent [-] Polling pollster ip.floating in the context of meter_source
+2014-11-28 23:38:11.416 1066 ERROR ceilometer.agent [-] Unable to discover resources: 'AuthorizationFailure' object has no attribute 'service_catalog'
+2014-11-28 23:38:11.416 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.416 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 233, in discover
+2014-11-28 23:38:11.416 1066 TRACE ceilometer.agent     discovered = discoverer.discover(self, param)
+2014-11-28 23:38:11.416 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/central/discovery.py", line 41, in discover
+2014-11-28 23:38:11.416 1066 TRACE ceilometer.agent     endpoints = manager.keystone.service_catalog.get_urls(
+2014-11-28 23:38:11.416 1066 TRACE ceilometer.agent AttributeError: 'AuthorizationFailure' object has no attribute 'service_catalog'
+2014-11-28 23:38:11.416 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.416 1066 INFO ceilometer.agent [-] Polling pollster switch.port in the context of meter_source
+2014-11-28 23:38:11.416 1066 INFO ceilometer.agent [-] Polling pollster image in the context of meter_source
+2014-11-28 23:38:11.417 1066 ERROR ceilometer.agent [-] Unable to discover resources: 'AuthorizationFailure' object has no attribute 'service_catalog'
+2014-11-28 23:38:11.417 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.417 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 233, in discover
+2014-11-28 23:38:11.417 1066 TRACE ceilometer.agent     discovered = discoverer.discover(self, param)
+2014-11-28 23:38:11.417 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/central/discovery.py", line 41, in discover
+2014-11-28 23:38:11.417 1066 TRACE ceilometer.agent     endpoints = manager.keystone.service_catalog.get_urls(
+2014-11-28 23:38:11.417 1066 TRACE ceilometer.agent AttributeError: 'AuthorizationFailure' object has no attribute 'service_catalog'
+2014-11-28 23:38:11.417 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.417 1066 INFO ceilometer.agent [-] Polling pollster storage.containers.objects.size in the context of meter_source
+2014-11-28 23:38:11.418 1066 ERROR ceilometer.agent [-] Unable to discover resources: 'AuthorizationFailure' object has no attribute 'tenants'
+2014-11-28 23:38:11.418 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.418 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 233, in discover
+2014-11-28 23:38:11.418 1066 TRACE ceilometer.agent     discovered = discoverer.discover(self, param)
+2014-11-28 23:38:11.418 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/central/discovery.py", line 61, in discover
+2014-11-28 23:38:11.418 1066 TRACE ceilometer.agent     tenants = manager.keystone.tenants.list()
+2014-11-28 23:38:11.418 1066 TRACE ceilometer.agent AttributeError: 'AuthorizationFailure' object has no attribute 'tenants'
+2014-11-28 23:38:11.418 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.418 1066 WARNING ceilometer.agent [-] Continue after error from storage.containers.objects.size: 'AuthorizationFailure' object has no attribute 'service_catalog'
+2014-11-28 23:38:11.418 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.418 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 123, in poll_and_publish
+2014-11-28 23:38:11.418 1066 TRACE ceilometer.agent     agent_resources)
+2014-11-28 23:38:11.418 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/objectstore/swift.py", line 193, in get_samples
+2014-11-28 23:38:11.418 1066 TRACE ceilometer.agent     cache, tenants):
+2014-11-28 23:38:11.418 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/objectstore/swift.py", line 83, in _iter_accounts
+2014-11-28 23:38:11.418 1066 TRACE ceilometer.agent     ksclient, tenants))
+2014-11-28 23:38:11.418 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/objectstore/swift.py", line 87, in _get_account_info
+2014-11-28 23:38:11.418 1066 TRACE ceilometer.agent     endpoint = self._get_endpoint(ksclient)
+2014-11-28 23:38:11.418 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/objectstore/swift.py", line 73, in _get_endpoint
+2014-11-28 23:38:11.418 1066 TRACE ceilometer.agent     _Base._ENDPOINT = ksclient.service_catalog.url_for(
+2014-11-28 23:38:11.418 1066 TRACE ceilometer.agent AttributeError: 'AuthorizationFailure' object has no attribute 'service_catalog'
+2014-11-28 23:38:11.418 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.418 1066 INFO ceilometer.agent [-] Polling pollster hardware.network.ip.incoming.datagrams in the context of meter_source
+2014-11-28 23:38:11.420 1066 ERROR ceilometer.nova_client [-] HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client Traceback (most recent call last):
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client     return func(*args, **kwargs)
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client     search_opts=search_opts)
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client     self.authenticate()
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client     return self._authenticate(url, body)
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.420 1066 TRACE ceilometer.nova_client 
+2014-11-28 23:38:11.421 1066 ERROR ceilometer.agent [-] Unable to discover resources: None: Max retries exceeded with url: /v2.0/tokens (Caused by redirect)
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 233, in discover
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent     discovered = discoverer.discover(self, param)
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/hardware/discovery.py", line 51, in discover
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent     instances = self.nova_cli.instance_get_all()
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent     return func(*args, **kwargs)
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent     search_opts=search_opts)
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent     self.authenticate()
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent     return self._authenticate(url, body)
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.421 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.422 1066 INFO ceilometer.agent [-] Polling pollster switch.port.receive.crc_error in the context of meter_source
+2014-11-28 23:38:11.422 1066 INFO ceilometer.agent [-] Polling pollster switch.table in the context of meter_source
+2014-11-28 23:38:11.539 1066 INFO ceilometer.agent [-] Polling pollster network.services.lb.health_monitor in the context of meter_source
+2014-11-28 23:38:11.540 1066 ERROR ceilometer.central.plugin [-] Skip due to keystone error Authorization Failed: Unable to establish connection to http://10.0.1.111:35357/v2.0/tokens
+2014-11-28 23:38:11.541 1066 INFO ceilometer.agent [-] Polling pollster power in the context of meter_source
+2014-11-28 23:38:11.541 1066 ERROR ceilometer.agent [-] Unable to discover resources: 'AuthorizationFailure' object has no attribute 'service_catalog'
+2014-11-28 23:38:11.541 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.541 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 233, in discover
+2014-11-28 23:38:11.541 1066 TRACE ceilometer.agent     discovered = discoverer.discover(self, param)
+2014-11-28 23:38:11.541 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/central/discovery.py", line 41, in discover
+2014-11-28 23:38:11.541 1066 TRACE ceilometer.agent     endpoints = manager.keystone.service_catalog.get_urls(
+2014-11-28 23:38:11.541 1066 TRACE ceilometer.agent AttributeError: 'AuthorizationFailure' object has no attribute 'service_catalog'
+2014-11-28 23:38:11.541 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.542 1066 INFO ceilometer.agent [-] Polling pollster switch.flow.packets in the context of meter_source
+2014-11-28 23:38:11.542 1066 INFO ceilometer.agent [-] Polling pollster switch.port.transmit.packets in the context of meter_source
+2014-11-28 23:38:11.542 1066 INFO ceilometer.agent [-] Polling pollster switch.port.receive.drops in the context of meter_source
+2014-11-28 23:38:11.543 1066 INFO ceilometer.agent [-] Polling pollster switch.port.receive.overrun_error in the context of meter_source
+2014-11-28 23:38:11.543 1066 INFO ceilometer.agent [-] Polling pollster switch.port.receive.errors in the context of meter_source
+2014-11-28 23:38:11.543 1066 INFO ceilometer.agent [-] Polling pollster hardware.system_stats.io.outgoing.blocks in the context of meter_source
+2014-11-28 23:38:11.545 1066 ERROR ceilometer.nova_client [-] HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client Traceback (most recent call last):
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client     return func(*args, **kwargs)
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client     search_opts=search_opts)
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client     self.authenticate()
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client     return self._authenticate(url, body)
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.545 1066 TRACE ceilometer.nova_client 
+2014-11-28 23:38:11.546 1066 ERROR ceilometer.agent [-] Unable to discover resources: None: Max retries exceeded with url: /v2.0/tokens (Caused by redirect)
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 233, in discover
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent     discovered = discoverer.discover(self, param)
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/hardware/discovery.py", line 51, in discover
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent     instances = self.nova_cli.instance_get_all()
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent     return func(*args, **kwargs)
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent     search_opts=search_opts)
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent     self.authenticate()
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent     return self._authenticate(url, body)
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.546 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.547 1066 INFO ceilometer.agent [-] Polling pollster hardware.network.incoming.bytes in the context of meter_source
+2014-11-28 23:38:11.548 1066 ERROR ceilometer.nova_client [-] HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client Traceback (most recent call last):
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client     return func(*args, **kwargs)
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client     search_opts=search_opts)
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client     self.authenticate()
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client     return self._authenticate(url, body)
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.548 1066 TRACE ceilometer.nova_client 
+2014-11-28 23:38:11.662 1066 ERROR ceilometer.agent [-] Unable to discover resources: None: Max retries exceeded with url: /v2.0/tokens (Caused by redirect)
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 233, in discover
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent     discovered = discoverer.discover(self, param)
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/hardware/discovery.py", line 51, in discover
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent     instances = self.nova_cli.instance_get_all()
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent     return func(*args, **kwargs)
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent     search_opts=search_opts)
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent     self.authenticate()
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent     return self._authenticate(url, body)
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.662 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.663 1066 INFO ceilometer.agent [-] Polling pollster storage.objects.size in the context of meter_source
+2014-11-28 23:38:11.664 1066 ERROR ceilometer.agent [-] Unable to discover resources: 'AuthorizationFailure' object has no attribute 'tenants'
+2014-11-28 23:38:11.664 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.664 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 233, in discover
+2014-11-28 23:38:11.664 1066 TRACE ceilometer.agent     discovered = discoverer.discover(self, param)
+2014-11-28 23:38:11.664 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/central/discovery.py", line 61, in discover
+2014-11-28 23:38:11.664 1066 TRACE ceilometer.agent     tenants = manager.keystone.tenants.list()
+2014-11-28 23:38:11.664 1066 TRACE ceilometer.agent AttributeError: 'AuthorizationFailure' object has no attribute 'tenants'
+2014-11-28 23:38:11.664 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.664 1066 WARNING ceilometer.agent [-] Continue after error from storage.objects.size: 'AuthorizationFailure' object has no attribute 'service_catalog'
+2014-11-28 23:38:11.664 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.664 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 123, in poll_and_publish
+2014-11-28 23:38:11.664 1066 TRACE ceilometer.agent     agent_resources)
+2014-11-28 23:38:11.664 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/objectstore/swift.py", line 128, in get_samples
+2014-11-28 23:38:11.664 1066 TRACE ceilometer.agent     cache, tenants):
+2014-11-28 23:38:11.664 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/objectstore/swift.py", line 83, in _iter_accounts
+2014-11-28 23:38:11.664 1066 TRACE ceilometer.agent     ksclient, tenants))
+2014-11-28 23:38:11.664 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/objectstore/swift.py", line 87, in _get_account_info
+2014-11-28 23:38:11.664 1066 TRACE ceilometer.agent     endpoint = self._get_endpoint(ksclient)
+2014-11-28 23:38:11.664 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/objectstore/swift.py", line 73, in _get_endpoint
+2014-11-28 23:38:11.664 1066 TRACE ceilometer.agent     _Base._ENDPOINT = ksclient.service_catalog.url_for(
+2014-11-28 23:38:11.664 1066 TRACE ceilometer.agent AttributeError: 'AuthorizationFailure' object has no attribute 'service_catalog'
+2014-11-28 23:38:11.664 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.665 1066 INFO ceilometer.agent [-] Polling pollster switch.flow.duration.nanoseconds in the context of meter_source
+2014-11-28 23:38:11.665 1066 INFO ceilometer.agent [-] Polling pollster switch.table.lookup.packets in the context of meter_source
+2014-11-28 23:38:11.665 1066 INFO ceilometer.agent [-] Polling pollster hardware.memory.used in the context of meter_source
+2014-11-28 23:38:11.667 1066 ERROR ceilometer.nova_client [-] HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client Traceback (most recent call last):
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client     return func(*args, **kwargs)
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client     search_opts=search_opts)
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client     self.authenticate()
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client     return self._authenticate(url, body)
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.667 1066 TRACE ceilometer.nova_client 
+2014-11-28 23:38:11.668 1066 ERROR ceilometer.agent [-] Unable to discover resources: None: Max retries exceeded with url: /v2.0/tokens (Caused by redirect)
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 233, in discover
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent     discovered = discoverer.discover(self, param)
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/hardware/discovery.py", line 51, in discover
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent     instances = self.nova_cli.instance_get_all()
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent     return func(*args, **kwargs)
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent     search_opts=search_opts)
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent     self.authenticate()
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent     return self._authenticate(url, body)
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.668 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.669 1066 INFO ceilometer.agent [-] Polling pollster hardware.memory.swap.total in the context of meter_source
+2014-11-28 23:38:11.671 1066 ERROR ceilometer.nova_client [-] HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client Traceback (most recent call last):
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client     return func(*args, **kwargs)
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client     search_opts=search_opts)
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client     self.authenticate()
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client     return self._authenticate(url, body)
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.671 1066 TRACE ceilometer.nova_client 
+2014-11-28 23:38:11.672 1066 ERROR ceilometer.agent [-] Unable to discover resources: None: Max retries exceeded with url: /v2.0/tokens (Caused by redirect)
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 233, in discover
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent     discovered = discoverer.discover(self, param)
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/hardware/discovery.py", line 51, in discover
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent     instances = self.nova_cli.instance_get_all()
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent     return func(*args, **kwargs)
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent     search_opts=search_opts)
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent     self.authenticate()
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent     return self._authenticate(url, body)
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.672 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.792 1066 INFO ceilometer.agent [-] Polling pollster hardware.cpu.load.1min in the context of meter_source
+2014-11-28 23:38:11.793 1066 ERROR ceilometer.nova_client [-] HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client Traceback (most recent call last):
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client     return func(*args, **kwargs)
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client     search_opts=search_opts)
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client     self.authenticate()
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client     return self._authenticate(url, body)
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.793 1066 TRACE ceilometer.nova_client 
+2014-11-28 23:38:11.794 1066 ERROR ceilometer.agent [-] Unable to discover resources: None: Max retries exceeded with url: /v2.0/tokens (Caused by redirect)
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 233, in discover
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent     discovered = discoverer.discover(self, param)
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/hardware/discovery.py", line 51, in discover
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent     instances = self.nova_cli.instance_get_all()
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent     return func(*args, **kwargs)
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent     search_opts=search_opts)
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent     self.authenticate()
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent     return self._authenticate(url, body)
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.794 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.795 1066 INFO ceilometer.agent [-] Polling pollster switch.flow in the context of meter_source
+2014-11-28 23:38:11.796 1066 INFO ceilometer.agent [-] Polling pollster network.services.vpn.connections in the context of meter_source
+2014-11-28 23:38:11.796 1066 ERROR ceilometer.central.plugin [-] Skip due to keystone error Authorization Failed: Unable to establish connection to http://10.0.1.111:35357/v2.0/tokens
+2014-11-28 23:38:11.797 1066 INFO ceilometer.agent [-] Polling pollster network.services.lb.incoming.bytes in the context of meter_source
+2014-11-28 23:38:11.797 1066 INFO ceilometer.agent [-] Polling pollster switch.port.receive.bytes in the context of meter_source
+2014-11-28 23:38:11.797 1066 INFO ceilometer.agent [-] Polling pollster network.services.lb.active.connections in the context of meter_source
+2014-11-28 23:38:11.798 1066 INFO ceilometer.agent [-] Polling pollster hardware.system_stats.cpu.idle in the context of meter_source
+2014-11-28 23:38:11.799 1066 ERROR ceilometer.nova_client [-] HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client Traceback (most recent call last):
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client     return func(*args, **kwargs)
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client     search_opts=search_opts)
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client     self.authenticate()
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client     return self._authenticate(url, body)
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.799 1066 TRACE ceilometer.nova_client 
+2014-11-28 23:38:11.800 1066 ERROR ceilometer.agent [-] Unable to discover resources: None: Max retries exceeded with url: /v2.0/tokens (Caused by redirect)
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 233, in discover
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent     discovered = discoverer.discover(self, param)
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/hardware/discovery.py", line 51, in discover
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent     instances = self.nova_cli.instance_get_all()
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent     return func(*args, **kwargs)
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent     search_opts=search_opts)
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent     self.authenticate()
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent     return self._authenticate(url, body)
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.800 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.801 1066 INFO ceilometer.agent [-] Polling pollster switch.port.transmit.bytes in the context of meter_source
+2014-11-28 23:38:11.802 1066 INFO ceilometer.agent [-] Polling pollster switch.port.transmit.drops in the context of meter_source
+2014-11-28 23:38:11.802 1066 INFO ceilometer.agent [-] Polling pollster hardware.memory.swap.avail in the context of meter_source
+2014-11-28 23:38:11.803 1066 ERROR ceilometer.nova_client [-] HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client Traceback (most recent call last):
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client     return func(*args, **kwargs)
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client     search_opts=search_opts)
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client     self.authenticate()
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client     return self._authenticate(url, body)
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.803 1066 TRACE ceilometer.nova_client 
+2014-11-28 23:38:11.804 1066 ERROR ceilometer.agent [-] Unable to discover resources: None: Max retries exceeded with url: /v2.0/tokens (Caused by redirect)
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 233, in discover
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent     discovered = discoverer.discover(self, param)
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/hardware/discovery.py", line 51, in discover
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent     instances = self.nova_cli.instance_get_all()
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent     return func(*args, **kwargs)
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent     search_opts=search_opts)
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent     self.authenticate()
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent     return self._authenticate(url, body)
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.804 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.805 1066 INFO ceilometer.agent [-] Polling pollster switch.port.receive.packets in the context of meter_source
+2014-11-28 23:38:11.805 1066 INFO ceilometer.agent [-] Polling pollster switch.flow.duration.seconds in the context of meter_source
+2014-11-28 23:38:11.806 1066 INFO ceilometer.agent [-] Polling pollster hardware.cpu.load.15min in the context of meter_source
+2014-11-28 23:38:11.807 1066 ERROR ceilometer.nova_client [-] HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client Traceback (most recent call last):
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client     return func(*args, **kwargs)
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client     search_opts=search_opts)
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client     self.authenticate()
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client     return self._authenticate(url, body)
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.807 1066 TRACE ceilometer.nova_client 
+2014-11-28 23:38:11.808 1066 ERROR ceilometer.agent [-] Unable to discover resources: None: Max retries exceeded with url: /v2.0/tokens (Caused by redirect)
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 233, in discover
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent     discovered = discoverer.discover(self, param)
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/hardware/discovery.py", line 51, in discover
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent     instances = self.nova_cli.instance_get_all()
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent     return func(*args, **kwargs)
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent     search_opts=search_opts)
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent     self.authenticate()
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent     return self._authenticate(url, body)
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.808 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:11.809 1066 INFO ceilometer.agent [-] Polling pollster hardware.network.ip.outgoing.datagrams in the context of meter_source
+2014-11-28 23:38:11.999 1066 ERROR ceilometer.nova_client [-] HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client Traceback (most recent call last):
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client     return func(*args, **kwargs)
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client     search_opts=search_opts)
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client     self.authenticate()
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client     return self._authenticate(url, body)
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client     raise ConnectionError(e, request=request)
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:11.999 1066 TRACE ceilometer.nova_client 
+2014-11-28 23:38:12.000 1066 ERROR ceilometer.agent [-] Unable to discover resources: None: Max retries exceeded with url: /v2.0/tokens (Caused by redirect)
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 233, in discover
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent     discovered = discoverer.discover(self, param)
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/hardware/discovery.py", line 51, in discover
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent     instances = self.nova_cli.instance_get_all()
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent     return func(*args, **kwargs)
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent     search_opts=search_opts)
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent     self.authenticate()
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent     return self._authenticate(url, body)
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent     raise ConnectionError(e, request=request)
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:12.000 1066 TRACE ceilometer.agent 
+2014-11-28 23:38:12.001 1066 INFO ceilometer.agent [-] Polling pollster switch.table.matched.packets in the context of meter_source
+2014-11-28 23:38:12.001 1066 INFO ceilometer.agent [-] Polling pollster network.services.vpn in the context of meter_source
+2014-11-28 23:38:12.002 1066 ERROR ceilometer.central.plugin [-] Skip due to keystone error Authorization Failed: Unable to establish connection to http://10.0.1.111:35357/v2.0/tokens
+2014-11-28 23:38:12.003 1066 INFO ceilometer.agent [-] Polling pollster network.services.lb.pool in the context of meter_source
+2014-11-28 23:38:12.003 1066 INFO ceilometer.agent [-] Polling pollster hardware.cpu.load.5min in the context of meter_source
+2014-11-28 23:38:12.005 1066 ERROR ceilometer.nova_client [-] HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client Traceback (most recent call last):
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client     return func(*args, **kwargs)
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client     search_opts=search_opts)
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client     self.authenticate()
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client     return self._authenticate(url, body)
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client     raise ConnectionError(e, request=request)
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:12.005 1066 TRACE ceilometer.nova_client 
+2014-11-28 23:38:12.006 1066 ERROR ceilometer.agent [-] Unable to discover resources: None: Max retries exceeded with url: /v2.0/tokens (Caused by redirect)
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 233, in discover
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent     discovered = discoverer.discover(self, param)
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/hardware/discovery.py", line 51, in discover
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent     instances = self.nova_cli.instance_get_all()
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent     return func(*args, **kwargs)
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 153, in instance_get_all
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent     search_opts=search_opts)
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent     self.authenticate()
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent     return self._authenticate(url, body)
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent     raise ConnectionError(e, request=request)
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:12.006 1066 TRACE ceilometer.agent 

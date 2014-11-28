@@ -1,137 +1,110 @@
-2014-11-26 01:59:49.454 9038 INFO migrate.versioning.api [-] 0 -> 1... 
-2014-11-26 01:59:49.456 9038 INFO glance.db.sqlalchemy.migrate_repo.schema [-] creating table images
-2014-11-26 01:59:49.502 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:49.502 9038 INFO migrate.versioning.api [-] 1 -> 2... 
-2014-11-26 01:59:49.507 9038 INFO glance.db.sqlalchemy.migrate_repo.schema [-] creating table image_properties
-2014-11-26 01:59:49.559 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:49.559 9038 INFO migrate.versioning.api [-] 2 -> 3... 
-2014-11-26 01:59:49.610 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:49.611 9038 INFO migrate.versioning.api [-] 3 -> 4... 
-2014-11-26 01:59:49.632 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:49.632 9038 INFO migrate.versioning.api [-] 4 -> 5... 
-2014-11-26 01:59:49.649 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:49.650 9038 INFO migrate.versioning.api [-] 5 -> 6... 
-2014-11-26 01:59:49.710 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:49.710 9038 INFO migrate.versioning.api [-] 6 -> 7... 
-2014-11-26 01:59:49.731 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:49.731 9038 INFO migrate.versioning.api [-] 7 -> 8... 
-2014-11-26 01:59:49.738 9038 INFO glance.db.sqlalchemy.migrate_repo.schema [-] creating table image_members
-2014-11-26 01:59:49.790 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:49.790 9038 INFO migrate.versioning.api [-] 8 -> 9... 
-2014-11-26 01:59:49.821 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:49.821 9038 INFO migrate.versioning.api [-] 9 -> 10... 
-2014-11-26 01:59:49.830 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:49.830 9038 INFO migrate.versioning.api [-] 10 -> 11... 
-2014-11-26 01:59:49.862 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:49.862 9038 INFO migrate.versioning.api [-] 11 -> 12... 
-2014-11-26 01:59:49.991 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:49.992 9038 INFO migrate.versioning.api [-] 12 -> 13... 
-2014-11-26 01:59:50.021 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:50.022 9038 INFO migrate.versioning.api [-] 13 -> 14... 
-2014-11-26 01:59:50.029 9038 INFO glance.db.sqlalchemy.migrate_repo.schema [-] creating table image_tags
-2014-11-26 01:59:50.077 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:50.078 9038 INFO migrate.versioning.api [-] 14 -> 15... 
-2014-11-26 01:59:50.091 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:50.091 9038 INFO migrate.versioning.api [-] 15 -> 16... 
-2014-11-26 01:59:50.120 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:50.120 9038 INFO migrate.versioning.api [-] 16 -> 17... 
-2014-11-26 01:59:50.170 9038 INFO 017_quote_encrypted_swift_credentials [-] 'metadata_encryption_key' was not specified in the config file or a config file was not specified. This means that this migration is a NOOP.
-2014-11-26 01:59:50.175 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:50.175 9038 INFO migrate.versioning.api [-] 17 -> 18... 
-2014-11-26 01:59:50.180 9038 INFO glance.db.sqlalchemy.migrate_repo.schema [-] creating table image_locations
-2014-11-26 01:59:50.231 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:50.231 9038 INFO migrate.versioning.api [-] 18 -> 19... 
-2014-11-26 01:59:50.251 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:50.252 9038 INFO migrate.versioning.api [-] 19 -> 20... 
-2014-11-26 01:59:50.283 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:50.284 9038 INFO migrate.versioning.api [-] 20 -> 21... 
-2014-11-26 01:59:50.292 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:50.293 9038 INFO migrate.versioning.api [-] 21 -> 22... 
-2014-11-26 01:59:50.339 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:50.339 9038 INFO migrate.versioning.api [-] 22 -> 23... 
-2014-11-26 01:59:50.345 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:50.345 9038 INFO migrate.versioning.api [-] 23 -> 24... 
-2014-11-26 01:59:50.352 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:50.352 9038 INFO migrate.versioning.api [-] 24 -> 25... 
-2014-11-26 01:59:50.358 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:50.358 9038 INFO migrate.versioning.api [-] 25 -> 26... 
-2014-11-26 01:59:50.385 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:50.385 9038 INFO migrate.versioning.api [-] 26 -> 27... 
-2014-11-26 01:59:50.414 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:50.414 9038 INFO migrate.versioning.api [-] 27 -> 28... 
-2014-11-26 01:59:50.451 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:50.451 9038 INFO migrate.versioning.api [-] 28 -> 29... 
-2014-11-26 01:59:50.526 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:50.527 9038 INFO migrate.versioning.api [-] 29 -> 30... 
-2014-11-26 01:59:50.530 9038 INFO glance.db.sqlalchemy.migrate_repo.schema [-] creating table tasks
-2014-11-26 01:59:50.626 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:50.626 9038 INFO migrate.versioning.api [-] 30 -> 31... 
-2014-11-26 01:59:50.643 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:50.643 9038 INFO migrate.versioning.api [-] 31 -> 32... 
-2014-11-26 01:59:50.648 9038 INFO glance.db.sqlalchemy.migrate_repo.schema [-] creating table task_info
-2014-11-26 01:59:50.720 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:50.720 9038 INFO migrate.versioning.api [-] 32 -> 33... 
-2014-11-26 01:59:50.754 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:50.754 9038 INFO migrate.versioning.api [-] 33 -> 34... 
-2014-11-26 01:59:50.777 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:50.778 9038 INFO migrate.versioning.api [-] 34 -> 35... 
-2014-11-26 01:59:50.784 9038 INFO glance.db.sqlalchemy.migrate_repo.schema [-] creating table metadef_namespaces
-2014-11-26 01:59:50.806 9038 INFO glance.db.sqlalchemy.migrate_repo.schema [-] creating table metadef_objects
-2014-11-26 01:59:50.834 9038 INFO glance.db.sqlalchemy.migrate_repo.schema [-] creating table metadef_properties
-2014-11-26 01:59:50.853 9038 INFO glance.db.sqlalchemy.migrate_repo.schema [-] creating table metadef_resource_types
-2014-11-26 01:59:50.878 9038 INFO glance.db.sqlalchemy.migrate_repo.schema [-] creating table metadef_namespace_resource_types
-2014-11-26 01:59:50.916 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:50.916 9038 INFO migrate.versioning.api [-] 35 -> 36... 
-2014-11-26 01:59:50.950 9038 INFO migrate.versioning.api [-] done
-2014-11-26 01:59:51.986 9100 INFO glance_store._drivers.filesystem [-] Directory to write image files does not exist (/var/lib/glance/images/). Creating.
-2014-11-26 01:59:52.348 9100 INFO keystonemiddleware.auth_token [-] Starting keystone auth_token middleware
-2014-11-26 01:59:52.349 9100 WARNING keystonemiddleware.auth_token [-] Configuring admin URI using auth fragments. This is deprecated, use 'identity_uri' instead.
-2014-11-26 01:59:52.350 9100 INFO keystonemiddleware.auth_token [-] Using /tmp/keystone-signing-UVRjr_ as cache directory for signing certificate
-2014-11-26 01:59:52.352 9100 INFO glance.wsgi.server [-] Starting 2 workers
-2014-11-26 01:59:52.357 9100 INFO glance.wsgi.server [-] Started child 9107
-2014-11-26 01:59:52.357 9107 INFO glance.wsgi.server [-] (9107) wsgi starting up on http://0.0.0.0:9292/
-2014-11-26 01:59:52.363 9100 INFO glance.wsgi.server [-] Started child 9108
-2014-11-26 01:59:52.364 9108 INFO glance.wsgi.server [-] (9108) wsgi starting up on http://0.0.0.0:9292/
-2014-11-26 02:07:08.888 9107 INFO urllib3.connectionpool [-] Starting new HTTP connection (1): 10.0.1.111
-2014-11-26 02:07:08.913 9107 INFO keystonemiddleware.auth_token [-] Auth Token confirmed use of v3.0 apis
-2014-11-26 02:07:09.387 9107 INFO glance.wsgi.server [f7125638-3115-49c2-a793-6645f0132d61 ca7c6ed2907c46698be9e8a89cb2fd17 05065337e2c040618e6abb688c78aec3 - - -] 10.0.1.111 - - [26/Nov/2014 02:07:09] "GET /v1/images/detail?sort_key=name&sort_dir=asc&limit=20 HTTP/1.1" 200 203 0.596349
-2014-11-26 02:07:10.891 9107 INFO glance.api.v1.images [f7125638-3115-49c2-a793-6645f0132d61 ca7c6ed2907c46698be9e8a89cb2fd17 05065337e2c040618e6abb688c78aec3 - - -] Triggering asynchronous copy from external source
-2014-11-26 02:07:10.894 9107 INFO glance.wsgi.server [f7125638-3115-49c2-a793-6645f0132d61 ca7c6ed2907c46698be9e8a89cb2fd17 05065337e2c040618e6abb688c78aec3 - - -] 10.0.1.111 - - [26/Nov/2014 02:07:10] "POST /v1/images HTTP/1.1" 201 709 1.116927
-2014-11-26 02:07:13.416 9107 INFO glance.api.v1.images [f7125638-3115-49c2-a793-6645f0132d61 ca7c6ed2907c46698be9e8a89cb2fd17 05065337e2c040618e6abb688c78aec3 - - -] Uploaded data of image ba0dfa48-cbbc-48fe-8091-15f7151cef2e from request payload successfully.
-2014-11-26 10:45:57.867 9107 INFO glance.wsgi.server [f7125638-3115-49c2-a793-6645f0132d61 ca7c6ed2907c46698be9e8a89cb2fd17 05065337e2c040618e6abb688c78aec3 - - -] 10.0.1.111 - - [26/Nov/2014 10:45:57] "GET /v1/images/detail?sort_key=name&sort_dir=asc&limit=20 HTTP/1.1" 200 671 0.251691
-2014-11-26 10:49:44.320 9100 INFO glance.wsgi.server [-] Removing dead child 9108
-2014-11-26 10:49:44.426 9100 INFO glance.wsgi.server [-] Started child 20036
-2014-11-26 10:49:44.753 20036 INFO glance.wsgi.server [-] (20036) wsgi starting up on http://0.0.0.0:9292/
-2014-11-26 10:49:44.777 20036 INFO glance.wsgi.server [-] Child 20036 exiting normally
-2014-11-26 10:50:42.493 993 INFO keystonemiddleware.auth_token [-] Starting keystone auth_token middleware
-2014-11-26 10:50:42.502 993 WARNING keystonemiddleware.auth_token [-] Configuring admin URI using auth fragments. This is deprecated, use 'identity_uri' instead.
-2014-11-26 10:50:42.505 993 INFO keystonemiddleware.auth_token [-] Using /tmp/keystone-signing-i9_V3U as cache directory for signing certificate
-2014-11-26 10:50:42.507 993 INFO glance.wsgi.server [-] Starting 2 workers
-2014-11-26 10:50:42.508 993 INFO glance.wsgi.server [-] Started child 2576
-2014-11-26 10:50:42.511 993 INFO glance.wsgi.server [-] Started child 2577
-2014-11-26 10:50:42.587 2577 INFO glance.wsgi.server [-] (2577) wsgi starting up on http://0.0.0.0:9292/
-2014-11-26 10:50:42.590 2576 INFO glance.wsgi.server [-] (2576) wsgi starting up on http://0.0.0.0:9292/
-2014-11-26 11:31:54.353 2577 INFO urllib3.connectionpool [-] Starting new HTTP connection (1): 10.0.1.111
-2014-11-26 11:31:54.363 2577 INFO keystonemiddleware.auth_token [-] Auth Token confirmed use of v3.0 apis
-2014-11-26 11:31:54.724 2577 INFO glance.wsgi.server [839b3c35-b0b3-46af-b3de-d6f30630ce8f 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 10.0.1.111 - - [26/Nov/2014 11:31:54] "GET /v1/images/detail?is_public=none&limit=20 HTTP/1.1" 200 671 0.380417
-2014-11-26 11:31:54.762 2576 INFO urllib3.connectionpool [-] Starting new HTTP connection (1): 10.0.1.111
-2014-11-26 11:31:54.770 2576 INFO keystonemiddleware.auth_token [-] Auth Token confirmed use of v3.0 apis
-2014-11-26 11:31:55.110 2576 INFO glance.wsgi.server [f451d031-4ecb-494b-a005-a375270ff1e9 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 10.0.1.111 - - [26/Nov/2014 11:31:55] "HEAD /v1/images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 775 0.358140
-2014-11-26 11:31:55.219 2576 INFO glance.wsgi.server [f451d031-4ecb-494b-a005-a375270ff1e9 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 10.0.1.111 - - [26/Nov/2014 11:31:55] "HEAD /v1/images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 775 0.014936
-2014-11-26 11:35:59.589 2577 INFO glance.wsgi.server [839b3c35-b0b3-46af-b3de-d6f30630ce8f 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 10.0.1.111 - - [26/Nov/2014 11:35:59] "GET /v1/images/detail?is_public=none&limit=20 HTTP/1.1" 200 671 0.112561
-2014-11-26 11:35:59.655 2577 INFO glance.wsgi.server [839b3c35-b0b3-46af-b3de-d6f30630ce8f 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 10.0.1.111 - - [26/Nov/2014 11:35:59] "HEAD /v1/images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 775 0.053963
-2014-11-26 11:35:59.882 2577 INFO glance.wsgi.server [839b3c35-b0b3-46af-b3de-d6f30630ce8f 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 10.0.1.111 - - [26/Nov/2014 11:35:59] "HEAD /v1/images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 775 0.014732
-2014-11-26 11:36:00.332 2576 INFO glance.wsgi.server [f451d031-4ecb-494b-a005-a375270ff1e9 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 10.0.1.111 - - [26/Nov/2014 11:36:00] "HEAD /v1/images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 775 0.065650
-2014-11-26 11:36:00.990 2577 INFO glance.wsgi.server [839b3c35-b0b3-46af-b3de-d6f30630ce8f 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 10.0.1.131 - - [26/Nov/2014 11:36:00] "GET /v1/images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 13148430 0.163806
-2014-11-26 11:36:24.903 2577 INFO glance.wsgi.server [839b3c35-b0b3-46af-b3de-d6f30630ce8f 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 10.0.1.111 - - [26/Nov/2014 11:36:24] "GET /v1/images/detail?sort_key=created_at&sort_dir=desc&limit=1000 HTTP/1.1" 200 671 0.204883
-2014-11-26 11:36:25.564 2577 INFO glance.wsgi.server [839b3c35-b0b3-46af-b3de-d6f30630ce8f 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 10.0.1.111 - - [26/Nov/2014 11:36:25] "HEAD /v1/images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 775 0.020137
-2014-11-26 11:36:28.450 2576 INFO glance.wsgi.server [f451d031-4ecb-494b-a005-a375270ff1e9 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 10.0.1.111 - - [26/Nov/2014 11:36:28] "HEAD /v1/images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 775 0.143502
-2014-11-26 11:36:33.771 2576 INFO glance.wsgi.server [f451d031-4ecb-494b-a005-a375270ff1e9 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 10.0.1.111 - - [26/Nov/2014 11:36:33] "HEAD /v1/images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 775 0.024824
-2014-11-26 11:36:41.486 2577 INFO glance.wsgi.server [839b3c35-b0b3-46af-b3de-d6f30630ce8f 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 10.0.1.111 - - [26/Nov/2014 11:36:41] "HEAD /v1/images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 775 0.015234
-2014-11-26 11:36:51.669 2576 INFO glance.wsgi.server [f451d031-4ecb-494b-a005-a375270ff1e9 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 10.0.1.111 - - [26/Nov/2014 11:36:51] "HEAD /v1/images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 775 0.013782
-2014-11-26 11:37:04.418 2576 INFO glance.wsgi.server [f451d031-4ecb-494b-a005-a375270ff1e9 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 10.0.1.111 - - [26/Nov/2014 11:37:04] "HEAD /v1/images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 775 0.016555
-2014-11-26 11:37:19.624 2577 INFO glance.wsgi.server [839b3c35-b0b3-46af-b3de-d6f30630ce8f 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 10.0.1.111 - - [26/Nov/2014 11:37:19] "HEAD /v1/images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 775 0.016546
-2014-11-26 11:37:37.309 2576 INFO glance.wsgi.server [f451d031-4ecb-494b-a005-a375270ff1e9 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 10.0.1.111 - - [26/Nov/2014 11:37:37] "HEAD /v1/images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 775 0.014200
-2014-11-26 11:37:57.490 2576 INFO glance.wsgi.server [f451d031-4ecb-494b-a005-a375270ff1e9 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 10.0.1.111 - - [26/Nov/2014 11:37:57] "HEAD /v1/images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 775 0.015378
-2014-11-26 11:38:03.357 2576 INFO glance.wsgi.server [f451d031-4ecb-494b-a005-a375270ff1e9 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 10.0.1.111 - - [26/Nov/2014 11:38:03] "HEAD /v1/images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 775 0.014719
-2014-11-26 11:39:58.513 2576 INFO glance.wsgi.server [f451d031-4ecb-494b-a005-a375270ff1e9 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 10.0.1.111 - - [26/Nov/2014 11:39:58] "HEAD /v1/images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 775 0.110991
+2014-11-28 23:21:41.522 10071 INFO migrate.versioning.api [-] 0 -> 1... 
+2014-11-28 23:21:41.525 10071 INFO glance.db.sqlalchemy.migrate_repo.schema [-] creating table images
+2014-11-28 23:21:41.601 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:41.601 10071 INFO migrate.versioning.api [-] 1 -> 2... 
+2014-11-28 23:21:41.605 10071 INFO glance.db.sqlalchemy.migrate_repo.schema [-] creating table image_properties
+2014-11-28 23:21:41.689 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:41.690 10071 INFO migrate.versioning.api [-] 2 -> 3... 
+2014-11-28 23:21:41.740 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:41.741 10071 INFO migrate.versioning.api [-] 3 -> 4... 
+2014-11-28 23:21:41.762 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:41.763 10071 INFO migrate.versioning.api [-] 4 -> 5... 
+2014-11-28 23:21:41.784 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:41.784 10071 INFO migrate.versioning.api [-] 5 -> 6... 
+2014-11-28 23:21:41.846 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:41.846 10071 INFO migrate.versioning.api [-] 6 -> 7... 
+2014-11-28 23:21:41.868 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:41.868 10071 INFO migrate.versioning.api [-] 7 -> 8... 
+2014-11-28 23:21:41.875 10071 INFO glance.db.sqlalchemy.migrate_repo.schema [-] creating table image_members
+2014-11-28 23:21:41.968 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:41.968 10071 INFO migrate.versioning.api [-] 8 -> 9... 
+2014-11-28 23:21:42.008 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:42.008 10071 INFO migrate.versioning.api [-] 9 -> 10... 
+2014-11-28 23:21:42.019 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:42.020 10071 INFO migrate.versioning.api [-] 10 -> 11... 
+2014-11-28 23:21:42.049 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:42.049 10071 INFO migrate.versioning.api [-] 11 -> 12... 
+2014-11-28 23:21:42.140 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:42.140 10071 INFO migrate.versioning.api [-] 12 -> 13... 
+2014-11-28 23:21:42.163 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:42.163 10071 INFO migrate.versioning.api [-] 13 -> 14... 
+2014-11-28 23:21:42.169 10071 INFO glance.db.sqlalchemy.migrate_repo.schema [-] creating table image_tags
+2014-11-28 23:21:42.222 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:42.223 10071 INFO migrate.versioning.api [-] 14 -> 15... 
+2014-11-28 23:21:42.237 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:42.238 10071 INFO migrate.versioning.api [-] 15 -> 16... 
+2014-11-28 23:21:42.266 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:42.266 10071 INFO migrate.versioning.api [-] 16 -> 17... 
+2014-11-28 23:21:42.323 10071 INFO 017_quote_encrypted_swift_credentials [-] 'metadata_encryption_key' was not specified in the config file or a config file was not specified. This means that this migration is a NOOP.
+2014-11-28 23:21:42.328 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:42.328 10071 INFO migrate.versioning.api [-] 17 -> 18... 
+2014-11-28 23:21:42.335 10071 INFO glance.db.sqlalchemy.migrate_repo.schema [-] creating table image_locations
+2014-11-28 23:21:42.380 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:42.380 10071 INFO migrate.versioning.api [-] 18 -> 19... 
+2014-11-28 23:21:42.392 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:42.392 10071 INFO migrate.versioning.api [-] 19 -> 20... 
+2014-11-28 23:21:42.408 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:42.408 10071 INFO migrate.versioning.api [-] 20 -> 21... 
+2014-11-28 23:21:42.414 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:42.414 10071 INFO migrate.versioning.api [-] 21 -> 22... 
+2014-11-28 23:21:42.443 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:42.443 10071 INFO migrate.versioning.api [-] 22 -> 23... 
+2014-11-28 23:21:42.448 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:42.448 10071 INFO migrate.versioning.api [-] 23 -> 24... 
+2014-11-28 23:21:42.453 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:42.453 10071 INFO migrate.versioning.api [-] 24 -> 25... 
+2014-11-28 23:21:42.459 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:42.459 10071 INFO migrate.versioning.api [-] 25 -> 26... 
+2014-11-28 23:21:42.482 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:42.482 10071 INFO migrate.versioning.api [-] 26 -> 27... 
+2014-11-28 23:21:42.507 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:42.507 10071 INFO migrate.versioning.api [-] 27 -> 28... 
+2014-11-28 23:21:42.544 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:42.544 10071 INFO migrate.versioning.api [-] 28 -> 29... 
+2014-11-28 23:21:42.588 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:42.588 10071 INFO migrate.versioning.api [-] 29 -> 30... 
+2014-11-28 23:21:42.591 10071 INFO glance.db.sqlalchemy.migrate_repo.schema [-] creating table tasks
+2014-11-28 23:21:42.697 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:42.697 10071 INFO migrate.versioning.api [-] 30 -> 31... 
+2014-11-28 23:21:42.712 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:42.712 10071 INFO migrate.versioning.api [-] 31 -> 32... 
+2014-11-28 23:21:42.716 10071 INFO glance.db.sqlalchemy.migrate_repo.schema [-] creating table task_info
+2014-11-28 23:21:42.782 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:42.783 10071 INFO migrate.versioning.api [-] 32 -> 33... 
+2014-11-28 23:21:42.823 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:42.823 10071 INFO migrate.versioning.api [-] 33 -> 34... 
+2014-11-28 23:21:42.857 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:42.858 10071 INFO migrate.versioning.api [-] 34 -> 35... 
+2014-11-28 23:21:42.863 10071 INFO glance.db.sqlalchemy.migrate_repo.schema [-] creating table metadef_namespaces
+2014-11-28 23:21:42.901 10071 INFO glance.db.sqlalchemy.migrate_repo.schema [-] creating table metadef_objects
+2014-11-28 23:21:42.967 10071 INFO glance.db.sqlalchemy.migrate_repo.schema [-] creating table metadef_properties
+2014-11-28 23:21:42.992 10071 INFO glance.db.sqlalchemy.migrate_repo.schema [-] creating table metadef_resource_types
+2014-11-28 23:21:43.024 10071 INFO glance.db.sqlalchemy.migrate_repo.schema [-] creating table metadef_namespace_resource_types
+2014-11-28 23:21:43.073 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:43.073 10071 INFO migrate.versioning.api [-] 35 -> 36... 
+2014-11-28 23:21:43.118 10071 INFO migrate.versioning.api [-] done
+2014-11-28 23:21:44.041 10132 INFO glance_store._drivers.filesystem [-] Directory to write image files does not exist (/var/lib/glance/images/). Creating.
+2014-11-28 23:21:44.397 10132 INFO keystonemiddleware.auth_token [-] Starting keystone auth_token middleware
+2014-11-28 23:21:44.397 10132 WARNING keystonemiddleware.auth_token [-] Configuring admin URI using auth fragments. This is deprecated, use 'identity_uri' instead.
+2014-11-28 23:21:44.399 10132 INFO keystonemiddleware.auth_token [-] Using /tmp/keystone-signing-qlyGxh as cache directory for signing certificate
+2014-11-28 23:21:44.400 10132 INFO glance.wsgi.server [-] Starting 2 workers
+2014-11-28 23:21:44.404 10132 INFO glance.wsgi.server [-] Started child 10139
+2014-11-28 23:21:44.404 10139 INFO glance.wsgi.server [-] (10139) wsgi starting up on http://0.0.0.0:9292/
+2014-11-28 23:21:44.407 10132 INFO glance.wsgi.server [-] Started child 10140
+2014-11-28 23:21:44.407 10140 INFO glance.wsgi.server [-] (10140) wsgi starting up on http://0.0.0.0:9292/
+2014-11-28 23:31:29.284 10140 INFO urllib3.connectionpool [-] Starting new HTTP connection (1): 10.0.1.111
+2014-11-28 23:31:29.299 10140 INFO keystonemiddleware.auth_token [-] Auth Token confirmed use of v3.0 apis
+2014-11-28 23:31:29.851 10140 INFO glance.wsgi.server [c5ac8c07-543e-495a-a255-d43317730679 6f069d8d16444a9098d8ab83c6f9368b 89820cf2cb0e408e82af2a651c0d6090 - - -] 10.0.1.111 - - [28/Nov/2014 23:31:29] "GET /v1/images/detail?is_public=True&limit=20 HTTP/1.1" 200 203 0.585536
+2014-11-28 23:31:29.888 10140 INFO glance.wsgi.server [c5ac8c07-543e-495a-a255-d43317730679 6f069d8d16444a9098d8ab83c6f9368b 89820cf2cb0e408e82af2a651c0d6090 - - -] 10.0.1.111 - - [28/Nov/2014 23:31:29] "GET /v1/images/detail?is_public=False&limit=20 HTTP/1.1" 200 203 0.031532
+2014-11-28 23:33:50.439 10132 INFO glance.wsgi.server [-] Removing dead child 10139
+2014-11-28 23:33:50.442 10132 INFO glance.wsgi.server [-] Started child 20400
+2014-11-28 23:33:50.517 20400 INFO glance.wsgi.server [-] (20400) wsgi starting up on http://0.0.0.0:9292/
+2014-11-28 23:33:50.518 20400 INFO glance.wsgi.server [-] Child 20400 exiting normally
+2014-11-28 23:38:11.581 1024 INFO keystonemiddleware.auth_token [-] Starting keystone auth_token middleware
+2014-11-28 23:38:11.599 1024 WARNING keystonemiddleware.auth_token [-] Configuring admin URI using auth fragments. This is deprecated, use 'identity_uri' instead.
+2014-11-28 23:38:11.602 1024 INFO keystonemiddleware.auth_token [-] Using /tmp/keystone-signing-iZglxV as cache directory for signing certificate
+2014-11-28 23:38:11.604 1024 INFO glance.wsgi.server [-] Starting 2 workers
+2014-11-28 23:38:11.607 1024 INFO glance.wsgi.server [-] Started child 3347
+2014-11-28 23:38:11.675 1024 INFO glance.wsgi.server [-] Started child 3352
+2014-11-28 23:38:11.684 3347 INFO glance.wsgi.server [-] (3347) wsgi starting up on http://0.0.0.0:9292/
+2014-11-28 23:38:11.714 3352 INFO glance.wsgi.server [-] (3352) wsgi starting up on http://0.0.0.0:9292/

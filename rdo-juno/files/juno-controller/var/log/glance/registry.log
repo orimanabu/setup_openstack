@@ -1,54 +1,20 @@
-2014-11-26 01:59:51.597 9057 INFO keystonemiddleware.auth_token [-] Starting keystone auth_token middleware
-2014-11-26 01:59:51.597 9057 WARNING keystonemiddleware.auth_token [-] Configuring admin URI using auth fragments. This is deprecated, use 'identity_uri' instead.
-2014-11-26 01:59:51.599 9057 INFO keystonemiddleware.auth_token [-] Using /tmp/keystone-signing-obJwRS as cache directory for signing certificate
-2014-11-26 01:59:51.600 9057 INFO glance.wsgi.server [-] Starting 2 workers
-2014-11-26 01:59:51.603 9057 INFO glance.wsgi.server [-] Started child 9074
-2014-11-26 01:59:51.603 9074 INFO glance.wsgi.server [-] (9074) wsgi starting up on http://0.0.0.0:9191/
-2014-11-26 01:59:51.605 9057 INFO glance.wsgi.server [-] Started child 9075
-2014-11-26 01:59:51.605 9075 INFO glance.wsgi.server [-] (9075) wsgi starting up on http://0.0.0.0:9191/
-2014-11-26 02:07:09.136 9075 INFO urllib3.connectionpool [-] Starting new HTTP connection (1): 10.0.1.111
-2014-11-26 02:07:09.149 9075 INFO keystonemiddleware.auth_token [-] Auth Token confirmed use of v3.0 apis
-2014-11-26 02:07:09.385 9075 INFO glance.wsgi.server [229684c7-39f4-4449-8ab4-c49e3d3f7c32 ca7c6ed2907c46698be9e8a89cb2fd17 05065337e2c040618e6abb688c78aec3 - - -] 127.0.0.1 - - [26/Nov/2014 02:07:09] "GET /images/detail?sort_key=name&sort_dir=asc&limit=20 HTTP/1.1" 200 203 0.333280
-2014-11-26 02:07:10.646 9074 INFO urllib3.connectionpool [-] Starting new HTTP connection (1): 10.0.1.111
-2014-11-26 02:07:10.662 9074 INFO keystonemiddleware.auth_token [-] Auth Token confirmed use of v3.0 apis
-2014-11-26 02:07:10.889 9074 INFO glance.registry.api.v1.images [29f6cf94-d08a-4bdd-8d0a-a85d46a6b2b1 ca7c6ed2907c46698be9e8a89cb2fd17 05065337e2c040618e6abb688c78aec3 - - -] Successfully created image ba0dfa48-cbbc-48fe-8091-15f7151cef2e
-2014-11-26 02:07:10.889 9074 INFO glance.wsgi.server [29f6cf94-d08a-4bdd-8d0a-a85d46a6b2b1 ca7c6ed2907c46698be9e8a89cb2fd17 05065337e2c040618e6abb688c78aec3 - - -] 127.0.0.1 - - [26/Nov/2014 02:07:10] "POST /images HTTP/1.1" 200 677 0.269118
-2014-11-26 02:07:11.726 9075 INFO glance.registry.api.v1.images [0669b0f6-3e9d-47de-8b96-8da865c751df ca7c6ed2907c46698be9e8a89cb2fd17 05065337e2c040618e6abb688c78aec3 - - -] Updating metadata for image ba0dfa48-cbbc-48fe-8091-15f7151cef2e
-2014-11-26 02:07:11.727 9075 INFO glance.wsgi.server [0669b0f6-3e9d-47de-8b96-8da865c751df ca7c6ed2907c46698be9e8a89cb2fd17 05065337e2c040618e6abb688c78aec3 - - -] 127.0.0.1 - - [26/Nov/2014 02:07:11] "PUT /images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 677 0.095952
-2014-11-26 02:07:13.413 9074 INFO glance.registry.api.v1.images [5385a22c-3d3e-42a5-a3ff-e6cec4574a83 ca7c6ed2907c46698be9e8a89cb2fd17 05065337e2c040618e6abb688c78aec3 - - -] Updating metadata for image ba0dfa48-cbbc-48fe-8091-15f7151cef2e
-2014-11-26 02:07:13.415 9074 INFO glance.wsgi.server [5385a22c-3d3e-42a5-a3ff-e6cec4574a83 ca7c6ed2907c46698be9e8a89cb2fd17 05065337e2c040618e6abb688c78aec3 - - -] 127.0.0.1 - - [26/Nov/2014 02:07:13] "PUT /images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 707 0.040395
-2014-11-26 02:07:13.459 9075 INFO glance.registry.api.v1.images [79d8e09c-c0ee-4e40-acda-5f6e05697590 ca7c6ed2907c46698be9e8a89cb2fd17 05065337e2c040618e6abb688c78aec3 - - -] Updating metadata for image ba0dfa48-cbbc-48fe-8091-15f7151cef2e
-2014-11-26 02:07:13.460 9075 INFO glance.wsgi.server [79d8e09c-c0ee-4e40-acda-5f6e05697590 ca7c6ed2907c46698be9e8a89cb2fd17 05065337e2c040618e6abb688c78aec3 - - -] 127.0.0.1 - - [26/Nov/2014 02:07:13] "PUT /images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 893 0.041135
-2014-11-26 10:45:57.865 9075 INFO glance.wsgi.server [6aa66df3-6977-4d7e-afae-b4a18a350fc0 7101f09f41d24e4c9bd4d6593f10ac20 5db62f5f55144e94b06be0d688e6d499 - - -] 127.0.0.1 - - [26/Nov/2014 10:45:57] "GET /images/detail?sort_key=name&sort_dir=asc&limit=20 HTTP/1.1" 200 896 0.138376
-2014-11-26 10:50:41.842 992 INFO keystonemiddleware.auth_token [-] Starting keystone auth_token middleware
-2014-11-26 10:50:41.851 992 WARNING keystonemiddleware.auth_token [-] Configuring admin URI using auth fragments. This is deprecated, use 'identity_uri' instead.
-2014-11-26 10:50:41.853 992 INFO keystonemiddleware.auth_token [-] Using /tmp/keystone-signing-C7xo6m as cache directory for signing certificate
-2014-11-26 10:50:41.855 992 INFO glance.wsgi.server [-] Starting 2 workers
-2014-11-26 10:50:41.857 992 INFO glance.wsgi.server [-] Started child 2540
-2014-11-26 10:50:41.861 992 INFO glance.wsgi.server [-] Started child 2541
-2014-11-26 10:50:41.897 2540 INFO glance.wsgi.server [-] (2540) wsgi starting up on http://0.0.0.0:9191/
-2014-11-26 10:50:41.898 2541 INFO glance.wsgi.server [-] (2541) wsgi starting up on http://0.0.0.0:9191/
-2014-11-26 11:31:54.486 2541 INFO urllib3.connectionpool [-] Starting new HTTP connection (1): 10.0.1.111
-2014-11-26 11:31:54.496 2541 INFO keystonemiddleware.auth_token [-] Auth Token confirmed use of v3.0 apis
-2014-11-26 11:31:54.722 2541 INFO glance.wsgi.server [356f7a4c-fd60-4d40-a813-7036de633fef 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 127.0.0.1 - - [26/Nov/2014 11:31:54] "GET /images/detail?is_public=none&limit=20 HTTP/1.1" 200 896 0.244543
-2014-11-26 11:31:54.932 2540 INFO urllib3.connectionpool [-] Starting new HTTP connection (1): 10.0.1.111
-2014-11-26 11:31:54.942 2540 INFO keystonemiddleware.auth_token [-] Auth Token confirmed use of v3.0 apis
-2014-11-26 11:31:55.108 2540 INFO glance.wsgi.server [1304d219-afe9-4afc-8345-f5d6570ae876 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 127.0.0.1 - - [26/Nov/2014 11:31:55] "GET /images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 893 0.184489
-2014-11-26 11:31:55.218 2540 INFO glance.wsgi.server [63f3b748-5cd0-49a9-b053-8c97d9297f7a 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 127.0.0.1 - - [26/Nov/2014 11:31:55] "GET /images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 893 0.009949
-2014-11-26 11:35:59.586 2541 INFO glance.wsgi.server [59d51fb3-3cc9-4d6f-914b-bbcfe2291da8 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 127.0.0.1 - - [26/Nov/2014 11:35:59] "GET /images/detail?is_public=none&limit=20 HTTP/1.1" 200 896 0.067982
-2014-11-26 11:35:59.654 2540 INFO glance.wsgi.server [d30a529f-1fc1-4f4c-9f66-e120bfafbb88 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 127.0.0.1 - - [26/Nov/2014 11:35:59] "GET /images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 893 0.049404
-2014-11-26 11:35:59.881 2541 INFO glance.wsgi.server [07366261-c9df-40b5-af94-fde80abb79d5 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 127.0.0.1 - - [26/Nov/2014 11:35:59] "GET /images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 893 0.010417
-2014-11-26 11:36:00.330 2541 INFO glance.wsgi.server [05638ce2-df1e-40d1-ad1a-593d31fdf08e 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 127.0.0.1 - - [26/Nov/2014 11:36:00] "GET /images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 893 0.010687
-2014-11-26 11:36:00.864 2540 INFO glance.wsgi.server [ebf203c2-a021-4a0e-9c6f-75907d65b7d5 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 127.0.0.1 - - [26/Nov/2014 11:36:00] "GET /images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 893 0.029823
-2014-11-26 11:36:24.903 2541 INFO glance.wsgi.server [034633d7-a12e-403f-aec5-187fa3e0d4b4 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 127.0.0.1 - - [26/Nov/2014 11:36:24] "GET /images/detail?sort_key=created_at&sort_dir=desc&limit=1000 HTTP/1.1" 200 896 0.140223
-2014-11-26 11:36:25.562 2541 INFO glance.wsgi.server [e6e4d2a6-9ecf-44c3-9d8d-ada6e83833d5 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 127.0.0.1 - - [26/Nov/2014 11:36:25] "GET /images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 893 0.014581
-2014-11-26 11:36:28.448 2540 INFO glance.wsgi.server [d1852806-1669-4dc8-96c9-8e0bf7638448 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 127.0.0.1 - - [26/Nov/2014 11:36:28] "GET /images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 893 0.080371
-2014-11-26 11:36:33.768 2541 INFO glance.wsgi.server [c90a9e0e-5d3c-4ef7-b072-8851f66f568e 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 127.0.0.1 - - [26/Nov/2014 11:36:33] "GET /images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 893 0.018180
-2014-11-26 11:36:41.484 2541 INFO glance.wsgi.server [19c8ce38-3b6a-4917-92ba-7de4d44ccce2 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 127.0.0.1 - - [26/Nov/2014 11:36:41] "GET /images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 893 0.009646
-2014-11-26 11:36:51.667 2541 INFO glance.wsgi.server [a264aa1b-3fd9-4369-9ec5-151e1020dde7 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 127.0.0.1 - - [26/Nov/2014 11:36:51] "GET /images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 893 0.009484
-2014-11-26 11:37:04.416 2540 INFO glance.wsgi.server [6223ee27-3c05-4adf-91a0-1adcb1f5aede 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 127.0.0.1 - - [26/Nov/2014 11:37:04] "GET /images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 893 0.010363
-2014-11-26 11:37:19.622 2541 INFO glance.wsgi.server [0b1bc057-8b11-4ab7-968d-06d9b472cbc0 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 127.0.0.1 - - [26/Nov/2014 11:37:19] "GET /images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 893 0.010530
-2014-11-26 11:37:37.308 2540 INFO glance.wsgi.server [86564c03-44e4-4391-8c45-d29f3a3cb385 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 127.0.0.1 - - [26/Nov/2014 11:37:37] "GET /images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 893 0.009499
-2014-11-26 11:37:57.488 2541 INFO glance.wsgi.server [3d402a9e-83c0-42b6-a28d-a377818dbd17 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 127.0.0.1 - - [26/Nov/2014 11:37:57] "GET /images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 893 0.009828
-2014-11-26 11:38:03.355 2540 INFO glance.wsgi.server [579448c4-2505-4b24-9519-cb81cb74f170 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 127.0.0.1 - - [26/Nov/2014 11:38:03] "GET /images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 893 0.009381
-2014-11-26 11:39:58.512 2541 INFO glance.wsgi.server [1c78616d-8fa9-4edf-a4b3-1d36d3c19a5f 5757f53fc903478daa139a34e6d74ff1 cdd5e77fe2c440cf86afbf1d7b9653a4 - - -] 127.0.0.1 - - [26/Nov/2014 11:39:58] "GET /images/ba0dfa48-cbbc-48fe-8091-15f7151cef2e HTTP/1.1" 200 893 0.044161
+2014-11-28 23:21:43.669 10099 INFO keystonemiddleware.auth_token [-] Starting keystone auth_token middleware
+2014-11-28 23:21:43.670 10099 WARNING keystonemiddleware.auth_token [-] Configuring admin URI using auth fragments. This is deprecated, use 'identity_uri' instead.
+2014-11-28 23:21:43.672 10099 INFO keystonemiddleware.auth_token [-] Using /tmp/keystone-signing-RX7TIc as cache directory for signing certificate
+2014-11-28 23:21:43.673 10099 INFO glance.wsgi.server [-] Starting 2 workers
+2014-11-28 23:21:43.675 10099 INFO glance.wsgi.server [-] Started child 10106
+2014-11-28 23:21:43.675 10106 INFO glance.wsgi.server [-] (10106) wsgi starting up on http://0.0.0.0:9191/
+2014-11-28 23:21:43.677 10099 INFO glance.wsgi.server [-] Started child 10107
+2014-11-28 23:21:43.677 10107 INFO glance.wsgi.server [-] (10107) wsgi starting up on http://0.0.0.0:9191/
+2014-11-28 23:31:29.541 10106 INFO urllib3.connectionpool [-] Starting new HTTP connection (1): 10.0.1.111
+2014-11-28 23:31:29.556 10106 INFO keystonemiddleware.auth_token [-] Auth Token confirmed use of v3.0 apis
+2014-11-28 23:31:29.849 10106 INFO glance.wsgi.server [628d3e10-0dfb-4925-bb66-4a6a31623d71 6f069d8d16444a9098d8ab83c6f9368b 89820cf2cb0e408e82af2a651c0d6090 - - -] 127.0.0.1 - - [28/Nov/2014 23:31:29] "GET /images/detail?is_public=True&limit=20 HTTP/1.1" 200 203 0.328113
+2014-11-28 23:31:29.885 10106 INFO glance.wsgi.server [866ef572-6ecc-4582-aba2-2b746b36b6a8 6f069d8d16444a9098d8ab83c6f9368b 89820cf2cb0e408e82af2a651c0d6090 - - -] 127.0.0.1 - - [28/Nov/2014 23:31:29] "GET /images/detail?is_public=False&limit=20 HTTP/1.1" 200 203 0.023645
+2014-11-28 23:38:12.434 1022 INFO keystonemiddleware.auth_token [-] Starting keystone auth_token middleware
+2014-11-28 23:38:12.513 1022 WARNING keystonemiddleware.auth_token [-] Configuring admin URI using auth fragments. This is deprecated, use 'identity_uri' instead.
+2014-11-28 23:38:12.515 1022 INFO keystonemiddleware.auth_token [-] Using /tmp/keystone-signing-JDoSUK as cache directory for signing certificate
+2014-11-28 23:38:12.517 1022 INFO glance.wsgi.server [-] Starting 2 workers
+2014-11-28 23:38:12.522 1022 INFO glance.wsgi.server [-] Started child 3400
+2014-11-28 23:38:12.528 1022 INFO glance.wsgi.server [-] Started child 3401
+2014-11-28 23:38:12.562 3400 INFO glance.wsgi.server [-] (3400) wsgi starting up on http://0.0.0.0:9191/
+2014-11-28 23:38:12.578 3401 INFO glance.wsgi.server [-] (3401) wsgi starting up on http://0.0.0.0:9191/

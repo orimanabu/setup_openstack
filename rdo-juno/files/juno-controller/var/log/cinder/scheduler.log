@@ -1,18 +1,18 @@
-2014-11-26 02:00:37.828 10023 INFO cinder.service [-] Starting cinder-scheduler node (version 2014.2)
-2014-11-26 02:00:37.830 10023 INFO oslo.messaging._drivers.impl_rabbit [req-4495daa5-bb59-4e2c-ae23-693926cd91b6 - - - - -] Connecting to AMQP server on 10.0.1.111:5672
-2014-11-26 02:00:37.852 10023 INFO oslo.messaging._drivers.impl_rabbit [req-4495daa5-bb59-4e2c-ae23-693926cd91b6 - - - - -] Connected to AMQP server on 10.0.1.111:5672
-2014-11-26 02:00:38.175 10023 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
-2014-11-26 02:00:38.185 10023 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
-2014-11-26 10:48:19.276 10023 WARNING cinder.openstack.common.loopingcall [-] task <bound method Service.report_state of <cinder.service.Service object at 0x20d7a50>> run outlasted interval by 7.19 sec
-2014-11-26 10:49:44.226 10023 INFO cinder.openstack.common.service [-] Caught SIGTERM, exiting
-2014-11-26 10:50:40.395 998 INFO cinder.service [-] Starting cinder-scheduler node (version 2014.2)
-2014-11-26 10:50:40.462 998 INFO oslo.messaging._drivers.impl_rabbit [req-e25c803d-723b-4482-bbf5-96875f810ac4 - - - - -] Connecting to AMQP server on 10.0.1.111:5672
-2014-11-26 10:50:40.566 998 ERROR oslo.messaging._drivers.impl_rabbit [req-e25c803d-723b-4482-bbf5-96875f810ac4 - - - - -] AMQP server on 10.0.1.111:5672 is unreachable: [Errno 111] ECONNREFUSED. Trying again in 1 seconds.
-2014-11-26 10:50:41.577 998 INFO oslo.messaging._drivers.impl_rabbit [req-e25c803d-723b-4482-bbf5-96875f810ac4 - - - - -] Delaying reconnect for 1.0 seconds...
-2014-11-26 10:50:42.581 998 INFO oslo.messaging._drivers.impl_rabbit [req-e25c803d-723b-4482-bbf5-96875f810ac4 - - - - -] Connecting to AMQP server on 10.0.1.111:5672
-2014-11-26 10:50:42.588 998 ERROR oslo.messaging._drivers.impl_rabbit [req-e25c803d-723b-4482-bbf5-96875f810ac4 - - - - -] AMQP server on 10.0.1.111:5672 is unreachable: [Errno 111] ECONNREFUSED. Trying again in 3 seconds.
-2014-11-26 10:50:45.589 998 INFO oslo.messaging._drivers.impl_rabbit [req-e25c803d-723b-4482-bbf5-96875f810ac4 - - - - -] Delaying reconnect for 1.0 seconds...
-2014-11-26 10:50:46.592 998 INFO oslo.messaging._drivers.impl_rabbit [req-e25c803d-723b-4482-bbf5-96875f810ac4 - - - - -] Connecting to AMQP server on 10.0.1.111:5672
-2014-11-26 10:50:46.606 998 INFO oslo.messaging._drivers.impl_rabbit [req-e25c803d-723b-4482-bbf5-96875f810ac4 - - - - -] Connected to AMQP server on 10.0.1.111:5672
-2014-11-26 10:50:47.086 998 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
-2014-11-26 10:50:47.096 998 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
+2014-11-28 23:22:28.172 11152 INFO cinder.service [-] Starting cinder-scheduler node (version 2014.2)
+2014-11-28 23:22:28.173 11152 INFO oslo.messaging._drivers.impl_rabbit [req-a21305bf-eacb-422a-9ee9-cc9c1bc1291e - - - - -] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:22:28.189 11152 INFO oslo.messaging._drivers.impl_rabbit [req-a21305bf-eacb-422a-9ee9-cc9c1bc1291e - - - - -] Connected to AMQP server on 10.0.1.111:5672
+2014-11-28 23:22:28.515 11152 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:22:28.525 11152 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
+2014-11-28 23:33:49.781 11152 INFO cinder.openstack.common.service [-] Caught SIGTERM, exiting
+2014-11-28 23:38:09.189 1030 INFO cinder.service [-] Starting cinder-scheduler node (version 2014.2)
+2014-11-28 23:38:09.346 1030 INFO oslo.messaging._drivers.impl_rabbit [req-48fd83a1-ad78-41fa-847a-4be97ef7976f - - - - -] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:09.361 1030 ERROR oslo.messaging._drivers.impl_rabbit [req-48fd83a1-ad78-41fa-847a-4be97ef7976f - - - - -] AMQP server on 10.0.1.111:5672 is unreachable: [Errno 111] ECONNREFUSED. Trying again in 1 seconds.
+2014-11-28 23:38:10.644 1030 INFO oslo.messaging._drivers.impl_rabbit [req-48fd83a1-ad78-41fa-847a-4be97ef7976f - - - - -] Delaying reconnect for 1.0 seconds...
+2014-11-28 23:38:11.653 1030 INFO oslo.messaging._drivers.impl_rabbit [req-48fd83a1-ad78-41fa-847a-4be97ef7976f - - - - -] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:11.660 1030 ERROR oslo.messaging._drivers.impl_rabbit [req-48fd83a1-ad78-41fa-847a-4be97ef7976f - - - - -] AMQP server on 10.0.1.111:5672 is unreachable: [Errno 111] ECONNREFUSED. Trying again in 3 seconds.
+2014-11-28 23:38:14.661 1030 INFO oslo.messaging._drivers.impl_rabbit [req-48fd83a1-ad78-41fa-847a-4be97ef7976f - - - - -] Delaying reconnect for 1.0 seconds...
+2014-11-28 23:38:15.664 1030 INFO oslo.messaging._drivers.impl_rabbit [req-48fd83a1-ad78-41fa-847a-4be97ef7976f - - - - -] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:15.677 1030 INFO oslo.messaging._drivers.impl_rabbit [req-48fd83a1-ad78-41fa-847a-4be97ef7976f - - - - -] Connected to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:16.656 1030 WARNING oslo.db.sqlalchemy.session [-] SQL connection failed. 10 attempts left.
+2014-11-28 23:38:26.781 1030 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:26.791 1030 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672

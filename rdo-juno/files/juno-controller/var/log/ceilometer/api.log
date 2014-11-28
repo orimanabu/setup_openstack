@@ -1,0 +1,339 @@
+2014-11-28 23:31:27.864 18784 INFO ceilometer.api.app [-] Full WSGI config used: /etc/ceilometer/api_paste.ini
+2014-11-28 23:31:28.102 18784 INFO ceilometer.storage.mongo.utils [-] Connecting to mongodb on [('10.0.1.111', 27017)]
+2014-11-28 23:31:28.149 18784 INFO ceilometer.storage.mongo.utils [-] Connecting to mongodb on [('10.0.1.111', 27017)]
+2014-11-28 23:31:28.180 18784 INFO ceilometer.pipeline [-] Pipeline config: {'sources': [{'interval': 600, 'meters': ['*'], 'name': 'meter_source', 'sinks': ['meter_sink']}, {'interval': 600, 'meters': ['cpu'], 'name': 'cpu_source', 'sinks': ['cpu_sink']}, {'interval': 600, 'meters': ['disk.read.bytes', 'disk.read.requests', 'disk.write.bytes', 'disk.write.requests'], 'name': 'disk_source', 'sinks': ['disk_sink']}, {'interval': 600, 'meters': ['network.incoming.bytes', 'network.incoming.packets', 'network.outgoing.bytes', 'network.outgoing.packets'], 'name': 'network_source', 'sinks': ['network_sink']}], 'sinks': [{'publishers': ['notifier://'], 'transformers': None, 'name': 'meter_sink'}, {'publishers': ['notifier://'], 'transformers': [{'name': 'rate_of_change', 'parameters': {'target': {'scale': '100.0 / (10**9 * (resource_metadata.cpu_number or 1))', 'type': 'gauge', 'name': 'cpu_util', 'unit': '%'}}}], 'name': 'cpu_sink'}, {'publishers': ['notifier://'], 'transformers': [{'name': 'rate_of_change', 'parameters': {'source': {'map_from': {'name': 'disk\\.(read|write)\\.(bytes|requests)', 'unit': '(B|request)'}}, 'target': {'type': 'gauge', 'map_to': {'name': 'disk.\\1.\\2.rate', 'unit': '\\1/s'}}}}], 'name': 'disk_sink'}, {'publishers': ['notifier://'], 'transformers': [{'name': 'rate_of_change', 'parameters': {'source': {'map_from': {'name': 'network\\.(incoming|outgoing)\\.(bytes|packets)', 'unit': '(B|packet)'}}, 'target': {'type': 'gauge', 'map_to': {'name': 'network.\\1.\\2.rate', 'unit': '\\1/s'}}}}], 'name': 'network_sink'}]}
+2014-11-28 23:31:28.182 18784 INFO ceilometer.pipeline [-] detected decoupled pipeline config format
+2014-11-28 23:31:28.184 18784 INFO ceilometer.publisher.messaging [-] Publishing policy set to default
+2014-11-28 23:31:28.194 18784 INFO ceilometer.publisher.messaging [-] Publishing policy set to default
+2014-11-28 23:31:28.200 18784 INFO ceilometer.pipeline [-] Pipeline cpu_sink: Setup transformer instance rate_of_change with parameter {'target': {'scale': '100.0 / (10**9 * (resource_metadata.cpu_number or 1))', 'type': 'gauge', 'name': 'cpu_util', 'unit': '%'}}
+2014-11-28 23:31:28.200 18784 INFO ceilometer.publisher.messaging [-] Publishing policy set to default
+2014-11-28 23:31:28.205 18784 INFO ceilometer.pipeline [-] Pipeline disk_sink: Setup transformer instance rate_of_change with parameter {'source': {'map_from': {'name': 'disk\\.(read|write)\\.(bytes|requests)', 'unit': '(B|request)'}}, 'target': {'type': 'gauge', 'map_to': {'name': 'disk.\\1.\\2.rate', 'unit': '\\1/s'}}}
+2014-11-28 23:31:28.205 18784 INFO ceilometer.publisher.messaging [-] Publishing policy set to default
+2014-11-28 23:31:28.210 18784 INFO ceilometer.pipeline [-] Pipeline network_sink: Setup transformer instance rate_of_change with parameter {'source': {'map_from': {'name': 'network\\.(incoming|outgoing)\\.(bytes|packets)', 'unit': '(B|packet)'}}, 'target': {'type': 'gauge', 'map_to': {'name': 'network.\\1.\\2.rate', 'unit': '\\1/s'}}}
+2014-11-28 23:31:28.472 18784 WARNING keystonemiddleware.auth_token [-] Configuring admin URI using auth fragments. This is deprecated, use 'identity_uri' instead.
+2014-11-28 23:31:28.942 18784 INFO ceilometer.api.app [-] Starting server in PID 18784
+2014-11-28 23:31:28.942 18784 INFO ceilometer.api.app [-] Configuration:
+2014-11-28 23:31:28.943 18784 INFO ceilometer.api.app [-] ********************************************************************************
+2014-11-28 23:31:28.943 18784 INFO ceilometer.api.app [-] Configuration options gathered from:
+2014-11-28 23:31:28.943 18784 INFO ceilometer.api.app [-] command line args: ['--logfile', '/var/log/ceilometer/api.log']
+2014-11-28 23:31:28.944 18784 INFO ceilometer.api.app [-] config files: ['/usr/share/ceilometer/ceilometer-dist.conf', '/etc/ceilometer/ceilometer.conf']
+2014-11-28 23:31:28.944 18784 INFO ceilometer.api.app [-] ================================================================================
+2014-11-28 23:31:28.944 18784 INFO ceilometer.api.app [-] amqp_auto_delete               = False
+2014-11-28 23:31:28.944 18784 INFO ceilometer.api.app [-] amqp_durable_queues            = False
+2014-11-28 23:31:28.945 18784 INFO ceilometer.api.app [-] api_paste_config               = /etc/ceilometer/api_paste.ini
+2014-11-28 23:31:28.945 18784 INFO ceilometer.api.app [-] backdoor_port                  = None
+2014-11-28 23:31:28.945 18784 INFO ceilometer.api.app [-] collector_workers              = 1
+2014-11-28 23:31:28.946 18784 INFO ceilometer.api.app [-] config_dir                     = None
+2014-11-28 23:31:28.946 18784 INFO ceilometer.api.app [-] config_file                    = ['/usr/share/ceilometer/ceilometer-dist.conf', '/etc/ceilometer/ceilometer.conf']
+2014-11-28 23:31:28.948 18784 INFO ceilometer.api.app [-] control_exchange               = ceilometer
+2014-11-28 23:31:28.948 18784 INFO ceilometer.api.app [-] database_connection            = ****
+2014-11-28 23:31:28.948 18784 INFO ceilometer.api.app [-] debug                          = False
+2014-11-28 23:31:28.949 18784 INFO ceilometer.api.app [-] default_log_levels             = ['amqp=WARN', 'amqplib=WARN', 'boto=WARN', 'qpid=WARN', 'sqlalchemy=WARN', 'suds=INFO', 'oslo.messaging=INFO', 'iso8601=WARN', 'requests.packages.urllib3.connectionpool=WARN', 'urllib3.connectionpool=WARN', 'websocket=WARN', 'keystonemiddleware=WARN', 'routes.middleware=WARN', 'stevedore=WARN', 'stevedore=INFO', 'keystoneclient=INFO']
+2014-11-28 23:31:28.949 18784 INFO ceilometer.api.app [-] fake_rabbit                    = False
+2014-11-28 23:31:28.949 18784 INFO ceilometer.api.app [-] fatal_deprecations             = False
+2014-11-28 23:31:28.950 18784 INFO ceilometer.api.app [-] host                           = juno-controller.mgmt.local
+2014-11-28 23:31:28.950 18784 INFO ceilometer.api.app [-] instance_format                = [instance: %(uuid)s] 
+2014-11-28 23:31:28.950 18784 INFO ceilometer.api.app [-] instance_uuid_format           = [instance: %(uuid)s] 
+2014-11-28 23:31:28.951 18784 INFO ceilometer.api.app [-] kombu_reconnect_delay          = 1.0
+2014-11-28 23:31:28.951 18784 INFO ceilometer.api.app [-] kombu_ssl_ca_certs             = 
+2014-11-28 23:31:28.951 18784 INFO ceilometer.api.app [-] kombu_ssl_certfile             = 
+2014-11-28 23:31:28.952 18784 INFO ceilometer.api.app [-] kombu_ssl_keyfile              = 
+2014-11-28 23:31:28.952 18784 INFO ceilometer.api.app [-] kombu_ssl_version              = 
+2014-11-28 23:31:28.952 18784 INFO ceilometer.api.app [-] log_config_append              = None
+2014-11-28 23:31:28.952 18784 INFO ceilometer.api.app [-] log_date_format                = %Y-%m-%d %H:%M:%S
+2014-11-28 23:31:28.953 18784 INFO ceilometer.api.app [-] log_dir                        = /var/log/ceilometer
+2014-11-28 23:31:28.953 18784 INFO ceilometer.api.app [-] log_file                       = /var/log/ceilometer/api.log
+2014-11-28 23:31:28.953 18784 INFO ceilometer.api.app [-] log_format                     = None
+2014-11-28 23:31:28.953 18784 INFO ceilometer.api.app [-] logging_context_format_string  = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s [%(request_id)s %(user_identity)s] %(instance)s%(message)s
+2014-11-28 23:31:28.954 18784 INFO ceilometer.api.app [-] logging_debug_format_suffix    = %(funcName)s %(pathname)s:%(lineno)d
+2014-11-28 23:31:28.954 18784 INFO ceilometer.api.app [-] logging_default_format_string  = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s [-] %(instance)s%(message)s
+2014-11-28 23:31:28.955 18784 INFO ceilometer.api.app [-] logging_exception_prefix       = %(asctime)s.%(msecs)03d %(process)d TRACE %(name)s %(instance)s
+2014-11-28 23:31:28.955 18784 INFO ceilometer.api.app [-] memcached_servers              = None
+2014-11-28 23:31:28.955 18784 INFO ceilometer.api.app [-] notification_driver            = []
+2014-11-28 23:31:28.956 18784 INFO ceilometer.api.app [-] notification_topics            = ['notifications']
+2014-11-28 23:31:28.956 18784 INFO ceilometer.api.app [-] notification_workers           = 1
+2014-11-28 23:31:28.956 18784 INFO ceilometer.api.app [-] pipeline_cfg_file              = pipeline.yaml
+2014-11-28 23:31:28.956 18784 INFO ceilometer.api.app [-] policy_default_rule            = default
+2014-11-28 23:31:28.956 18784 INFO ceilometer.api.app [-] policy_file                    = policy.json
+2014-11-28 23:31:28.957 18784 INFO ceilometer.api.app [-] publish_errors                 = False
+2014-11-28 23:31:28.957 18784 INFO ceilometer.api.app [-] rabbit_ha_queues               = False
+2014-11-28 23:31:28.957 18784 INFO ceilometer.api.app [-] rabbit_host                    = 10.0.1.111
+2014-11-28 23:31:28.957 18784 INFO ceilometer.api.app [-] rabbit_hosts                   = ['10.0.1.111:5672']
+2014-11-28 23:31:28.958 18784 INFO ceilometer.api.app [-] rabbit_login_method            = AMQPLAIN
+2014-11-28 23:31:28.958 18784 INFO ceilometer.api.app [-] rabbit_max_retries             = 0
+2014-11-28 23:31:28.958 18784 INFO ceilometer.api.app [-] rabbit_password                = ****
+2014-11-28 23:31:28.958 18784 INFO ceilometer.api.app [-] rabbit_port                    = 5672
+2014-11-28 23:31:28.959 18784 INFO ceilometer.api.app [-] rabbit_retry_backoff           = 2
+2014-11-28 23:31:28.959 18784 INFO ceilometer.api.app [-] rabbit_retry_interval          = 1
+2014-11-28 23:31:28.959 18784 INFO ceilometer.api.app [-] rabbit_use_ssl                 = False
+2014-11-28 23:31:28.959 18784 INFO ceilometer.api.app [-] rabbit_userid                  = guest
+2014-11-28 23:31:28.959 18784 INFO ceilometer.api.app [-] rabbit_virtual_host            = /
+2014-11-28 23:31:28.960 18784 INFO ceilometer.api.app [-] rootwrap_config                = /etc/ceilometer/rootwrap.conf
+2014-11-28 23:31:28.960 18784 INFO ceilometer.api.app [-] rpc_backend                    = ceilometer.openstack.common.rpc.impl_kombu
+2014-11-28 23:31:28.960 18784 INFO ceilometer.api.app [-] rpc_conn_pool_size             = 30
+2014-11-28 23:31:28.960 18784 INFO ceilometer.api.app [-] sample_source                  = openstack
+2014-11-28 23:31:28.961 18784 INFO ceilometer.api.app [-] syslog_log_facility            = LOG_USER
+2014-11-28 23:31:28.961 18784 INFO ceilometer.api.app [-] transport_url                  = None
+2014-11-28 23:31:28.961 18784 INFO ceilometer.api.app [-] use_stderr                     = False
+2014-11-28 23:31:28.961 18784 INFO ceilometer.api.app [-] use_syslog                     = False
+2014-11-28 23:31:28.962 18784 INFO ceilometer.api.app [-] use_syslog_rfc_format          = False
+2014-11-28 23:31:28.962 18784 INFO ceilometer.api.app [-] verbose                        = True
+2014-11-28 23:31:28.962 18784 INFO ceilometer.api.app [-] publisher.metering_secret      = ****
+2014-11-28 23:31:28.962 18784 INFO ceilometer.api.app [-] publisher_rpc.metering_topic   = metering
+2014-11-28 23:31:28.963 18784 INFO ceilometer.api.app [-] alarm.evaluation_interval      = 60
+2014-11-28 23:31:28.963 18784 INFO ceilometer.api.app [-] alarm.notifier_rpc_topic       = alarm_notifier
+2014-11-28 23:31:28.963 18784 INFO ceilometer.api.app [-] alarm.partition_rpc_topic      = alarm_partition_coordination
+2014-11-28 23:31:28.964 18784 INFO ceilometer.api.app [-] alarm.project_alarm_quota      = None
+2014-11-28 23:31:28.964 18784 INFO ceilometer.api.app [-] alarm.record_history           = True
+2014-11-28 23:31:28.964 18784 INFO ceilometer.api.app [-] alarm.rest_notifier_certificate_file = 
+2014-11-28 23:31:28.964 18784 INFO ceilometer.api.app [-] alarm.rest_notifier_certificate_key = 
+2014-11-28 23:31:28.965 18784 INFO ceilometer.api.app [-] alarm.rest_notifier_max_retries = 0
+2014-11-28 23:31:28.966 18784 INFO ceilometer.api.app [-] alarm.rest_notifier_ssl_verify = True
+2014-11-28 23:31:28.966 18784 INFO ceilometer.api.app [-] alarm.user_alarm_quota         = None
+2014-11-28 23:31:28.966 18784 INFO ceilometer.api.app [-] database.alarm_connection      = None
+2014-11-28 23:31:28.967 18784 INFO ceilometer.api.app [-] database.backend               = sqlalchemy
+2014-11-28 23:31:28.967 18784 INFO ceilometer.api.app [-] database.connection            = ****
+2014-11-28 23:31:28.967 18784 INFO ceilometer.api.app [-] database.connection_debug      = 0
+2014-11-28 23:31:28.967 18784 INFO ceilometer.api.app [-] database.connection_trace      = False
+2014-11-28 23:31:28.968 18784 INFO ceilometer.api.app [-] database.db_inc_retry_interval = True
+2014-11-28 23:31:28.968 18784 INFO ceilometer.api.app [-] database.db_max_retries        = 20
+2014-11-28 23:31:28.968 18784 INFO ceilometer.api.app [-] database.db_max_retry_interval = 10
+2014-11-28 23:31:28.968 18784 INFO ceilometer.api.app [-] database.db_retry_interval     = 1
+2014-11-28 23:31:28.969 18784 INFO ceilometer.api.app [-] database.idle_timeout          = 3600
+2014-11-28 23:31:28.969 18784 INFO ceilometer.api.app [-] database.max_overflow          = None
+2014-11-28 23:31:28.969 18784 INFO ceilometer.api.app [-] database.max_pool_size         = None
+2014-11-28 23:31:28.970 18784 INFO ceilometer.api.app [-] database.max_retries           = 10
+2014-11-28 23:31:28.970 18784 INFO ceilometer.api.app [-] database.metering_connection   = None
+2014-11-28 23:31:28.970 18784 INFO ceilometer.api.app [-] database.min_pool_size         = 1
+2014-11-28 23:31:28.970 18784 INFO ceilometer.api.app [-] database.mysql_sql_mode        = TRADITIONAL
+2014-11-28 23:31:28.971 18784 INFO ceilometer.api.app [-] database.pool_timeout          = None
+2014-11-28 23:31:28.971 18784 INFO ceilometer.api.app [-] database.retry_interval        = 10
+2014-11-28 23:31:28.971 18784 INFO ceilometer.api.app [-] database.slave_connection      = ****
+2014-11-28 23:31:28.971 18784 INFO ceilometer.api.app [-] database.sqlite_db             = oslo.sqlite
+2014-11-28 23:31:28.972 18784 INFO ceilometer.api.app [-] database.sqlite_synchronous    = True
+2014-11-28 23:31:28.972 18784 INFO ceilometer.api.app [-] database.time_to_live          = -1
+2014-11-28 23:31:28.972 18784 INFO ceilometer.api.app [-] database.use_db_reconnect      = False
+2014-11-28 23:31:28.972 18784 INFO ceilometer.api.app [-] api.enable_reverse_dns_lookup  = False
+2014-11-28 23:31:28.973 18784 INFO ceilometer.api.app [-] api.host                       = 0.0.0.0
+2014-11-28 23:31:28.973 18784 INFO ceilometer.api.app [-] api.pecan_debug                = False
+2014-11-28 23:31:28.973 18784 INFO ceilometer.api.app [-] api.port                       = 8777
+2014-11-28 23:31:28.973 18784 INFO ceilometer.api.app [-] service_credentials.insecure   = False
+2014-11-28 23:31:28.974 18784 INFO ceilometer.api.app [-] service_credentials.os_auth_url = http://10.0.1.111:35357/v2.0
+2014-11-28 23:31:28.974 18784 INFO ceilometer.api.app [-] service_credentials.os_cacert  = None
+2014-11-28 23:31:28.974 18784 INFO ceilometer.api.app [-] service_credentials.os_endpoint_type = publicURL
+2014-11-28 23:31:28.974 18784 INFO ceilometer.api.app [-] service_credentials.os_password = ****
+2014-11-28 23:31:28.975 18784 INFO ceilometer.api.app [-] service_credentials.os_region_name = RegionOne
+2014-11-28 23:31:28.975 18784 INFO ceilometer.api.app [-] service_credentials.os_tenant_id = 
+2014-11-28 23:31:28.975 18784 INFO ceilometer.api.app [-] service_credentials.os_tenant_name = services
+2014-11-28 23:31:28.976 18784 INFO ceilometer.api.app [-] service_credentials.os_username = ceilometer
+2014-11-28 23:31:28.976 18784 INFO ceilometer.api.app [-] keystone_authtoken.admin_password = ****
+2014-11-28 23:31:29.012 18784 INFO ceilometer.api.app [-] keystone_authtoken.admin_tenant_name = services
+2014-11-28 23:31:29.013 18784 INFO ceilometer.api.app [-] keystone_authtoken.admin_token = ****
+2014-11-28 23:31:29.013 18784 INFO ceilometer.api.app [-] keystone_authtoken.admin_user  = ceilometer
+2014-11-28 23:31:29.013 18784 INFO ceilometer.api.app [-] keystone_authtoken.auth_admin_prefix = 
+2014-11-28 23:31:29.013 18784 INFO ceilometer.api.app [-] keystone_authtoken.auth_host   = 10.0.1.111
+2014-11-28 23:31:29.013 18784 INFO ceilometer.api.app [-] keystone_authtoken.auth_port   = 35357
+2014-11-28 23:31:29.014 18784 INFO ceilometer.api.app [-] keystone_authtoken.auth_protocol = http
+2014-11-28 23:31:29.014 18784 INFO ceilometer.api.app [-] keystone_authtoken.auth_uri    = http://10.0.1.111:5000/
+2014-11-28 23:31:29.014 18784 INFO ceilometer.api.app [-] keystone_authtoken.auth_version = None
+2014-11-28 23:31:29.014 18784 INFO ceilometer.api.app [-] keystone_authtoken.cache       = None
+2014-11-28 23:31:29.015 18784 INFO ceilometer.api.app [-] keystone_authtoken.cafile      = None
+2014-11-28 23:31:29.015 18784 INFO ceilometer.api.app [-] keystone_authtoken.certfile    = None
+2014-11-28 23:31:29.015 18784 INFO ceilometer.api.app [-] keystone_authtoken.check_revocations_for_cached = False
+2014-11-28 23:31:29.015 18784 INFO ceilometer.api.app [-] keystone_authtoken.delay_auth_decision = False
+2014-11-28 23:31:29.015 18784 INFO ceilometer.api.app [-] keystone_authtoken.enforce_token_bind = permissive
+2014-11-28 23:31:29.016 18784 INFO ceilometer.api.app [-] keystone_authtoken.hash_algorithms = ['md5']
+2014-11-28 23:31:29.016 18784 INFO ceilometer.api.app [-] keystone_authtoken.http_connect_timeout = None
+2014-11-28 23:31:29.016 18784 INFO ceilometer.api.app [-] keystone_authtoken.http_request_max_retries = 3
+2014-11-28 23:31:29.016 18784 INFO ceilometer.api.app [-] keystone_authtoken.identity_uri = None
+2014-11-28 23:31:29.016 18784 INFO ceilometer.api.app [-] keystone_authtoken.include_service_catalog = True
+2014-11-28 23:31:29.016 18784 INFO ceilometer.api.app [-] keystone_authtoken.insecure    = False
+2014-11-28 23:31:29.017 18784 INFO ceilometer.api.app [-] keystone_authtoken.keyfile     = None
+2014-11-28 23:31:29.017 18784 INFO ceilometer.api.app [-] keystone_authtoken.memcache_pool_conn_get_timeout = 10
+2014-11-28 23:31:29.017 18784 INFO ceilometer.api.app [-] keystone_authtoken.memcache_pool_dead_retry = 300
+2014-11-28 23:31:29.017 18784 INFO ceilometer.api.app [-] keystone_authtoken.memcache_pool_maxsize = 10
+2014-11-28 23:31:29.017 18784 INFO ceilometer.api.app [-] keystone_authtoken.memcache_pool_socket_timeout = 3
+2014-11-28 23:31:29.017 18784 INFO ceilometer.api.app [-] keystone_authtoken.memcache_pool_unused_timeout = 60
+2014-11-28 23:31:29.018 18784 INFO ceilometer.api.app [-] keystone_authtoken.memcache_secret_key = ****
+2014-11-28 23:31:29.018 18784 INFO ceilometer.api.app [-] keystone_authtoken.memcache_security_strategy = None
+2014-11-28 23:31:29.018 18784 INFO ceilometer.api.app [-] keystone_authtoken.memcache_use_advanced_pool = False
+2014-11-28 23:31:29.018 18784 INFO ceilometer.api.app [-] keystone_authtoken.memcached_servers = None
+2014-11-28 23:31:29.018 18784 INFO ceilometer.api.app [-] keystone_authtoken.revocation_cache_time = 10
+2014-11-28 23:31:29.018 18784 INFO ceilometer.api.app [-] keystone_authtoken.signing_dir = None
+2014-11-28 23:31:29.019 18784 INFO ceilometer.api.app [-] keystone_authtoken.token_cache_time = 300
+2014-11-28 23:31:29.019 18784 INFO ceilometer.api.app [-] publisher_notifier.metering_driver = messagingv2
+2014-11-28 23:31:29.019 18784 INFO ceilometer.api.app [-] publisher_notifier.metering_topic = metering
+2014-11-28 23:31:29.019 18784 INFO ceilometer.api.app [-] coordination.backend_url       = None
+2014-11-28 23:31:29.020 18784 INFO ceilometer.api.app [-] coordination.heartbeat         = 1.0
+2014-11-28 23:31:29.020 18784 INFO ceilometer.api.app [-] ********************************************************************************
+2014-11-28 23:31:29.020 18784 INFO ceilometer.api.app [-] serving on 0.0.0.0:8777, view at http://127.0.0.1:8777
+2014-11-28 23:38:09.454 1068 INFO ceilometer.api.app [-] Full WSGI config used: /etc/ceilometer/api_paste.ini
+2014-11-28 23:38:10.591 1068 INFO ceilometer.storage.mongo.utils [-] Connecting to mongodb on [('10.0.1.111', 27017)]
+2014-11-28 23:38:10.592 1068 WARNING ceilometer.storage.mongo.utils [-] Unable to connect to the database server: could not connect to 10.0.1.111:27017: [Errno 111] ECONNREFUSED. Trying again in 10 seconds.
+2014-11-28 23:38:20.612 1068 INFO ceilometer.storage.mongo.utils [-] Connecting to mongodb on [('10.0.1.111', 27017)]
+2014-11-28 23:38:20.637 1068 INFO ceilometer.pipeline [-] Pipeline config: {'sources': [{'interval': 600, 'meters': ['*'], 'name': 'meter_source', 'sinks': ['meter_sink']}, {'interval': 600, 'meters': ['cpu'], 'name': 'cpu_source', 'sinks': ['cpu_sink']}, {'interval': 600, 'meters': ['disk.read.bytes', 'disk.read.requests', 'disk.write.bytes', 'disk.write.requests'], 'name': 'disk_source', 'sinks': ['disk_sink']}, {'interval': 600, 'meters': ['network.incoming.bytes', 'network.incoming.packets', 'network.outgoing.bytes', 'network.outgoing.packets'], 'name': 'network_source', 'sinks': ['network_sink']}], 'sinks': [{'publishers': ['notifier://'], 'transformers': None, 'name': 'meter_sink'}, {'publishers': ['notifier://'], 'transformers': [{'name': 'rate_of_change', 'parameters': {'target': {'scale': '100.0 / (10**9 * (resource_metadata.cpu_number or 1))', 'type': 'gauge', 'name': 'cpu_util', 'unit': '%'}}}], 'name': 'cpu_sink'}, {'publishers': ['notifier://'], 'transformers': [{'name': 'rate_of_change', 'parameters': {'source': {'map_from': {'name': 'disk\\.(read|write)\\.(bytes|requests)', 'unit': '(B|request)'}}, 'target': {'type': 'gauge', 'map_to': {'name': 'disk.\\1.\\2.rate', 'unit': '\\1/s'}}}}], 'name': 'disk_sink'}, {'publishers': ['notifier://'], 'transformers': [{'name': 'rate_of_change', 'parameters': {'source': {'map_from': {'name': 'network\\.(incoming|outgoing)\\.(bytes|packets)', 'unit': '(B|packet)'}}, 'target': {'type': 'gauge', 'map_to': {'name': 'network.\\1.\\2.rate', 'unit': '\\1/s'}}}}], 'name': 'network_sink'}]}
+2014-11-28 23:38:20.640 1068 INFO ceilometer.pipeline [-] detected decoupled pipeline config format
+2014-11-28 23:38:20.645 1068 INFO ceilometer.publisher.messaging [-] Publishing policy set to default
+2014-11-28 23:38:20.658 1068 INFO ceilometer.publisher.messaging [-] Publishing policy set to default
+2014-11-28 23:38:20.668 1068 INFO ceilometer.pipeline [-] Pipeline cpu_sink: Setup transformer instance rate_of_change with parameter {'target': {'scale': '100.0 / (10**9 * (resource_metadata.cpu_number or 1))', 'type': 'gauge', 'name': 'cpu_util', 'unit': '%'}}
+2014-11-28 23:38:20.669 1068 INFO ceilometer.publisher.messaging [-] Publishing policy set to default
+2014-11-28 23:38:20.677 1068 INFO ceilometer.pipeline [-] Pipeline disk_sink: Setup transformer instance rate_of_change with parameter {'source': {'map_from': {'name': 'disk\\.(read|write)\\.(bytes|requests)', 'unit': '(B|request)'}}, 'target': {'type': 'gauge', 'map_to': {'name': 'disk.\\1.\\2.rate', 'unit': '\\1/s'}}}
+2014-11-28 23:38:20.678 1068 INFO ceilometer.publisher.messaging [-] Publishing policy set to default
+2014-11-28 23:38:20.686 1068 INFO ceilometer.pipeline [-] Pipeline network_sink: Setup transformer instance rate_of_change with parameter {'source': {'map_from': {'name': 'network\\.(incoming|outgoing)\\.(bytes|packets)', 'unit': '(B|packet)'}}, 'target': {'type': 'gauge', 'map_to': {'name': 'network.\\1.\\2.rate', 'unit': '\\1/s'}}}
+2014-11-28 23:38:20.863 1068 WARNING keystonemiddleware.auth_token [-] Configuring admin URI using auth fragments. This is deprecated, use 'identity_uri' instead.
+2014-11-28 23:38:20.869 1068 INFO ceilometer.api.app [-] Starting server in PID 1068
+2014-11-28 23:38:20.869 1068 INFO ceilometer.api.app [-] Configuration:
+2014-11-28 23:38:20.869 1068 INFO ceilometer.api.app [-] ********************************************************************************
+2014-11-28 23:38:20.869 1068 INFO ceilometer.api.app [-] Configuration options gathered from:
+2014-11-28 23:38:20.869 1068 INFO ceilometer.api.app [-] command line args: ['--logfile', '/var/log/ceilometer/api.log']
+2014-11-28 23:38:20.870 1068 INFO ceilometer.api.app [-] config files: ['/usr/share/ceilometer/ceilometer-dist.conf', '/etc/ceilometer/ceilometer.conf']
+2014-11-28 23:38:20.870 1068 INFO ceilometer.api.app [-] ================================================================================
+2014-11-28 23:38:20.870 1068 INFO ceilometer.api.app [-] amqp_auto_delete               = False
+2014-11-28 23:38:20.870 1068 INFO ceilometer.api.app [-] amqp_durable_queues            = False
+2014-11-28 23:38:20.870 1068 INFO ceilometer.api.app [-] api_paste_config               = /etc/ceilometer/api_paste.ini
+2014-11-28 23:38:20.871 1068 INFO ceilometer.api.app [-] backdoor_port                  = None
+2014-11-28 23:38:20.871 1068 INFO ceilometer.api.app [-] collector_workers              = 1
+2014-11-28 23:38:20.871 1068 INFO ceilometer.api.app [-] config_dir                     = None
+2014-11-28 23:38:20.871 1068 INFO ceilometer.api.app [-] config_file                    = ['/usr/share/ceilometer/ceilometer-dist.conf', '/etc/ceilometer/ceilometer.conf']
+2014-11-28 23:38:20.871 1068 INFO ceilometer.api.app [-] control_exchange               = ceilometer
+2014-11-28 23:38:20.871 1068 INFO ceilometer.api.app [-] database_connection            = ****
+2014-11-28 23:38:20.871 1068 INFO ceilometer.api.app [-] debug                          = False
+2014-11-28 23:38:20.872 1068 INFO ceilometer.api.app [-] default_log_levels             = ['amqp=WARN', 'amqplib=WARN', 'boto=WARN', 'qpid=WARN', 'sqlalchemy=WARN', 'suds=INFO', 'oslo.messaging=INFO', 'iso8601=WARN', 'requests.packages.urllib3.connectionpool=WARN', 'urllib3.connectionpool=WARN', 'websocket=WARN', 'keystonemiddleware=WARN', 'routes.middleware=WARN', 'stevedore=WARN', 'stevedore=INFO', 'keystoneclient=INFO']
+2014-11-28 23:38:20.872 1068 INFO ceilometer.api.app [-] fake_rabbit                    = False
+2014-11-28 23:38:20.872 1068 INFO ceilometer.api.app [-] fatal_deprecations             = False
+2014-11-28 23:38:20.872 1068 INFO ceilometer.api.app [-] host                           = juno-controller.mgmt.local
+2014-11-28 23:38:20.872 1068 INFO ceilometer.api.app [-] instance_format                = [instance: %(uuid)s] 
+2014-11-28 23:38:20.872 1068 INFO ceilometer.api.app [-] instance_uuid_format           = [instance: %(uuid)s] 
+2014-11-28 23:38:20.873 1068 INFO ceilometer.api.app [-] kombu_reconnect_delay          = 1.0
+2014-11-28 23:38:20.873 1068 INFO ceilometer.api.app [-] kombu_ssl_ca_certs             = 
+2014-11-28 23:38:20.873 1068 INFO ceilometer.api.app [-] kombu_ssl_certfile             = 
+2014-11-28 23:38:20.873 1068 INFO ceilometer.api.app [-] kombu_ssl_keyfile              = 
+2014-11-28 23:38:20.873 1068 INFO ceilometer.api.app [-] kombu_ssl_version              = 
+2014-11-28 23:38:20.873 1068 INFO ceilometer.api.app [-] log_config_append              = None
+2014-11-28 23:38:20.873 1068 INFO ceilometer.api.app [-] log_date_format                = %Y-%m-%d %H:%M:%S
+2014-11-28 23:38:20.874 1068 INFO ceilometer.api.app [-] log_dir                        = /var/log/ceilometer
+2014-11-28 23:38:20.874 1068 INFO ceilometer.api.app [-] log_file                       = /var/log/ceilometer/api.log
+2014-11-28 23:38:20.874 1068 INFO ceilometer.api.app [-] log_format                     = None
+2014-11-28 23:38:20.874 1068 INFO ceilometer.api.app [-] logging_context_format_string  = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s [%(request_id)s %(user_identity)s] %(instance)s%(message)s
+2014-11-28 23:38:20.875 1068 INFO ceilometer.api.app [-] logging_debug_format_suffix    = %(funcName)s %(pathname)s:%(lineno)d
+2014-11-28 23:38:20.875 1068 INFO ceilometer.api.app [-] logging_default_format_string  = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s [-] %(instance)s%(message)s
+2014-11-28 23:38:20.875 1068 INFO ceilometer.api.app [-] logging_exception_prefix       = %(asctime)s.%(msecs)03d %(process)d TRACE %(name)s %(instance)s
+2014-11-28 23:38:20.875 1068 INFO ceilometer.api.app [-] memcached_servers              = None
+2014-11-28 23:38:20.875 1068 INFO ceilometer.api.app [-] notification_driver            = []
+2014-11-28 23:38:20.876 1068 INFO ceilometer.api.app [-] notification_topics            = ['notifications']
+2014-11-28 23:38:20.876 1068 INFO ceilometer.api.app [-] notification_workers           = 1
+2014-11-28 23:38:20.876 1068 INFO ceilometer.api.app [-] pipeline_cfg_file              = pipeline.yaml
+2014-11-28 23:38:20.876 1068 INFO ceilometer.api.app [-] policy_default_rule            = default
+2014-11-28 23:38:20.876 1068 INFO ceilometer.api.app [-] policy_file                    = policy.json
+2014-11-28 23:38:20.877 1068 INFO ceilometer.api.app [-] publish_errors                 = False
+2014-11-28 23:38:20.877 1068 INFO ceilometer.api.app [-] rabbit_ha_queues               = False
+2014-11-28 23:38:20.877 1068 INFO ceilometer.api.app [-] rabbit_host                    = 10.0.1.111
+2014-11-28 23:38:20.877 1068 INFO ceilometer.api.app [-] rabbit_hosts                   = ['10.0.1.111:5672']
+2014-11-28 23:38:20.877 1068 INFO ceilometer.api.app [-] rabbit_login_method            = AMQPLAIN
+2014-11-28 23:38:20.877 1068 INFO ceilometer.api.app [-] rabbit_max_retries             = 0
+2014-11-28 23:38:20.878 1068 INFO ceilometer.api.app [-] rabbit_password                = ****
+2014-11-28 23:38:20.878 1068 INFO ceilometer.api.app [-] rabbit_port                    = 5672
+2014-11-28 23:38:20.878 1068 INFO ceilometer.api.app [-] rabbit_retry_backoff           = 2
+2014-11-28 23:38:20.878 1068 INFO ceilometer.api.app [-] rabbit_retry_interval          = 1
+2014-11-28 23:38:20.879 1068 INFO ceilometer.api.app [-] rabbit_use_ssl                 = False
+2014-11-28 23:38:20.879 1068 INFO ceilometer.api.app [-] rabbit_userid                  = guest
+2014-11-28 23:38:20.879 1068 INFO ceilometer.api.app [-] rabbit_virtual_host            = /
+2014-11-28 23:38:20.879 1068 INFO ceilometer.api.app [-] rootwrap_config                = /etc/ceilometer/rootwrap.conf
+2014-11-28 23:38:20.879 1068 INFO ceilometer.api.app [-] rpc_backend                    = ceilometer.openstack.common.rpc.impl_kombu
+2014-11-28 23:38:20.879 1068 INFO ceilometer.api.app [-] rpc_conn_pool_size             = 30
+2014-11-28 23:38:20.880 1068 INFO ceilometer.api.app [-] sample_source                  = openstack
+2014-11-28 23:38:20.880 1068 INFO ceilometer.api.app [-] syslog_log_facility            = LOG_USER
+2014-11-28 23:38:20.880 1068 INFO ceilometer.api.app [-] transport_url                  = None
+2014-11-28 23:38:20.880 1068 INFO ceilometer.api.app [-] use_stderr                     = False
+2014-11-28 23:38:20.880 1068 INFO ceilometer.api.app [-] use_syslog                     = False
+2014-11-28 23:38:20.880 1068 INFO ceilometer.api.app [-] use_syslog_rfc_format          = False
+2014-11-28 23:38:20.881 1068 INFO ceilometer.api.app [-] verbose                        = True
+2014-11-28 23:38:20.881 1068 INFO ceilometer.api.app [-] publisher.metering_secret      = ****
+2014-11-28 23:38:20.881 1068 INFO ceilometer.api.app [-] publisher_rpc.metering_topic   = metering
+2014-11-28 23:38:20.881 1068 INFO ceilometer.api.app [-] alarm.evaluation_interval      = 60
+2014-11-28 23:38:20.881 1068 INFO ceilometer.api.app [-] alarm.notifier_rpc_topic       = alarm_notifier
+2014-11-28 23:38:20.881 1068 INFO ceilometer.api.app [-] alarm.partition_rpc_topic      = alarm_partition_coordination
+2014-11-28 23:38:20.882 1068 INFO ceilometer.api.app [-] alarm.project_alarm_quota      = None
+2014-11-28 23:38:20.882 1068 INFO ceilometer.api.app [-] alarm.record_history           = True
+2014-11-28 23:38:20.882 1068 INFO ceilometer.api.app [-] alarm.rest_notifier_certificate_file = 
+2014-11-28 23:38:20.882 1068 INFO ceilometer.api.app [-] alarm.rest_notifier_certificate_key = 
+2014-11-28 23:38:20.882 1068 INFO ceilometer.api.app [-] alarm.rest_notifier_max_retries = 0
+2014-11-28 23:38:20.882 1068 INFO ceilometer.api.app [-] alarm.rest_notifier_ssl_verify = True
+2014-11-28 23:38:20.882 1068 INFO ceilometer.api.app [-] alarm.user_alarm_quota         = None
+2014-11-28 23:38:20.883 1068 INFO ceilometer.api.app [-] database.alarm_connection      = None
+2014-11-28 23:38:20.883 1068 INFO ceilometer.api.app [-] database.backend               = sqlalchemy
+2014-11-28 23:38:20.883 1068 INFO ceilometer.api.app [-] database.connection            = ****
+2014-11-28 23:38:20.883 1068 INFO ceilometer.api.app [-] database.connection_debug      = 0
+2014-11-28 23:38:20.883 1068 INFO ceilometer.api.app [-] database.connection_trace      = False
+2014-11-28 23:38:20.883 1068 INFO ceilometer.api.app [-] database.db_inc_retry_interval = True
+2014-11-28 23:38:20.883 1068 INFO ceilometer.api.app [-] database.db_max_retries        = 20
+2014-11-28 23:38:20.884 1068 INFO ceilometer.api.app [-] database.db_max_retry_interval = 10
+2014-11-28 23:38:20.884 1068 INFO ceilometer.api.app [-] database.db_retry_interval     = 1
+2014-11-28 23:38:20.884 1068 INFO ceilometer.api.app [-] database.idle_timeout          = 3600
+2014-11-28 23:38:20.884 1068 INFO ceilometer.api.app [-] database.max_overflow          = None
+2014-11-28 23:38:20.884 1068 INFO ceilometer.api.app [-] database.max_pool_size         = None
+2014-11-28 23:38:20.884 1068 INFO ceilometer.api.app [-] database.max_retries           = 10
+2014-11-28 23:38:20.884 1068 INFO ceilometer.api.app [-] database.metering_connection   = None
+2014-11-28 23:38:20.885 1068 INFO ceilometer.api.app [-] database.min_pool_size         = 1
+2014-11-28 23:38:20.885 1068 INFO ceilometer.api.app [-] database.mysql_sql_mode        = TRADITIONAL
+2014-11-28 23:38:20.885 1068 INFO ceilometer.api.app [-] database.pool_timeout          = None
+2014-11-28 23:38:20.885 1068 INFO ceilometer.api.app [-] database.retry_interval        = 10
+2014-11-28 23:38:20.886 1068 INFO ceilometer.api.app [-] database.slave_connection      = ****
+2014-11-28 23:38:20.886 1068 INFO ceilometer.api.app [-] database.sqlite_db             = oslo.sqlite
+2014-11-28 23:38:20.886 1068 INFO ceilometer.api.app [-] database.sqlite_synchronous    = True
+2014-11-28 23:38:20.886 1068 INFO ceilometer.api.app [-] database.time_to_live          = -1
+2014-11-28 23:38:20.886 1068 INFO ceilometer.api.app [-] database.use_db_reconnect      = False
+2014-11-28 23:38:20.886 1068 INFO ceilometer.api.app [-] api.enable_reverse_dns_lookup  = False
+2014-11-28 23:38:20.886 1068 INFO ceilometer.api.app [-] api.host                       = 0.0.0.0
+2014-11-28 23:38:20.887 1068 INFO ceilometer.api.app [-] api.pecan_debug                = False
+2014-11-28 23:38:20.887 1068 INFO ceilometer.api.app [-] api.port                       = 8777
+2014-11-28 23:38:20.887 1068 INFO ceilometer.api.app [-] service_credentials.insecure   = False
+2014-11-28 23:38:20.887 1068 INFO ceilometer.api.app [-] service_credentials.os_auth_url = http://10.0.1.111:35357/v2.0
+2014-11-28 23:38:20.887 1068 INFO ceilometer.api.app [-] service_credentials.os_cacert  = None
+2014-11-28 23:38:20.887 1068 INFO ceilometer.api.app [-] service_credentials.os_endpoint_type = publicURL
+2014-11-28 23:38:20.887 1068 INFO ceilometer.api.app [-] service_credentials.os_password = ****
+2014-11-28 23:38:20.888 1068 INFO ceilometer.api.app [-] service_credentials.os_region_name = RegionOne
+2014-11-28 23:38:20.888 1068 INFO ceilometer.api.app [-] service_credentials.os_tenant_id = 
+2014-11-28 23:38:20.888 1068 INFO ceilometer.api.app [-] service_credentials.os_tenant_name = services
+2014-11-28 23:38:20.888 1068 INFO ceilometer.api.app [-] service_credentials.os_username = ceilometer
+2014-11-28 23:38:20.888 1068 INFO ceilometer.api.app [-] keystone_authtoken.admin_password = ****
+2014-11-28 23:38:20.888 1068 INFO ceilometer.api.app [-] keystone_authtoken.admin_tenant_name = services
+2014-11-28 23:38:20.888 1068 INFO ceilometer.api.app [-] keystone_authtoken.admin_token = ****
+2014-11-28 23:38:20.889 1068 INFO ceilometer.api.app [-] keystone_authtoken.admin_user  = ceilometer
+2014-11-28 23:38:20.889 1068 INFO ceilometer.api.app [-] keystone_authtoken.auth_admin_prefix = 
+2014-11-28 23:38:20.889 1068 INFO ceilometer.api.app [-] keystone_authtoken.auth_host   = 10.0.1.111
+2014-11-28 23:38:20.889 1068 INFO ceilometer.api.app [-] keystone_authtoken.auth_port   = 35357
+2014-11-28 23:38:20.889 1068 INFO ceilometer.api.app [-] keystone_authtoken.auth_protocol = http
+2014-11-28 23:38:20.889 1068 INFO ceilometer.api.app [-] keystone_authtoken.auth_uri    = http://10.0.1.111:5000/
+2014-11-28 23:38:20.889 1068 INFO ceilometer.api.app [-] keystone_authtoken.auth_version = None
+2014-11-28 23:38:20.890 1068 INFO ceilometer.api.app [-] keystone_authtoken.cache       = None
+2014-11-28 23:38:20.890 1068 INFO ceilometer.api.app [-] keystone_authtoken.cafile      = None
+2014-11-28 23:38:20.890 1068 INFO ceilometer.api.app [-] keystone_authtoken.certfile    = None
+2014-11-28 23:38:20.890 1068 INFO ceilometer.api.app [-] keystone_authtoken.check_revocations_for_cached = False
+2014-11-28 23:38:20.890 1068 INFO ceilometer.api.app [-] keystone_authtoken.delay_auth_decision = False
+2014-11-28 23:38:20.890 1068 INFO ceilometer.api.app [-] keystone_authtoken.enforce_token_bind = permissive
+2014-11-28 23:38:20.890 1068 INFO ceilometer.api.app [-] keystone_authtoken.hash_algorithms = ['md5']
+2014-11-28 23:38:20.891 1068 INFO ceilometer.api.app [-] keystone_authtoken.http_connect_timeout = None
+2014-11-28 23:38:20.891 1068 INFO ceilometer.api.app [-] keystone_authtoken.http_request_max_retries = 3
+2014-11-28 23:38:20.891 1068 INFO ceilometer.api.app [-] keystone_authtoken.identity_uri = None
+2014-11-28 23:38:20.891 1068 INFO ceilometer.api.app [-] keystone_authtoken.include_service_catalog = True
+2014-11-28 23:38:20.891 1068 INFO ceilometer.api.app [-] keystone_authtoken.insecure    = False
+2014-11-28 23:38:20.891 1068 INFO ceilometer.api.app [-] keystone_authtoken.keyfile     = None
+2014-11-28 23:38:20.891 1068 INFO ceilometer.api.app [-] keystone_authtoken.memcache_pool_conn_get_timeout = 10
+2014-11-28 23:38:20.891 1068 INFO ceilometer.api.app [-] keystone_authtoken.memcache_pool_dead_retry = 300
+2014-11-28 23:38:20.892 1068 INFO ceilometer.api.app [-] keystone_authtoken.memcache_pool_maxsize = 10
+2014-11-28 23:38:20.892 1068 INFO ceilometer.api.app [-] keystone_authtoken.memcache_pool_socket_timeout = 3
+2014-11-28 23:38:20.892 1068 INFO ceilometer.api.app [-] keystone_authtoken.memcache_pool_unused_timeout = 60
+2014-11-28 23:38:20.892 1068 INFO ceilometer.api.app [-] keystone_authtoken.memcache_secret_key = ****
+2014-11-28 23:38:20.892 1068 INFO ceilometer.api.app [-] keystone_authtoken.memcache_security_strategy = None
+2014-11-28 23:38:20.892 1068 INFO ceilometer.api.app [-] keystone_authtoken.memcache_use_advanced_pool = False
+2014-11-28 23:38:20.892 1068 INFO ceilometer.api.app [-] keystone_authtoken.memcached_servers = None
+2014-11-28 23:38:20.892 1068 INFO ceilometer.api.app [-] keystone_authtoken.revocation_cache_time = 10
+2014-11-28 23:38:20.892 1068 INFO ceilometer.api.app [-] keystone_authtoken.signing_dir = None
+2014-11-28 23:38:20.893 1068 INFO ceilometer.api.app [-] keystone_authtoken.token_cache_time = 300
+2014-11-28 23:38:20.893 1068 INFO ceilometer.api.app [-] publisher_notifier.metering_driver = messagingv2
+2014-11-28 23:38:20.893 1068 INFO ceilometer.api.app [-] publisher_notifier.metering_topic = metering
+2014-11-28 23:38:20.893 1068 INFO ceilometer.api.app [-] coordination.backend_url       = None
+2014-11-28 23:38:20.893 1068 INFO ceilometer.api.app [-] coordination.heartbeat         = 1.0
+2014-11-28 23:38:20.893 1068 INFO ceilometer.api.app [-] ********************************************************************************
+2014-11-28 23:38:20.894 1068 INFO ceilometer.api.app [-] serving on 0.0.0.0:8777, view at http://127.0.0.1:8777

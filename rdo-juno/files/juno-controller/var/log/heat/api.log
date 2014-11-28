@@ -1,0 +1,10 @@
+2014-11-28 23:30:25.799 17369 INFO keystonemiddleware.auth_token [-] Starting keystone auth_token middleware
+2014-11-28 23:30:25.800 17369 WARNING keystonemiddleware.auth_token [-] Configuring admin URI using auth fragments. This is deprecated, use 'identity_uri' instead.
+2014-11-28 23:30:25.801 17369 INFO keystonemiddleware.auth_token [-] Using /tmp/keystone-signing-heat as cache directory for signing certificate
+2014-11-28 23:30:25.803 17369 INFO heat.api [-] Starting Heat ReST API on 0.0.0.0:8004
+2014-11-28 23:30:25.806 17369 INFO eventlet.wsgi.server [-] Starting single process server
+2014-11-28 23:38:13.736 1058 INFO keystonemiddleware.auth_token [-] Starting keystone auth_token middleware
+2014-11-28 23:38:13.747 1058 WARNING keystonemiddleware.auth_token [-] Configuring admin URI using auth fragments. This is deprecated, use 'identity_uri' instead.
+2014-11-28 23:38:13.750 1058 INFO keystonemiddleware.auth_token [-] Using /tmp/keystone-signing-heat as cache directory for signing certificate
+2014-11-28 23:38:13.752 1058 INFO heat.api [-] Starting Heat ReST API on 0.0.0.0:8004
+2014-11-28 23:38:13.755 1058 INFO eventlet.wsgi.server [-] Starting single process server

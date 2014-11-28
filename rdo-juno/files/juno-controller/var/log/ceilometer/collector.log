@@ -1,0 +1,19 @@
+2014-11-28 23:31:26.088 18684 INFO ceilometer.openstack.common.service [-] Starting 1 workers
+2014-11-28 23:31:26.090 18684 INFO ceilometer.openstack.common.service [-] Started child 18704
+2014-11-28 23:31:26.144 18704 INFO ceilometer.storage.mongo.utils [-] Connecting to mongodb on [('10.0.1.111', 27017)]
+2014-11-28 23:31:26.197 18704 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:31:26.217 18704 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
+2014-11-28 23:31:26.224 18704 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:31:26.247 18704 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
+2014-11-28 23:33:49.957 18684 INFO ceilometer.openstack.common.service [-] Caught SIGTERM, stopping children
+2014-11-28 23:33:49.958 18684 INFO ceilometer.openstack.common.service [-] Waiting on 1 children to exit
+2014-11-28 23:33:49.968 18704 INFO ceilometer.openstack.common.service [-] Child caught SIGTERM, exiting
+2014-11-28 23:33:50.100 18684 INFO ceilometer.openstack.common.service [-] Child 18704 exited with status 1
+2014-11-28 23:38:05.965 1065 INFO ceilometer.openstack.common.service [-] Starting 1 workers
+2014-11-28 23:38:06.022 1065 INFO ceilometer.openstack.common.service [-] Started child 1772
+2014-11-28 23:38:07.244 1772 INFO ceilometer.storage.mongo.utils [-] Connecting to mongodb on [('10.0.1.111', 27017)]
+2014-11-28 23:38:07.247 1772 WARNING ceilometer.storage.mongo.utils [-] Unable to connect to the database server: could not connect to 10.0.1.111:27017: [Errno 111] ECONNREFUSED. Trying again in 10 seconds.
+2014-11-28 23:38:17.306 1772 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:17.326 1772 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:17.335 1772 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:17.349 1772 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672

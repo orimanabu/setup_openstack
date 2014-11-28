@@ -1,8 +1,8 @@
-2014-11-26 02:01:47.630 11351 AUDIT nova.service [-] Starting consoleauth node (version 2014.2-2.el7.centos)
-2014-11-26 02:01:48.105 11351 INFO oslo.messaging._drivers.impl_rabbit [req-a1feb079-ff8f-40d0-85df-6124722d9fd8 ] Connecting to AMQP server on 10.0.1.111:5672
-2014-11-26 02:01:48.120 11351 INFO oslo.messaging._drivers.impl_rabbit [req-a1feb079-ff8f-40d0-85df-6124722d9fd8 ] Connected to AMQP server on 10.0.1.111:5672
-2014-11-26 10:49:44.328 11351 INFO nova.openstack.common.service [-] Caught SIGTERM, exiting
-2014-11-26 10:50:41.709 1012 AUDIT nova.service [-] Starting consoleauth node (version 2014.2-2.el7.centos)
-2014-11-26 10:50:43.439 1012 WARNING oslo.db.sqlalchemy.session [req-6b8fb7b6-6908-4e5e-b419-6af13666fff7 ] SQL connection failed. -1 attempts left.
-2014-11-26 10:50:53.785 1012 INFO oslo.messaging._drivers.impl_rabbit [req-6b8fb7b6-6908-4e5e-b419-6af13666fff7 ] Connecting to AMQP server on 10.0.1.111:5672
-2014-11-26 10:50:53.825 1012 INFO oslo.messaging._drivers.impl_rabbit [req-6b8fb7b6-6908-4e5e-b419-6af13666fff7 ] Connected to AMQP server on 10.0.1.111:5672
+2014-11-28 23:23:32.685 12426 AUDIT nova.service [-] Starting consoleauth node (version 2014.2-2.el7.centos)
+2014-11-28 23:23:33.204 12426 INFO oslo.messaging._drivers.impl_rabbit [req-e8db5874-e15b-4e96-814d-e6cc897b74f4 ] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:23:33.223 12426 INFO oslo.messaging._drivers.impl_rabbit [req-e8db5874-e15b-4e96-814d-e6cc897b74f4 ] Connected to AMQP server on 10.0.1.111:5672
+2014-11-28 23:33:49.778 12426 INFO nova.openstack.common.service [-] Caught SIGTERM, exiting
+2014-11-28 23:38:11.939 1035 AUDIT nova.service [-] Starting consoleauth node (version 2014.2-2.el7.centos)
+2014-11-28 23:38:14.401 1035 WARNING oslo.db.sqlalchemy.session [req-ec8e483d-ab97-413b-8134-f2187aa61eb0 ] SQL connection failed. -1 attempts left.
+2014-11-28 23:38:24.766 1035 INFO oslo.messaging._drivers.impl_rabbit [req-ec8e483d-ab97-413b-8134-f2187aa61eb0 ] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:24.808 1035 INFO oslo.messaging._drivers.impl_rabbit [req-ec8e483d-ab97-413b-8134-f2187aa61eb0 ] Connected to AMQP server on 10.0.1.111:5672

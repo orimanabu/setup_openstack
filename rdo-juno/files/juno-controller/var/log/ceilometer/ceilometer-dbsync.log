@@ -1,0 +1,2 @@
+2014-11-28 23:31:24.893 18592 INFO ceilometer.storage.mongo.utils [-] Connecting to mongodb on [('10.0.1.111', 27017)]
+2014-11-28 23:31:25.023 18592 INFO ceilometer.storage.mongo.utils [-] Connecting to mongodb on [('10.0.1.111', 27017)]

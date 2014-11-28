@@ -1,0 +1,77 @@
+2014-11-28 23:31:28.723 18814 ERROR ceilometer.alarm.service [-] alarm evaluation cycle failed
+2014-11-28 23:31:28.723 18814 TRACE ceilometer.alarm.service Traceback (most recent call last):
+2014-11-28 23:31:28.723 18814 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/ceilometer/alarm/service.py", line 92, in _evaluate_assigned_alarms
+2014-11-28 23:31:28.723 18814 TRACE ceilometer.alarm.service     alarms = self._assigned_alarms()
+2014-11-28 23:31:28.723 18814 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/ceilometer/alarm/service.py", line 174, in _assigned_alarms
+2014-11-28 23:31:28.723 18814 TRACE ceilometer.alarm.service     'value': True}])
+2014-11-28 23:31:28.723 18814 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/ceilometerclient/v2/alarms.py", line 80, in list
+2014-11-28 23:31:28.723 18814 TRACE ceilometer.alarm.service     return self._list(options.build_url(self._path(), q))
+2014-11-28 23:31:28.723 18814 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/ceilometerclient/common/base.py", line 59, in _list
+2014-11-28 23:31:28.723 18814 TRACE ceilometer.alarm.service     resp = self.api.get(url)
+2014-11-28 23:31:28.723 18814 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/ceilometerclient/openstack/common/apiclient/client.py", line 334, in get
+2014-11-28 23:31:28.723 18814 TRACE ceilometer.alarm.service     return self.client_request("GET", url, **kwargs)
+2014-11-28 23:31:28.723 18814 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/ceilometerclient/openstack/common/apiclient/client.py", line 328, in client_request
+2014-11-28 23:31:28.723 18814 TRACE ceilometer.alarm.service     self, method, url, **kwargs)
+2014-11-28 23:31:28.723 18814 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/ceilometerclient/openstack/common/apiclient/client.py", line 244, in client_request
+2014-11-28 23:31:28.723 18814 TRACE ceilometer.alarm.service     method, self.concat_url(endpoint, url), **kwargs)
+2014-11-28 23:31:28.723 18814 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/ceilometerclient/openstack/common/apiclient/client.py", line 174, in request
+2014-11-28 23:31:28.723 18814 TRACE ceilometer.alarm.service     resp = self.http.request(method, url, **kwargs)
+2014-11-28 23:31:28.723 18814 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:31:28.723 18814 TRACE ceilometer.alarm.service     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:31:28.723 18814 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:31:28.723 18814 TRACE ceilometer.alarm.service     r = adapter.send(request, **kwargs)
+2014-11-28 23:31:28.723 18814 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:31:28.723 18814 TRACE ceilometer.alarm.service     raise ConnectionError(e, request=request)
+2014-11-28 23:31:28.723 18814 TRACE ceilometer.alarm.service ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=8777): Max retries exceeded with url: /v2/alarms?q.field=enabled&q.op=&q.type=&q.value=True (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:31:28.723 18814 TRACE ceilometer.alarm.service 
+2014-11-28 23:32:28.817 18814 INFO ceilometer.alarm.service [-] initiating evaluation cycle on 0 alarms
+2014-11-28 23:33:28.711 18814 INFO ceilometer.alarm.service [-] initiating evaluation cycle on 0 alarms
+2014-11-28 23:33:49.971 18814 INFO ceilometer.openstack.common.service [-] Caught SIGTERM, exiting
+2014-11-28 23:38:09.554 1069 ERROR ceilometer.alarm.service [-] alarm evaluation cycle failed
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service Traceback (most recent call last):
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/ceilometer/alarm/service.py", line 92, in _evaluate_assigned_alarms
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service     alarms = self._assigned_alarms()
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/ceilometer/alarm/service.py", line 174, in _assigned_alarms
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service     'value': True}])
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/ceilometerclient/v2/alarms.py", line 80, in list
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service     return self._list(options.build_url(self._path(), q))
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/ceilometerclient/common/base.py", line 59, in _list
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service     resp = self.api.get(url)
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/ceilometerclient/openstack/common/apiclient/client.py", line 334, in get
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service     return self.client_request("GET", url, **kwargs)
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/ceilometerclient/openstack/common/apiclient/client.py", line 328, in client_request
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service     self, method, url, **kwargs)
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/ceilometerclient/openstack/common/apiclient/client.py", line 227, in client_request
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service     self.authenticate()
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/ceilometerclient/openstack/common/apiclient/client.py", line 298, in authenticate
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service     self.auth_plugin.authenticate(self)
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/ceilometerclient/openstack/common/apiclient/auth.py", line 190, in authenticate
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service     self._do_authenticate(http_client)
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/ceilometerclient/client.py", line 181, in _do_authenticate
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service     ks_session = _get_keystone_session(**ks_kwargs)
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/ceilometerclient/client.py", line 81, in _get_keystone_session
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service     v2_auth_url, v3_auth_url = _discover_auth_versions(ks_session, auth_url)
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/ceilometerclient/client.py", line 32, in _discover_auth_versions
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service     ks_discover = discover.Discover(session=session, auth_url=auth_url)
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/keystoneclient/utils.py", line 318, in inner
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service     return func(*args, **kwargs)
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/keystoneclient/discover.py", line 131, in __init__
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service     authenticated=authenticated)
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/keystoneclient/utils.py", line 318, in inner
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service     return func(*args, **kwargs)
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/keystoneclient/_discover.py", line 140, in __init__
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service     authenticated=authenticated)
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/keystoneclient/utils.py", line 318, in inner
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service     return func(*args, **kwargs)
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/keystoneclient/_discover.py", line 39, in get_version_data
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service     resp = session.get(url, headers=headers, authenticated=authenticated)
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/keystoneclient/session.py", line 427, in get
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service     return self.request(url, 'GET', **kwargs)
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/keystoneclient/utils.py", line 318, in inner
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service     return func(*args, **kwargs)
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/keystoneclient/session.py", line 332, in request
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service     resp = send(**kwargs)
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service   File "/usr/lib/python2.7/site-packages/keystoneclient/session.py", line 374, in _send_request
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service     raise exceptions.ConnectionRefused(msg)
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service ConnectionRefused: Unable to establish connection to http://10.0.1.111:35357/v2.0
+2014-11-28 23:38:09.554 1069 TRACE ceilometer.alarm.service 

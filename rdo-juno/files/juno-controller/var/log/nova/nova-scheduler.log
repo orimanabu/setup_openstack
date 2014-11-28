@@ -1,11 +1,8 @@
-2014-11-26 02:01:48.328 11384 AUDIT nova.service [-] Starting scheduler node (version 2014.2-2.el7.centos)
-2014-11-26 02:01:48.807 11384 INFO oslo.messaging._drivers.impl_rabbit [req-0818d1e6-3a04-4951-b540-52dc3e7c4d59 ] Connecting to AMQP server on 10.0.1.111:5672
-2014-11-26 02:01:48.822 11384 INFO oslo.messaging._drivers.impl_rabbit [req-0818d1e6-3a04-4951-b540-52dc3e7c4d59 ] Connected to AMQP server on 10.0.1.111:5672
-2014-11-26 10:48:19.303 11384 WARNING nova.openstack.common.loopingcall [-] task <bound method DbDriver._report_state of <nova.servicegroup.drivers.db.DbDriver object at 0x325dd50>> run outlasted interval by 0.94 sec
-2014-11-26 10:49:44.324 11384 INFO nova.openstack.common.service [-] Caught SIGTERM, exiting
-2014-11-26 10:50:41.790 1013 AUDIT nova.service [-] Starting scheduler node (version 2014.2-2.el7.centos)
-2014-11-26 10:50:43.442 1013 WARNING oslo.db.sqlalchemy.session [req-a1ae4b3e-9c2c-4118-be38-916a3bad373b ] SQL connection failed. -1 attempts left.
-2014-11-26 10:50:53.947 1013 INFO oslo.messaging._drivers.impl_rabbit [req-a1ae4b3e-9c2c-4118-be38-916a3bad373b ] Connecting to AMQP server on 10.0.1.111:5672
-2014-11-26 10:50:53.975 1013 INFO oslo.messaging._drivers.impl_rabbit [req-a1ae4b3e-9c2c-4118-be38-916a3bad373b ] Connected to AMQP server on 10.0.1.111:5672
-2014-11-26 11:36:00.186 1013 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
-2014-11-26 11:36:00.199 1013 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
+2014-11-28 23:23:33.480 12459 AUDIT nova.service [-] Starting scheduler node (version 2014.2-2.el7.centos)
+2014-11-28 23:23:34.031 12459 INFO oslo.messaging._drivers.impl_rabbit [req-5ff3440e-6cf8-472a-a4c5-a1003bb7c701 ] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:23:34.046 12459 INFO oslo.messaging._drivers.impl_rabbit [req-5ff3440e-6cf8-472a-a4c5-a1003bb7c701 ] Connected to AMQP server on 10.0.1.111:5672
+2014-11-28 23:33:50.297 12459 INFO nova.openstack.common.service [-] Caught SIGTERM, exiting
+2014-11-28 23:38:12.364 1036 AUDIT nova.service [-] Starting scheduler node (version 2014.2-2.el7.centos)
+2014-11-28 23:38:14.512 1036 WARNING oslo.db.sqlalchemy.session [req-5efc99b0-5f58-4a03-b667-d1156c76dc2b ] SQL connection failed. -1 attempts left.
+2014-11-28 23:38:24.900 1036 INFO oslo.messaging._drivers.impl_rabbit [req-5efc99b0-5f58-4a03-b667-d1156c76dc2b ] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:24.918 1036 INFO oslo.messaging._drivers.impl_rabbit [req-5efc99b0-5f58-4a03-b667-d1156c76dc2b ] Connected to AMQP server on 10.0.1.111:5672

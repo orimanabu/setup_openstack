@@ -1,0 +1,12 @@
+2014-11-28 23:22:24.622 11025 INFO cinder.service [-] Starting cinder-backup node (version 2014.2)
+2014-11-28 23:22:24.624 11025 INFO cinder.backup.manager [req-43dd57a2-1fbe-42a8-820c-e3e1e4078ca4 - - - - -] Starting volume driver LVMISCSIDriver (2.0.0).
+2014-11-28 23:22:24.842 11025 INFO cinder.backup.manager [req-43dd57a2-1fbe-42a8-820c-e3e1e4078ca4 - - - - -] Cleaning up incomplete backup operations.
+2014-11-28 23:22:25.164 11025 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:22:25.183 11025 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
+2014-11-28 23:33:49.771 11025 INFO cinder.openstack.common.service [-] Caught SIGTERM, exiting
+2014-11-28 23:38:10.315 1028 INFO cinder.service [-] Starting cinder-backup node (version 2014.2)
+2014-11-28 23:38:10.486 1028 INFO cinder.backup.manager [req-955f906d-16ae-47ca-ae74-1d3782bc1670 - - - - -] Starting volume driver LVMISCSIDriver (2.0.0).
+2014-11-28 23:38:12.435 1028 INFO cinder.backup.manager [req-955f906d-16ae-47ca-ae74-1d3782bc1670 - - - - -] Cleaning up incomplete backup operations.
+2014-11-28 23:38:13.400 1028 WARNING oslo.db.sqlalchemy.session [req-955f906d-16ae-47ca-ae74-1d3782bc1670 - - - - -] SQL connection failed. 10 attempts left.
+2014-11-28 23:38:23.547 1028 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:23.563 1028 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672

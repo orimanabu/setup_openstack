@@ -1,0 +1,115 @@
+2014-11-28 23:27:05.244 5177 INFO neutron.common.config [-] Logging enabled!
+2014-11-28 23:27:05.245 5177 INFO neutron.services.metering.agents.metering_agent [-] Loading Metering driver neutron.services.metering.drivers.noop.noop_driver.NoopMeteringDriver
+2014-11-28 23:27:05.293 5177 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:27:05.327 5177 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:27:05.394 5177 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
+2014-11-28 23:27:05.408 5177 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
+2014-11-28 23:27:05.439 5177 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:27:05.516 5177 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
+2014-11-28 23:27:05.540 5177 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:27:05.606 5177 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
+2014-11-28 23:27:05.734 5177 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:27:05.812 5177 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
+2014-11-28 23:33:50.946 5177 ERROR oslo.messaging._drivers.impl_rabbit [-] Failed to consume message from queue: Socket closed
+2014-11-28 23:33:50.946 5177 TRACE oslo.messaging._drivers.impl_rabbit Traceback (most recent call last):
+2014-11-28 23:33:50.946 5177 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/oslo/messaging/_drivers/impl_rabbit.py", line 655, in ensure
+2014-11-28 23:33:50.946 5177 TRACE oslo.messaging._drivers.impl_rabbit     return method()
+2014-11-28 23:33:50.946 5177 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/oslo/messaging/_drivers/impl_rabbit.py", line 735, in _consume
+2014-11-28 23:33:50.946 5177 TRACE oslo.messaging._drivers.impl_rabbit     return self.connection.drain_events(timeout=timeout)
+2014-11-28 23:33:50.946 5177 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/kombu/connection.py", line 281, in drain_events
+2014-11-28 23:33:50.946 5177 TRACE oslo.messaging._drivers.impl_rabbit     return self.transport.drain_events(self.connection, **kwargs)
+2014-11-28 23:33:50.946 5177 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/kombu/transport/pyamqp.py", line 94, in drain_events
+2014-11-28 23:33:50.946 5177 TRACE oslo.messaging._drivers.impl_rabbit     return connection.drain_events(**kwargs)
+2014-11-28 23:33:50.946 5177 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 299, in drain_events
+2014-11-28 23:33:50.946 5177 TRACE oslo.messaging._drivers.impl_rabbit     chanmap, None, timeout=timeout,
+2014-11-28 23:33:50.946 5177 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 362, in _wait_multiple
+2014-11-28 23:33:50.946 5177 TRACE oslo.messaging._drivers.impl_rabbit     channel, method_sig, args, content = read_timeout(timeout)
+2014-11-28 23:33:50.946 5177 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 326, in read_timeout
+2014-11-28 23:33:50.946 5177 TRACE oslo.messaging._drivers.impl_rabbit     return self.method_reader.read_method()
+2014-11-28 23:33:50.946 5177 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/amqp/method_framing.py", line 189, in read_method
+2014-11-28 23:33:50.946 5177 TRACE oslo.messaging._drivers.impl_rabbit     raise m
+2014-11-28 23:33:50.946 5177 TRACE oslo.messaging._drivers.impl_rabbit IOError: Socket closed
+2014-11-28 23:33:50.946 5177 TRACE oslo.messaging._drivers.impl_rabbit 
+2014-11-28 23:33:50.955 5177 INFO oslo.messaging._drivers.impl_rabbit [-] Delaying reconnect for 1.0 seconds...
+2014-11-28 23:33:50.955 5177 ERROR oslo.messaging._drivers.impl_rabbit [-] Failed to consume message from queue: Socket closed
+2014-11-28 23:33:50.955 5177 TRACE oslo.messaging._drivers.impl_rabbit Traceback (most recent call last):
+2014-11-28 23:33:50.955 5177 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/oslo/messaging/_drivers/impl_rabbit.py", line 655, in ensure
+2014-11-28 23:33:50.955 5177 TRACE oslo.messaging._drivers.impl_rabbit     return method()
+2014-11-28 23:33:50.955 5177 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/oslo/messaging/_drivers/impl_rabbit.py", line 735, in _consume
+2014-11-28 23:33:50.955 5177 TRACE oslo.messaging._drivers.impl_rabbit     return self.connection.drain_events(timeout=timeout)
+2014-11-28 23:33:50.955 5177 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/kombu/connection.py", line 281, in drain_events
+2014-11-28 23:33:50.955 5177 TRACE oslo.messaging._drivers.impl_rabbit     return self.transport.drain_events(self.connection, **kwargs)
+2014-11-28 23:33:50.955 5177 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/kombu/transport/pyamqp.py", line 94, in drain_events
+2014-11-28 23:33:50.955 5177 TRACE oslo.messaging._drivers.impl_rabbit     return connection.drain_events(**kwargs)
+2014-11-28 23:33:50.955 5177 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 299, in drain_events
+2014-11-28 23:33:50.955 5177 TRACE oslo.messaging._drivers.impl_rabbit     chanmap, None, timeout=timeout,
+2014-11-28 23:33:50.955 5177 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 362, in _wait_multiple
+2014-11-28 23:33:50.955 5177 TRACE oslo.messaging._drivers.impl_rabbit     channel, method_sig, args, content = read_timeout(timeout)
+2014-11-28 23:33:50.955 5177 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 326, in read_timeout
+2014-11-28 23:33:50.955 5177 TRACE oslo.messaging._drivers.impl_rabbit     return self.method_reader.read_method()
+2014-11-28 23:33:50.955 5177 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/amqp/method_framing.py", line 189, in read_method
+2014-11-28 23:33:50.955 5177 TRACE oslo.messaging._drivers.impl_rabbit     raise m
+2014-11-28 23:33:50.955 5177 TRACE oslo.messaging._drivers.impl_rabbit IOError: Socket closed
+2014-11-28 23:33:50.955 5177 TRACE oslo.messaging._drivers.impl_rabbit 
+2014-11-28 23:33:50.956 5177 INFO oslo.messaging._drivers.impl_rabbit [-] Delaying reconnect for 1.0 seconds...
+2014-11-28 23:33:50.956 5177 ERROR oslo.messaging._drivers.impl_rabbit [-] Failed to consume message from queue: Socket closed
+2014-11-28 23:33:50.956 5177 TRACE oslo.messaging._drivers.impl_rabbit Traceback (most recent call last):
+2014-11-28 23:33:50.956 5177 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/oslo/messaging/_drivers/impl_rabbit.py", line 655, in ensure
+2014-11-28 23:33:50.956 5177 TRACE oslo.messaging._drivers.impl_rabbit     return method()
+2014-11-28 23:33:50.956 5177 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/oslo/messaging/_drivers/impl_rabbit.py", line 735, in _consume
+2014-11-28 23:33:50.956 5177 TRACE oslo.messaging._drivers.impl_rabbit     return self.connection.drain_events(timeout=timeout)
+2014-11-28 23:33:50.956 5177 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/kombu/connection.py", line 281, in drain_events
+2014-11-28 23:33:50.956 5177 TRACE oslo.messaging._drivers.impl_rabbit     return self.transport.drain_events(self.connection, **kwargs)
+2014-11-28 23:33:50.956 5177 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/kombu/transport/pyamqp.py", line 94, in drain_events
+2014-11-28 23:33:50.956 5177 TRACE oslo.messaging._drivers.impl_rabbit     return connection.drain_events(**kwargs)
+2014-11-28 23:33:50.956 5177 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 299, in drain_events
+2014-11-28 23:33:50.956 5177 TRACE oslo.messaging._drivers.impl_rabbit     chanmap, None, timeout=timeout,
+2014-11-28 23:33:50.956 5177 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 362, in _wait_multiple
+2014-11-28 23:33:50.956 5177 TRACE oslo.messaging._drivers.impl_rabbit     channel, method_sig, args, content = read_timeout(timeout)
+2014-11-28 23:33:50.956 5177 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 326, in read_timeout
+2014-11-28 23:33:50.956 5177 TRACE oslo.messaging._drivers.impl_rabbit     return self.method_reader.read_method()
+2014-11-28 23:33:50.956 5177 TRACE oslo.messaging._drivers.impl_rabbit   File "/usr/lib/python2.7/site-packages/amqp/method_framing.py", line 189, in read_method
+2014-11-28 23:33:50.956 5177 TRACE oslo.messaging._drivers.impl_rabbit     raise m
+2014-11-28 23:33:50.956 5177 TRACE oslo.messaging._drivers.impl_rabbit IOError: Socket closed
+2014-11-28 23:33:50.956 5177 TRACE oslo.messaging._drivers.impl_rabbit 
+2014-11-28 23:33:50.957 5177 INFO oslo.messaging._drivers.impl_rabbit [-] Delaying reconnect for 1.0 seconds...
+2014-11-28 23:33:51.956 5177 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:33:52.030 5177 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:33:52.071 5177 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:33:56.570 5177 INFO neutron.openstack.common.service [req-a1cfea61-0f0b-4567-94f9-d898f01c587d None] Caught SIGTERM, exiting
+2014-11-28 23:38:00.365 1112 INFO neutron.common.config [-] Logging enabled!
+2014-11-28 23:38:00.367 1112 INFO neutron.services.metering.agents.metering_agent [-] Loading Metering driver neutron.services.metering.drivers.noop.noop_driver.NoopMeteringDriver
+2014-11-28 23:38:00.432 1112 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:00.550 1112 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:00.579 1112 ERROR oslo.messaging._drivers.impl_rabbit [-] AMQP server on 10.0.1.111:5672 is unreachable: [Errno 111] ECONNREFUSED. Trying again in 1 seconds.
+2014-11-28 23:38:00.584 1112 ERROR oslo.messaging._drivers.impl_rabbit [-] AMQP server on 10.0.1.111:5672 is unreachable: [Errno 111] ECONNREFUSED. Trying again in 1 seconds.
+2014-11-28 23:38:01.584 1112 INFO oslo.messaging._drivers.impl_rabbit [-] Delaying reconnect for 1.0 seconds...
+2014-11-28 23:38:01.585 1112 INFO oslo.messaging._drivers.impl_rabbit [-] Delaying reconnect for 1.0 seconds...
+2014-11-28 23:38:02.637 1112 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:02.683 1112 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:02.745 1112 ERROR oslo.messaging._drivers.impl_rabbit [-] AMQP server on 10.0.1.111:5672 is unreachable: [Errno 111] ECONNREFUSED. Trying again in 3 seconds.
+2014-11-28 23:38:02.746 1112 ERROR oslo.messaging._drivers.impl_rabbit [-] AMQP server on 10.0.1.111:5672 is unreachable: [Errno 111] ECONNREFUSED. Trying again in 3 seconds.
+2014-11-28 23:38:05.746 1112 INFO oslo.messaging._drivers.impl_rabbit [-] Delaying reconnect for 1.0 seconds...
+2014-11-28 23:38:05.747 1112 INFO oslo.messaging._drivers.impl_rabbit [-] Delaying reconnect for 1.0 seconds...
+2014-11-28 23:38:06.748 1112 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:06.761 1112 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:06.774 1112 ERROR oslo.messaging._drivers.impl_rabbit [-] AMQP server on 10.0.1.111:5672 is unreachable: [Errno 111] ECONNREFUSED. Trying again in 5 seconds.
+2014-11-28 23:38:06.774 1112 ERROR oslo.messaging._drivers.impl_rabbit [-] AMQP server on 10.0.1.111:5672 is unreachable: [Errno 111] ECONNREFUSED. Trying again in 5 seconds.
+2014-11-28 23:38:11.775 1112 INFO oslo.messaging._drivers.impl_rabbit [-] Delaying reconnect for 1.0 seconds...
+2014-11-28 23:38:11.775 1112 INFO oslo.messaging._drivers.impl_rabbit [-] Delaying reconnect for 1.0 seconds...
+2014-11-28 23:38:12.782 1112 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:12.794 1112 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:12.807 1112 ERROR oslo.messaging._drivers.impl_rabbit [-] AMQP server on 10.0.1.111:5672 is unreachable: [Errno 111] ECONNREFUSED. Trying again in 7 seconds.
+2014-11-28 23:38:12.807 1112 ERROR oslo.messaging._drivers.impl_rabbit [-] AMQP server on 10.0.1.111:5672 is unreachable: [Errno 111] ECONNREFUSED. Trying again in 7 seconds.
+2014-11-28 23:38:19.809 1112 INFO oslo.messaging._drivers.impl_rabbit [-] Delaying reconnect for 1.0 seconds...
+2014-11-28 23:38:19.810 1112 INFO oslo.messaging._drivers.impl_rabbit [-] Delaying reconnect for 1.0 seconds...
+2014-11-28 23:38:20.811 1112 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:20.820 1112 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:20.832 1112 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:20.833 1112 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:20.838 1112 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:20.850 1112 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:20.854 1112 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:20.883 1112 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:20.896 1112 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:20.913 1112 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672

@@ -1,0 +1,163 @@
+2014-11-28 23:25:45.550 6184 INFO ceilometer.pipeline [-] Pipeline config: {'sources': [{'interval': 600, 'meters': ['*'], 'name': 'meter_source', 'sinks': ['meter_sink']}, {'interval': 600, 'meters': ['cpu'], 'name': 'cpu_source', 'sinks': ['cpu_sink']}, {'interval': 600, 'meters': ['disk.read.bytes', 'disk.read.requests', 'disk.write.bytes', 'disk.write.requests'], 'name': 'disk_source', 'sinks': ['disk_sink']}, {'interval': 600, 'meters': ['network.incoming.bytes', 'network.incoming.packets', 'network.outgoing.bytes', 'network.outgoing.packets'], 'name': 'network_source', 'sinks': ['network_sink']}], 'sinks': [{'publishers': ['notifier://'], 'transformers': None, 'name': 'meter_sink'}, {'publishers': ['notifier://'], 'transformers': [{'name': 'rate_of_change', 'parameters': {'target': {'scale': '100.0 / (10**9 * (resource_metadata.cpu_number or 1))', 'type': 'gauge', 'name': 'cpu_util', 'unit': '%'}}}], 'name': 'cpu_sink'}, {'publishers': ['notifier://'], 'transformers': [{'name': 'rate_of_change', 'parameters': {'source': {'map_from': {'name': 'disk\\.(read|write)\\.(bytes|requests)', 'unit': '(B|request)'}}, 'target': {'type': 'gauge', 'map_to': {'name': 'disk.\\1.\\2.rate', 'unit': '\\1/s'}}}}], 'name': 'disk_sink'}, {'publishers': ['notifier://'], 'transformers': [{'name': 'rate_of_change', 'parameters': {'source': {'map_from': {'name': 'network\\.(incoming|outgoing)\\.(bytes|packets)', 'unit': '(B|packet)'}}, 'target': {'type': 'gauge', 'map_to': {'name': 'network.\\1.\\2.rate', 'unit': '\\1/s'}}}}], 'name': 'network_sink'}]}
+2014-11-28 23:25:45.552 6184 INFO ceilometer.pipeline [-] detected decoupled pipeline config format
+2014-11-28 23:25:45.558 6184 INFO ceilometer.publisher.messaging [-] Publishing policy set to default
+2014-11-28 23:25:45.568 6184 INFO ceilometer.publisher.messaging [-] Publishing policy set to default
+2014-11-28 23:25:45.571 6184 INFO ceilometer.pipeline [-] Pipeline cpu_sink: Setup transformer instance rate_of_change with parameter {'target': {'scale': '100.0 / (10**9 * (resource_metadata.cpu_number or 1))', 'type': 'gauge', 'name': 'cpu_util', 'unit': '%'}}
+2014-11-28 23:25:45.572 6184 INFO ceilometer.publisher.messaging [-] Publishing policy set to default
+2014-11-28 23:25:45.575 6184 INFO ceilometer.pipeline [-] Pipeline disk_sink: Setup transformer instance rate_of_change with parameter {'source': {'map_from': {'name': 'disk\\.(read|write)\\.(bytes|requests)', 'unit': '(B|request)'}}, 'target': {'type': 'gauge', 'map_to': {'name': 'disk.\\1.\\2.rate', 'unit': '\\1/s'}}}
+2014-11-28 23:25:45.575 6184 INFO ceilometer.publisher.messaging [-] Publishing policy set to default
+2014-11-28 23:25:45.578 6184 INFO ceilometer.pipeline [-] Pipeline network_sink: Setup transformer instance rate_of_change with parameter {'source': {'map_from': {'name': 'network\\.(incoming|outgoing)\\.(bytes|packets)', 'unit': '(B|packet)'}}, 'target': {'type': 'gauge', 'map_to': {'name': 'network.\\1.\\2.rate', 'unit': '\\1/s'}}}
+2014-11-28 23:25:46.883 6184 INFO ceilometer.agent [-] Polling pollster disk.read.requests in the context of meter_source
+2014-11-28 23:25:46.884 6184 INFO ceilometer.agent [-] Polling pollster network.incoming.bytes in the context of meter_source
+2014-11-28 23:25:46.884 6184 INFO ceilometer.agent [-] Polling pollster network.outgoing.bytes in the context of network_source
+2014-11-28 23:25:46.884 6184 INFO ceilometer.agent [-] Polling pollster disk.device.write.bytes in the context of meter_source
+2014-11-28 23:25:46.885 6184 INFO ceilometer.agent [-] Polling pollster network.outgoing.packets in the context of network_source
+2014-11-28 23:25:46.885 6184 INFO ceilometer.agent [-] Polling pollster disk.write.requests in the context of meter_source
+2014-11-28 23:25:46.885 6184 INFO ceilometer.agent [-] Polling pollster disk.device.read.bytes in the context of meter_source
+2014-11-28 23:25:46.886 6184 INFO ceilometer.agent [-] Polling pollster network.outgoing.bytes.rate in the context of meter_source
+2014-11-28 23:25:46.886 6184 INFO ceilometer.agent [-] Polling pollster memory.usage in the context of meter_source
+2014-11-28 23:25:46.886 6184 INFO ceilometer.agent [-] Polling pollster disk.write.bytes.rate in the context of meter_source
+2014-11-28 23:25:46.887 6184 INFO ceilometer.agent [-] Polling pollster disk.device.read.requests.rate in the context of meter_source
+2014-11-28 23:25:46.887 6184 INFO ceilometer.agent [-] Polling pollster disk.write.bytes in the context of meter_source
+2014-11-28 23:25:46.887 6184 INFO ceilometer.agent [-] Polling pollster network.outgoing.bytes in the context of meter_source
+2014-11-28 23:25:46.888 6184 INFO ceilometer.agent [-] Polling pollster disk.device.read.bytes.rate in the context of meter_source
+2014-11-28 23:25:46.888 6184 INFO ceilometer.agent [-] Polling pollster disk.device.read.requests in the context of meter_source
+2014-11-28 23:25:46.888 6184 INFO ceilometer.agent [-] Polling pollster cpu in the context of meter_source
+2014-11-28 23:25:46.889 6184 INFO ceilometer.agent [-] Polling pollster disk.device.write.bytes.rate in the context of meter_source
+2014-11-28 23:25:46.889 6184 INFO ceilometer.agent [-] Polling pollster disk.device.write.requests.rate in the context of meter_source
+2014-11-28 23:25:46.890 6184 INFO ceilometer.agent [-] Polling pollster disk.read.bytes.rate in the context of meter_source
+2014-11-28 23:25:46.895 6184 INFO ceilometer.agent [-] Polling pollster disk.device.write.requests in the context of meter_source
+2014-11-28 23:25:46.896 6184 INFO ceilometer.agent [-] Polling pollster instance_flavor in the context of meter_source
+2014-11-28 23:25:46.896 6184 INFO ceilometer.agent [-] Polling pollster network.incoming.bytes in the context of network_source
+2014-11-28 23:25:46.896 6184 INFO ceilometer.agent [-] Polling pollster network.incoming.bytes.rate in the context of meter_source
+2014-11-28 23:25:46.897 6184 INFO ceilometer.agent [-] Polling pollster disk.read.bytes in the context of meter_source
+2014-11-28 23:25:46.897 6184 INFO ceilometer.agent [-] Polling pollster disk.write.requests.rate in the context of meter_source
+2014-11-28 23:25:46.897 6184 INFO ceilometer.agent [-] Polling pollster instance in the context of meter_source
+2014-11-28 23:25:46.898 6184 INFO ceilometer.agent [-] Polling pollster disk.write.bytes in the context of disk_source
+2014-11-28 23:25:46.898 6184 INFO ceilometer.agent [-] Polling pollster disk.write.requests in the context of disk_source
+2014-11-28 23:25:46.898 6184 INFO ceilometer.agent [-] Polling pollster disk.read.requests.rate in the context of meter_source
+2014-11-28 23:25:46.899 6184 INFO ceilometer.agent [-] Polling pollster cpu in the context of cpu_source
+2014-11-28 23:25:46.899 6184 INFO ceilometer.agent [-] Polling pollster network.incoming.packets in the context of network_source
+2014-11-28 23:25:46.899 6184 INFO ceilometer.agent [-] Polling pollster disk.read.requests in the context of disk_source
+2014-11-28 23:25:46.900 6184 INFO ceilometer.agent [-] Polling pollster network.incoming.packets in the context of meter_source
+2014-11-28 23:25:46.900 6184 INFO ceilometer.agent [-] Polling pollster network.outgoing.packets in the context of meter_source
+2014-11-28 23:25:46.901 6184 INFO ceilometer.agent [-] Polling pollster disk.read.bytes in the context of disk_source
+2014-11-28 23:25:46.901 6184 INFO ceilometer.agent [-] Polling pollster cpu_util in the context of meter_source
+2014-11-28 23:34:00.191 6184 INFO ceilometer.openstack.common.service [-] Caught SIGTERM, exiting
+2014-11-28 23:38:03.253 1143 INFO ceilometer.pipeline [-] Pipeline config: {'sources': [{'interval': 600, 'meters': ['*'], 'name': 'meter_source', 'sinks': ['meter_sink']}, {'interval': 600, 'meters': ['cpu'], 'name': 'cpu_source', 'sinks': ['cpu_sink']}, {'interval': 600, 'meters': ['disk.read.bytes', 'disk.read.requests', 'disk.write.bytes', 'disk.write.requests'], 'name': 'disk_source', 'sinks': ['disk_sink']}, {'interval': 600, 'meters': ['network.incoming.bytes', 'network.incoming.packets', 'network.outgoing.bytes', 'network.outgoing.packets'], 'name': 'network_source', 'sinks': ['network_sink']}], 'sinks': [{'publishers': ['notifier://'], 'transformers': None, 'name': 'meter_sink'}, {'publishers': ['notifier://'], 'transformers': [{'name': 'rate_of_change', 'parameters': {'target': {'scale': '100.0 / (10**9 * (resource_metadata.cpu_number or 1))', 'type': 'gauge', 'name': 'cpu_util', 'unit': '%'}}}], 'name': 'cpu_sink'}, {'publishers': ['notifier://'], 'transformers': [{'name': 'rate_of_change', 'parameters': {'source': {'map_from': {'name': 'disk\\.(read|write)\\.(bytes|requests)', 'unit': '(B|request)'}}, 'target': {'type': 'gauge', 'map_to': {'name': 'disk.\\1.\\2.rate', 'unit': '\\1/s'}}}}], 'name': 'disk_sink'}, {'publishers': ['notifier://'], 'transformers': [{'name': 'rate_of_change', 'parameters': {'source': {'map_from': {'name': 'network\\.(incoming|outgoing)\\.(bytes|packets)', 'unit': '(B|packet)'}}, 'target': {'type': 'gauge', 'map_to': {'name': 'network.\\1.\\2.rate', 'unit': '\\1/s'}}}}], 'name': 'network_sink'}]}
+2014-11-28 23:38:03.279 1143 INFO ceilometer.pipeline [-] detected decoupled pipeline config format
+2014-11-28 23:38:03.333 1143 INFO ceilometer.publisher.messaging [-] Publishing policy set to default
+2014-11-28 23:38:03.642 1143 INFO ceilometer.publisher.messaging [-] Publishing policy set to default
+2014-11-28 23:38:03.648 1143 INFO ceilometer.pipeline [-] Pipeline cpu_sink: Setup transformer instance rate_of_change with parameter {'target': {'scale': '100.0 / (10**9 * (resource_metadata.cpu_number or 1))', 'type': 'gauge', 'name': 'cpu_util', 'unit': '%'}}
+2014-11-28 23:38:03.649 1143 INFO ceilometer.publisher.messaging [-] Publishing policy set to default
+2014-11-28 23:38:03.658 1143 INFO ceilometer.pipeline [-] Pipeline disk_sink: Setup transformer instance rate_of_change with parameter {'source': {'map_from': {'name': 'disk\\.(read|write)\\.(bytes|requests)', 'unit': '(B|request)'}}, 'target': {'type': 'gauge', 'map_to': {'name': 'disk.\\1.\\2.rate', 'unit': '\\1/s'}}}
+2014-11-28 23:38:03.659 1143 INFO ceilometer.publisher.messaging [-] Publishing policy set to default
+2014-11-28 23:38:03.664 1143 INFO ceilometer.pipeline [-] Pipeline network_sink: Setup transformer instance rate_of_change with parameter {'source': {'map_from': {'name': 'network\\.(incoming|outgoing)\\.(bytes|packets)', 'unit': '(B|packet)'}}, 'target': {'type': 'gauge', 'map_to': {'name': 'network.\\1.\\2.rate', 'unit': '\\1/s'}}}
+2014-11-28 23:38:03.732 1143 ERROR ceilometer.nova_client [-] HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client Traceback (most recent call last):
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client     return func(*args, **kwargs)
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 145, in instance_get_all_by_host
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client     search_opts=search_opts))
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client     self.authenticate()
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client     return self._authenticate(url, body)
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client     **kwargs)
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client     raise ConnectionError(e, request=request)
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:03.732 1143 TRACE ceilometer.nova_client 
+2014-11-28 23:38:03.826 1143 ERROR ceilometer.agent [-] Unable to discover resources: None: Max retries exceeded with url: /v2.0/tokens (Caused by redirect)
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent Traceback (most recent call last):
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/agent.py", line 233, in discover
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent     discovered = discoverer.discover(self, param)
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/compute/discovery.py", line 39, in discover
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent     instances = self.nova_cli.instance_get_all_by_host(cfg.CONF.host)
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 50, in with_logging
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent     return func(*args, **kwargs)
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/ceilometer/nova_client.py", line 145, in instance_get_all_by_host
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent     search_opts=search_opts))
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/v1_1/servers.py", line 603, in list
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent     return self._list("/servers%s%s" % (detail, query_string), "servers")
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/base.py", line 67, in _list
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent     _resp, body = self.api.client.get(url)
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 487, in get
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent     return self._cs_request(url, 'GET', **kwargs)
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 446, in _cs_request
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent     self.authenticate()
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 586, in authenticate
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent     auth_url = self._v2_auth(auth_url)
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 677, in _v2_auth
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent     return self._authenticate(url, body)
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 690, in _authenticate
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 439, in _time_request
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent     resp, body = self.request(url, method, **kwargs)
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/novaclient/client.py", line 410, in request
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent     **kwargs)
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/api.py", line 44, in request
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent     return session.request(method=method, url=url, **kwargs)
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 456, in request
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent     resp = self.send(prep, **send_kwargs)
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/sessions.py", line 559, in send
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent     r = adapter.send(request, **kwargs)
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent   File "/usr/lib/python2.7/site-packages/requests/adapters.py", line 375, in send
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent     raise ConnectionError(e, request=request)
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent ConnectionError: HTTPConnectionPool(host='10.0.1.111', port=35357): Max retries exceeded with url: /v2.0/tokens (Caused by <class 'socket.error'>: [Errno 111] ECONNREFUSED)
+2014-11-28 23:38:03.826 1143 TRACE ceilometer.agent 
+2014-11-28 23:38:03.840 1143 INFO ceilometer.agent [-] Polling pollster network.incoming.bytes.rate in the context of meter_source
+2014-11-28 23:38:03.846 1143 INFO ceilometer.agent [-] Polling pollster disk.device.read.requests in the context of meter_source
+2014-11-28 23:38:03.847 1143 INFO ceilometer.agent [-] Polling pollster disk.device.read.requests.rate in the context of meter_source
+2014-11-28 23:38:03.852 1143 INFO ceilometer.agent [-] Polling pollster disk.read.bytes in the context of disk_source
+2014-11-28 23:38:03.852 1143 INFO ceilometer.agent [-] Polling pollster disk.write.bytes.rate in the context of meter_source
+2014-11-28 23:38:03.853 1143 INFO ceilometer.agent [-] Polling pollster disk.device.write.requests in the context of meter_source
+2014-11-28 23:38:03.854 1143 INFO ceilometer.agent [-] Polling pollster disk.read.bytes in the context of meter_source
+2014-11-28 23:38:03.854 1143 INFO ceilometer.agent [-] Polling pollster instance in the context of meter_source
+2014-11-28 23:38:03.855 1143 INFO ceilometer.agent [-] Polling pollster network.outgoing.bytes.rate in the context of meter_source
+2014-11-28 23:38:03.855 1143 INFO ceilometer.agent [-] Polling pollster cpu in the context of cpu_source
+2014-11-28 23:38:03.856 1143 INFO ceilometer.agent [-] Polling pollster network.outgoing.packets in the context of meter_source
+2014-11-28 23:38:03.861 1143 INFO ceilometer.agent [-] Polling pollster disk.write.requests.rate in the context of meter_source
+2014-11-28 23:38:03.862 1143 INFO ceilometer.agent [-] Polling pollster network.incoming.packets in the context of meter_source
+2014-11-28 23:38:03.863 1143 INFO ceilometer.agent [-] Polling pollster disk.read.requests in the context of meter_source
+2014-11-28 23:38:03.863 1143 INFO ceilometer.agent [-] Polling pollster disk.read.bytes.rate in the context of meter_source
+2014-11-28 23:38:03.864 1143 INFO ceilometer.agent [-] Polling pollster disk.device.write.bytes.rate in the context of meter_source
+2014-11-28 23:38:03.873 1143 INFO ceilometer.agent [-] Polling pollster disk.write.requests in the context of meter_source
+2014-11-28 23:38:03.873 1143 INFO ceilometer.agent [-] Polling pollster network.incoming.bytes in the context of meter_source
+2014-11-28 23:38:03.874 1143 INFO ceilometer.agent [-] Polling pollster disk.write.requests in the context of disk_source
+2014-11-28 23:38:03.875 1143 INFO ceilometer.agent [-] Polling pollster disk.device.read.bytes in the context of meter_source
+2014-11-28 23:38:03.875 1143 INFO ceilometer.agent [-] Polling pollster disk.device.write.requests.rate in the context of meter_source
+2014-11-28 23:38:03.885 1143 INFO ceilometer.agent [-] Polling pollster cpu_util in the context of meter_source
+2014-11-28 23:38:03.886 1143 INFO ceilometer.agent [-] Polling pollster network.outgoing.bytes in the context of network_source
+2014-11-28 23:38:03.887 1143 INFO ceilometer.agent [-] Polling pollster network.incoming.packets in the context of network_source
+2014-11-28 23:38:03.898 1143 INFO ceilometer.agent [-] Polling pollster disk.read.requests.rate in the context of meter_source
+2014-11-28 23:38:03.899 1143 INFO ceilometer.agent [-] Polling pollster disk.read.requests in the context of disk_source
+2014-11-28 23:38:03.900 1143 INFO ceilometer.agent [-] Polling pollster memory.usage in the context of meter_source
+2014-11-28 23:38:03.900 1143 INFO ceilometer.agent [-] Polling pollster disk.device.write.bytes in the context of meter_source
+2014-11-28 23:38:03.901 1143 INFO ceilometer.agent [-] Polling pollster network.outgoing.bytes in the context of meter_source
+2014-11-28 23:38:03.902 1143 INFO ceilometer.agent [-] Polling pollster disk.write.bytes in the context of meter_source
+2014-11-28 23:38:03.902 1143 INFO ceilometer.agent [-] Polling pollster network.incoming.bytes in the context of network_source
+2014-11-28 23:38:03.903 1143 INFO ceilometer.agent [-] Polling pollster disk.device.read.bytes.rate in the context of meter_source
+2014-11-28 23:38:03.903 1143 INFO ceilometer.agent [-] Polling pollster cpu in the context of meter_source
+2014-11-28 23:38:03.904 1143 INFO ceilometer.agent [-] Polling pollster disk.write.bytes in the context of disk_source
+2014-11-28 23:38:03.904 1143 INFO ceilometer.agent [-] Polling pollster instance_flavor in the context of meter_source
+2014-11-28 23:38:03.905 1143 INFO ceilometer.agent [-] Polling pollster network.outgoing.packets in the context of network_source

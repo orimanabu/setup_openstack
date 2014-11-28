@@ -1,3 +1,11 @@
-2014-11-26 02:05:26.213 5021 INFO neutron.common.config [-] Logging enabled!
-2014-11-26 02:05:26.359 5021 INFO neutron.agent.ovs_cleanup_util [-] Cleaning br-int
-2014-11-26 02:05:26.456 5021 INFO neutron.agent.ovs_cleanup_util [-] OVS cleanup completed successfully
+2014-11-28 23:27:14.147 5622 INFO neutron.common.config [-] Logging enabled!
+2014-11-28 23:27:14.288 5622 INFO neutron.agent.ovs_cleanup_util [-] Cleaning br-int
+2014-11-28 23:27:14.357 5622 INFO neutron.agent.ovs_cleanup_util [-] OVS cleanup completed successfully
+2014-11-28 23:33:57.562 7373 INFO neutron.common.config [-] Logging enabled!
+2014-11-28 23:33:57.889 7373 INFO neutron.agent.ovs_cleanup_util [-] Cleaning br-int
+2014-11-28 23:33:58.105 7373 INFO neutron.agent.ovs_cleanup_util [-] Cleaning br-ex
+2014-11-28 23:33:58.163 7373 INFO neutron.agent.ovs_cleanup_util [-] OVS cleanup completed successfully
+2014-11-28 23:38:00.008 1119 INFO neutron.common.config [-] Logging enabled!
+2014-11-28 23:38:01.103 1119 INFO neutron.agent.ovs_cleanup_util [-] Cleaning br-int
+2014-11-28 23:38:01.601 1119 INFO neutron.agent.ovs_cleanup_util [-] Cleaning br-ex
+2014-11-28 23:38:01.715 1119 INFO neutron.agent.ovs_cleanup_util [-] OVS cleanup completed successfully

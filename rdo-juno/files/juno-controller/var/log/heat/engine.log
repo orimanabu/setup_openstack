@@ -1,0 +1,189 @@
+2014-11-28 23:30:26.271 17396 INFO heat.engine.environment [-] Registering AWS::AutoScaling::AutoScalingGroup -> <class 'heat.engine.resources.autoscaling.AutoScalingGroup'>
+2014-11-28 23:30:26.272 17396 INFO heat.engine.environment [-] Registering OS::Heat::InstanceGroup -> <class 'heat.engine.resources.autoscaling.InstanceGroup'>
+2014-11-28 23:30:26.272 17396 INFO heat.engine.environment [-] Registering OS::Heat::AutoScalingGroup -> <class 'heat.engine.resources.autoscaling.AutoScalingResourceGroup'>
+2014-11-28 23:30:26.272 17396 INFO heat.engine.environment [-] Registering AWS::AutoScaling::LaunchConfiguration -> <class 'heat.engine.resources.aws.launch_config.LaunchConfiguration'>
+2014-11-28 23:30:26.273 17396 INFO heat.engine.environment [-] Registering AWS::AutoScaling::ScalingPolicy -> <class 'heat.engine.resources.aws.scaling_policy.AWSScalingPolicy'>
+2014-11-28 23:30:26.273 17396 INFO heat.engine.environment [-] Registering OS::Ceilometer::Alarm -> <class 'heat.engine.resources.ceilometer.alarm.CeilometerAlarm'>
+2014-11-28 23:30:26.273 17396 INFO heat.engine.environment [-] Registering OS::Ceilometer::CombinationAlarm -> <class 'heat.engine.resources.ceilometer.alarm.CombinationAlarm'>
+2014-11-28 23:30:26.273 17396 INFO heat.engine.environment [-] Registering OS::Heat::CWLiteAlarm -> <class 'heat.engine.resources.cloud_watch.CloudWatchAlarm'>
+2014-11-28 23:30:26.274 17396 INFO heat.engine.environment [-] Registering AWS::EC2::EIP -> <class 'heat.engine.resources.eip.ElasticIp'>
+2014-11-28 23:30:26.274 17396 INFO heat.engine.environment [-] Registering AWS::EC2::EIPAssociation -> <class 'heat.engine.resources.eip.ElasticIpAssociation'>
+2014-11-28 23:30:26.274 17396 INFO heat.engine.environment [-] Registering OS::Glance::Image -> <class 'heat.engine.resources.glance_image.GlanceImage'>
+2014-11-28 23:30:26.275 17396 INFO heat.engine.environment [-] Registering AWS::EC2::Instance -> <class 'heat.engine.resources.instance.Instance'>
+2014-11-28 23:30:26.275 17396 INFO heat.engine.environment [-] Registering OS::Heat::HARestarter -> <class 'heat.engine.resources.instance.Restarter'>
+2014-11-28 23:30:26.275 17396 INFO heat.engine.environment [-] Registering AWS::EC2::InternetGateway -> <class 'heat.engine.resources.internet_gateway.InternetGateway'>
+2014-11-28 23:30:26.275 17396 INFO heat.engine.environment [-] Registering AWS::EC2::VPCGatewayAttachment -> <class 'heat.engine.resources.internet_gateway.VPCGatewayAttachment'>
+2014-11-28 23:30:26.276 17396 INFO heat.engine.environment [-] Registering AWS::ElasticLoadBalancing::LoadBalancer -> <class 'heat.engine.resources.loadbalancer.LoadBalancer'>
+2014-11-28 23:30:26.276 17396 INFO heat.engine.environment [-] Registering AWS::EC2::NetworkInterface -> <class 'heat.engine.resources.network_interface.NetworkInterface'>
+2014-11-28 23:30:26.276 17396 INFO heat.engine.environment [-] Registering OS::Neutron::FirewallPolicy -> <class 'heat.engine.resources.neutron.firewall.FirewallPolicy'>
+2014-11-28 23:30:26.277 17396 INFO heat.engine.environment [-] Registering OS::Neutron::FirewallRule -> <class 'heat.engine.resources.neutron.firewall.FirewallRule'>
+2014-11-28 23:30:26.277 17396 INFO heat.engine.environment [-] Registering OS::Neutron::Firewall -> <class 'heat.engine.resources.neutron.firewall.Firewall'>
+2014-11-28 23:30:26.277 17396 INFO heat.engine.environment [-] Registering OS::Neutron::FloatingIP -> <class 'heat.engine.resources.neutron.floatingip.FloatingIP'>
+2014-11-28 23:30:26.277 17396 INFO heat.engine.environment [-] Registering OS::Neutron::FloatingIPAssociation -> <class 'heat.engine.resources.neutron.floatingip.FloatingIPAssociation'>
+2014-11-28 23:30:26.278 17396 INFO heat.engine.environment [-] Registering OS::Neutron::Pool -> <class 'heat.engine.resources.neutron.loadbalancer.Pool'>
+2014-11-28 23:30:26.278 17396 INFO heat.engine.environment [-] Registering OS::Neutron::LoadBalancer -> <class 'heat.engine.resources.neutron.loadbalancer.LoadBalancer'>
+2014-11-28 23:30:26.278 17396 INFO heat.engine.environment [-] Registering OS::Neutron::PoolMember -> <class 'heat.engine.resources.neutron.loadbalancer.PoolMember'>
+2014-11-28 23:30:26.278 17396 INFO heat.engine.environment [-] Registering OS::Neutron::HealthMonitor -> <class 'heat.engine.resources.neutron.loadbalancer.HealthMonitor'>
+2014-11-28 23:30:26.278 17396 INFO heat.engine.environment [-] Registering OS::Neutron::MeteringRule -> <class 'heat.engine.resources.neutron.metering.MeteringRule'>
+2014-11-28 23:30:26.279 17396 INFO heat.engine.environment [-] Registering OS::Neutron::MeteringLabel -> <class 'heat.engine.resources.neutron.metering.MeteringLabel'>
+2014-11-28 23:30:26.279 17396 INFO heat.engine.environment [-] Registering OS::Neutron::Net -> <class 'heat.engine.resources.neutron.net.Net'>
+2014-11-28 23:30:26.279 17396 INFO heat.engine.environment [-] Registering OS::Neutron::NetworkGateway -> <class 'heat.engine.resources.neutron.network_gateway.NetworkGateway'>
+2014-11-28 23:30:26.279 17396 INFO heat.engine.environment [-] Registering OS::Neutron::Port -> <class 'heat.engine.resources.neutron.port.Port'>
+2014-11-28 23:30:26.280 17396 INFO heat.engine.environment [-] Registering OS::Neutron::ProviderNet -> <class 'heat.engine.resources.neutron.provider_net.ProviderNet'>
+2014-11-28 23:30:26.280 17396 INFO heat.engine.environment [-] Registering OS::Neutron::RouterInterface -> <class 'heat.engine.resources.neutron.router.RouterInterface'>
+2014-11-28 23:30:26.280 17396 INFO heat.engine.environment [-] Registering OS::Neutron::RouterGateway -> <class 'heat.engine.resources.neutron.router.RouterGateway'>
+2014-11-28 23:30:26.280 17396 INFO heat.engine.environment [-] Registering OS::Neutron::Router -> <class 'heat.engine.resources.neutron.router.Router'>
+2014-11-28 23:30:26.281 17396 INFO heat.engine.environment [-] Registering OS::Neutron::SecurityGroup -> <class 'heat.engine.resources.neutron.security_group.SecurityGroup'>
+2014-11-28 23:30:26.281 17396 INFO heat.engine.environment [-] Registering OS::Neutron::Subnet -> <class 'heat.engine.resources.neutron.subnet.Subnet'>
+2014-11-28 23:30:26.281 17396 INFO heat.engine.environment [-] Registering OS::Neutron::IKEPolicy -> <class 'heat.engine.resources.neutron.vpnservice.IKEPolicy'>
+2014-11-28 23:30:26.281 17396 INFO heat.engine.environment [-] Registering OS::Neutron::VPNService -> <class 'heat.engine.resources.neutron.vpnservice.VPNService'>
+2014-11-28 23:30:26.282 17396 INFO heat.engine.environment [-] Registering OS::Neutron::IPsecSiteConnection -> <class 'heat.engine.resources.neutron.vpnservice.IPsecSiteConnection'>
+2014-11-28 23:30:26.282 17396 INFO heat.engine.environment [-] Registering OS::Neutron::IPsecPolicy -> <class 'heat.engine.resources.neutron.vpnservice.IPsecPolicy'>
+2014-11-28 23:30:26.282 17396 INFO heat.engine.environment [-] Registering OS::Nova::FloatingIP -> <class 'heat.engine.resources.nova_floatingip.NovaFloatingIp'>
+2014-11-28 23:30:26.282 17396 INFO heat.engine.environment [-] Registering OS::Nova::FloatingIPAssociation -> <class 'heat.engine.resources.nova_floatingip.NovaFloatingIpAssociation'>
+2014-11-28 23:30:26.283 17396 INFO heat.engine.environment [-] Registering OS::Nova::KeyPair -> <class 'heat.engine.resources.nova_keypair.KeyPair'>
+2014-11-28 23:30:26.283 17396 INFO heat.engine.environment [-] Registering OS::Nova::ServerGroup -> <class 'heat.engine.resources.nova_servergroup.ServerGroup'>
+2014-11-28 23:30:26.283 17396 INFO heat.engine.environment [-] Registering OS::Heat::ScalingPolicy -> <class 'heat.engine.resources.openstack.scaling_policy.AutoScalingPolicy'>
+2014-11-28 23:30:26.283 17396 INFO heat.engine.environment [-] Registering OS::Trove::Instance -> <class 'heat.engine.resources.os_database.OSDBInstance'>
+2014-11-28 23:30:26.284 17396 INFO heat.engine.environment [-] Registering OS::Heat::RandomString -> <class 'heat.engine.resources.random_string.RandomString'>
+2014-11-28 23:30:26.284 17396 INFO heat.engine.environment [-] Registering OS::Heat::ResourceGroup -> <class 'heat.engine.resources.resource_group.ResourceGroup'>
+2014-11-28 23:30:26.284 17396 INFO heat.engine.environment [-] Registering AWS::EC2::RouteTable -> <class 'heat.engine.resources.route_table.RouteTable'>
+2014-11-28 23:30:26.284 17396 INFO heat.engine.environment [-] Registering AWS::EC2::SubnetRouteTableAssociation -> <class 'heat.engine.resources.route_table.SubnetRouteTableAssociation'>
+2014-11-28 23:30:26.285 17396 INFO heat.engine.environment [-] Registering AWS::S3::Bucket -> <class 'heat.engine.resources.s3.S3Bucket'>
+2014-11-28 23:30:26.285 17396 INFO heat.engine.environment [-] Registering OS::Sahara::Cluster -> <class 'heat.engine.resources.sahara_cluster.SaharaCluster'>
+2014-11-28 23:30:26.285 17396 INFO heat.engine.environment [-] Registering OS::Sahara::NodeGroupTemplate -> <class 'heat.engine.resources.sahara_templates.SaharaNodeGroupTemplate'>
+2014-11-28 23:30:26.285 17396 INFO heat.engine.environment [-] Registering OS::Sahara::ClusterTemplate -> <class 'heat.engine.resources.sahara_templates.SaharaClusterTemplate'>
+2014-11-28 23:30:26.286 17396 INFO heat.engine.environment [-] Registering AWS::EC2::SecurityGroup -> <class 'heat.engine.resources.security_group.SecurityGroup'>
+2014-11-28 23:30:26.286 17396 INFO heat.engine.environment [-] Registering OS::Nova::Server -> <class 'heat.engine.resources.server.Server'>
+2014-11-28 23:30:26.286 17396 INFO heat.engine.environment [-] Registering OS::Heat::CloudConfig -> <class 'heat.engine.resources.software_config.cloud_config.CloudConfig'>
+2014-11-28 23:30:26.286 17396 INFO heat.engine.environment [-] Registering OS::Heat::MultipartMime -> <class 'heat.engine.resources.software_config.multi_part.MultipartMime'>
+2014-11-28 23:30:26.287 17396 INFO heat.engine.environment [-] Registering OS::Heat::SoftwareComponent -> <class 'heat.engine.resources.software_config.software_component.SoftwareComponent'>
+2014-11-28 23:30:26.287 17396 INFO heat.engine.environment [-] Registering OS::Heat::SoftwareConfig -> <class 'heat.engine.resources.software_config.software_config.SoftwareConfig'>
+2014-11-28 23:30:26.287 17396 INFO heat.engine.environment [-] Registering OS::Heat::SoftwareDeployment -> <class 'heat.engine.resources.software_config.software_deployment.SoftwareDeployment'>
+2014-11-28 23:30:26.287 17396 INFO heat.engine.environment [-] Registering OS::Heat::SoftwareDeployments -> <class 'heat.engine.resources.software_config.software_deployment.SoftwareDeployments'>
+2014-11-28 23:30:26.288 17396 INFO heat.engine.environment [-] Registering OS::Heat::StructuredDeployments -> <class 'heat.engine.resources.software_config.structured_config.StructuredDeployments'>
+2014-11-28 23:30:26.288 17396 INFO heat.engine.environment [-] Registering OS::Heat::StructuredConfig -> <class 'heat.engine.resources.software_config.structured_config.StructuredConfig'>
+2014-11-28 23:30:26.288 17396 INFO heat.engine.environment [-] Registering OS::Heat::StructuredDeployment -> <class 'heat.engine.resources.software_config.structured_config.StructuredDeployment'>
+2014-11-28 23:30:26.288 17396 INFO heat.engine.environment [-] Registering AWS::CloudFormation::Stack -> <class 'heat.engine.resources.stack.NestedStack'>
+2014-11-28 23:30:26.289 17396 INFO heat.engine.environment [-] Registering AWS::EC2::Subnet -> <class 'heat.engine.resources.subnet.Subnet'>
+2014-11-28 23:30:26.289 17396 INFO heat.engine.environment [-] Registering OS::Swift::Container -> <class 'heat.engine.resources.swift.SwiftContainer'>
+2014-11-28 23:30:26.289 17396 INFO heat.engine.environment [-] Registering OS::Heat::SwiftSignal -> <class 'heat.engine.resources.swiftsignal.SwiftSignal'>
+2014-11-28 23:30:26.289 17396 INFO heat.engine.environment [-] Registering OS::Heat::SwiftSignalHandle -> <class 'heat.engine.resources.swiftsignal.SwiftSignalHandle'>
+2014-11-28 23:30:26.290 17396 INFO heat.engine.environment [-] Registering AWS::IAM::User -> <class 'heat.engine.resources.user.User'>
+2014-11-28 23:30:26.290 17396 INFO heat.engine.environment [-] Registering AWS::IAM::AccessKey -> <class 'heat.engine.resources.user.AccessKey'>
+2014-11-28 23:30:26.290 17396 INFO heat.engine.environment [-] Registering OS::Heat::AccessPolicy -> <class 'heat.engine.resources.user.AccessPolicy'>
+2014-11-28 23:30:26.290 17396 INFO heat.engine.environment [-] Registering AWS::EC2::VolumeAttachment -> <class 'heat.engine.resources.volume.VolumeAttachment'>
+2014-11-28 23:30:26.291 17396 INFO heat.engine.environment [-] Registering AWS::EC2::Volume -> <class 'heat.engine.resources.volume.Volume'>
+2014-11-28 23:30:26.291 17396 INFO heat.engine.environment [-] Registering OS::Cinder::VolumeAttachment -> <class 'heat.engine.resources.volume.CinderVolumeAttachment'>
+2014-11-28 23:30:26.291 17396 INFO heat.engine.environment [-] Registering OS::Cinder::Volume -> <class 'heat.engine.resources.volume.CinderVolume'>
+2014-11-28 23:30:26.291 17396 INFO heat.engine.environment [-] Registering AWS::EC2::VPC -> <class 'heat.engine.resources.vpc.VPC'>
+2014-11-28 23:30:26.292 17396 INFO heat.engine.environment [-] Registering OS::Heat::UpdateWaitConditionHandle -> <class 'heat.engine.resources.wait_condition.UpdateWaitConditionHandle'>
+2014-11-28 23:30:26.292 17396 INFO heat.engine.environment [-] Registering AWS::CloudFormation::WaitConditionHandle -> <class 'heat.engine.resources.wait_condition.WaitConditionHandle'>
+2014-11-28 23:30:26.292 17396 INFO heat.engine.environment [-] Registering OS::Heat::WaitConditionHandle -> <class 'heat.engine.resources.wait_condition.HeatWaitConditionHandle'>
+2014-11-28 23:30:26.292 17396 INFO heat.engine.environment [-] Registering AWS::CloudFormation::WaitCondition -> <class 'heat.engine.resources.wait_condition.WaitCondition'>
+2014-11-28 23:30:26.293 17396 INFO heat.engine.environment [-] Registering OS::Heat::WaitCondition -> <class 'heat.engine.resources.wait_condition.HeatWaitCondition'>
+2014-11-28 23:30:26.293 17396 INFO heat.engine.environment [-] Loading /etc/heat/environment.d/default.yaml
+2014-11-28 23:30:26.294 17396 INFO heat.engine.environment [-] Registering AWS::CloudWatch::Alarm -> file:///etc/heat/templates/AWS_CloudWatch_Alarm.yaml
+2014-11-28 23:30:26.294 17396 INFO heat.engine.environment [-] Registering OS::Metering::Alarm -> OS::Ceilometer::Alarm
+2014-11-28 23:30:26.294 17396 INFO heat.engine.environment [-] Registering OS::Quantum* -> OS::Neutron*
+2014-11-28 23:30:26.294 17396 INFO heat.engine.environment [-] Registering AWS::RDS::DBInstance -> file:///etc/heat/templates/AWS_RDS_DBInstance.yaml
+2014-11-28 23:30:26.311 17396 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:30:26.368 17396 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
+2014-11-28 23:30:26.377 17396 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:30:26.385 17396 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
+2014-11-28 23:33:49.936 17396 INFO heat.openstack.common.service [-] Caught SIGTERM, exiting
+2014-11-28 23:33:49.936 17396 INFO heat.engine.service [-] Attempting to stop engine service...
+2014-11-28 23:33:49.937 17396 INFO heat.engine.service [-] All threads were gone, terminating engine
+2014-11-28 23:38:20.130 3580 INFO heat.engine.environment [-] Registering AWS::AutoScaling::AutoScalingGroup -> <class 'heat.engine.resources.autoscaling.AutoScalingGroup'>
+2014-11-28 23:38:20.131 3580 INFO heat.engine.environment [-] Registering OS::Heat::InstanceGroup -> <class 'heat.engine.resources.autoscaling.InstanceGroup'>
+2014-11-28 23:38:20.132 3580 INFO heat.engine.environment [-] Registering OS::Heat::AutoScalingGroup -> <class 'heat.engine.resources.autoscaling.AutoScalingResourceGroup'>
+2014-11-28 23:38:20.132 3580 INFO heat.engine.environment [-] Registering AWS::AutoScaling::LaunchConfiguration -> <class 'heat.engine.resources.aws.launch_config.LaunchConfiguration'>
+2014-11-28 23:38:20.133 3580 INFO heat.engine.environment [-] Registering AWS::AutoScaling::ScalingPolicy -> <class 'heat.engine.resources.aws.scaling_policy.AWSScalingPolicy'>
+2014-11-28 23:38:20.133 3580 INFO heat.engine.environment [-] Registering OS::Ceilometer::Alarm -> <class 'heat.engine.resources.ceilometer.alarm.CeilometerAlarm'>
+2014-11-28 23:38:20.134 3580 INFO heat.engine.environment [-] Registering OS::Ceilometer::CombinationAlarm -> <class 'heat.engine.resources.ceilometer.alarm.CombinationAlarm'>
+2014-11-28 23:38:20.135 3580 INFO heat.engine.environment [-] Registering OS::Heat::CWLiteAlarm -> <class 'heat.engine.resources.cloud_watch.CloudWatchAlarm'>
+2014-11-28 23:38:20.139 3580 INFO heat.engine.environment [-] Registering AWS::EC2::EIP -> <class 'heat.engine.resources.eip.ElasticIp'>
+2014-11-28 23:38:20.140 3580 INFO heat.engine.environment [-] Registering AWS::EC2::EIPAssociation -> <class 'heat.engine.resources.eip.ElasticIpAssociation'>
+2014-11-28 23:38:20.140 3580 INFO heat.engine.environment [-] Registering OS::Glance::Image -> <class 'heat.engine.resources.glance_image.GlanceImage'>
+2014-11-28 23:38:20.141 3580 INFO heat.engine.environment [-] Registering AWS::EC2::Instance -> <class 'heat.engine.resources.instance.Instance'>
+2014-11-28 23:38:20.141 3580 INFO heat.engine.environment [-] Registering OS::Heat::HARestarter -> <class 'heat.engine.resources.instance.Restarter'>
+2014-11-28 23:38:20.142 3580 INFO heat.engine.environment [-] Registering AWS::EC2::InternetGateway -> <class 'heat.engine.resources.internet_gateway.InternetGateway'>
+2014-11-28 23:38:20.142 3580 INFO heat.engine.environment [-] Registering AWS::EC2::VPCGatewayAttachment -> <class 'heat.engine.resources.internet_gateway.VPCGatewayAttachment'>
+2014-11-28 23:38:20.143 3580 INFO heat.engine.environment [-] Registering AWS::ElasticLoadBalancing::LoadBalancer -> <class 'heat.engine.resources.loadbalancer.LoadBalancer'>
+2014-11-28 23:38:20.143 3580 INFO heat.engine.environment [-] Registering AWS::EC2::NetworkInterface -> <class 'heat.engine.resources.network_interface.NetworkInterface'>
+2014-11-28 23:38:20.144 3580 INFO heat.engine.environment [-] Registering OS::Neutron::FirewallPolicy -> <class 'heat.engine.resources.neutron.firewall.FirewallPolicy'>
+2014-11-28 23:38:20.148 3580 INFO heat.engine.environment [-] Registering OS::Neutron::FirewallRule -> <class 'heat.engine.resources.neutron.firewall.FirewallRule'>
+2014-11-28 23:38:20.149 3580 INFO heat.engine.environment [-] Registering OS::Neutron::Firewall -> <class 'heat.engine.resources.neutron.firewall.Firewall'>
+2014-11-28 23:38:20.149 3580 INFO heat.engine.environment [-] Registering OS::Neutron::FloatingIP -> <class 'heat.engine.resources.neutron.floatingip.FloatingIP'>
+2014-11-28 23:38:20.150 3580 INFO heat.engine.environment [-] Registering OS::Neutron::FloatingIPAssociation -> <class 'heat.engine.resources.neutron.floatingip.FloatingIPAssociation'>
+2014-11-28 23:38:20.150 3580 INFO heat.engine.environment [-] Registering OS::Neutron::Pool -> <class 'heat.engine.resources.neutron.loadbalancer.Pool'>
+2014-11-28 23:38:20.150 3580 INFO heat.engine.environment [-] Registering OS::Neutron::LoadBalancer -> <class 'heat.engine.resources.neutron.loadbalancer.LoadBalancer'>
+2014-11-28 23:38:20.151 3580 INFO heat.engine.environment [-] Registering OS::Neutron::PoolMember -> <class 'heat.engine.resources.neutron.loadbalancer.PoolMember'>
+2014-11-28 23:38:20.151 3580 INFO heat.engine.environment [-] Registering OS::Neutron::HealthMonitor -> <class 'heat.engine.resources.neutron.loadbalancer.HealthMonitor'>
+2014-11-28 23:38:20.151 3580 INFO heat.engine.environment [-] Registering OS::Neutron::MeteringRule -> <class 'heat.engine.resources.neutron.metering.MeteringRule'>
+2014-11-28 23:38:20.152 3580 INFO heat.engine.environment [-] Registering OS::Neutron::MeteringLabel -> <class 'heat.engine.resources.neutron.metering.MeteringLabel'>
+2014-11-28 23:38:20.152 3580 INFO heat.engine.environment [-] Registering OS::Neutron::Net -> <class 'heat.engine.resources.neutron.net.Net'>
+2014-11-28 23:38:20.153 3580 INFO heat.engine.environment [-] Registering OS::Neutron::NetworkGateway -> <class 'heat.engine.resources.neutron.network_gateway.NetworkGateway'>
+2014-11-28 23:38:20.153 3580 INFO heat.engine.environment [-] Registering OS::Neutron::Port -> <class 'heat.engine.resources.neutron.port.Port'>
+2014-11-28 23:38:20.153 3580 INFO heat.engine.environment [-] Registering OS::Neutron::ProviderNet -> <class 'heat.engine.resources.neutron.provider_net.ProviderNet'>
+2014-11-28 23:38:20.153 3580 INFO heat.engine.environment [-] Registering OS::Neutron::RouterInterface -> <class 'heat.engine.resources.neutron.router.RouterInterface'>
+2014-11-28 23:38:20.154 3580 INFO heat.engine.environment [-] Registering OS::Neutron::RouterGateway -> <class 'heat.engine.resources.neutron.router.RouterGateway'>
+2014-11-28 23:38:20.154 3580 INFO heat.engine.environment [-] Registering OS::Neutron::Router -> <class 'heat.engine.resources.neutron.router.Router'>
+2014-11-28 23:38:20.155 3580 INFO heat.engine.environment [-] Registering OS::Neutron::SecurityGroup -> <class 'heat.engine.resources.neutron.security_group.SecurityGroup'>
+2014-11-28 23:38:20.155 3580 INFO heat.engine.environment [-] Registering OS::Neutron::Subnet -> <class 'heat.engine.resources.neutron.subnet.Subnet'>
+2014-11-28 23:38:20.155 3580 INFO heat.engine.environment [-] Registering OS::Neutron::IKEPolicy -> <class 'heat.engine.resources.neutron.vpnservice.IKEPolicy'>
+2014-11-28 23:38:20.156 3580 INFO heat.engine.environment [-] Registering OS::Neutron::VPNService -> <class 'heat.engine.resources.neutron.vpnservice.VPNService'>
+2014-11-28 23:38:20.156 3580 INFO heat.engine.environment [-] Registering OS::Neutron::IPsecSiteConnection -> <class 'heat.engine.resources.neutron.vpnservice.IPsecSiteConnection'>
+2014-11-28 23:38:20.156 3580 INFO heat.engine.environment [-] Registering OS::Neutron::IPsecPolicy -> <class 'heat.engine.resources.neutron.vpnservice.IPsecPolicy'>
+2014-11-28 23:38:20.156 3580 INFO heat.engine.environment [-] Registering OS::Nova::FloatingIP -> <class 'heat.engine.resources.nova_floatingip.NovaFloatingIp'>
+2014-11-28 23:38:20.157 3580 INFO heat.engine.environment [-] Registering OS::Nova::FloatingIPAssociation -> <class 'heat.engine.resources.nova_floatingip.NovaFloatingIpAssociation'>
+2014-11-28 23:38:20.157 3580 INFO heat.engine.environment [-] Registering OS::Nova::KeyPair -> <class 'heat.engine.resources.nova_keypair.KeyPair'>
+2014-11-28 23:38:20.157 3580 INFO heat.engine.environment [-] Registering OS::Nova::ServerGroup -> <class 'heat.engine.resources.nova_servergroup.ServerGroup'>
+2014-11-28 23:38:20.158 3580 INFO heat.engine.environment [-] Registering OS::Heat::ScalingPolicy -> <class 'heat.engine.resources.openstack.scaling_policy.AutoScalingPolicy'>
+2014-11-28 23:38:20.158 3580 INFO heat.engine.environment [-] Registering OS::Trove::Instance -> <class 'heat.engine.resources.os_database.OSDBInstance'>
+2014-11-28 23:38:20.158 3580 INFO heat.engine.environment [-] Registering OS::Heat::RandomString -> <class 'heat.engine.resources.random_string.RandomString'>
+2014-11-28 23:38:20.158 3580 INFO heat.engine.environment [-] Registering OS::Heat::ResourceGroup -> <class 'heat.engine.resources.resource_group.ResourceGroup'>
+2014-11-28 23:38:20.159 3580 INFO heat.engine.environment [-] Registering AWS::EC2::RouteTable -> <class 'heat.engine.resources.route_table.RouteTable'>
+2014-11-28 23:38:20.159 3580 INFO heat.engine.environment [-] Registering AWS::EC2::SubnetRouteTableAssociation -> <class 'heat.engine.resources.route_table.SubnetRouteTableAssociation'>
+2014-11-28 23:38:20.159 3580 INFO heat.engine.environment [-] Registering AWS::S3::Bucket -> <class 'heat.engine.resources.s3.S3Bucket'>
+2014-11-28 23:38:20.160 3580 INFO heat.engine.environment [-] Registering OS::Sahara::Cluster -> <class 'heat.engine.resources.sahara_cluster.SaharaCluster'>
+2014-11-28 23:38:20.160 3580 INFO heat.engine.environment [-] Registering OS::Sahara::NodeGroupTemplate -> <class 'heat.engine.resources.sahara_templates.SaharaNodeGroupTemplate'>
+2014-11-28 23:38:20.160 3580 INFO heat.engine.environment [-] Registering OS::Sahara::ClusterTemplate -> <class 'heat.engine.resources.sahara_templates.SaharaClusterTemplate'>
+2014-11-28 23:38:20.160 3580 INFO heat.engine.environment [-] Registering AWS::EC2::SecurityGroup -> <class 'heat.engine.resources.security_group.SecurityGroup'>
+2014-11-28 23:38:20.161 3580 INFO heat.engine.environment [-] Registering OS::Nova::Server -> <class 'heat.engine.resources.server.Server'>
+2014-11-28 23:38:20.161 3580 INFO heat.engine.environment [-] Registering OS::Heat::CloudConfig -> <class 'heat.engine.resources.software_config.cloud_config.CloudConfig'>
+2014-11-28 23:38:20.161 3580 INFO heat.engine.environment [-] Registering OS::Heat::MultipartMime -> <class 'heat.engine.resources.software_config.multi_part.MultipartMime'>
+2014-11-28 23:38:20.162 3580 INFO heat.engine.environment [-] Registering OS::Heat::SoftwareComponent -> <class 'heat.engine.resources.software_config.software_component.SoftwareComponent'>
+2014-11-28 23:38:20.162 3580 INFO heat.engine.environment [-] Registering OS::Heat::SoftwareConfig -> <class 'heat.engine.resources.software_config.software_config.SoftwareConfig'>
+2014-11-28 23:38:20.162 3580 INFO heat.engine.environment [-] Registering OS::Heat::SoftwareDeployment -> <class 'heat.engine.resources.software_config.software_deployment.SoftwareDeployment'>
+2014-11-28 23:38:20.163 3580 INFO heat.engine.environment [-] Registering OS::Heat::SoftwareDeployments -> <class 'heat.engine.resources.software_config.software_deployment.SoftwareDeployments'>
+2014-11-28 23:38:20.163 3580 INFO heat.engine.environment [-] Registering OS::Heat::StructuredDeployments -> <class 'heat.engine.resources.software_config.structured_config.StructuredDeployments'>
+2014-11-28 23:38:20.163 3580 INFO heat.engine.environment [-] Registering OS::Heat::StructuredConfig -> <class 'heat.engine.resources.software_config.structured_config.StructuredConfig'>
+2014-11-28 23:38:20.163 3580 INFO heat.engine.environment [-] Registering OS::Heat::StructuredDeployment -> <class 'heat.engine.resources.software_config.structured_config.StructuredDeployment'>
+2014-11-28 23:38:20.164 3580 INFO heat.engine.environment [-] Registering AWS::CloudFormation::Stack -> <class 'heat.engine.resources.stack.NestedStack'>
+2014-11-28 23:38:20.164 3580 INFO heat.engine.environment [-] Registering AWS::EC2::Subnet -> <class 'heat.engine.resources.subnet.Subnet'>
+2014-11-28 23:38:20.164 3580 INFO heat.engine.environment [-] Registering OS::Swift::Container -> <class 'heat.engine.resources.swift.SwiftContainer'>
+2014-11-28 23:38:20.165 3580 INFO heat.engine.environment [-] Registering OS::Heat::SwiftSignal -> <class 'heat.engine.resources.swiftsignal.SwiftSignal'>
+2014-11-28 23:38:20.165 3580 INFO heat.engine.environment [-] Registering OS::Heat::SwiftSignalHandle -> <class 'heat.engine.resources.swiftsignal.SwiftSignalHandle'>
+2014-11-28 23:38:20.165 3580 INFO heat.engine.environment [-] Registering AWS::IAM::User -> <class 'heat.engine.resources.user.User'>
+2014-11-28 23:38:20.166 3580 INFO heat.engine.environment [-] Registering AWS::IAM::AccessKey -> <class 'heat.engine.resources.user.AccessKey'>
+2014-11-28 23:38:20.166 3580 INFO heat.engine.environment [-] Registering OS::Heat::AccessPolicy -> <class 'heat.engine.resources.user.AccessPolicy'>
+2014-11-28 23:38:20.167 3580 INFO heat.engine.environment [-] Registering AWS::EC2::VolumeAttachment -> <class 'heat.engine.resources.volume.VolumeAttachment'>
+2014-11-28 23:38:20.167 3580 INFO heat.engine.environment [-] Registering AWS::EC2::Volume -> <class 'heat.engine.resources.volume.Volume'>
+2014-11-28 23:38:20.168 3580 INFO heat.engine.environment [-] Registering OS::Cinder::VolumeAttachment -> <class 'heat.engine.resources.volume.CinderVolumeAttachment'>
+2014-11-28 23:38:20.168 3580 INFO heat.engine.environment [-] Registering OS::Cinder::Volume -> <class 'heat.engine.resources.volume.CinderVolume'>
+2014-11-28 23:38:20.169 3580 INFO heat.engine.environment [-] Registering AWS::EC2::VPC -> <class 'heat.engine.resources.vpc.VPC'>
+2014-11-28 23:38:20.169 3580 INFO heat.engine.environment [-] Registering OS::Heat::UpdateWaitConditionHandle -> <class 'heat.engine.resources.wait_condition.UpdateWaitConditionHandle'>
+2014-11-28 23:38:20.170 3580 INFO heat.engine.environment [-] Registering AWS::CloudFormation::WaitConditionHandle -> <class 'heat.engine.resources.wait_condition.WaitConditionHandle'>
+2014-11-28 23:38:20.170 3580 INFO heat.engine.environment [-] Registering OS::Heat::WaitConditionHandle -> <class 'heat.engine.resources.wait_condition.HeatWaitConditionHandle'>
+2014-11-28 23:38:20.171 3580 INFO heat.engine.environment [-] Registering AWS::CloudFormation::WaitCondition -> <class 'heat.engine.resources.wait_condition.WaitCondition'>
+2014-11-28 23:38:20.171 3580 INFO heat.engine.environment [-] Registering OS::Heat::WaitCondition -> <class 'heat.engine.resources.wait_condition.HeatWaitCondition'>
+2014-11-28 23:38:20.172 3580 INFO heat.engine.environment [-] Loading /etc/heat/environment.d/default.yaml
+2014-11-28 23:38:20.173 3580 INFO heat.engine.environment [-] Registering AWS::CloudWatch::Alarm -> file:///etc/heat/templates/AWS_CloudWatch_Alarm.yaml
+2014-11-28 23:38:20.174 3580 INFO heat.engine.environment [-] Registering OS::Metering::Alarm -> OS::Ceilometer::Alarm
+2014-11-28 23:38:20.174 3580 INFO heat.engine.environment [-] Registering OS::Quantum* -> OS::Neutron*
+2014-11-28 23:38:20.175 3580 INFO heat.engine.environment [-] Registering AWS::RDS::DBInstance -> file:///etc/heat/templates/AWS_RDS_DBInstance.yaml
+2014-11-28 23:38:20.198 3580 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:20.303 3580 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:20.318 3580 INFO oslo.messaging._drivers.impl_rabbit [-] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-28 23:38:20.331 3580 INFO oslo.messaging._drivers.impl_rabbit [-] Connected to AMQP server on 10.0.1.111:5672
