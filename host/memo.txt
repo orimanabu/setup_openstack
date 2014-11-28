@@ -1,4 +1,5 @@
-add disk img to vm
+== add disk img to vm ==
+
 % diff -u tmp1 tmp2
 --- tmp1        2014-11-26 22:15:08.067493404 +0900
 +++ tmp2        2014-11-26 22:16:38.738153770 +0900
@@ -16,3 +17,71 @@ add disk img to vm
        <driver name='qemu' type='raw'/>
        <target dev='hda' bus='ide'/>
 %
+
+
+== for nested kvm ==
+
+% diff -u c1 c2
+--- c1  2014-11-28 17:47:10.701769800 +0900
++++ c2  2014-11-28 17:48:10.938209707 +0900
+@@ -15,6 +15,30 @@
+   </features>
+   <cpu mode='custom' match='exact'>
+     <model fallback='allow'>SandyBridge</model>
++    <vendor>Intel</vendor>
++    <feature policy='require' name='vme'/>
++    <feature policy='require' name='dtes64'/>
++    <feature policy='require' name='vmx'/>
++    <feature policy='require' name='erms'/>
++    <feature policy='require' name='xtpr'/>
++    <feature policy='require' name='smep'/>
++    <feature policy='require' name='pcid'/>
++    <feature policy='require' name='est'/>
++    <feature policy='require' name='monitor'/>
++    <feature policy='require' name='smx'/>
++    <feature policy='require' name='tm'/>
++    <feature policy='require' name='acpi'/>
++    <feature policy='require' name='osxsave'/>
++    <feature policy='require' name='ht'/>
++    <feature policy='require' name='pdcm'/>
++    <feature policy='require' name='fsgsbase'/>
++    <feature policy='require' name='f16c'/>
++    <feature policy='require' name='ds'/>
++    <feature policy='require' name='tm2'/>
++    <feature policy='require' name='ss'/>
++    <feature policy='require' name='pbe'/>
++    <feature policy='require' name='ds_cpl'/>
++    <feature policy='require' name='rdrand'/>
+   </cpu>
+   <clock offset='utc'>
+     <timer name='rtc' tickpolicy='catchup'/>
+%
+
+
+== ifcfg-br-tenant ==
+
+# cat ifcfg-br-tenant
+NM_CONTROLLED=no
+IPV6INIT="yes"
+IPV6_AUTOCONF="yes"
+NAME="eth1"
+ONBOOT="yes"
+IPADDR=10.0.2.121
+PREFIX=24
+DEVICE=br-tenant
+DEVICETYPE=ovs
+OVSBOOTPROTO="static"
+TYPE=OVSBridge
+#
+
+
+== ifcfg-eth1 ==
+
+# cat ifcfg-eth1
+DEVICE=eth1
+DEVICETYPE=ovs
+TYPE=OVSPort
+OVS_BRIDGE=br-tenant
+ONBOOT=yes
+BOOTPROTO=none
+#
