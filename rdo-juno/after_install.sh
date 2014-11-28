@@ -12,7 +12,7 @@ done
 
 for node in ${network_nodes}; do
 	ifcfgdir=/etc/sysconfig/network-scripts
-	do_command -r ${node} ssh "test -f ${ifcfgdir}/ifcfg-eth2 || sed -e 's/eth1/eth2/' -e 's/br-tenant/br-ex/' ${ifcfgdir}/ifcfg-eth1 > ${ifcfgdir}/ifcfg-eth2"
+	do_command -r ${node} "test -f ${ifcfgdir}/ifcfg-eth2 || sed -e 's/eth1/eth2/' -e 's/br-tenant/br-ex/' ${ifcfgdir}/ifcfg-eth1 > ${ifcfgdir}/ifcfg-eth2"
 done
 
 for node in ${controller_node} ${network_nodes} ${compute_nodes}; do
