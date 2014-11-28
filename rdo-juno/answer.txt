@@ -36,15 +36,15 @@ CONFIG_HORIZON_INSTALL=y
 
 # Set to 'y' if you would like Packstack to install OpenStack Object
 # Storage (Swift)
-CONFIG_SWIFT_INSTALL=n
+CONFIG_SWIFT_INSTALL=y
 
 # Set to 'y' if you would like Packstack to install OpenStack
 # Metering (Ceilometer)
-CONFIG_CEILOMETER_INSTALL=n
+CONFIG_CEILOMETER_INSTALL=y
 
 # Set to 'y' if you would like Packstack to install OpenStack
 # Orchestration (Heat)
-CONFIG_HEAT_INSTALL=n
+CONFIG_HEAT_INSTALL=y
 
 # Set to 'y' if you would like Packstack to install the OpenStack
 # Client packages. An admin "rc" file will also be installed
@@ -56,7 +56,7 @@ CONFIG_NTP_SERVERS=clock.redhat.com
 
 # Set to 'y' if you would like Packstack to install Nagios to monitor
 # OpenStack hosts
-CONFIG_NAGIOS_INSTALL=n
+CONFIG_NAGIOS_INSTALL=y
 
 # Comma separated list of servers to be excluded from installation in
 # case you are running Packstack the second time with the same answer
@@ -267,7 +267,7 @@ CONFIG_CINDER_VOLUMES_CREATE=y
 
 # Cinder's volumes group size. Note that actual volume size will be
 # extended with 3% more space for VG metadata.
-CONFIG_CINDER_VOLUMES_SIZE=20G
+CONFIG_CINDER_VOLUMES_SIZE=10G
 
 # A single or comma separated list of gluster volume shares to mount,
 # eg: ip-address:/vol-name, domain:/vol-name
@@ -469,7 +469,7 @@ CONFIG_LBAAS_INSTALL=n
 
 # Set to 'y' if you would like Packstack to install Neutron L3
 # Metering agent
-CONFIG_NEUTRON_METERING_AGENT_INSTALL=n
+CONFIG_NEUTRON_METERING_AGENT_INSTALL=y
 
 # Whether to configure neutron Firewall as a Service
 CONFIG_NEUTRON_FWAAS=n
@@ -619,7 +619,7 @@ CONFIG_PROVISION_TEMPEST_USER=
 CONFIG_PROVISION_TEMPEST_USER_PW=tempest
 
 # The CIDR network address for the floating IP subnet
-CONFIG_PROVISION_DEMO_FLOATRANGE=172.24.4.224/28
+CONFIG_PROVISION_DEMO_FLOATRANGE=172.16.99.0/24
 
 # The uri of the tempest git repository to use
 CONFIG_PROVISION_TEMPEST_REPO_URI=https://github.com/openstack/tempest.git
