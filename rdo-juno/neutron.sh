@@ -146,6 +146,16 @@ floatingip-associate)
 	echo "floatingip id: ${ipid}"
 	do_command neutron floatingip-associate ${ipid} ${portid}
 	;;
+info|stat|status)
+	echo "tenant: ${tenant}"
+	source ${gittop}/keystonerc ${tenant}
+	do_command neutron net-list
+	do_command neutron subnet-list
+	do_command neutron port-list
+	do_command neutron router-list
+	do_command "for id in $(neutron router-list | awk '/network_id/ {print $4}' | tr '\n' ' '); do echo =\> \${id}; neutron l3-agent-list-hosting-router \${id}; done"
+	do_command neutron agent-list
+	;;
 *)
 	echo "unknown op: ${op}"
 	;;
