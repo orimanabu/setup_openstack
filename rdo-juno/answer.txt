@@ -608,7 +608,7 @@ CONFIG_SWIFT_STORAGE_SIZE=2G
 
 # Whether to provision for demo usage and testing. Note that
 # provisioning is only supported for all-in-one installations.
-CONFIG_PROVISION_DEMO=y
+CONFIG_PROVISION_DEMO=n
 
 # Whether to configure tempest for testing
 CONFIG_PROVISION_TEMPEST=n
