@@ -476,12 +476,13 @@ CONFIG_NEUTRON_FWAAS=n
 
 # A comma separated list of network type driver entrypoints to be
 # loaded from the neutron.ml2.type_drivers namespace.
-CONFIG_NEUTRON_ML2_TYPE_DRIVERS=vxlan
+#CONFIG_NEUTRON_ML2_TYPE_DRIVERS=vxlan
+CONFIG_NEUTRON_ML2_TYPE_DRIVERS=vlan
 
 # A comma separated ordered list of network_types to allocate as
 # tenant networks. The value 'local' is only useful for single-box
 # testing but provides no connectivity between hosts.
-CONFIG_NEUTRON_ML2_TENANT_NETWORK_TYPES=vxlan
+CONFIG_NEUTRON_ML2_TENANT_NETWORK_TYPES=vlan
 
 # A comma separated ordered list of networking mechanism driver
 # entrypoints to be loaded from the neutron.ml2.mechanism_drivers
@@ -497,7 +498,7 @@ CONFIG_NEUTRON_ML2_FLAT_NETWORKS=*
 # or <physical_network> specifying physical_network names usable for
 # VLAN provider and tenant networks, as well as ranges of VLAN tags on
 # each available for allocation to tenant networks.
-CONFIG_NEUTRON_ML2_VLAN_RANGES=
+CONFIG_NEUTRON_ML2_VLAN_RANGES=physnet-tenant:2000:2999
 
 # A comma separated list of <tun_min>:<tun_max> tuples enumerating
 # ranges of GRE tunnel IDs that are available for tenant network
@@ -533,7 +534,8 @@ CONFIG_NEUTRON_LB_INTERFACE_MAPPINGS=
 
 # Type of network to allocate for tenant networks (eg. vlan, local,
 # gre, vxlan)
-CONFIG_NEUTRON_OVS_TENANT_NETWORK_TYPE=vxlan
+#CONFIG_NEUTRON_OVS_TENANT_NETWORK_TYPE=vxlan
+CONFIG_NEUTRON_OVS_TENANT_NETWORK_TYPE=vlan
 
 # A comma separated list of VLAN ranges for the Neutron openvswitch
 # plugin (eg. physnet1:1:4094,physnet2,physnet3:3000:3999)
