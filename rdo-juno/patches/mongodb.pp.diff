@@ -1,0 +1,8 @@
+--- usr/lib/python2.7/site-packages/packstack/puppet/templates/mongodb.pp.orig	2014-11-28 23:06:48.354000000 +0900
++++ usr/lib/python2.7/site-packages/packstack/puppet/templates/mongodb.pp	2014-11-28 23:07:02.131000000 +0900
+@@ -1,4 +1,5 @@
+ class { 'mongodb::server':
+     smallfiles   => true,
+     bind_ip      => ['%(CONFIG_MONGODB_HOST)s'],
++    pidfilepath => '/var/run/mongodb/mongod.pid'
+ }
