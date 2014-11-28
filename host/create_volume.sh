@@ -15,3 +15,5 @@ echo "=> fallocate"
 fallocate -l ${size} ${image}
 echo "=> info"
 qemu-img info ${image}
+
+# qemu-img resize target.img +4G

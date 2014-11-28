@@ -1,0 +1,67 @@
+# http://docs.openstack.org/developer/devstack/guides/single-machine.html
+# http://l4tol7.blogspot.jp/2013/08/openstack-devstack-setup-with-vxlan-as.html
+# http://www.sebastien-han.fr/blog/2013/08/16/best-localrc-for-devstack/
+# http://wiki.stackinsider.org/index.php/DevStack_-_Dual_Node_-_Neutron_VXLAN_-_Controller_Node
+# http://wiki.stackinsider.org/index.php/DevStack_-_Dual_Node_-_Neutron_VXLAN_-_Compute_Node
+# http://www.weston.la/2014/08/blog/
+# http://antigluk.blogspot.jp/2014/01/enabling-neutron-in-devstack-20.html
+# http://aikotobaha.blogspot.jp/2012/10/quantum-ovs-gre-with-devstack.html
+
+[[local|localrc]]
+HOST_IP=10.0.1.121
+TUNNEL_ENDPOINT_IP=10.0.2.121
+ENABLED_SERVICES=q-agt,q-l3,q-dhcp,q-meta,rabbit
+
+SERVICE_HOST=10.0.1.111
+MYSQL_HOST=$SERVICE_HOST
+RABBIT_HOST=$SERVICE_HOST
+Q_HOST=$SERVICE_HOST
+GLANCE_HOSTPORT=$SERVICE_HOST:9292
+
+DEST=/opt/stack
+LOGFILE=$DEST/logs/stack.sh.log
+SCREEN_LOGDIR=$DEST/logs/screen
+#RECLONE=yes
+#
+#
+MULTI_HOST=1
+
+Q_PLUGIN=ml2
+Q_AGENT=openvswitch
+Q_USE_DEBUG_COMMAND=True
+Q_L3_ENABLED=True
+Q_L3_ROUTER_PER_TENANT=True
+ENABLE_TENANT_TUNNELS=True
+TENANT_TUNNEL_RANGE=-1:1000
+Q_ML2_TENANT_NETWORK_TYPE=vxlan
+Q_USE_PROVIDERNET_FOR_PUBLIC=True
+#OVS_BRIDGE_MAPPINGS=public:br-eth0
+OVS_ENABLE_TUNNELING=True
+#PUBLIC_BRIDGE=br-eth0
+Q_SRV_EXTRA_OPTS=(tenant_network_type=vxlan)
+
+GUEST_INTERFACE=eth1
+PUBLIC_INTERFACE=eth2
+FLOATING_RANGE=172.16.99.0/24
+PUBLIC_NETWORK_GATEWAY=172.16.99.1
+FIXED_RANGE=192.168.99.0/24
+NETWORK_GATEWAY=192.168.99.1
+
+DATABASE_PASSWORD=mysql
+RABBIT_PASSWORD=rabbit
+SERVICE_TOKEN=openstack
+SERVICE_PASSWORD=service
+ADMIN_PASSWORD=admin
+
+GLANCE_BRANCH=stable/juno
+HORIZON_BRANCH=stable/juno
+KEYSTONE_BRANCH=stable/juno
+NOVA_BRANCH=stable/juno
+NEUTRON_BRANCH=stable/juno
+HEAT_BRANCH=stable/juno
+CEILOMETER_BRANCH=stable/juno
+
+[[post-config|/$Q_PLUGIN_CONF_FILE]]
+[DEFAULT]
+tunnel_types=vxlan
+vxlan_udp_port=8472

@@ -1,0 +1,18 @@
+add disk img to vm
+% diff -u tmp1 tmp2
+--- tmp1        2014-11-26 22:15:08.067493404 +0900
++++ tmp2        2014-11-26 22:16:38.738153770 +0900
+@@ -36,6 +36,12 @@
+       <target dev='vda' bus='virtio'/>
+       <address type='pci' domain='0x0000' bus='0x00' slot='0x07' function='0x0'/>
+     </disk>
++    <disk type='file' device='disk'>
++      <driver name='qemu' type='qcow2'/>
++      <source file='/var/lib/libvirt/images/cinder-volumes-juno-controller.qcow2'/>
++      <target dev='vdb' bus='virtio'/>
++      <address type='pci' domain='0x0000' bus='0x00' slot='0x0b' function='0x0'/>
++    </disk>
+     <disk type='block' device='cdrom'>
+       <driver name='qemu' type='raw'/>
+       <target dev='hda' bus='ide'/>
+%
