@@ -32,14 +32,14 @@ set)
 		host=$(echo ${line} | awk '{print $2}')
 		echo "==> ${addr}/${host}"
 		do_command -r ${addr} -n openstack-config --set /etc/neutron/neutron.conf DEFAULT l3_ha True
-		do_command -r ${addr} -n openstack-config --set /etc/neutron/neutron.conf DEFAULT max_l3_agents_per_router 3
-		do_command -r ${addr} -n openstack-config --set /etc/neutron/neutron.conf DEFAULT min_l3_agents_per_router 2
-		do_command -r ${addr} -n openstack-config --set /etc/neutron/neutron.conf DEFAULT l3_ha_net_cidr 169.254.192.0/18
-		do_command -r ${addr} -n openstack-config --set /etc/neutron/l3_agent.ini DEFAULT agent_mode legacy
-		do_command -r ${addr} -n openstack-config --set /etc/neutron/l3_agent.ini DEFAULT ha_confs_path '\$state_path/ha_confs'
-		do_command -r ${addr} -n openstack-config --set /etc/neutron/l3_agent.ini DEFAULT ha_vrrp_auth_type PASS
-		do_command -r ${addr} -n openstack-config --set /etc/neutron/l3_agent.ini DEFAULT ha_vrrp_auth_password openstack
-		do_command -r ${addr} -n openstack-config --set /etc/neutron/l3_agent.ini DEFAULT ha_vrrp_advert_int 2
+#		do_command -r ${addr} -n openstack-config --set /etc/neutron/neutron.conf DEFAULT max_l3_agents_per_router 3
+#		do_command -r ${addr} -n openstack-config --set /etc/neutron/neutron.conf DEFAULT min_l3_agents_per_router 2
+#		do_command -r ${addr} -n openstack-config --set /etc/neutron/neutron.conf DEFAULT l3_ha_net_cidr 169.254.192.0/18
+#		do_command -r ${addr} -n openstack-config --set /etc/neutron/l3_agent.ini DEFAULT agent_mode legacy
+#		do_command -r ${addr} -n openstack-config --set /etc/neutron/l3_agent.ini DEFAULT ha_confs_path '\$state_path/ha_confs'
+#		do_command -r ${addr} -n openstack-config --set /etc/neutron/l3_agent.ini DEFAULT ha_vrrp_auth_type PASS
+#		do_command -r ${addr} -n openstack-config --set /etc/neutron/l3_agent.ini DEFAULT ha_vrrp_auth_password openstack
+#		do_command -r ${addr} -n openstack-config --set /etc/neutron/l3_agent.ini DEFAULT ha_vrrp_advert_int 2
 	done
 	;;
 unset)
