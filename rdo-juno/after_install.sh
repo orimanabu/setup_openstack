@@ -29,13 +29,13 @@ for node in ${controller_node} ${network_nodes} ${compute_nodes}; do
 		done
 	fi
 
-	echo "=> /etc/sysconfig/selinux"
-	f=/etc/sysconfig/selinux
-	ssh ${ssh_options} test -f ${f}.orig > /dev/null 2>&1
-	if [ x"$?" != x"0" ]; then
-		#cp -p ${f} ${f}.orig
-		do_command -r ${node} "sed -i.orig -e 's/^SELINUX=.*$/SELINUX=permissive/' ${f}"
-	fi
+#	echo "=> /etc/sysconfig/selinux"
+#	f=/etc/sysconfig/selinux
+#	ssh ${ssh_options} test -f ${f}.orig > /dev/null 2>&1
+#	if [ x"$?" != x"0" ]; then
+#		#cp -p ${f} ${f}.orig
+#		do_command -r ${node} "sed -i.orig -e 's/^SELINUX=.*$/SELINUX=permissive/' ${f}"
+#	fi
 
 	echo "=> ${HOME}/keystonerc"
 	do_command -r ${node} ln -s ${gittop}/keystonerc ${HOME}/keystonerc

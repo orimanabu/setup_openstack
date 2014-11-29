@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ./subr.sh
+
 region=RegionOne
 
 echo "=> fetching cirros"
@@ -22,7 +24,7 @@ source ~/keystonerc_admin
 echo "=> importing to Glance"
 for name in cirros rhel7; do
 	echo "==> ${name}"
-	glance --os-region-name ${region} image-list | grep ${name} || glance --os-region-name ${region} image-create --name ${name} --is-public true --disk-format qcow2 --container-format bare --file $(eval echo '$'${name})
+	glance --os-region-name ${region} image-list | grep ${name} || do_command glance --os-region-name ${region} image-create --name ${name} --is-public true --disk-format qcow2 --container-format bare --file $(eval echo '$'${name})
 done
 
 # curl -O -k -L http://download.cirros-cloud.net/0.3.3/cirros-0.3.3-x86_64-disk.img
