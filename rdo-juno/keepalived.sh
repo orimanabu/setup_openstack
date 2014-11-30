@@ -46,6 +46,6 @@ for node in ${network_nodes}; do
 	do_command -r ${node} cat /var/lib/neutron/ha_confs/${router_id}/state; echo
 	if [ x"${verbose}" = x"1" ]; then
 		do_command -r ${node} cat /var/lib/neutron/ha_confs/${router_id}/keepalived.conf
-		do_command pstree -p
+		do_command -r ${node} pstree -p
 	fi
 done

@@ -58,10 +58,10 @@ op=$1; shift
 
 str=$(echo ${cidr} | sed -e 's|^\([0-9.]*\)\.0/\([0-9]*\)|prefix=\1 prefixlen=\2|')
 eval ${str}
+tenant=${_tenant:-${OS_TENANT_NAME}}
 network=${_network:-${tenant}_net}
 subnet=${_subnet:-${tenant}_net_subnet}
 router=${_router:-router_${tenant}}
-tenant=${_tenant:-${OS_TENANT_NAME}}
 public_network=${_public_network:-external}
 
 pool_start=${prefix}.100
