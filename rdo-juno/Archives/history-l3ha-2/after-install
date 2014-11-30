@@ -1,0 +1,739 @@
+*=> after-install
+=====> [20141130-225040] host: 10.0.1.131, command: openstack-config --set /etc/nova/nova.conf libvirt virt_type kvm
+
+=====> [20141130-225040] host: 10.0.1.131, command: openstack-config --get /etc/nova/nova.conf libvirt virt_type
+kvm
+=====> [20141130-225040] host: 10.0.1.121, command: test -f /etc/sysconfig/network-scripts/ifcfg-eth2 || sed -e 's/eth1/eth2/' -e 's/br-tenant/br-ex/' /etc/sysconfig/network-scripts/ifcfg-eth1 > /etc/sysconfig/network-scripts/ifcfg-eth2
+
+=====> [20141130-225041] host: 10.0.1.122, command: test -f /etc/sysconfig/network-scripts/ifcfg-eth2 || sed -e 's/eth1/eth2/' -e 's/br-tenant/br-ex/' /etc/sysconfig/network-scripts/ifcfg-eth1 > /etc/sysconfig/network-scripts/ifcfg-eth2
+
+=====> [20141130-225041] host: 10.0.1.111, command: openstack-config --set /etc/neutron/neutron.conf DEFAULT l3_ha True
+Warning: Permanently added '10.0.1.111' (ECDSA) to the list of known hosts.
+
+=====> [20141130-225041] host: 10.0.1.121, command: openstack-config --set /etc/neutron/neutron.conf DEFAULT l3_ha True
+
+=====> [20141130-225041] host: 10.0.1.122, command: openstack-config --set /etc/neutron/neutron.conf DEFAULT l3_ha True
+
+=> packages
+=====> [20141130-225041] host: 10.0.1.111, command: yum install -y psmisc
+Loaded plugins: fastestmirror, priorities
+Loading mirror speeds from cached hostfile
+ * base: www.ftp.ne.jp
+ * epel: ftp.tsukuba.wide.ad.jp
+ * extras: www.ftp.ne.jp
+ * updates: www.ftp.ne.jp
+Resolving Dependencies
+--> Running transaction check
+---> Package psmisc.x86_64 0:22.20-8.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package          Arch             Version                 Repository      Size
+================================================================================
+Installing:
+ psmisc           x86_64           22.20-8.el7             base           140 k
+
+Transaction Summary
+================================================================================
+Install  1 Package
+
+Total download size: 140 k
+Installed size: 479 k
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : psmisc-22.20-8.el7.x86_64                                    1/1 
+  Verifying  : psmisc-22.20-8.el7.x86_64                                    1/1 
+
+Installed:
+  psmisc.x86_64 0:22.20-8.el7                                                   
+
+Complete!
+=> /etc/hosts
+=====> [20141130-225050] host: 10.0.1.111, command: cp -p /etc/hosts /etc/hosts.orig
+
+=====> [20141130-225050] host: 10.0.1.111, command: echo '10.0.1.111	juno-controller.mgmt.local juno-controller' >> /etc/hosts
+
+=> /etc/selinux/config
+=====> [20141130-225051] host: 10.0.1.111, command: sed -i.orig -e 's/^SELINUX=.*$/SELINUX=permissive/' /etc/selinux/config
+
+=> /root/keystonerc
+=====> [20141130-225051] host: 10.0.1.111, command: ln -s /root/setup_openstack/keystonerc /root/keystonerc
+
+=> packages
+=====> [20141130-225051] host: 10.0.1.121, command: yum install -y psmisc
+Loaded plugins: fastestmirror, priorities
+Loading mirror speeds from cached hostfile
+ * base: www.ftp.ne.jp
+ * epel: ftp.tsukuba.wide.ad.jp
+ * extras: www.ftp.ne.jp
+ * updates: www.ftp.ne.jp
+Resolving Dependencies
+--> Running transaction check
+---> Package psmisc.x86_64 0:22.20-8.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package          Arch             Version                 Repository      Size
+================================================================================
+Installing:
+ psmisc           x86_64           22.20-8.el7             base           140 k
+
+Transaction Summary
+================================================================================
+Install  1 Package
+
+Total download size: 140 k
+Installed size: 479 k
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : psmisc-22.20-8.el7.x86_64                                    1/1 
+  Verifying  : psmisc-22.20-8.el7.x86_64                                    1/1 
+
+Installed:
+  psmisc.x86_64 0:22.20-8.el7                                                   
+
+Complete!
+=> /etc/hosts
+=====> [20141130-225058] host: 10.0.1.121, command: cp -p /etc/hosts /etc/hosts.orig
+
+=====> [20141130-225058] host: 10.0.1.121, command: echo '10.0.1.111	juno-controller.mgmt.local juno-controller' >> /etc/hosts
+
+=> /etc/selinux/config
+=====> [20141130-225058] host: 10.0.1.121, command: sed -i.orig -e 's/^SELINUX=.*$/SELINUX=permissive/' /etc/selinux/config
+
+=> /root/keystonerc
+=====> [20141130-225058] host: 10.0.1.121, command: ln -s /root/setup_openstack/keystonerc /root/keystonerc
+
+=> packages
+=====> [20141130-225058] host: 10.0.1.122, command: yum install -y psmisc
+Loaded plugins: fastestmirror, priorities
+Loading mirror speeds from cached hostfile
+ * base: www.ftp.ne.jp
+ * epel: ftp.tsukuba.wide.ad.jp
+ * extras: www.ftp.ne.jp
+ * updates: www.ftp.ne.jp
+Resolving Dependencies
+--> Running transaction check
+---> Package psmisc.x86_64 0:22.20-8.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package          Arch             Version                 Repository      Size
+================================================================================
+Installing:
+ psmisc           x86_64           22.20-8.el7             base           140 k
+
+Transaction Summary
+================================================================================
+Install  1 Package
+
+Total download size: 140 k
+Installed size: 479 k
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : psmisc-22.20-8.el7.x86_64                                    1/1 
+  Verifying  : psmisc-22.20-8.el7.x86_64                                    1/1 
+
+Installed:
+  psmisc.x86_64 0:22.20-8.el7                                                   
+
+Complete!
+=> /etc/hosts
+=====> [20141130-225105] host: 10.0.1.122, command: cp -p /etc/hosts /etc/hosts.orig
+
+=====> [20141130-225105] host: 10.0.1.122, command: echo '10.0.1.111	juno-controller.mgmt.local juno-controller' >> /etc/hosts
+
+=> /etc/selinux/config
+=====> [20141130-225105] host: 10.0.1.122, command: sed -i.orig -e 's/^SELINUX=.*$/SELINUX=permissive/' /etc/selinux/config
+
+=> /root/keystonerc
+=====> [20141130-225105] host: 10.0.1.122, command: ln -s /root/setup_openstack/keystonerc /root/keystonerc
+
+=> packages
+=====> [20141130-225105] host: 10.0.1.131, command: yum install -y psmisc
+Loaded plugins: fastestmirror, priorities
+Loading mirror speeds from cached hostfile
+ * base: www.ftp.ne.jp
+ * epel: ftp.tsukuba.wide.ad.jp
+ * extras: www.ftp.ne.jp
+ * updates: www.ftp.ne.jp
+Package psmisc-22.20-8.el7.x86_64 already installed and latest version
+Nothing to do
+=> /etc/hosts
+=====> [20141130-225114] host: 10.0.1.131, command: cp -p /etc/hosts /etc/hosts.orig
+
+=====> [20141130-225114] host: 10.0.1.131, command: echo '10.0.1.111	juno-controller.mgmt.local juno-controller' >> /etc/hosts
+
+=> /etc/selinux/config
+=====> [20141130-225114] host: 10.0.1.131, command: sed -i.orig -e 's/^SELINUX=.*$/SELINUX=permissive/' /etc/selinux/config
+
+=> /root/keystonerc
+=====> [20141130-225114] host: 10.0.1.131, command: ln -s /root/setup_openstack/keystonerc /root/keystonerc
+
+=> 10.0.1.111
+=====> [20141130-225115] host: 10.0.1.111, command: ip addr show
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN 
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 52:54:00:36:6f:81 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.1.111/24 brd 10.0.1.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::5054:ff:fe36:6f81/64 scope link 
+       valid_lft forever preferred_lft forever
+3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 52:54:00:c8:4f:68 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.111/24 brd 10.0.2.255 scope global eth1
+       valid_lft forever preferred_lft forever
+    inet6 fe80::5054:ff:fec8:4f68/64 scope link 
+       valid_lft forever preferred_lft forever
+4: eth2: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN qlen 1000
+    link/ether 52:54:00:83:b0:8c brd ff:ff:ff:ff:ff:ff
+=====> [20141130-225115] host: 10.0.1.111, command: ip netns list
+
+=====> [20141130-225115] host: 10.0.1.111, command: test -x /usr/bin/ovs-vsctl && ovs-vsctl show
+
+bash: ovs-vsctl: command not found
+=> 10.0.1.121
+=====> [20141130-225115] host: 10.0.1.121, command: ip addr show
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN 
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 52:54:00:45:b2:f7 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.1.121/24 brd 10.0.1.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::5054:ff:fe45:b2f7/64 scope link 
+       valid_lft forever preferred_lft forever
+3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast master ovs-system state UP qlen 1000
+    link/ether 52:54:00:1f:ee:23 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::5054:ff:fe1f:ee23/64 scope link 
+       valid_lft forever preferred_lft forever
+4: eth2: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN qlen 1000
+    link/ether 52:54:00:a1:51:7a brd ff:ff:ff:ff:ff:ff
+5: ovs-system: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN 
+    link/ether c2:14:eb:ec:53:06 brd ff:ff:ff:ff:ff:ff
+6: br-ex: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN 
+    link/ether da:2a:b0:f3:b6:4a brd ff:ff:ff:ff:ff:ff
+7: br-tenant: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN 
+    link/ether 6e:dc:fc:83:82:45 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.121/24 brd 10.0.2.255 scope global br-tenant
+       valid_lft forever preferred_lft forever
+    inet6 fe80::6cdc:fcff:fe83:8245/64 scope link 
+       valid_lft forever preferred_lft forever
+8: br-int: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN 
+    link/ether 6a:f6:fd:54:82:4a brd ff:ff:ff:ff:ff:ff
+=====> [20141130-225116] host: 10.0.1.121, command: ip netns list
+
+=====> [20141130-225116] host: 10.0.1.121, command: test -x /usr/bin/ovs-vsctl && ovs-vsctl show
+6011b8a8-2195-4719-b2df-bdbdfc726c88
+    Bridge br-int
+        fail_mode: secure
+        Port int-br-tenant
+            Interface int-br-tenant
+                type: patch
+                options: {peer=phy-br-tenant}
+        Port br-int
+            Interface br-int
+                type: internal
+    Bridge br-tenant
+        Port phy-br-tenant
+            Interface phy-br-tenant
+                type: patch
+                options: {peer=int-br-tenant}
+        Port "eth1"
+            Interface "eth1"
+        Port br-tenant
+            Interface br-tenant
+                type: internal
+    Bridge br-ex
+        Port br-ex
+            Interface br-ex
+                type: internal
+    ovs_version: "2.1.3"
+=> node:10.0.1.121, br:br-ex
+=====> [20141130-225116] host: 10.0.1.121, command: ovs-ofctl show br-ex
+OFPT_FEATURES_REPLY (xid=0x2): dpid:0000da2ab0f3b64a
+n_tables:254, n_buffers:256
+capabilities: FLOW_STATS TABLE_STATS PORT_STATS QUEUE_STATS ARP_MATCH_IP
+actions: OUTPUT SET_VLAN_VID SET_VLAN_PCP STRIP_VLAN SET_DL_SRC SET_DL_DST SET_NW_SRC SET_NW_DST SET_NW_TOS SET_TP_SRC SET_TP_DST ENQUEUE
+ LOCAL(br-ex): addr:da:2a:b0:f3:b6:4a
+     config:     PORT_DOWN
+     state:      LINK_DOWN
+     speed: 0 Mbps now, 0 Mbps max
+OFPT_GET_CONFIG_REPLY (xid=0x4): frags=normal miss_send_len=0
+=====> [20141130-225116] host: 10.0.1.121, command: ovs-ofctl dump-desc br-ex
+OFPST_DESC reply (xid=0x2):
+Manufacturer: Nicira, Inc.
+Hardware: Open vSwitch
+Software: 2.1.3
+Serial Num: None
+DP Description: None
+=====> [20141130-225117] host: 10.0.1.121, command: ovs-ofctl dump-flows br-ex
+NXST_FLOW reply (xid=0x4):
+ cookie=0x0, duration=830.100s, table=0, n_packets=0, n_bytes=0, idle_age=830, priority=0 actions=NORMAL
+=====> [20141130-225117] host: 10.0.1.121, command: ovs-ofctl dump-ports br-ex
+OFPST_PORT reply (xid=0x2): 1 ports
+  port LOCAL: rx pkts=0, bytes=0, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=0, bytes=0, drop=0, errs=0, coll=0
+=====> [20141130-225117] host: 10.0.1.121, command: ovs-ofctl dump-ports-desc br-ex
+OFPST_PORT_DESC reply (xid=0x2):
+ LOCAL(br-ex): addr:da:2a:b0:f3:b6:4a
+     config:     PORT_DOWN
+     state:      LINK_DOWN
+     speed: 0 Mbps now, 0 Mbps max
+=> node:10.0.1.121, br:br-int
+=====> [20141130-225117] host: 10.0.1.121, command: ovs-ofctl show br-int
+OFPT_FEATURES_REPLY (xid=0x2): dpid:00006af6fd54824a
+n_tables:254, n_buffers:256
+capabilities: FLOW_STATS TABLE_STATS PORT_STATS QUEUE_STATS ARP_MATCH_IP
+actions: OUTPUT SET_VLAN_VID SET_VLAN_PCP STRIP_VLAN SET_DL_SRC SET_DL_DST SET_NW_SRC SET_NW_DST SET_NW_TOS SET_TP_SRC SET_TP_DST ENQUEUE
+ 1(int-br-tenant): addr:3a:97:6f:90:dd:49
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ LOCAL(br-int): addr:6a:f6:fd:54:82:4a
+     config:     PORT_DOWN
+     state:      LINK_DOWN
+     speed: 0 Mbps now, 0 Mbps max
+OFPT_GET_CONFIG_REPLY (xid=0x4): frags=normal miss_send_len=0
+=====> [20141130-225117] host: 10.0.1.121, command: ovs-ofctl dump-desc br-int
+OFPST_DESC reply (xid=0x2):
+Manufacturer: Nicira, Inc.
+Hardware: Open vSwitch
+Software: 2.1.3
+Serial Num: None
+DP Description: None
+=====> [20141130-225118] host: 10.0.1.121, command: ovs-ofctl dump-flows br-int
+NXST_FLOW reply (xid=0x4):
+ cookie=0x0, duration=812.378s, table=0, n_packets=0, n_bytes=0, idle_age=812, priority=1 actions=NORMAL
+ cookie=0x0, duration=798.938s, table=0, n_packets=0, n_bytes=0, idle_age=798, priority=2,in_port=1 actions=drop
+ cookie=0x0, duration=812.204s, table=23, n_packets=0, n_bytes=0, idle_age=812, priority=0 actions=drop
+=====> [20141130-225118] host: 10.0.1.121, command: ovs-ofctl dump-ports br-int
+OFPST_PORT reply (xid=0x2): 2 ports
+  port  1: rx pkts=0, bytes=0, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=0, bytes=0, drop=0, errs=0, coll=0
+  port LOCAL: rx pkts=0, bytes=0, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=0, bytes=0, drop=0, errs=0, coll=0
+=====> [20141130-225118] host: 10.0.1.121, command: ovs-ofctl dump-ports-desc br-int
+OFPST_PORT_DESC reply (xid=0x2):
+ 1(int-br-tenant): addr:3a:97:6f:90:dd:49
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ LOCAL(br-int): addr:6a:f6:fd:54:82:4a
+     config:     PORT_DOWN
+     state:      LINK_DOWN
+     speed: 0 Mbps now, 0 Mbps max
+=> node:10.0.1.121, br:br-tenant
+=====> [20141130-225118] host: 10.0.1.121, command: ovs-ofctl show br-tenant
+OFPT_FEATURES_REPLY (xid=0x2): dpid:00006edcfc838245
+n_tables:254, n_buffers:256
+capabilities: FLOW_STATS TABLE_STATS PORT_STATS QUEUE_STATS ARP_MATCH_IP
+actions: OUTPUT SET_VLAN_VID SET_VLAN_PCP STRIP_VLAN SET_DL_SRC SET_DL_DST SET_NW_SRC SET_NW_DST SET_NW_TOS SET_TP_SRC SET_TP_DST ENQUEUE
+ 1(eth1): addr:52:54:00:1f:ee:23
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ 2(phy-br-tenant): addr:b6:5d:e1:95:3d:91
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ LOCAL(br-tenant): addr:6e:dc:fc:83:82:45
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+OFPT_GET_CONFIG_REPLY (xid=0x4): frags=normal miss_send_len=0
+=====> [20141130-225118] host: 10.0.1.121, command: ovs-ofctl dump-desc br-tenant
+OFPST_DESC reply (xid=0x2):
+Manufacturer: Nicira, Inc.
+Hardware: Open vSwitch
+Software: 2.1.3
+Serial Num: None
+DP Description: None
+=====> [20141130-225118] host: 10.0.1.121, command: ovs-ofctl dump-flows br-tenant
+NXST_FLOW reply (xid=0x4):
+ cookie=0x0, duration=800.505s, table=0, n_packets=400, n_bytes=20800, idle_age=0, priority=1 actions=NORMAL
+ cookie=0x0, duration=799.720s, table=0, n_packets=0, n_bytes=0, idle_age=799, priority=2,in_port=2 actions=drop
+=====> [20141130-225119] host: 10.0.1.121, command: ovs-ofctl dump-ports br-tenant
+OFPST_PORT reply (xid=0x2): 3 ports
+  port  1: rx pkts=485, bytes=29162, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=23, bytes=3649, drop=0, errs=0, coll=0
+  port  2: rx pkts=0, bytes=0, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=0, bytes=0, drop=0, errs=0, coll=0
+  port LOCAL: rx pkts=23, bytes=3649, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=58, bytes=6958, drop=0, errs=0, coll=0
+=====> [20141130-225119] host: 10.0.1.121, command: ovs-ofctl dump-ports-desc br-tenant
+OFPST_PORT_DESC reply (xid=0x2):
+ 1(eth1): addr:52:54:00:1f:ee:23
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ 2(phy-br-tenant): addr:b6:5d:e1:95:3d:91
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ LOCAL(br-tenant): addr:6e:dc:fc:83:82:45
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+=> 10.0.1.122
+=====> [20141130-225119] host: 10.0.1.122, command: ip addr show
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN 
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 52:54:00:b8:3b:0b brd ff:ff:ff:ff:ff:ff
+    inet 10.0.1.122/24 brd 10.0.1.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::5054:ff:feb8:3b0b/64 scope link 
+       valid_lft forever preferred_lft forever
+3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast master ovs-system state UP qlen 1000
+    link/ether 52:54:00:39:f9:66 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::5054:ff:fe39:f966/64 scope link 
+       valid_lft forever preferred_lft forever
+4: eth2: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN qlen 1000
+    link/ether 52:54:00:0e:72:83 brd ff:ff:ff:ff:ff:ff
+5: ovs-system: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN 
+    link/ether 8e:8c:46:e8:5a:b7 brd ff:ff:ff:ff:ff:ff
+6: br-ex: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN 
+    link/ether f6:5e:bd:c2:6d:41 brd ff:ff:ff:ff:ff:ff
+7: br-tenant: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN 
+    link/ether 42:f2:7a:b5:ec:4c brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.122/24 brd 10.0.2.255 scope global br-tenant
+       valid_lft forever preferred_lft forever
+    inet6 fe80::40f2:7aff:feb5:ec4c/64 scope link 
+       valid_lft forever preferred_lft forever
+8: br-int: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN 
+    link/ether ee:33:9b:61:19:4e brd ff:ff:ff:ff:ff:ff
+=====> [20141130-225119] host: 10.0.1.122, command: ip netns list
+
+=====> [20141130-225119] host: 10.0.1.122, command: test -x /usr/bin/ovs-vsctl && ovs-vsctl show
+f4dbe40a-d0b6-4d87-bd1a-b93e750aabe9
+    Bridge br-int
+        fail_mode: secure
+        Port int-br-tenant
+            Interface int-br-tenant
+                type: patch
+                options: {peer=phy-br-tenant}
+        Port br-int
+            Interface br-int
+                type: internal
+    Bridge br-tenant
+        Port "eth1"
+            Interface "eth1"
+        Port br-tenant
+            Interface br-tenant
+                type: internal
+        Port phy-br-tenant
+            Interface phy-br-tenant
+                type: patch
+                options: {peer=int-br-tenant}
+    Bridge br-ex
+        Port br-ex
+            Interface br-ex
+                type: internal
+    ovs_version: "2.1.3"
+=> node:10.0.1.122, br:br-ex
+=====> [20141130-225120] host: 10.0.1.122, command: ovs-ofctl show br-ex
+OFPT_FEATURES_REPLY (xid=0x2): dpid:0000f65ebdc26d41
+n_tables:254, n_buffers:256
+capabilities: FLOW_STATS TABLE_STATS PORT_STATS QUEUE_STATS ARP_MATCH_IP
+actions: OUTPUT SET_VLAN_VID SET_VLAN_PCP STRIP_VLAN SET_DL_SRC SET_DL_DST SET_NW_SRC SET_NW_DST SET_NW_TOS SET_TP_SRC SET_TP_DST ENQUEUE
+ LOCAL(br-ex): addr:f6:5e:bd:c2:6d:41
+     config:     PORT_DOWN
+     state:      LINK_DOWN
+     speed: 0 Mbps now, 0 Mbps max
+OFPT_GET_CONFIG_REPLY (xid=0x4): frags=normal miss_send_len=0
+=====> [20141130-225120] host: 10.0.1.122, command: ovs-ofctl dump-desc br-ex
+OFPST_DESC reply (xid=0x2):
+Manufacturer: Nicira, Inc.
+Hardware: Open vSwitch
+Software: 2.1.3
+Serial Num: None
+DP Description: None
+=====> [20141130-225120] host: 10.0.1.122, command: ovs-ofctl dump-flows br-ex
+NXST_FLOW reply (xid=0x4):
+ cookie=0x0, duration=833.929s, table=0, n_packets=0, n_bytes=0, idle_age=833, priority=0 actions=NORMAL
+=====> [20141130-225120] host: 10.0.1.122, command: ovs-ofctl dump-ports br-ex
+OFPST_PORT reply (xid=0x2): 1 ports
+  port LOCAL: rx pkts=0, bytes=0, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=0, bytes=0, drop=0, errs=0, coll=0
+=====> [20141130-225120] host: 10.0.1.122, command: ovs-ofctl dump-ports-desc br-ex
+OFPST_PORT_DESC reply (xid=0x2):
+ LOCAL(br-ex): addr:f6:5e:bd:c2:6d:41
+     config:     PORT_DOWN
+     state:      LINK_DOWN
+     speed: 0 Mbps now, 0 Mbps max
+=> node:10.0.1.122, br:br-int
+=====> [20141130-225121] host: 10.0.1.122, command: ovs-ofctl show br-int
+OFPT_FEATURES_REPLY (xid=0x2): dpid:0000ee339b61194e
+n_tables:254, n_buffers:256
+capabilities: FLOW_STATS TABLE_STATS PORT_STATS QUEUE_STATS ARP_MATCH_IP
+actions: OUTPUT SET_VLAN_VID SET_VLAN_PCP STRIP_VLAN SET_DL_SRC SET_DL_DST SET_NW_SRC SET_NW_DST SET_NW_TOS SET_TP_SRC SET_TP_DST ENQUEUE
+ 1(int-br-tenant): addr:72:86:53:47:7e:2a
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ LOCAL(br-int): addr:ee:33:9b:61:19:4e
+     config:     PORT_DOWN
+     state:      LINK_DOWN
+     speed: 0 Mbps now, 0 Mbps max
+OFPT_GET_CONFIG_REPLY (xid=0x4): frags=normal miss_send_len=0
+=====> [20141130-225121] host: 10.0.1.122, command: ovs-ofctl dump-desc br-int
+OFPST_DESC reply (xid=0x2):
+Manufacturer: Nicira, Inc.
+Hardware: Open vSwitch
+Software: 2.1.3
+Serial Num: None
+DP Description: None
+=====> [20141130-225121] host: 10.0.1.122, command: ovs-ofctl dump-flows br-int
+NXST_FLOW reply (xid=0x4):
+ cookie=0x0, duration=815.175s, table=0, n_packets=0, n_bytes=0, idle_age=815, priority=1 actions=NORMAL
+ cookie=0x0, duration=802.135s, table=0, n_packets=0, n_bytes=0, idle_age=802, priority=2,in_port=1 actions=drop
+ cookie=0x0, duration=815.062s, table=23, n_packets=0, n_bytes=0, idle_age=815, priority=0 actions=drop
+=====> [20141130-225121] host: 10.0.1.122, command: ovs-ofctl dump-ports br-int
+OFPST_PORT reply (xid=0x2): 2 ports
+  port  1: rx pkts=0, bytes=0, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=0, bytes=0, drop=0, errs=0, coll=0
+  port LOCAL: rx pkts=0, bytes=0, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=0, bytes=0, drop=0, errs=0, coll=0
+=====> [20141130-225121] host: 10.0.1.122, command: ovs-ofctl dump-ports-desc br-int
+OFPST_PORT_DESC reply (xid=0x2):
+ 1(int-br-tenant): addr:72:86:53:47:7e:2a
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ LOCAL(br-int): addr:ee:33:9b:61:19:4e
+     config:     PORT_DOWN
+     state:      LINK_DOWN
+     speed: 0 Mbps now, 0 Mbps max
+=> node:10.0.1.122, br:br-tenant
+=====> [20141130-225121] host: 10.0.1.122, command: ovs-ofctl show br-tenant
+OFPT_FEATURES_REPLY (xid=0x2): dpid:000042f27ab5ec4c
+n_tables:254, n_buffers:256
+capabilities: FLOW_STATS TABLE_STATS PORT_STATS QUEUE_STATS ARP_MATCH_IP
+actions: OUTPUT SET_VLAN_VID SET_VLAN_PCP STRIP_VLAN SET_DL_SRC SET_DL_DST SET_NW_SRC SET_NW_DST SET_NW_TOS SET_TP_SRC SET_TP_DST ENQUEUE
+ 1(eth1): addr:52:54:00:39:f9:66
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ 2(phy-br-tenant): addr:e2:f2:db:17:43:02
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ LOCAL(br-tenant): addr:42:f2:7a:b5:ec:4c
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+OFPT_GET_CONFIG_REPLY (xid=0x4): frags=normal miss_send_len=0
+=====> [20141130-225122] host: 10.0.1.122, command: ovs-ofctl dump-desc br-tenant
+OFPST_DESC reply (xid=0x2):
+Manufacturer: Nicira, Inc.
+Hardware: Open vSwitch
+Software: 2.1.3
+Serial Num: None
+DP Description: None
+=====> [20141130-225122] host: 10.0.1.122, command: ovs-ofctl dump-flows br-tenant
+NXST_FLOW reply (xid=0x4):
+ cookie=0x0, duration=803.479s, table=0, n_packets=401, n_bytes=20852, idle_age=1, priority=1 actions=NORMAL
+ cookie=0x0, duration=802.889s, table=0, n_packets=0, n_bytes=0, idle_age=802, priority=2,in_port=2 actions=drop
+=====> [20141130-225122] host: 10.0.1.122, command: ovs-ofctl dump-ports br-tenant
+OFPST_PORT reply (xid=0x2): 3 ports
+  port  1: rx pkts=484, bytes=28928, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=23, bytes=3703, drop=0, errs=0, coll=0
+  port  2: rx pkts=0, bytes=0, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=0, bytes=0, drop=0, errs=0, coll=0
+  port LOCAL: rx pkts=23, bytes=3703, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=56, bytes=6672, drop=0, errs=0, coll=0
+=====> [20141130-225122] host: 10.0.1.122, command: ovs-ofctl dump-ports-desc br-tenant
+OFPST_PORT_DESC reply (xid=0x2):
+ 1(eth1): addr:52:54:00:39:f9:66
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ 2(phy-br-tenant): addr:e2:f2:db:17:43:02
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ LOCAL(br-tenant): addr:42:f2:7a:b5:ec:4c
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+=> 10.0.1.131
+=====> [20141130-225122] host: 10.0.1.131, command: ip addr show
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN 
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 52:54:00:9a:0b:b9 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.1.131/24 brd 10.0.1.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::5054:ff:fe9a:bb9/64 scope link 
+       valid_lft forever preferred_lft forever
+3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast master ovs-system state UP qlen 1000
+    link/ether 52:54:00:02:f7:27 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::5054:ff:fe02:f727/64 scope link 
+       valid_lft forever preferred_lft forever
+4: eth2: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN qlen 1000
+    link/ether 52:54:00:4b:ae:3a brd ff:ff:ff:ff:ff:ff
+5: ovs-system: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN 
+    link/ether 36:3a:f2:14:cc:9e brd ff:ff:ff:ff:ff:ff
+6: br-tenant: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN 
+    link/ether ea:c9:08:27:b9:48 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.131/24 brd 10.0.2.255 scope global br-tenant
+       valid_lft forever preferred_lft forever
+    inet6 fe80::e8c9:8ff:fe27:b948/64 scope link 
+       valid_lft forever preferred_lft forever
+7: br-int: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN 
+    link/ether 06:ef:ef:13:9b:4a brd ff:ff:ff:ff:ff:ff
+8: virbr0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN 
+    link/ether ca:68:20:57:59:88 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.122.1/24 brd 192.168.122.255 scope global virbr0
+       valid_lft forever preferred_lft forever
+=====> [20141130-225122] host: 10.0.1.131, command: ip netns list
+
+=====> [20141130-225123] host: 10.0.1.131, command: test -x /usr/bin/ovs-vsctl && ovs-vsctl show
+eb9c5838-67bf-4070-b880-3c8e6f16a162
+    Bridge br-int
+        fail_mode: secure
+        Port br-int
+            Interface br-int
+                type: internal
+        Port int-br-tenant
+            Interface int-br-tenant
+                type: patch
+                options: {peer=phy-br-tenant}
+    Bridge br-tenant
+        Port phy-br-tenant
+            Interface phy-br-tenant
+                type: patch
+                options: {peer=int-br-tenant}
+        Port br-tenant
+            Interface br-tenant
+                type: internal
+        Port "eth1"
+            Interface "eth1"
+    ovs_version: "2.1.3"
+=> node:10.0.1.131, br:br-int
+=====> [20141130-225123] host: 10.0.1.131, command: ovs-ofctl show br-int
+OFPT_FEATURES_REPLY (xid=0x2): dpid:000006efef139b4a
+n_tables:254, n_buffers:256
+capabilities: FLOW_STATS TABLE_STATS PORT_STATS QUEUE_STATS ARP_MATCH_IP
+actions: OUTPUT SET_VLAN_VID SET_VLAN_PCP STRIP_VLAN SET_DL_SRC SET_DL_DST SET_NW_SRC SET_NW_DST SET_NW_TOS SET_TP_SRC SET_TP_DST ENQUEUE
+ 1(int-br-tenant): addr:fe:c9:1a:c4:ec:aa
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ LOCAL(br-int): addr:06:ef:ef:13:9b:4a
+     config:     PORT_DOWN
+     state:      LINK_DOWN
+     speed: 0 Mbps now, 0 Mbps max
+OFPT_GET_CONFIG_REPLY (xid=0x4): frags=normal miss_send_len=0
+=====> [20141130-225123] host: 10.0.1.131, command: ovs-ofctl dump-desc br-int
+OFPST_DESC reply (xid=0x2):
+Manufacturer: Nicira, Inc.
+Hardware: Open vSwitch
+Software: 2.1.3
+Serial Num: None
+DP Description: None
+=====> [20141130-225124] host: 10.0.1.131, command: ovs-ofctl dump-flows br-int
+NXST_FLOW reply (xid=0x4):
+ cookie=0x0, duration=817.895s, table=0, n_packets=0, n_bytes=0, idle_age=817, priority=1 actions=NORMAL
+ cookie=0x0, duration=804.487s, table=0, n_packets=0, n_bytes=0, idle_age=804, priority=2,in_port=1 actions=drop
+ cookie=0x0, duration=817.702s, table=23, n_packets=0, n_bytes=0, idle_age=817, priority=0 actions=drop
+=====> [20141130-225124] host: 10.0.1.131, command: ovs-ofctl dump-ports br-int
+OFPST_PORT reply (xid=0x2): 2 ports
+  port  1: rx pkts=0, bytes=0, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=0, bytes=0, drop=0, errs=0, coll=0
+  port LOCAL: rx pkts=0, bytes=0, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=0, bytes=0, drop=0, errs=0, coll=0
+=====> [20141130-225124] host: 10.0.1.131, command: ovs-ofctl dump-ports-desc br-int
+OFPST_PORT_DESC reply (xid=0x2):
+ 1(int-br-tenant): addr:fe:c9:1a:c4:ec:aa
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ LOCAL(br-int): addr:06:ef:ef:13:9b:4a
+     config:     PORT_DOWN
+     state:      LINK_DOWN
+     speed: 0 Mbps now, 0 Mbps max
+=> node:10.0.1.131, br:br-tenant
+=====> [20141130-225124] host: 10.0.1.131, command: ovs-ofctl show br-tenant
+OFPT_FEATURES_REPLY (xid=0x2): dpid:0000eac90827b948
+n_tables:254, n_buffers:256
+capabilities: FLOW_STATS TABLE_STATS PORT_STATS QUEUE_STATS ARP_MATCH_IP
+actions: OUTPUT SET_VLAN_VID SET_VLAN_PCP STRIP_VLAN SET_DL_SRC SET_DL_DST SET_NW_SRC SET_NW_DST SET_NW_TOS SET_TP_SRC SET_TP_DST ENQUEUE
+ 1(eth1): addr:52:54:00:02:f7:27
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ 2(phy-br-tenant): addr:06:34:13:af:6d:c9
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ LOCAL(br-tenant): addr:ea:c9:08:27:b9:48
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+OFPT_GET_CONFIG_REPLY (xid=0x4): frags=normal miss_send_len=0
+=====> [20141130-225124] host: 10.0.1.131, command: ovs-ofctl dump-desc br-tenant
+OFPST_DESC reply (xid=0x2):
+Manufacturer: Nicira, Inc.
+Hardware: Open vSwitch
+Software: 2.1.3
+Serial Num: None
+DP Description: None
+=====> [20141130-225124] host: 10.0.1.131, command: ovs-ofctl dump-flows br-tenant
+NXST_FLOW reply (xid=0x4):
+ cookie=0x0, duration=805.981s, table=0, n_packets=403, n_bytes=20956, idle_age=0, priority=1 actions=NORMAL
+ cookie=0x0, duration=805.284s, table=0, n_packets=0, n_bytes=0, idle_age=805, priority=2,in_port=2 actions=drop
+=====> [20141130-225125] host: 10.0.1.131, command: ovs-ofctl dump-ports br-tenant
+OFPST_PORT reply (xid=0x2): 3 ports
+  port  1: rx pkts=485, bytes=29304, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=25, bytes=3829, drop=0, errs=0, coll=0
+  port  2: rx pkts=0, bytes=0, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=0, bytes=0, drop=0, errs=0, coll=0
+  port LOCAL: rx pkts=25, bytes=3829, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=55, bytes=6944, drop=0, errs=0, coll=0
+=====> [20141130-225125] host: 10.0.1.131, command: ovs-ofctl dump-ports-desc br-tenant
+OFPST_PORT_DESC reply (xid=0x2):
+ 1(eth1): addr:52:54:00:02:f7:27
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ 2(phy-br-tenant): addr:06:34:13:af:6d:c9
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ LOCAL(br-tenant): addr:ea:c9:08:27:b9:48
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max

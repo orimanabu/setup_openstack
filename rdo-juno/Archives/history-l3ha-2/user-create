@@ -1,0 +1,115 @@
+*=> user-create
+=> keystone
+=====> [20141130-225627] host: (local), command: keystone tenant-create --name demo
++-------------+----------------------------------+
+|   Property  |              Value               |
++-------------+----------------------------------+
+| description |                                  |
+|   enabled   |               True               |
+|      id     | 328ffb467eb24c3595b549516b8acbd0 |
+|     name    |               demo               |
++-------------+----------------------------------+
+=====> [20141130-225627] host: (local), command: keystone user-create --name demo --tenant demo --pass demo --enabled true
++----------+----------------------------------+
+| Property |              Value               |
++----------+----------------------------------+
+|  email   |                                  |
+| enabled  |               True               |
+|    id    | 01c4dc5c8ec0494eaaecb84fd4170556 |
+|   name   |               demo               |
+| tenantId | 328ffb467eb24c3595b549516b8acbd0 |
+| username |               demo               |
++----------+----------------------------------+
+=====> [20141130-225628] host: (local), command: keystone role-create --name demo
++----------+----------------------------------+
+| Property |              Value               |
++----------+----------------------------------+
+|    id    | 4855122e6cf4469bbc763c3e17dbe6b3 |
+|   name   |               demo               |
++----------+----------------------------------+
+=====> [20141130-225628] host: (local), command: keystone user-role-add --user demo --role demo --tenant demo
+
+=====> [20141130-225629] host: (local), command: keystone tenant-list
++----------------------------------+----------+---------+
+|                id                |   name   | enabled |
++----------------------------------+----------+---------+
+| 271e4dcd912f49a4a04f911eeea8f287 |  admin   |   True  |
+| 328ffb467eb24c3595b549516b8acbd0 |   demo   |   True  |
+| 89820cf2cb0e408e82af2a651c0d6090 | services |   True  |
++----------------------------------+----------+---------+
+=====> [20141130-225629] host: (local), command: keystone user-list
++----------------------------------+------------+---------+----------------------+
+|                id                |    name    | enabled |        email         |
++----------------------------------+------------+---------+----------------------+
+| 3a1eeb9c83bf47879f3f022958a310b0 |   admin    |   True  |    root@localhost    |
+| 6f069d8d16444a9098d8ab83c6f9368b | ceilometer |   True  | ceilometer@localhost |
+| a407a56f1bd0440580215a3c15eb1d27 |   cinder   |   True  |   cinder@localhost   |
+| 01c4dc5c8ec0494eaaecb84fd4170556 |    demo    |   True  |                      |
+| 88f9810e78ec48f28bdcc6adad293aad |   glance   |   True  |   glance@localhost   |
+| 09cb84a50b86455b88bd88cbc8d5428c |    heat    |   True  |    heat@localhost    |
+| 6250e7ac306a496bbfa114f02bb2a937 |  neutron   |   True  |  neutron@localhost   |
+| 1a0a158a1de34d46b5007b227216061a |    nova    |   True  |    nova@localhost    |
+| 5c3bb55b72744ba898c29eed153d179d |   swift    |   True  |   swift@localhost    |
++----------------------------------+------------+---------+----------------------+
+=====> [20141130-225630] host: (local), command: keystone user-get demo
++----------+----------------------------------+
+| Property |              Value               |
++----------+----------------------------------+
+|  email   |                                  |
+| enabled  |               True               |
+|    id    | 01c4dc5c8ec0494eaaecb84fd4170556 |
+|   name   |               demo               |
+| tenantId | 328ffb467eb24c3595b549516b8acbd0 |
+| username |               demo               |
++----------+----------------------------------+
+=====> [20141130-225630] host: (local), command: keystone user-role-list
++----------------------------------+------------------+----------------------------------+----------------------------------+
+|                id                |       name       |             user_id              |            tenant_id             |
++----------------------------------+------------------+----------------------------------+----------------------------------+
+| 9fe2ff9ee4384b1894a90878d3e92bab |     _member_     | 3a1eeb9c83bf47879f3f022958a310b0 | 271e4dcd912f49a4a04f911eeea8f287 |
+| 060d1c18546146aa8a8b1b703ba7bc04 |      admin       | 3a1eeb9c83bf47879f3f022958a310b0 | 271e4dcd912f49a4a04f911eeea8f287 |
+| e2c6d2ee4a394a67ab63fdb0c95128b4 | heat_stack_owner | 3a1eeb9c83bf47879f3f022958a310b0 | 271e4dcd912f49a4a04f911eeea8f287 |
++----------------------------------+------------------+----------------------------------+----------------------------------+
+./prepare.sh tenant
+* rcfile: /root/setup_openstack/keystonerc
+* tenant: demo
+=====> [20141130-225649] host: (local), command: nova keypair-add --pub-key /root/.ssh/id_dsa.pub sshkey
+
+=====> [20141130-225650] host: (local), command: neutron security-group-rule-create --protocol icmp --direction ingress default
+Created a new security_group_rule:
++-------------------+--------------------------------------+
+| Field             | Value                                |
++-------------------+--------------------------------------+
+| direction         | ingress                              |
+| ethertype         | IPv4                                 |
+| id                | fda66d64-9db4-45bb-8d44-df5b03d3d4a7 |
+| port_range_max    |                                      |
+| port_range_min    |                                      |
+| protocol          | icmp                                 |
+| remote_group_id   |                                      |
+| remote_ip_prefix  |                                      |
+| security_group_id | 11516b71-8eb1-4d14-8cda-a7276232af4d |
+| tenant_id         | 328ffb467eb24c3595b549516b8acbd0     |
++-------------------+--------------------------------------+
+=====> [20141130-225651] host: (local), command: neutron security-group-rule-create --protocol tcp --port-range-min 22 --port-range-max 22 --direction ingress default
+Created a new security_group_rule:
++-------------------+--------------------------------------+
+| Field             | Value                                |
++-------------------+--------------------------------------+
+| direction         | ingress                              |
+| ethertype         | IPv4                                 |
+| id                | 1f2e0099-d5ff-405e-8a34-c4237bbc85a5 |
+| port_range_max    | 22                                   |
+| port_range_min    | 22                                   |
+| protocol          | tcp                                  |
+| remote_group_id   |                                      |
+| remote_ip_prefix  |                                      |
+| security_group_id | 11516b71-8eb1-4d14-8cda-a7276232af4d |
+| tenant_id         | 328ffb467eb24c3595b549516b8acbd0     |
++-------------------+--------------------------------------+
+=====> [20141130-225651] host: (local), command: nova keypair-list
++--------+-------------------------------------------------+
+| Name   | Fingerprint                                     |
++--------+-------------------------------------------------+
+| sshkey | 64:0e:2e:9f:00:ca:eb:0a:f1:9f:4e:97:bd:c6:f9:5f |
++--------+-------------------------------------------------+

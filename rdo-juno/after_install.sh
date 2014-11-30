@@ -18,12 +18,15 @@ for node in ${network_nodes}; do
 done
 
 # controller node and network nodes
-#for node in ${controller_node} ${network_nodes}; do
-#	do_command -r ${node} openstack-config --set /etc/neutron/neutron.conf DEFAULT l3_ha True
-#done
+for node in ${controller_node} ${network_nodes}; do
+	do_command -r ${node} openstack-config --set /etc/neutron/neutron.conf DEFAULT l3_ha True
+done
 
 # all nodes
 for node in ${controller_node} ${network_nodes} ${compute_nodes}; do
+	echo "=> packages"
+	do_command -r ${node} yum install -y psmisc
+
 	echo "=> /etc/hosts"
 	f=/etc/hosts
 	ssh ${ssh_options} test -f ${f}.orig > /dev/null 2>&1

@@ -16,6 +16,7 @@ after-install:
 user-create:
 	@echo "*=> $@" 2>&1 | tee $(LOGDIR)/$@
 	./user_create.sh demo demo demo demo 2>&1 | tee -a $(LOGDIR)/$@
+	./prepare.sh demo 2>&1 | tee -a $(LOGDIR)/$@
 image-import:
 	@echo "*=> $@" 2>&1 | tee $(LOGDIR)/$@
 	./glance.sh 2>&1 | tee -a $(LOGDIR)/$@

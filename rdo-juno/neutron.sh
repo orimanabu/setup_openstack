@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function usage {
-	echo "$0 -n NETWORK -s SUBNET -c CIDR -p PUBLIC_NETWORK -r ROUTER -t TENANT -v VM -f FLOATINGIP -h OP"
+	echo "$0 -n NETWORK -s SUBNET -c CIDR -p PUBLIC_NETWORK -r ROUTER -t TENANT -v VM -f FLOATINGIP -h BOOL OP"
 	exit 1
 }
 
@@ -14,10 +14,10 @@ cidr="192.168.99.0/24"
 #public_network=public
 public_network=external
 
-while getopts ":c:n:s:p:r:t:v:f:h" o; do
+while getopts ":c:n:s:p:r:t:v:f:h:" o; do
 	case ${o} in
 	h)      # ha
-		ha=1
+		ha=${OPTARG}
 		;;
 	c)
 		cidr=${OPTARG}
@@ -35,7 +35,7 @@ while getopts ":c:n:s:p:r:t:v:f:h" o; do
 		_router=${OPTARG}
 		;;
 	t)
-		tenant=${OPTARG}
+		_tenant=${OPTARG}
 		;;
 	v)
 		vm=${OPTARG}
@@ -61,6 +61,7 @@ eval ${str}
 network=${_network:-${tenant}_net}
 subnet=${_subnet:-${tenant}_net_subnet}
 router=${_router:-router_${tenant}}
+tenant=${_tenant:-${OS_TENANT_NAME}}
 public_network=${_public_network:-external}
 
 pool_start=${prefix}.100
@@ -95,10 +96,15 @@ external-create)
 create)
 	source ${gittop}/keystonerc admin
 	extra_options=""
-	if [ x"${ha}" = x"1" ]; then
-		extra_options="--ha True"
+	if [ x"${ha}" != x"0" ]; then
+		extra_options="--ha ${ha}"
 	fi
 	do_command neutron router-create --tenant-id $(keystone tenant-list | awk '/'${tenant}'/ {print $2}') ${extra_options} ${router}
+	do_command neutron net-list
+	do_command neutron net-show $(neutron net-list | awk '/HA network/ {print $2}')
+	do_command neutron subnet-show $(neutron net-list | awk '/HA network/ {print $9}')
+	do_command neutron port-list
+	do_command for port_id in $(neutron port-list | awk '/HA port/ {print $2}' | tr '\n' ' ')\; do neutron port-show \${port_id}\; done
 	source ${gittop}/keystonerc ${tenant}
 	do_command neutron router-gateway-set $(neutron router-list | awk '/'${router}'/ {print $2}') $(neutron net-list | awk '/'${public_network}'/ {print $2}')
 	do_command neutron net-create ${network}
@@ -153,7 +159,6 @@ floatingip-associate)
 	do_command neutron floatingip-associate ${ipid} ${portid}
 	;;
 info|stat|status)
-	echo "tenant: ${tenant}"
 	source ${gittop}/keystonerc ${tenant}
 	do_command neutron net-list
 	do_command neutron subnet-list
