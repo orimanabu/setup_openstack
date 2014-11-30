@@ -87,4 +87,24 @@ boot)
 		usage
 	fi
 	do_command nova boot --flavor ${flavor} --key-name sshkey --nic net-id=$(neutron net-list | awk '/'${net}'/ {print $2}') --image ${image} ${vm}
+	;;
+info|stat|status)
+	source ${gittop}/keystonerc admin
+	do_command nova host-list
+	do_command nova hypervisor-list
+	hvs=$(nova hypervisor-list | grep -Ev '^\+|Hypervisor hostname' | awk '{print $4}')
+	echo "=> ${hvs}"
+	for hv in ${hvs}; do
+		echo "==> ${hv}"
+		do_command nova hypervisor-show ${hv}
+		do_command nova hypervisor-uptime ${hv}
+	done
+	do_command nova hypervisor-stats
+	do_command nova absolute-limits
+	do_command nova agent-list
+	do_command nova aggregate-list
+	do_command nova availability-zone-list
+	do_command nova endpoints
+	do_command nova usage-list
+	;;
 esac

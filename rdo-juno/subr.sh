@@ -116,5 +116,5 @@ abspath=`absolute_path $0`
 topdir=`dirname ${abspath}`
 gittop=`upper_path ${topdir}`
 
-ssh_options='-n -o StrictHostKeyChecking=no'
+ssh_options='-o StrictHostKeyChecking=no'
 openstack_projects="nova neutron keystone cinder glance ceilometer heat swift"
