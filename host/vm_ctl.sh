@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ x"$#" != x"1" ]; then
+if [ x"$#" == x"0" ]; then
 	echo "$0 op"
 	exit 1
 fi
@@ -26,6 +26,18 @@ start)
 		virsh start ${vm}
 	done
 	;;
+define)
+	for vm in ${vms}; do
+		echo "==> ${vm}"
+		virsh define /etc/libvirt/qemu/${vm}.xml
+	done
+	;;
+destroy)
+	for vm in ${vms}; do
+		echo "==> ${vm}"
+		virsh destroy ${vm}
+	done
+	;;
 undefine)
 	for vm in ${vms}; do
 		echo "==> ${vm}"
@@ -37,6 +49,32 @@ backup)
 		echo "==> ${vm}"
 		cp /var/lib/libvirt/images/${vm}.qcow2 .
 		cp /etc/libvirt/qemu/${vm}.xml .
+	done
+	;;
+snapshot-create)
+	snap=$1; shift
+	comment=$1; shift
+	if [ x"${snap}" = x"" ]; then
+		echo "$0 $op SNAPSHOT_NAME COMMENT"
+		exit 1
+	fi
+	for vm in ${vms}; do
+		echo "==> ${vm}"
+		virsh snapshot-create-as ${vm} ${snap} ${comment}
+		virsh snapshot-list ${vm}
+		virsh snapshot-info ${vm} ${snap}
+	done
+	;;
+snapshot-revert)
+	snap=$1; shift
+	if [ x"${snap}" = x"" ]; then
+		echo "$0 $op SNAPSHOT_NAME"
+		exit 1
+	fi
+	for vm in ${vms}; do
+		echo "==> ${vm}"
+		virsh snapshot-revert ${vm} ${snap}
+		virsh snapshot-list ${vm}
 	done
 	;;
 *)
