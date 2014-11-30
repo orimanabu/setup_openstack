@@ -1,0 +1,28 @@
+11月 30 18:01:21 juno-network1 sudo[14784]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+11月 30 18:01:23 juno-network1 sudo[14787]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+11月 30 18:01:24 juno-network1 Keepalived_vrrp[12015]: VRRP_Instance(VR_1) Transition to MASTER STATE
+11月 30 18:01:24 juno-network1 Keepalived_vrrp[12015]: VRRP_Group(VG_1) Syncing instances to MASTER state
+11月 30 18:01:24 juno-network1 Keepalived_vrrp[12015]: Opening script file /var/lib/neutron/ha_confs/b88714bc-a16a-4ab7-af50-ceca2662faa7/notify_master.sh
+11月 30 18:01:25 juno-network1 sudo[14799]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+11月 30 18:01:26 juno-network1 Keepalived_vrrp[12015]: VRRP_Instance(VR_1) Entering MASTER STATE
+11月 30 18:01:27 juno-network1 sudo[14802]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+11月 30 18:01:29 juno-network1 sudo[14805]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+11月 30 18:01:31 juno-network1 sudo[14808]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+11月 30 18:01:33 juno-network1 sudo[14811]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+
+11月 30 18:01:11 juno-network2 systemd[1]: Starting Session 183 of user root.
+11月 30 18:01:11 juno-network2 systemd[1]: Started Session 183 of user root.
+11月 30 18:01:11 juno-network2 systemd-logind[646]: New session 183 of user root.
+11月 30 18:01:11 juno-network2 sshd[14651]: pam_unix(sshd:session): session opened for user root by (uid=0)
+11月 30 18:01:13 juno-network2 sudo[14672]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+11月 30 18:01:15 juno-network2 sudo[14675]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+11月 30 18:01:17 juno-network2 sudo[14678]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+11月 30 18:01:19 juno-network2 sudo[14681]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+11月 30 18:01:21 juno-network2 sudo[14684]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+11月 30 18:01:23 juno-network2 sudo[14687]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+11月 30 18:01:23 juno-network2 Keepalived_vrrp[11813]: VRRP_Instance(VR_1) sending 0 priority
+11月 30 18:01:23 juno-network2 Keepalived[4146]: Stopping Keepalived v1.2.10 (06/10,2014)
+11月 30 18:01:25 juno-network2 sudo[14691]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+11月 30 18:01:27 juno-network2 sudo[14694]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+11月 30 18:01:29 juno-network2 sudo[14697]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+
