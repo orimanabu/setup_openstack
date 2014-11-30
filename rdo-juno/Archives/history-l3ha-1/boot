@@ -1,0 +1,289 @@
+*=> boot
+ * rcfile:	/root/setup_openstack/keystonerc
+ * region:	RegionOne
+ * tenant:	admin
+ * flavor:	m1.tiny
+ * net:	admin_net
+ * image:	cirros
+ * vm:	
+=====> [20141130-172531] host: (local), command: nova host-list
++----------------------------+-------------+----------+
+| host_name                  | service     | zone     |
++----------------------------+-------------+----------+
+| juno-controller.mgmt.local | consoleauth | internal |
+| juno-controller.mgmt.local | scheduler   | internal |
+| juno-controller.mgmt.local | conductor   | internal |
+| juno-controller.mgmt.local | cert        | internal |
+| juno-compute1              | compute     | nova     |
++----------------------------+-------------+----------+
+=====> [20141130-172531] host: (local), command: nova hypervisor-list
++----+--------------------------+
+| ID | Hypervisor hostname      |
++----+--------------------------+
+| 2  | juno-compute1.mgmt.local |
++----+--------------------------+
+=> juno-compute1.mgmt.local
+==> juno-compute1.mgmt.local
+=====> [20141130-172532] host: (local), command: nova hypervisor-show juno-compute1.mgmt.local
++---------------------------+-----------------------------------------------------------------------------------------------------+
+| Property                  | Value                                                                                               |
++---------------------------+-----------------------------------------------------------------------------------------------------+
+| cpu_info_arch             | x86_64                                                                                              |
+| cpu_info_features         | ["osxsave", "ss", "hypervisor", "vme", "pcid", "vmx", "rdrand", "fsgsbase", "erms", "f16c", "smep"] |
+| cpu_info_model            | SandyBridge                                                                                         |
+| cpu_info_topology_cores   | 1                                                                                                   |
+| cpu_info_topology_sockets | 2                                                                                                   |
+| cpu_info_topology_threads | 1                                                                                                   |
+| cpu_info_vendor           | Intel                                                                                               |
+| current_workload          | 0                                                                                                   |
+| disk_available_least      | 1                                                                                                   |
+| free_disk_gb              | 3                                                                                                   |
+| free_ram_mb               | 1329                                                                                                |
+| host_ip                   | 10.0.1.131                                                                                          |
+| hypervisor_hostname       | juno-compute1.mgmt.local                                                                            |
+| hypervisor_type           | QEMU                                                                                                |
+| hypervisor_version        | 1005003                                                                                             |
+| id                        | 2                                                                                                   |
+| local_gb                  | 3                                                                                                   |
+| local_gb_used             | 0                                                                                                   |
+| memory_mb                 | 1841                                                                                                |
+| memory_mb_used            | 512                                                                                                 |
+| running_vms               | 0                                                                                                   |
+| service_disabled_reason   | -                                                                                                   |
+| service_host              | juno-compute1                                                                                       |
+| service_id                | 5                                                                                                   |
+| state                     | up                                                                                                  |
+| status                    | enabled                                                                                             |
+| vcpus                     | 2                                                                                                   |
+| vcpus_used                | 0                                                                                                   |
++---------------------------+-----------------------------------------------------------------------------------------------------+
+=====> [20141130-172533] host: (local), command: nova hypervisor-uptime juno-compute1.mgmt.local
++---------------------+--------------------------------------------------------------+
+| Property            | Value                                                        |
++---------------------+--------------------------------------------------------------+
+| hypervisor_hostname | juno-compute1.mgmt.local                                     |
+| id                  | 2                                                            |
+| state               | up                                                           |
+| status              | enabled                                                      |
+| uptime              |  17:25:33 up  1:16,  1 user,  load average: 0.09, 0.11, 0.08 |
+|                     |                                                              |
++---------------------+--------------------------------------------------------------+
+=====> [20141130-172533] host: (local), command: nova hypervisor-stats
++----------------------+-------+
+| Property             | Value |
++----------------------+-------+
+| count                | 1     |
+| current_workload     | 0     |
+| disk_available_least | 1     |
+| free_disk_gb         | 3     |
+| free_ram_mb          | 1329  |
+| local_gb             | 3     |
+| local_gb_used        | 0     |
+| memory_mb            | 1841  |
+| memory_mb_used       | 512   |
+| running_vms          | 0     |
+| vcpus                | 2     |
+| vcpus_used           | 0     |
++----------------------+-------+
+=====> [20141130-172534] host: (local), command: nova absolute-limits
++-------------------------+-------+
+| Name                    | Value |
++-------------------------+-------+
+| maxServerMeta           | 128   |
+| maxPersonality          | 5     |
+| totalServerGroupsUsed   | 0     |
+| maxImageMeta            | 128   |
+| maxPersonalitySize      | 10240 |
+| maxTotalRAMSize         | 51200 |
+| maxTotalKeypairs        | 100   |
+| maxSecurityGroupRules   | 20    |
+| maxServerGroups         | 10    |
+| totalCoresUsed          | 0     |
+| totalRAMUsed            | 0     |
+| maxSecurityGroups       | 10    |
+| totalFloatingIpsUsed    | 0     |
+| totalInstancesUsed      | 0     |
+| totalSecurityGroupsUsed | 0     |
+| maxTotalFloatingIps     | 10    |
+| maxTotalInstances       | 10    |
+| maxTotalCores           | 20    |
+| maxServerGroupMembers   | 10    |
++-------------------------+-------+
+=====> [20141130-172534] host: (local), command: nova agent-list
++----------+------------+----+--------------+---------+---------+-----+
+| Agent_id | Hypervisor | OS | Architecture | Version | Md5hash | Url |
++----------+------------+----+--------------+---------+---------+-----+
++----------+------------+----+--------------+---------+---------+-----+
+=====> [20141130-172535] host: (local), command: nova aggregate-list
++----+------+-------------------+
+| Id | Name | Availability Zone |
++----+------+-------------------+
++----+------+-------------------+
+=====> [20141130-172535] host: (local), command: nova availability-zone-list
++-------------------------------+----------------------------------------+
+| Name                          | Status                                 |
++-------------------------------+----------------------------------------+
+| internal                      | available                              |
+| |- juno-controller.mgmt.local |                                        |
+| | |- nova-conductor           | enabled :-) 2014-11-30T08:25:36.000000 |
+| | |- nova-consoleauth         | enabled :-) 2014-11-30T08:25:27.000000 |
+| | |- nova-scheduler           | enabled :-) 2014-11-30T08:25:27.000000 |
+| | |- nova-cert                | enabled :-) 2014-11-30T08:25:27.000000 |
+| nova                          | available                              |
+| |- juno-compute1              |                                        |
+| | |- nova-compute             | enabled :-) 2014-11-30T08:25:30.000000 |
++-------------------------------+----------------------------------------+
+=====> [20141130-172536] host: (local), command: nova endpoints
++-------------+------------------------------------------------------------+
+| nova        | Value                                                      |
++-------------+------------------------------------------------------------+
+| adminURL    | http://10.0.1.111:8774/v2/271e4dcd912f49a4a04f911eeea8f287 |
+| id          | 00bab20863a24ad58ca77ab5be5218a3                           |
+| internalURL | http://10.0.1.111:8774/v2/271e4dcd912f49a4a04f911eeea8f287 |
+| publicURL   | http://10.0.1.111:8774/v2/271e4dcd912f49a4a04f911eeea8f287 |
+| region      | RegionOne                                                  |
+| serviceName | nova                                                       |
++-------------+------------------------------------------------------------+
++-------------+----------------------------------+
+| neutron     | Value                            |
++-------------+----------------------------------+
+| adminURL    | http://10.0.1.111:9696/          |
+| id          | 78dd0fd5bfe3445e82b716d3acdf96f5 |
+| internalURL | http://10.0.1.111:9696/          |
+| publicURL   | http://10.0.1.111:9696/          |
+| region      | RegionOne                        |
++-------------+----------------------------------+
++-------------+------------------------------------------------------------+
+| cinderv2    | Value                                                      |
++-------------+------------------------------------------------------------+
+| adminURL    | http://10.0.1.111:8776/v2/271e4dcd912f49a4a04f911eeea8f287 |
+| id          | 117e725c571a481e89679c74c4afa48e                           |
+| internalURL | http://10.0.1.111:8776/v2/271e4dcd912f49a4a04f911eeea8f287 |
+| publicURL   | http://10.0.1.111:8776/v2/271e4dcd912f49a4a04f911eeea8f287 |
+| region      | RegionOne                                                  |
++-------------+------------------------------------------------------------+
++-------------+----------------------------------+
+| novav3      | Value                            |
++-------------+----------------------------------+
+| adminURL    | http://10.0.1.111:8774/v3        |
+| id          | 183493884bb74cd8a6b2acea189709d5 |
+| internalURL | http://10.0.1.111:8774/v3        |
+| publicURL   | http://10.0.1.111:8774/v3        |
+| region      | RegionOne                        |
++-------------+----------------------------------+
++-------------+----------------------------------+
+| swift_s3    | Value                            |
++-------------+----------------------------------+
+| adminURL    | http://10.0.1.111:8080           |
+| id          | 5095bffdc26d444dafdd5b0ee3f5f310 |
+| internalURL | http://10.0.1.111:8080           |
+| publicURL   | http://10.0.1.111:8080           |
+| region      | RegionOne                        |
++-------------+----------------------------------+
++-------------+----------------------------------+
+| glance      | Value                            |
++-------------+----------------------------------+
+| adminURL    | http://10.0.1.111:9292           |
+| id          | 3c57aab923eb4f69a219bb5dfb41c5b2 |
+| internalURL | http://10.0.1.111:9292           |
+| publicURL   | http://10.0.1.111:9292           |
+| region      | RegionOne                        |
++-------------+----------------------------------+
++-------------+----------------------------------+
+| ceilometer  | Value                            |
++-------------+----------------------------------+
+| adminURL    | http://10.0.1.111:8777           |
+| id          | 16397d251c8c4e26b91b3835e2301a22 |
+| internalURL | http://10.0.1.111:8777           |
+| publicURL   | http://10.0.1.111:8777           |
+| region      | RegionOne                        |
++-------------+----------------------------------+
++-------------+------------------------------------------------------------+
+| cinder      | Value                                                      |
++-------------+------------------------------------------------------------+
+| adminURL    | http://10.0.1.111:8776/v1/271e4dcd912f49a4a04f911eeea8f287 |
+| id          | 17e27e2da0dc4cb3b538a13d9d1c7a04                           |
+| internalURL | http://10.0.1.111:8776/v1/271e4dcd912f49a4a04f911eeea8f287 |
+| publicURL   | http://10.0.1.111:8776/v1/271e4dcd912f49a4a04f911eeea8f287 |
+| region      | RegionOne                                                  |
++-------------+------------------------------------------------------------+
++-------------+---------------------------------------+
+| nova_ec2    | Value                                 |
++-------------+---------------------------------------+
+| adminURL    | http://10.0.1.111:8773/services/Admin |
+| id          | 07a8c30248b54f649f814a9bd8346797      |
+| internalURL | http://10.0.1.111:8773/services/Cloud |
+| publicURL   | http://10.0.1.111:8773/services/Cloud |
+| region      | RegionOne                             |
++-------------+---------------------------------------+
++-------------+------------------------------------------------------------+
+| heat        | Value                                                      |
++-------------+------------------------------------------------------------+
+| adminURL    | http://10.0.1.111:8004/v1/271e4dcd912f49a4a04f911eeea8f287 |
+| id          | 224d7327e867456ba0a19d0729fbabe3                           |
+| internalURL | http://10.0.1.111:8004/v1/271e4dcd912f49a4a04f911eeea8f287 |
+| publicURL   | http://10.0.1.111:8004/v1/271e4dcd912f49a4a04f911eeea8f287 |
+| region      | RegionOne                                                  |
++-------------+------------------------------------------------------------+
++-------------+-----------------------------------------------------------------+
+| swift       | Value                                                           |
++-------------+-----------------------------------------------------------------+
+| adminURL    | http://10.0.1.111:8080/                                         |
+| id          | 1f56253e81e849d18f72aeb51630cd34                                |
+| internalURL | http://10.0.1.111:8080/v1/AUTH_271e4dcd912f49a4a04f911eeea8f287 |
+| publicURL   | http://10.0.1.111:8080/v1/AUTH_271e4dcd912f49a4a04f911eeea8f287 |
+| region      | RegionOne                                                       |
++-------------+-----------------------------------------------------------------+
++-------------+----------------------------------+
+| keystone    | Value                            |
++-------------+----------------------------------+
+| adminURL    | http://10.0.1.111:35357/v2.0     |
+| id          | 0024fecd41364034a891bc384687ebf5 |
+| internalURL | http://10.0.1.111:5000/v2.0      |
+| publicURL   | http://10.0.1.111:5000/v2.0      |
+| region      | RegionOne                        |
++-------------+----------------------------------+
+=====> [20141130-172536] host: (local), command: nova usage-list
+Usage from 2014-11-02 to 2014-12-01:
++-----------+---------+--------------+-----------+---------------+
+| Tenant ID | Servers | RAM MB-Hours | CPU Hours | Disk GB-Hours |
++-----------+---------+--------------+-----------+---------------+
++-----------+---------+--------------+-----------+---------------+
+ * rcfile:	/root/setup_openstack/keystonerc
+ * region:	RegionOne
+ * tenant:	demo
+ * flavor:	m1.tiny
+ * net:	demo_net
+ * image:	cirros
+ * vm:	vm1
+=====> [20141130-172537] host: (local), command: nova boot --flavor m1.tiny --key-name sshkey --nic net-id=0b089ec8-c1e4-416b-ad22-c03650c8b489 --image cirros vm1
++--------------------------------------+-----------------------------------------------+
+| Property                             | Value                                         |
++--------------------------------------+-----------------------------------------------+
+| OS-DCF:diskConfig                    | MANUAL                                        |
+| OS-EXT-AZ:availability_zone          | nova                                          |
+| OS-EXT-STS:power_state               | 0                                             |
+| OS-EXT-STS:task_state                | scheduling                                    |
+| OS-EXT-STS:vm_state                  | building                                      |
+| OS-SRV-USG:launched_at               | -                                             |
+| OS-SRV-USG:terminated_at             | -                                             |
+| accessIPv4                           |                                               |
+| accessIPv6                           |                                               |
+| adminPass                            | 7sDiHE3EcQSN                                  |
+| config_drive                         |                                               |
+| created                              | 2014-11-30T08:25:39Z                          |
+| flavor                               | m1.tiny (1)                                   |
+| hostId                               |                                               |
+| id                                   | 8a17511c-1209-4be3-9d90-0812e6693a5d          |
+| image                                | cirros (1c37ff88-9732-4379-9a8c-c12b88cc7c91) |
+| key_name                             | sshkey                                        |
+| metadata                             | {}                                            |
+| name                                 | vm1                                           |
+| os-extended-volumes:volumes_attached | []                                            |
+| progress                             | 0                                             |
+| security_groups                      | default                                       |
+| status                               | BUILD                                         |
+| tenant_id                            | 0cab57be58804e8d81f04844e9324351              |
+| updated                              | 2014-11-30T08:25:39Z                          |
+| user_id                              | b9e8d0efada940c2b1f1ffc328b65383              |
++--------------------------------------+-----------------------------------------------+
