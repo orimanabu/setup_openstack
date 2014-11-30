@@ -1,4 +1,5 @@
 *=> external-create
+./neutron.sh external-create 2>&1 | tee -a ./history/external-create
 * op: external-create
 * ha: 0
 * tenant: admin
@@ -48,6 +49,7 @@ Created a new subnet:
 | network_id        | cb81f85b-28a7-415c-856b-ce037e0ee08f               |
 | tenant_id         | 271e4dcd912f49a4a04f911eeea8f287                   |
 +-------------------+----------------------------------------------------+
+./neutron.sh -t admin info 2>&1 | tee -a ./history/external-create
 * op: info
 * ha: 0
 * tenant: admin
@@ -95,6 +97,7 @@ Created a new subnet:
 | a4d5bb97-574a-43f3-91b2-3110c95eb23f | Metering agent     | juno-network1 | xxx   | True           | neutron-metering-agent    |
 | cc97d98d-3faf-4253-a79f-0482b1411bfc | Metadata agent     | juno-network2 | xxx   | True           | neutron-metadata-agent    |
 +--------------------------------------+--------------------+---------------+-------+----------------+---------------------------+
+./net_stat.sh 2>&1 | tee -a ./history/external-create
 => 10.0.1.111
 =====> [20141201-005330] host: 10.0.1.111, command: ip addr show
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN 
