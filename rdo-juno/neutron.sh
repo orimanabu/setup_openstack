@@ -11,7 +11,7 @@ source subr.sh
 ha=0
 tenant=
 cidr="192.168.99.0/24"
-public_network=public
+#public_network=public
 public_network=external
 
 while getopts ":c:n:s:p:r:t:v:f:h" o; do
@@ -61,6 +61,7 @@ eval ${str}
 network=${_network:-${tenant}_net}
 subnet=${_subnet:-${tenant}_net_subnet}
 router=${_router:-router_${tenant}}
+public_network=${_public_network:-external}
 
 pool_start=${prefix}.100
 pool_end=${prefix}.199
@@ -119,17 +120,22 @@ floatingip-create-only)
 	do_command neutron floatingip-create --tenant-id $(keystone tenant-list | awk '/'${tenant}'/ {print $2}') ${network}
 	;;
 floatingip-create-and-associate)
-	source ${gittop}/keystonerc admin
+	source ${gittop}/keystonerc ${tenant}
+	echo "tenant:	${tenant}"
 	echo "network:	${network}"
 	echo "vm:	${vm}"
-	echo "fip:	${fip}"
-	if [ x"${network}" == x"" -o x"${vm}" == x"" -o x"${fip}" == x"" ]; then
-		usage
-	fi
-	tenant_id=$(keystone tenant-list | awk '/'${tenant}'/ {print $2}')
+#	echo "fip:	${fip}"
+#	if [ x"${network}" == x"" -o x"${vm}" == x"" -o x"${fip}" == x"" ]; then
+#		usage
+#	fi
+#	tenant_id=$(keystone tenant-list | awk '/'${tenant}'/ {print $2}')
 	vmaddr=$(nova show ${vm} | awk '/network/ {print $5}')
 	port_id=$(neutron port-list | awk '/'${vmaddr}'/ {print $2}')
-	do_command neutron floatingip-create --tenant-id ${tenant_id} --port-id ${port_id} --fixed-ip-address ${fip} ${network}
+#	echo "tenant_id:	${tenant_id}"
+	echo "vmaddr:	${vmaddr}"
+	echo "port_id:	${port_id}"
+#	do_command neutron floatingip-create --tenant-id ${tenant_id} --port-id ${port_id} --fixed-ip-address ${fip} ${network}
+	do_command neutron floatingip-create --port-id ${port_id} --fixed-ip-address ${vmaddr} ${public_network}
 	;;
 floatingip-associate)
 	echo "vm: ${vm}"

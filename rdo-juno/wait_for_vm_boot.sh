@@ -25,13 +25,25 @@ esac
 
 router="router_${OS_TENANT_NAME}"
 router_id=$(neutron router-list | awk '/'${router}'/ {print $2}')
-network_node=$(neutron --os-username admin --os-password admin --os-tenant-name admin l3-agent-list-hosting-router ${router} | grep -Ev '^\+|admin_state_up' | awk '{print $4}')
+num_network_nodes=$(neutron --os-username admin --os-password admin --os-tenant-name admin l3-agent-list-hosting-router ${router} | grep -Ev '^\+|admin_state_up' | awk '{print $4}' | wc -l)
+echo "* # of network node: ${num_network_nodes}"
+if [ x"${num_network_nodes}" = x"1" ]; then
+	network_node=$(neutron --os-username admin --os-password admin --os-tenant-name admin l3-agent-list-hosting-router ${router} | grep -Ev '^\+|admin_state_up' | awk '{print $4}')
+else
+	for node in $(neutron --os-username admin --os-password admin --os-tenant-name admin l3-agent-list-hosting-router ${router} | grep -Ev '^\+|admin_state_up' | awk '{print $4}'); do
+		state=$(ssh ${ssh_options} ${node} cat /var/lib/neutron/ha_confs/${router_id}/state)
+		echo "*   VRRP states ${node}: ${state}"
+		if [ x"${state}" = x"master" ]; then
+			network_node=${node}
+		fi
+	done
+fi
 ns=$(ssh ${ssh_options} ${network_node} ip netns list | grep ${router_id})
-echo "==> network node: ${network_node}"
-echo "==> router: ${router}"
-echo "==> router_id: ${router_id}"
-#echo "==> ipaddr: ${ipaddr}"
-echo "==> ns: ${ns}"
+echo "* active network node: ${network_node}"
+echo "* router: ${router}"
+echo "* router_id: ${router_id}"
+#echo "* ipaddr: ${ipaddr}"
+echo "* ns: ${ns}"
 
 echo "===> waiting for the VM (${vm}) to boot..."
 while true; do
@@ -40,7 +52,7 @@ while true; do
 		echo "nova boot failed.\n"
 		exit 1
 	fi
-	ipaddr=$(nova show ${vm} | awk '/network/ {print $5}')
+	ipaddr=$(nova show ${vm} | awk '/network/ {print $5}' | sed -e 's/,$//')
 #	do_command ssh ${ssh_options} -t ${network_node} ip netns exec ${ns} ping -c 1 -W 1 ${ipaddr}
 	ssh ${ssh_options} -t ${network_node} ip netns exec ${ns} ping -c 1 -W 1 ${ipaddr} > /dev/null 2>&1
 	if [ x"$?" = x"0" ]; then
