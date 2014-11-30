@@ -1,0 +1,25 @@
+* command
+[root@juno-controller rdo-juno(keystone_admin)]# neutron router-update router_demo --ha=True
+Bad Request (HTTP 400) (Request-ID: req-16b4d5ea-e28e-4b8f-86af-ec5f337c16eb)
+[root@juno-controller rdo-juno(keystone_admin)]# ls
+
+
+
+* /var/log/neutron/server.log
+2014-11-30 22:33:50.774 3578 INFO neutron.wsgi [-] (3578) accepted ('10.0.1.111', 56924)
+2014-11-30 22:33:50.785 3578 INFO urllib3.connectionpool [-] Starting new HTTP connection (1): 10.0.1.111
+2014-11-30 22:33:50.795 3578 INFO keystonemiddleware.auth_token [-] Auth Token confirmed use of v3.0 apis
+2014-11-30 22:33:51.047 3578 INFO neutron.wsgi [req-f6956996-f66f-4f08-9083-c9a23fe90ce3 None] 10.0.1.111 - - [30/Nov/2014 22:33:51] "GET /v2.0/routers.json?fields=id&name=router_demo HTTP/1.1" 200 250 0.271199
+2014-11-30 22:33:51.052 3578 INFO oslo.messaging._drivers.impl_rabbit [req-16b4d5ea-e28e-4b8f-86af-ec5f337c16eb ] Connecting to AMQP server on 10.0.1.111:5672
+2014-11-30 22:33:51.061 3578 INFO oslo.messaging._drivers.impl_rabbit [req-16b4d5ea-e28e-4b8f-86af-ec5f337c16eb ] Connected to AMQP server on 10.0.1.111:5672
+2014-11-30 22:33:51.068 3578 ERROR neutron.api.v2.resource [req-16b4d5ea-e28e-4b8f-86af-ec5f337c16eb None] update failed
+2014-11-30 22:33:51.068 3578 TRACE neutron.api.v2.resource Traceback (most recent call last):
+2014-11-30 22:33:51.068 3578 TRACE neutron.api.v2.resource   File "/usr/lib/python2.7/site-packages/neutron/api/v2/resource.py", line 87, in resource
+2014-11-30 22:33:51.068 3578 TRACE neutron.api.v2.resource     result = method(request=request, **args)
+2014-11-30 22:33:51.068 3578 TRACE neutron.api.v2.resource   File "/usr/lib/python2.7/site-packages/neutron/api/v2/base.py", line 501, in update
+2014-11-30 22:33:51.068 3578 TRACE neutron.api.v2.resource     allow_bulk=self._allow_bulk)
+2014-11-30 22:33:51.068 3578 TRACE neutron.api.v2.resource   File "/usr/lib/python2.7/site-packages/neutron/api/v2/base.py", line 623, in prepare_request_body
+2014-11-30 22:33:51.068 3578 TRACE neutron.api.v2.resource     raise webob.exc.HTTPBadRequest(msg)
+2014-11-30 22:33:51.068 3578 TRACE neutron.api.v2.resource HTTPBadRequest: Cannot update read-only attribute ha
+2014-11-30 22:33:51.068 3578 TRACE neutron.api.v2.resource
+2014-11-30 22:33:51.070 3578 INFO neutron.wsgi [req-16b4d5ea-e28e-4b8f-86af-ec5f337c16eb None] 10.0.1.111 - - [30/Nov/2014 22:33:51] "PUT /v2.0/routers/3b5c99ec-ca82-42e1-aedc-83f0e41debc5.json HTTP/1.1" 400 308 0.020435
