@@ -65,6 +65,12 @@ snapshot-create)
 		virsh snapshot-info ${vm} ${snap}
 	done
 	;;
+snapshot-list)
+	for vm in ${vms}; do
+		echo "==> ${vm}"
+		virsh snapshot-list ${vm}
+	done
+	;;
 snapshot-revert)
 	snap=$1; shift
 	if [ x"${snap}" = x"" ]; then
