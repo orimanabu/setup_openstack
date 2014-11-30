@@ -35,7 +35,7 @@ boot:
 	@echo "*=> $@" 2>&1 | tee $(LOGDIR)/$@
 	./nova.sh -t admin info 2>&1 | tee -a $(LOGDIR)/$@
 	./nova.sh -t demo -v vm1 boot 2>&1 | tee -a $(LOGDIR)/$@
-	./wait_for_vm_boot.sh vm1
+	./wait_for_vm_boot.sh vm1 2>&1 | tee -a $(LOGDIR)/$@
 	./vm_stat.sh demo 2>&1 | tee -a $(LOGDIR)/$@
 	./neutron.sh -t admin info 2>&1 | tee -a $(LOGDIR)/$@
 	./net_stat.sh 2>&1 | tee -a $(LOGDIR)/$@
