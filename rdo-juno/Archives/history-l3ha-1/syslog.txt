@@ -1,3 +1,44 @@
+
+
+11月 30 16:22:38 juno-network1 sudo[4131]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ip netns exec qrouter-b88714bc-a16a-4ab7-af50-ceca2662faa7 ip route list dev ha-de84676c-7f scope link
+11月 30 16:22:38 juno-network1 kernel: SELinux: initialized (dev sysfs, type sysfs), uses genfs_contexts
+11月 30 16:22:38 juno-network1 sudo[4135]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ip netns exec qrouter-b88714bc-a16a-4ab7-af50-ceca2662faa7 ip -o -d link list
+11月 30 16:22:38 juno-network1 sudo[4136]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf iptables-save -c
+11月 30 16:22:38 juno-network1 sudo[4140]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf iptables-restore -c
+11月 30 16:22:38 juno-network1 kernel: SELinux: initialized (dev sysfs, type sysfs), uses genfs_contexts
+11月 30 16:22:39 juno-network1 sudo[4143]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ip netns exec qrouter-b88714bc-a16a-4ab7-af50-ceca2662faa7 keepalived -P -f /var/lib/neutron/ha_confs/b88714bc-a16a-4ab7-af50-ceca2662faa7/keepalived.conf -p /var/lib/neutron/ha_confs/b88714bc-a16a-4ab7-af50-ceca2662faa7.pid -r /var/lib/neutron/ha_confs/b88714bc-a16a-4ab7-af50-ceca2662faa7.pid-vrrp
+11月 30 16:22:39 juno-network1 sudo[4146]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ip6tables-save -c
+11月 30 16:22:39 juno-network1 kernel: SELinux: initialized (dev sysfs, type sysfs), uses genfs_contexts
+11月 30 16:22:39 juno-network1 sudo[4150]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ip6tables-restore -c
+11月 30 16:22:39 juno-network1 Keepalived[4148]: Starting Keepalived v1.2.10 (06/10,2014)
+11月 30 16:22:39 juno-network1 Keepalived[4154]: Starting VRRP child process, pid=4155
+11月 30 16:22:39 juno-network1 Keepalived_vrrp[4155]: Registering Kernel netlink reflector
+11月 30 16:22:39 juno-network1 Keepalived_vrrp[4155]: Registering Kernel netlink command channel
+11月 30 16:22:39 juno-network1 Keepalived_vrrp[4155]: Registering gratuitous ARP shared channel
+11月 30 16:22:39 juno-network1 Keepalived_vrrp[4155]: Initializing ipvs 2.6
+11月 30 16:22:39 juno-network1 kernel: IPVS: Registered protocols (TCP, UDP, SCTP, AH, ESP)
+11月 30 16:22:39 juno-network1 kernel: IPVS: Connection hash table configured (size=4096, memory=64Kbytes)
+11月 30 16:22:39 juno-network1 kernel: IPVS: Creating netns size=2032 id=0
+11月 30 16:22:39 juno-network1 kernel: IPVS: Creating netns size=2032 id=1
+11月 30 16:22:39 juno-network1 kernel: IPVS: ipvs loaded.
+11月 30 16:22:39 juno-network1 Keepalived_vrrp[4155]: Opening file '/var/lib/neutron/ha_confs/b88714bc-a16a-4ab7-af50-ceca2662faa7/keepalived.conf'.
+11月 30 16:22:39 juno-network1 Keepalived_vrrp[4155]: Configuration is using : 64166 Bytes
+11月 30 16:22:39 juno-network1 Keepalived_vrrp[4155]: Using LinkWatch kernel netlink reflector...
+11月 30 16:22:39 juno-network1 Keepalived_vrrp[4155]: VRRP_Instance(VR_1) Entering BACKUP STATE
+11月 30 16:22:39 juno-network1 Keepalived_vrrp[4155]: Opening script file /var/lib/neutron/ha_confs/b88714bc-a16a-4ab7-af50-ceca2662faa7/notify_backup.sh
+11月 30 16:22:39 juno-network1 sudo[4162]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-vsctl --timeout=10 --format=json -- --columns=external_ids,name,ofport find Interface external_ids:iface-id="de84676c-7fb1-4e3c-9b37-33ac58c1a73f"
+
+11月 30 16:22:41 juno-network1 Keepalived_vrrp[4155]: Registering Kernel netlink reflector
+11月 30 16:22:41 juno-network1 Keepalived_vrrp[4155]: Registering Kernel netlink command channel
+11月 30 16:22:41 juno-network1 Keepalived_vrrp[4155]: Registering gratuitous ARP shared channel
+11月 30 16:22:41 juno-network1 Keepalived_vrrp[4155]: Initializing ipvs 2.6
+11月 30 16:22:41 juno-network1 Keepalived_vrrp[4155]: Opening file '/var/lib/neutron/ha_confs/b88714bc-a16a-4ab7-af50-ceca2662faa7/keepalived.conf'.
+11月 30 16:22:41 juno-network1 Keepalived_vrrp[4155]: Configuration is using : 65666 Bytes
+11月 30 16:22:41 juno-network1 Keepalived_vrrp[4155]: Using LinkWatch kernel netlink reflector...
+11月 30 16:22:41 juno-network1 Keepalived_vrrp[4155]: cant do IP_DROP_MEMBERSHIP errno=Bad file descriptor (9)
+11月 30 16:22:41 juno-network1 Keepalived_vrrp[4155]: VRRP_Instance(VR_1) Entering BACKUP STATE
+11月 30 16:22:41 juno-network1 Keepalived_vrrp[4155]: Opening script file /var/lib/neutron/ha_confs/b88714bc-a16a-4ab7-af50-ceca2662faa7/notify_backup.sh
+
 11月 30 18:01:21 juno-network1 sudo[14784]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
 11月 30 18:01:23 juno-network1 sudo[14787]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
 11月 30 18:01:24 juno-network1 Keepalived_vrrp[12015]: VRRP_Instance(VR_1) Transition to MASTER STATE

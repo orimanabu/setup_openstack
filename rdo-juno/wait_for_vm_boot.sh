@@ -25,12 +25,13 @@ esac
 
 router="router_${OS_TENANT_NAME}"
 router_id=$(neutron router-list | awk '/'${router}'/ {print $2}')
-num_network_nodes=$(neutron --os-username admin --os-password admin --os-tenant-name admin l3-agent-list-hosting-router ${router} | grep -Ev '^\+|admin_state_up' | awk '{print $4}' | wc -l)
+l3_agent=$(neutron --os-username admin --os-password admin --os-tenant-name admin l3-agent-list-hosting-router ${router} | grep -Ev '^\+|admin_state_up' | awk '{print $4}')
+num_network_nodes=$(echo "${l3_agent}" | wc -l)
 echo "* # of network node: ${num_network_nodes}"
 if [ x"${num_network_nodes}" = x"1" ]; then
-	network_node=$(neutron --os-username admin --os-password admin --os-tenant-name admin l3-agent-list-hosting-router ${router} | grep -Ev '^\+|admin_state_up' | awk '{print $4}')
+	network_node=${l3_agent}
 else
-	for node in $(neutron --os-username admin --os-password admin --os-tenant-name admin l3-agent-list-hosting-router ${router} | grep -Ev '^\+|admin_state_up' | awk '{print $4}'); do
+	for node in ${l3_agent}; do
 		state=$(ssh ${ssh_options} ${node} cat /var/lib/neutron/ha_confs/${router_id}/state)
 		ndaemon=$(ssh ${ssh_options} ${node} pgrep keepalived | wc -l)
 		echo "*   VRRP states ${node}: ${state} (# of keepalived: ${ndaemon})"

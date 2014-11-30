@@ -38,7 +38,8 @@ function do_command {
 	shift $((OPTIND - 1))
 
 	test -z ${silent} && echo "=====> [$(date '+%Y%m%d-%H%M%S')] host: ${host}, command: $*"
-	${ssh_prefix} "$*"
+	result=$(${ssh_prefix} "$*")
+	echo "${result}"
 }
 
 function do_query {

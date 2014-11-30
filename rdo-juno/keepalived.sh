@@ -5,6 +5,8 @@ function usage {
 	exit 1
 }
 
+test -x /usr/bin/pstree || yum install -y psmisc
+
 source subr.sh
 source ${gittop}/keystonerc admin
 
@@ -44,5 +46,6 @@ for node in ${network_nodes}; do
 	do_command -r ${node} cat /var/lib/neutron/ha_confs/${router_id}/state; echo
 	if [ x"${verbose}" = x"1" ]; then
 		do_command -r ${node} cat /var/lib/neutron/ha_confs/${router_id}/keepalived.conf
+		do_command pstree -p
 	fi
 done
