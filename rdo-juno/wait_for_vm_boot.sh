@@ -32,8 +32,9 @@ if [ x"${num_network_nodes}" = x"1" ]; then
 else
 	for node in $(neutron --os-username admin --os-password admin --os-tenant-name admin l3-agent-list-hosting-router ${router} | grep -Ev '^\+|admin_state_up' | awk '{print $4}'); do
 		state=$(ssh ${ssh_options} ${node} cat /var/lib/neutron/ha_confs/${router_id}/state)
-		echo "*   VRRP states ${node}: ${state}"
-		if [ x"${state}" = x"master" ]; then
+		ndaemon=$(ssh ${ssh_options} ${node} pgrep keepalived | wc -l)
+		echo "*   VRRP states ${node}: ${state} (# of keepalived: ${ndaemon})"
+		if [ x"${state}" = x"master" -a x"${ndaemon}" != x"0" ]; then
 			network_node=${node}
 		fi
 	done
