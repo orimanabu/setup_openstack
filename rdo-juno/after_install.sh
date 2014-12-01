@@ -31,12 +31,12 @@ for node in ${controller_node} ${network_nodes} ${compute_nodes}; do
 	f=/etc/hosts
 	ssh ${ssh_options} test -f ${f}.orig > /dev/null 2>&1
 	if [ x"$?" != x"0" ]; then
-		do_command -r ${node} cp -p ${f} ${f}.orig
+		do_command -r ${node} -n cp -p ${f} ${f}.orig
 		cat nodefile | while read line; do
 			addr=$(echo ${line} | awk '{print $1}')
 			host=$(echo ${line} | awk '{print $2}')
 			fqdn="${host}.mgmt.local"
-			do_command -r ${node} "echo '${addr}	${fqdn} ${host}' >> ${f}"
+			do_command -r ${node} -n "echo '${addr}	${fqdn} ${host}' >> ${f}"
 		done
 	fi
 

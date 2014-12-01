@@ -11,6 +11,6 @@ neutron agent-list | grep 'L3 agent' | while read line; do
 	echo "==> ${l3node}"
 	do_command neutron router-list-on-l3-agent ${id}
 	router_id=$(neutron router-list-on-l3-agent ${id} | grep -E -v '^\+| id ' | awk '{print $2}')
-	ns=$(ssh ${ssh_options} ${l3node} ip netns list | grep ${router_id})
+	ns=$(ssh ${ssh_options} -n ${l3node} ip netns list | grep ${router_id})
 	#do_command -r ${l3node} ip netns exec ${ns} ip addr show
 done
