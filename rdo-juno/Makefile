@@ -1,9 +1,5 @@
 LOGDIR=./history
 
-_all:
-	@echo "*=> $@"
-	$(MAKE) external-create 2>&1 | tee log.$@
-	$(MAKE) net-create 2>&1 | tee log.$@
 all:
 	@echo "*=> $@"
 	@echo "  after-install"
