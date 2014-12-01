@@ -1,0 +1,28 @@
+[root@juno-controller rdo-juno(keystone_demo)]# nova ssh --login cirros vm1
+The authenticity of host '172.16.99.101 (172.16.99.101)' can't be established.
+RSA key fingerprint is a4:f4:86:55:dc:61:32:25:fa:5a:05:1f:57:55:5f:69.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '172.16.99.101' (RSA) to the list of known hosts.
+$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 16436 qdisc noqueue
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast qlen 1000
+    link/ether fa:16:3e:be:02:20 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.10.100/24 brd 192.168.10.255 scope global eth0
+    inet6 fe80::f816:3eff:febe:220/64 scope link
+       valid_lft forever preferred_lft forever
+$ ping 172.16.99.11
+PING 172.16.99.11 (172.16.99.11): 56 data bytes
+64 bytes from 172.16.99.11: seq=0 ttl=63 time=2.659 ms
+64 bytes from 172.16.99.11: seq=1 ttl=63 time=0.687 ms
+64 bytes from 172.16.99.11: seq=2 ttl=63 time=0.981 ms
+^C
+--- 172.16.99.11 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max = 0.687/1.442/2.659 ms
+$ exit
+Connection to 172.16.99.101 closed.
+[root@juno-controller rdo-juno(keystone_demo)]#

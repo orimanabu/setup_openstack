@@ -1,0 +1,179 @@
+* tenant: demo
+* router: router_demo
+* router_id: e7e98ef7-36d5-4544-be07-c83ddf7e67ea
+* verbose: 1
+=> node: 10.0.1.121
+=====> [20141201-123958] host: 10.0.1.121, command: ip netns exec qrouter-e7e98ef7-36d5-4544-be07-c83ddf7e67ea ip -o addr show | grep -E '(ha|qg|qr)-.*inet '
+9: ha-ef4a5a34-17    inet 169.254.192.1/18 brd 169.254.255.255 scope global ha-ef4a5a34-17\       valid_lft forever preferred_lft forever
+10: qg-a6ee9669-8f    inet 172.16.99.100/24 scope global qg-a6ee9669-8f\       valid_lft forever preferred_lft forever
+10: qg-a6ee9669-8f    inet 172.16.99.101/32 scope global qg-a6ee9669-8f\       valid_lft forever preferred_lft forever
+11: qr-3d8666f0-c4    inet 192.168.10.1/24 scope global qr-3d8666f0-c4\       valid_lft forever preferred_lft forever
+=====> [20141201-123958] host: 10.0.1.121, command: cat /var/lib/neutron/ha_confs/e7e98ef7-36d5-4544-be07-c83ddf7e67ea/state
+master
+
+=====> [20141201-123958] host: 10.0.1.121, command: cat /var/lib/neutron/ha_confs/e7e98ef7-36d5-4544-be07-c83ddf7e67ea/keepalived.conf
+vrrp_sync_group VG_1 {
+    group {
+        VR_1
+    }
+    notify_master "/var/lib/neutron/ha_confs/e7e98ef7-36d5-4544-be07-c83ddf7e67ea/notify_master.sh"
+    notify_backup "/var/lib/neutron/ha_confs/e7e98ef7-36d5-4544-be07-c83ddf7e67ea/notify_backup.sh"
+    notify_fault "/var/lib/neutron/ha_confs/e7e98ef7-36d5-4544-be07-c83ddf7e67ea/notify_fault.sh"
+}
+vrrp_instance VR_1 {
+    state BACKUP
+    interface ha-ef4a5a34-17
+    virtual_router_id 1
+    priority 50
+    nopreempt
+    advert_int 2
+    track_interface {
+        ha-ef4a5a34-17
+    }
+    virtual_ipaddress {
+        172.16.99.100/24 dev qg-a6ee9669-8f
+    }
+    virtual_ipaddress_excluded {
+        172.16.99.101/32 dev qg-a6ee9669-8f
+        192.168.10.1/24 dev qr-3d8666f0-c4
+    }
+    virtual_routes {
+        0.0.0.0/0 via 172.16.99.1 dev qg-a6ee9669-8f
+    }
+}
+=====> [20141201-123958] host: 10.0.1.121, command: pstree -p
+systemd(1)-+-agetty(905)
+           |-agetty(906)
+           |-auditd(593)---{auditd}(599)
+           |-avahi-daemon(625)---avahi-daemon(630)
+           |-chronyd(670)
+           |-crond(696)
+           |-dbus-daemon(675)---{dbus-daemon}(701)
+           |-httpd(1186)-+-httpd(1298)
+           |             |-httpd(1299)
+           |             |-httpd(1300)
+           |             |-httpd(1301)
+           |             |-httpd(1302)
+           |             |-httpd(1303)
+           |             |-httpd(1304)
+           |             `-httpd(1305)
+           |-iprdump(720)
+           |-iprinit(666)
+           |-iprupdate(669)
+           |-irqbalance(634)
+           |-keepalived(3668)---keepalived(5025)
+           |-lvmetad(471)
+           |-master(1570)-+-pickup(1577)
+           |              `-qmgr(1578)
+           |-monitor(706)---ovsdb-server(707)
+           |-monitor(743)---ovs-vswitchd(744)-+-{ovs-vswitchd}(761)
+           |                                  |-{ovs-vswitchd}(762)
+           |                                  |-{ovs-vswitchd}(765)
+           |                                  `-{ovs-vswitchd}(766)
+           |-neutron-dhcp-ag(2268)
+           |-neutron-l3-agen(2267)
+           |-neutron-metadat(1189)-+-neutron-metadat(1803)
+           |                       `-neutron-metadat(1805)
+           |-neutron-meterin(1188)
+           |-neutron-ns-meta(5081)
+           |-neutron-openvsw(2269)---sudo(2356)---neutron-rootwra(2358)---ovsdb-client(2360)
+           |-nrpe(1194)
+           |-rsyslogd(627)-+-{rsyslogd}(641)
+           |               `-{rsyslogd}(642)
+           |-sshd(1196)-+-sshd(3191)---bash(3194)
+           |            |-sshd(3452)---bash(3455)
+           |            |-sshd(3479)---tail(3482)
+           |            `-sshd(5166)---pstree(5169)
+           |-systemd-journal(470)
+           |-systemd-logind(662)
+           |-systemd-udevd(474)
+           `-tuned(633)-+-{tuned}(814)
+                        |-{tuned}(815)
+                        |-{tuned}(816)
+                        `-{tuned}(823)
+=> node: 10.0.1.122
+=====> [20141201-123959] host: 10.0.1.122, command: ip netns exec qrouter-e7e98ef7-36d5-4544-be07-c83ddf7e67ea ip -o addr show | grep -E '(ha|qg|qr)-.*inet '
+9: ha-00ab5988-de    inet 169.254.192.2/18 brd 169.254.255.255 scope global ha-00ab5988-de\       valid_lft forever preferred_lft forever
+=====> [20141201-123959] host: 10.0.1.122, command: cat /var/lib/neutron/ha_confs/e7e98ef7-36d5-4544-be07-c83ddf7e67ea/state
+backup
+
+=====> [20141201-123959] host: 10.0.1.122, command: cat /var/lib/neutron/ha_confs/e7e98ef7-36d5-4544-be07-c83ddf7e67ea/keepalived.conf
+vrrp_sync_group VG_1 {
+    group {
+        VR_1
+    }
+    notify_master "/var/lib/neutron/ha_confs/e7e98ef7-36d5-4544-be07-c83ddf7e67ea/notify_master.sh"
+    notify_backup "/var/lib/neutron/ha_confs/e7e98ef7-36d5-4544-be07-c83ddf7e67ea/notify_backup.sh"
+    notify_fault "/var/lib/neutron/ha_confs/e7e98ef7-36d5-4544-be07-c83ddf7e67ea/notify_fault.sh"
+}
+vrrp_instance VR_1 {
+    state BACKUP
+    interface ha-00ab5988-de
+    virtual_router_id 1
+    priority 50
+    nopreempt
+    advert_int 2
+    track_interface {
+        ha-00ab5988-de
+    }
+    virtual_ipaddress {
+        172.16.99.100/24 dev qg-a6ee9669-8f
+    }
+    virtual_ipaddress_excluded {
+        172.16.99.101/32 dev qg-a6ee9669-8f
+        192.168.10.1/24 dev qr-3d8666f0-c4
+    }
+    virtual_routes {
+        0.0.0.0/0 via 172.16.99.1 dev qg-a6ee9669-8f
+    }
+}
+=====> [20141201-123959] host: 10.0.1.122, command: pstree -p
+systemd(1)-+-agetty(896)
+           |-agetty(897)
+           |-auditd(590)---{auditd}(595)
+           |-avahi-daemon(621)---avahi-daemon(631)
+           |-chronyd(660)
+           |-crond(662)
+           |-dbus-daemon(654)---{dbus-daemon}(687)
+           |-dnsmasq(4564)
+           |-httpd(1177)-+-httpd(1222)
+           |             |-httpd(1223)
+           |             |-httpd(1224)
+           |             |-httpd(1226)
+           |             |-httpd(1227)
+           |             |-httpd(1228)
+           |             |-httpd(1229)
+           |             `-httpd(1230)
+           |-iprdump(703)
+           |-iprinit(673)
+           |-iprupdate(665)
+           |-irqbalance(630)
+           |-keepalived(3689)---keepalived(5038)
+           |-lvmetad(471)
+           |-master(1466)-+-pickup(1504)
+           |              `-qmgr(1505)
+           |-monitor(704)---ovsdb-server(706)
+           |-monitor(756)---ovs-vswitchd(757)-+-{ovs-vswitchd}(758)
+           |                                  |-{ovs-vswitchd}(760)
+           |                                  |-{ovs-vswitchd}(761)
+           |                                  `-{ovs-vswitchd}(762)
+           |-neutron-dhcp-ag(2259)
+           |-neutron-l3-agen(2258)
+           |-neutron-metadat(1180)-+-neutron-metadat(2018)
+           |                       `-neutron-metadat(2019)
+           |-neutron-meterin(1179)
+           |-neutron-openvsw(2260)---sudo(2346)---neutron-rootwra(2348)---ovsdb-client(2351)
+           |-nrpe(1188)
+           |-rsyslogd(622)-+-{rsyslogd}(651)
+           |               `-{rsyslogd}(652)
+           |-sshd(1182)-+-sshd(3194)---bash(3197)
+           |            |-sshd(3469)---tail(3472)
+           |            |-sshd(3481)---bash(3484)
+           |            `-sshd(5177)---pstree(5180)
+           |-systemd-journal(470)
+           |-systemd-logind(653)
+           |-systemd-udevd(482)
+           `-tuned(628)-+-{tuned}(801)
+                        |-{tuned}(802)
+                        |-{tuned}(803)
+                        `-{tuned}(805)

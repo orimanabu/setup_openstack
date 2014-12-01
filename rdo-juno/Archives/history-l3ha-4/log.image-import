@@ -1,0 +1,31 @@
+*=> image-import
+./glance.sh 2>&1 | tee -a ./history/image-import
+=> fetching cirros
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   255  100   255    0     0    628      0 --:--:-- --:--:-- --:--:--   629
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  6 12.5M    6  789k    0     0   477k      0  0:00:26  0:00:01  0:00:25  880k 60 12.5M   60 7833k    0     0  2943k      0  0:00:04  0:00:02  0:00:02 4112k100 12.5M  100 12.5M    0     0  3885k      0  0:00:03  0:00:03 --:--:-- 5033k
+=> importing to Glance
+==> cirros
+=====> [20141130-225712] host: (local), command: glance --os-region-name RegionOne image-create --name cirros --is-public true --disk-format qcow2 --container-format bare --file ./images/cirros-0.3.3-x86_64-disk.img
++------------------+--------------------------------------+
+| Property         | Value                                |
++------------------+--------------------------------------+
+| checksum         | 133eae9fb1c98f45894a4e60d8736619     |
+| container_format | bare                                 |
+| created_at       | 2014-11-30T13:57:12                  |
+| deleted          | False                                |
+| deleted_at       | None                                 |
+| disk_format      | qcow2                                |
+| id               | 69d97e8f-24b5-4f0b-8977-7295d8ba8edb |
+| is_public        | True                                 |
+| min_disk         | 0                                    |
+| min_ram          | 0                                    |
+| name             | cirros                               |
+| owner            | 271e4dcd912f49a4a04f911eeea8f287     |
+| protected        | False                                |
+| size             | 13200896                             |
+| status           | active                               |
+| updated_at       | 2014-11-30T13:57:13                  |
+| virtual_size     | None                                 |
++------------------+--------------------------------------+
