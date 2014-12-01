@@ -23,6 +23,8 @@ rhel7)
 	;;
 esac
 
+do_command date
+
 router="router_${OS_TENANT_NAME}"
 router_id=$(neutron router-list | awk '/'${router}'/ {print $2}')
 l3_agent=$(neutron --os-username admin --os-password admin --os-tenant-name admin l3-agent-list-hosting-router ${router} | grep -Ev '^\+|admin_state_up' | awk '{print $4}')
@@ -76,3 +78,4 @@ while true; do
 done
 echo "===> done."
 
+do_command date
