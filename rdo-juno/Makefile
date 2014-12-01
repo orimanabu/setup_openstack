@@ -27,6 +27,7 @@ external-create:
 net-create:
 	@echo "*=> $@" 2>&1 | tee $(LOGDIR)/$@
 	./neutron.sh -t demo -c 192.168.10.0/24 create 2>&1 | tee -a $(LOGDIR)/$@
+	sleep 10
 	./neutron.sh -t admin info 2>&1 | tee -a $(LOGDIR)/$@
 	./net_stat.sh 2>&1 | tee -a $(LOGDIR)/$@
 	./keepalived.sh -t demo -v 2>&1 | tee -a $(LOGDIR)/$@
