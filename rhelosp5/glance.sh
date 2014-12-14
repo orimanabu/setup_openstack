@@ -1,0 +1,1 @@
+../rdo-juno/glance.sh
