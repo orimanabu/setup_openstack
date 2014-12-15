@@ -89,7 +89,7 @@ case ${op} in
 external-create)
 	source /root/keystonerc admin
 	do_command neutron net-create ${public_network} --router:external True
-	do_command neutron subnet-create ${public_network} 172.30.20.192/26 --name ${public_network}_subnet --disable-dhcp --gateway 172.30.20.254 --allocation-pool start=172.30.20.200,end=172.30.20.219
+	do_command neutron subnet-create ${public_network} 172.30.20.192/26 --name ${public_network}_subnet --disable-dhcp --gateway 172.30.20.254 --allocation-pool start=172.30.20.240,end=172.30.20.249
 	;;
 create)
 	source /root/keystonerc admin
