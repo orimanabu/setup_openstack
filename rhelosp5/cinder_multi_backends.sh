@@ -1,6 +1,8 @@
 #!/bin/bash
 
-test=echo
+source ./subr.sh
+#test=echo
+test=do_command
 
 #backends="lvm_local,lvm_nfs"
 declare -a backends=("lvm_local" "lvm_nfs")
@@ -24,6 +26,8 @@ done
 
 echo "=> restarting cinder related services"
 ${test} openstack-service restart cinder
+
+sleep 5
 
 echo "=> creating cinder types"
 i=0

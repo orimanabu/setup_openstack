@@ -5,6 +5,7 @@ if [ x"$#" != x"1" ]; then
 	exit 1
 fi
 vm=$1; shift
+source ~/keystonerc demo
 id=$(nova list | awk '/'${vm}'/ {print $2}')
 
 echo "* vm: ${vm}"

@@ -99,7 +99,7 @@ CONFIG_VCENTER_CLUSTER_NAME=
 # (Unsupported!) The IP address of the server on which to install
 # OpenStack services specific to storage servers such as Glance and
 # Cinder.
-CONFIG_STORAGE_HOST=172.30.20.122
+#CONFIG_STORAGE_HOST=172.30.20.122
 
 # To subscribe each server to EPEL enter "y"
 CONFIG_USE_EPEL=n
@@ -411,7 +411,7 @@ CONFIG_NEUTRON_OVS_BRIDGE_MAPPINGS=physnet-tenant:br-tenant
 
 # A comma separated list of colon-separated OVS bridge:interface
 # pairs. The interface will be added to the associated bridge.
-CONFIG_NEUTRON_OVS_BRIDGE_IFACES=br-tenant:bond0
+CONFIG_NEUTRON_OVS_BRIDGE_IFACES=br-tenant:eno83889152
 
 # A comma separated list of tunnel ranges for the Neutron openvswitch
 # plugin (eg. 1:1000)

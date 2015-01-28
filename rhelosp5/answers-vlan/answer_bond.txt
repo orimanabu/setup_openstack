@@ -57,7 +57,7 @@ CONFIG_NAGIOS_INSTALL=y
 # case you are running Packstack the second time with the same answer
 # file and don't want Packstack to touch these servers. Leave plain if
 # you don't need to exclude any server.
-EXCLUDE_SERVERS=172.30.20.121,172.30.20.122
+EXCLUDE_SERVERS=
 
 # Set to 'y' if you want to run OpenStack services in debug mode.
 # Otherwise set to 'n'.
@@ -411,7 +411,7 @@ CONFIG_NEUTRON_OVS_BRIDGE_MAPPINGS=physnet-tenant:br-tenant
 
 # A comma separated list of colon-separated OVS bridge:interface
 # pairs. The interface will be added to the associated bridge.
-CONFIG_NEUTRON_OVS_BRIDGE_IFACES=br-tenant:em2
+CONFIG_NEUTRON_OVS_BRIDGE_IFACES=br-tenant:bond0
 
 # A comma separated list of tunnel ranges for the Neutron openvswitch
 # plugin (eg. 1:1000)
