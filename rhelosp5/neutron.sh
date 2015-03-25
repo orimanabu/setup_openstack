@@ -11,7 +11,7 @@ source subr.sh
 ha=0
 tenant=
 cidr="192.168.99.0/24"
-public_network=public
+#public_network=public
 public_network=external
 
 while getopts ":c:n:s:p:r:t:v:f:h" o; do
@@ -89,7 +89,7 @@ case ${op} in
 external-create)
 	source /root/keystonerc admin
 	do_command neutron net-create ${public_network} --router:external True
-	do_command neutron subnet-create ${public_network} 172.30.20.192/26 --name ${public_network}_subnet --disable-dhcp --gateway 172.30.20.254 --allocation-pool start=172.30.20.240,end=172.30.20.249
+	do_command neutron subnet-create ${public_network} 172.16.99.0/24 --name ${public_network}_subnet --disable-dhcp --gateway 172.16.99.254 --allocation-pool start=172.16.99.100,end=172.16.99.199
 	;;
 create)
 	source /root/keystonerc admin
