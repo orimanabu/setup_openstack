@@ -21,7 +21,7 @@ while [[ $# > 1 ]]; do
 		shift
 		;;
 	-t|--tenant)
-		tenant="$1"
+		_tenant="$1"
 		shift
 		;;
 	-n|--net|--network)
@@ -51,23 +51,24 @@ if [ x"$#" == x"0" ]; then
 fi
 op=$1; shift
 
+export OS_REGION_NAME=${region}
+rcfile=/root/keystonerc
+tenant=${_tenant:-${OS_TENANT_NAME}}
+net=${_net:-${tenant}_net}
+
 if [ x"${region}" == x"" -o x"${tenant}" = x"" ]; then
 	echo "no region nor tenant specified."
 	usage
 fi
-export OS_REGION_NAME=${region}
-rcfile=/root/keystonerc
-net=${_net:-${tenant}_net}
-
 source ${rcfile} ${tenant}
 
-echo " * rcfile:	${rcfile}"
-echo " * region:	${region}"
-echo " * tenant:	${tenant}"
-echo " * flavor:	${flavor}"
-echo " * net:	${net}"
-echo " * image:	${image}"
-echo " * vm:	${vm}"
+echo "* rcfile:	${rcfile}"
+echo "* region:	${region}"
+echo "* tenant:	${tenant}"
+echo "* flavor:	${flavor}"
+echo "* network:	${net}"
+echo "* image:	${image}"
+echo "* vm:	${vm}"
 
 case ${op} in
 delete_all)

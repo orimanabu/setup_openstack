@@ -35,7 +35,7 @@ while getopts ":c:n:s:p:r:t:v:f:h" o; do
 		_router=${OPTARG}
 		;;
 	t)
-		tenant=${OPTARG}
+		_tenant=${OPTARG}
 		;;
 	v)
 		vm=${OPTARG}
@@ -58,6 +58,7 @@ op=$1; shift
 
 str=$(echo ${cidr} | sed -e 's|^\([0-9.]*\)\.0/\([0-9]*\)|prefix=\1 prefixlen=\2|')
 eval ${str}
+tenant=${_tenant:-$OS_TENANT_NAME}
 network=${_network:-${tenant}_net}
 subnet=${_subnet:-${tenant}_net_subnet}
 router=${_router:-router_${tenant}}
@@ -86,6 +87,11 @@ fi
 #exit
 
 case ${op} in
+delete-provisioned-demo)
+	source /root/keystonerc admin
+	$0 -n private -s private_subnet -p public -r router1 delete
+	neutron net-delete public
+	;;
 external-create)
 	source /root/keystonerc admin
 	do_command neutron net-create ${public_network} --router:external True
@@ -111,7 +117,7 @@ delete)
 	do_command neutron router-gateway-clear $(neutron router-list | awk '/'${router}'/ {print $2}')
 	do_command neutron router-delete ${router}
 	;;
-floatingip-create-only)
+floatingip-create)
 	if [ x"${network}" == x"" ]; then
 		usage
 	fi
@@ -120,41 +126,72 @@ floatingip-create-only)
 	;;
 floatingip-create-and-associate)
 	source /root/keystonerc ${tenant}
-	echo "tenant:	${tenant}"
-	echo "network:	${network}"
-	echo "vm:	${vm}"
+	echo "* vm: ${vm}"
 	vmaddr=$(nova show ${vm} | awk '/network/ {print $5}')
 	port_id=$(neutron port-list | awk '/'${vmaddr}'/ {print $2}')
-	echo "vmaddr:	${vmaddr}"
-	echo "port_id:	${port_id}"
+	echo "* vmaddr: ${vmaddr}"
+	echo "* port_id: ${port_id}"
 	do_command neutron floatingip-create --port-id ${port_id} --fixed-ip-address ${vmaddr} ${public_network}
-
-#	source ${gittop}/keystonerc admin
-#	echo "network:	${network}"
-#	echo "vm:	${vm}"
-#	echo "fip:	${fip}"
-#	if [ x"${network}" == x"" -o x"${vm}" == x"" -o x"${fip}" == x"" ]; then
-#		usage
-#	fi
-#	tenant_id=$(keystone tenant-list | awk '/'${tenant}'/ {print $2}')
-#	vmaddr=$(nova show ${vm} | awk '/network/ {print $5}')
-#	port_id=$(neutron port-list | awk '/'${vmaddr}'/ {print $2}')
-#	do_command neutron floatingip-create --tenant-id ${tenant_id} --port-id ${port_id} --fixed-ip-address ${fip} ${network}
 	;;
 floatingip-associate)
-	echo "vm: ${vm}"
-	echo "floating ip: ${fip}"
+	echo "* vm: ${vm}"
+	echo "* floating ip: ${fip}"
 	if [ x"${vm}" == x"" -o x"${fip}" == x"" ]; then
 		usage
 	fi
 	source ${gittop}/keystonerc ${tenant}
 	vmaddr=$(nova show ${vm} | awk '/network/ {print $5}')
 	portid=$(neutron port-list | awk '/'${vmaddr}'/ {print $2}')
-	echo "vmaddr:	${vmaddr}"
-	echo "port id of vm: ${portid}"
+	echo "* vmaddr: ${vmaddr}"
+	echo "* port id of vm: ${portid}"
 	ipid=$(neutron floatingip-list | awk '/'${fip}'/ {print $2}')
-	echo "floatingip id: ${ipid}"
+	echo "* floatingip id: ${ipid}"
 	do_command neutron floatingip-associate ${ipid} ${portid}
+	;;
+floatingip-disassociate)
+	if [ x"${vm}" == x"" -a x"${fip}" == x"" ]; then
+		usage
+	fi
+	source ~/keystonerc ${tenant}
+	if [ x"${fip}" == x"" ]; then
+		echo "* vm: ${vm}"
+		fip=$(nova list | sed -e '1,3d' | awk '/'${vm}'/ {print $13}')
+	fi
+	ipid=$(neutron floatingip-list | awk '/'${fip}'/ {print $2}')
+	echo "* floating ip: ${fip}"
+	echo "* floatingip id: ${ipid}"
+	do_command neutron floatingip-disassociate ${ipid}
+	;;
+floatingip-disassociate-and-delete)
+	if [ x"${vm}" == x"" -a x"${fip}" == x"" ]; then
+		usage
+	fi
+	source ~/keystonerc ${tenant}
+	if [ x"${fip}" == x"" ]; then
+		echo "* vm: ${vm}"
+		fip=$(nova list | sed -e '1,3d' | awk '/'${vm}'/ {print $13}')
+	fi
+	ipid=$(neutron floatingip-list | awk '/'${fip}'/ {print $2}')
+	echo "* floating ip: ${fip}"
+	echo "* floatingip id: ${ipid}"
+	do_command neutron floatingip-disassociate ${ipid}
+	do_command neutron floatingip-delete ${ipid}
+	;;
+floatingip-delete)
+	if [ x"${fip}" == x"" ]; then
+		usage
+	fi
+	source ~/keystonerc ${tenant}
+	ipid=$(neutron floatingip-list | awk '/'${fip}'/ {print $2}')
+	echo "* floating ip: ${fip}"
+	echo "* floatingip id: ${ipid}"
+	do_command neutron floatingip-delete ${ipid}
+	;;
+floatingip-delete-all)
+	source ~/keystonerc ${tenant}
+	neutron floatingip-list | sed -e '1,3d' | grep -v '^[-+]*$' | awk '{print $2}' | while read id; do
+		do_command neutron floatingip-delete ${id}
+	done
 	;;
 *)
 	echo "unknown op: ${op}"
