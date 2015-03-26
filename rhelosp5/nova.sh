@@ -94,6 +94,10 @@ delete_all)
 delete)
 	nova delete ${vm}
 	;;
+force-delete)
+	vm_id=$(nova list | awk '/'${vm}'/ {print $2}')
+	mysql -uroot -pmysql nova -e "update instances set vm_state='deleted', deleted=1 where uuid='${vm_id}'"
+	;;
 list)
 	nova list 
 	;;
