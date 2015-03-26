@@ -32,12 +32,24 @@ while [[ $# > 1 ]]; do
 		flavor="$1"
 		shift
 		;;
+	-k|--key)
+		_key="$1"
+		shift
+		;;
 	-i|--image)
 		image="$1"
 		shift
 		;;
 	-v|--vm)
 		vm="$1"
+		shift
+		;;
+	-V|--volume)
+		volume="$1"
+		shift
+		;;
+	-s|--size)
+		size="$1"
 		shift
 		;;
 	*)
@@ -55,6 +67,7 @@ export OS_REGION_NAME=${region}
 rcfile=/root/keystonerc
 tenant=${_tenant:-${OS_TENANT_NAME}}
 net=${_net:-${tenant}_net}
+key=${_key:-sshkey}
 
 if [ x"${region}" == x"" -o x"${tenant}" = x"" ]; then
 	echo "no region nor tenant specified."
@@ -69,6 +82,7 @@ echo "* flavor:	${flavor}"
 echo "* network:	${net}"
 echo "* image:	${image}"
 echo "* vm:	${vm}"
+echo "* volume:	${volume}"
 
 case ${op} in
 delete_all)
@@ -87,5 +101,16 @@ boot)
 	if [ x"${vm}" == x"" ]; then
 		usage
 	fi
-	do_command nova boot --flavor ${flavor} --key-name sshkey --nic net-id=$(neutron net-list | awk '/'${net}'/ {print $2}') --image ${image} ${vm}
+	do_command nova boot --flavor ${flavor} --key-name ${key} --nic net-id=$(neutron net-list | awk '/'${net}'/ {print $2}') --image ${image} ${vm}
+	;;
+boot_from_volume)
+	if [ x"${vm}" == x"" -o x"${volume}" == x"" -o x"${size}" == x"" ]; then
+		usage
+	fi
+	do_command cinder create --image-id $(glance image-list | awk '/'${image}'/ {print $2}') --display-name ${volume} ${size}
+	clist=$(cinder list)
+	vol_id=$(echo "${clist}" | awk '/'${volume}'/ {print $2}')
+	echo "* volume_id: ${vol_id}"
+	#do_command nova boot --flavor $(nova flavor-list | awk '/'${flavor}'/ {print $2}') --block-device-mapping vda=${vol_id}:::0 --key-name ${key} ${vm}
+	do_command nova boot --flavor ${flavor} --key-name ${key} --nic net-id=$(neutron net-list | awk '/'${net}'/ {print $2}') --block-device-mapping vda=${vol_id}:::0 ${vm}
 esac

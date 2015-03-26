@@ -11,7 +11,7 @@ source ./subr.sh
 #	echo "$0 vm"
 #	exit 1
 #fi
-while getopts "v:" o; do
+while getopts "t:v:" o; do
 	case ${o} in
 	t)
 		_tenant=${OPTARG}
