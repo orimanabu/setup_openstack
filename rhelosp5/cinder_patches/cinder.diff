@@ -1,0 +1,211 @@
+From 641a44eb17a8de53e54f09a2dc339129d41c529f Mon Sep 17 00:00:00 2001
+From: Tomoki Sekiyama <tomoki.sekiyama@hds.com>
+Date: Wed, 22 Oct 2014 18:30:06 -0400
+Subject: [PATCH] LioAdm: Delete initiator from targets on terminate_connection
+
+In current LioAdm implementation, initiators are remained even if
+terminate_connection is called. This keeps volumes exported to hosts
+after instances attaching the volumes are live-migrated to another
+host, which is not good for security. It also causes an error on the
+migration back to the original host, because cinder-rtstool doesn't
+update CHAP authentication if the initiator already exists.
+
+With this patch, initiators are deleted on terminate_conection.
+'initiator-delete' operation is added to cinder-rtstool.
+It makes the following live-migration succeed.
+Also, this adds unit tests for initialize_connection and
+terminate_connection methods in LioAdm.
+
+Change-Id: Ib273f0ba4f1ef553374c0433b049f18719f8c758
+Closes-Bug: #1369541
+---
+ bin/cinder-rtstool          | 34 ++++++++++++++++++++++++++++------
+ cinder/brick/iscsi/iscsi.py | 16 +++++++++++++++-
+ cinder/tests/test_iscsi.py  | 18 +++++++++++++++++-
+ cinder/volume/driver.py     |  3 ++-
+ 4 files changed, 62 insertions(+), 9 deletions(-)
+
+diff --git a/bin/cinder-rtstool b/bin/cinder-rtstool
+index f46b388..4eba658 100755
+--- a/bin/cinder-rtstool
++++ b/bin/cinder-rtstool
+@@ -81,7 +81,7 @@ def create(backing_device, name, userid, password, initiator_iqns=None):
+         pass
+ 
+ 
+-def add_initiator(target_iqn, initiator_iqn, userid, password):
++def _lookup_target(target_iqn, initiator_iqn):
+     try:
+         rtsroot = rtslib.root.RTSRoot()
+     except rtslib.utils.RTSLibError:
+@@ -89,14 +89,14 @@ def add_initiator(target_iqn, initiator_iqn, userid, password):
+         raise
+ 
+     # Look for the target
+-    target = None
+     for t in rtsroot.targets:
+         if t.dump()['wwn'] == target_iqn:
+-            target = t
+-            break
+-    if target is None:
+-        raise RtstoolError(_('Could not find target %s') % target_iqn)
++            return t
++    raise RtstoolError(_('Could not find target %s') % target_iqn)
+ 
++
++def add_initiator(target_iqn, initiator_iqn, userid, password):
++    target = _lookup_target(target_iqn, initiator_iqn)
+     tpg = target.tpgs.next()  # get the first one
+     for acl in tpg.dump()['node_acls']:
+         # See if this ACL configuration already exists
+@@ -111,6 +111,17 @@ def add_initiator(target_iqn, initiator_iqn, userid, password):
+     rtslib.MappedLUN(acl_new, 0, tpg_lun=0)
+ 
+ 
++def delete_initiator(target_iqn, initiator_iqn):
++    target = _lookup_target(target_iqn, initiator_iqn)
++    tpg = target.tpgs.next()  # get the first one
++    for acl in tpg.node_acls:
++        if acl.node_wwn == initiator_iqn:
++            acl.delete()
++            return
++    raise RtstoolError(_('Could not find ACL %(acl)s in target %(target)s')
++                       % {'target': target_iqn, 'acl': initiator_iqn})
++
++
+ def get_targets():
+     rtsroot = rtslib.root.RTSRoot()
+     for x in rtsroot.targets:
+@@ -147,6 +158,8 @@ def usage():
+           " <initiator_iqn,iqn2,iqn3,...>")
+     print(sys.argv[0] +
+           " add-initiator [target_iqn] [userid] [password] [initiator_iqn]")
++    print(sys.argv[0] +
++          " delete-initiator [target_iqn] [initiator_iqn]")
+     print(sys.argv[0] + " get-targets")
+     print(sys.argv[0] + " delete [iqn]")
+     print(sys.argv[0] + " verify")
+@@ -189,6 +202,15 @@ def main(argv=None):
+ 
+         add_initiator(target_iqn, initiator_iqn, userid, password)
+ 
++    elif argv[1] == 'delete-initiator':
++        if len(argv) < 4:
++            usage()
++
++        target_iqn = argv[2]
++        initiator_iqn = argv[3]
++
++        delete_initiator(target_iqn, initiator_iqn)
++
+     elif argv[1] == 'get-targets':
+         get_targets()
+ 
+diff --git a/cinder/brick/iscsi/iscsi.py b/cinder/brick/iscsi/iscsi.py
+index 9ff4e42..c727820 100644
+--- a/cinder/brick/iscsi/iscsi.py
++++ b/cinder/brick/iscsi/iscsi.py
+@@ -594,7 +594,21 @@ class LioAdm(TargetAdmin):
+                           connector['initiator'],
+                           run_as_root=True)
+         except putils.ProcessExecutionError:
+-            LOG.error(_("Failed to add initiator iqn %s to target") %
++            LOG.error(_("Failed to add initiator iqn %s to target.") %
++                      connector['initiator'])
++            raise exception.ISCSITargetAttachFailed(volume_id=volume['id'])
++
++    def terminate_connection(self, volume, connector):
++        volume_iqn = volume['provider_location'].split(' ')[1]
++
++        # Delete initiator iqns from target ACL
++        try:
++            self._execute('cinder-rtstool', 'delete-initiator',
++                          volume_iqn,
++                          connector['initiator'],
++                          run_as_root=True)
++        except putils.ProcessExecutionError:
++            LOG.error(_("Failed to delete initiator iqn %s to target.") %
+                       connector['initiator'])
+             raise exception.ISCSITargetAttachFailed(volume_id=volume['id'])
+ 
+diff --git a/cinder/tests/test_iscsi.py b/cinder/tests/test_iscsi.py
+index b093f17..3737e76 100644
+--- a/cinder/tests/test_iscsi.py
++++ b/cinder/tests/test_iscsi.py
+@@ -18,6 +18,8 @@ import shutil
+ import string
+ import tempfile
+ 
++from oslo.config import cfg
++
+ from cinder.brick.iscsi import iscsi
+ from cinder import test
+ from cinder.volume import driver
+@@ -34,6 +36,8 @@ class TargetAdminTestCase(object):
+         self.path = '/foo'
+         self.vol_id = 'blaa'
+         self.vol_name = 'volume-blaa'
++        self.portal = 'portal:3260,1'
++        self.initiator = 'iqn.1994-05.org.foo.bar:test'
+         self.chap_username = 'test_id'
+         self.chap_password = 'test_pass'
+         self.write_cache = 'off'
+@@ -50,7 +54,6 @@ class TargetAdminTestCase(object):
+         self.driver = driver.ISCSIDriver()
+         self.stubs.Set(iscsi.TgtAdm, '_verify_backing_lun',
+                        self.fake_verify_backing_lun)
+-        self.driver = driver.ISCSIDriver()
+         self.flags(iscsi_target_prefix='iqn.2011-09.org.foo.bar:')
+         self.persist_tempdir = tempfile.mkdtemp()
+         self.addCleanup(self._cleanup, self.persist_tempdir)
+@@ -69,6 +72,7 @@ class TargetAdminTestCase(object):
+                 'target_name': self.target_name,
+                 'lun': self.lun,
+                 'path': self.path,
++                'initiator': self.initiator,
+                 'username': self.chap_username,
+                 'password': self.chap_password}
+ 
+@@ -110,6 +114,15 @@ class TargetAdminTestCase(object):
+                                           self.lun, self.path, chap_auth,
+                                           write_cache=self.write_cache)
+         target_helper.show_target(self.tid, iqn=self.target_name)
++        if cfg.CONF.iscsi_helper == 'lioadm':
++            volume = {'provider_location': ' '.join([self.portal,
++                                                     self.target_name]),
++                      'provider_auth': ' '.join(['CHAP',
++                                                 self.chap_username,
++                                                 self.chap_password])}
++            connector = {'initiator': self.initiator}
++            target_helper.initialize_connection(volume, connector)
++            target_helper.terminate_connection(volume, connector)
+         target_helper.remove_iscsi_target(self.tid, self.lun, self.vol_id,
+                                           self.vol_name)
+ 
+@@ -226,6 +239,9 @@ class LioAdmTestCase(test.TestCase, TargetAdminTestCase):
+         self.script_template = "\n".join([
+             'cinder-rtstool create '
+             '%(path)s %(target_name)s %(username)s %(password)s',
++            'cinder-rtstool add-initiator '
++            '%(target_name)s %(username)s %(password)s %(initiator)s',
++            'cinder-rtstool delete-initiator %(target_name)s %(initiator)s',
+             'cinder-rtstool delete %(target_name)s'])
+ 
+ 
+diff --git a/cinder/volume/driver.py b/cinder/volume/driver.py
+index 14415be..db0e459 100644
+--- a/cinder/volume/driver.py
++++ b/cinder/volume/driver.py
+@@ -1021,7 +1021,8 @@ class ISCSIDriver(VolumeDriver):
+             raise exception.VolumeBackendAPIException(data=err_msg)
+ 
+     def terminate_connection(self, volume, connector, **kwargs):
+-        pass
++        if CONF.iscsi_helper == 'lioadm':
++            self.target_helper.terminate_connection(volume, connector)
+ 
+     def get_volume_stats(self, refresh=False):
+         """Get volume stats.
+-- 
+1.8.3.1
+

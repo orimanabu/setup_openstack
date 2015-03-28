@@ -1,0 +1,226 @@
+>>> terminal output <<<
+
+[root@osp6-controller01 rhelosp5(keystone_admin)]# date
+Wed Mar 25 23:04:46 JST 2015
+[root@osp6-controller01 rhelosp5(keystone_admin)]# nova show 8aaaab40-af12-4ce3-9d03-2917d9c76deb
++--------------------------------------+----------------------------------------------------------+
+| Property                             | Value                                                    |
++--------------------------------------+----------------------------------------------------------+
+| OS-DCF:diskConfig                    | MANUAL                                                   |
+| OS-EXT-AZ:availability_zone          | nova                                                     |
+| OS-EXT-SRV-ATTR:host                 | osp6-compute02                                           |
+| OS-EXT-SRV-ATTR:hypervisor_hostname  | osp6-compute02                                           |
+| OS-EXT-SRV-ATTR:instance_name        | instance-00000016                                        |
+| OS-EXT-STS:power_state               | 1                                                        |
+| OS-EXT-STS:task_state                | -                                                        |
+| OS-EXT-STS:vm_state                  | active                                                   |
+| OS-SRV-USG:launched_at               | 2015-03-25T13:32:43.000000                               |
+| OS-SRV-USG:terminated_at             | -                                                        |
+| accessIPv4                           |                                                          |
+| accessIPv6                           |                                                          |
+| config_drive                         |                                                          |
+| created                              | 2015-03-25T13:32:35Z                                     |
+| demo_net network                     | 192.168.99.122, 172.16.99.114                            |
+| flavor                               | m1.tiny (1)                                              |
+| hostId                               | 7ec38442668d0fec9107e2521b818f07796de069a172b39d313e416d |
+| id                                   | 8aaaab40-af12-4ce3-9d03-2917d9c76deb                     |
+| image                                | Attempt to boot from volume - no image supplied          |
+| key_name                             | sshkey                                                   |
+| metadata                             | {}                                                       |
+| name                                 | vm1                                                      |
+| os-extended-volumes:volumes_attached | [{"id": "6315084b-58d3-434b-bca8-c85bfc7ffde2"}]         |
+| progress                             | 0                                                        |
+| security_groups                      | default                                                  |
+| status                               | ACTIVE                                                   |
+| tenant_id                            | 9a8a6fc5b31a4df3ba501a61bb8ae938                         |
+| updated                              | 2015-03-25T14:00:41Z                                     |
+| user_id                              | aa0885c68cea40f188a8f0fdf8cac52a                         |
++--------------------------------------+----------------------------------------------------------+
+[root@osp6-controller01 rhelosp5(keystone_admin)]# nova live-migration --block-migrate 8aaaab40-af12-4ce3-9d03-2917d9c76deb
+[root@osp6-controller01 rhelosp5(keystone_admin)]# 
+
+
+>>> osp6-controller01: /var/log/cinder/volume.log <<<
+
+2015-03-25 23:04:57.931 9533 INFO cinder.brick.iscsi.iscsi [req-28b0f0a5-6be3-400e-ae11-ee870825aeaa 47646590ff9147b8b249b0e4500dcabc 639eb29d61a4492abeb8b4ba6ccf9e20 - - -] Creating iscsi_target for volume: volume-6315084b-58d3-434b-bca8-c85bfc7ffde2
+
+
+>>> osp6-compute01: journalctl -al --no-pager -f <<<
+
+Mar 25 23:04:57 osp6-compute01 sudo[3998]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf systool -c fc_host -v
+Mar 25 23:04:57 osp6-compute01 sudo[4000]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf systool -c fc_host -v
+Mar 25 23:04:58 osp6-compute01 sudo[4003]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260
+Mar 25 23:04:58 osp6-compute01 sudo[4006]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --op new
+Mar 25 23:04:58 osp6-compute01 sudo[4009]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --op update -n node.session.auth.authmethod -v CHAP
+Mar 25 23:04:58 osp6-compute01 sudo[4012]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --op update -n node.session.auth.username -v bZLi2VwcWyjySKwRE9Y8
+Mar 25 23:04:58 osp6-compute01 sudo[4015]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --op update -n node.session.auth.password -v GkhhbS5zJaW7wt9e
+Mar 25 23:04:58 osp6-compute01 sudo[4018]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m session
+Mar 25 23:04:58 osp6-compute01 sudo[4021]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --login
+Mar 25 23:04:58 osp6-compute01 kernel: scsi host6: iSCSI Initiator over TCP/IP
+Mar 25 23:04:58 osp6-compute01 kernel:  connection5:0: detected conn error (1020)
+Mar 25 23:04:58 osp6-compute01 sudo[4032]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --op update -n node.startup -v automatic
+Mar 25 23:04:58 osp6-compute01 sudo[4035]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --rescan
+Mar 25 23:04:59 osp6-compute01 sudo[4038]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --op update -n node.startup -v manual
+Mar 25 23:04:59 osp6-compute01 sudo[4041]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --logout
+Mar 25 23:04:59 osp6-compute01 sudo[4044]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --op delete
+Mar 25 23:04:59 osp6-compute01 sudo[4047]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf systool -c fc_host -v
+Mar 25 23:04:59 osp6-compute01 sudo[4049]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf systool -c fc_host -v
+Mar 25 23:04:59 osp6-compute01 sudo[4051]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 25 23:04:59 osp6-compute01 iscsid[32652]: Could not set session5 priority. READ/WRITE throughout and latency could be affected.
+Mar 25 23:04:59 osp6-compute01 iscsid[32652]: Login failed to authenticate with target iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2
+Mar 25 23:04:59 osp6-compute01 iscsid[32652]: session 5 login rejected: Initiator failed authentication with target
+Mar 25 23:04:59 osp6-compute01 iscsid[32652]: Connection5:0 to [target: iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2, portal: 10.0.1.21,3260] through [iface: default] is shutdown.
+Mar 25 23:04:59 osp6-compute01 sudo[4054]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf ovs-vsctl --timeout=120 -- --if-exists del-port br-int qvoe8387598-df
+Mar 25 23:04:59 osp6-compute01 ovs-vsctl[4056]: ovs|00001|vsctl|INFO|Called as /bin/ovs-vsctl --timeout=120 -- --if-exists del-port br-int qvoe8387598-df
+Mar 25 23:04:59 osp6-compute01 sudo[4057]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --op update -n node.startup -v manual
+Mar 25 23:04:59 osp6-compute01 sudo[4060]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --logout
+Mar 25 23:04:59 osp6-compute01 sudo[4063]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --op delete
+
+
+>>> osp6-compute02: journalctl -al --no-pager -f <<<
+
+Mar 25 23:04:57 osp6-compute02 sudo[7167]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf blockdev --getsize64 /dev/disk/by-path/ip-10.0.1.21:3260-iscsi-iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2-lun-0
+Mar 25 23:04:57 osp6-compute02 sudo[7170]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf blockdev --getsize64 /dev/disk/by-path/ip-10.0.1.21:3260-iscsi-iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2-lun-0
+Mar 25 23:04:57 osp6-compute02 sudo[7173]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf blockdev --getsize64 /dev/disk/by-path/ip-10.0.1.21:3260-iscsi-iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2-lun-0
+
+
+>>> osp6-compute01: /var/log/nova/nova-compute.log <<<
+
+2015-03-25 23:04:57.485 16176 INFO nova.virt.libvirt.driver [req-43008546-f35e-464a-a36c-29d5a019f655 None] Instance launched has CPU info: {"vendor": "Intel", "model": "SandyBridge", "arch": "x86_64", "features": ["pge", "avx", "clflush", "sep", "syscall", "vme", "tsc", "sse", "xsave", "vmx", "erms", "cmov", "smep", "ssse3", "pat", "lm", "msr", "nx", "fxsr", "sse4.1", "pae", "sse4.2", "pclmuldq", "tsc-deadline", "mmx", "osxsave", "cx8", "mce", "de", "aes", "mca", "pse", "lahf_lm", "popcnt", "apic", "fsgsbase", "f16c", "pni", "rdtscp", "sse2", "ss", "hypervisor", "pcid", "fpu", "cx16", "pse36", "mtrr", "rdrand", "x2apic"], "topology": {"cores": 1, "threads": 1, "sockets": 2}}
+2015-03-25 23:04:57.751 16176 WARNING nova.virt.libvirt.utils [req-43008546-f35e-464a-a36c-29d5a019f655 None] systool is not installed
+2015-03-25 23:04:57.804 16176 WARNING nova.virt.libvirt.utils [req-43008546-f35e-464a-a36c-29d5a019f655 None] systool is not installed
+2015-03-25 23:04:59.005 16176 ERROR oslo.messaging.rpc.dispatcher [req-43008546-f35e-464a-a36c-29d5a019f655 ] Exception during message handling: Unexpected error while running command.
+Command: sudo nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --rescan
+Exit code: 21
+Stdout: u''
+Stderr: u'iscsiadm: No session found.\n'
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher Traceback (most recent call last):
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/oslo/messaging/rpc/dispatcher.py", line 134, in _dispatch_and_reply
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher     incoming.message))
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/oslo/messaging/rpc/dispatcher.py", line 177, in _dispatch
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher     return self._do_dispatch(endpoint, method, ctxt, args)
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/oslo/messaging/rpc/dispatcher.py", line 123, in _do_dispatch
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher     result = getattr(endpoint, method)(ctxt, **new_args)
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/nova/compute/manager.py", line 414, in decorated_function
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher     return function(self, context, *args, **kwargs)
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/nova/exception.py", line 88, in wrapped
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher     payload)
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/nova/openstack/common/excutils.py", line 82, in __exit__
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher     six.reraise(self.type_, self.value, self.tb)
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/nova/exception.py", line 71, in wrapped
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher     return f(self, context, *args, **kw)
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/nova/compute/manager.py", line 326, in decorated_function
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher     kwargs['instance'], e, sys.exc_info())
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/nova/openstack/common/excutils.py", line 82, in __exit__
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher     six.reraise(self.type_, self.value, self.tb)
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/nova/compute/manager.py", line 314, in decorated_function
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher     return function(self, context, *args, **kwargs)
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/nova/compute/manager.py", line 4919, in pre_live_migration
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher     migrate_data)
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/nova/virt/libvirt/driver.py", line 5643, in pre_live_migration
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher     self._connect_volume(connection_info, disk_info)
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/nova/virt/libvirt/driver.py", line 1329, in _connect_volume
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher     return driver.connect_volume(connection_info, disk_info)
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/nova/openstack/common/lockutils.py", line 272, in inner
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher     return f(*args, **kwargs)
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/nova/virt/libvirt/volume.py", line 318, in connect_volume
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher     self._run_iscsiadm(iscsi_properties, ("--rescan",))
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/nova/virt/libvirt/volume.py", line 236, in _run_iscsiadm
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher     check_exit_code=check_exit_code)
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/nova/utils.py", line 163, in execute
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher     return processutils.execute(*cmd, **kwargs)
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/nova/openstack/common/processutils.py", line 203, in execute
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher     cmd=sanitized_cmd)
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher ProcessExecutionError: Unexpected error while running command.
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher Command: sudo nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --rescan
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher Exit code: 21
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher Stdout: u''
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher Stderr: u'iscsiadm: No session found.\n'
+2015-03-25 23:04:59.005 16176 TRACE oslo.messaging.rpc.dispatcher
+2015-03-25 23:04:59.006 16176 ERROR oslo.messaging._drivers.common [req-43008546-f35e-464a-a36c-29d5a019f655 ] Returning exception Unexpected error while running command.
+Command: sudo nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --rescan
+Exit code: 21
+Stdout: u''
+Stderr: u'iscsiadm: No session found.\n' to caller
+2015-03-25 23:04:59.006 16176 ERROR oslo.messaging._drivers.common [req-43008546-f35e-464a-a36c-29d5a019f655 ] ['Traceback (most recent call last):\n', '  File "/usr/lib/python2.7/site-packages/oslo/messaging/rpc/dispatcher.py", line 134, in _dispatch_and_reply\n    incoming.message))\n', '  File "/usr/lib/python2.7/site-packages/oslo/messaging/rpc/dispatcher.py", line 177, in _dispatch\n    return self._do_dispatch(endpoint, method, ctxt, args)\n', '  File "/usr/lib/python2.7/site-packages/oslo/messaging/rpc/dispatcher.py", line 123, in _do_dispatch\n    result = getattr(endpoint, method)(ctxt, **new_args)\n', '  File "/usr/lib/python2.7/site-packages/nova/compute/manager.py", line 414, in decorated_function\n    return function(self, context, *args, **kwargs)\n', '  File "/usr/lib/python2.7/site-packages/nova/exception.py", line 88, in wrapped\n    payload)\n', '  File "/usr/lib/python2.7/site-packages/nova/openstack/common/excutils.py", line 82, in __exit__\n    six.reraise(self.type_, self.value, self.tb)\n', '  File "/usr/lib/python2.7/site-packages/nova/exception.py", line 71, in wrapped\n    return f(self, context, *args, **kw)\n', '  File "/usr/lib/python2.7/site-packages/nova/compute/manager.py", line 326, in decorated_function\n    kwargs[\'instance\'], e, sys.exc_info())\n', '  File "/usr/lib/python2.7/site-packages/nova/openstack/common/excutils.py", line 82, in __exit__\n    six.reraise(self.type_, self.value, self.tb)\n', '  File "/usr/lib/python2.7/site-packages/nova/compute/manager.py", line 314, in decorated_function\n    return function(self, context, *args, **kwargs)\n', '  File "/usr/lib/python2.7/site-packages/nova/compute/manager.py", line 4919, in pre_live_migration\n    migrate_data)\n', '  File "/usr/lib/python2.7/site-packages/nova/virt/libvirt/driver.py", line 5643, in pre_live_migration\n    self._connect_volume(connection_info, disk_info)\n', '  File "/usr/lib/python2.7/site-packages/nova/virt/libvirt/driver.py", line 1329, in _connect_volume\n    return driver.connect_volume(connection_info, disk_info)\n', '  File "/usr/lib/python2.7/site-packages/nova/openstack/common/lockutils.py", line 272, in inner\n    return f(*args, **kwargs)\n', '  File "/usr/lib/python2.7/site-packages/nova/virt/libvirt/volume.py", line 318, in connect_volume\n    self._run_iscsiadm(iscsi_properties, ("--rescan",))\n', '  File "/usr/lib/python2.7/site-packages/nova/virt/libvirt/volume.py", line 236, in _run_iscsiadm\n    check_exit_code=check_exit_code)\n', '  File "/usr/lib/python2.7/site-packages/nova/utils.py", line 163, in execute\n    return processutils.execute(*cmd, **kwargs)\n', '  File "/usr/lib/python2.7/site-packages/nova/openstack/common/processutils.py", line 203, in execute\n    cmd=sanitized_cmd)\n', "ProcessExecutionError: Unexpected error while running command.\nCommand: sudo nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --rescan\nExit code: 21\nStdout: u''\nStderr: u'iscsiadm: No session found.\\n'\n"]
+2015-03-25 23:04:59.091 16176 AUDIT nova.compute.manager [req-43008546-f35e-464a-a36c-29d5a019f655 None] [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb] Detach volume 6315084b-58d3-434b-bca8-c85bfc7ffde2 from mountpoint /dev/vda
+2015-03-25 23:04:59.092 16176 WARNING nova.compute.manager [req-43008546-f35e-464a-a36c-29d5a019f655 None] [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb] Detaching volume from unknown instance
+2015-03-25 23:04:59.093 16176 WARNING nova.virt.libvirt.driver [req-43008546-f35e-464a-a36c-29d5a019f655 None] During detach_volume, instance disappeared.
+2015-03-25 23:04:59.315 16176 WARNING nova.virt.libvirt.utils [req-43008546-f35e-464a-a36c-29d5a019f655 None] systool is not installed
+2015-03-25 23:04:59.390 16176 WARNING nova.virt.libvirt.utils [req-43008546-f35e-464a-a36c-29d5a019f655 None] systool is not installed
+2015-03-25 23:04:59.621 16176 WARNING nova.virt.libvirt.driver [-] [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb] During wait destroy, instance disappeared.
+2015-03-25 23:04:59.940 16176 INFO nova.virt.libvirt.driver [req-43008546-f35e-464a-a36c-29d5a019f655 None] [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb] Deleting instance files /var/lib/nova/instances/8aaaab40-af12-4ce3-9d03-2917d9c76deb_del
+2015-03-25 23:04:59.941 16176 INFO nova.virt.libvirt.driver [req-43008546-f35e-464a-a36c-29d5a019f655 None] [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb] Deletion of /var/lib/nova/instances/8aaaab40-af12-4ce3-9d03-2917d9c76deb_del complete
+
+
+>>> osp6-compute02: /var/log/nova/nova-compute.log <<<
+
+2015-03-25 23:04:59.010 16180 ERROR nova.compute.manager [req-43008546-f35e-464a-a36c-29d5a019f655 None] [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb] Pre live migration failed at osp6-compute01
+2015-03-25 23:04:59.010 16180 TRACE nova.compute.manager [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb] Traceback (most recent call last):
+2015-03-25 23:04:59.010 16180 TRACE nova.compute.manager [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb]   File "/usr/lib/python2.7/site-packages/nova/compute/manager.py", line 4974, in live_migration
+2015-03-25 23:04:59.010 16180 TRACE nova.compute.manager [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb]     block_migration, disk, dest, migrate_data)
+2015-03-25 23:04:59.010 16180 TRACE nova.compute.manager [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb]   File "/usr/lib/python2.7/site-packages/nova/compute/rpcapi.py", line 564, in pre_live_migration
+2015-03-25 23:04:59.010 16180 TRACE nova.compute.manager [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb]     disk=disk, migrate_data=migrate_data)
+2015-03-25 23:04:59.010 16180 TRACE nova.compute.manager [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb]   File "/usr/lib/python2.7/site-packages/oslo/messaging/rpc/client.py", line 152, in call
+2015-03-25 23:04:59.010 16180 TRACE nova.compute.manager [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb]     retry=self.retry)
+2015-03-25 23:04:59.010 16180 TRACE nova.compute.manager [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb]   File "/usr/lib/python2.7/site-packages/oslo/messaging/transport.py", line 90, in _send
+2015-03-25 23:04:59.010 16180 TRACE nova.compute.manager [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb]     timeout=timeout, retry=retry)
+2015-03-25 23:04:59.010 16180 TRACE nova.compute.manager [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb]   File "/usr/lib/python2.7/site-packages/oslo/messaging/_drivers/amqpdriver.py", line 408, in send
+2015-03-25 23:04:59.010 16180 TRACE nova.compute.manager [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb]     retry=retry)
+2015-03-25 23:04:59.010 16180 TRACE nova.compute.manager [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb]   File "/usr/lib/python2.7/site-packages/oslo/messaging/_drivers/amqpdriver.py", line 399, in _send
+2015-03-25 23:04:59.010 16180 TRACE nova.compute.manager [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb]     raise result
+2015-03-25 23:04:59.010 16180 TRACE nova.compute.manager [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb] RemoteError: Remote error: ProcessExecutionError Unexpected error while running command.
+2015-03-25 23:04:59.010 16180 TRACE nova.compute.manager [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb] Command: sudo nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --rescan
+2015-03-25 23:04:59.010 16180 TRACE nova.compute.manager [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb] Exit code: 21
+2015-03-25 23:04:59.010 16180 TRACE nova.compute.manager [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb] Stdout: u''
+2015-03-25 23:04:59.010 16180 TRACE nova.compute.manager [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb] Stderr: u'iscsiadm: No session found.\n'
+2015-03-25 23:04:59.010 16180 TRACE nova.compute.manager [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb] [u'Traceback (most recent call last):\n', u'  File "/usr/lib/python2.7/site-packages/oslo/messaging/rpc/dispatcher.py", line 134, in _dispatch_and_reply\n    incoming.message))\n', u'  File "/usr/lib/python2.7/site-packages/oslo/messaging/rpc/dispatcher.py", line 177, in _dispatch\n    return self._do_dispatch(endpoint, method, ctxt, args)\n', u'  File "/usr/lib/python2.7/site-packages/oslo/messaging/rpc/dispatcher.py", line 123, in _do_dispatch\n    result = getattr(endpoint, method)(ctxt, **new_args)\n', u'  File "/usr/lib/python2.7/site-packages/nova/compute/manager.py", line 414, in decorated_function\n    return function(self, context, *args, **kwargs)\n', u'  File "/usr/lib/python2.7/site-packages/nova/exception.py", line 88, in wrapped\n    payload)\n', u'  File "/usr/lib/python2.7/site-packages/nova/openstack/common/excutils.py", line 82, in __exit__\n    six.reraise(self.type_, self.value, self.tb)\n', u'  File "/usr/lib/python2.7/site-packages/nova/exception.py", line 71, in wrapped\n    return f(self, context, *args, **kw)\n', u'  File "/usr/lib/python2.7/site-packages/nova/compute/manager.py", line 326, in decorated_function\n    kwargs[\'instance\'], e, sys.exc_info())\n', u'  File "/usr/lib/python2.7/site-packages/nova/openstack/common/excutils.py", line 82, in __exit__\n    six.reraise(self.type_, self.value, self.tb)\n', u'  File "/usr/lib/python2.7/site-packages/nova/compute/manager.py", line 314, in decorated_function\n    return function(self, context, *args, **kwargs)\n', u'  File "/usr/lib/python2.7/site-packages/nova/compute/manager.py", line 4919, in pre_live_migration\n    migrate_data)\n', u'  File "/usr/lib/python2.7/site-packages/nova/virt/libvirt/driver.py", line 5643, in pre_live_migration\n    self._connect_volume(connection_info, disk_info)\n', u'  File "/usr/lib/python2.7/site-packages/nova/virt/libvirt/driver.py", line 1329, in _connect_volume\n    return driver.connect_volume(connection_info, disk_info)\n', u'  File "/usr/lib/python2.7/site-packages/nova/openstack/common/lockutils.py", line 272, in inner\n    return f(*args, **kwargs)\n', u'  File "/usr/lib/python2.7/site-packages/nova/virt/libvirt/volume.py", line 318, in connect_volume\n    self._run_iscsiadm(iscsi_properties, ("--rescan",))\n', u'  File "/usr/lib/python2.7/site-packages/nova/virt/libvirt/volume.py", line 236, in _run_iscsiadm\n    check_exit_code=check_exit_code)\n', u'  File "/usr/lib/python2.7/site-packages/nova/utils.py", line 163, in execute\n    return processutils.execute(*cmd, **kwargs)\n', u'  File "/usr/lib/python2.7/site-packages/nova/openstack/common/processutils.py", line 203, in execute\n    cmd=sanitized_cmd)\n', u"ProcessExecutionError: Unexpected error while running command.\nCommand: sudo nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --rescan\nExit code: 21\nStdout: u''\nStderr: u'iscsiadm: No session found.\\n'\n"].
+2015-03-25 23:04:59.010 16180 TRACE nova.compute.manager [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb]
+2015-03-25 23:04:59.519 16180 ERROR oslo.messaging.rpc.dispatcher [req-43008546-f35e-464a-a36c-29d5a019f655 ] Exception during message handling: Remote error: ProcessExecutionError Unexpected error while running command.
+Command: sudo nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --rescan
+Exit code: 21
+Stdout: u''
+Stderr: u'iscsiadm: No session found.\n'
+[u'Traceback (most recent call last):\n', u'  File "/usr/lib/python2.7/site-packages/oslo/messaging/rpc/dispatcher.py", line 134, in _dispatch_and_reply\n    incoming.message))\n', u'  File "/usr/lib/python2.7/site-packages/oslo/messaging/rpc/dispatcher.py", line 177, in _dispatch\n    return self._do_dispatch(endpoint, method, ctxt, args)\n', u'  File "/usr/lib/python2.7/site-packages/oslo/messaging/rpc/dispatcher.py", line 123, in _do_dispatch\n    result = getattr(endpoint, method)(ctxt, **new_args)\n', u'  File "/usr/lib/python2.7/site-packages/nova/compute/manager.py", line 414, in decorated_function\n    return function(self, context, *args, **kwargs)\n', u'  File "/usr/lib/python2.7/site-packages/nova/exception.py", line 88, in wrapped\n    payload)\n', u'  File "/usr/lib/python2.7/site-packages/nova/openstack/common/excutils.py", line 82, in __exit__\n    six.reraise(self.type_, self.value, self.tb)\n', u'  File "/usr/lib/python2.7/site-packages/nova/exception.py", line 71, in wrapped\n    return f(self, context, *args, **kw)\n', u'  File "/usr/lib/python2.7/site-packages/nova/compute/manager.py", line 326, in decorated_function\n    kwargs[\'instance\'], e, sys.exc_info())\n', u'  File "/usr/lib/python2.7/site-packages/nova/openstack/common/excutils.py", line 82, in __exit__\n    six.reraise(self.type_, self.value, self.tb)\n', u'  File "/usr/lib/python2.7/site-packages/nova/compute/manager.py", line 314, in decorated_function\n    return function(self, context, *args, **kwargs)\n', u'  File "/usr/lib/python2.7/site-packages/nova/compute/manager.py", line 4919, in pre_live_migration\n    migrate_data)\n', u'  File "/usr/lib/python2.7/site-packages/nova/virt/libvirt/driver.py", line 5643, in pre_live_migration\n    self._connect_volume(connection_info, disk_info)\n', u'  File "/usr/lib/python2.7/site-packages/nova/virt/libvirt/driver.py", line 1329, in _connect_volume\n    return driver.connect_volume(connection_info, disk_info)\n', u'  File "/usr/lib/python2.7/site-packages/nova/openstack/common/lockutils.py", line 272, in inner\n    return f(*args, **kwargs)\n', u'  File "/usr/lib/python2.7/site-packages/nova/virt/libvirt/volume.py", line 318, in connect_volume\n    self._run_iscsiadm(iscsi_properties, ("--rescan",))\n', u'  File "/usr/lib/python2.7/site-packages/nova/virt/libvirt/volume.py", line 236, in _run_iscsiadm\n    check_exit_code=check_exit_code)\n', u'  File "/usr/lib/python2.7/site-packages/nova/utils.py", line 163, in execute\n    return processutils.execute(*cmd, **kwargs)\n', u'  File "/usr/lib/python2.7/site-packages/nova/openstack/common/processutils.py", line 203, in execute\n    cmd=sanitized_cmd)\n', u"ProcessExecutionError: Unexpected error while running command.\nCommand: sudo nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --rescan\nExit code: 21\nStdout: u''\nStderr: u'iscsiadm: No session found.\\n'\n"].
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher Traceback (most recent call last):
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/oslo/messaging/rpc/dispatcher.py", line 134, in _dispatch_and_reply
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher     incoming.message))
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/oslo/messaging/rpc/dispatcher.py", line 177, in _dispatch
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher     return self._do_dispatch(endpoint, method, ctxt, args)
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/oslo/messaging/rpc/dispatcher.py", line 123, in _do_dispatch
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher     result = getattr(endpoint, method)(ctxt, **new_args)
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/nova/exception.py", line 88, in wrapped
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher     payload)
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/nova/openstack/common/excutils.py", line 82, in __exit__
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher     six.reraise(self.type_, self.value, self.tb)
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/nova/exception.py", line 71, in wrapped
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher     return f(self, context, *args, **kw)
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/nova/compute/manager.py", line 326, in decorated_function
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher     kwargs['instance'], e, sys.exc_info())
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/nova/openstack/common/excutils.py", line 82, in __exit__
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher     six.reraise(self.type_, self.value, self.tb)
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/nova/compute/manager.py", line 314, in decorated_function
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher     return function(self, context, *args, **kwargs)
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/nova/compute/manager.py", line 4982, in live_migration
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher     block_migration, migrate_data)
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/nova/openstack/common/excutils.py", line 82, in __exit__
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher     six.reraise(self.type_, self.value, self.tb)
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/nova/compute/manager.py", line 4974, in live_migration
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher     block_migration, disk, dest, migrate_data)
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/nova/compute/rpcapi.py", line 564, in pre_live_migration
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher     disk=disk, migrate_data=migrate_data)
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/oslo/messaging/rpc/client.py", line 152, in call
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher     retry=self.retry)
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/oslo/messaging/transport.py", line 90, in _send
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher     timeout=timeout, retry=retry)
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/oslo/messaging/_drivers/amqpdriver.py", line 408, in send
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher     retry=retry)
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/oslo/messaging/_drivers/amqpdriver.py", line 399, in _send
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher     raise result
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher RemoteError: Remote error: ProcessExecutionError Unexpected error while running command.
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher Command: sudo nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --rescan
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher Exit code: 21
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher Stdout: u''
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher Stderr: u'iscsiadm: No session found.\n'
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher [u'Traceback (most recent call last):\n', u'  File "/usr/lib/python2.7/site-packages/oslo/messaging/rpc/dispatcher.py", line 134, in _dispatch_and_reply\n    incoming.message))\n', u'  File "/usr/lib/python2.7/site-packages/oslo/messaging/rpc/dispatcher.py", line 177, in _dispatch\n    return self._do_dispatch(endpoint, method, ctxt, args)\n', u'  File "/usr/lib/python2.7/site-packages/oslo/messaging/rpc/dispatcher.py", line 123, in _do_dispatch\n    result = getattr(endpoint, method)(ctxt, **new_args)\n', u'  File "/usr/lib/python2.7/site-packages/nova/compute/manager.py", line 414, in decorated_function\n    return function(self, context, *args, **kwargs)\n', u'  File "/usr/lib/python2.7/site-packages/nova/exception.py", line 88, in wrapped\n    payload)\n', u'  File "/usr/lib/python2.7/site-packages/nova/openstack/common/excutils.py", line 82, in __exit__\n    six.reraise(self.type_, self.value, self.tb)\n', u'  File "/usr/lib/python2.7/site-packages/nova/exception.py", line 71, in wrapped\n    return f(self, context, *args, **kw)\n', u'  File "/usr/lib/python2.7/site-packages/nova/compute/manager.py", line 326, in decorated_function\n    kwargs[\'instance\'], e, sys.exc_info())\n', u'  File "/usr/lib/python2.7/site-packages/nova/openstack/common/excutils.py", line 82, in __exit__\n    six.reraise(self.type_, self.value, self.tb)\n', u'  File "/usr/lib/python2.7/site-packages/nova/compute/manager.py", line 314, in decorated_function\n    return function(self, context, *args, **kwargs)\n', u'  File "/usr/lib/python2.7/site-packages/nova/compute/manager.py", line 4919, in pre_live_migration\n    migrate_data)\n', u'  File "/usr/lib/python2.7/site-packages/nova/virt/libvirt/driver.py", line 5643, in pre_live_migration\n    self._connect_volume(connection_info, disk_info)\n', u'  File "/usr/lib/python2.7/site-packages/nova/virt/libvirt/driver.py", line 1329, in _connect_volume\n    return driver.connect_volume(connection_info, disk_info)\n', u'  File "/usr/lib/python2.7/site-packages/nova/openstack/common/lockutils.py", line 272, in inner\n    return f(*args, **kwargs)\n', u'  File "/usr/lib/python2.7/site-packages/nova/virt/libvirt/volume.py", line 318, in connect_volume\n    self._run_iscsiadm(iscsi_properties, ("--rescan",))\n', u'  File "/usr/lib/python2.7/site-packages/nova/virt/libvirt/volume.py", line 236, in _run_iscsiadm\n    check_exit_code=check_exit_code)\n', u'  File "/usr/lib/python2.7/site-packages/nova/utils.py", line 163, in execute\n    return processutils.execute(*cmd, **kwargs)\n', u'  File "/usr/lib/python2.7/site-packages/nova/openstack/common/processutils.py", line 203, in execute\n    cmd=sanitized_cmd)\n', u"ProcessExecutionError: Unexpected error while running command.\nCommand: sudo nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --rescan\nExit code: 21\nStdout: u''\nStderr: u'iscsiadm: No session found.\\n'\n"].
+2015-03-25 23:04:59.519 16180 TRACE oslo.messaging.rpc.dispatcher

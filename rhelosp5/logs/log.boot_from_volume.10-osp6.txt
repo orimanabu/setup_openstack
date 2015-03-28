@@ -1,0 +1,358 @@
+
+* rcfile:	/root/keystonerc
+* region:	RegionOne
+* tenant:	demo
+* flavor:	m1.tiny
+* network:	demo_net
+* image:	cirros
+* vm:	vm1
+* volume:	vm1_vol
+=====> [20150326-212441] host: (local), command: date
+Thu Mar 26 21:24:41 JST 2015
+=====> [20150326-212441] host: (local), command: targetcli ls
+o- / ......................................................................................................................... [...]
+  o- backstores .............................................................................................................. [...]
+  | o- block .................................................................................................. [Storage Objects: 0]
+  | o- fileio ................................................................................................. [Storage Objects: 0]
+  | o- pscsi .................................................................................................. [Storage Objects: 0]
+  | o- ramdisk ................................................................................................ [Storage Objects: 0]
+  o- iscsi ............................................................................................................ [Targets: 0]
+  o- loopback ......................................................................................................... [Targets: 0]
+=====> [20150326-212443] host: (local), command: cinder create --image-id 59183f26-267b-47af-8002-f53dea9c3dfa --display-name vm1_vol 1
++---------------------+--------------------------------------+
+|       Property      |                Value                 |
++---------------------+--------------------------------------+
+|     attachments     |                  []                  |
+|  availability_zone  |                 nova                 |
+|       bootable      |                false                 |
+|      created_at     |      2015-03-26T12:24:45.902325      |
+| display_description |                 None                 |
+|     display_name    |               vm1_vol                |
+|      encrypted      |                False                 |
+|          id         | 16ab87e8-50a5-4c9f-a0d0-06893048493f |
+|       image_id      | 59183f26-267b-47af-8002-f53dea9c3dfa |
+|       metadata      |                  {}                  |
+|         size        |                  1                   |
+|     snapshot_id     |                 None                 |
+|     source_volid    |                 None                 |
+|        status       |               creating               |
+|     volume_type     |                 None                 |
++---------------------+--------------------------------------+
+* volume_id: 16ab87e8-50a5-4c9f-a0d0-06893048493f
+=====> [20150326-212449] host: (local), command: nova boot --flavor m1.tiny --key-name sshkey --nic net-id=0b1242dd-4d11-4772-9f25-9202d22f8a73 --block-device-mapping vda=16ab87e8-50a5-4c9f-a0d0-06893048493f:::0 vm1
++--------------------------------------+--------------------------------------------------+
+| Property                             | Value                                            |
++--------------------------------------+--------------------------------------------------+
+| OS-DCF:diskConfig                    | MANUAL                                           |
+| OS-EXT-AZ:availability_zone          | nova                                             |
+| OS-EXT-STS:power_state               | 0                                                |
+| OS-EXT-STS:task_state                | scheduling                                       |
+| OS-EXT-STS:vm_state                  | building                                         |
+| OS-SRV-USG:launched_at               | -                                                |
+| OS-SRV-USG:terminated_at             | -                                                |
+| accessIPv4                           |                                                  |
+| accessIPv6                           |                                                  |
+| adminPass                            | gdndhMNwF2f3                                     |
+| config_drive                         |                                                  |
+| created                              | 2015-03-26T12:24:52Z                             |
+| flavor                               | m1.tiny (1)                                      |
+| hostId                               |                                                  |
+| id                                   | fa1a9aba-fe03-44cf-92a8-1da80757b160             |
+| image                                | Attempt to boot from volume - no image supplied  |
+| key_name                             | sshkey                                           |
+| metadata                             | {}                                               |
+| name                                 | vm1                                              |
+| os-extended-volumes:volumes_attached | [{"id": "16ab87e8-50a5-4c9f-a0d0-06893048493f"}] |
+| progress                             | 0                                                |
+| security_groups                      | default                                          |
+| status                               | BUILD                                            |
+| tenant_id                            | 9a8a6fc5b31a4df3ba501a61bb8ae938                 |
+| updated                              | 2015-03-26T12:24:52Z                             |
+| user_id                              | aa0885c68cea40f188a8f0fdf8cac52a                 |
++--------------------------------------+--------------------------------------------------+
+=====> [20150326-212455] host: (local), command: targetcli ls
+o- / ......................................................................................................................... [...]
+  o- backstores .............................................................................................................. [...]
+  | o- block .................................................................................................. [Storage Objects: 1]
+  | | o- iqn.2010-10.org.openstack:volume-16ab87e8-50a5-4c9f-a0d0-06893048493f  [/dev/cinder-volumes/volume-16ab87e8-50a5-4c9f-a0d0-06893048493f (1.0GiB) write-thru activated]
+  | o- fileio ................................................................................................. [Storage Objects: 0]
+  | o- pscsi .................................................................................................. [Storage Objects: 0]
+  | o- ramdisk ................................................................................................ [Storage Objects: 0]
+  o- iscsi ............................................................................................................ [Targets: 1]
+  | o- iqn.2010-10.org.openstack:volume-16ab87e8-50a5-4c9f-a0d0-06893048493f ............................................. [TPGs: 1]
+  |   o- tpg1 .......................................................................................... [no-gen-acls, auth per-acl]
+  |     o- acls .......................................................................................................... [ACLs: 1]
+  |     | o- iqn.1994-05.com.redhat:eaa499d22f6e ...................................................... [1-way auth, Mapped LUNs: 1]
+  |     |   o- mapped_lun0 ................. [lun0 block/iqn.2010-10.org.openstack:volume-16ab87e8-50a5-4c9f-a0d0-06893048493f (rw)]
+  |     o- luns .......................................................................................................... [LUNs: 1]
+  |     | o- lun0  [block/iqn.2010-10.org.openstack:volume-16ab87e8-50a5-4c9f-a0d0-06893048493f (/dev/cinder-volumes/volume-16ab87e8-50a5-4c9f-a0d0-06893048493f)]
+  |     o- portals .................................................................................................... [Portals: 1]
+  |       o- 0.0.0.0:3260 ..................................................................................................... [OK]
+  o- loopback ......................................................................................................... [Targets: 0]
+
+
+>>> osp6-compute02: nova-compute.log <<<
+
+2015-03-26 21:24:52.524 2370 AUDIT nova.compute.manager [req-55a00232-0ba1-401f-ae59-40d95c56d084 None] [instance: fa1a9aba-fe03-44cf-92a8-1da80757b160] Starting instance...
+2015-03-26 21:24:52.591 2370 AUDIT nova.compute.claims [-] [instance: fa1a9aba-fe03-44cf-92a8-1da80757b160] Attempting claim: memory 512 MB, disk 1 GB
+2015-03-26 21:24:52.591 2370 AUDIT nova.compute.claims [-] [instance: fa1a9aba-fe03-44cf-92a8-1da80757b160] Total memory: 1840 MB, used: 512.00 MB
+2015-03-26 21:24:52.591 2370 AUDIT nova.compute.claims [-] [instance: fa1a9aba-fe03-44cf-92a8-1da80757b160] memory limit: 2760.00 MB, free: 2248.00 MB
+2015-03-26 21:24:52.591 2370 AUDIT nova.compute.claims [-] [instance: fa1a9aba-fe03-44cf-92a8-1da80757b160] Total disk: 13 GB, used: 0.00 GB
+2015-03-26 21:24:52.592 2370 AUDIT nova.compute.claims [-] [instance: fa1a9aba-fe03-44cf-92a8-1da80757b160] disk limit not specified, defaulting to unlimited
+2015-03-26 21:24:52.606 2370 AUDIT nova.compute.claims [-] [instance: fa1a9aba-fe03-44cf-92a8-1da80757b160] Claim successful
+2015-03-26 21:24:52.688 2370 INFO nova.scheduler.client.report [-] Compute_service record updated for ('osp6-compute02', 'osp6-compute02')
+2015-03-26 21:24:52.802 2370 INFO nova.scheduler.client.report [-] Compute_service record updated for ('osp6-compute02', 'osp6-compute02')
+2015-03-26 21:24:52.972 2370 AUDIT nova.virt.block_device [req-f2c75058-03ae-46d4-a264-5818f57bb6d8 None] [instance: fa1a9aba-fe03-44cf-92a8-1da80757b160] Booting with volume 16ab87e8-50a5-4c9f-a0d0-06893048493f at /dev/vda
+2015-03-26 21:24:52.972 2370 WARNING nova.volume.cinder [req-f2c75058-03ae-46d4-a264-5818f57bb6d8 None] Cinder V1 API is deprecated as of the Juno release, and Nova is still configured to use it. Enable the V2 API in Cinder and set cinder_catalog_info in nova.conf to use it.
+2015-03-26 21:24:53.409 2370 WARNING nova.virt.libvirt.utils [req-f2c75058-03ae-46d4-a264-5818f57bb6d8 None] systool is not installed
+2015-03-26 21:24:53.546 2370 WARNING nova.virt.libvirt.utils [req-f2c75058-03ae-46d4-a264-5818f57bb6d8 None] systool is not installed
+2015-03-26 21:24:53.788 2370 INFO nova.scheduler.client.report [-] Compute_service record updated for ('osp6-compute02', 'osp6-compute02')
+2015-03-26 21:24:54.707 2370 INFO nova.virt.libvirt.driver [-] [instance: fa1a9aba-fe03-44cf-92a8-1da80757b160] Creating image
+2015-03-26 21:24:54.707 2370 WARNING nova.virt.libvirt.driver [-] [instance: fa1a9aba-fe03-44cf-92a8-1da80757b160] File injection into a boot from volume instance is not supported
+2015-03-26 21:24:56.820 2370 INFO nova.compute.manager [-] [instance: fa1a9aba-fe03-44cf-92a8-1da80757b160] VM Started (Lifecycle Event)
+2015-03-26 21:24:56.922 2370 INFO nova.compute.manager [req-242fb529-983a-4bc1-b00a-e0c3d1e8fb58 None] [instance: fa1a9aba-fe03-44cf-92a8-1da80757b160] During sync_power_state the instance has a pending task (spawning). Skip.
+2015-03-26 21:24:56.923 2370 INFO nova.compute.manager [-] [instance: fa1a9aba-fe03-44cf-92a8-1da80757b160] VM Paused (Lifecycle Event)
+2015-03-26 21:24:57.009 2370 INFO nova.compute.manager [-] [instance: fa1a9aba-fe03-44cf-92a8-1da80757b160] During sync_power_state the instance has a pending task (spawning). Skip.
+2015-03-26 21:25:01.621 2370 INFO nova.compute.manager [-] [instance: fa1a9aba-fe03-44cf-92a8-1da80757b160] VM Resumed (Lifecycle Event)
+2015-03-26 21:25:01.625 2370 INFO nova.virt.libvirt.driver [-] [instance: fa1a9aba-fe03-44cf-92a8-1da80757b160] Instance spawned successfully.
+2015-03-26 21:25:01.763 2370 INFO nova.compute.manager [-] [instance: fa1a9aba-fe03-44cf-92a8-1da80757b160] VM Resumed (Lifecycle Event)
+
+
+>>> osp6-compute02: journalctl -f
+
+Mar 26 21:24:53 osp6-compute02 sudo[3074]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf cat /etc/iscsi/initiatorname.iscsi
+Mar 26 21:24:53 osp6-compute02 sudo[3077]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf systool -c fc_host -v
+Mar 26 21:24:53 osp6-compute02 sudo[3079]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf systool -c fc_host -v
+Mar 26 21:24:54 osp6-compute02 sudo[3081]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 26 21:24:54 osp6-compute02 sudo[3084]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-16ab87e8-50a5-4c9f-a0d0-06893048493f -p 10.0.1.21:3260
+Mar 26 21:24:54 osp6-compute02 sudo[3087]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-16ab87e8-50a5-4c9f-a0d0-06893048493f -p 10.0.1.21:3260 --op new
+Mar 26 21:24:54 osp6-compute02 systemd[1]: Starting Open-iSCSI...
+Mar 26 21:24:54 osp6-compute02 iscsid[3090]: iSCSI logger with pid=3091 started!
+Mar 26 21:24:54 osp6-compute02 systemd[1]: Failed to read PID from file /var/run/iscsid.pid: Invalid argument
+Mar 26 21:24:54 osp6-compute02 kernel: Loading iSCSI transport class v2.0-870.
+Mar 26 21:24:54 osp6-compute02 systemd[1]: Started Open-iSCSI.
+Mar 26 21:24:54 osp6-compute02 sudo[3105]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-16ab87e8-50a5-4c9f-a0d0-06893048493f -p 10.0.1.21:3260 --op update -n node.session.auth.authmethod -v CHAP
+Mar 26 21:24:54 osp6-compute02 sudo[3108]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-16ab87e8-50a5-4c9f-a0d0-06893048493f -p 10.0.1.21:3260 --op update -n node.session.auth.username -v iJPvpQeVBxZNm586yPz9
+Mar 26 21:24:55 osp6-compute02 sudo[3111]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-16ab87e8-50a5-4c9f-a0d0-06893048493f -p 10.0.1.21:3260 --op update -n node.session.auth.password -v my7DgMfpya6EaKrJ
+Mar 26 21:24:55 osp6-compute02 sudo[3114]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m session
+Mar 26 21:24:55 osp6-compute02 sudo[3117]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-16ab87e8-50a5-4c9f-a0d0-06893048493f -p 10.0.1.21:3260 --login
+Mar 26 21:24:55 osp6-compute02 kernel: iscsi: registered transport (tcp)
+Mar 26 21:24:55 osp6-compute02 kernel: scsi host2: iSCSI Initiator over TCP/IP
+Mar 26 21:24:55 osp6-compute02 kernel: scsi 2:0:0:0: Direct-Access     LIO-ORG  IBLOCK           4.0  PQ: 0 ANSI: 5
+Mar 26 21:24:55 osp6-compute02 kernel: scsi 2:0:0:0: alua: supports implicit and explicit TPGS
+Mar 26 21:24:55 osp6-compute02 kernel: scsi 2:0:0:0: alua: port group 00 rel port 01
+Mar 26 21:24:55 osp6-compute02 kernel: scsi 2:0:0:0: alua: port group 00 state A non-preferred supports TOlUSNA
+Mar 26 21:24:55 osp6-compute02 kernel: scsi 2:0:0:0: alua: Attached
+Mar 26 21:24:55 osp6-compute02 kernel: sd 2:0:0:0: [sda] 2097152 512-byte logical blocks: (1.07 GB/1.00 GiB)
+Mar 26 21:24:55 osp6-compute02 kernel: sd 2:0:0:0: [sda] Write Protect is off
+Mar 26 21:24:55 osp6-compute02 kernel: sd 2:0:0:0: [sda] Mode Sense: 43 00 10 08
+Mar 26 21:24:55 osp6-compute02 sudo[3125]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-16ab87e8-50a5-4c9f-a0d0-06893048493f -p 10.0.1.21:3260 --op update -n node.startup -v automatic
+Mar 26 21:24:55 osp6-compute02 kernel: sd 2:0:0:0: [sda] Write cache: enabled, read cache: enabled, supports DPO and FUA
+Mar 26 21:24:55 osp6-compute02 kernel:  sda: sda1
+Mar 26 21:24:55 osp6-compute02 kernel: sd 2:0:0:0: [sda] Attached SCSI disk
+Mar 26 21:24:55 osp6-compute02 sudo[3130]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-16ab87e8-50a5-4c9f-a0d0-06893048493f -p 10.0.1.21:3260 --rescan
+Mar 26 21:24:55 osp6-compute02 sudo[3134]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-16ab87e8-50a5-4c9f-a0d0-06893048493f -p 10.0.1.21:3260
+Mar 26 21:24:55 osp6-compute02 sudo[3137]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-16ab87e8-50a5-4c9f-a0d0-06893048493f -p 10.0.1.21:3260 --op update -n node.session.auth.authmethod -v CHAP
+Mar 26 21:24:55 osp6-compute02 sudo[3140]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-16ab87e8-50a5-4c9f-a0d0-06893048493f -p 10.0.1.21:3260 --op update -n node.session.auth.username -v iJPvpQeVBxZNm586yPz9
+Mar 26 21:24:55 osp6-compute02 sudo[3143]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-16ab87e8-50a5-4c9f-a0d0-06893048493f -p 10.0.1.21:3260 --op update -n node.session.auth.password -v my7DgMfpya6EaKrJ
+Mar 26 21:24:55 osp6-compute02 sudo[3146]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m session
+Mar 26 21:24:55 osp6-compute02 sudo[3149]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-16ab87e8-50a5-4c9f-a0d0-06893048493f -p 10.0.1.21:3260 --rescan
+Mar 26 21:24:55 osp6-compute02 sudo[3153]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf brctl addbr qbref594d77-63
+Mar 26 21:24:55 osp6-compute02 systemd-sysctl[3156]: Overwriting earlier assignment of net/bridge/bridge-nf-call-ip6tables in file '/etc/sysctl.d/99-sysctl.conf'.
+Mar 26 21:24:55 osp6-compute02 systemd-sysctl[3156]: Overwriting earlier assignment of net/bridge/bridge-nf-call-iptables in file '/etc/sysctl.d/99-sysctl.conf'.
+Mar 26 21:24:55 osp6-compute02 systemd-sysctl[3156]: Overwriting earlier assignment of net/bridge/bridge-nf-call-arptables in file '/etc/sysctl.d/99-sysctl.conf'.
+Mar 26 21:24:55 osp6-compute02 sudo[3157]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf brctl setfd qbref594d77-63 0
+Mar 26 21:24:55 osp6-compute02 iscsid[3091]: iSCSI daemon with pid=3092 started!
+Mar 26 21:24:55 osp6-compute02 iscsid[3091]: Could not set session1 priority. READ/WRITE throughout and latency could be affected.
+Mar 26 21:24:55 osp6-compute02 iscsid[3091]: Connection1:0 to [target: iqn.2010-10.org.openstack:volume-16ab87e8-50a5-4c9f-a0d0-06893048493f, portal: 10.0.1.21,3260] through [iface: default] is operational now
+Mar 26 21:24:55 osp6-compute02 sudo[3160]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf brctl stp qbref594d77-63 off
+Mar 26 21:24:55 osp6-compute02 sudo[3163]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf tee /sys/class/net/qbref594d77-63/bridge/multicast_snooping
+Mar 26 21:24:55 osp6-compute02 sudo[3166]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf ip link add qvbef594d77-63 type veth peer name qvoef594d77-63
+Mar 26 21:24:56 osp6-compute02 systemd-sysctl[3171]: Overwriting earlier assignment of net/bridge/bridge-nf-call-ip6tables in file '/etc/sysctl.d/99-sysctl.conf'.
+Mar 26 21:24:56 osp6-compute02 systemd-sysctl[3171]: Overwriting earlier assignment of net/bridge/bridge-nf-call-iptables in file '/etc/sysctl.d/99-sysctl.conf'.
+Mar 26 21:24:56 osp6-compute02 systemd-sysctl[3171]: Overwriting earlier assignment of net/bridge/bridge-nf-call-arptables in file '/etc/sysctl.d/99-sysctl.conf'.
+Mar 26 21:24:56 osp6-compute02 systemd-sysctl[3172]: Overwriting earlier assignment of net/bridge/bridge-nf-call-ip6tables in file '/etc/sysctl.d/99-sysctl.conf'.
+Mar 26 21:24:56 osp6-compute02 systemd-sysctl[3172]: Overwriting earlier assignment of net/bridge/bridge-nf-call-iptables in file '/etc/sysctl.d/99-sysctl.conf'.
+Mar 26 21:24:56 osp6-compute02 systemd-sysctl[3172]: Overwriting earlier assignment of net/bridge/bridge-nf-call-arptables in file '/etc/sysctl.d/99-sysctl.conf'.
+Mar 26 21:24:56 osp6-compute02 sudo[3173]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf ip link set qvbef594d77-63 up
+Mar 26 21:24:56 osp6-compute02 kernel: IPv6: ADDRCONF(NETDEV_UP): qvbef594d77-63: link is not ready
+Mar 26 21:24:56 osp6-compute02 sudo[3176]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf ip link set qvbef594d77-63 promisc on
+Mar 26 21:24:56 osp6-compute02 kernel: device qvbef594d77-63 entered promiscuous mode
+Mar 26 21:24:56 osp6-compute02 sudo[3178]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 26 21:24:56 osp6-compute02 sudo[3181]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf ip link set qvoef594d77-63 up
+Mar 26 21:24:56 osp6-compute02 kernel: IPv6: ADDRCONF(NETDEV_CHANGE): qvbef594d77-63: link becomes ready
+Mar 26 21:24:56 osp6-compute02 sudo[3185]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf ip link set qvoef594d77-63 promisc on
+Mar 26 21:24:56 osp6-compute02 kernel: device qvoef594d77-63 entered promiscuous mode
+Mar 26 21:24:56 osp6-compute02 sudo[3188]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf ip link set qbref594d77-63 up
+Mar 26 21:24:56 osp6-compute02 sudo[3191]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf brctl addif qbref594d77-63 qvbef594d77-63
+Mar 26 21:24:56 osp6-compute02 kernel: qbref594d77-63: port 1(qvbef594d77-63) entered forwarding state
+Mar 26 21:24:56 osp6-compute02 kernel: qbref594d77-63: port 1(qvbef594d77-63) entered forwarding state
+Mar 26 21:24:56 osp6-compute02 sudo[3194]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf ovs-vsctl --timeout=120 -- --if-exists del-port qvoef594d77-63 -- add-port br-int qvoef594d77-63 -- set Interface qvoef594d77-63 external-ids:iface-id=ef594d77-634a-4597-bc58-ec2475181752 external-ids:iface-status=active external-ids:attached-mac=fa:16:3e:8d:96:28 external-ids:vm-uuid=fa1a9aba-fe03-44cf-92a8-1da80757b160
+Mar 26 21:24:56 osp6-compute02 ovs-vsctl[3196]: ovs|00001|vsctl|INFO|Called as /bin/ovs-vsctl --timeout=120 -- --if-exists del-port qvoef594d77-63 -- add-port br-int qvoef594d77-63 -- set Interface qvoef594d77-63 external-ids:iface-id=ef594d77-634a-4597-bc58-ec2475181752 external-ids:iface-status=active external-ids:attached-mac=fa:16:3e:8d:96:28 external-ids:vm-uuid=fa1a9aba-fe03-44cf-92a8-1da80757b160
+Mar 26 21:24:56 osp6-compute02 kernel: tun: Universal TUN/TAP device driver, 1.6
+Mar 26 21:24:56 osp6-compute02 kernel: tun: (C) 1999-2004 Max Krasnyansky <maxk@qualcomm.com>
+Mar 26 21:24:56 osp6-compute02 systemd-sysctl[3200]: Overwriting earlier assignment of net/bridge/bridge-nf-call-ip6tables in file '/etc/sysctl.d/99-sysctl.conf'.
+Mar 26 21:24:56 osp6-compute02 systemd-sysctl[3200]: Overwriting earlier assignment of net/bridge/bridge-nf-call-iptables in file '/etc/sysctl.d/99-sysctl.conf'.
+Mar 26 21:24:56 osp6-compute02 systemd-sysctl[3200]: Overwriting earlier assignment of net/bridge/bridge-nf-call-arptables in file '/etc/sysctl.d/99-sysctl.conf'.
+Mar 26 21:24:56 osp6-compute02 kernel: device tapef594d77-63 entered promiscuous mode
+Mar 26 21:24:56 osp6-compute02 kernel: qbref594d77-63: port 2(tapef594d77-63) entered forwarding state
+Mar 26 21:24:56 osp6-compute02 kernel: qbref594d77-63: port 2(tapef594d77-63) entered forwarding state
+Mar 26 21:24:56 osp6-compute02 dbus-daemon[638]: dbus[638]: [system] Activating via systemd: service name='org.freedesktop.machine1' unit='dbus-org.freedesktop.machine1.service'
+Mar 26 21:24:56 osp6-compute02 dbus[638]: [system] Activating via systemd: service name='org.freedesktop.machine1' unit='dbus-org.freedesktop.machine1.service'
+Mar 26 21:24:56 osp6-compute02 systemd[1]: Starting Virtual Machine and Container Slice.
+Mar 26 21:24:56 osp6-compute02 systemd[1]: Created slice Virtual Machine and Container Slice.
+Mar 26 21:24:56 osp6-compute02 systemd[1]: Starting Virtual Machine and Container Registration Service...
+Mar 26 21:24:56 osp6-compute02 dbus-daemon[638]: dbus[638]: [system] Successfully activated service 'org.freedesktop.machine1'
+Mar 26 21:24:56 osp6-compute02 dbus[638]: [system] Successfully activated service 'org.freedesktop.machine1'
+Mar 26 21:24:56 osp6-compute02 systemd[1]: Started Virtual Machine and Container Registration Service.
+Mar 26 21:24:56 osp6-compute02 systemd[1]: Starting Virtual Machine qemu-instance-00000021.
+Mar 26 21:24:56 osp6-compute02 systemd[1]: Started Virtual Machine qemu-instance-00000021.
+Mar 26 21:24:56 osp6-compute02 systemd-machined[3203]: New machine qemu-instance-00000021.
+Mar 26 21:24:57 osp6-compute02 avahi-daemon[623]: Registering new address record for fe80::6cc9:82ff:fe9e:b1d6 on qvbef594d77-63.*.
+Mar 26 21:24:57 osp6-compute02 avahi-daemon[623]: Registering new address record for fe80::459:d0ff:feb5:104f on qvoef594d77-63.*.
+Mar 26 21:24:57 osp6-compute02 avahi-daemon[623]: Registering new address record for fe80::1cc0:60ff:fee0:80ac on qbref594d77-63.*.
+Mar 26 21:24:58 osp6-compute02 sudo[3207]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 26 21:24:58 osp6-compute02 avahi-daemon[623]: Registering new address record for fe80::fc16:3eff:fe8d:9628 on tapef594d77-63.*.
+Mar 26 21:24:58 osp6-compute02 sudo[3210]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-vsctl --timeout=10 list-ports br-int
+Mar 26 21:24:58 osp6-compute02 sudo[3213]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-vsctl --timeout=10 --format=json -- --columns=name,external_ids,ofport list Interface
+Mar 26 21:24:58 osp6-compute02 sudo[3216]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-vsctl --timeout=10 list-ports br-int
+Mar 26 21:24:58 osp6-compute02 sudo[3219]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-vsctl --timeout=10 --format=json -- --columns=name,tag list Port
+Mar 26 21:24:58 osp6-compute02 sudo[3222]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ipset create -exist IPv4a70a0910-362a-4907-9 hash:ip family inet
+Mar 26 21:24:58 osp6-compute02 kernel: Netfilter messages via NETLINK v0.30.
+Mar 26 21:24:58 osp6-compute02 kernel: ip_set: protocol 6
+Mar 26 21:24:58 osp6-compute02 sudo[3231]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ipset restore -exist
+Mar 26 21:24:58 osp6-compute02 sudo[3234]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ipset swap IPv4a70a0910-362a-4907-9-new IPv4a70a0910-362a-4907-9
+Mar 26 21:24:58 osp6-compute02 sudo[3237]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ipset destroy IPv4a70a0910-362a-4907-9-new
+Mar 26 21:24:58 osp6-compute02 sudo[3240]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf iptables-save -c
+Mar 26 21:24:58 osp6-compute02 sudo[3243]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf iptables-restore -c
+Mar 26 21:24:58 osp6-compute02 sudo[3256]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ip6tables-save -c
+Mar 26 21:24:58 osp6-compute02 sudo[3259]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ip6tables-restore -c
+Mar 26 21:24:58 osp6-compute02 kernel: ip6_tables: (C) 2000-2006 Netfilter Core Team
+Mar 26 21:24:59 osp6-compute02 sudo[3267]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-vsctl --timeout=10 --format=json -- --columns=external_ids,name,ofport find Interface external_ids:iface-id="ef594d77-634a-4597-bc58-ec2475181752"
+Mar 26 21:24:59 osp6-compute02 sudo[3270]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-vsctl --timeout=10 iface-to-br qvoef594d77-63
+Mar 26 21:24:59 osp6-compute02 sudo[3273]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl mod-flows br-tun -
+Mar 26 21:24:59 osp6-compute02 sudo[3276]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl add-flows br-tun -
+Mar 26 21:24:59 osp6-compute02 sudo[3279]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-vsctl --timeout=10 get Port qvoef594d77-63 tag
+Mar 26 21:24:59 osp6-compute02 sudo[3282]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-vsctl --timeout=10 set Port qvoef594d77-63 tag=1
+Mar 26 21:24:59 osp6-compute02 ovs-vsctl[3284]: ovs|00001|vsctl|INFO|Called as /bin/ovs-vsctl --timeout=10 set Port qvoef594d77-63 tag=1
+Mar 26 21:24:59 osp6-compute02 sudo[3285]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl del-flows br-int -
+Mar 26 21:24:59 osp6-compute02 ntpd[1063]: Listen normally on 13 qbref594d77-63 fe80::1cc0:60ff:fee0:80ac UDP 123
+Mar 26 21:24:59 osp6-compute02 ntpd[1063]: Listen normally on 14 qvbef594d77-63 fe80::6cc9:82ff:fe9e:b1d6 UDP 123
+Mar 26 21:24:59 osp6-compute02 ntpd[1063]: Listen normally on 15 qvoef594d77-63 fe80::459:d0ff:feb5:104f UDP 123
+Mar 26 21:24:59 osp6-compute02 ntpd[1063]: Listen normally on 16 tapef594d77-63 fe80::fc16:3eff:fe8d:9628 UDP 123
+Mar 26 21:24:59 osp6-compute02 ntpd[1063]: new interface(s) found: waking up resolver
+Mar 26 21:25:00 osp6-compute02 sudo[3288]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 26 21:25:02 osp6-compute02 sudo[3291]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 26 21:25:04 osp6-compute02 sudo[3294]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 26 21:25:06 osp6-compute02 sudo[3297]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 26 21:25:08 osp6-compute02 sudo[3301]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 26 21:25:08 osp6-compute02 libvirtd[1369]: libvirt version: 1.2.8, package: 16.el7_1.1 (Red Hat, Inc. <http://bugzilla.redhat.com/bugzilla>, 2015-02-25-05:03:17, x86-025.build.eng.bos.redhat.com)
+Mar 26 21:25:08 osp6-compute02 libvirtd[1369]: ignore NIC_RX_FILTER_CHANGED event for network device net0 in domain instance-00000021
+
+
+>>> controller: journalctl -f <<<
+
+Mar 26 21:24:42 osp6-controller01 keystone-all[1448]: /usr/lib64/python2.7/site-packages/sqlalchemy/sql/default_comparator.py:35: SAWarning: The IN-predicate on "assignment.actor_id" was invoked with an empty sequence. This results in a contradiction, which nonetheless can be expensive to evaluate.  Consider alternative strategies for improved performance.
+Mar 26 21:24:42 osp6-controller01 keystone-all[1448]: return o[0](self, self.expr, op, *(other + o[1:]), **kwargs)
+Mar 26 21:24:43 osp6-controller01 sudo[5191]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 26 21:24:44 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:44.018 2199 INFO eventlet.wsgi.server [-] (2199) accepted ('10.0.1.21', 38378)
+Mar 26 21:24:44 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:44.483 2199 INFO cinder.api.openstack.wsgi [req-140b5a84-7606-41d5-ab74-e18ac56051ba aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] POST http://10.0.1.21:8776/v1/9a8a6fc5b31a4df3ba501a61bb8ae938/volumes
+Mar 26 21:24:44 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:44.489 2199 INFO cinder.api.v1.volumes [req-140b5a84-7606-41d5-ab74-e18ac56051ba aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] Create volume of 1 GB
+Mar 26 21:24:45 osp6-controller01 sudo[5208]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 26 21:24:45 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:45.966 2199 INFO oslo.messaging._drivers.impl_rabbit [req-140b5a84-7606-41d5-ab74-e18ac56051ba aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] Connecting to AMQP server on 10.0.1.21:5672
+Mar 26 21:24:45 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:45.983 2199 INFO oslo.messaging._drivers.impl_rabbit [req-140b5a84-7606-41d5-ab74-e18ac56051ba aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] Connected to AMQP server on 10.0.1.21:5672
+Mar 26 21:24:45 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:45.987 2199 INFO cinder.api.v1.volumes [req-140b5a84-7606-41d5-ab74-e18ac56051ba aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] vol={'migration_status': None, 'availability_zone': 'nova', 'terminated_at': None, 'reservations': ['2bb2190a-9022-4a37-a3f3-89dbf0916aed', 'af0e4e83-e52d-4bd7-8f34-d98c1820e9b5'], 'updated_at': None, 'provider_geometry': None, 'replication_extended_status': None, 'replication_status': 'disabled', 'snapshot_id': None, 'ec2_id': None, 'mountpoint': None, 'deleted_at': None, 'id': '16ab87e8-50a5-4c9f-a0d0-06893048493f', 'size': 1, 'user_id': u'aa0885c68cea40f188a8f0fdf8cac52a', 'attach_time': None, 'source_replicaid': None, 'attached_host': None, 'display_description': None, 'project_id': u'9a8a6fc5b31a4df3ba501a61bb8ae938', 'launched_at': None, 'scheduled_at': None, 'status': 'creating', 'volume_type_id': None, 'deleted': False, 'provider_location': None, 'host': None, 'consistencygroup_id': None, 'source_volid': None, 'provider_auth': None, 'display_name': u'vm1_vol', 'instance_uuid': None, 'bootable': False, 'created_at': datetime.datetime(2015, 3, 26, 12, 24, 45, 902325), 'attach_status': 'detached', 'volume_type': None, 'consistencygroup': None, 'volume_metadata': [], '_name_id': None, 'encryption_key_id': None, 'replication_driver_data': None, 'metadata': {}}
+Mar 26 21:24:45 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:45.991 2199 INFO cinder.api.openstack.wsgi [req-140b5a84-7606-41d5-ab74-e18ac56051ba aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] http://10.0.1.21:8776/v1/9a8a6fc5b31a4df3ba501a61bb8ae938/volumes returned with HTTP 200
+Mar 26 21:24:45 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:45.992 2199 INFO eventlet.wsgi.server [req-140b5a84-7606-41d5-ab74-e18ac56051ba aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] 10.0.1.21 - - [26/Mar/2015 21:24:45] "POST /v1/9a8a6fc5b31a4df3ba501a61bb8ae938/volumes HTTP/1.1" 200 653 1.963218
+Mar 26 21:24:46 osp6-controller01 cinder-volume[1453]: 2015-03-26 21:24:46.926 2061 INFO cinder.volume.flows.manager.create_volume [req-140b5a84-7606-41d5-ab74-e18ac56051ba aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] Volume 16ab87e8-50a5-4c9f-a0d0-06893048493f: being created as image with specification: {'status': u'creating', 'image_location': (None, None), 'volume_size': 1, 'volume_name': u'volume-16ab87e8-50a5-4c9f-a0d0-06893048493f', 'image_id': u'59183f26-267b-47af-8002-f53dea9c3dfa', 'image_service': <cinder.image.glance.GlanceImageService object at 0x3214f90>, 'image_meta': {'status': u'active', 'name': u'cirros', 'deleted': False, 'container_format': u'bare', 'created_at': datetime.datetime(2015, 3, 25, 5, 18, 35, tzinfo=<iso8601.iso8601.Utc object at 0x322fcd0>), 'disk_format': u'qcow2', 'updated_at': datetime.datetime(2015, 3, 25, 5, 18, 38, tzinfo=<iso8601.iso8601.Utc object at 0x322fcd0>), 'id': u'59183f26-267b-47af-8002-f53dea9c3dfa', 'owner': u'1e1bf31b9e3f4b38b887b3d8aeba1014', 'min_ram': 0, 'checksum': u'133eae9fb1c98f45894a4e60d8736619', 'min_disk': 0, 'is_public': True, 'deleted_at': None, 'properties': {}, 'size': 13200896}}
+Mar 26 21:24:46 osp6-controller01 sudo[5220]: cinder : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/cinder-rootwrap /etc/cinder/rootwrap.conf lvcreate -n volume-16ab87e8-50a5-4c9f-a0d0-06893048493f cinder-volumes -L 1g
+Mar 26 21:24:47 osp6-controller01 sudo[5224]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 26 21:24:47 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:47.225 2199 INFO eventlet.wsgi.server [-] (2199) accepted ('10.0.1.21', 38390)
+Mar 26 21:24:47 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:47.314 2199 INFO cinder.api.openstack.wsgi [req-bb711f68-12a8-4a1f-b837-30e23ae54e8f aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] GET http://10.0.1.21:8776/v1/9a8a6fc5b31a4df3ba501a61bb8ae938/volumes/detail
+Mar 26 21:24:47 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:47.350 2199 INFO cinder.api.v1.volumes [req-bb711f68-12a8-4a1f-b837-30e23ae54e8f aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] vol={'migration_status': None, 'availability_zone': u'nova', 'terminated_at': None, 'updated_at': datetime.datetime(2015, 3, 26, 12, 24, 47), 'provider_geometry': None, 'replication_extended_status': None, 'replication_status': u'disabled', 'snapshot_id': None, 'ec2_id': None, 'mountpoint': None, 'deleted_at': None, 'id': u'16ab87e8-50a5-4c9f-a0d0-06893048493f', 'size': 1L, 'user_id': u'aa0885c68cea40f188a8f0fdf8cac52a', 'attach_time': None, 'attached_host': None, 'display_description': None, 'volume_admin_metadata': [], 'project_id': u'9a8a6fc5b31a4df3ba501a61bb8ae938', 'launched_at': None, 'scheduled_at': datetime.datetime(2015, 3, 26, 12, 24, 46), 'status': u'downloading', 'volume_type_id': None, 'deleted': False, 'provider_location': None, 'host': u'osp6-controller01@lvm#lvm', 'consistencygroup_id': None, 'source_volid': None, 'provider_auth': None, 'display_name': u'vm1_vol', 'instance_uuid': None, 'bootable': False, 'created_at': datetime.datetime(2015, 3, 26, 12, 24, 45), 'attach_status': u'detached', 'volume_type': None, 'consistencygroup': None, 'volume_metadata': [], '_name_id': None, 'encryption_key_id': None, 'replication_driver_data': None}
+Mar 26 21:24:47 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:47.374 2199 INFO cinder.api.openstack.wsgi [req-bb711f68-12a8-4a1f-b837-30e23ae54e8f aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] http://10.0.1.21:8776/v1/9a8a6fc5b31a4df3ba501a61bb8ae938/volumes/detail returned with HTTP 200
+Mar 26 21:24:47 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:47.375 2199 INFO eventlet.wsgi.server [req-bb711f68-12a8-4a1f-b837-30e23ae54e8f aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] 10.0.1.21 - - [26/Mar/2015 21:24:47] "GET /v1/9a8a6fc5b31a4df3ba501a61bb8ae938/volumes/detail HTTP/1.1" 200 765 0.148207
+Mar 26 21:24:47 osp6-controller01 sudo[5239]: cinder : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/cinder-rootwrap /etc/cinder/rootwrap.conf env LC_ALL=C qemu-img info /var/lib/cinder/conversion/tmpqzbV92
+Mar 26 21:24:47 osp6-controller01 cinder-volume[1453]: 2015-03-26 21:24:47.746 2061 INFO cinder.image.image_utils [req-140b5a84-7606-41d5-ab74-e18ac56051ba aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] Image download 12.00 MB at 12.00 MB/s
+Mar 26 21:24:47 osp6-controller01 sudo[5249]: cinder : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/cinder-rootwrap /etc/cinder/rootwrap.conf env LC_ALL=C qemu-img info /var/lib/cinder/conversion/tmpqzbV92
+Mar 26 21:24:47 osp6-controller01 sudo[5255]: cinder : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/cinder-rootwrap /etc/cinder/rootwrap.conf dd count=0 if=/var/lib/cinder/conversion/tmpqzbV92 of=/dev/mapper/cinder--volumes-volume--16ab87e8--50a5--4c9f--a0d0--06893048493f oflag=direct
+Mar 26 21:24:48 osp6-controller01 sudo[5259]: cinder : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/cinder-rootwrap /etc/cinder/rootwrap.conf qemu-img convert -t none -O raw /var/lib/cinder/conversion/tmpqzbV92 /dev/mapper/cinder--volumes-volume--16ab87e8--50a5--4c9f--a0d0--06893048493f
+Mar 26 21:24:48 osp6-controller01 cinder-volume[1453]: 2015-03-26 21:24:48.372 2061 INFO cinder.image.image_utils [req-140b5a84-7606-41d5-ab74-e18ac56051ba aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] Converted 12.00 MB image at 12.00 MB/s
+Mar 26 21:24:48 osp6-controller01 sudo[5267]: cinder : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/cinder-rootwrap /etc/cinder/rootwrap.conf env LC_ALL=C qemu-img info /dev/mapper/cinder--volumes-volume--16ab87e8--50a5--4c9f--a0d0--06893048493f
+Mar 26 21:24:48 osp6-controller01 keystone-all[1448]: /usr/lib64/python2.7/site-packages/sqlalchemy/sql/default_comparator.py:35: SAWarning: The IN-predicate on "assignment.actor_id" was invoked with an empty sequence. This results in a contradiction, which nonetheless can be expensive to evaluate.  Consider alternative strategies for improved performance.
+Mar 26 21:24:48 osp6-controller01 keystone-all[1448]: return o[0](self, self.expr, op, *(other + o[1:]), **kwargs)
+Mar 26 21:24:49 osp6-controller01 cinder-volume[1453]: 2015-03-26 21:24:49.007 2061 INFO cinder.volume.flows.manager.create_volume [req-140b5a84-7606-41d5-ab74-e18ac56051ba aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] Volume volume-16ab87e8-50a5-4c9f-a0d0-06893048493f (16ab87e8-50a5-4c9f-a0d0-06893048493f): created successfully
+Mar 26 21:24:49 osp6-controller01 sudo[5273]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 26 21:24:50 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:50.281 2203 INFO eventlet.wsgi.server [-] (2203) accepted ('10.0.1.21', 38408)
+Mar 26 21:24:50 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:50.831 2203 INFO cinder.api.openstack.wsgi [req-7892f43b-e588-4884-ab2a-1e215d37bfed aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] GET http://10.0.1.21:8776/v1/9a8a6fc5b31a4df3ba501a61bb8ae938/volumes/16ab87e8-50a5-4c9f-a0d0-06893048493f
+Mar 26 21:24:51 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:51.095 2203 INFO cinder.api.v1.volumes [req-7892f43b-e588-4884-ab2a-1e215d37bfed aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] vol={'migration_status': None, 'availability_zone': u'nova', 'terminated_at': None, 'updated_at': datetime.datetime(2015, 3, 26, 12, 24, 49), 'provider_geometry': None, 'replication_extended_status': None, 'replication_status': u'disabled', 'snapshot_id': None, 'ec2_id': None, 'mountpoint': None, 'deleted_at': None, 'id': u'16ab87e8-50a5-4c9f-a0d0-06893048493f', 'size': 1L, 'user_id': u'aa0885c68cea40f188a8f0fdf8cac52a', 'attach_time': None, 'attached_host': None, 'display_description': None, 'volume_admin_metadata': [], 'project_id': u'9a8a6fc5b31a4df3ba501a61bb8ae938', 'launched_at': datetime.datetime(2015, 3, 26, 12, 24, 48), 'scheduled_at': datetime.datetime(2015, 3, 26, 12, 24, 46), 'status': u'available', 'volume_type_id': None, 'deleted': False, 'provider_location': None, 'host': u'osp6-controller01@lvm#lvm', 'consistencygroup_id': None, 'source_volid': None, 'provider_auth': None, 'display_name': u'vm1_vol', 'instance_uuid': None, 'bootable': True, 'created_at': datetime.datetime(2015, 3, 26, 12, 24, 45), 'attach_status': u'detached', 'volume_type': None, 'consistencygroup': None, 'volume_metadata': [], '_name_id': None, 'encryption_key_id': None, 'replication_driver_data': None}
+Mar 26 21:24:51 osp6-controller01 sudo[5287]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 26 21:24:51 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:51.161 2203 INFO cinder.api.openstack.wsgi [req-7892f43b-e588-4884-ab2a-1e215d37bfed aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] http://10.0.1.21:8776/v1/9a8a6fc5b31a4df3ba501a61bb8ae938/volumes/16ab87e8-50a5-4c9f-a0d0-06893048493f returned with HTTP 200
+Mar 26 21:24:51 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:51.162 2203 INFO eventlet.wsgi.server [req-7892f43b-e588-4884-ab2a-1e215d37bfed aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] 10.0.1.21 - - [26/Mar/2015 21:24:51] "GET /v1/9a8a6fc5b31a4df3ba501a61bb8ae938/volumes/16ab87e8-50a5-4c9f-a0d0-06893048493f HTTP/1.1" 200 1015 0.852416
+Mar 26 21:24:52 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:52.039 2203 INFO eventlet.wsgi.server [-] (2203) accepted ('10.0.1.21', 38416)
+Mar 26 21:24:52 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:52.042 2203 INFO cinder.api.openstack.wsgi [req-83f45e12-0bc7-4600-87c7-43f0bfdd9e60 aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] GET http://10.0.1.21:8776/v1/9a8a6fc5b31a4df3ba501a61bb8ae938/volumes/16ab87e8-50a5-4c9f-a0d0-06893048493f
+Mar 26 21:24:52 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:52.067 2203 INFO cinder.api.v1.volumes [req-83f45e12-0bc7-4600-87c7-43f0bfdd9e60 aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] vol={'migration_status': None, 'availability_zone': u'nova', 'terminated_at': None, 'updated_at': datetime.datetime(2015, 3, 26, 12, 24, 49), 'provider_geometry': None, 'replication_extended_status': None, 'replication_status': u'disabled', 'snapshot_id': None, 'ec2_id': None, 'mountpoint': None, 'deleted_at': None, 'id': u'16ab87e8-50a5-4c9f-a0d0-06893048493f', 'size': 1L, 'user_id': u'aa0885c68cea40f188a8f0fdf8cac52a', 'attach_time': None, 'attached_host': None, 'display_description': None, 'volume_admin_metadata': [], 'project_id': u'9a8a6fc5b31a4df3ba501a61bb8ae938', 'launched_at': datetime.datetime(2015, 3, 26, 12, 24, 48), 'scheduled_at': datetime.datetime(2015, 3, 26, 12, 24, 46), 'status': u'available', 'volume_type_id': None, 'deleted': False, 'provider_location': None, 'host': u'osp6-controller01@lvm#lvm', 'consistencygroup_id': None, 'source_volid': None, 'provider_auth': None, 'display_name': u'vm1_vol', 'instance_uuid': None, 'bootable': True, 'created_at': datetime.datetime(2015, 3, 26, 12, 24, 45), 'attach_status': u'detached', 'volume_type': None, 'consistencygroup': None, 'volume_metadata': [], '_name_id': None, 'encryption_key_id': None, 'replication_driver_data': None}
+Mar 26 21:24:52 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:52.116 2203 INFO cinder.api.openstack.wsgi [req-83f45e12-0bc7-4600-87c7-43f0bfdd9e60 aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] http://10.0.1.21:8776/v1/9a8a6fc5b31a4df3ba501a61bb8ae938/volumes/16ab87e8-50a5-4c9f-a0d0-06893048493f returned with HTTP 200
+Mar 26 21:24:52 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:52.117 2203 INFO eventlet.wsgi.server [req-83f45e12-0bc7-4600-87c7-43f0bfdd9e60 aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] 10.0.1.21 - - [26/Mar/2015 21:24:52] "GET /v1/9a8a6fc5b31a4df3ba501a61bb8ae938/volumes/16ab87e8-50a5-4c9f-a0d0-06893048493f HTTP/1.1" 200 1015 0.077481
+Mar 26 21:24:53 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:53.007 2199 INFO eventlet.wsgi.server [-] (2199) accepted ('10.0.1.32', 42600)
+Mar 26 21:24:53 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:53.070 2199 INFO cinder.api.openstack.wsgi [req-9b1e11a0-5750-4ba1-8e95-30cb190c7fd3 aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] GET http://10.0.1.21:8776/v1/9a8a6fc5b31a4df3ba501a61bb8ae938/volumes/16ab87e8-50a5-4c9f-a0d0-06893048493f
+Mar 26 21:24:53 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:53.118 2199 INFO cinder.api.v1.volumes [req-9b1e11a0-5750-4ba1-8e95-30cb190c7fd3 aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] vol={'migration_status': None, 'availability_zone': u'nova', 'terminated_at': None, 'updated_at': datetime.datetime(2015, 3, 26, 12, 24, 49), 'provider_geometry': None, 'replication_extended_status': None, 'replication_status': u'disabled', 'snapshot_id': None, 'ec2_id': None, 'mountpoint': None, 'deleted_at': None, 'id': u'16ab87e8-50a5-4c9f-a0d0-06893048493f', 'size': 1L, 'user_id': u'aa0885c68cea40f188a8f0fdf8cac52a', 'attach_time': None, 'attached_host': None, 'display_description': None, 'volume_admin_metadata': [], 'project_id': u'9a8a6fc5b31a4df3ba501a61bb8ae938', 'launched_at': datetime.datetime(2015, 3, 26, 12, 24, 48), 'scheduled_at': datetime.datetime(2015, 3, 26, 12, 24, 46), 'status': u'available', 'volume_type_id': None, 'deleted': False, 'provider_location': None, 'host': u'osp6-controller01@lvm#lvm', 'consistencygroup_id': None, 'source_volid': None, 'provider_auth': None, 'display_name': u'vm1_vol', 'instance_uuid': None, 'bootable': True, 'created_at': datetime.datetime(2015, 3, 26, 12, 24, 45), 'attach_status': u'detached', 'volume_type': None, 'consistencygroup': None, 'volume_metadata': [], '_name_id': None, 'encryption_key_id': None, 'replication_driver_data': None}
+Mar 26 21:24:53 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:53.224 2199 INFO cinder.api.openstack.wsgi [req-9b1e11a0-5750-4ba1-8e95-30cb190c7fd3 aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] http://10.0.1.21:8776/v1/9a8a6fc5b31a4df3ba501a61bb8ae938/volumes/16ab87e8-50a5-4c9f-a0d0-06893048493f returned with HTTP 200
+Mar 26 21:24:53 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:53.225 2199 INFO eventlet.wsgi.server [req-9b1e11a0-5750-4ba1-8e95-30cb190c7fd3 aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] 10.0.1.32 - - [26/Mar/2015 21:24:53] "GET /v1/9a8a6fc5b31a4df3ba501a61bb8ae938/volumes/16ab87e8-50a5-4c9f-a0d0-06893048493f HTTP/1.1" 200 1015 0.216532
+Mar 26 21:24:53 osp6-controller01 sudo[5292]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 26 21:24:53 osp6-controller01 sudo[5296]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf kill -HUP 4277
+Mar 26 21:24:53 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:53.575 2199 INFO eventlet.wsgi.server [-] (2199) accepted ('10.0.1.32', 42604)
+Mar 26 21:24:53 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:53.579 2199 INFO cinder.api.openstack.wsgi [req-55b9dc55-218a-4238-a6c7-6d1e8759f2e7 aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] POST http://10.0.1.21:8776/v1/9a8a6fc5b31a4df3ba501a61bb8ae938/volumes/16ab87e8-50a5-4c9f-a0d0-06893048493f/action
+Mar 26 21:24:53 osp6-controller01 dnsmasq[4277]: read /var/lib/neutron/dhcp/0b1242dd-4d11-4772-9f25-9202d22f8a73/addn_hosts - 3 addresses
+Mar 26 21:24:53 osp6-controller01 dnsmasq-dhcp[4277]: read /var/lib/neutron/dhcp/0b1242dd-4d11-4772-9f25-9202d22f8a73/host
+Mar 26 21:24:53 osp6-controller01 dnsmasq-dhcp[4277]: read /var/lib/neutron/dhcp/0b1242dd-4d11-4772-9f25-9202d22f8a73/opts
+Mar 26 21:24:53 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:53.626 2199 INFO oslo.messaging._drivers.impl_rabbit [req-55b9dc55-218a-4238-a6c7-6d1e8759f2e7 aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] Connecting to AMQP server on 10.0.1.21:5672
+Mar 26 21:24:53 osp6-controller01 sudo[5300]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ip netns exec qdhcp-0b1242dd-4d11-4772-9f25-9202d22f8a73 ip route list dev tap07481242-db
+Mar 26 21:24:53 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:53.654 2199 INFO oslo.messaging._drivers.impl_rabbit [req-55b9dc55-218a-4238-a6c7-6d1e8759f2e7 aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] Connected to AMQP server on 10.0.1.21:5672
+Mar 26 21:24:53 osp6-controller01 cinder-api[1452]: /usr/lib/python2.7/site-packages/amqp/channel.py:616: VDeprecationWarning: The auto_delete flag for exchanges has been deprecated and will be removed
+Mar 26 21:24:53 osp6-controller01 cinder-api[1452]: from py-amqp v1.5.0.
+Mar 26 21:24:53 osp6-controller01 cinder-api[1452]: warn(VDeprecationWarning(EXCHANGE_AUTODELETE_DEPRECATED))
+Mar 26 21:24:53 osp6-controller01 cinder-volume[1453]: 2015-03-26 21:24:53.798 2061 INFO cinder.brick.iscsi.iscsi [req-55b9dc55-218a-4238-a6c7-6d1e8759f2e7 aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] Creating iscsi_target for volume: volume-16ab87e8-50a5-4c9f-a0d0-06893048493f
+Mar 26 21:24:53 osp6-controller01 sudo[5303]: cinder : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/cinder-rootwrap /etc/cinder/rootwrap.conf cinder-rtstool create /dev/cinder-volumes/volume-16ab87e8-50a5-4c9f-a0d0-06893048493f iqn.2010-10.org.openstack:volume-16ab87e8-50a5-4c9f-a0d0-06893048493f iJPvpQeVBxZNm586yPz9 my7DgMfpya6EaKrJ
+Mar 26 21:24:53 osp6-controller01 kernel: Rounding down aligned max_sectors from 4294967295 to 4294967288
+Mar 26 21:24:53 osp6-controller01 kernel: strict_strtoul() failed for port_str: -22
+Mar 26 21:24:53 osp6-controller01 sudo[5313]: cinder : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/cinder-rootwrap /etc/cinder/rootwrap.conf cinder-rtstool get-targets
+Mar 26 21:24:54 osp6-controller01 sudo[5320]: cinder : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/cinder-rootwrap /etc/cinder/rootwrap.conf cinder-rtstool add-initiator iqn.2010-10.org.openstack:volume-16ab87e8-50a5-4c9f-a0d0-06893048493f iJPvpQeVBxZNm586yPz9 my7DgMfpya6EaKrJ iqn.1994-05.com.redhat:eaa499d22f6e
+Mar 26 21:24:54 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:54.279 2199 INFO cinder.api.openstack.wsgi [req-55b9dc55-218a-4238-a6c7-6d1e8759f2e7 aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] http://10.0.1.21:8776/v1/9a8a6fc5b31a4df3ba501a61bb8ae938/volumes/16ab87e8-50a5-4c9f-a0d0-06893048493f/action returned with HTTP 200
+Mar 26 21:24:54 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:54.280 2199 INFO eventlet.wsgi.server [req-55b9dc55-218a-4238-a6c7-6d1e8759f2e7 aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] 10.0.1.32 - - [26/Mar/2015 21:24:54] "POST /v1/9a8a6fc5b31a4df3ba501a61bb8ae938/volumes/16ab87e8-50a5-4c9f-a0d0-06893048493f/action HTTP/1.1" 200 682 0.703852
+Mar 26 21:24:54 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:54.285 2199 INFO eventlet.wsgi.server [-] (2199) accepted ('10.0.1.32', 42606)
+Mar 26 21:24:54 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:54.287 2199 INFO cinder.api.openstack.wsgi [req-f5c79845-6b2e-469b-ab73-ea86f071f820 aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] POST http://10.0.1.21:8776/v1/9a8a6fc5b31a4df3ba501a61bb8ae938/volumes/16ab87e8-50a5-4c9f-a0d0-06893048493f/action
+Mar 26 21:24:54 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:54.653 2199 INFO cinder.api.openstack.wsgi [req-f5c79845-6b2e-469b-ab73-ea86f071f820 aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] http://10.0.1.21:8776/v1/9a8a6fc5b31a4df3ba501a61bb8ae938/volumes/16ab87e8-50a5-4c9f-a0d0-06893048493f/action returned with HTTP 202
+Mar 26 21:24:54 osp6-controller01 cinder-api[1452]: 2015-03-26 21:24:54.654 2199 INFO eventlet.wsgi.server [req-f5c79845-6b2e-469b-ab73-ea86f071f820 aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] 10.0.1.32 - - [26/Mar/2015 21:24:54] "POST /v1/9a8a6fc5b31a4df3ba501a61bb8ae938/volumes/16ab87e8-50a5-4c9f-a0d0-06893048493f/action HTTP/1.1" 202 187 0.367791
+Mar 26 21:24:55 osp6-controller01 sudo[5327]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 26 21:24:57 osp6-controller01 sudo[5336]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 26 21:24:59 osp6-controller01 sudo[5339]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 26 21:25:00 osp6-controller01 cinder-volume[1453]: 2015-03-26 21:25:00.028 2061 INFO cinder.volume.manager [-] Updating volume status
+Mar 26 21:25:00 osp6-controller01 sudo[5342]: cinder : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/cinder-rootwrap /etc/cinder/rootwrap.conf env LC_ALL=C vgs --noheadings --unit=g -o name,size,free,lv_count,uuid --separator : --nosuffix cinder-volumes
+Mar 26 21:25:00 osp6-controller01 cinder-volume[1453]: 2015-03-26 21:25:00.116 2061 INFO cinder.volume.manager [-] Updating volume replication status.
+Mar 26 21:25:01 osp6-controller01 sudo[5346]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 26 21:25:01 osp6-controller01 systemd[1]: Created slice user-163.slice.
+Mar 26 21:25:01 osp6-controller01 systemd[1]: Starting Session 12 of user keystone.
+Mar 26 21:25:01 osp6-controller01 systemd[1]: Started Session 12 of user keystone.
+Mar 26 21:25:01 osp6-controller01 CROND[5351]: (keystone) CMD (/usr/bin/keystone-manage token_flush >/dev/null 2>&1)
+Mar 26 21:25:03 osp6-controller01 sudo[5361]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 26 21:25:05 osp6-controller01 sudo[5368]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 26 21:25:07 osp6-controller01 sudo[5371]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 26 21:25:09 osp6-controller01 dnsmasq-dhcp[4277]: DHCPDISCOVER(tap07481242-db) fa:16:3e:8d:96:28
+Mar 26 21:25:09 osp6-controller01 dnsmasq-dhcp[4277]: DHCPOFFER(tap07481242-db) 192.168.99.131 fa:16:3e:8d:96:28
+Mar 26 21:25:09 osp6-controller01 dnsmasq-dhcp[4277]: DHCPREQUEST(tap07481242-db) 192.168.99.131 fa:16:3e:8d:96:28
+Mar 26 21:25:09 osp6-controller01 dnsmasq-dhcp[4277]: DHCPACK(tap07481242-db) 192.168.99.131 fa:16:3e:8d:96:28 host-192-168-99-131
+
+
+>>> controller: volume.log <<<
+
+2015-03-26 21:24:46.926 2061 INFO cinder.volume.flows.manager.create_volume [req-140b5a84-7606-41d5-ab74-e18ac56051ba aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] Volume 16ab87e8-50a5-4c9f-a0d0-06893048493f: being created as image with specification: {'status': u'creating', 'image_location': (None, None), 'volume_size': 1, 'volume_name': u'volume-16ab87e8-50a5-4c9f-a0d0-06893048493f', 'image_id': u'59183f26-267b-47af-8002-f53dea9c3dfa', 'image_service': <cinder.image.glance.GlanceImageService object at 0x3214f90>, 'image_meta': {'status': u'active', 'name': u'cirros', 'deleted': False, 'container_format': u'bare', 'created_at': datetime.datetime(2015, 3, 25, 5, 18, 35, tzinfo=<iso8601.iso8601.Utc object at 0x322fcd0>), 'disk_format': u'qcow2', 'updated_at': datetime.datetime(2015, 3, 25, 5, 18, 38, tzinfo=<iso8601.iso8601.Utc object at 0x322fcd0>), 'id': u'59183f26-267b-47af-8002-f53dea9c3dfa', 'owner': u'1e1bf31b9e3f4b38b887b3d8aeba1014', 'min_ram': 0, 'checksum': u'133eae9fb1c98f45894a4e60d8736619', 'min_disk': 0, 'is_public': True, 'deleted_at': None, 'properties': {}, 'size': 13200896}}
+2015-03-26 21:24:47.746 2061 INFO cinder.image.image_utils [req-140b5a84-7606-41d5-ab74-e18ac56051ba aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] Image download 12.00 MB at 12.00 MB/s
+2015-03-26 21:24:48.372 2061 INFO cinder.image.image_utils [req-140b5a84-7606-41d5-ab74-e18ac56051ba aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] Converted 12.00 MB image at 12.00 MB/s
+2015-03-26 21:24:49.007 2061 INFO cinder.volume.flows.manager.create_volume [req-140b5a84-7606-41d5-ab74-e18ac56051ba aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] Volume volume-16ab87e8-50a5-4c9f-a0d0-06893048493f (16ab87e8-50a5-4c9f-a0d0-06893048493f): created successfully
+2015-03-26 21:24:53.798 2061 INFO cinder.brick.iscsi.iscsi [req-55b9dc55-218a-4238-a6c7-6d1e8759f2e7 aa0885c68cea40f188a8f0fdf8cac52a 9a8a6fc5b31a4df3ba501a61bb8ae938 - - -] Creating iscsi_target for volume: volume-16ab87e8-50a5-4c9f-a0d0-06893048493f
+2015-03-26 21:25:00.028 2061 INFO cinder.volume.manager [-] Updating volume status
+2015-03-26 21:25:00.116 2061 INFO cinder.volume.manager [-] Updating volume replication status.
+
+
+

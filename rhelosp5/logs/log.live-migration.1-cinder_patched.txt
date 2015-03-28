@@ -1,0 +1,279 @@
+>>> terminal output <<<
+
+[root@osp6-controller01 rhelosp5(keystone_admin)]# date
+Wed Mar 25 23:28:02 JST 2015
+[root@osp6-controller01 rhelosp5(keystone_admin)]# nova show 8aaaab40-af12-4ce3-9d03-2917d9c76deb
++--------------------------------------+----------------------------------------------------------+
+| Property                             | Value                                                    |
++--------------------------------------+----------------------------------------------------------+
+| OS-DCF:diskConfig                    | MANUAL                                                   |
+| OS-EXT-AZ:availability_zone          | nova                                                     |
+| OS-EXT-SRV-ATTR:host                 | osp6-compute02                                           |
+| OS-EXT-SRV-ATTR:hypervisor_hostname  | osp6-compute02                                           |
+| OS-EXT-SRV-ATTR:instance_name        | instance-00000016                                        |
+| OS-EXT-STS:power_state               | 1                                                        |
+| OS-EXT-STS:task_state                | -                                                        |
+| OS-EXT-STS:vm_state                  | active                                                   |
+| OS-SRV-USG:launched_at               | 2015-03-25T13:32:43.000000                               |
+| OS-SRV-USG:terminated_at             | -                                                        |
+| accessIPv4                           |                                                          |
+| accessIPv6                           |                                                          |
+| config_drive                         |                                                          |
+| created                              | 2015-03-25T13:32:35Z                                     |
+| demo_net network                     | 192.168.99.122, 172.16.99.114                            |
+| flavor                               | m1.tiny (1)                                              |
+| hostId                               | 7ec38442668d0fec9107e2521b818f07796de069a172b39d313e416d |
+| id                                   | 8aaaab40-af12-4ce3-9d03-2917d9c76deb                     |
+| image                                | Attempt to boot from volume - no image supplied          |
+| key_name                             | sshkey                                                   |
+| metadata                             | {}                                                       |
+| name                                 | vm1                                                      |
+| os-extended-volumes:volumes_attached | [{"id": "6315084b-58d3-434b-bca8-c85bfc7ffde2"}]         |
+| progress                             | 0                                                        |
+| security_groups                      | default                                                  |
+| status                               | ACTIVE                                                   |
+| tenant_id                            | 9a8a6fc5b31a4df3ba501a61bb8ae938                         |
+| updated                              | 2015-03-25T14:24:24Z                                     |
+| user_id                              | aa0885c68cea40f188a8f0fdf8cac52a                         |
++--------------------------------------+----------------------------------------------------------+
+[root@osp6-controller01 rhelosp5(keystone_admin)]# nova live-migration --block-migrate 8aaaab40-af12-4ce3-9d03-2917d9c76deb
+[root@osp6-controller01 rhelosp5(keystone_admin)]#
+
+
+>>> osp6-controller01: /var/log/cinder/volume.log <<<
+
+2015-03-25 23:28:08.144 30066 INFO cinder.brick.iscsi.iscsi [req-1daa120e-9812-4639-8ed1-261388ec463d 47646590ff9147b8b249b0e4500dcabc 639eb29d61a4492abeb8b4ba6ccf9e20 - - -] Creating iscsi_target for volume: volume-6315084b-58d3-434b-bca8-c85bfc7ffde2
+2015-03-25 23:28:08.622 30066 ERROR cinder.brick.iscsi.iscsi [req-1daa120e-9812-4639-8ed1-261388ec463d 47646590ff9147b8b249b0e4500dcabc 639eb29d61a4492abeb8b4ba6ccf9e20 - - -] Failed to add initiator iqn iqn.1994-05.com.redhat:9413a8f3479e to target.
+2015-03-25 23:28:08.623 30066 ERROR cinder.volume.manager [req-1daa120e-9812-4639-8ed1-261388ec463d 47646590ff9147b8b249b0e4500dcabc 639eb29d61a4492abeb8b4ba6ccf9e20 - - -] Unable to fetch connection information from backend: Failed to attach iSCSI target for volume 6315084b-58d3-434b-bca8-c85bfc7ffde2.
+2015-03-25 23:28:08.626 30066 INFO cinder.brick.iscsi.iscsi [req-1daa120e-9812-4639-8ed1-261388ec463d 47646590ff9147b8b249b0e4500dcabc 639eb29d61a4492abeb8b4ba6ccf9e20 - - -] Removing iscsi_target: 6315084b-58d3-434b-bca8-c85bfc7ffde2
+2015-03-25 23:28:08.748 30066 ERROR oslo.messaging.rpc.dispatcher [req-1daa120e-9812-4639-8ed1-261388ec463d 47646590ff9147b8b249b0e4500dcabc 639eb29d61a4492abeb8b4ba6ccf9e20 - - -] Exception during message handling: Bad or unexpected response from the storage volume backend API: Unable to fetch connection information from backend: Failed to attach iSCSI target for volume 6315084b-58d3-434b-bca8-c85bfc7ffde2.
+2015-03-25 23:28:08.748 30066 TRACE oslo.messaging.rpc.dispatcher Traceback (most recent call last):
+2015-03-25 23:28:08.748 30066 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/oslo/messaging/rpc/dispatcher.py", line 134, in _dispatch_and_reply
+2015-03-25 23:28:08.748 30066 TRACE oslo.messaging.rpc.dispatcher     incoming.message))
+2015-03-25 23:28:08.748 30066 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/oslo/messaging/rpc/dispatcher.py", line 177, in _dispatch
+2015-03-25 23:28:08.748 30066 TRACE oslo.messaging.rpc.dispatcher     return self._do_dispatch(endpoint, method, ctxt, args)
+2015-03-25 23:28:08.748 30066 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/oslo/messaging/rpc/dispatcher.py", line 123, in _do_dispatch
+2015-03-25 23:28:08.748 30066 TRACE oslo.messaging.rpc.dispatcher     result = getattr(endpoint, method)(ctxt, **new_args)
+2015-03-25 23:28:08.748 30066 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/osprofiler/profiler.py", line 105, in wrapper
+2015-03-25 23:28:08.748 30066 TRACE oslo.messaging.rpc.dispatcher     return f(*args, **kwargs)
+2015-03-25 23:28:08.748 30066 TRACE oslo.messaging.rpc.dispatcher   File "/usr/lib/python2.7/site-packages/cinder/volume/manager.py", line 902, in initialize_connection
+2015-03-25 23:28:08.748 30066 TRACE oslo.messaging.rpc.dispatcher     raise exception.VolumeBackendAPIException(data=err_msg)
+2015-03-25 23:28:08.748 30066 TRACE oslo.messaging.rpc.dispatcher VolumeBackendAPIException: Bad or unexpected response from the storage volume backend API: Unable to fetch connection information from backend: Failed to attach iSCSI target for volume 6315084b-58d3-434b-bca8-c85bfc7ffde2.
+2015-03-25 23:28:08.748 30066 TRACE oslo.messaging.rpc.dispatcher
+2015-03-25 23:28:08.753 30066 ERROR oslo.messaging._drivers.common [req-1daa120e-9812-4639-8ed1-261388ec463d 47646590ff9147b8b249b0e4500dcabc 639eb29d61a4492abeb8b4ba6ccf9e20 - - -] Returning exception Bad or unexpected response from the storage volume backend API: Unable to fetch connection information from backend: Failed to attach iSCSI target for volume 6315084b-58d3-434b-bca8-c85bfc7ffde2. to caller
+2015-03-25 23:28:08.753 30066 ERROR oslo.messaging._drivers.common [req-1daa120e-9812-4639-8ed1-261388ec463d 47646590ff9147b8b249b0e4500dcabc 639eb29d61a4492abeb8b4ba6ccf9e20 - - -] ['Traceback (most recent call last):\n', '  File "/usr/lib/python2.7/site-packages/oslo/messaging/rpc/dispatcher.py", line 134, in _dispatch_and_reply\n    incoming.message))\n', '  File "/usr/lib/python2.7/site-packages/oslo/messaging/rpc/dispatcher.py", line 177, in _dispatch\n    return self._do_dispatch(endpoint, method, ctxt, args)\n', '  File "/usr/lib/python2.7/site-packages/oslo/messaging/rpc/dispatcher.py", line 123, in _do_dispatch\n    result = getattr(endpoint, method)(ctxt, **new_args)\n', '  File "/usr/lib/python2.7/site-packages/osprofiler/profiler.py", line 105, in wrapper\n    return f(*args, **kwargs)\n', '  File "/usr/lib/python2.7/site-packages/cinder/volume/manager.py", line 902, in initialize_connection\n    raise exception.VolumeBackendAPIException(data=err_msg)\n', 'VolumeBackendAPIException: Bad or unexpected response from the storage volume backend API: Unable to fetch connection information from backend: Failed to attach iSCSI target for volume 6315084b-58d3-434b-bca8-c85bfc7ffde2.\n']
+2015-03-25 23:28:10.314 30066 INFO cinder.brick.iscsi.iscsi [req-c7313db0-3c0d-4310-a007-1fd2f482dff7 47646590ff9147b8b249b0e4500dcabc 639eb29d61a4492abeb8b4ba6ccf9e20 - - -] Creating iscsi_target for volume: volume-6315084b-58d3-434b-bca8-c85bfc7ffde2
+2015-03-25 23:28:38.454 30066 INFO cinder.volume.manager [-] Updating volume status
+2015-03-25 23:28:38.565 30066 INFO cinder.volume.manager [-] Updating volume replication status.
+
+
+>>> osp6-compute01: journalctl -al --no-pager -f <<<
+Mar 25 23:28:07 osp6-compute01 sudo[6245]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf cat /etc/iscsi/initiatorname.iscsi
+Mar 25 23:28:07 osp6-compute01 sudo[6248]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf systool -c fc_host -v
+Mar 25 23:28:07 osp6-compute01 sudo[6250]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf systool -c fc_host -v
+Mar 25 23:28:08 osp6-compute01 sudo[6252]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 25 23:28:10 osp6-compute01 sudo[6255]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 25 23:28:11 osp6-compute01 sudo[6259]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260
+Mar 25 23:28:11 osp6-compute01 sudo[6262]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --op new
+Mar 25 23:28:11 osp6-compute01 sudo[6265]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --op update -n node.session.auth.authmethod -v CHAP
+Mar 25 23:28:11 osp6-compute01 sudo[6268]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --op update -n node.session.auth.username -v 53LN8wdW5hXPHX5WgGA3
+Mar 25 23:28:11 osp6-compute01 sudo[6271]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --op update -n node.session.auth.password -v rLxAoTHz6k3a6ou9
+Mar 25 23:28:11 osp6-compute01 sudo[6274]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m session
+Mar 25 23:28:11 osp6-compute01 sudo[6277]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --login
+Mar 25 23:28:11 osp6-compute01 kernel: scsi host7: iSCSI Initiator over TCP/IP
+Mar 25 23:28:11 osp6-compute01 kernel: scsi 7:0:0:0: Direct-Access     LIO-ORG  IBLOCK           4.0  PQ: 0 ANSI: 5
+Mar 25 23:28:11 osp6-compute01 kernel: scsi 7:0:0:0: alua: supports implicit and explicit TPGS
+Mar 25 23:28:11 osp6-compute01 kernel: scsi 7:0:0:0: alua: port group 00 rel port 01
+Mar 25 23:28:11 osp6-compute01 kernel: scsi 7:0:0:0: alua: port group 00 state A non-preferred supports TOlUSNA
+Mar 25 23:28:11 osp6-compute01 kernel: scsi 7:0:0:0: alua: Attached
+Mar 25 23:28:11 osp6-compute01 kernel: sd 7:0:0:0: [sda] 2097152 512-byte logical blocks: (1.07 GB/1.00 GiB)
+Mar 25 23:28:11 osp6-compute01 kernel: sd 7:0:0:0: [sda] Write Protect is off
+Mar 25 23:28:11 osp6-compute01 kernel: sd 7:0:0:0: [sda] Mode Sense: 43 00 10 08
+Mar 25 23:28:11 osp6-compute01 kernel: sd 7:0:0:0: [sda] Write cache: enabled, read cache: enabled, supports DPO and FUA
+Mar 25 23:28:11 osp6-compute01 kernel:  sda: sda1
+Mar 25 23:28:11 osp6-compute01 kernel: sd 7:0:0:0: [sda] Attached SCSI disk
+Mar 25 23:28:11 osp6-compute01 sudo[6291]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --op update -n node.startup -v automatic
+Mar 25 23:28:11 osp6-compute01 sudo[6294]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --rescan
+Mar 25 23:28:11 osp6-compute01 sudo[6298]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf brctl addbr qbre8387598-df
+Mar 25 23:28:11 osp6-compute01 systemd-sysctl[6301]: Overwriting earlier assignment of net/bridge/bridge-nf-call-ip6tables in file '/etc/sysctl.d/99-sysctl.conf'.
+Mar 25 23:28:11 osp6-compute01 systemd-sysctl[6301]: Overwriting earlier assignment of net/bridge/bridge-nf-call-iptables in file '/etc/sysctl.d/99-sysctl.conf'.
+Mar 25 23:28:11 osp6-compute01 systemd-sysctl[6301]: Overwriting earlier assignment of net/bridge/bridge-nf-call-arptables in file '/etc/sysctl.d/99-sysctl.conf'.
+Mar 25 23:28:11 osp6-compute01 sudo[6302]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf brctl setfd qbre8387598-df 0
+Mar 25 23:28:11 osp6-compute01 sudo[6305]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf brctl stp qbre8387598-df off
+Mar 25 23:28:11 osp6-compute01 iscsid[32652]: Could not set session6 priority. READ/WRITE throughout and latency could be affected.
+Mar 25 23:28:11 osp6-compute01 iscsid[32652]: Connection6:0 to [target: iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2, portal: 10.0.1.21,3260] through [iface: default] is operational now
+Mar 25 23:28:11 osp6-compute01 sudo[6308]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf tee /sys/class/net/qbre8387598-df/bridge/multicast_snooping
+Mar 25 23:28:11 osp6-compute01 sudo[6311]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf ip link add qvbe8387598-df type veth peer name qvoe8387598-df
+Mar 25 23:28:11 osp6-compute01 systemd-sysctl[6314]: Overwriting earlier assignment of net/bridge/bridge-nf-call-ip6tables in file '/etc/sysctl.d/99-sysctl.conf'.
+Mar 25 23:28:11 osp6-compute01 systemd-sysctl[6314]: Overwriting earlier assignment of net/bridge/bridge-nf-call-iptables in file '/etc/sysctl.d/99-sysctl.conf'.
+Mar 25 23:28:11 osp6-compute01 systemd-sysctl[6314]: Overwriting earlier assignment of net/bridge/bridge-nf-call-arptables in file '/etc/sysctl.d/99-sysctl.conf'.
+Mar 25 23:28:11 osp6-compute01 systemd-sysctl[6315]: Overwriting earlier assignment of net/bridge/bridge-nf-call-ip6tables in file '/etc/sysctl.d/99-sysctl.conf'.
+Mar 25 23:28:11 osp6-compute01 systemd-sysctl[6315]: Overwriting earlier assignment of net/bridge/bridge-nf-call-iptables in file '/etc/sysctl.d/99-sysctl.conf'.
+Mar 25 23:28:11 osp6-compute01 systemd-sysctl[6315]: Overwriting earlier assignment of net/bridge/bridge-nf-call-arptables in file '/etc/sysctl.d/99-sysctl.conf'.
+Mar 25 23:28:11 osp6-compute01 sudo[6316]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf ip link set qvbe8387598-df up
+Mar 25 23:28:11 osp6-compute01 kernel: IPv6: ADDRCONF(NETDEV_UP): qvbe8387598-df: link is not ready
+Mar 25 23:28:11 osp6-compute01 sudo[6319]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf ip link set qvbe8387598-df promisc on
+Mar 25 23:28:12 osp6-compute01 kernel: device qvbe8387598-df entered promiscuous mode
+Mar 25 23:28:12 osp6-compute01 sudo[6322]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf ip link set qvoe8387598-df up
+Mar 25 23:28:12 osp6-compute01 kernel: IPv6: ADDRCONF(NETDEV_CHANGE): qvbe8387598-df: link becomes ready
+Mar 25 23:28:12 osp6-compute01 sudo[6325]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf ip link set qvoe8387598-df promisc on
+Mar 25 23:28:12 osp6-compute01 kernel: device qvoe8387598-df entered promiscuous mode
+Mar 25 23:28:12 osp6-compute01 sudo[6328]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf ip link set qbre8387598-df up
+Mar 25 23:28:12 osp6-compute01 sudo[6331]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf brctl addif qbre8387598-df qvbe8387598-df
+Mar 25 23:28:12 osp6-compute01 kernel: qbre8387598-df: port 1(qvbe8387598-df) entered forwarding state
+Mar 25 23:28:12 osp6-compute01 kernel: qbre8387598-df: port 1(qvbe8387598-df) entered forwarding state
+Mar 25 23:28:12 osp6-compute01 sudo[6334]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf ovs-vsctl --timeout=120 -- --if-exists del-port qvoe8387598-df -- add-port br-int qvoe8387598-df -- set Interface qvoe8387598-df external-ids:iface-id=e8387598-df8f-4be2-9262-fd1c8522ace6 external-ids:iface-status=active external-ids:attached-mac=fa:16:3e:78:cf:b2 external-ids:vm-uuid=8aaaab40-af12-4ce3-9d03-2917d9c76deb
+Mar 25 23:28:12 osp6-compute01 ovs-vsctl[6336]: ovs|00001|vsctl|INFO|Called as /bin/ovs-vsctl --timeout=120 -- --if-exists del-port qvoe8387598-df -- add-port br-int qvoe8387598-df -- set Interface qvoe8387598-df external-ids:iface-id=e8387598-df8f-4be2-9262-fd1c8522ace6 external-ids:iface-status=active external-ids:attached-mac=fa:16:3e:78:cf:b2 external-ids:vm-uuid=8aaaab40-af12-4ce3-9d03-2917d9c76deb
+Mar 25 23:28:12 osp6-compute01 systemd-sysctl[6338]: Overwriting earlier assignment of net/bridge/bridge-nf-call-ip6tables in file '/etc/sysctl.d/99-sysctl.conf'.
+Mar 25 23:28:12 osp6-compute01 systemd-sysctl[6338]: Overwriting earlier assignment of net/bridge/bridge-nf-call-iptables in file '/etc/sysctl.d/99-sysctl.conf'.
+Mar 25 23:28:12 osp6-compute01 systemd-sysctl[6338]: Overwriting earlier assignment of net/bridge/bridge-nf-call-arptables in file '/etc/sysctl.d/99-sysctl.conf'.
+Mar 25 23:28:12 osp6-compute01 kernel: device tape8387598-df entered promiscuous mode
+Mar 25 23:28:12 osp6-compute01 kernel: qbre8387598-df: port 2(tape8387598-df) entered forwarding state
+Mar 25 23:28:12 osp6-compute01 kernel: qbre8387598-df: port 2(tape8387598-df) entered forwarding state
+Mar 25 23:28:12 osp6-compute01 systemd[1]: Starting Virtual Machine qemu-instance-00000016.
+Mar 25 23:28:12 osp6-compute01 systemd[1]: Started Virtual Machine qemu-instance-00000016.
+Mar 25 23:28:12 osp6-compute01 systemd-machined[26544]: New machine qemu-instance-00000016.
+Mar 25 23:28:12 osp6-compute01 sudo[6344]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 25 23:28:12 osp6-compute01 sudo[6347]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-vsctl --timeout=10 list-ports br-int
+Mar 25 23:28:12 osp6-compute01 sudo[6350]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-vsctl --timeout=10 --format=json -- --columns=name,external_ids,ofport list Interface
+Mar 25 23:28:12 osp6-compute01 kernel: qbre8387598-df: port 2(tape8387598-df) entered disabled state
+Mar 25 23:28:12 osp6-compute01 kernel: device tape8387598-df left promiscuous mode
+Mar 25 23:28:12 osp6-compute01 kernel: qbre8387598-df: port 2(tape8387598-df) entered disabled state
+Mar 25 23:28:12 osp6-compute01 avahi-daemon[616]: Withdrawing workstation service for tape8387598-df.
+Mar 25 23:28:12 osp6-compute01 sudo[6354]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-vsctl --timeout=10 list-ports br-int
+Mar 25 23:28:12 osp6-compute01 systemd-machined[26544]: Machine qemu-instance-00000016 terminated.
+Mar 25 23:28:12 osp6-compute01 sudo[6358]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-vsctl --timeout=10 --format=json -- --columns=name,tag list Port
+Mar 25 23:28:12 osp6-compute01 sudo[6361]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf iptables-save -c
+Mar 25 23:28:13 osp6-compute01 sudo[6364]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf iptables-restore -c
+Mar 25 23:28:13 osp6-compute01 sudo[6367]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --op update -n node.startup -v manual
+Mar 25 23:28:13 osp6-compute01 sudo[6368]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ip6tables-save -c
+Mar 25 23:28:13 osp6-compute01 sudo[6373]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --logout
+Mar 25 23:28:13 osp6-compute01 sudo[6374]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ip6tables-restore -c
+Mar 25 23:28:13 osp6-compute01 kernel: sd 7:0:0:0: alua: Detached
+Mar 25 23:28:13 osp6-compute01 kernel: sd 7:0:0:0: [sda] Synchronizing SCSI cache
+Mar 25 23:28:13 osp6-compute01 sudo[6381]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --op delete
+Mar 25 23:28:13 osp6-compute01 sudo[6383]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-vsctl --timeout=10 --format=json -- --columns=external_ids,name,ofport find Interface external_ids:iface-id="e8387598-df8f-4be2-9262-fd1c8522ace6"
+Mar 25 23:28:13 osp6-compute01 sudo[6386]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf systool -c fc_host -v
+Mar 25 23:28:13 osp6-compute01 sudo[6389]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-vsctl --timeout=10 iface-to-br qvoe8387598-df
+Mar 25 23:28:13 osp6-compute01 sudo[6391]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf systool -c fc_host -v
+Mar 25 23:28:13 osp6-compute01 sudo[6394]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl mod-flows br-tun -
+Mar 25 23:28:13 osp6-compute01 sudo[6397]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl add-flows br-tun -
+Mar 25 23:28:13 osp6-compute01 sudo[6400]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-vsctl --timeout=10 get Port qvoe8387598-df tag
+Mar 25 23:28:13 osp6-compute01 sudo[6403]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-vsctl --timeout=10 set Port qvoe8387598-df tag=6
+Mar 25 23:28:13 osp6-compute01 iscsid[32652]: Connection6:0 to [target: iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2, portal: 10.0.1.21,3260] through [iface: default] is shutdown.
+Mar 25 23:28:13 osp6-compute01 avahi-daemon[616]: Registering new address record for fe80::14bb:d4ff:febd:9099 on qvbe8387598-df.*.
+Mar 25 23:28:13 osp6-compute01 ovs-vsctl[6405]: ovs|00001|vsctl|INFO|Called as /bin/ovs-vsctl --timeout=10 set Port qvoe8387598-df tag=6
+Mar 25 23:28:13 osp6-compute01 sudo[6406]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl del-flows br-int -
+Mar 25 23:28:14 osp6-compute01 sudo[6409]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf brctl delif qbre8387598-df qvbe8387598-df
+Mar 25 23:28:14 osp6-compute01 avahi-daemon[616]: Registering new address record for fe80::2472:42ff:fe99:7ef8 on qvoe8387598-df.*.
+Mar 25 23:28:14 osp6-compute01 avahi-daemon[616]: Registering new address record for fe80::40e5:96ff:fed2:a3f7 on qbre8387598-df.*.
+Mar 25 23:28:14 osp6-compute01 kernel: qbre8387598-df: port 1(qvbe8387598-df) entered disabled state
+Mar 25 23:28:14 osp6-compute01 sudo[6412]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf ip link set qbre8387598-df down
+Mar 25 23:28:14 osp6-compute01 avahi-daemon[616]: Withdrawing address record for fe80::40e5:96ff:fed2:a3f7 on qbre8387598-df.
+Mar 25 23:28:14 osp6-compute01 sudo[6415]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf brctl delbr qbre8387598-df
+Mar 25 23:28:14 osp6-compute01 avahi-daemon[616]: Withdrawing workstation service for qbre8387598-df.
+Mar 25 23:28:14 osp6-compute01 sudo[6418]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf ovs-vsctl --timeout=120 -- --if-exists del-port br-int qvoe8387598-df
+Mar 25 23:28:14 osp6-compute01 ovs-vsctl[6420]: ovs|00001|vsctl|INFO|Called as /bin/ovs-vsctl --timeout=120 -- --if-exists del-port br-int qvoe8387598-df
+Mar 25 23:28:14 osp6-compute01 sudo[6421]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf ip link delete qvoe8387598-df
+Mar 25 23:28:14 osp6-compute01 avahi-daemon[616]: Withdrawing address record for fe80::2472:42ff:fe99:7ef8 on qvoe8387598-df.
+Mar 25 23:28:14 osp6-compute01 avahi-daemon[616]: Withdrawing address record for fe80::14bb:d4ff:febd:9099 on qvbe8387598-df.
+Mar 25 23:28:14 osp6-compute01 avahi-daemon[616]: Withdrawing workstation service for qvoe8387598-df.
+Mar 25 23:28:14 osp6-compute01 avahi-daemon[616]: Withdrawing workstation service for qvbe8387598-df.
+Mar 25 23:28:14 osp6-compute01 sudo[6424]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --op update -n node.startup -v manual
+Mar 25 23:28:14 osp6-compute01 sudo[6427]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --logout
+Mar 25 23:28:14 osp6-compute01 sudo[6430]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf iscsiadm -m node -T iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2 -p 10.0.1.21:3260 --op delete
+Mar 25 23:28:14 osp6-compute01 sudo[6432]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 25 23:28:14 osp6-compute01 sudo[6436]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-vsctl --timeout=10 list-ports br-int
+Mar 25 23:28:14 osp6-compute01 sudo[6439]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-vsctl --timeout=10 --format=json -- --columns=name,external_ids,ofport list Interface
+Mar 25 23:28:14 osp6-compute01 sudo[6443]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-vsctl --timeout=10 list-ports br-int
+Mar 25 23:28:14 osp6-compute01 sudo[6446]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-vsctl --timeout=10 --format=json -- --columns=name,tag list Port
+Mar 25 23:28:14 osp6-compute01 sudo[6449]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf iptables-save -c
+Mar 25 23:28:14 osp6-compute01 sudo[6452]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf iptables-restore -c
+Mar 25 23:28:14 osp6-compute01 sudo[6455]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ip6tables-save -c
+Mar 25 23:28:14 osp6-compute01 sudo[6458]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ip6tables-restore -c
+Mar 25 23:28:15 osp6-compute01 sudo[6461]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ipset destroy IPv4a70a0910-362a-4907-9
+Mar 25 23:28:15 osp6-compute01 sudo[6464]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl del-flows br-tun -
+Mar 25 23:28:15 osp6-compute01 auditd[592]: Audit daemon rotating log files
+Mar 25 23:28:15 osp6-compute01 sudo[6467]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl del-flows br-tun -
+
+
+>>> osp6-compute02: journalctl -al --no-pager -f <<<
+
+Mar 25 23:28:07 osp6-compute02 sudo[9423]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf blockdev --getsize64 /dev/disk/by-path/ip-10.0.1.21:3260-iscsi-iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2-lun-0
+Mar 25 23:28:07 osp6-compute02 sudo[9426]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf blockdev --getsize64 /dev/disk/by-path/ip-10.0.1.21:3260-iscsi-iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2-lun-0
+Mar 25 23:28:07 osp6-compute02 sudo[9429]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf blockdev --getsize64 /dev/disk/by-path/ip-10.0.1.21:3260-iscsi-iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2-lun-0
+Mar 25 23:28:07 osp6-compute02 sudo[9432]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 25 23:28:08 osp6-compute02 kernel:  connection4:0: detected conn error (1020)
+Mar 25 23:28:09 osp6-compute02 iscsid[1498]: Kernel reported iSCSI connection 4:0 error (1020 - ISCSI_ERR_TCP_CONN_CLOSE: TCP connection closed) state (3)
+Mar 25 23:28:09 osp6-compute02 sudo[9435]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 25 23:28:11 osp6-compute02 iscsid[1498]: conn 0 login rejected: initiator failed authorization with target
+Mar 25 23:28:11 osp6-compute02 sudo[9438]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 25 23:28:12 osp6-compute02 libvirtd[16008]: NBD in tunnelled migration is currently not supported
+Mar 25 23:28:12 osp6-compute02 sudo[9441]: nova : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/nova-rootwrap /etc/nova/rootwrap.conf blockdev --getsize64 /dev/disk/by-path/ip-10.0.1.21:3260-iscsi-iqn.2010-10.org.openstack:volume-6315084b-58d3-434b-bca8-c85bfc7ffde2-lun-0
+Mar 25 23:28:12 osp6-compute02 libvirtd[16008]: internal error: unable to execute QEMU command 'migrate': this feature or command is not currently supported
+Mar 25 23:28:12 osp6-compute02 libvirtd[16008]: Unable to stop block job on drive-virtio-disk0
+Mar 25 23:28:12 osp6-compute02 libvirtd[16008]: Library function returned error but did not set virError
+Mar 25 23:28:12 osp6-compute02 libvirtd[16008]: Unable to stop block job on drive-virtio-disk0
+Mar 25 23:28:13 osp6-compute02 sudo[9444]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 25 23:28:13 osp6-compute02 nova-compute[9303]: Traceback (most recent call last):
+Mar 25 23:28:13 osp6-compute02 nova-compute[9303]: File "/usr/lib/python2.7/site-packages/eventlet/hubs/poll.py", line 115, in wait
+Mar 25 23:28:13 osp6-compute02 nova-compute[9303]: listener.cb(fileno)
+Mar 25 23:28:13 osp6-compute02 nova-compute[9303]: File "/usr/lib/python2.7/site-packages/eventlet/greenthread.py", line 212, in main
+Mar 25 23:28:13 osp6-compute02 nova-compute[9303]: result = function(*args, **kwargs)
+Mar 25 23:28:13 osp6-compute02 nova-compute[9303]: File "/usr/lib/python2.7/site-packages/nova/virt/libvirt/driver.py", line 5538, in _live_migration
+Mar 25 23:28:13 osp6-compute02 nova-compute[9303]: recover_method(context, instance, dest, block_migration)
+Mar 25 23:28:13 osp6-compute02 nova-compute[9303]: File "/usr/lib/python2.7/site-packages/nova/openstack/common/excutils.py", line 82, in __exit__
+Mar 25 23:28:13 osp6-compute02 nova-compute[9303]: six.reraise(self.type_, self.value, self.tb)
+Mar 25 23:28:13 osp6-compute02 nova-compute[9303]: File "/usr/lib/python2.7/site-packages/nova/virt/libvirt/driver.py", line 5505, in _live_migration
+Mar 25 23:28:13 osp6-compute02 nova-compute[9303]: CONF.libvirt.live_migration_bandwidth)
+Mar 25 23:28:13 osp6-compute02 nova-compute[9303]: File "/usr/lib/python2.7/site-packages/eventlet/tpool.py", line 183, in doit
+Mar 25 23:28:13 osp6-compute02 nova-compute[9303]: result = proxy_call(self._autowrap, f, *args, **kwargs)
+Mar 25 23:28:13 osp6-compute02 nova-compute[9303]: File "/usr/lib/python2.7/site-packages/eventlet/tpool.py", line 141, in proxy_call
+Mar 25 23:28:13 osp6-compute02 nova-compute[9303]: rv = execute(f, *args, **kwargs)
+Mar 25 23:28:13 osp6-compute02 nova-compute[9303]: File "/usr/lib/python2.7/site-packages/eventlet/tpool.py", line 122, in execute
+Mar 25 23:28:13 osp6-compute02 nova-compute[9303]: six.reraise(c, e, tb)
+Mar 25 23:28:13 osp6-compute02 nova-compute[9303]: File "/usr/lib/python2.7/site-packages/eventlet/tpool.py", line 80, in tworker
+Mar 25 23:28:13 osp6-compute02 nova-compute[9303]: rv = meth(*args, **kwargs)
+Mar 25 23:28:13 osp6-compute02 nova-compute[9303]: File "/usr/lib64/python2.7/site-packages/libvirt.py", line 1701, in migrateToURI2
+Mar 25 23:28:13 osp6-compute02 nova-compute[9303]: if ret == -1: raise libvirtError ('virDomainMigrateToURI2() failed', dom=self)
+Mar 25 23:28:13 osp6-compute02 nova-compute[9303]: libvirtError: internal error: unable to execute QEMU command 'migrate': this feature or command is not currently supported
+Mar 25 23:28:13 osp6-compute02 nova-compute[9303]: Removing descriptor: 5
+Mar 25 23:28:14 osp6-compute02 iscsid[1498]: conn 0 login rejected: initiator failed authorization with target
+Mar 25 23:28:15 osp6-compute02 sudo[9447]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 25 23:28:17 osp6-compute02 iscsid[1498]: conn 0 login rejected: initiator failed authorization with target
+Mar 25 23:28:17 osp6-compute02 sudo[9450]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 25 23:28:19 osp6-compute02 iscsid[1498]: conn 0 login rejected: initiator failed authorization with target
+Mar 25 23:28:19 osp6-compute02 sudo[9453]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 25 23:28:21 osp6-compute02 sudo[9457]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 25 23:28:22 osp6-compute02 iscsid[1498]: conn 0 login rejected: initiator failed authorization with target
+Mar 25 23:28:23 osp6-compute02 sudo[9460]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 25 23:28:25 osp6-compute02 iscsid[1498]: conn 0 login rejected: initiator failed authorization with target
+Mar 25 23:28:25 osp6-compute02 sudo[9463]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 25 23:28:27 osp6-compute02 sudo[9466]: neutron : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=/bin/neutron-rootwrap /etc/neutron/rootwrap.conf ovs-ofctl dump-flows br-int table=23
+Mar 25 23:28:28 osp6-compute02 iscsid[1498]: conn 0 login rejected: initiator failed authorization with target
+
+
+>>> osp6-compute01: /var/log/nova/nova-compute.log <<<
+
+2015-03-25 23:28:07.229 6110 INFO nova.virt.libvirt.driver [req-dd9a200a-3045-4a3a-9283-a43027a78186 None] Instance launched has CPU info: {"vendor": "Intel", "model": "SandyBridge", "arch": "x86_64", "features": ["pge", "avx", "clflush", "sep", "syscall", "vme", "tsc", "sse", "xsave", "vmx", "erms", "cmov", "smep", "ssse3", "pat", "lm", "msr", "nx", "fxsr", "sse4.1", "pae", "sse4.2", "pclmuldq", "tsc-deadline", "mmx", "osxsave", "cx8", "mce", "de", "aes", "mca", "pse", "lahf_lm", "popcnt", "apic", "fsgsbase", "f16c", "pni", "rdtscp", "sse2", "ss", "hypervisor", "pcid", "fpu", "cx16", "pse36", "mtrr", "rdrand", "x2apic"], "topology": {"cores": 1, "threads": 1, "sockets": 2}}
+2015-03-25 23:28:07.566 6110 WARNING nova.virt.libvirt.utils [req-dd9a200a-3045-4a3a-9283-a43027a78186 None] systool is not installed
+2015-03-25 23:28:07.622 6110 WARNING nova.virt.libvirt.utils [req-dd9a200a-3045-4a3a-9283-a43027a78186 None] systool is not installed
+2015-03-25 23:28:07.623 6110 WARNING nova.volume.cinder [req-dd9a200a-3045-4a3a-9283-a43027a78186 None] Cinder V1 API is deprecated as of the Juno release, and Nova is still configured to use it. Enable the V2 API in Cinder and set cinder_catalog_info in nova.conf to use it.
+2015-03-25 23:28:12.640 6110 INFO nova.compute.manager [-] [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb] VM Started (Lifecycle Event)
+2015-03-25 23:28:12.823 6110 INFO nova.compute.manager [req-312b371b-853c-4ac3-89f2-9729216feb84 None] [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb] During the sync_power process the instance has moved from host osp6-compute02 to host osp6-compute01
+2015-03-25 23:28:12.888 6110 INFO nova.compute.manager [-] [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb] VM Stopped (Lifecycle Event)
+2015-03-25 23:28:13.056 6110 INFO nova.compute.manager [-] [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb] During the sync_power process the instance has moved from host osp6-compute02 to host osp6-compute01
+2015-03-25 23:28:13.113 6110 AUDIT nova.compute.manager [req-dd9a200a-3045-4a3a-9283-a43027a78186 None] [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb] Detach volume 6315084b-58d3-434b-bca8-c85bfc7ffde2 from mountpoint /dev/vda
+2015-03-25 23:28:13.127 6110 WARNING nova.compute.manager [req-dd9a200a-3045-4a3a-9283-a43027a78186 None] [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb] Detaching volume from unknown instance
+2015-03-25 23:28:13.130 6110 WARNING nova.virt.libvirt.driver [req-dd9a200a-3045-4a3a-9283-a43027a78186 None] During detach_volume, instance disappeared.
+2015-03-25 23:28:13.494 6110 WARNING nova.virt.libvirt.utils [req-dd9a200a-3045-4a3a-9283-a43027a78186 None] systool is not installed
+2015-03-25 23:28:13.575 6110 WARNING nova.virt.libvirt.utils [req-dd9a200a-3045-4a3a-9283-a43027a78186 None] systool is not installed
+2015-03-25 23:28:14.060 6110 WARNING nova.virt.libvirt.driver [-] [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb] During wait destroy, instance disappeared.
+2015-03-25 23:28:14.670 6110 INFO nova.virt.libvirt.driver [req-dd9a200a-3045-4a3a-9283-a43027a78186 None] [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb] Deleting instance files /var/lib/nova/instances/8aaaab40-af12-4ce3-9d03-2917d9c76deb_del
+2015-03-25 23:28:14.671 6110 INFO nova.virt.libvirt.driver [req-dd9a200a-3045-4a3a-9283-a43027a78186 None] [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb] Deletion of /var/lib/nova/instances/8aaaab40-af12-4ce3-9d03-2917d9c76deb_del complete
+
+
+
+>>> osp6-compute02: /var/log/nova/nova-compute.log <<<
+
+2015-03-25 23:28:12.909 9303 ERROR nova.virt.libvirt.driver [-] [instance: 8aaaab40-af12-4ce3-9d03-2917d9c76deb] Live Migration failure: internal error: unable to execute QEMU command 'migrate': this feature or command is not currently supported
