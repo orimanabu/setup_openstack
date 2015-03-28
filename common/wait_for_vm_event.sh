@@ -42,7 +42,20 @@ router=router_${tenant}
 router_id=$(neutron router-list | awk '/'${router}'/ {print $2}')
 router_ns=$(ip netns list | grep qrouter-${router_id})
 
-image=$(nova show ${vm} | awk '/image/ {print $4}')
+novashow=$(nova show ${vm})
+echo "${novashow}" | grep 'volumes_attached.*"id":' > /dev/null 2>&1
+if [ x"$?" = x"0" ]; then
+	# Boot from Cinder Volume
+	vol_id=$(echo "${novashow}" | awk '/volumes_attached/ {print $5}' | sed -e 's/"\(.*\)".*$/\1/')
+	#echo ${vol_id}
+	cshow=$(cinder show ${vol_id})
+	image_id=$(echo "${cshow}" | grep volume_image_metadata | sed -e "s/.*\(u'image_id': u'\([0-9a-z-]*\)'\),.*/\2/")
+	#echo ${image_id}
+	image=$(glance image-show ${image_id} | awk '/name/ {print $4}')
+else
+	image=$(echo "${novashow}" | awk '/image/ {print $4}')
+fi
+
 user=""
 case ${image} in
 cirros)

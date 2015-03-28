@@ -22,6 +22,7 @@ else
 fi
 do_command neutron security-group-rule-create --protocol icmp --direction ingress default
 do_command neutron security-group-rule-create --protocol tcp --port-range-min 22 --port-range-max 22 --direction ingress default
+do_command neutron security-group-rule-create --protocol tcp --port-range-min 3389 --port-range-max 3389 --direction ingress default # RDP
 
 do_command nova keypair-list
 #neutron security-group-rule-list | awk '/ default / {print $2}' | while read id; do echo "=> ${id}"; neutron security-group-rule-show ${id}; done
