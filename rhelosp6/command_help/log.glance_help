@@ -1,0 +1,115 @@
+usage: glance [--version] [-d] [-v] [--get-schema] [--timeout TIMEOUT]
+              [--no-ssl-compression] [-f] [--os-image-url OS_IMAGE_URL]
+              [--os-image-api-version OS_IMAGE_API_VERSION]
+              [--profile HMAC_KEY] [-k] [--os-cert OS_CERT]
+              [--cert-file OS_CERT] [--os-key OS_KEY] [--key-file OS_KEY]
+              [--os-cacert <ca-certificate-file>] [--ca-file OS_CACERT]
+              [--os-username OS_USERNAME] [--os-user-id OS_USER_ID]
+              [--os-user-domain-id OS_USER_DOMAIN_ID]
+              [--os-user-domain-name OS_USER_DOMAIN_NAME]
+              [--os-project-id OS_PROJECT_ID]
+              [--os-project-name OS_PROJECT_NAME]
+              [--os-project-domain-id OS_PROJECT_DOMAIN_ID]
+              [--os-project-domain-name OS_PROJECT_DOMAIN_NAME]
+              [--os-password OS_PASSWORD] [--os-tenant-id OS_TENANT_ID]
+              [--os-tenant-name OS_TENANT_NAME] [--os-auth-url OS_AUTH_URL]
+              [--os-region-name OS_REGION_NAME]
+              [--os-auth-token OS_AUTH_TOKEN]
+              [--os-service-type OS_SERVICE_TYPE]
+              [--os-endpoint-type OS_ENDPOINT_TYPE]
+              <subcommand> ...
+
+Command-line interface to the OpenStack Images API.
+
+Positional arguments:
+  <subcommand>
+    image-create        Create a new image.
+    image-delete        Delete specified image(s).
+    image-download      Download a specific image.
+    image-list          List images you can access.
+    image-show          Describe a specific image.
+    image-update        Update a specific image.
+    member-create       Share a specific image with a tenant.
+    member-delete       Remove a shared image from a tenant.
+    member-list         Describe sharing permissions by image or tenant.
+    help                Display help about this program or one of its
+                        subcommands.
+
+Optional arguments:
+  --version             show program's version number and exit
+  -d, --debug           Defaults to env[GLANCECLIENT_DEBUG].
+  -v, --verbose         Print more verbose output
+  --get-schema          Ignores cached copy and forces retrieval of schema
+                        that generates portions of the help text. Ignored with
+                        API version 1.
+  --timeout TIMEOUT     Number of seconds to wait for a response
+  --no-ssl-compression  Disable SSL compression when using https.
+  -f, --force           Prevent select actions from requesting user
+                        confirmation.
+  --os-image-url OS_IMAGE_URL
+                        Defaults to env[OS_IMAGE_URL].
+  --os-image-api-version OS_IMAGE_API_VERSION
+                        Defaults to env[OS_IMAGE_API_VERSION] or 1.
+  --profile HMAC_KEY    HMAC key to use for encrypting context data for
+                        performance profiling of operation. This key should be
+                        the value of HMAC key configured in osprofiler
+                        middleware in glance, it is specified in paste
+                        configuration file at /etc/glance/api-paste.ini and
+                        /etc/glance/registry-paste.ini. Without key the
+                        profiling will not be triggered even if osprofiler is
+                        enabled on server side.
+  -k, --insecure        Explicitly allow glanceclient to perform "insecure
+                        SSL" (https) requests. The server's certificate will
+                        not be verified against any certificate authorities.
+                        This option should be used with caution.
+  --os-cert OS_CERT     Path of certificate file to use in SSL connection.
+                        This file can optionally be prepended with the private
+                        key.
+  --cert-file OS_CERT   DEPRECATED! Use --os-cert.
+  --os-key OS_KEY       Path of client key to use in SSL connection. This
+                        option is not necessary if your key is prepended to
+                        your cert file.
+  --key-file OS_KEY     DEPRECATED! Use --os-key.
+  --os-cacert <ca-certificate-file>
+                        Path of CA TLS certificate(s) used to verify the
+                        remote server's certificate. Without this option
+                        glance looks for the default system CA certificates.
+  --ca-file OS_CACERT   DEPRECATED! Use --os-cacert.
+  --os-username OS_USERNAME
+                        Defaults to env[OS_USERNAME].
+  --os-user-id OS_USER_ID
+                        Defaults to env[OS_USER_ID].
+  --os-user-domain-id OS_USER_DOMAIN_ID
+                        Defaults to env[OS_USER_DOMAIN_ID].
+  --os-user-domain-name OS_USER_DOMAIN_NAME
+                        Defaults to env[OS_USER_DOMAIN_NAME].
+  --os-project-id OS_PROJECT_ID
+                        Another way to specify tenant ID. This option is
+                        mutually exclusive with --os-tenant-id. Defaults to
+                        env[OS_PROJECT_ID].
+  --os-project-name OS_PROJECT_NAME
+                        Another way to specify tenant name. This option is
+                        mutually exclusive with --os-tenant-name. Defaults to
+                        env[OS_PROJECT_NAME].
+  --os-project-domain-id OS_PROJECT_DOMAIN_ID
+                        Defaults to env[OS_PROJECT_DOMAIN_ID].
+  --os-project-domain-name OS_PROJECT_DOMAIN_NAME
+                        Defaults to env[OS_PROJECT_DOMAIN_NAME].
+  --os-password OS_PASSWORD
+                        Defaults to env[OS_PASSWORD].
+  --os-tenant-id OS_TENANT_ID
+                        Defaults to env[OS_TENANT_ID].
+  --os-tenant-name OS_TENANT_NAME
+                        Defaults to env[OS_TENANT_NAME].
+  --os-auth-url OS_AUTH_URL
+                        Defaults to env[OS_AUTH_URL].
+  --os-region-name OS_REGION_NAME
+                        Defaults to env[OS_REGION_NAME].
+  --os-auth-token OS_AUTH_TOKEN
+                        Defaults to env[OS_AUTH_TOKEN].
+  --os-service-type OS_SERVICE_TYPE
+                        Defaults to env[OS_SERVICE_TYPE].
+  --os-endpoint-type OS_ENDPOINT_TYPE
+                        Defaults to env[OS_ENDPOINT_TYPE].
+
+See "glance help COMMAND" for help on a specific command.

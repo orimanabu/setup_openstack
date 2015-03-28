@@ -1,0 +1,267 @@
+usage: neutron [--version] [-v] [-q] [-h] [-r NUM]
+               [--os-service-type <os-service-type>]
+               [--os-endpoint-type <os-endpoint-type>]
+               [--service-type <service-type>]
+               [--endpoint-type <endpoint-type>]
+               [--os-auth-strategy <auth-strategy>] [--os-auth-url <auth-url>]
+               [--os-tenant-name <auth-tenant-name> | --os-project-name <auth-project-name>]
+               [--os-tenant-id <auth-tenant-id> | --os-project-id <auth-project-id>]
+               [--os-username <auth-username>] [--os-user-id <auth-user-id>]
+               [--os-user-domain-id <auth-user-domain-id>]
+               [--os-user-domain-name <auth-user-domain-name>]
+               [--os-project-domain-id <auth-project-domain-id>]
+               [--os-project-domain-name <auth-project-domain-name>]
+               [--os-cert <certificate>] [--os-cacert <ca-certificate>]
+               [--os-key <key>] [--os-password <auth-password>]
+               [--os-region-name <auth-region-name>] [--os-token <token>]
+               [--http-timeout <seconds>] [--os-url <url>] [--insecure]
+
+Command-line interface to the Neutron APIs
+
+optional arguments:
+  --version             show program's version number and exit
+  -v, --verbose, --debug
+                        Increase verbosity of output and show tracebacks on
+                        errors. You can repeat this option.
+  -q, --quiet           Suppress output except warnings and errors.
+  -h, --help            Show this help message and exit.
+  -r NUM, --retries NUM
+                        How many times the request to the Neutron server
+                        should be retried if it fails.
+  --os-service-type <os-service-type>
+                        Defaults to env[OS_NETWORK_SERVICE_TYPE] or network.
+  --os-endpoint-type <os-endpoint-type>
+                        Defaults to env[OS_ENDPOINT_TYPE] or publicURL.
+  --service-type <service-type>
+                        DEPRECATED! Use --os-service-type.
+  --endpoint-type <endpoint-type>
+                        DEPRECATED! Use --os-endpoint-type.
+  --os-auth-strategy <auth-strategy>
+                        DEPRECATED! Only keystone is supported.
+  --os-auth-url <auth-url>
+                        Authentication URL, defaults to env[OS_AUTH_URL].
+  --os-tenant-name <auth-tenant-name>
+                        Authentication tenant name, defaults to
+                        env[OS_TENANT_NAME].
+  --os-project-name <auth-project-name>
+                        Another way to specify tenant name. This option is
+                        mutually exclusive with --os-tenant-name. Defaults to
+                        env[OS_PROJECT_NAME].
+  --os-tenant-id <auth-tenant-id>
+                        Authentication tenant ID, defaults to
+                        env[OS_TENANT_ID].
+  --os-project-id <auth-project-id>
+                        Another way to specify tenant ID. This option is
+                        mutually exclusive with --os-tenant-id. Defaults to
+                        env[OS_PROJECT_ID].
+  --os-username <auth-username>
+                        Authentication username, defaults to env[OS_USERNAME].
+  --os-user-id <auth-user-id>
+                        Authentication user ID (Env: OS_USER_ID)
+  --os-user-domain-id <auth-user-domain-id>
+                        OpenStack user domain ID. Defaults to
+                        env[OS_USER_DOMAIN_ID].
+  --os-user-domain-name <auth-user-domain-name>
+                        OpenStack user domain name. Defaults to
+                        env[OS_USER_DOMAIN_NAME].
+  --os-project-domain-id <auth-project-domain-id>
+                        Defaults to env[OS_PROJECT_DOMAIN_ID].
+  --os-project-domain-name <auth-project-domain-name>
+                        Defaults to env[OS_PROJECT_DOMAIN_NAME].
+  --os-cert <certificate>
+                        Path of certificate file to use in SSL connection.
+                        This file can optionally be prepended with the private
+                        key. Defaults to env[OS_CERT].
+  --os-cacert <ca-certificate>
+                        Specify a CA bundle file to use in verifying a TLS
+                        (https) server certificate. Defaults to
+                        env[OS_CACERT].
+  --os-key <key>        Path of client key to use in SSL connection. This
+                        option is not necessary if your key is prepended to
+                        your certificate file. Defaults to env[OS_KEY].
+  --os-password <auth-password>
+                        Authentication password, defaults to env[OS_PASSWORD].
+  --os-region-name <auth-region-name>
+                        Authentication region name, defaults to
+                        env[OS_REGION_NAME].
+  --os-token <token>    Authentication token, defaults to env[OS_TOKEN].
+  --http-timeout <seconds>
+                        Timeout in seconds to wait for an HTTP response.
+                        Defaults to env[OS_NETWORK_TIMEOUT] or None if not
+                        specified.
+  --os-url <url>        Defaults to env[OS_URL].
+  --insecure            Explicitly allow neutronclient to perform "insecure"
+                        SSL (https) requests. The server's certificate will
+                        not be verified against any certificate authorities.
+                        This option should be used with caution.
+
+Commands for API v2.0:
+  agent-delete                   Delete a given agent.
+  agent-list                     List agents.
+  agent-show                     Show information of a given agent.
+  agent-update                   Update a given agent.
+  cisco-credential-create        Creates a credential.
+  cisco-credential-delete        Delete a  given credential.
+  cisco-credential-list          List credentials that belong to a given tenant.
+  cisco-credential-show          Show information of a given credential.
+  cisco-network-profile-create   Creates a network profile.
+  cisco-network-profile-delete   Delete a given network profile.
+  cisco-network-profile-list     List network profiles that belong to a given tenant.
+  cisco-network-profile-show     Show information of a given network profile.
+  cisco-network-profile-update   Update network profile's information.
+  cisco-policy-profile-list      List policy profiles that belong to a given tenant.
+  cisco-policy-profile-show      Show information of a given policy profile.
+  cisco-policy-profile-update    Update policy profile's information.
+  complete                       print bash completion command
+  dhcp-agent-list-hosting-net    List DHCP agents hosting a network.
+  dhcp-agent-network-add         Add a network to a DHCP agent.
+  dhcp-agent-network-remove      Remove a network from a DHCP agent.
+  ext-list                       List all extensions.
+  ext-show                       Show information of a given resource.
+  firewall-create                Create a firewall.
+  firewall-delete                Delete a given firewall.
+  firewall-list                  List firewalls that belong to a given tenant.
+  firewall-policy-create         Create a firewall policy.
+  firewall-policy-delete         Delete a given firewall policy.
+  firewall-policy-insert-rule    Insert a rule into a given firewall policy.
+  firewall-policy-list           List firewall policies that belong to a given tenant.
+  firewall-policy-remove-rule    Remove a rule from a given firewall policy.
+  firewall-policy-show           Show information of a given firewall policy.
+  firewall-policy-update         Update a given firewall policy.
+  firewall-rule-create           Create a firewall rule.
+  firewall-rule-delete           Delete a given firewall rule.
+  firewall-rule-list             List firewall rules that belong to a given tenant.
+  firewall-rule-show             Show information of a given firewall rule.
+  firewall-rule-update           Update a given firewall rule.
+  firewall-show                  Show information of a given firewall.
+  firewall-update                Update a given firewall.
+  floatingip-associate           Create a mapping between a floating IP and a fixed IP.
+  floatingip-create              Create a floating IP for a given tenant.
+  floatingip-delete              Delete a given floating IP.
+  floatingip-disassociate        Remove a mapping from a floating IP to a fixed IP.
+  floatingip-list                List floating IPs that belong to a given tenant.
+  floatingip-show                Show information of a given floating IP.
+  gateway-device-create          Create a network gateway device.
+  gateway-device-delete          Delete a given network gateway device.
+  gateway-device-list            List network gateway devices for a given tenant.
+  gateway-device-show            Show information for a given network gateway device.
+  gateway-device-update          Update a network gateway device.
+  help                           print detailed help for another command
+  ipsec-site-connection-create   Create an IPsec site connection.
+  ipsec-site-connection-delete   Delete a given IPsec site connection.
+  ipsec-site-connection-list     List IPsec site connections that belong to a given tenant.
+  ipsec-site-connection-show     Show information of a given IPsec site connection.
+  ipsec-site-connection-update   Update a given IPsec site connection.
+  l3-agent-list-hosting-router   List L3 agents hosting a router.
+  l3-agent-router-add            Add a router to a L3 agent.
+  l3-agent-router-remove         Remove a router from a L3 agent.
+  lb-agent-hosting-pool          Get loadbalancer agent hosting a pool.
+  lb-healthmonitor-associate     Create a mapping between a health monitor and a pool.
+  lb-healthmonitor-create        Create a healthmonitor.
+  lb-healthmonitor-delete        Delete a given healthmonitor.
+  lb-healthmonitor-disassociate  Remove a mapping from a health monitor to a pool.
+  lb-healthmonitor-list          List healthmonitors that belong to a given tenant.
+  lb-healthmonitor-show          Show information of a given healthmonitor.
+  lb-healthmonitor-update        Update a given healthmonitor.
+  lb-member-create               Create a member.
+  lb-member-delete               Delete a given member.
+  lb-member-list                 List members that belong to a given tenant.
+  lb-member-show                 Show information of a given member.
+  lb-member-update               Update a given member.
+  lb-pool-create                 Create a pool.
+  lb-pool-delete                 Delete a given pool.
+  lb-pool-list                   List pools that belong to a given tenant.
+  lb-pool-list-on-agent          List the pools on a loadbalancer agent.
+  lb-pool-show                   Show information of a given pool.
+  lb-pool-stats                  Retrieve stats for a given pool.
+  lb-pool-update                 Update a given pool.
+  lb-vip-create                  Create a vip.
+  lb-vip-delete                  Delete a given vip.
+  lb-vip-list                    List vips that belong to a given tenant.
+  lb-vip-show                    Show information of a given vip.
+  lb-vip-update                  Update a given vip.
+  meter-label-create             Create a metering label for a given tenant.
+  meter-label-delete             Delete a given metering label.
+  meter-label-list               List metering labels that belong to a given tenant.
+  meter-label-rule-create        Create a metering label rule for a given label.
+  meter-label-rule-delete        Delete a given metering label.
+  meter-label-rule-list          List metering labels that belong to a given label.
+  meter-label-rule-show          Show information of a given metering label rule.
+  meter-label-show               Show information of a given metering label.
+  nec-packet-filter-create       Create a packet filter for a given tenant.
+  nec-packet-filter-delete       Delete a given packet filter.
+  nec-packet-filter-list         List packet filters that belong to a given tenant.
+  nec-packet-filter-show         Show information of a given packet filter.
+  nec-packet-filter-update       Update packet filter's information.
+  net-create                     Create a network for a given tenant.
+  net-delete                     Delete a given network.
+  net-external-list              List external networks that belong to a given tenant.
+  net-gateway-connect            Add an internal network interface to a router.
+  net-gateway-create             Create a network gateway.
+  net-gateway-delete             Delete a given network gateway.
+  net-gateway-disconnect         Remove a network from a network gateway.
+  net-gateway-list               List network gateways for a given tenant.
+  net-gateway-show               Show information of a given network gateway.
+  net-gateway-update             Update the name for a network gateway.
+  net-list                       List networks that belong to a given tenant.
+  net-list-on-dhcp-agent         List the networks on a DHCP agent.
+  net-show                       Show information of a given network.
+  net-update                     Update network's information.
+  nuage-netpartition-create      Create a netpartition for a given tenant.
+  nuage-netpartition-delete      Delete a given netpartition.
+  nuage-netpartition-list        List netpartitions that belong to a given tenant.
+  nuage-netpartition-show        Show information of a given netpartition.
+  port-create                    Create a port for a given tenant.
+  port-delete                    Delete a given port.
+  port-list                      List ports that belong to a given tenant.
+  port-show                      Show information of a given port.
+  port-update                    Update port's information.
+  queue-create                   Create a queue.
+  queue-delete                   Delete a given queue.
+  queue-list                     List queues that belong to a given tenant.
+  queue-show                     Show information of a given queue.
+  quota-delete                   Delete defined quotas of a given tenant.
+  quota-list                     List quotas of all tenants who have non-default quota values.
+  quota-show                     Show quotas of a given tenant.
+  quota-update                   Define tenant's quotas not to use defaults.
+  router-create                  Create a router for a given tenant.
+  router-delete                  Delete a given router.
+  router-gateway-clear           Remove an external network gateway from a router.
+  router-gateway-set             Set the external network gateway for a router.
+  router-interface-add           Add an internal network interface to a router.
+  router-interface-delete        Remove an internal network interface from a router.
+  router-list                    List routers that belong to a given tenant.
+  router-list-on-l3-agent        List the routers on a L3 agent.
+  router-port-list               List ports that belong to a given tenant, with specified router.
+  router-show                    Show information of a given router.
+  router-update                  Update router's information.
+  security-group-create          Create a security group.
+  security-group-delete          Delete a given security group.
+  security-group-list            List security groups that belong to a given tenant.
+  security-group-rule-create     Create a security group rule.
+  security-group-rule-delete     Delete a given security group rule.
+  security-group-rule-list       List security group rules that belong to a given tenant.
+  security-group-rule-show       Show information of a given security group rule.
+  security-group-show            Show information of a given security group.
+  security-group-update          Update a given security group.
+  service-provider-list          List service providers.
+  subnet-create                  Create a subnet for a given tenant.
+  subnet-delete                  Delete a given subnet.
+  subnet-list                    List subnets that belong to a given tenant.
+  subnet-show                    Show information of a given subnet.
+  subnet-update                  Update subnet's information.
+  vpn-ikepolicy-create           Create an IKE policy.
+  vpn-ikepolicy-delete           Delete a given IKE policy.
+  vpn-ikepolicy-list             List IKE policies that belong to a tenant.
+  vpn-ikepolicy-show             Show information of a given IKE policy.
+  vpn-ikepolicy-update           Update a given IKE policy.
+  vpn-ipsecpolicy-create         Create an IPsec policy.
+  vpn-ipsecpolicy-delete         Delete a given IPsec policy.
+  vpn-ipsecpolicy-list           List ipsecpolicies that belongs to a given tenant connection.
+  vpn-ipsecpolicy-show           Show information of a given IPsec policy.
+  vpn-ipsecpolicy-update         Update a given IPsec policy.
+  vpn-service-create             Create a VPN service.
+  vpn-service-delete             Delete a given VPN service.
+  vpn-service-list               List VPN service configurations that belong to a given tenant.
+  vpn-service-show               Show information of a given VPN service.
+  vpn-service-update             Update a given VPN service.
