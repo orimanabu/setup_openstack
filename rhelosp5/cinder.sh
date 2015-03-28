@@ -93,4 +93,11 @@ delete)
 	source ~/keystonerc ${tenant}
 	do_command cinder delete ${name}
 	;;
+force-delete)
+	if [ x"${name}" == x"" ]; then
+		usage
+	fi
+	vol_id=$(cinder list | awk '/'${name}'/ {print $2}')
+	mysql -uroot -pmysql cinder -e "update volumes set status='available', attach_status='detached', mountpoint=NULL, instance_uuid=NULL where id='${vol_id}'"
+	;;
 esac

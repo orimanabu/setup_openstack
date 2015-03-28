@@ -139,7 +139,7 @@ floatingip-associate)
 	if [ x"${vm}" == x"" -o x"${fip}" == x"" ]; then
 		usage
 	fi
-	source ${gittop}/keystonerc ${tenant}
+	source ~/keystonerc ${tenant}
 	vmaddr=$(nova show ${vm} | awk '/network/ {print $5}')
 	portid=$(neutron port-list | awk '/'${vmaddr}'/ {print $2}')
 	echo "* vmaddr: ${vmaddr}"

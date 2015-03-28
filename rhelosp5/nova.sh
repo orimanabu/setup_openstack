@@ -111,10 +111,14 @@ boot_from_volume)
 	if [ x"${vm}" == x"" -o x"${volume}" == x"" -o x"${size}" == x"" ]; then
 		usage
 	fi
+	do_command date
+	do_command targetcli ls
 	do_command cinder create --image-id $(glance image-list | awk '/'${image}'/ {print $2}') --display-name ${volume} ${size}
 	clist=$(cinder list)
 	vol_id=$(echo "${clist}" | awk '/'${volume}'/ {print $2}')
 	echo "* volume_id: ${vol_id}"
 	#do_command nova boot --flavor $(nova flavor-list | awk '/'${flavor}'/ {print $2}') --block-device-mapping vda=${vol_id}:::0 --key-name ${key} ${vm}
 	do_command nova boot --flavor ${flavor} --key-name ${key} --nic net-id=$(neutron net-list | awk '/'${net}'/ {print $2}') --block-device-mapping vda=${vol_id}:::0 ${vm}
+	sleep 3
+	do_command targetcli ls
 esac
