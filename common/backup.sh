@@ -27,5 +27,5 @@ if [ -x /usr/sbin/pcs ]; then
 fi
 
 if [ -x /usr/bin/mongo ]; then
-	${pwd}/mongo_stat.sh 2>&1 | xz -c > ${backupdir}/mongo_stat.xz
+	${pwd}/mongo_stat.sh 2>&1 | xz -c > ${backupdir}/mongo_stat-${host}.xz
 fi
