@@ -18,7 +18,9 @@ nova keypair-list | grep ${keyname} > /dev/null 2>&1
 if [ x"$?" = x"0" ]; then
 	echo "keyname:${sshkey} exists, skip..."
 else
-	do_command nova keypair-add --pub-key /root/.ssh/id_rsa.pub sshkey
+	pubkey=/root/.ssh/id_rsa.pub
+	test -f ${pubkey} || pubkey=/root/.ssh/id_dsa.pub
+	do_command nova keypair-add --pub-key ${pubkey} sshkey
 fi
 do_command neutron security-group-rule-create --protocol icmp --direction ingress default
 do_command neutron security-group-rule-create --protocol tcp --port-range-min 22 --port-range-max 22 --direction ingress default
