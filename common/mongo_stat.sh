@@ -1,5 +1,11 @@
 #!/bin/bash
 
+export LANG=C
+
+#backupdir=/root/backup
+#prefix="mongo-backup-${host}"
+#mkdir -p ${backupdir}
+
 dbs=$(echo -e "show dbs" | mongo)
 echo "=> dbs"
 echo "${dbs}" | sed -e 's/^/  /'
@@ -17,4 +23,12 @@ for db in $(echo "${dbs}" | awk '/GB$/ {print $1}'); do
 			mongo ${db} --eval "printjson(db.${coll}.stats())"
 		done
 	fi
+
+	echo "==> ${db}:logs"
+	logs=$(echo -e "show logs" | mongo ${db} | sed -e '1,2d' -e '$d')
+	echo "${logs}" | sed -e 's/^/  /'
+	for log in ${logs}; do
+		echo "===> ${db}:${log}"
+		echo -e "show log ${log}" | mongo ${db}
+	done
 done
