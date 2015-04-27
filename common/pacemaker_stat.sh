@@ -32,3 +32,7 @@ pcs cluster corosync --full | xz -c > ${backupdir}/${prefix}-pcs_cluster_corosyn
 
 pcs config backup --force ${backupdir}/${prefix}-pcs_config_backup
 pcs cluster report --force ${backupdir}/${prefix}-pcs_report
+
+corosync-cfgtool -s | xz -c > ${backupdir}/${prefix}-corosync-cfgtool-${host}.xz
+corosync-cmapctl | xz -c > ${backupdir}/${prefix}-corosync-cmapctl-${host}.xz
+crm_simulate -sL | xz -c > ${backupdir}/${prefix}-crm_simulate-${host}.xz

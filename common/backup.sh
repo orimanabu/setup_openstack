@@ -22,7 +22,7 @@ if [ -f ${osp_installer_answerfile} ]; then
 	PGPASSWORD=${password} pg_dump -h localhost -U foreman | xz -c > ${backupdir}/pg_dump-${host}.sql.xz
 fi
 
-if [ -x /usr/sbin/pcs ]; then
+if [ -x /usr/sbin/pcs -a -x /usr/sbin/corosync-cfgtool -a -x /usr/sbin/corosync-cmapctl -a -x /usr/sbin/crm_simulate ]; then
 	${pwd}/pacemaker_stat.sh
 fi
 
