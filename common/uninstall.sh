@@ -2,13 +2,13 @@
 
 yum remove -y puppet "*openstack*" "*nova*" "*keystone*" "*glance*" "*cinder*" "*swift*" "*nagios*" "*heat*" "*ceilometer*"
 yum remove -y openvswitch "*memcache*" nrpe "*dnsmasq*" "*qemu*" "*libvirt*"
-yum remove -y "*rabbitmq*" "*oslo-*" "*mongodb*" "*rubygem*" "*mariadb*" "*mysql*"
+yum remove -y "*rabbitmq*" "*oslo-*" "*mongodb*" "*rubygem*" "*mariadb*" "*mysql*" "*redis*"
 
 libdir=/root/backup/lib; mkdir -p ${libdir}
 etcdir=/root/backup/etc; mkdir -p ${etcdir}
 logdir=/root/backup/log; mkdir -p ${logdir}
 
-for i in nova neutron cinder glance keystone swift nagios heat ceilometer mongodb mysql puppet rabbitomq openvswitch libvirt; do
+for i in nova neutron cinder glance keystone swift nagios heat ceilometer mongodb mysql puppet rabbitomq openvswitch libvirt redis; do
 	echo "=> ${i}"
 	if [ -d /var/lib/${i} ]; then
 		mv /var/lib/${i} ${libdir}/
