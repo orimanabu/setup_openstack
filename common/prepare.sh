@@ -6,13 +6,13 @@ if [ x"$#" != x"1" ]; then
 fi
 tenant=$1; shift
 source subr.sh
-rcfile=~/keystonerc
+rcfile=~/keystonerc_${tenant}
 keyname=sshkey
 
 echo "* rcfile: ${rcfile}"
 echo "* tenant: ${tenant}"
 
-source ${rcfile} ${tenant}
+source ${rcfile}
 
 nova keypair-list | grep ${keyname} > /dev/null 2>&1
 if [ x"$?" = x"0" ]; then

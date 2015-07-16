@@ -73,7 +73,7 @@ if [ x"${region}" == x"" -o x"${tenant}" = x"" ]; then
 	echo "no region nor tenant specified."
 	usage
 fi
-source ${rcfile} ${tenant}
+source ${rcfile}_${tenant}
 
 echo "* rcfile:	${rcfile}"
 echo "* region:	${region}"

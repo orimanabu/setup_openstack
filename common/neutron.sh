@@ -88,23 +88,23 @@ fi
 
 case ${op} in
 delete-provisioned-demo)
-	source /root/keystonerc admin
+	source /root/keystonerc_admin
 	$0 -n private -s private_subnet -p public -r router1 delete
 	neutron net-delete public
 	;;
 external-create)
-	source /root/keystonerc admin
+	source /root/keystonerc_admin
 	do_command neutron net-create ${public_network} --router:external True
 	do_command neutron subnet-create ${public_network} 172.16.99.0/24 --name ${public_network}_subnet --disable-dhcp --gateway 172.16.99.254 --allocation-pool start=172.16.99.100,end=172.16.99.199
 	;;
 create)
-	source /root/keystonerc admin
+	source /root/keystonerc_admin
 	extra_options=""
 	if [ x"${ha}" = x"1" ]; then
 		extra_options="--ha True"
 	fi
 	do_command neutron router-create --tenant-id $(keystone tenant-list | awk '/'${tenant}'/ {print $2}') ${extra_options} ${router}
-	source /root/keystonerc ${tenant}
+	source /root/keystonerc_${tenant}
 	do_command neutron router-gateway-set $(neutron router-list | awk '/'${router}'/ {print $2}') $(neutron net-list | awk '/'${public_network}'/ {print $2}')
 	do_command neutron net-create ${network}
 	do_command neutron subnet-create ${network} ${cidr} --name ${subnet} --enable_dhcp True --gateway ${gateway} --allocation-pool start=${pool_start},end=${pool_end}
@@ -121,11 +121,11 @@ floatingip-create)
 	if [ x"${network}" == x"" ]; then
 		usage
 	fi
-	source ${gittop}/keystonerc admin
+	source ${gittop}/keystonerc_admin
 	do_command neutron floatingip-create --tenant-id $(keystone tenant-list | awk '/'${tenant}'/ {print $2}') ${network}
 	;;
 floatingip-create-and-associate)
-	source /root/keystonerc ${tenant}
+	source /root/keystonerc_${tenant}
 	echo "* vm: ${vm}"
 	vmaddr=$(nova show ${vm} | awk '/network/ {print $5}')
 	port_id=$(neutron port-list | awk '/'${vmaddr}'/ {print $2}')
@@ -139,7 +139,7 @@ floatingip-associate)
 	if [ x"${vm}" == x"" -o x"${fip}" == x"" ]; then
 		usage
 	fi
-	source ~/keystonerc ${tenant}
+	source ~/keystonerc_${tenant}
 	vmaddr=$(nova show ${vm} | awk '/network/ {print $5}')
 	portid=$(neutron port-list | awk '/'${vmaddr}'/ {print $2}')
 	echo "* vmaddr: ${vmaddr}"
@@ -152,7 +152,7 @@ floatingip-disassociate)
 	if [ x"${vm}" == x"" -a x"${fip}" == x"" ]; then
 		usage
 	fi
-	source ~/keystonerc ${tenant}
+	source ~/keystonerc_${tenant}
 	if [ x"${fip}" == x"" ]; then
 		echo "* vm: ${vm}"
 		fip=$(nova list | sed -e '1,3d' | awk '/'${vm}'/ {print $13}')
@@ -166,7 +166,7 @@ floatingip-disassociate-and-delete)
 	if [ x"${vm}" == x"" -a x"${fip}" == x"" ]; then
 		usage
 	fi
-	source ~/keystonerc ${tenant}
+	source ~/keystonerc_${tenant}
 	if [ x"${fip}" == x"" ]; then
 		echo "* vm: ${vm}"
 		fip=$(nova list | sed -e '1,3d' | awk '/'${vm}'/ {print $13}')
@@ -181,14 +181,14 @@ floatingip-delete)
 	if [ x"${fip}" == x"" ]; then
 		usage
 	fi
-	source ~/keystonerc ${tenant}
+	source ~/keystonerc_${tenant}
 	ipid=$(neutron floatingip-list | awk '/'${fip}'/ {print $2}')
 	echo "* floating ip: ${fip}"
 	echo "* floatingip id: ${ipid}"
 	do_command neutron floatingip-delete ${ipid}
 	;;
 floatingip-delete-all)
-	source ~/keystonerc ${tenant}
+	source ~/keystonerc_${tenant}
 	neutron floatingip-list | sed -e '1,3d' | grep -v '^[-+]*$' | awk '{print $2}' | while read id; do
 		do_command neutron floatingip-delete ${id}
 	done

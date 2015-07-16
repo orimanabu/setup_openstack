@@ -1,7 +1,7 @@
 #!/bin/bash
 
 source subr.sh
-source ~/keystonerc admin
+source ~/keystonerc_admin
 
 if [ x"$#" != x"4" ]; then
         echo "$0 tenant role user password"
