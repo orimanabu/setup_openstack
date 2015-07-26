@@ -95,7 +95,8 @@ delete-provisioned-demo)
 external-create)
 	source /root/keystonerc_admin
 	#do_command neutron net-create public --provider:network_type flat --provider:physical_network --physnet-external --router:external=True
-	do_command neutron net-create ${public_network} --provider:network_type flat --provider:physical_network physnet-external --router:external=True
+	#do_command neutron net-create ${public_network} --provider:network_type flat --provider:physical_network physnet-external --router:external=True
+	do_command neutron net-create ${public_network} --provider:network_type flat --provider:physical_network physnet-external --router:external
 	#do_command neutron net-create ${public_network} --router:external True
 	do_command neutron subnet-create ${public_network} 172.16.99.0/24 --name ${public_network}_subnet --disable-dhcp --gateway 172.16.99.254 --allocation-pool start=172.16.99.100,end=172.16.99.199
 	;;

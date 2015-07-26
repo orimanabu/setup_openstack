@@ -3,35 +3,66 @@
 source ./subr.sh
 source ~/keystonerc_admin
 
-format=qcow2
-if [ x"$1" = x"raw" ]; then
-	format=raw
-fi
-
 region=RegionOne
+format=qcow2
+images=cirros
+tenant=demo
 
-echo "=> fetching cirros"
-version=0.3.4
+while getopts "t:i:f:" o; do
+	case ${o} in
+	i)
+		images=${OPTARG}
+		;;
+	f)
+		format=${OPTARG}
+		;;
+	t)
+		tenant=${OPTARG}
+		;;
+	*)
+		echo "unknown option: ${o}"
+		usage
+		;;
+	esac
+done
+shift $((OPTIND - 1))
+
+echo "format: ${format}"
+echo "images: ${images}"
+echo "tenant: ${tenant}"
+
 imagedir=./images
-cirrosimg=cirros-${version}-x86_64-disk.img
-cirros=${imagedir}/${cirrosimg}
-mkdir -p ${imagedir}
-if [ ! -f ${cirros} ]; then
-	(cd ${imagedir} && curl -O -k -L "http://download.cirros-cloud.net/${version}/${cirrosimg}")
-fi
 
-echo "=> fetching RHEL7 guest image"
-package=rhel-guest-image-7
-rpm -q ${package} || yum install -y rhel-guest-image-7
-#rhel7=$(find /usr/share/rhel-guest-image-7 -type f | grep 'x86_64$')
-rhel7=$(find /usr/share/rhel-guest-image-7 | grep 'qcow2$')
+echo "=> fetching images"
+for name in $(echo ${images} | tr ',' ' '); do
+	echo "==> fetch: ${name}"
+	case ${name} in
+	cirros)
+		cirros_version=0.3.4
+		cirrosimg=cirros-${cirros_version}-x86_64-disk.img
+		cirros=${imagedir}/${cirrosimg}
+		mkdir -p ${imagedir}
+		if [ ! -f ${cirros} ]; then
+			(cd ${imagedir} && curl -O -k -L "http://download.cirros-cloud.net/${cirros_version}/${cirrosimg}")
+		fi
+		;;
+	rhel7)
+		package=rhel-guest-image-7
+		rpm -q ${package} || yum install -y rhel-guest-image-7
+		#rhel7=$(find /usr/share/rhel-guest-image-7 -type f | grep 'x86_64$')
+		rhel7=$(find /usr/share/rhel-guest-image-7 | grep 'qcow2$')
+		;;
+	*)
+		echo "unknown image: ${name}"
+		exit 1
+	esac
+done
 
 source ~/keystonerc_admin
 
 echo "=> importing to Glance"
-for name in cirros rhel7; do
-#for name in cirros; do
-	echo "==> ${name}"
+for name in $(echo ${images} | tr ',' ' '); do
+	echo "==> import: ${name}"
 	image=$(eval echo '$'${name})
 	if [ x"$format" = x"raw" ]; then
 		echo "=> converting images from qcow2 to raw"
