@@ -1,0 +1,151 @@
+usage: heat [--version] [-d] [-v] [--api-timeout API_TIMEOUT]
+            [--os-no-client-auth] [--heat-url HEAT_URL]
+            [--heat-api-version HEAT_API_VERSION] [--include-password] [-k]
+            [--os-cert OS_CERT] [--cert-file OS_CERT] [--os-key OS_KEY]
+            [--key-file OS_KEY] [--os-cacert <ca-certificate-file>]
+            [--ca-file OS_CACERT] [--os-username OS_USERNAME]
+            [--os-user-id OS_USER_ID] [--os-user-domain-id OS_USER_DOMAIN_ID]
+            [--os-user-domain-name OS_USER_DOMAIN_NAME]
+            [--os-project-id OS_PROJECT_ID]
+            [--os-project-name OS_PROJECT_NAME]
+            [--os-project-domain-id OS_PROJECT_DOMAIN_ID]
+            [--os-project-domain-name OS_PROJECT_DOMAIN_NAME]
+            [--os-password OS_PASSWORD] [--os-tenant-id OS_TENANT_ID]
+            [--os-tenant-name OS_TENANT_NAME] [--os-auth-url OS_AUTH_URL]
+            [--os-region-name OS_REGION_NAME] [--os-auth-token OS_AUTH_TOKEN]
+            [--os-service-type OS_SERVICE_TYPE]
+            [--os-endpoint-type OS_ENDPOINT_TYPE] [--profile HMAC_KEY]
+            <subcommand> ...
+
+Command-line interface to the Heat API.
+
+Positional arguments:
+  <subcommand>
+    action-check        Check that stack resources are in expected states.
+    action-resume       Resume the stack.
+    action-suspend      Suspend the stack.
+    build-info          Retrieve build information.
+    config-create       Create a software configuration.
+    config-delete       Delete software configurations.
+    config-show         View details of a software configuration.
+    deployment-create
+    deployment-delete   Delete software deployments.
+    deployment-metadata-show
+                        Get deployment configuration metadata for the
+                        specified server.
+    deployment-output-show
+                        Show a specific stack output.
+    deployment-show     Show the details of a software deployment.
+    event               DEPRECATED! Use event-show instead.
+    event-list          List events for a stack.
+    event-show          Describe the event.
+    hook-clear          Clear hooks on a given stack.
+    hook-poll           List resources with pending hook for a stack.
+    output-list         Show available outputs.
+    output-show         Show a specific stack output.
+    resource-list       Show list of resources belonging to a stack.
+    resource-metadata   List resource metadata.
+    resource-show       Describe the resource.
+    resource-signal     Send a signal to a resource.
+    resource-template   DEPRECATED! Use resource-type-template instead.
+    resource-type-list  List the available resource types.
+    resource-type-show  Show the resource type.
+    resource-type-template
+                        Generate a template based on a resource type.
+    service-list        List the Heat engines.
+    snapshot-delete     Delete a snapshot of a stack.
+    snapshot-list       List the snapshots of a stack.
+    snapshot-show       Show a snapshot of a stack.
+    stack-abandon       Abandon the stack.
+    stack-adopt         Adopt a stack.
+    stack-cancel-update
+                        Cancel currently running update of the stack.
+    stack-create        Create the stack.
+    stack-delete        Delete the stack(s).
+    stack-list          List the user's stacks.
+    stack-preview       Preview the stack.
+    stack-restore       Restore a snapshot of a stack.
+    stack-show          Describe the stack.
+    stack-snapshot      Make a snapshot of a stack.
+    stack-update        Update the stack.
+    template-show       Get the template for the specified stack.
+    template-validate   Validate a template with parameters.
+    bash-completion     Prints all of the commands and options to stdout.
+    help                Display help about this program or one of its
+                        subcommands.
+
+Optional arguments:
+  --version             Shows the client version and exits.
+  -d, --debug           Defaults to env[HEATCLIENT_DEBUG].
+  -v, --verbose         Print more verbose output.
+  --api-timeout API_TIMEOUT
+                        Number of seconds to wait for an API response,
+                        defaults to system socket timeout
+  --os-no-client-auth   Do not contact keystone for a token. Defaults to
+                        env[OS_NO_CLIENT_AUTH].
+  --heat-url HEAT_URL   Defaults to env[HEAT_URL].
+  --heat-api-version HEAT_API_VERSION
+                        Defaults to env[HEAT_API_VERSION] or 1.
+  --include-password    Send os-username and os-password to heat.
+  -k, --insecure        Explicitly allow heatclient to perform "insecure SSL"
+                        (https) requests. The server's certificate will not be
+                        verified against any certificate authorities. This
+                        option should be used with caution.
+  --os-cert OS_CERT     Path of certificate file to use in SSL connection.
+                        This file can optionally be prepended with the private
+                        key.
+  --cert-file OS_CERT   DEPRECATED! Use --os-cert.
+  --os-key OS_KEY       Path of client key to use in SSL connection. This
+                        option is not necessary if your key is prepended to
+                        your cert file.
+  --key-file OS_KEY     DEPRECATED! Use --os-key.
+  --os-cacert <ca-certificate-file>
+                        Path of CA TLS certificate(s) used to verify the
+                        remote server's certificate. Without this option
+                        glance looks for the default system CA certificates.
+  --ca-file OS_CACERT   DEPRECATED! Use --os-cacert.
+  --os-username OS_USERNAME
+                        Defaults to env[OS_USERNAME].
+  --os-user-id OS_USER_ID
+                        Defaults to env[OS_USER_ID].
+  --os-user-domain-id OS_USER_DOMAIN_ID
+                        Defaults to env[OS_USER_DOMAIN_ID].
+  --os-user-domain-name OS_USER_DOMAIN_NAME
+                        Defaults to env[OS_USER_DOMAIN_NAME].
+  --os-project-id OS_PROJECT_ID
+                        Another way to specify tenant ID. This option is
+                        mutually exclusive with --os-tenant-id. Defaults to
+                        env[OS_PROJECT_ID].
+  --os-project-name OS_PROJECT_NAME
+                        Another way to specify tenant name. This option is
+                        mutually exclusive with --os-tenant-name. Defaults to
+                        env[OS_PROJECT_NAME].
+  --os-project-domain-id OS_PROJECT_DOMAIN_ID
+                        Defaults to env[OS_PROJECT_DOMAIN_ID].
+  --os-project-domain-name OS_PROJECT_DOMAIN_NAME
+                        Defaults to env[OS_PROJECT_DOMAIN_NAME].
+  --os-password OS_PASSWORD
+                        Defaults to env[OS_PASSWORD].
+  --os-tenant-id OS_TENANT_ID
+                        Defaults to env[OS_TENANT_ID].
+  --os-tenant-name OS_TENANT_NAME
+                        Defaults to env[OS_TENANT_NAME].
+  --os-auth-url OS_AUTH_URL
+                        Defaults to env[OS_AUTH_URL].
+  --os-region-name OS_REGION_NAME
+                        Defaults to env[OS_REGION_NAME].
+  --os-auth-token OS_AUTH_TOKEN
+                        Defaults to env[OS_AUTH_TOKEN].
+  --os-service-type OS_SERVICE_TYPE
+                        Defaults to env[OS_SERVICE_TYPE].
+  --os-endpoint-type OS_ENDPOINT_TYPE
+                        Defaults to env[OS_ENDPOINT_TYPE].
+  --profile HMAC_KEY    HMAC key to use for encrypting context data for
+                        performance profiling of operation. This key should be
+                        the value of HMAC key configured in osprofiler
+                        middleware in heat, it is specified in the paste
+                        configuration (/etc/heat/api-paste.ini). Without the
+                        key, profiling will not be triggered even if
+                        osprofiler is enabled on server side.
+
+See "heat help COMMAND" for help on a specific command.

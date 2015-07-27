@@ -1,0 +1,138 @@
+usage: manila [--version] [-d] [--os-cache] [--os-reset-cache]
+              [--os-username <auth-user-name>] [--os-password <auth-password>]
+              [--os-tenant-name <auth-tenant-name>]
+              [--os-tenant-id <auth-tenant-id>] [--os-auth-url <auth-url>]
+              [--os-region-name <region-name>] [--service-type <service-type>]
+              [--service-name <service-name>]
+              [--share-service-name <share-service-name>]
+              [--endpoint-type <endpoint-type>]
+              [--os-share-api-version <compute-api-ver>]
+              [--os-cacert <ca-certificate>] [--retries <retries>]
+              <subcommand> ...
+
+Command-line interface to the OpenStack Manila API.
+
+Positional arguments:
+  <subcommand>
+    absolute-limits     Print a list of absolute limits for a user.
+    access-allow        Allow access to the share.
+    access-deny         Deny access to a share.
+    access-list         Show access list for share.
+    create              Creates a new share (NFS, CIFS, GlusterFS or HDFS).
+    credentials         Show user credentials returned from auth.
+    delete              Remove one or more shares.
+    endpoints           Discover endpoints that get returned from the
+                        authenticate services.
+    extra-specs-list    Print a list of current 'share types and extra specs'
+                        (Admin Only).
+    force-delete        Attempt force-delete of share, regardless of state.
+    list                List NAS shares with filters.
+    manage              Manage share not handled by Manila.
+    metadata            Set or delete metadata on a share.
+    metadata-show       Show metadata of given share.
+    metadata-update-all
+                        Update all metadata of a share.
+    pool-list           List all backend storage pools known to the scheduler
+                        (Admin only).
+    quota-class-show    List the quotas for a quota class.
+    quota-class-update  Update the quotas for a quota class.
+    quota-defaults      List the default quotas for a tenant.
+    quota-delete        Delete quota for a tenant/user. The quota will revert
+                        back to default.
+    quota-show          List the quotas for a tenant/user.
+    quota-update        Update the quotas for a tenant/user.
+    rate-limits         Print a list of rate limits for a user.
+    reset-state         Explicitly update the state of a share.
+    security-service-create
+                        Create security service used by tenant.
+    security-service-delete
+                        Delete security service.
+    security-service-list
+                        Get a list of security services.
+    security-service-show
+                        Show security service.
+    security-service-update
+                        Update security service.
+    service-list        List all services.
+    share-network-create
+                        Create description for network used by the tenant.
+    share-network-delete
+                        Delete share network.
+    share-network-list  Get a list of network info.
+    share-network-security-service-add
+                        Associate security service with share network.
+    share-network-security-service-list
+                        Get list of security services associated with a given
+                        share network.
+    share-network-security-service-remove
+                        Dissociate security service from share network.
+    share-network-show  Get a description for network used by the tenant.
+    share-network-update
+                        Update share network data.
+    share-server-delete
+                        Delete share server.
+    share-server-details
+                        Show share server details.
+    share-server-list   List all share servers.
+    share-server-show   Show share server info.
+    show                Show details about a NAS share.
+    snapshot-create     Add a new snapshot.
+    snapshot-delete     Remove a snapshot.
+    snapshot-force-delete
+                        Attempt force-delete of snapshot, regardless of state.
+    snapshot-list       List all the snapshots.
+    snapshot-rename     Rename a snapshot.
+    snapshot-reset-state
+                        Explicitly update the state of a snapshot.
+    snapshot-show       Show details about a snapshot.
+    type-access-add     Adds share type access for the given project.
+    type-access-list    Print access information about the given share type.
+    type-access-remove  Removes share type access for the given project.
+    type-create         Create a new share type.
+    type-delete         Delete a specific share type.
+    type-key            Set or unset extra_spec for a share type.
+    type-list           Print a list of available 'share types'.
+    unmanage            Unmanage share.
+    update              Rename a share.
+    bash-completion     Print arguments for bash_completion. Prints all of the
+                        commands and options to stdout so that the
+                        manila.bash_completion script doesn't have to hard
+                        code them.
+    help                Display help about this program or one of its
+                        subcommands.
+    list-extensions     List all the os-api extensions that are available.
+
+Optional arguments:
+  --version             show program's version number and exit
+  -d, --debug           Print debugging output.
+  --os-cache            Use the auth token cache. Defaults to env[OS_CACHE].
+  --os-reset-cache      Delete cached password and auth token.
+  --os-username <auth-user-name>
+                        Defaults to env[OS_USERNAME].
+  --os-password <auth-password>
+                        Defaults to env[OS_PASSWORD].
+  --os-tenant-name <auth-tenant-name>
+                        Defaults to env[OS_TENANT_NAME].
+  --os-tenant-id <auth-tenant-id>
+                        Defaults to env[OS_TENANT_ID].
+  --os-auth-url <auth-url>
+                        Defaults to env[OS_AUTH_URL].
+  --os-region-name <region-name>
+                        Defaults to env[OS_REGION_NAME].
+  --service-type <service-type>
+                        Defaults to compute for most actions.
+  --service-name <service-name>
+                        Defaults to env[MANILA_SERVICE_NAME].
+  --share-service-name <share-service-name>
+                        Defaults to env[MANILA_share_service_name].
+  --endpoint-type <endpoint-type>
+                        Defaults to env[MANILA_ENDPOINT_TYPE] or publicURL.
+  --os-share-api-version <compute-api-ver>
+                        Accepts 1 or 2, defaults to env[OS_SHARE_API_VERSION].
+  --os-cacert <ca-certificate>
+                        Specify a CA bundle file to use in verifying a TLS
+                        (https) server certificate. Defaults to
+                        env[OS_CACERT].
+  --retries <retries>   Number of retries.
+
+See "manila help COMMAND" for help on a specific command.

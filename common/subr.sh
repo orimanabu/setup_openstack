@@ -118,3 +118,4 @@ gittop=`upper_path ${topdir}`
 
 ssh_options='-n -o StrictHostKeyChecking=no'
 openstack_projects="nova neutron keystone cinder glance ceilometer heat swift"
+#openstack_projects="${openstack_projects} manila sahara ironic trove"

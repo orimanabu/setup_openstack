@@ -1,0 +1,117 @@
+usage: ceilometer [--version] [-d] [-v] [--timeout TIMEOUT]
+                  [--ceilometer-url <CEILOMETER_URL>]
+                  [--ceilometer-api-version CEILOMETER_API_VERSION]
+                  [--os-tenant-id <tenant-id>]
+                  [--os-region-name <region-name>]
+                  [--os-auth-token <auth-token>]
+                  [--os-service-type <service-type>]
+                  [--os-endpoint-type <endpoint-type>] [--os-cacert <cacert>]
+                  [--os-insecure <insecure>] [--os-cert-file <cert-file>]
+                  [--os-key-file <key-file>] [--os-cert <cert>]
+                  [--os-key <key>] [--os-project-name <project-name>]
+                  [--os-project-id <project-id>]
+                  [--os-user-domain-id <user-domain-id>]
+                  [--os-user-domain-name <user-domain-name>]
+                  [--os-endpoint <endpoint>] [--os-auth-system <auth-system>]
+                  [--os-username <username>] [--os-password <password>]
+                  [--os-tenant-name <tenant-name>] [--os-token <token>]
+                  [--os-auth-url <auth-url>]
+                  <subcommand> ...
+
+Command-line interface to the OpenStack Telemetry API.
+
+Positional arguments:
+  <subcommand>
+    alarm-combination-create    Create a new alarm based on state of other
+                                alarms.
+    alarm-combination-update    Update an existing alarm based on state of
+                                other alarms.
+    alarm-create                Create a new alarm (Deprecated). Use alarm-
+                                threshold-create instead.
+    alarm-delete                Delete an alarm.
+    alarm-gnocchi-metrics-threshold-create
+                                Create a new alarm based on computed
+                                statistics.
+    alarm-gnocchi-metrics-threshold-update
+                                Update an existing alarm based on computed
+                                statistics.
+    alarm-gnocchi-resources-threshold-create
+                                Create a new alarm based on computed
+                                statistics.
+    alarm-gnocchi-resources-threshold-update
+                                Update an existing alarm based on computed
+                                statistics.
+    alarm-history               Display the change history of an alarm.
+    alarm-list                  List the user's alarms.
+    alarm-show                  Show an alarm.
+    alarm-state-get             Get the state of an alarm.
+    alarm-state-set             Set the state of an alarm.
+    alarm-threshold-create      Create a new alarm based on computed
+                                statistics.
+    alarm-threshold-update      Update an existing alarm based on computed
+                                statistics.
+    alarm-update                Update an existing alarm (Deprecated).
+    event-list                  List events.
+    event-show                  Show a particular event.
+    event-type-list             List event types.
+    meter-list                  List the user's meters.
+    query-alarm-history         Query Alarm History.
+    query-alarms                Query Alarms.
+    query-samples               Query samples.
+    resource-list               List the resources.
+    resource-show               Show the resource.
+    sample-create               Create a sample.
+    sample-list                 List the samples (return OldSample objects if
+                                -m/--meter is set).
+    sample-show                 Show an sample.
+    statistics                  List the statistics for a meter.
+    trait-description-list      List trait info for an event type.
+    trait-list                  List all traits with name <trait_name> for
+                                Event Type <event_type>.
+    bash-completion             Prints all of the commands and options to
+                                stdout.
+    help                        Display help about this program or one of its
+                                subcommands.
+
+Optional arguments:
+  --version                     show program's version number and exit
+  -d, --debug                   Defaults to env[CEILOMETERCLIENT_DEBUG].
+  -v, --verbose                 Print more verbose output.
+  --timeout TIMEOUT             Number of seconds to wait for a response.
+  --ceilometer-url <CEILOMETER_URL>
+                                DEPRECATED, use --os-endpoint instead.
+                                Defaults to env[CEILOMETER_URL].
+  --ceilometer-api-version CEILOMETER_API_VERSION
+                                Defaults to env[CEILOMETER_API_VERSION] or 2.
+  --os-tenant-id <tenant-id>    Defaults to env[OS_TENANT_ID].
+  --os-region-name <region-name>
+                                Defaults to env[OS_REGION_NAME].
+  --os-auth-token <auth-token>  Defaults to env[OS_AUTH_TOKEN].
+  --os-service-type <service-type>
+                                Defaults to env[OS_SERVICE_TYPE].
+  --os-endpoint-type <endpoint-type>
+                                Defaults to env[OS_ENDPOINT_TYPE].
+  --os-cacert <cacert>          Defaults to env[OS_CACERT].
+  --os-insecure <insecure>      Defaults to env[OS_INSECURE].
+  --os-cert-file <cert-file>    Defaults to env[OS_CERT_FILE].
+  --os-key-file <key-file>      Defaults to env[OS_KEY_FILE].
+  --os-cert <cert>              Defaults to env[OS_CERT].
+  --os-key <key>                Defaults to env[OS_KEY].
+  --os-project-name <project-name>
+                                Defaults to env[OS_PROJECT_NAME].
+  --os-project-id <project-id>  Defaults to env[OS_PROJECT_ID].
+  --os-user-domain-id <user-domain-id>
+                                Defaults to env[OS_USER_DOMAIN_ID].
+  --os-user-domain-name <user-domain-name>
+                                Defaults to env[OS_USER_DOMAIN_NAME].
+  --os-endpoint <endpoint>      Defaults to env[OS_ENDPOINT].
+  --os-auth-system <auth-system>
+                                Defaults to env[OS_AUTH_SYSTEM].
+  --os-username <username>      Defaults to env[OS_USERNAME].
+  --os-password <password>      Defaults to env[OS_PASSWORD].
+  --os-tenant-name <tenant-name>
+                                Defaults to env[OS_TENANT_NAME].
+  --os-token <token>            Defaults to env[OS_TOKEN].
+  --os-auth-url <auth-url>      Defaults to env[OS_AUTH_URL].
+
+See "ceilometer help COMMAND" for help on a specific command.

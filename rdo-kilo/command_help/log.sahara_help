@@ -1,0 +1,150 @@
+usage: sahara [--version] [--debug] [--os-cache]
+              [--service-type <service-type>]
+              [--endpoint-type <endpoint-type>]
+              [--sahara-api-version <sahara-api-ver>]
+              [--bypass-url <bypass-url>] [--os-tenant-name OS_TENANT_NAME]
+              [--os-tenant-id OS_TENANT_ID] [--os-auth-system OS_AUTH_SYSTEM]
+              [--os-auth-token OS_AUTH_TOKEN] [--insecure]
+              [--os-cacert <ca-certificate>] [--os-cert <certificate>]
+              [--os-key <key>] [--timeout <seconds>]
+              [--os-auth-url OS_AUTH_URL] [--os-domain-id OS_DOMAIN_ID]
+              [--os-domain-name OS_DOMAIN_NAME]
+              [--os-project-id OS_PROJECT_ID]
+              [--os-project-name OS_PROJECT_NAME]
+              [--os-project-domain-id OS_PROJECT_DOMAIN_ID]
+              [--os-project-domain-name OS_PROJECT_DOMAIN_NAME]
+              [--os-trust-id OS_TRUST_ID] [--os-user-id OS_USER_ID]
+              [--os-user-name OS_USERNAME]
+              [--os-user-domain-id OS_USER_DOMAIN_ID]
+              [--os-user-domain-name OS_USER_DOMAIN_NAME]
+              [--os-password OS_PASSWORD]
+              <subcommand> ...
+
+Command-line interface to the OpenStack Sahara API.
+
+Positional arguments:
+  <subcommand>
+    cluster-create      Create a cluster.
+    cluster-delete      Delete a cluster.
+    cluster-list        Print a list of available clusters.
+    cluster-show        Show details of a cluster.
+    cluster-template-create
+                        Create a cluster template.
+    cluster-template-delete
+                        Delete a cluster template.
+    cluster-template-list
+                        Print a list of available cluster templates.
+    cluster-template-show
+                        Show details of a cluster template.
+    data-source-create  Create a data source that provides job input or
+                        receives job output.
+    data-source-delete  Delete a data source.
+    data-source-list    Print a list of available data sources.
+    data-source-show    Show details of a data source.
+    event-list          Show events of a cluster.
+    image-add-tag       Add a tag to an image.
+    image-list          Print a list of available images.
+    image-register      Register an image from the Image index.
+    image-remove-tag    Remove a tag from an image.
+    image-show          Show details of an image.
+    image-unregister    Unregister an image.
+    job-binary-create   Record a job binary.
+    job-binary-data-create
+                        Store data in the internal DB. Use 'swift upload'
+                        instead of this command. Use this command only if
+                        Swift is not available.
+    job-binary-data-delete
+                        Delete an internally stored job binary data.
+    job-binary-data-list
+                        Print a list of internally stored job binary data.
+    job-binary-delete   Delete a job binary.
+    job-binary-list     Print a list of job binaries.
+    job-binary-show     Show details of a job binary.
+    job-create          Create a job.
+    job-delete          Delete a job.
+    job-list            Print a list of jobs.
+    job-show            Show details of a job.
+    job-template-create
+                        Create a job template.
+    job-template-delete
+                        Delete a job template.
+    job-template-list   Print a list of job templates.
+    job-template-show   Show details of a job template.
+    node-group-template-create
+                        Create a node group template.
+    node-group-template-delete
+                        Delete a node group template.
+    node-group-template-list
+                        Print a list of available node group templates.
+    node-group-template-show
+                        Show details of a node group template.
+    plugin-list         Print a list of available plugins.
+    plugin-show         Show details of a plugin.
+    bash-completion     Prints arguments for bash-completion. Prints all of
+                        the commands and options to stdout so that the
+                        sahara.bash_completion script doesn't have to hard
+                        code them.
+    help                Display help about this program or one of its
+                        subcommands.
+
+Optional arguments:
+  --version             show program's version number and exit
+  --debug               Print debugging output.
+  --os-cache            Use the auth token cache. Defaults to False if
+                        env[OS_CACHE] is not set.
+  --service-type <service-type>
+                        Defaults to data-processing for all actions.
+  --endpoint-type <endpoint-type>
+                        Defaults to env[SAHARA_ENDPOINT_TYPE] or publicURL.
+  --sahara-api-version <sahara-api-ver>
+                        Accepts "api", defaults to env[SAHARA_API_VERSION].
+  --bypass-url <bypass-url>
+                        Use this API endpoint instead of the Service Catalog.
+  --os-tenant-name OS_TENANT_NAME
+                        Defaults to env[OS_TENANT_NAME].
+  --os-tenant-id OS_TENANT_ID
+                        Defaults to env[OS_TENANT_ID].
+  --os-auth-system OS_AUTH_SYSTEM
+                        Defaults to env[OS_AUTH_SYSTEM].
+  --os-auth-token OS_AUTH_TOKEN
+                        Defaults to env[OS_AUTH_TOKEN].
+  --insecure            Explicitly allow client to perform "insecure" TLS
+                        (https) requests. The server's certificate will not be
+                        verified against any certificate authorities. This
+                        option should be used with caution.
+  --os-cacert <ca-certificate>
+                        Specify a CA bundle file to use in verifying a TLS
+                        (https) server certificate. Defaults to
+                        env[OS_CACERT].
+  --os-cert <certificate>
+                        Defaults to env[OS_CERT].
+  --os-key <key>        Defaults to env[OS_KEY].
+  --timeout <seconds>   Set request timeout (in seconds).
+  --os-auth-url OS_AUTH_URL
+                        Authentication URL
+  --os-domain-id OS_DOMAIN_ID
+                        Domain ID to scope to
+  --os-domain-name OS_DOMAIN_NAME
+                        Domain name to scope to
+  --os-project-id OS_PROJECT_ID
+                        Project ID to scope to
+  --os-project-name OS_PROJECT_NAME
+                        Project name to scope to
+  --os-project-domain-id OS_PROJECT_DOMAIN_ID
+                        Domain ID containing project
+  --os-project-domain-name OS_PROJECT_DOMAIN_NAME
+                        Domain name containing project
+  --os-trust-id OS_TRUST_ID
+                        Trust ID
+  --os-user-id OS_USER_ID
+                        User ID
+  --os-user-name OS_USERNAME, --os-username OS_USERNAME
+                        Username
+  --os-user-domain-id OS_USER_DOMAIN_ID
+                        User's domain id
+  --os-user-domain-name OS_USER_DOMAIN_NAME
+                        User's domain name
+  --os-password OS_PASSWORD
+                        User's password
+
+See "sahara help COMMAND" for help on a specific command.

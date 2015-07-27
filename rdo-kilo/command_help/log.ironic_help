@@ -1,0 +1,105 @@
+usage: ironic [--version] [--debug] [-v] [-k] [--cert-file CERT_FILE]
+              [--key-file KEY_FILE] [--ca-file CA_FILE] [--timeout TIMEOUT]
+              [--os-username OS_USERNAME] [--os-password OS_PASSWORD]
+              [--os-tenant-id OS_TENANT_ID] [--os-tenant-name OS_TENANT_NAME]
+              [--os-auth-url OS_AUTH_URL] [--os-region-name OS_REGION_NAME]
+              [--os-auth-token OS_AUTH_TOKEN] [--ironic-url IRONIC_URL]
+              [--ironic-api-version IRONIC_API_VERSION]
+              [--os-service-type OS_SERVICE_TYPE]
+              [--os-endpoint-type OS_ENDPOINT_TYPE]
+              <subcommand> ...
+
+Command-line interface to the OpenStack Bare Metal Provisioning
+
+Positional arguments:
+  <subcommand>
+    chassis-create      Create a new chassis.
+    chassis-delete      Delete a chassis.
+    chassis-list        List chassis.
+    chassis-node-list   List the nodes contained in the chassis.
+    chassis-show        Show a chassis.
+    chassis-update      Update a chassis.
+    node-create         Register a new node with the Ironic service.
+    node-delete         Unregister a node from the Ironic service.
+    node-get-boot-device
+                        Get the current boot device.
+    node-get-console    Return the connection information for the node's
+                        console, if enabled.
+    node-get-supported-boot-devices
+                        Get the supported boot devices.
+    node-list           List nodes which are registered with the Ironic
+                        service.
+    node-port-list      List the ports associated with the node.
+    node-set-boot-device
+                        Set the boot device for a node.
+    node-set-console-mode
+                        Enable or disable serial console access for this node.
+    node-set-power-state
+                        Power the node on or off.
+    node-set-provision-state
+                        Provision an instance on, or delete an instance from a
+                        node.
+    node-show           Show detailed information for a node.
+    node-update         Update information about a registered node.
+    node-validate       Validate the node driver interfaces.
+    node-vendor-passthru
+                        Call a vendor-passthru extension for a node.
+    port-create         Create a new port.
+    port-delete         Delete a port.
+    port-list           List ports.
+    port-show           Show a port.
+    port-update         Update a port.
+    driver-list         List of enabled drivers.
+    driver-properties   Get properties of the driver.
+    driver-show         Show a driver.
+    driver-vendor-passthru
+                        Call a vendor-passthru extension for a driver.
+    bash-completion     Prints all of the commands and options for bash-
+                        completion.
+    help                Display help about this program or one of its
+                        subcommands.
+
+Optional arguments:
+  --version             show program's version number and exit
+  --debug               Defaults to env[IRONICCLIENT_DEBUG]
+  -v, --verbose         Print more verbose output
+  -k, --insecure        Explicitly allow ironicclient to perform "insecure"
+                        SSL (https) requests. The server's certificate will
+                        not be verified against any certificate authorities.
+                        This option should be used with caution
+  --cert-file CERT_FILE
+                        Path of certificate file to use in SSL connection.
+                        This file can optionally be prepended with the private
+                        key
+  --key-file KEY_FILE   Path of client key to use in SSL connection. This
+                        option is not necessary if your key is prepended to
+                        your cert file
+  --ca-file CA_FILE     Path of CA SSL certificate(s) used to verify the
+                        remote server certificate. Without this option ironic
+                        looks for the default system CA certificates
+  --timeout TIMEOUT     Number of seconds to wait for a response; defaults to
+                        600
+  --os-username OS_USERNAME
+                        Defaults to env[OS_USERNAME]
+  --os-password OS_PASSWORD
+                        Defaults to env[OS_PASSWORD]
+  --os-tenant-id OS_TENANT_ID
+                        Defaults to env[OS_TENANT_ID]
+  --os-tenant-name OS_TENANT_NAME
+                        Defaults to env[OS_TENANT_NAME]
+  --os-auth-url OS_AUTH_URL
+                        Defaults to env[OS_AUTH_URL]
+  --os-region-name OS_REGION_NAME
+                        Defaults to env[OS_REGION_NAME]
+  --os-auth-token OS_AUTH_TOKEN
+                        Defaults to env[OS_AUTH_TOKEN]
+  --ironic-url IRONIC_URL
+                        Defaults to env[IRONIC_URL]
+  --ironic-api-version IRONIC_API_VERSION
+                        Defaults to env[IRONIC_API_VERSION] or 1
+  --os-service-type OS_SERVICE_TYPE
+                        Defaults to env[OS_SERVICE_TYPE] or "baremetal"
+  --os-endpoint-type OS_ENDPOINT_TYPE
+                        Defaults to env[OS_ENDPOINT_TYPE] or "publicURL"
+
+See "ironic help COMMAND" for help on a specific command.
