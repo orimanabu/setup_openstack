@@ -26,3 +26,6 @@ for i in nova neutron cinder glance keystone swift nagios heat ceilometer mongod
 		echo "no such directory: /etc/${i}"
 	fi
 done
+
+rm -f /root/.my.cnf
+systemctl daemon-reload
