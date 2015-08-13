@@ -82,15 +82,15 @@ CONFIG_DEBUG_MODE=n
 
 # The IP address of the server on which to install OpenStack services
 # specific to controller role such as API servers, Horizon, etc.
-CONFIG_CONTROLLER_HOST=10.64.193.185
+CONFIG_CONTROLLER_HOST=10.64.193.53
 
 # The list of IP addresses of the server on which to install the Nova
 # compute service
-CONFIG_COMPUTE_HOSTS=10.64.193.185
+CONFIG_COMPUTE_HOSTS=10.64.193.53
 
 # The list of IP addresses of the server on which to install the
 # network service such as Nova network or Neutron
-CONFIG_NETWORK_HOSTS=10.64.193.185
+CONFIG_NETWORK_HOSTS=10.64.193.53
 
 # Set to 'y' if you want to use VMware vCenter as hypervisor and
 # storage. Otherwise set to 'n'.
@@ -116,11 +116,11 @@ CONFIG_VCENTER_CLUSTER_NAME=
 # (Unsupported!) The IP address of the server on which to install
 # OpenStack services specific to storage servers such as Glance and
 # Cinder.
-CONFIG_STORAGE_HOST=10.64.193.185
+CONFIG_STORAGE_HOST=10.64.193.53
 
 # (Unsupported!) The IP address of the server on which to install
 # OpenStack services specific to Sahara
-CONFIG_SAHARA_HOST=10.64.193.185
+CONFIG_SAHARA_HOST=10.64.193.53
 
 # To subscribe each server to EPEL enter "y"
 CONFIG_USE_EPEL=n
@@ -192,7 +192,7 @@ CONFIG_SATELLITE_PROXY_PW=
 CONFIG_AMQP_BACKEND=rabbitmq
 
 # The IP address of the server on which to install the AMQP service
-CONFIG_AMQP_HOST=10.64.193.185
+CONFIG_AMQP_HOST=10.64.193.53
 
 # Enable SSL for the AMQP service
 CONFIG_AMQP_ENABLE_SSL=n
@@ -205,6 +205,10 @@ CONFIG_AMQP_NSS_CERTDB_PW=PW_PLACEHOLDER
 
 # The port in which the AMQP service listens to SSL connections
 CONFIG_AMQP_SSL_PORT=5671
+
+# The filename of the CAcertificate that the AMQP service is going to
+# use for verification
+CONFIG_AMQP_SSL_CACERT_FILE=/etc/pki/tls/certs/amqp_selfcert.pem
 
 # The filename of the certificate that the AMQP service is going to
 # use
@@ -225,40 +229,190 @@ CONFIG_AMQP_AUTH_PASSWORD=PW_PLACEHOLDER
 
 # The IP address of the server on which to install MariaDB or IP
 # address of DB server to use if MariaDB installation was not selected
-CONFIG_MARIADB_HOST=10.64.193.185
+CONFIG_MARIADB_HOST=10.64.193.53
 
 # Username for the MariaDB admin user
 CONFIG_MARIADB_USER=root
 
 # Password for the MariaDB admin user
-CONFIG_MARIADB_PW=93556b65bf864809
+CONFIG_MARIADB_PW=e83654e3cc604b73
 
 # The password to use for the Keystone to access DB
-CONFIG_KEYSTONE_DB_PW=ff9481a767d742b6
+CONFIG_KEYSTONE_DB_PW=4d9ba207158e4afb
 
 # Region name
 CONFIG_KEYSTONE_REGION=RegionOne
 
 # The token to use for the Keystone service api
-CONFIG_KEYSTONE_ADMIN_TOKEN=84b7ab175ee24a1cafb9862502545691
+CONFIG_KEYSTONE_ADMIN_TOKEN=69dee430fb6f4e02a5e851103f439f30
 
 # The password to use for the Keystone admin user
-CONFIG_KEYSTONE_ADMIN_PW=4123c38c7d504267
+CONFIG_KEYSTONE_ADMIN_PW=204ac0af1b044823
 
 # The password to use for the Keystone demo user
-CONFIG_KEYSTONE_DEMO_PW=8e63e39a2f984afa
+CONFIG_KEYSTONE_DEMO_PW=dac48ff6b1744323
 
-# Kestone token format. Use either UUID or PKI
+# Keystone API version string
+CONFIG_KEYSTONE_API_VERSION=v2.0
+
+# Keystone token format. Use either UUID or PKI
 CONFIG_KEYSTONE_TOKEN_FORMAT=UUID
 
 # Name of service to use to run keystone (keystone or httpd)
-CONFIG_KEYSTONE_SERVICE_NAME=keystone
+CONFIG_KEYSTONE_SERVICE_NAME=httpd
+
+# Type of identity backend (sql or ldap)
+CONFIG_KEYSTONE_IDENTITY_BACKEND=sql
+
+# Keystone LDAP backend URL
+CONFIG_KEYSTONE_LDAP_URL=ldap://10.64.193.53
+
+# Keystone LDAP backend user DN.  Used to bind to the LDAP server
+# when the LDAP server does not allow anonymous authentication.
+CONFIG_KEYSTONE_LDAP_USER_DN=
+
+# Keystone LDAP backend password for user DN
+CONFIG_KEYSTONE_LDAP_USER_PASSWORD=
+
+# Keystone LDAP backend base suffix
+CONFIG_KEYSTONE_LDAP_SUFFIX=
+
+# Keystone LDAP backend query scope (base, one, sub)
+CONFIG_KEYSTONE_LDAP_QUERY_SCOPE=one
+
+# Keystone LDAP backend query page size
+CONFIG_KEYSTONE_LDAP_PAGE_SIZE=-1
+
+# Keystone LDAP backend user subtree
+CONFIG_KEYSTONE_LDAP_USER_SUBTREE=
+
+# Keystone LDAP backend user query filter
+CONFIG_KEYSTONE_LDAP_USER_FILTER=
+
+# Keystone LDAP backend user objectclass
+CONFIG_KEYSTONE_LDAP_USER_OBJECTCLASS=
+
+# Keystone LDAP backend user ID attribute
+CONFIG_KEYSTONE_LDAP_USER_ID_ATTRIBUTE=
+
+# Keystone LDAP backend user name attribute
+CONFIG_KEYSTONE_LDAP_USER_NAME_ATTRIBUTE=
+
+# Keystone LDAP backend user email address attribute
+CONFIG_KEYSTONE_LDAP_USER_MAIL_ATTRIBUTE=
+
+# Keystone LDAP backend user enabled attribute
+CONFIG_KEYSTONE_LDAP_USER_ENABLED_ATTRIBUTE=
+
+# Keystone LDAP backend - bit mask applied to user enabled attribute
+CONFIG_KEYSTONE_LDAP_USER_ENABLED_MASK=-1
+
+# Keystone LDAP backend - value of enabled attribute which indicates
+# user is enabled
+CONFIG_KEYSTONE_LDAP_USER_ENABLED_DEFAULT=TRUE
+
+# Keystone LDAP backend - users are disabled not enabled
+CONFIG_KEYSTONE_LDAP_USER_ENABLED_INVERT=n
+
+# Comma separated list of attributes stripped from user entry upon
+# update
+CONFIG_KEYSTONE_LDAP_USER_ATTRIBUTE_IGNORE=
+
+# Keystone LDAP attribute mapped to default_project_id for users
+CONFIG_KEYSTONE_LDAP_USER_DEFAULT_PROJECT_ID_ATTRIBUTE=
+
+# Set to 'y' if you want to be able to create Keystone users through
+# the Keystone interface.  Set to 'n' if you will create directly in
+# the LDAP backend.
+CONFIG_KEYSTONE_LDAP_USER_ALLOW_CREATE=n
+
+# Set to 'y' if you want to be able to update Keystone users through
+# the Keystone interface.  Set to 'n' if you will update directly in
+# the LDAP backend.
+CONFIG_KEYSTONE_LDAP_USER_ALLOW_UPDATE=n
+
+# Set to 'y' if you want to be able to delete Keystone users through
+# the Keystone interface.  Set to 'n' if you will delete directly in
+# the LDAP backend.
+CONFIG_KEYSTONE_LDAP_USER_ALLOW_DELETE=n
+
+# Keystone LDAP attribute mapped to password
+CONFIG_KEYSTONE_LDAP_USER_PASS_ATTRIBUTE=
+
+# DN of the group entry to hold enabled users when using enabled
+# emulation.
+CONFIG_KEYSTONE_LDAP_USER_ENABLED_EMULATION_DN=
+
+# List of additional LDAP attributes used for mapping additional
+# attribute mappings for users. Attribute mapping format is
+# <ldap_attr>:<user_attr>, where ldap_attr is the attribute in the
+# LDAP entry and user_attr is the Identity API attribute.
+CONFIG_KEYSTONE_LDAP_USER_ADDITIONAL_ATTRIBUTE_MAPPING=
+
+# Keystone LDAP backend group subtree
+CONFIG_KEYSTONE_LDAP_GROUP_SUBTREE=
+
+# Keystone LDAP backend group query filter
+CONFIG_KEYSTONE_LDAP_GROUP_FILTER=
+
+# Keystone LDAP backend group objectclass
+CONFIG_KEYSTONE_LDAP_GROUP_OBJECTCLASS=
+
+# Keystone LDAP backend group ID attribute
+CONFIG_KEYSTONE_LDAP_GROUP_ID_ATTRIBUTE=
+
+# Keystone LDAP backend group name attribute
+CONFIG_KEYSTONE_LDAP_GROUP_NAME_ATTRIBUTE=
+
+# Keystone LDAP backend group member attribute
+CONFIG_KEYSTONE_LDAP_GROUP_MEMBER_ATTRIBUTE=
+
+# Keystone LDAP backend group description attribute
+CONFIG_KEYSTONE_LDAP_GROUP_DESC_ATTRIBUTE=
+
+# Comma separated list of attributes stripped from group entry upon
+# update
+CONFIG_KEYSTONE_LDAP_GROUP_ATTRIBUTE_IGNORE=
+
+# Set to 'y' if you want to be able to create Keystone groups through
+# the Keystone interface.  Set to 'n' if you will create directly in
+# the LDAP backend.
+CONFIG_KEYSTONE_LDAP_GROUP_ALLOW_CREATE=n
+
+# Set to 'y' if you want to be able to update Keystone groups through
+# the Keystone interface.  Set to 'n' if you will update directly in
+# the LDAP backend.
+CONFIG_KEYSTONE_LDAP_GROUP_ALLOW_UPDATE=n
+
+# Set to 'y' if you want to be able to delete Keystone groups through
+# the Keystone interface.  Set to 'n' if you will delete directly in
+# the LDAP backend.
+CONFIG_KEYSTONE_LDAP_GROUP_ALLOW_DELETE=n
+
+# List of additional LDAP attributes used for mapping additional
+# attribute mappings for groups. Attribute mapping format is
+# <ldap_attr>:<group_attr>, where ldap_attr is the attribute in the
+# LDAP entry and group_attr is the Identity API attribute.
+CONFIG_KEYSTONE_LDAP_GROUP_ADDITIONAL_ATTRIBUTE_MAPPING=
+
+# Should Keystone LDAP use TLS
+CONFIG_KEYSTONE_LDAP_USE_TLS=n
+
+# Keystone LDAP CA certificate directory
+CONFIG_KEYSTONE_LDAP_TLS_CACERTDIR=
+
+# Keystone LDAP CA certificate file
+CONFIG_KEYSTONE_LDAP_TLS_CACERTFILE=
+
+# Keystone LDAP certificate checking strictness (never, allow,
+# demand)
+CONFIG_KEYSTONE_LDAP_TLS_REQ_CERT=demand
 
 # The password to use for the Glance to access DB
-CONFIG_GLANCE_DB_PW=0cf99ab4abea4dd5
+CONFIG_GLANCE_DB_PW=c6b3456701034e59
 
 # The password to use for the Glance to authenticate with Keystone
-CONFIG_GLANCE_KS_PW=e297da26be5a4657
+CONFIG_GLANCE_KS_PW=6e4343a190bb48d9
 
 # Glance storage backend controls how Glance stores disk images.
 # Supported values: file, swift. Note that Swift installation have to
@@ -267,13 +421,13 @@ CONFIG_GLANCE_KS_PW=e297da26be5a4657
 CONFIG_GLANCE_BACKEND=file
 
 # The password to use for the Cinder to access DB
-CONFIG_CINDER_DB_PW=18b6df66aa2c42d2
+CONFIG_CINDER_DB_PW=fa5bc8f1b4b34cca
 
 # The password to use for the Cinder to authenticate with Keystone
-CONFIG_CINDER_KS_PW=3aa39021b1614e38
+CONFIG_CINDER_KS_PW=d3ae8aa5e8a24004
 
 # The Cinder backend to use, valid options are: lvm, gluster, nfs,
-# netapp
+# vmdk, netapp
 CONFIG_CINDER_BACKEND=lvm
 
 # Create Cinder's volumes group. This should only be done for testing
@@ -353,9 +507,13 @@ CONFIG_CINDER_NETAPP_THRES_AVL_SIZE_PERC_START=20
 # expiry_thres_minutes parameter.  Defaults to 60.
 CONFIG_CINDER_NETAPP_THRES_AVL_SIZE_PERC_STOP=60
 
+# (optional) Single or comma-separated list of NetApp NFS shares for
+# Cinder to use.  Format: ip-address:/export-name   Defaults to ''.
+CONFIG_CINDER_NETAPP_NFS_SHARES=
+
 # (optional) File with the list of available NFS shares.   Defaults
-# to ''.
-CONFIG_CINDER_NETAPP_NFS_SHARES_CONFIG=
+# to '/etc/cinder/shares.conf'.
+CONFIG_CINDER_NETAPP_NFS_SHARES_CONFIG=/etc/cinder/shares.conf
 
 # (optional) This parameter is only utilized when the storage
 # protocol is configured to use iSCSI. This parameter is used to
@@ -409,16 +567,17 @@ CONFIG_CINDER_NETAPP_WEBSERVICE_PATH=/devmgr/v2
 # ''.
 CONFIG_CINDER_NETAPP_STORAGE_POOLS=
 
+# The password to use for the Ironic DB access
 CONFIG_IRONIC_DB_PW=PW_PLACEHOLDER
 
 # The password to use for Ironic to authenticate with Keystone
 CONFIG_IRONIC_KS_PW=PW_PLACEHOLDER
 
 # The password to use for the Nova to access DB
-CONFIG_NOVA_DB_PW=1c36acedbc8d4973
+CONFIG_NOVA_DB_PW=412b4c1327a24920
 
 # The password to use for the Nova to authenticate with Keystone
-CONFIG_NOVA_KS_PW=705e392d2b0c4173
+CONFIG_NOVA_KS_PW=2b8a17e776224900
 
 # The overcommitment ratio for virtual to physical CPUs. Set to 1.0
 # to disable CPU overcommitment
@@ -468,10 +627,10 @@ CONFIG_NOVA_NETWORK_NUMBER=1
 CONFIG_NOVA_NETWORK_SIZE=255
 
 # The password to use for Neutron to authenticate with Keystone
-CONFIG_NEUTRON_KS_PW=b8dafea093854515
+CONFIG_NEUTRON_KS_PW=cf4a897e144149ba
 
 # The password to use for Neutron to access DB
-CONFIG_NEUTRON_DB_PW=df598e4c46fa4825
+CONFIG_NEUTRON_DB_PW=73e017aef27f4ff8
 
 # The name of the ovs bridge (or empty for linuxbridge) that the
 # Neutron L3 agent will use for external  traffic, or 'provider' using
@@ -479,7 +638,7 @@ CONFIG_NEUTRON_DB_PW=df598e4c46fa4825
 CONFIG_NEUTRON_L3_EXT_BRIDGE=br-ex
 
 # Neutron metadata agent password
-CONFIG_NEUTRON_METADATA_PW=4979c2e3aa3b49c6
+CONFIG_NEUTRON_METADATA_PW=e2a86cd6a2cf4530
 
 # Set to 'y' if you would like Packstack to install Neutron LBaaS
 CONFIG_LBAAS_INSTALL=n
@@ -572,7 +731,7 @@ CONFIG_SSL_KEY=
 CONFIG_SSL_CACHAIN=
 
 # The password to use for the Swift to authenticate with Keystone
-CONFIG_SWIFT_KS_PW=9c1be3714f2742a7
+CONFIG_SWIFT_KS_PW=c6fc4c2c1cbf4ac9
 
 # A comma separated list of devices which to use as Swift Storage
 # device. Each entry should take the format /path/to/dev, for example
@@ -593,16 +752,17 @@ CONFIG_SWIFT_STORAGE_REPLICAS=1
 CONFIG_SWIFT_STORAGE_FSTYPE=ext4
 
 # Shared secret for Swift
-CONFIG_SWIFT_HASH=51f7cd01b7224c84
+CONFIG_SWIFT_HASH=ac5f32b16dac4acc
 
 # Size of the swift loopback file storage device
 CONFIG_SWIFT_STORAGE_SIZE=2G
 
-# The password used by Heat user to authenticate against MySQL
+# The password used by Heat user to authenticate against DB
 CONFIG_HEAT_DB_PW=PW_PLACEHOLDER
 
-# The encryption key to use for authentication info in database
-CONFIG_HEAT_AUTH_ENC_KEY=840d3d272aca4384
+# The encryption key to use for authentication info in database (16,
+# 24, or 32 chars)
+CONFIG_HEAT_AUTH_ENC_KEY=2d4fbb1348af409d
 
 # The password to use for the Heat to authenticate with Keystone
 CONFIG_HEAT_KS_PW=PW_PLACEHOLDER
@@ -631,19 +791,22 @@ CONFIG_PROVISION_DEMO=y
 # Whether to configure tempest for testing
 CONFIG_PROVISION_TEMPEST=n
 
-# The name of the Tempest Provisioning user. If you don't provide a
-# user name, Tempest will be configured in a standalone mode
-CONFIG_PROVISION_TEMPEST_USER=
-
-# The password to use for the Tempest Provisioning user
-CONFIG_PROVISION_TEMPEST_USER_PW=b5a518183bf64be6
-
 # The CIDR network address for the floating IP subnet
 CONFIG_PROVISION_DEMO_FLOATRANGE=172.24.4.224/28
 
 # A URL or local file location for the Cirros demo image used for
 # Glance
 CONFIG_PROVISION_CIRROS_URL=http://download.cirros-cloud.net/0.3.3/cirros-0.3.3-x86_64-disk.img
+
+# The name of the Tempest Provisioning user. If you don't provide a
+# user name, Tempest will be configured in a standalone mode
+CONFIG_PROVISION_TEMPEST_USER=
+
+# The password to use for the Tempest Provisioning user
+CONFIG_PROVISION_TEMPEST_USER_PW=PW_PLACEHOLDER
+
+# The CIDR network address for the floating IP subnet
+CONFIG_PROVISION_TEMPEST_FLOATRANGE=172.24.4.224/28
 
 # The uri of the tempest git repository to use
 CONFIG_PROVISION_TEMPEST_REPO_URI=https://github.com/openstack/tempest.git
@@ -656,22 +819,44 @@ CONFIG_PROVISION_TEMPEST_REPO_REVISION=master
 CONFIG_PROVISION_ALL_IN_ONE_OVS_BRIDGE=n
 
 # Secret key for signing metering messages
-CONFIG_CEILOMETER_SECRET=ce16c6de05e44046
+CONFIG_CEILOMETER_SECRET=132586caee324a53
 
 # The password to use for Ceilometer to authenticate with Keystone
-CONFIG_CEILOMETER_KS_PW=0bb7a3b71ac34184
+CONFIG_CEILOMETER_KS_PW=4d221ce604604e15
 
 # Backend driver for group membership coordination
 CONFIG_CEILOMETER_COORDINATION_BACKEND=redis
 
 # The IP address of the server on which to install MongoDB
-CONFIG_MONGODB_HOST=10.64.193.185
+CONFIG_MONGODB_HOST=10.64.193.53
 
-# The IP address of the server on which to install redis
-CONFIG_REDIS_HOST=10.64.193.185
+# The IP address of the server on which to install redis master
+# server
+CONFIG_REDIS_MASTER_HOST=10.64.193.53
 
-# The port on which the redis server listens
+# The port on which the redis server(s) listens
 CONFIG_REDIS_PORT=6379
+
+# Should redis try to use HA
+CONFIG_REDIS_HA=n
+
+# The hosts on which to install redis slaves
+CONFIG_REDIS_SLAVE_HOSTS=
+
+# The hosts on which to install redis sentinel servers
+CONFIG_REDIS_SENTINEL_HOSTS=
+
+# The host to configure as the coordination sentinel
+CONFIG_REDIS_SENTINEL_CONTACT_HOST=
+
+# The port on which redis sentinel servers listen
+CONFIG_REDIS_SENTINEL_PORT=26379
+
+# The quorum value for redis sentinel servers
+CONFIG_REDIS_SENTINEL_QUORUM=2
+
+# The name of the master server watched by the sentinel
+CONFIG_REDIS_MASTER_NAME=mymaster
 
 # The password to use for the Sahara DB access
 CONFIG_SAHARA_DB_PW=PW_PLACEHOLDER
@@ -695,4 +880,4 @@ CONFIG_TROVE_NOVA_TENANT=services
 CONFIG_TROVE_NOVA_PW=PW_PLACEHOLDER
 
 # The password of the nagiosadmin user on the Nagios server
-CONFIG_NAGIOS_PW=a70d6a4ee322499f
+CONFIG_NAGIOS_PW=0b6fb1866b5b462d
