@@ -641,7 +641,7 @@ CONFIG_NEUTRON_L3_EXT_BRIDGE=br-ex
 CONFIG_NEUTRON_METADATA_PW=neutron
 
 # Set to 'y' if you would like Packstack to install Neutron LBaaS
-CONFIG_LBAAS_INSTALL=n
+CONFIG_LBAAS_INSTALL=y
 
 # Set to 'y' if you would like Packstack to install Neutron L3
 # Metering agent
@@ -769,11 +769,11 @@ CONFIG_HEAT_KS_PW=PW_PLACEHOLDER
 
 # Set to 'y' if you would like Packstack to install Heat CloudWatch
 # API
-CONFIG_HEAT_CLOUDWATCH_INSTALL=n
+CONFIG_HEAT_CLOUDWATCH_INSTALL=y
 
 # Set to 'y' if you would like Packstack to install Heat
 # CloudFormation API
-CONFIG_HEAT_CFN_INSTALL=n
+CONFIG_HEAT_CFN_INSTALL=y
 
 # Name of Keystone domain for Heat
 CONFIG_HEAT_DOMAIN=heat
