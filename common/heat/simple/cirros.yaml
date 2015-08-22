@@ -1,0 +1,43 @@
+heat_template_version: 2013-05-23  
+description: A simple server with a high CPU load.  
+resources:  
+#  fip_port:
+#    type: OS::Neutron::Port
+#    properties:
+#      network: demo_net
+#      security_groups:
+#        - default
+
+  server:
+    type: OS::Nova::Server
+    properties:
+      image: cirros
+#      flavor: m1.nano
+      flavor: m1.tiny
+#      key_name: sshkey
+      networks:
+#        - port: { get_resource: fip_port }
+        - network: demo_net
+      user_data_format: RAW
+      user_data: |
+        #!/bin/sh
+        while [ 1 ] ; do echo $((13**99)) 1>/dev/null 2>&1; done
+
+#  floating_ip:
+#    type: OS::Neutron::FloatingIP
+#    properties:
+#      floating_network: external
+#
+#  floating_ip_assoc:
+#    type: OS::Neutron::FloatingIPAssociation
+#    properties:
+#      floatingip_id: { get_resource: floating_ip }
+#      port_id: { get_resource: fip_port }
+
+#outputs:
+#  instance_name:
+#    description: Name of the instance
+#    value: { get_attr: [server, name] }
+##  instance_ip:
+##    description: The IP address of the deployed instance
+##    value: { get_attr: [floating_ip, floating_ip_address] }
