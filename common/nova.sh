@@ -9,6 +9,7 @@ source ./subr.sh
 
 tenant=
 region=RegionOne
+region=regionOne
 image=cirros
 flavor=m1.tiny
 
