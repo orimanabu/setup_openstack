@@ -88,12 +88,12 @@ fi
 
 case ${op} in
 delete-provisioned-demo)
-	source /root/keystonerc_admin
+	source ~/keystonerc_admin
 	$0 -n private -s private_subnet -p public -r router1 delete
 	neutron net-delete public
 	;;
 external-create)
-	source /root/keystonerc_admin
+	source ~/keystonerc_admin
 	#do_command neutron net-create public --provider:network_type flat --provider:physical_network --physnet-external --router:external=True
 	#do_command neutron net-create ${public_network} --provider:network_type flat --provider:physical_network physnet-external --router:external=True
 	do_command neutron net-create ${public_network} --provider:network_type flat --provider:physical_network physnet-external --router:external
@@ -101,13 +101,13 @@ external-create)
 	do_command neutron subnet-create ${public_network} 172.16.99.0/24 --name ${public_network}_subnet --disable-dhcp --gateway 172.16.99.254 --allocation-pool start=172.16.99.100,end=172.16.99.199
 	;;
 create)
-	source /root/keystonerc_admin
+	source ~/keystonerc_admin
 	extra_options=""
 	if [ x"${ha}" = x"1" ]; then
 		extra_options="--ha True"
 	fi
 	do_command neutron router-create --tenant-id $(keystone tenant-list | awk '/'${tenant}'/ {print $2}') ${extra_options} ${router}
-	source /root/keystonerc_${tenant}
+	source ~/keystonerc_${tenant}
 	do_command neutron router-gateway-set $(neutron router-list | awk '/'${router}'/ {print $2}') $(neutron net-list | awk '/'${public_network}'/ {print $2}')
 	do_command neutron net-create ${network}
 	do_command neutron subnet-create ${network} ${cidr} --name ${subnet} --enable_dhcp True --gateway ${gateway} --allocation-pool start=${pool_start},end=${pool_end}
@@ -128,7 +128,7 @@ floatingip-create)
 	do_command neutron floatingip-create --tenant-id $(keystone tenant-list | awk '/'${tenant}'/ {print $2}') ${network}
 	;;
 floatingip-create-and-associate)
-	source /root/keystonerc_${tenant}
+	source ~/keystonerc_${tenant}
 	echo "* vm: ${vm}"
 	vmaddr=$(nova show ${vm} | awk '/network/ {print $5}')
 	port_id=$(neutron port-list | awk '/'${vmaddr}'/ {print $2}')

@@ -4,6 +4,7 @@ source ./subr.sh
 source ~/keystonerc_admin
 
 region=RegionOne
+region=regionOne
 format=qcow2
 images=cirros
 tenant=demo
