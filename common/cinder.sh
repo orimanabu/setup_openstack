@@ -57,7 +57,7 @@ create)
 	if [ x"${name}" == x"" -o x"${size}" == x"" ]; then
 		usage
 	fi
-	source ~/keystonerc ${tenant}
+	source ~/keystonerc_${tenant}
 	do_command cinder create --display-name ${name} ${size}
 	;;
 attach)
@@ -90,7 +90,7 @@ delete)
 	if [ x"${name}" == x"" ]; then
 		usage
 	fi
-	source ~/keystonerc ${tenant}
+	source ~/keystonerc_${tenant}
 	do_command cinder delete ${name}
 	;;
 force-delete)
