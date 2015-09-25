@@ -105,7 +105,8 @@ create)
 	if [ x"${ha}" = x"1" ]; then
 		extra_options="--ha True"
 	fi
-	do_command neutron router-create --tenant-id $(keystone tenant-list | awk '/'${tenant}'/ {print $2}') ${extra_options} ${router}
+	#do_command neutron router-create --tenant-id $(keystone tenant-list | awk '/'${tenant}'/ {print $2}') ${extra_options} ${router}
+	do_command neutron router-create --tenant-id $(openstack project list | awk '/'${tenant}'/ {print $2}') ${extra_options} ${router}
 	source ~/keystonerc_${tenant}
 	do_command neutron router-gateway-set $(neutron router-list | awk '/'${router}'/ {print $2}') $(neutron net-list | awk '/'${public_network}'/ {print $2}')
 	do_command neutron net-create ${network}
@@ -124,7 +125,8 @@ floatingip-create)
 		usage
 	fi
 	source ${gittop}/keystonerc_admin
-	do_command neutron floatingip-create --tenant-id $(keystone tenant-list | awk '/'${tenant}'/ {print $2}') ${network}
+	#do_command neutron floatingip-create --tenant-id $(keystone tenant-list | awk '/'${tenant}'/ {print $2}') ${network}
+	do_command neutron floatingip-create --tenant-id $(openstack project list | awk '/'${tenant}'/ {print $2}') ${network}
 	;;
 floatingip-create-and-associate)
 	source ~/keystonerc_${tenant}
