@@ -75,7 +75,8 @@ for name in $(echo ${images} | tr ',' ' '); do
 	echo ${image}
 	glance --os-region-name ${region} image-list | grep ${name} > /dev/null 2>&1
 	if [ x"$?" != x"0" ]; then
-		do_command glance --os-region-name ${region} image-create --name ${name} --is-public true --disk-format ${format} --container-format bare --file ${image}
+#		do_command glance --os-region-name ${region} image-create --name ${name} --is-public true --disk-format ${format} --container-format bare --file ${image}
+		do_command openstack image create ${name} --public --disk-format ${format} --container-format bare --file ${image}
 	fi
 done
 
