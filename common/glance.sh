@@ -49,7 +49,7 @@ for name in $(echo ${images} | tr ',' ' '); do
 		;;
 	rhel7)
 		package=rhel-guest-image-7
-		rpm -q ${package} || yum install -y rhel-guest-image-7
+		rpm -q ${package} || sudo yum install -y rhel-guest-image-7
 		#rhel7=$(find /usr/share/rhel-guest-image-7 -type f | grep 'x86_64$')
 		rhel7=$(find /usr/share/rhel-guest-image-7 | grep 'qcow2$')
 		;;
