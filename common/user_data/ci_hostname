@@ -1,0 +1,5 @@
+#cloud-config
+hostname: vmtmp
+#fqdn: vmtmp.test.local
+fqdn: vmtmp
+#manage_etc_hosts: true
