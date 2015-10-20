@@ -11,9 +11,15 @@ pid_regexp=$(echo ${pids} | tr ' ' '|' | sed -e 's/|$//')
 #netstat -ntupe | egrep "${pid_regexp}" | awk '{print $4}' | sed -e 's/[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*://' | sort -n | uniq
 ports=$(netstat -ntupe | egrep "${pid_regexp}" | awk '{print $4}' | sed -e 's/[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*://' | grep -v '^$' | sort -n | uniq)
 
-tcpdump_filter=""
+#tcpdump_filter=""
+#for p in ${ports}; do
+#	tcpdump_filter="$tcpdump_filter or src port $p"
+#done
+#echo ${tcpdump_filter} | sed -e 's/or//'
+
+tcpdump_filter="src port ("
 for p in ${ports}; do
-	tcpdump_filter="$tcpdump_filter or src port $p"
+	tcpdump_filter="$tcpdump_filter or $p"
 done
 
-echo ${tcpdump_filter} | sed -e 's/or//'
+echo ${tcpdump_filter} | sed -e 's/ or //' -e 's/$/)/'
