@@ -39,7 +39,7 @@ CONFIG_SWIFT_INSTALL=y
 CONFIG_CEILOMETER_INSTALL=y
 
 # Specify 'y' to install OpenStack Orchestration (heat).
-CONFIG_HEAT_INSTALL=n
+CONFIG_HEAT_INSTALL=y
 
 # Specify 'y' to install OpenStack Data Processing (sahara).
 CONFIG_SAHARA_INSTALL=n
@@ -80,12 +80,12 @@ CONFIG_CONTROLLER_HOST=10.0.1.111
 
 # List of IP addresses of the servers on which to install the Compute
 # service.
-CONFIG_COMPUTE_HOSTS=10.0.1.121
+CONFIG_COMPUTE_HOSTS=10.0.1.131
 
 # List of IP addresses of the server on which to install the network
 # service such as Compute networking (nova network) or OpenStack
 # Networking (neutron).
-CONFIG_NETWORK_HOSTS=10.0.1.111
+CONFIG_NETWORK_HOSTS=10.0.1.121
 
 # Specify 'y' if you want to use VMware vCenter as hypervisor and
 # storage; otherwise, specify 'n'.
@@ -282,7 +282,7 @@ CONFIG_KEYSTONE_DB_PW=keystone
 CONFIG_KEYSTONE_REGION=RegionOne
 
 # Token to use for the Identity service API.
-CONFIG_KEYSTONE_ADMIN_TOKEN=d38900f6ce09483b8af5febf8096b9a2
+CONFIG_KEYSTONE_ADMIN_TOKEN=86e0fc6c10de4af4b75c3937eaee4a0a
 
 # Email address for the Identity service 'admin' user.  Defaults to:
 CONFIG_KEYSTONE_ADMIN_EMAIL=root@localhost
@@ -867,7 +867,7 @@ CONFIG_LBAAS_INSTALL=n
 
 # Specify 'y' to install OpenStack Networking's L3 Metering agent (y,
 # n).
-CONFIG_NEUTRON_METERING_AGENT_INSTALL=y
+CONFIG_NEUTRON_METERING_AGENT_INSTALL=n
 
 # Specify 'y' to configure OpenStack Networking's Firewall-
 # as-a-Service (FWaaS) (y, n)
@@ -943,7 +943,7 @@ CONFIG_NEUTRON_OVS_BRIDGE_MAPPINGS=physnet-external:br-ex
 # issuing the following command: packstack --allinone --os-neutron-
 # ovs-bridge-mappings=ext-net:br-ex --os-neutron-ovs-bridge-interfaces
 # =br-ex:eth0
-CONFIG_NEUTRON_OVS_BRIDGE_IFACES=br-ex:eth4
+CONFIG_NEUTRON_OVS_BRIDGE_IFACES=br-ex:eth3
 
 # Interface for the Open vSwitch tunnel. Packstack overrides the IP
 # address used for tunnels on this hypervisor to the IP found on the
@@ -957,7 +957,7 @@ CONFIG_NEUTRON_OVS_VXLAN_UDP_PORT=4789
 CONFIG_HORIZON_SSL=n
 
 # Secret key to use for Horizon Secret Encryption Key.
-CONFIG_HORIZON_SECRET_KEY=bd8f842a26974f87bd283218247e8465
+CONFIG_HORIZON_SECRET_KEY=176d9dc48f34491ba0b776fd483cdeb9
 
 # PEM-encoded certificate to be used for SSL connections on the https
 # server (the certificate should not require a passphrase). To
@@ -995,7 +995,7 @@ CONFIG_SWIFT_STORAGE_FSTYPE=ext4
 # Custom seed number to use for swift_hash_path_suffix in
 # /etc/swift/swift.conf. If you do not provide a value, a seed number
 # is automatically generated.
-CONFIG_SWIFT_HASH=d753c3b5801e4d05
+CONFIG_SWIFT_HASH=040bf792477541ae
 
 # Size of the Object Storage loopback file storage device.
 CONFIG_SWIFT_STORAGE_SIZE=2G
@@ -1006,7 +1006,7 @@ CONFIG_HEAT_DB_PW=PW_PLACEHOLDER
 
 # Encryption key to use for authentication in the Orchestration
 # database (16, 24, or 32 chars).
-CONFIG_HEAT_AUTH_ENC_KEY=cfa774aa91df46e6
+CONFIG_HEAT_AUTH_ENC_KEY=5613bad89c6d4adb
 
 # Password to use for the Orchestration service to authenticate with
 # the Identity service.
@@ -1076,11 +1076,11 @@ CONFIG_PROVISION_TEMPEST_REPO_REVISION=master
 CONFIG_PROVISION_ALL_IN_ONE_OVS_BRIDGE=n
 
 # Secret key for signing Telemetry service (ceilometer) messages.
-CONFIG_CEILOMETER_SECRET=9294356365df4d69
+CONFIG_CEILOMETER_SECRET=0012a34053d5414f
 
 # Password to use for Telemetry to authenticate with the Identity
 # service.
-CONFIG_CEILOMETER_KS_PW=af6ffe4f5bc040f6
+CONFIG_CEILOMETER_KS_PW=ceilometer
 
 # Backend driver for Telemetry's group membership coordination
 # (redis, none).
@@ -1147,4 +1147,4 @@ CONFIG_TROVE_NOVA_TENANT=services
 CONFIG_TROVE_NOVA_PW=PW_PLACEHOLDER
 
 # Password of the nagiosadmin user on the Nagios server.
-CONFIG_NAGIOS_PW=n
+CONFIG_NAGIOS_PW=nagios
