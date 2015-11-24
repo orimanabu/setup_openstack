@@ -1,0 +1,611 @@
+# swift help
+
+```
+Usage: swift [--version] [--help] [--os-help] [--snet] [--verbose]
+             [--debug] [--info] [--quiet] [--auth <auth_url>]
+             [--auth-version <auth_version>] [--user <username>]
+             [--key <api_key>] [--retries <num_retries>]
+             [--os-username <auth-user-name>] [--os-password <auth-password>]
+             [--os-user-id <auth-user-id>]
+             [--os-user-domain-id <auth-user-domain-id>]
+             [--os-user-domain-name <auth-user-domain-name>]
+             [--os-tenant-id <auth-tenant-id>]
+             [--os-tenant-name <auth-tenant-name>]
+             [--os-project-id <auth-project-id>]
+             [--os-project-name <auth-project-name>]
+             [--os-project-domain-id <auth-project-domain-id>]
+             [--os-project-domain-name <auth-project-domain-name>]
+             [--os-auth-url <auth-url>] [--os-auth-token <auth-token>]
+             [--os-storage-url <storage-url>] [--os-region-name <region-name>]
+             [--os-service-type <service-type>]
+             [--os-endpoint-type <endpoint-type>]
+             [--os-cacert <ca-certificate>] [--insecure]
+             [--no-ssl-compression]
+             <subcommand> [--help]
+
+Command-line interface to the OpenStack Swift API.
+
+Positional arguments:
+  <subcommand>
+    delete               Delete a container or objects within a container.
+    download             Download objects from containers.
+    list                 Lists the containers for the account or the objects
+                         for a container.
+    post                 Updates meta information for the account, container,
+                         or object; creates containers if not present.
+    stat                 Displays information for the account, container,
+                         or object.
+    upload               Uploads files or directories to the given container.
+    capabilities         List cluster capabilities.
+    tempurl              Create a temporary URL
+
+Examples:
+  swift download --help
+
+  swift -A https://auth.api.rackspacecloud.com/v1.0 -U user -K api_key stat -v
+
+  swift --os-auth-url https://api.example.com/v2.0 --os-tenant-name tenant \
+      --os-username user --os-password password list
+
+  swift --os-auth-url https://api.example.com/v3 --auth-version 3\
+      --os-project-name project1 --os-project-domain-name domain1 \
+      --os-username user --os-user-domain-name domain1 \
+      --os-password password list
+
+  swift --os-auth-url https://api.example.com/v3 --auth-version 3\
+      --os-project-id 0123456789abcdef0123456789abcdef \
+      --os-user-id abcdef0123456789abcdef0123456789 \
+      --os-password password list
+
+  swift --os-auth-token 6ee5eb33efad4e45ab46806eac010566 \
+      --os-storage-url https://10.1.5.2:8080/v1/AUTH_ced809b6a4baea7aeab61a \
+      list
+
+  swift list --lh
+
+no such command: help
+```
+
+
+# swift delete
+
+```
+Usage: swift [--version] [--help] [--os-help] [--snet] [--verbose]
+             [--debug] [--info] [--quiet] [--auth <auth_url>]
+             [--auth-version <auth_version>] [--user <username>]
+             [--key <api_key>] [--retries <num_retries>]
+             [--os-username <auth-user-name>] [--os-password <auth-password>]
+             [--os-user-id <auth-user-id>]
+             [--os-user-domain-id <auth-user-domain-id>]
+             [--os-user-domain-name <auth-user-domain-name>]
+             [--os-tenant-id <auth-tenant-id>]
+             [--os-tenant-name <auth-tenant-name>]
+             [--os-project-id <auth-project-id>]
+             [--os-project-name <auth-project-name>]
+             [--os-project-domain-id <auth-project-domain-id>]
+             [--os-project-domain-name <auth-project-domain-name>]
+             [--os-auth-url <auth-url>] [--os-auth-token <auth-token>]
+             [--os-storage-url <storage-url>] [--os-region-name <region-name>]
+             [--os-service-type <service-type>]
+             [--os-endpoint-type <endpoint-type>]
+             [--os-cacert <ca-certificate>] [--insecure]
+             [--no-ssl-compression]
+             <subcommand> [--help]
+
+Command-line interface to the OpenStack Swift API.
+
+Positional arguments:
+  <subcommand>
+    delete               Delete a container or objects within a container.
+    download             Download objects from containers.
+    list                 Lists the containers for the account or the objects
+                         for a container.
+    post                 Updates meta information for the account, container,
+                         or object; creates containers if not present.
+    stat                 Displays information for the account, container,
+                         or object.
+    upload               Uploads files or directories to the given container.
+    capabilities         List cluster capabilities.
+    tempurl              Create a temporary URL
+
+Examples:
+  swift download --help
+
+  swift -A https://auth.api.rackspacecloud.com/v1.0 -U user -K api_key stat -v
+
+  swift --os-auth-url https://api.example.com/v2.0 --os-tenant-name tenant \
+      --os-username user --os-password password list
+
+  swift --os-auth-url https://api.example.com/v3 --auth-version 3\
+      --os-project-name project1 --os-project-domain-name domain1 \
+      --os-username user --os-user-domain-name domain1 \
+      --os-password password list
+
+  swift --os-auth-url https://api.example.com/v3 --auth-version 3\
+      --os-project-id 0123456789abcdef0123456789abcdef \
+      --os-user-id abcdef0123456789abcdef0123456789 \
+      --os-password password list
+
+  swift --os-auth-token 6ee5eb33efad4e45ab46806eac010566 \
+      --os-storage-url https://10.1.5.2:8080/v1/AUTH_ced809b6a4baea7aeab61a \
+      list
+
+  swift list --lh
+
+```
+
+
+# swift download
+
+```
+Usage: swift [--version] [--help] [--os-help] [--snet] [--verbose]
+             [--debug] [--info] [--quiet] [--auth <auth_url>]
+             [--auth-version <auth_version>] [--user <username>]
+             [--key <api_key>] [--retries <num_retries>]
+             [--os-username <auth-user-name>] [--os-password <auth-password>]
+             [--os-user-id <auth-user-id>]
+             [--os-user-domain-id <auth-user-domain-id>]
+             [--os-user-domain-name <auth-user-domain-name>]
+             [--os-tenant-id <auth-tenant-id>]
+             [--os-tenant-name <auth-tenant-name>]
+             [--os-project-id <auth-project-id>]
+             [--os-project-name <auth-project-name>]
+             [--os-project-domain-id <auth-project-domain-id>]
+             [--os-project-domain-name <auth-project-domain-name>]
+             [--os-auth-url <auth-url>] [--os-auth-token <auth-token>]
+             [--os-storage-url <storage-url>] [--os-region-name <region-name>]
+             [--os-service-type <service-type>]
+             [--os-endpoint-type <endpoint-type>]
+             [--os-cacert <ca-certificate>] [--insecure]
+             [--no-ssl-compression]
+             <subcommand> [--help]
+
+Command-line interface to the OpenStack Swift API.
+
+Positional arguments:
+  <subcommand>
+    delete               Delete a container or objects within a container.
+    download             Download objects from containers.
+    list                 Lists the containers for the account or the objects
+                         for a container.
+    post                 Updates meta information for the account, container,
+                         or object; creates containers if not present.
+    stat                 Displays information for the account, container,
+                         or object.
+    upload               Uploads files or directories to the given container.
+    capabilities         List cluster capabilities.
+    tempurl              Create a temporary URL
+
+Examples:
+  swift download --help
+
+  swift -A https://auth.api.rackspacecloud.com/v1.0 -U user -K api_key stat -v
+
+  swift --os-auth-url https://api.example.com/v2.0 --os-tenant-name tenant \
+      --os-username user --os-password password list
+
+  swift --os-auth-url https://api.example.com/v3 --auth-version 3\
+      --os-project-name project1 --os-project-domain-name domain1 \
+      --os-username user --os-user-domain-name domain1 \
+      --os-password password list
+
+  swift --os-auth-url https://api.example.com/v3 --auth-version 3\
+      --os-project-id 0123456789abcdef0123456789abcdef \
+      --os-user-id abcdef0123456789abcdef0123456789 \
+      --os-password password list
+
+  swift --os-auth-token 6ee5eb33efad4e45ab46806eac010566 \
+      --os-storage-url https://10.1.5.2:8080/v1/AUTH_ced809b6a4baea7aeab61a \
+      list
+
+  swift list --lh
+
+```
+
+
+# swift list
+
+```
+Usage: swift [--version] [--help] [--os-help] [--snet] [--verbose]
+             [--debug] [--info] [--quiet] [--auth <auth_url>]
+             [--auth-version <auth_version>] [--user <username>]
+             [--key <api_key>] [--retries <num_retries>]
+             [--os-username <auth-user-name>] [--os-password <auth-password>]
+             [--os-user-id <auth-user-id>]
+             [--os-user-domain-id <auth-user-domain-id>]
+             [--os-user-domain-name <auth-user-domain-name>]
+             [--os-tenant-id <auth-tenant-id>]
+             [--os-tenant-name <auth-tenant-name>]
+             [--os-project-id <auth-project-id>]
+             [--os-project-name <auth-project-name>]
+             [--os-project-domain-id <auth-project-domain-id>]
+             [--os-project-domain-name <auth-project-domain-name>]
+             [--os-auth-url <auth-url>] [--os-auth-token <auth-token>]
+             [--os-storage-url <storage-url>] [--os-region-name <region-name>]
+             [--os-service-type <service-type>]
+             [--os-endpoint-type <endpoint-type>]
+             [--os-cacert <ca-certificate>] [--insecure]
+             [--no-ssl-compression]
+             <subcommand> [--help]
+
+Command-line interface to the OpenStack Swift API.
+
+Positional arguments:
+  <subcommand>
+    delete               Delete a container or objects within a container.
+    download             Download objects from containers.
+    list                 Lists the containers for the account or the objects
+                         for a container.
+    post                 Updates meta information for the account, container,
+                         or object; creates containers if not present.
+    stat                 Displays information for the account, container,
+                         or object.
+    upload               Uploads files or directories to the given container.
+    capabilities         List cluster capabilities.
+    tempurl              Create a temporary URL
+
+Examples:
+  swift download --help
+
+  swift -A https://auth.api.rackspacecloud.com/v1.0 -U user -K api_key stat -v
+
+  swift --os-auth-url https://api.example.com/v2.0 --os-tenant-name tenant \
+      --os-username user --os-password password list
+
+  swift --os-auth-url https://api.example.com/v3 --auth-version 3\
+      --os-project-name project1 --os-project-domain-name domain1 \
+      --os-username user --os-user-domain-name domain1 \
+      --os-password password list
+
+  swift --os-auth-url https://api.example.com/v3 --auth-version 3\
+      --os-project-id 0123456789abcdef0123456789abcdef \
+      --os-user-id abcdef0123456789abcdef0123456789 \
+      --os-password password list
+
+  swift --os-auth-token 6ee5eb33efad4e45ab46806eac010566 \
+      --os-storage-url https://10.1.5.2:8080/v1/AUTH_ced809b6a4baea7aeab61a \
+      list
+
+  swift list --lh
+
+```
+
+
+# swift post
+
+```
+Usage: swift [--version] [--help] [--os-help] [--snet] [--verbose]
+             [--debug] [--info] [--quiet] [--auth <auth_url>]
+             [--auth-version <auth_version>] [--user <username>]
+             [--key <api_key>] [--retries <num_retries>]
+             [--os-username <auth-user-name>] [--os-password <auth-password>]
+             [--os-user-id <auth-user-id>]
+             [--os-user-domain-id <auth-user-domain-id>]
+             [--os-user-domain-name <auth-user-domain-name>]
+             [--os-tenant-id <auth-tenant-id>]
+             [--os-tenant-name <auth-tenant-name>]
+             [--os-project-id <auth-project-id>]
+             [--os-project-name <auth-project-name>]
+             [--os-project-domain-id <auth-project-domain-id>]
+             [--os-project-domain-name <auth-project-domain-name>]
+             [--os-auth-url <auth-url>] [--os-auth-token <auth-token>]
+             [--os-storage-url <storage-url>] [--os-region-name <region-name>]
+             [--os-service-type <service-type>]
+             [--os-endpoint-type <endpoint-type>]
+             [--os-cacert <ca-certificate>] [--insecure]
+             [--no-ssl-compression]
+             <subcommand> [--help]
+
+Command-line interface to the OpenStack Swift API.
+
+Positional arguments:
+  <subcommand>
+    delete               Delete a container or objects within a container.
+    download             Download objects from containers.
+    list                 Lists the containers for the account or the objects
+                         for a container.
+    post                 Updates meta information for the account, container,
+                         or object; creates containers if not present.
+    stat                 Displays information for the account, container,
+                         or object.
+    upload               Uploads files or directories to the given container.
+    capabilities         List cluster capabilities.
+    tempurl              Create a temporary URL
+
+Examples:
+  swift download --help
+
+  swift -A https://auth.api.rackspacecloud.com/v1.0 -U user -K api_key stat -v
+
+  swift --os-auth-url https://api.example.com/v2.0 --os-tenant-name tenant \
+      --os-username user --os-password password list
+
+  swift --os-auth-url https://api.example.com/v3 --auth-version 3\
+      --os-project-name project1 --os-project-domain-name domain1 \
+      --os-username user --os-user-domain-name domain1 \
+      --os-password password list
+
+  swift --os-auth-url https://api.example.com/v3 --auth-version 3\
+      --os-project-id 0123456789abcdef0123456789abcdef \
+      --os-user-id abcdef0123456789abcdef0123456789 \
+      --os-password password list
+
+  swift --os-auth-token 6ee5eb33efad4e45ab46806eac010566 \
+      --os-storage-url https://10.1.5.2:8080/v1/AUTH_ced809b6a4baea7aeab61a \
+      list
+
+  swift list --lh
+
+```
+
+
+# swift stat
+
+```
+Usage: swift [--version] [--help] [--os-help] [--snet] [--verbose]
+             [--debug] [--info] [--quiet] [--auth <auth_url>]
+             [--auth-version <auth_version>] [--user <username>]
+             [--key <api_key>] [--retries <num_retries>]
+             [--os-username <auth-user-name>] [--os-password <auth-password>]
+             [--os-user-id <auth-user-id>]
+             [--os-user-domain-id <auth-user-domain-id>]
+             [--os-user-domain-name <auth-user-domain-name>]
+             [--os-tenant-id <auth-tenant-id>]
+             [--os-tenant-name <auth-tenant-name>]
+             [--os-project-id <auth-project-id>]
+             [--os-project-name <auth-project-name>]
+             [--os-project-domain-id <auth-project-domain-id>]
+             [--os-project-domain-name <auth-project-domain-name>]
+             [--os-auth-url <auth-url>] [--os-auth-token <auth-token>]
+             [--os-storage-url <storage-url>] [--os-region-name <region-name>]
+             [--os-service-type <service-type>]
+             [--os-endpoint-type <endpoint-type>]
+             [--os-cacert <ca-certificate>] [--insecure]
+             [--no-ssl-compression]
+             <subcommand> [--help]
+
+Command-line interface to the OpenStack Swift API.
+
+Positional arguments:
+  <subcommand>
+    delete               Delete a container or objects within a container.
+    download             Download objects from containers.
+    list                 Lists the containers for the account or the objects
+                         for a container.
+    post                 Updates meta information for the account, container,
+                         or object; creates containers if not present.
+    stat                 Displays information for the account, container,
+                         or object.
+    upload               Uploads files or directories to the given container.
+    capabilities         List cluster capabilities.
+    tempurl              Create a temporary URL
+
+Examples:
+  swift download --help
+
+  swift -A https://auth.api.rackspacecloud.com/v1.0 -U user -K api_key stat -v
+
+  swift --os-auth-url https://api.example.com/v2.0 --os-tenant-name tenant \
+      --os-username user --os-password password list
+
+  swift --os-auth-url https://api.example.com/v3 --auth-version 3\
+      --os-project-name project1 --os-project-domain-name domain1 \
+      --os-username user --os-user-domain-name domain1 \
+      --os-password password list
+
+  swift --os-auth-url https://api.example.com/v3 --auth-version 3\
+      --os-project-id 0123456789abcdef0123456789abcdef \
+      --os-user-id abcdef0123456789abcdef0123456789 \
+      --os-password password list
+
+  swift --os-auth-token 6ee5eb33efad4e45ab46806eac010566 \
+      --os-storage-url https://10.1.5.2:8080/v1/AUTH_ced809b6a4baea7aeab61a \
+      list
+
+  swift list --lh
+
+```
+
+
+# swift upload
+
+```
+Usage: swift [--version] [--help] [--os-help] [--snet] [--verbose]
+             [--debug] [--info] [--quiet] [--auth <auth_url>]
+             [--auth-version <auth_version>] [--user <username>]
+             [--key <api_key>] [--retries <num_retries>]
+             [--os-username <auth-user-name>] [--os-password <auth-password>]
+             [--os-user-id <auth-user-id>]
+             [--os-user-domain-id <auth-user-domain-id>]
+             [--os-user-domain-name <auth-user-domain-name>]
+             [--os-tenant-id <auth-tenant-id>]
+             [--os-tenant-name <auth-tenant-name>]
+             [--os-project-id <auth-project-id>]
+             [--os-project-name <auth-project-name>]
+             [--os-project-domain-id <auth-project-domain-id>]
+             [--os-project-domain-name <auth-project-domain-name>]
+             [--os-auth-url <auth-url>] [--os-auth-token <auth-token>]
+             [--os-storage-url <storage-url>] [--os-region-name <region-name>]
+             [--os-service-type <service-type>]
+             [--os-endpoint-type <endpoint-type>]
+             [--os-cacert <ca-certificate>] [--insecure]
+             [--no-ssl-compression]
+             <subcommand> [--help]
+
+Command-line interface to the OpenStack Swift API.
+
+Positional arguments:
+  <subcommand>
+    delete               Delete a container or objects within a container.
+    download             Download objects from containers.
+    list                 Lists the containers for the account or the objects
+                         for a container.
+    post                 Updates meta information for the account, container,
+                         or object; creates containers if not present.
+    stat                 Displays information for the account, container,
+                         or object.
+    upload               Uploads files or directories to the given container.
+    capabilities         List cluster capabilities.
+    tempurl              Create a temporary URL
+
+Examples:
+  swift download --help
+
+  swift -A https://auth.api.rackspacecloud.com/v1.0 -U user -K api_key stat -v
+
+  swift --os-auth-url https://api.example.com/v2.0 --os-tenant-name tenant \
+      --os-username user --os-password password list
+
+  swift --os-auth-url https://api.example.com/v3 --auth-version 3\
+      --os-project-name project1 --os-project-domain-name domain1 \
+      --os-username user --os-user-domain-name domain1 \
+      --os-password password list
+
+  swift --os-auth-url https://api.example.com/v3 --auth-version 3\
+      --os-project-id 0123456789abcdef0123456789abcdef \
+      --os-user-id abcdef0123456789abcdef0123456789 \
+      --os-password password list
+
+  swift --os-auth-token 6ee5eb33efad4e45ab46806eac010566 \
+      --os-storage-url https://10.1.5.2:8080/v1/AUTH_ced809b6a4baea7aeab61a \
+      list
+
+  swift list --lh
+
+```
+
+
+# swift capabilities
+
+```
+Usage: swift [--version] [--help] [--os-help] [--snet] [--verbose]
+             [--debug] [--info] [--quiet] [--auth <auth_url>]
+             [--auth-version <auth_version>] [--user <username>]
+             [--key <api_key>] [--retries <num_retries>]
+             [--os-username <auth-user-name>] [--os-password <auth-password>]
+             [--os-user-id <auth-user-id>]
+             [--os-user-domain-id <auth-user-domain-id>]
+             [--os-user-domain-name <auth-user-domain-name>]
+             [--os-tenant-id <auth-tenant-id>]
+             [--os-tenant-name <auth-tenant-name>]
+             [--os-project-id <auth-project-id>]
+             [--os-project-name <auth-project-name>]
+             [--os-project-domain-id <auth-project-domain-id>]
+             [--os-project-domain-name <auth-project-domain-name>]
+             [--os-auth-url <auth-url>] [--os-auth-token <auth-token>]
+             [--os-storage-url <storage-url>] [--os-region-name <region-name>]
+             [--os-service-type <service-type>]
+             [--os-endpoint-type <endpoint-type>]
+             [--os-cacert <ca-certificate>] [--insecure]
+             [--no-ssl-compression]
+             <subcommand> [--help]
+
+Command-line interface to the OpenStack Swift API.
+
+Positional arguments:
+  <subcommand>
+    delete               Delete a container or objects within a container.
+    download             Download objects from containers.
+    list                 Lists the containers for the account or the objects
+                         for a container.
+    post                 Updates meta information for the account, container,
+                         or object; creates containers if not present.
+    stat                 Displays information for the account, container,
+                         or object.
+    upload               Uploads files or directories to the given container.
+    capabilities         List cluster capabilities.
+    tempurl              Create a temporary URL
+
+Examples:
+  swift download --help
+
+  swift -A https://auth.api.rackspacecloud.com/v1.0 -U user -K api_key stat -v
+
+  swift --os-auth-url https://api.example.com/v2.0 --os-tenant-name tenant \
+      --os-username user --os-password password list
+
+  swift --os-auth-url https://api.example.com/v3 --auth-version 3\
+      --os-project-name project1 --os-project-domain-name domain1 \
+      --os-username user --os-user-domain-name domain1 \
+      --os-password password list
+
+  swift --os-auth-url https://api.example.com/v3 --auth-version 3\
+      --os-project-id 0123456789abcdef0123456789abcdef \
+      --os-user-id abcdef0123456789abcdef0123456789 \
+      --os-password password list
+
+  swift --os-auth-token 6ee5eb33efad4e45ab46806eac010566 \
+      --os-storage-url https://10.1.5.2:8080/v1/AUTH_ced809b6a4baea7aeab61a \
+      list
+
+  swift list --lh
+
+```
+
+
+# swift tempurl
+
+```
+Usage: swift [--version] [--help] [--os-help] [--snet] [--verbose]
+             [--debug] [--info] [--quiet] [--auth <auth_url>]
+             [--auth-version <auth_version>] [--user <username>]
+             [--key <api_key>] [--retries <num_retries>]
+             [--os-username <auth-user-name>] [--os-password <auth-password>]
+             [--os-user-id <auth-user-id>]
+             [--os-user-domain-id <auth-user-domain-id>]
+             [--os-user-domain-name <auth-user-domain-name>]
+             [--os-tenant-id <auth-tenant-id>]
+             [--os-tenant-name <auth-tenant-name>]
+             [--os-project-id <auth-project-id>]
+             [--os-project-name <auth-project-name>]
+             [--os-project-domain-id <auth-project-domain-id>]
+             [--os-project-domain-name <auth-project-domain-name>]
+             [--os-auth-url <auth-url>] [--os-auth-token <auth-token>]
+             [--os-storage-url <storage-url>] [--os-region-name <region-name>]
+             [--os-service-type <service-type>]
+             [--os-endpoint-type <endpoint-type>]
+             [--os-cacert <ca-certificate>] [--insecure]
+             [--no-ssl-compression]
+             <subcommand> [--help]
+
+Command-line interface to the OpenStack Swift API.
+
+Positional arguments:
+  <subcommand>
+    delete               Delete a container or objects within a container.
+    download             Download objects from containers.
+    list                 Lists the containers for the account or the objects
+                         for a container.
+    post                 Updates meta information for the account, container,
+                         or object; creates containers if not present.
+    stat                 Displays information for the account, container,
+                         or object.
+    upload               Uploads files or directories to the given container.
+    capabilities         List cluster capabilities.
+    tempurl              Create a temporary URL
+
+Examples:
+  swift download --help
+
+  swift -A https://auth.api.rackspacecloud.com/v1.0 -U user -K api_key stat -v
+
+  swift --os-auth-url https://api.example.com/v2.0 --os-tenant-name tenant \
+      --os-username user --os-password password list
+
+  swift --os-auth-url https://api.example.com/v3 --auth-version 3\
+      --os-project-name project1 --os-project-domain-name domain1 \
+      --os-username user --os-user-domain-name domain1 \
+      --os-password password list
+
+  swift --os-auth-url https://api.example.com/v3 --auth-version 3\
+      --os-project-id 0123456789abcdef0123456789abcdef \
+      --os-user-id abcdef0123456789abcdef0123456789 \
+      --os-password password list
+
+  swift --os-auth-token 6ee5eb33efad4e45ab46806eac010566 \
+      --os-storage-url https://10.1.5.2:8080/v1/AUTH_ced809b6a4baea7aeab61a \
+      list
+
+  swift list --lh
+
+```
