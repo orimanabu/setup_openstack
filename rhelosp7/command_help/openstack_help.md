@@ -362,7 +362,7 @@ Commands:
 ```
 
 
-# openstack help aggregate add host
+# openstack aggregate add host
 
 ```
 usage: openstack aggregate add host [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -397,7 +397,7 @@ shell formatter:
 ```
 
 
-# openstack help aggregate create
+# openstack aggregate create
 
 ```
 usage: openstack aggregate create [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -438,7 +438,7 @@ shell formatter:
 ```
 
 
-# openstack help aggregate delete
+# openstack aggregate delete
 
 ```
 usage: openstack aggregate delete [-h] <aggregate>
@@ -453,7 +453,7 @@ optional arguments:
 ```
 
 
-# openstack help aggregate list
+# openstack aggregate list
 
 ```
 usage: openstack aggregate list [-h] [-f {csv,table}] [-c COLUMN]
@@ -485,7 +485,7 @@ CSV Formatter:
 ```
 
 
-# openstack help aggregate remove host
+# openstack aggregate remove host
 
 ```
 usage: openstack aggregate remove host [-h] [-f {shell,table,value}]
@@ -521,7 +521,7 @@ shell formatter:
 ```
 
 
-# openstack help aggregate set
+# openstack aggregate set
 
 ```
 usage: openstack aggregate set [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -563,7 +563,7 @@ shell formatter:
 ```
 
 
-# openstack help aggregate show
+# openstack aggregate show
 
 ```
 usage: openstack aggregate show [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -597,7 +597,7 @@ shell formatter:
 ```
 
 
-# openstack help availability zone list
+# openstack availability zone list
 
 ```
 usage: openstack availability zone list [-h] [-f {csv,table}] [-c COLUMN]
@@ -629,7 +629,7 @@ CSV Formatter:
 ```
 
 
-# openstack help backup create
+# openstack backup create
 
 ```
 usage: openstack backup create [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -670,7 +670,7 @@ shell formatter:
 ```
 
 
-# openstack help backup delete
+# openstack backup delete
 
 ```
 usage: openstack backup delete [-h] <backup> [<backup> ...]
@@ -685,7 +685,7 @@ optional arguments:
 ```
 
 
-# openstack help backup list
+# openstack backup list
 
 ```
 usage: openstack backup list [-h] [-f {csv,table}] [-c COLUMN]
@@ -716,7 +716,7 @@ CSV Formatter:
 ```
 
 
-# openstack help backup restore
+# openstack backup restore
 
 ```
 usage: openstack backup restore [-h] <backup> <volume>
@@ -732,7 +732,7 @@ optional arguments:
 ```
 
 
-# openstack help backup show
+# openstack backup show
 
 ```
 usage: openstack backup show [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -766,7 +766,7 @@ shell formatter:
 ```
 
 
-# openstack help baremetal add port
+# openstack baremetal add port
 
 ```
 usage: openstack baremetal add port [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -805,7 +805,7 @@ shell formatter:
 ```
 
 
-# openstack help baremetal create
+# openstack baremetal create
 
 ```
 usage: openstack baremetal create [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -855,7 +855,7 @@ shell formatter:
 ```
 
 
-# openstack help baremetal delete
+# openstack baremetal delete
 
 ```
 usage: openstack baremetal delete [-h] <node>
@@ -870,7 +870,7 @@ optional arguments:
 ```
 
 
-# openstack help baremetal list
+# openstack baremetal list
 
 ```
 usage: openstack baremetal list [-h] [-f {csv,table}] [-c COLUMN]
@@ -916,7 +916,7 @@ CSV Formatter:
 ```
 
 
-# openstack help baremetal maintenance
+# openstack baremetal maintenance
 
 ```
 usage: openstack baremetal maintenance [-h] (--on | --off) [--reason <reason>]
@@ -936,7 +936,7 @@ optional arguments:
 ```
 
 
-# openstack help baremetal power
+# openstack baremetal power
 
 ```
 usage: openstack baremetal power [-h] [--on | --off] <node>
@@ -953,7 +953,7 @@ optional arguments:
 ```
 
 
-# openstack help baremetal provision state
+# openstack baremetal provision state
 
 ```
 usage: openstack baremetal provision state [-h]
@@ -984,7 +984,7 @@ optional arguments:
 ```
 
 
-# openstack help baremetal reboot
+# openstack baremetal reboot
 
 ```
 usage: openstack baremetal reboot [-h] <node>
@@ -999,7 +999,7 @@ optional arguments:
 ```
 
 
-# openstack help baremetal set
+# openstack baremetal set
 
 ```
 usage: openstack baremetal set [-h] [--property <path=value>] <node>
@@ -1017,7 +1017,7 @@ optional arguments:
 ```
 
 
-# openstack help baremetal show
+# openstack baremetal show
 
 ```
 usage: openstack baremetal show [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -1055,7 +1055,7 @@ shell formatter:
 ```
 
 
-# openstack help baremetal unset
+# openstack baremetal unset
 
 ```
 usage: openstack baremetal unset [-h] [--property <path>] <node>
@@ -1072,7 +1072,7 @@ optional arguments:
 ```
 
 
-# openstack help catalog list
+# openstack catalog list
 
 ```
 usage: openstack catalog list [-h] [-f {csv,table}] [-c COLUMN]
@@ -1102,7 +1102,7 @@ CSV Formatter:
 ```
 
 
-# openstack help catalog show
+# openstack catalog show
 
 ```
 usage: openstack catalog show [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -1136,7 +1136,7 @@ shell formatter:
 ```
 
 
-# openstack help command list
+# openstack command list
 
 ```
 usage: openstack command list [-h] [-f {csv,table}] [-c COLUMN]
@@ -1166,7 +1166,7 @@ CSV Formatter:
 ```
 
 
-# openstack help complete
+# openstack complete
 
 ```
 usage: openstack complete [-h] [--name <command_name>] [--shell <shell>]
@@ -1182,7 +1182,7 @@ optional arguments:
 ```
 
 
-# openstack help compute agent create
+# openstack compute agent create
 
 ```
 usage: openstack compute agent create [-h] [-f {shell,table,value}]
@@ -1223,7 +1223,7 @@ shell formatter:
 ```
 
 
-# openstack help compute agent delete
+# openstack compute agent delete
 
 ```
 usage: openstack compute agent delete [-h] <id>
@@ -1238,7 +1238,7 @@ optional arguments:
 ```
 
 
-# openstack help compute agent list
+# openstack compute agent list
 
 ```
 usage: openstack compute agent list [-h] [-f {csv,table}] [-c COLUMN]
@@ -1271,7 +1271,7 @@ CSV Formatter:
 ```
 
 
-# openstack help compute agent set
+# openstack compute agent set
 
 ```
 usage: openstack compute agent set [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -1308,7 +1308,7 @@ shell formatter:
 ```
 
 
-# openstack help compute service list
+# openstack compute service list
 
 ```
 usage: openstack compute service list [-h] [-f {csv,table}] [-c COLUMN]
@@ -1341,7 +1341,7 @@ CSV Formatter:
 ```
 
 
-# openstack help compute service set
+# openstack compute service set
 
 ```
 usage: openstack compute service set [-h] [-f {csv,table}] [-c COLUMN]
@@ -1379,7 +1379,7 @@ CSV Formatter:
 ```
 
 
-# openstack help console log show
+# openstack console log show
 
 ```
 usage: openstack console log show [-h] [--lines <num-lines>] <server>
@@ -1396,7 +1396,7 @@ optional arguments:
 ```
 
 
-# openstack help console url show
+# openstack console url show
 
 ```
 usage: openstack console url show [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -1434,7 +1434,7 @@ shell formatter:
 ```
 
 
-# openstack help container create
+# openstack container create
 
 ```
 usage: openstack container create [-h] [-f {csv,table}] [-c COLUMN]
@@ -1468,7 +1468,7 @@ CSV Formatter:
 ```
 
 
-# openstack help container delete
+# openstack container delete
 
 ```
 usage: openstack container delete [-h] <container> [<container> ...]
@@ -1483,7 +1483,7 @@ optional arguments:
 ```
 
 
-# openstack help container list
+# openstack container list
 
 ```
 usage: openstack container list [-h] [-f {csv,table}] [-c COLUMN]
@@ -1523,7 +1523,7 @@ CSV Formatter:
 ```
 
 
-# openstack help container save
+# openstack container save
 
 ```
 usage: openstack container save [-h] <container>
@@ -1538,7 +1538,7 @@ optional arguments:
 ```
 
 
-# openstack help container show
+# openstack container show
 
 ```
 usage: openstack container show [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -1572,7 +1572,7 @@ shell formatter:
 ```
 
 
-# openstack help ec2 credentials create
+# openstack ec2 credentials create
 
 ```
 usage: openstack ec2 credentials create [-h] [-f {shell,table,value}]
@@ -1608,7 +1608,7 @@ shell formatter:
 ```
 
 
-# openstack help ec2 credentials delete
+# openstack ec2 credentials delete
 
 ```
 usage: openstack ec2 credentials delete [-h] [--user <user>] <access-key>
@@ -1624,7 +1624,7 @@ optional arguments:
 ```
 
 
-# openstack help ec2 credentials list
+# openstack ec2 credentials list
 
 ```
 usage: openstack ec2 credentials list [-h] [-f {csv,table}] [-c COLUMN]
@@ -1656,7 +1656,7 @@ CSV Formatter:
 ```
 
 
-# openstack help ec2 credentials show
+# openstack ec2 credentials show
 
 ```
 usage: openstack ec2 credentials show [-h] [-f {shell,table,value}]
@@ -1692,7 +1692,7 @@ shell formatter:
 ```
 
 
-# openstack help endpoint create
+# openstack endpoint create
 
 ```
 usage: openstack endpoint create [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -1732,7 +1732,7 @@ shell formatter:
 ```
 
 
-# openstack help endpoint delete
+# openstack endpoint delete
 
 ```
 usage: openstack endpoint delete [-h] <endpoint-id>
@@ -1747,7 +1747,7 @@ optional arguments:
 ```
 
 
-# openstack help endpoint list
+# openstack endpoint list
 
 ```
 usage: openstack endpoint list [-h] [-f {csv,table}] [-c COLUMN]
@@ -1779,7 +1779,7 @@ CSV Formatter:
 ```
 
 
-# openstack help endpoint show
+# openstack endpoint show
 
 ```
 usage: openstack endpoint show [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -1813,7 +1813,7 @@ shell formatter:
 ```
 
 
-# openstack help extension list
+# openstack extension list
 
 ```
 usage: openstack extension list [-h] [-f {csv,table}] [-c COLUMN]
@@ -1850,7 +1850,7 @@ CSV Formatter:
 ```
 
 
-# openstack help flavor create
+# openstack flavor create
 
 ```
 usage: openstack flavor create [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -1900,7 +1900,7 @@ shell formatter:
 ```
 
 
-# openstack help flavor delete
+# openstack flavor delete
 
 ```
 usage: openstack flavor delete [-h] <flavor>
@@ -1915,7 +1915,7 @@ optional arguments:
 ```
 
 
-# openstack help flavor list
+# openstack flavor list
 
 ```
 usage: openstack flavor list [-h] [-f {csv,table}] [-c COLUMN]
@@ -1950,7 +1950,7 @@ CSV Formatter:
 ```
 
 
-# openstack help flavor set
+# openstack flavor set
 
 ```
 usage: openstack flavor set [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -1988,7 +1988,7 @@ shell formatter:
 ```
 
 
-# openstack help flavor show
+# openstack flavor show
 
 ```
 usage: openstack flavor show [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -2022,7 +2022,7 @@ shell formatter:
 ```
 
 
-# openstack help flavor unset
+# openstack flavor unset
 
 ```
 usage: openstack flavor unset [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -2059,7 +2059,7 @@ shell formatter:
 ```
 
 
-# openstack help help
+# openstack help
 
 ```
 usage: openstack help [-h] [cmd [cmd ...]]
@@ -2074,7 +2074,7 @@ optional arguments:
 ```
 
 
-# openstack help host list
+# openstack host list
 
 ```
 usage: openstack host list [-h] [-f {csv,table}] [-c COLUMN]
@@ -2106,7 +2106,7 @@ CSV Formatter:
 ```
 
 
-# openstack help host show
+# openstack host show
 
 ```
 usage: openstack host show [-h] [-f {csv,table}] [-c COLUMN]
@@ -2140,7 +2140,7 @@ CSV Formatter:
 ```
 
 
-# openstack help hypervisor list
+# openstack hypervisor list
 
 ```
 usage: openstack hypervisor list [-h] [-f {csv,table}] [-c COLUMN]
@@ -2173,7 +2173,7 @@ CSV Formatter:
 ```
 
 
-# openstack help hypervisor show
+# openstack hypervisor show
 
 ```
 usage: openstack hypervisor show [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -2207,7 +2207,7 @@ shell formatter:
 ```
 
 
-# openstack help hypervisor stats show
+# openstack hypervisor stats show
 
 ```
 usage: openstack hypervisor stats show [-h] [-f {shell,table,value}]
@@ -2238,7 +2238,7 @@ shell formatter:
 ```
 
 
-# openstack help image create
+# openstack image create
 
 ```
 usage: openstack image create [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -2311,7 +2311,7 @@ shell formatter:
 ```
 
 
-# openstack help image delete
+# openstack image delete
 
 ```
 usage: openstack image delete [-h] <image> [<image> ...]
@@ -2326,7 +2326,7 @@ optional arguments:
 ```
 
 
-# openstack help image list
+# openstack image list
 
 ```
 usage: openstack image list [-h] [-f {csv,table}] [-c COLUMN]
@@ -2367,7 +2367,7 @@ CSV Formatter:
 ```
 
 
-# openstack help image save
+# openstack image save
 
 ```
 usage: openstack image save [-h] [--file <filename>] <image>
@@ -2383,7 +2383,7 @@ optional arguments:
 ```
 
 
-# openstack help image set
+# openstack image set
 
 ```
 usage: openstack image set [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -2432,7 +2432,7 @@ shell formatter:
 ```
 
 
-# openstack help image show
+# openstack image show
 
 ```
 usage: openstack image show [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -2466,7 +2466,7 @@ shell formatter:
 ```
 
 
-# openstack help ip fixed add
+# openstack ip fixed add
 
 ```
 usage: openstack ip fixed add [-h] <network> <server>
@@ -2482,7 +2482,7 @@ optional arguments:
 ```
 
 
-# openstack help ip fixed remove
+# openstack ip fixed remove
 
 ```
 usage: openstack ip fixed remove [-h] <ip-address> <server>
@@ -2498,7 +2498,7 @@ optional arguments:
 ```
 
 
-# openstack help ip floating add
+# openstack ip floating add
 
 ```
 usage: openstack ip floating add [-h] <ip-address> <server>
@@ -2514,7 +2514,7 @@ optional arguments:
 ```
 
 
-# openstack help ip floating create
+# openstack ip floating create
 
 ```
 usage: openstack ip floating create [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -2548,7 +2548,7 @@ shell formatter:
 ```
 
 
-# openstack help ip floating delete
+# openstack ip floating delete
 
 ```
 usage: openstack ip floating delete [-h] <ip-address>
@@ -2563,7 +2563,7 @@ optional arguments:
 ```
 
 
-# openstack help ip floating list
+# openstack ip floating list
 
 ```
 usage: openstack ip floating list [-h] [-f {csv,table}] [-c COLUMN]
@@ -2593,7 +2593,7 @@ CSV Formatter:
 ```
 
 
-# openstack help ip floating pool list
+# openstack ip floating pool list
 
 ```
 usage: openstack ip floating pool list [-h] [-f {csv,table}] [-c COLUMN]
@@ -2623,7 +2623,7 @@ CSV Formatter:
 ```
 
 
-# openstack help ip floating remove
+# openstack ip floating remove
 
 ```
 usage: openstack ip floating remove [-h] <ip-address> <server>
@@ -2639,7 +2639,7 @@ optional arguments:
 ```
 
 
-# openstack help keypair create
+# openstack keypair create
 
 ```
 usage: openstack keypair create [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -2675,7 +2675,7 @@ shell formatter:
 ```
 
 
-# openstack help keypair delete
+# openstack keypair delete
 
 ```
 usage: openstack keypair delete [-h] <key>
@@ -2690,7 +2690,7 @@ optional arguments:
 ```
 
 
-# openstack help keypair list
+# openstack keypair list
 
 ```
 usage: openstack keypair list [-h] [-f {csv,table}] [-c COLUMN]
@@ -2720,7 +2720,7 @@ CSV Formatter:
 ```
 
 
-# openstack help keypair show
+# openstack keypair show
 
 ```
 usage: openstack keypair show [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -2756,7 +2756,7 @@ shell formatter:
 ```
 
 
-# openstack help limits show
+# openstack limits show
 
 ```
 usage: openstack limits show [-h] [-f {csv,table}] [-c COLUMN]
@@ -2791,7 +2791,7 @@ CSV Formatter:
 ```
 
 
-# openstack help module list
+# openstack module list
 
 ```
 usage: openstack module list [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -2822,7 +2822,7 @@ shell formatter:
 ```
 
 
-# openstack help network create
+# openstack network create
 
 ```
 usage: openstack network create [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -2861,7 +2861,7 @@ shell formatter:
 ```
 
 
-# openstack help network delete
+# openstack network delete
 
 ```
 usage: openstack network delete [-h] <network> [<network> ...]
@@ -2876,7 +2876,7 @@ optional arguments:
 ```
 
 
-# openstack help network list
+# openstack network list
 
 ```
 usage: openstack network list [-h] [-f {csv,table}] [-c COLUMN]
@@ -2910,7 +2910,7 @@ CSV Formatter:
 ```
 
 
-# openstack help network set
+# openstack network set
 
 ```
 usage: openstack network set [-h] [--name <name>] [--enable | --disable]
@@ -2932,7 +2932,7 @@ optional arguments:
 ```
 
 
-# openstack help network show
+# openstack network show
 
 ```
 usage: openstack network show [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -2966,7 +2966,7 @@ shell formatter:
 ```
 
 
-# openstack help object create
+# openstack object create
 
 ```
 usage: openstack object create [-h] [-f {csv,table}] [-c COLUMN]
@@ -3001,7 +3001,7 @@ CSV Formatter:
 ```
 
 
-# openstack help object delete
+# openstack object delete
 
 ```
 usage: openstack object delete [-h] <container> <object> [<object> ...]
@@ -3017,7 +3017,7 @@ optional arguments:
 ```
 
 
-# openstack help object list
+# openstack object list
 
 ```
 usage: openstack object list [-h] [-f {csv,table}] [-c COLUMN]
@@ -3063,7 +3063,7 @@ CSV Formatter:
 ```
 
 
-# openstack help object save
+# openstack object save
 
 ```
 usage: openstack object save [-h] [--file <filename>] <container> <object>
@@ -3080,7 +3080,7 @@ optional arguments:
 ```
 
 
-# openstack help object show
+# openstack object show
 
 ```
 usage: openstack object show [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -3115,7 +3115,7 @@ shell formatter:
 ```
 
 
-# openstack help project create
+# openstack project create
 
 ```
 usage: openstack project create [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -3160,7 +3160,7 @@ shell formatter:
 ```
 
 
-# openstack help project delete
+# openstack project delete
 
 ```
 usage: openstack project delete [-h] <project> [<project> ...]
@@ -3175,7 +3175,7 @@ optional arguments:
 ```
 
 
-# openstack help project list
+# openstack project list
 
 ```
 usage: openstack project list [-h] [-f {csv,table}] [-c COLUMN]
@@ -3206,7 +3206,7 @@ CSV Formatter:
 ```
 
 
-# openstack help project set
+# openstack project set
 
 ```
 usage: openstack project set [-h] [--name <name>]
@@ -3232,7 +3232,7 @@ optional arguments:
 ```
 
 
-# openstack help project show
+# openstack project show
 
 ```
 usage: openstack project show [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -3266,7 +3266,7 @@ shell formatter:
 ```
 
 
-# openstack help quota set
+# openstack quota set
 
 ```
 usage: openstack quota set [-h] [--class] [--properties <properties>]
@@ -3320,7 +3320,7 @@ optional arguments:
 ```
 
 
-# openstack help quota show
+# openstack quota show
 
 ```
 usage: openstack quota show [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -3357,7 +3357,7 @@ shell formatter:
 ```
 
 
-# openstack help role add
+# openstack role add
 
 ```
 usage: openstack role add [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -3394,7 +3394,7 @@ shell formatter:
 ```
 
 
-# openstack help role create
+# openstack role create
 
 ```
 usage: openstack role create [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -3430,7 +3430,7 @@ shell formatter:
 ```
 
 
-# openstack help role delete
+# openstack role delete
 
 ```
 usage: openstack role delete [-h] <role> [<role> ...]
@@ -3445,7 +3445,7 @@ optional arguments:
 ```
 
 
-# openstack help role list
+# openstack role list
 
 ```
 usage: openstack role list [-h] [-f {csv,table}] [-c COLUMN]
@@ -3478,7 +3478,7 @@ CSV Formatter:
 ```
 
 
-# openstack help role remove
+# openstack role remove
 
 ```
 usage: openstack role remove [-h] --project <project> --user <user> <role>
@@ -3495,7 +3495,7 @@ optional arguments:
 ```
 
 
-# openstack help role show
+# openstack role show
 
 ```
 usage: openstack role show [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -3529,7 +3529,7 @@ shell formatter:
 ```
 
 
-# openstack help security group create
+# openstack security group create
 
 ```
 usage: openstack security group create [-h] [-f {shell,table,value}]
@@ -3567,7 +3567,7 @@ shell formatter:
 ```
 
 
-# openstack help security group delete
+# openstack security group delete
 
 ```
 usage: openstack security group delete [-h] <group>
@@ -3582,7 +3582,7 @@ optional arguments:
 ```
 
 
-# openstack help security group list
+# openstack security group list
 
 ```
 usage: openstack security group list [-h] [-f {csv,table}] [-c COLUMN]
@@ -3614,7 +3614,7 @@ CSV Formatter:
 ```
 
 
-# openstack help security group rule create
+# openstack security group rule create
 
 ```
 usage: openstack security group rule create [-h] [-f {shell,table,value}]
@@ -3659,7 +3659,7 @@ shell formatter:
 ```
 
 
-# openstack help security group rule delete
+# openstack security group rule delete
 
 ```
 usage: openstack security group rule delete [-h] [--proto <proto>]
@@ -3683,7 +3683,7 @@ optional arguments:
 ```
 
 
-# openstack help security group rule list
+# openstack security group rule list
 
 ```
 usage: openstack security group rule list [-h] [-f {csv,table}] [-c COLUMN]
@@ -3717,7 +3717,7 @@ CSV Formatter:
 ```
 
 
-# openstack help security group set
+# openstack security group set
 
 ```
 usage: openstack security group set [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -3756,7 +3756,7 @@ shell formatter:
 ```
 
 
-# openstack help security group show
+# openstack security group show
 
 ```
 usage: openstack security group show [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -3790,7 +3790,7 @@ shell formatter:
 ```
 
 
-# openstack help server add security group
+# openstack server add security group
 
 ```
 usage: openstack server add security group [-h] <server> <group>
@@ -3806,7 +3806,7 @@ optional arguments:
 ```
 
 
-# openstack help server add volume
+# openstack server add volume
 
 ```
 usage: openstack server add volume [-h] [--device <device>] <server> <volume>
@@ -3823,7 +3823,7 @@ optional arguments:
 ```
 
 
-# openstack help server create
+# openstack server create
 
 ```
 usage: openstack server create [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -3902,7 +3902,7 @@ shell formatter:
 ```
 
 
-# openstack help server delete
+# openstack server delete
 
 ```
 usage: openstack server delete [-h] <server> [<server> ...]
@@ -3917,7 +3917,7 @@ optional arguments:
 ```
 
 
-# openstack help server image create
+# openstack server image create
 
 ```
 usage: openstack server image create [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -3954,7 +3954,7 @@ shell formatter:
 ```
 
 
-# openstack help server list
+# openstack server list
 
 ```
 usage: openstack server list [-h] [-f {csv,table}] [-c COLUMN]
@@ -4006,7 +4006,7 @@ CSV Formatter:
 ```
 
 
-# openstack help server lock
+# openstack server lock
 
 ```
 usage: openstack server lock [-h] <server>
@@ -4021,7 +4021,7 @@ optional arguments:
 ```
 
 
-# openstack help server migrate
+# openstack server migrate
 
 ```
 usage: openstack server migrate [-h] [--live <hostname>]
@@ -4047,7 +4047,7 @@ optional arguments:
 ```
 
 
-# openstack help server pause
+# openstack server pause
 
 ```
 usage: openstack server pause [-h] <server>
@@ -4062,7 +4062,7 @@ optional arguments:
 ```
 
 
-# openstack help server reboot
+# openstack server reboot
 
 ```
 usage: openstack server reboot [-h] [--hard | --soft] [--wait] <server>
@@ -4080,7 +4080,7 @@ optional arguments:
 ```
 
 
-# openstack help server rebuild
+# openstack server rebuild
 
 ```
 usage: openstack server rebuild [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -4120,7 +4120,7 @@ shell formatter:
 ```
 
 
-# openstack help server remove security group
+# openstack server remove security group
 
 ```
 usage: openstack server remove security group [-h] <server> <group>
@@ -4136,7 +4136,7 @@ optional arguments:
 ```
 
 
-# openstack help server remove volume
+# openstack server remove volume
 
 ```
 usage: openstack server remove volume [-h] <server> <volume>
@@ -4152,7 +4152,7 @@ optional arguments:
 ```
 
 
-# openstack help server rescue
+# openstack server rescue
 
 ```
 usage: openstack server rescue [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -4186,7 +4186,7 @@ shell formatter:
 ```
 
 
-# openstack help server resize
+# openstack server resize
 
 ```
 usage: openstack server resize [-h] [--flavor <flavor> | --confirm | --revert]
@@ -4207,7 +4207,7 @@ optional arguments:
 ```
 
 
-# openstack help server resume
+# openstack server resume
 
 ```
 usage: openstack server resume [-h] <server>
@@ -4222,7 +4222,7 @@ optional arguments:
 ```
 
 
-# openstack help server set
+# openstack server set
 
 ```
 usage: openstack server set [-h] [--name <new-name>] [--root-password]
@@ -4244,7 +4244,7 @@ optional arguments:
 ```
 
 
-# openstack help server show
+# openstack server show
 
 ```
 usage: openstack server show [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -4280,7 +4280,7 @@ shell formatter:
 ```
 
 
-# openstack help server ssh
+# openstack server ssh
 
 ```
 usage: openstack server ssh [-h] [--login <login-name>] [--port <port>]
@@ -4310,7 +4310,7 @@ optional arguments:
 ```
 
 
-# openstack help server suspend
+# openstack server suspend
 
 ```
 usage: openstack server suspend [-h] <server>
@@ -4325,7 +4325,7 @@ optional arguments:
 ```
 
 
-# openstack help server unlock
+# openstack server unlock
 
 ```
 usage: openstack server unlock [-h] <server>
@@ -4340,7 +4340,7 @@ optional arguments:
 ```
 
 
-# openstack help server unpause
+# openstack server unpause
 
 ```
 usage: openstack server unpause [-h] <server>
@@ -4355,7 +4355,7 @@ optional arguments:
 ```
 
 
-# openstack help server unrescue
+# openstack server unrescue
 
 ```
 usage: openstack server unrescue [-h] <server>
@@ -4370,7 +4370,7 @@ optional arguments:
 ```
 
 
-# openstack help server unset
+# openstack server unset
 
 ```
 usage: openstack server unset [-h] [--property <key>] <server>
@@ -4387,7 +4387,7 @@ optional arguments:
 ```
 
 
-# openstack help service create
+# openstack service create
 
 ```
 usage: openstack service create [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -4426,7 +4426,7 @@ shell formatter:
 ```
 
 
-# openstack help service delete
+# openstack service delete
 
 ```
 usage: openstack service delete [-h] <service>
@@ -4441,7 +4441,7 @@ optional arguments:
 ```
 
 
-# openstack help service list
+# openstack service list
 
 ```
 usage: openstack service list [-h] [-f {csv,table}] [-c COLUMN]
@@ -4472,7 +4472,7 @@ CSV Formatter:
 ```
 
 
-# openstack help service show
+# openstack service show
 
 ```
 usage: openstack service show [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -4508,7 +4508,7 @@ shell formatter:
 ```
 
 
-# openstack help snapshot create
+# openstack snapshot create
 
 ```
 usage: openstack snapshot create [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -4549,7 +4549,7 @@ shell formatter:
 ```
 
 
-# openstack help snapshot delete
+# openstack snapshot delete
 
 ```
 usage: openstack snapshot delete [-h] <snapshot> [<snapshot> ...]
@@ -4564,7 +4564,7 @@ optional arguments:
 ```
 
 
-# openstack help snapshot list
+# openstack snapshot list
 
 ```
 usage: openstack snapshot list [-h] [-f {csv,table}] [-c COLUMN]
@@ -4596,7 +4596,7 @@ CSV Formatter:
 ```
 
 
-# openstack help snapshot set
+# openstack snapshot set
 
 ```
 usage: openstack snapshot set [-h] [--name <name>]
@@ -4620,7 +4620,7 @@ optional arguments:
 ```
 
 
-# openstack help snapshot show
+# openstack snapshot show
 
 ```
 usage: openstack snapshot show [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -4654,7 +4654,7 @@ shell formatter:
 ```
 
 
-# openstack help snapshot unset
+# openstack snapshot unset
 
 ```
 usage: openstack snapshot unset [-h] [--property <key>] <snapshot>
@@ -4671,7 +4671,7 @@ optional arguments:
 ```
 
 
-# openstack help token issue
+# openstack token issue
 
 ```
 usage: openstack token issue [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -4701,7 +4701,7 @@ shell formatter:
 ```
 
 
-# openstack help token revoke
+# openstack token revoke
 
 ```
 usage: openstack token revoke [-h] <token>
@@ -4716,7 +4716,7 @@ optional arguments:
 ```
 
 
-# openstack help usage list
+# openstack usage list
 
 ```
 usage: openstack usage list [-h] [-f {csv,table}] [-c COLUMN]
@@ -4751,7 +4751,7 @@ CSV Formatter:
 ```
 
 
-# openstack help usage show
+# openstack usage show
 
 ```
 usage: openstack usage show [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -4788,7 +4788,7 @@ shell formatter:
 ```
 
 
-# openstack help user create
+# openstack user create
 
 ```
 usage: openstack user create [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -4834,7 +4834,7 @@ shell formatter:
 ```
 
 
-# openstack help user delete
+# openstack user delete
 
 ```
 usage: openstack user delete [-h] <user> [<user> ...]
@@ -4849,7 +4849,7 @@ optional arguments:
 ```
 
 
-# openstack help user list
+# openstack user list
 
 ```
 usage: openstack user list [-h] [-f {csv,table}] [-c COLUMN]
@@ -4882,7 +4882,7 @@ CSV Formatter:
 ```
 
 
-# openstack help user role list
+# openstack user role list
 
 ```
 usage: openstack user role list [-h] [-f {csv,table}] [-c COLUMN]
@@ -4918,7 +4918,7 @@ CSV Formatter:
 ```
 
 
-# openstack help user set
+# openstack user set
 
 ```
 usage: openstack user set [-h] [--name <name>] [--project <project>]
@@ -4945,7 +4945,7 @@ optional arguments:
 ```
 
 
-# openstack help user show
+# openstack user show
 
 ```
 usage: openstack user show [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -4979,7 +4979,7 @@ shell formatter:
 ```
 
 
-# openstack help volume create
+# openstack volume create
 
 ```
 usage: openstack volume create [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -5035,7 +5035,7 @@ shell formatter:
 ```
 
 
-# openstack help volume delete
+# openstack volume delete
 
 ```
 usage: openstack volume delete [-h] [--force] <volume> [<volume> ...]
@@ -5052,7 +5052,7 @@ optional arguments:
 ```
 
 
-# openstack help volume list
+# openstack volume list
 
 ```
 usage: openstack volume list [-h] [-f {csv,table}] [-c COLUMN]
@@ -5088,7 +5088,7 @@ CSV Formatter:
 ```
 
 
-# openstack help volume set
+# openstack volume set
 
 ```
 usage: openstack volume set [-h] [--name <name>] [--description <description>]
@@ -5112,7 +5112,7 @@ optional arguments:
 ```
 
 
-# openstack help volume show
+# openstack volume show
 
 ```
 usage: openstack volume show [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -5146,7 +5146,7 @@ shell formatter:
 ```
 
 
-# openstack help volume type create
+# openstack volume type create
 
 ```
 usage: openstack volume type create [-h] [-f {shell,table,value}] [-c COLUMN]
@@ -5184,7 +5184,7 @@ shell formatter:
 ```
 
 
-# openstack help volume type delete
+# openstack volume type delete
 
 ```
 usage: openstack volume type delete [-h] <volume-type>
@@ -5199,7 +5199,7 @@ optional arguments:
 ```
 
 
-# openstack help volume type list
+# openstack volume type list
 
 ```
 usage: openstack volume type list [-h] [-f {csv,table}] [-c COLUMN]
@@ -5231,7 +5231,7 @@ CSV Formatter:
 ```
 
 
-# openstack help volume type set
+# openstack volume type set
 
 ```
 usage: openstack volume type set [-h] [--property <key=value>] <volume-type>
@@ -5249,7 +5249,7 @@ optional arguments:
 ```
 
 
-# openstack help volume type unset
+# openstack volume type unset
 
 ```
 usage: openstack volume type unset [-h] [--property <key>] <volume-type>
@@ -5266,7 +5266,7 @@ optional arguments:
 ```
 
 
-# openstack help volume unset
+# openstack volume unset
 
 ```
 usage: openstack volume unset [-h] [--property <key>] <volume>

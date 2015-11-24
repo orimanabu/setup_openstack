@@ -98,7 +98,8 @@ echo '```' 2>&1 | tee -a ${output}
 openstack --help | sed -e '1,/^Commands:/d' -e 's/^  //' -e 's/  .*$//' | while read subcmd; do
 	echo | tee -a ${output}
 	echo | tee -a ${output}
-	echo "# openstack help ${subcmd}" | tee -a ${output}
+	echo "# openstack ${subcmd}" | tee -a ${output}
+
 	echo | tee -a ${output}
 	echo '```' 2>&1 | tee -a ${output}
 	openstack help ${subcmd} 2>&1 | tee -a ${output}
