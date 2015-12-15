@@ -1,7 +1,24 @@
 diff --git a/rhelosp7/answers.txt b/rhelosp7/answers.txt
-index 906c090..ef2a48a 100644
+index 906c090..0c5b8d7 100644
 --- a/rhelosp7/answers.txt
 +++ b/rhelosp7/answers.txt
+@@ -33,13 +33,13 @@ CONFIG_NEUTRON_INSTALL=y
+ CONFIG_HORIZON_INSTALL=y
+ 
+ # Specify 'y' to install OpenStack Object Storage (swift).
+-CONFIG_SWIFT_INSTALL=y
++CONFIG_SWIFT_INSTALL=n
+ 
+ # Specify 'y' to install OpenStack Metering (ceilometer).
+-CONFIG_CEILOMETER_INSTALL=y
++CONFIG_CEILOMETER_INSTALL=n
+ 
+ # Specify 'y' to install OpenStack Orchestration (heat).
+-CONFIG_HEAT_INSTALL=y
++CONFIG_HEAT_INSTALL=n
+ 
+ # Specify 'y' to install OpenStack Data Processing (sahara).
+ CONFIG_SAHARA_INSTALL=n
 @@ -856,7 +856,7 @@ CONFIG_NEUTRON_DB_PW=neutron
  # the OpenStack Networking L3 agent to use for external  traffic.
  # Specify 'provider' if you intend to use a provider network to handle
@@ -43,7 +60,14 @@ index 906c090..ef2a48a 100644
  
  # Comma-separated list of <tun_min>:<tun_max> tuples enumerating
  # ranges of GRE tunnel IDs that are available for tenant-network
-@@ -926,13 +926,13 @@ CONFIG_NEUTRON_L2_AGENT=openvswitch
+@@ -920,19 +920,19 @@ CONFIG_NEUTRON_ML2_VNI_RANGES=10:100
+ 
+ # Name of the L2 agent to be used with OpenStack Networking
+ # (linuxbridge, openvswitch).
+-CONFIG_NEUTRON_L2_AGENT=openvswitch
++CONFIG_NEUTRON_L2_AGENT=linuxbridge
+ 
+ # Comma-separated list of interface mappings for the OpenStack
  # Networking linuxbridge plugin. Each tuple in the list must be in the
  # format <physical_network>:<net_interface>. Example:
  # physnet1:eth1,physnet2:eth2,physnet3:eth3.
