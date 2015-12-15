@@ -1,8 +1,17 @@
 diff --git a/rhelosp7/answers.txt b/rhelosp7/answers.txt
-index 906c090..b9635d0 100644
+index 906c090..ef2a48a 100644
 --- a/rhelosp7/answers.txt
 +++ b/rhelosp7/answers.txt
-@@ -876,13 +876,13 @@ CONFIG_NEUTRON_FWAAS=n
+@@ -856,7 +856,7 @@ CONFIG_NEUTRON_DB_PW=neutron
+ # the OpenStack Networking L3 agent to use for external  traffic.
+ # Specify 'provider' if you intend to use a provider network to handle
+ # external traffic.
+-CONFIG_NEUTRON_L3_EXT_BRIDGE=br-ex
++CONFIG_NEUTRON_L3_EXT_BRIDGE=provider
+ 
+ # Password for the OpenStack Networking metadata agent.
+ CONFIG_NEUTRON_METADATA_PW=neutron
+@@ -876,19 +876,19 @@ CONFIG_NEUTRON_FWAAS=n
  # Comma-separated list of network-type driver entry points to be
  # loaded from the neutron.ml2.type_drivers namespace (local, flat,
  # vlan, gre, vxlan).
@@ -18,6 +27,13 @@ index 906c090..b9635d0 100644
  
  # Comma-separated ordered list of networking mechanism driver entry
  # points to be loaded from the neutron.ml2.mechanism_drivers namespace
+ # (logger, test, linuxbridge, openvswitch, hyperv, ncs, arista,
+ # cisco_nexus, mlnx, l2population).
+-CONFIG_NEUTRON_ML2_MECHANISM_DRIVERS=openvswitch
++CONFIG_NEUTRON_ML2_MECHANISM_DRIVERS=linuxbridge
+ 
+ # Comma-separated list of physical_network names with which flat
+ # networks can be created. Use * to allow flat networks with arbitrary
 @@ -899,7 +899,7 @@ CONFIG_NEUTRON_ML2_FLAT_NETWORKS=*
  # <physical_network> specifying physical_network names usable for VLAN
  # provider and tenant networks, as well as ranges of VLAN tags on each
