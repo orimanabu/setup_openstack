@@ -40,11 +40,11 @@ CONFIG_SWIFT_INSTALL=n
 
 # Set to 'y' if you would like Packstack to install OpenStack
 # Metering (Ceilometer)
-CONFIG_CEILOMETER_INSTALL=y
+CONFIG_CEILOMETER_INSTALL=n
 
 # Set to 'y' if you would like Packstack to install OpenStack
 # Orchestration (Heat)
-CONFIG_HEAT_INSTALL=y
+CONFIG_HEAT_INSTALL=n
 
 # Set to 'y' if you would like Packstack to install OpenStack
 # Clustering (Sahara)
@@ -52,7 +52,7 @@ CONFIG_SAHARA_INSTALL=n
 
 # Set to 'y' if you would like Packstack to install OpenStack
 # Database (Trove)
-CONFIG_TROVE_INSTALL=y
+CONFIG_TROVE_INSTALL=n
 
 # Set to 'y' if you would like Packstack to install OpenStack Bare
 # Metal (Ironic)
@@ -68,7 +68,7 @@ CONFIG_NTP_SERVERS=
 
 # Set to 'y' if you would like Packstack to install Nagios to monitor
 # OpenStack hosts
-CONFIG_NAGIOS_INSTALL=y
+CONFIG_NAGIOS_INSTALL=n
 
 # Comma separated list of servers to be excluded from installation in
 # case you are running Packstack the second time with the same answer
@@ -82,15 +82,15 @@ CONFIG_DEBUG_MODE=n
 
 # The IP address of the server on which to install OpenStack services
 # specific to controller role such as API servers, Horizon, etc.
-CONFIG_CONTROLLER_HOST=10.0.1.31
+CONFIG_CONTROLLER_HOST=10.0.1.111
 
 # The list of IP addresses of the server on which to install the Nova
 # compute service
-CONFIG_COMPUTE_HOSTS=10.0.1.51
+CONFIG_COMPUTE_HOSTS=10.0.1.131,10.0.1.132
 
 # The list of IP addresses of the server on which to install the
 # network service such as Nova network or Neutron
-CONFIG_NETWORK_HOSTS=10.0.1.41
+CONFIG_NETWORK_HOSTS=10.0.1.121
 
 # Set to 'y' if you want to use VMware vCenter as hypervisor and
 # storage. Otherwise set to 'n'.
@@ -116,11 +116,11 @@ CONFIG_VCENTER_CLUSTER_NAME=
 # (Unsupported!) The IP address of the server on which to install
 # OpenStack services specific to storage servers such as Glance and
 # Cinder.
-CONFIG_STORAGE_HOST=10.0.1.31
+CONFIG_STORAGE_HOST=10.0.1.111
 
 # (Unsupported!) The IP address of the server on which to install
 # OpenStack services specific to Sahara
-CONFIG_SAHARA_HOST=10.0.1.31
+CONFIG_SAHARA_HOST=10.0.1.111
 
 # To subscribe each server to EPEL enter "y"
 CONFIG_USE_EPEL=n
@@ -192,7 +192,7 @@ CONFIG_SATELLITE_PROXY_PW=
 CONFIG_AMQP_BACKEND=rabbitmq
 
 # The IP address of the server on which to install the AMQP service
-CONFIG_AMQP_HOST=10.0.1.31
+CONFIG_AMQP_HOST=10.0.1.111
 
 # Enable SSL for the AMQP service
 CONFIG_AMQP_ENABLE_SSL=n
@@ -229,7 +229,7 @@ CONFIG_AMQP_AUTH_PASSWORD=PW_PLACEHOLDER
 
 # The IP address of the server on which to install MariaDB or IP
 # address of DB server to use if MariaDB installation was not selected
-CONFIG_MARIADB_HOST=10.0.1.31
+CONFIG_MARIADB_HOST=10.0.1.111
 
 # Username for the MariaDB admin user
 CONFIG_MARIADB_USER=root
@@ -265,7 +265,7 @@ CONFIG_KEYSTONE_SERVICE_NAME=keystone
 CONFIG_KEYSTONE_IDENTITY_BACKEND=sql
 
 # Keystone LDAP backend URL
-CONFIG_KEYSTONE_LDAP_URL=ldap://10.0.1.31
+CONFIG_KEYSTONE_LDAP_URL=ldap://10.0.1.111
 
 # Keystone LDAP backend user DN.  Used to bind to the LDAP server
 # when the LDAP server does not allow anonymous authentication.
@@ -433,11 +433,11 @@ CONFIG_CINDER_BACKEND=lvm
 # Create Cinder's volumes group. This should only be done for testing
 # on a proof-of-concept installation of Cinder. This will create a
 # file-backed volume group and is not suitable for production usage.
-CONFIG_CINDER_VOLUMES_CREATE=n
+CONFIG_CINDER_VOLUMES_CREATE=y
 
 # Cinder's volumes group size. Note that actual volume size will be
 # extended with 3% more space for VG metadata.
-CONFIG_CINDER_VOLUMES_SIZE=20G
+CONFIG_CINDER_VOLUMES_SIZE=2G
 
 # A single or comma separated list of gluster volume shares to mount,
 # eg: ip-address:/vol-name, domain:/vol-name
@@ -641,11 +641,11 @@ CONFIG_NEUTRON_L3_EXT_BRIDGE=br-ex
 CONFIG_NEUTRON_METADATA_PW=neutron
 
 # Set to 'y' if you would like Packstack to install Neutron LBaaS
-CONFIG_LBAAS_INSTALL=y
+CONFIG_LBAAS_INSTALL=n
 
 # Set to 'y' if you would like Packstack to install Neutron L3
 # Metering agent
-CONFIG_NEUTRON_METERING_AGENT_INSTALL=y
+CONFIG_NEUTRON_METERING_AGENT_INSTALL=n
 
 # Whether to configure neutron Firewall as a Service
 CONFIG_NEUTRON_FWAAS=n
@@ -828,11 +828,11 @@ CONFIG_CEILOMETER_KS_PW=ceilometer
 CONFIG_CEILOMETER_COORDINATION_BACKEND=redis
 
 # The IP address of the server on which to install MongoDB
-CONFIG_MONGODB_HOST=10.0.1.31
+CONFIG_MONGODB_HOST=10.0.1.111
 
 # The IP address of the server on which to install redis master
 # server
-CONFIG_REDIS_MASTER_HOST=10.0.1.31
+CONFIG_REDIS_MASTER_HOST=10.0.1.111
 
 # The port on which the redis server(s) listens
 CONFIG_REDIS_PORT=6379
