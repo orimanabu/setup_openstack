@@ -88,6 +88,7 @@ done
 #	echo "=> openstack help ${subcmd}" | tee -a ${output}
 #	openstack help ${subcmd} 2>&1 | tee -a ${output}
 #done
+
 output=${outdir}/openstack_help.md
 echo "# openstack --help" 2>&1 | tee ${output}
 echo | tee -a ${output}
