@@ -12,6 +12,11 @@ keyname=sshkey
 echo "* rcfile: ${rcfile}"
 echo "* tenant: ${tenant}"
 
+if [ ! -f ${rcfile} ]; then
+	echo "${rcfile} does not exist."
+	exit 1
+fi
+
 source ~/keystonerc_admin
 flavor=m1.nano
 #nova flavor-list | grep ${flavor} > /dev/null 2>&1
