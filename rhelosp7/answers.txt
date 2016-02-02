@@ -80,7 +80,7 @@ CONFIG_CONTROLLER_HOST=10.0.1.111
 
 # List of IP addresses of the servers on which to install the Compute
 # service.
-CONFIG_COMPUTE_HOSTS=10.0.1.131
+CONFIG_COMPUTE_HOSTS=10.0.1.131,10.0.1.132
 
 # List of IP addresses of the server on which to install the network
 # service such as Compute networking (nova network) or OpenStack
@@ -518,7 +518,7 @@ CONFIG_CINDER_VOLUMES_CREATE=y
 # of the volume group will restrict the amount of disk space that you
 # can expose to Compute instances, and that the specified amount must
 # be available on the device used for /var/lib/cinder.
-CONFIG_CINDER_VOLUMES_SIZE=5G
+CONFIG_CINDER_VOLUMES_SIZE=2G
 
 # A single or comma-separated list of Red Hat Storage (gluster)
 # volume shares to mount. Example: 'ip-address:/vol-name', 'domain
