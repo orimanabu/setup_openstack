@@ -13,8 +13,8 @@ cd ${global}
 make 2>&1 | tee log.make
 sudo make install 2>&1 | tee log.install
 
-cp /usr/local/share/gtags/gtags.conf /usr/local/etc/
-
+#cp /usr/local/share/gtags/gtags.conf /usr/local/etc/
+sed -e 's/:tc=native:/\0tc=pygments:/' /usr/local/share/gtags/gtags.conf > /usr/local/etc/gtags.conf
 
 mkdir -p ~/.vim/plugin
 cp /usr/local/share/gtags/gtags.vim ~/.vim/plugin/
