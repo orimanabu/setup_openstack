@@ -20,8 +20,9 @@ if [ x"$?" = x"0" ]; then
 	echo "m1.nano exists"
 else
 	echo "creating m1.nano..."
-#	do_command nova flavor-create m1.nano 6 64 1 1
-	do_command openstack flavor create --id auto --ram 64 --ephemeral 1 --vcpus 1 m1.nano
+	do_command nova flavor-create m1.nano 6 64 1 1
+#	do_command openstack flavor create --id auto --ram 64 --ephemeral 1 --vcpus 1 m1.nano2
+	do_command openstack flavor create --id 7 --ram 64 --disk 1 --vcpus 1 m1.nano2
 fi
 
 source ${rcfile}
