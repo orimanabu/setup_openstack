@@ -1,0 +1,239 @@
+    1  ip a
+    2  ip r
+    3  ls
+    4  ip a
+    5  ls
+    6  shutdown -h now
+    7  sed -i -e 's/10.0.1.11/10.0.1.131/' /etc/sysconfig/network-scripts/ifcfg-eth1
+    8  reboot
+    9  vi /etc/ssh/sshd_config 
+   10  systemctl restart sshd
+   11  ip addr del 10.0.2.11 dev eth2
+   12  ip a
+   13  ip addr del 10.0.2.11/24 dev eth2
+   14  ip a
+   15  vi /etc/sysconfig/network-scripts/ifcfg-eth1
+   16  systemctl restart network
+   17  ip route delete default && systemctl restart network
+   18  ip a
+   19  ip r
+   20  vi /etc/resolv.conf 
+   21  reboot
+   22  ip a
+   23  ssh -l root 10.0.1.131
+   24  shutdown -h now
+   25  vi /etc/sysconfig/network-scripts/ifcfg-eth1
+   26  systemctl restart network
+   27  journalctl 
+   28  ip a s eth0
+   29  vi /etc/sysconfig/network-scripts/ifcfg-eth0
+   30  systemctl restart network
+   31  ping -c 3 www.google.com
+   32  cd
+   33  systemctl stop NetworkManager; systemctl disable NetworkManager
+   34  systemctl enable network
+   35  yum clean all
+   36  vi /etc/sysconfig/network-scripts/ifcfg-eth2 
+   37  vi /etc/sysconfig/network-scripts/ifcfg-eth3
+   38  vi /etc/sysconfig/network-scripts/ifcfg-eth2 
+   39  vi /etc/sysconfig/network-scripts/ifcfg-eth3
+   40  vi /etc/sysconfig/network-scripts/ifcfg-eth2 
+   41  vi /etc/yum.repos.d/reposyncer.repo 
+   42  yum repolist
+   43  vi /etc/yum.repos.d/reposyncer.repo
+   44  yum clean all; yum repolist
+   45  ip a
+   46  vi /etc/sysconfig/network-scripts/ifcfg-eth2
+   47  vi /etc/sysconfig/network-scripts/ifcfg-eth0
+   48  systemctl restart network
+   49  ip a
+   50  lsmod | grep kvm
+   51  ovs-vsctl show
+   52  vi /etc/nova/nova.conf 
+   53  openstack-service restart nova
+   54  tail -f /var/log/nova/nova-compute.log 
+   55  brctl show
+   56  tail -f /var/log/nova/nova-compute.log 
+   57  brctl show
+   58  less /etc/nova/nova.conf 
+   59  ls /etc/neutron/
+   60  ls /etc/neutron/plugins/
+   61  less /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini 
+   62  ls
+   63  vi /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini 
+   64  less /var/log/neutron/openvswitch-agent.log 
+   65  tail -f /var/log/nova/nova-compute.log 
+   66  brctl show
+   67  vi /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini 
+   68  tail -f /var/log/nova/nova-compute.log 
+   69  vi /etc/nova/nova.conf 
+   70  tail -f /var/log/nova/nova-compute.log 
+   71  brctl show
+   72  ovs-vsctl show
+   73  virsh list
+   74  virsh dumpxml instance-00000005 | less
+   75  vi /etc/nova/nova.conf 
+   76  tail -f /var/log/nova/nova-compute.log 
+   77  virsh list
+   78  virsh dumpxml instance-00000006 | less
+   79  yum search global
+   80  yum install http://ftp.jaist.ac.jp/pub/Linux/Fedora/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
+   81  rpm -qli epel-release
+   82  vim /etc/yum.repos.d/epel-testing.repo 
+   83  vim /etc/yum.repos.d/epel.repo 
+   84  yum --enablerepo epel search global 
+   85  brctl show
+   86  tail -f /var/log/nova/nova-compute.log 
+   87  cd /usr/lib/python2.7/site-packages/nova
+   88  vim virt/libvirt/vif.py
+   89  openstac-service restart nova
+   90  openstack-service restart nova
+   91  tail -f /var/log/nova/nova-compute.log 
+   92  vi /etc/nova/nova.conf 
+   93  vim /etc/nova/nova.conf 
+   94  tail -f /var/log/nova/nova-compute.log 
+   95  vim /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini 
+   96  tail -f /var/log/nova/nova-compute.log 
+   97  less /var/log/neutron/openvswitch-agent.log 
+   98  vi /etc/neutron/neutron.conf 
+   99  vi /etc/nova/nova.conf 
+  100  tail -f /var/log/nova/nova-compute.log 
+  101  less /var/log/nova/nova-compute.log 
+  102  vi /etc/nova/nova.conf 
+  103  tail -f /var/log/nova/nova-compute.log 
+  104  less /var/log/neutron/openvswitch-agent.log 
+  105  vi /etc/neutron/neutron.conf 
+  106  grep -R security_group /etc/neutron/
+  107  vi /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini 
+  108  tail -f /var/log/nova/nova-compute.log 
+  109  vi /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini 
+  110  vim /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini 
+  111  tail -f /var/log/nova/nova-compute.log 
+  112  vim /usr/lib/python2.7/site-packages/neutronclient/v2_0/client.py
+  113  grep -R "Unable to clear device ID for port 'None'" /var/log/
+  114  tail -f /var/log/nova/nova-compute.log 
+  115  vim network/neutronv2/api.py
+  116  tail -f /var/log/nova/nova-compute.log 
+  117  grep XXX /var/log/nova/nova-compute.log 
+  118  vim network/neutronv2/api.py
+  119  tail -f /var/log/nova/nova-compute.log 
+  120  vim network/neutronv2/api.py
+  121  fg
+  122  tail -f /var/log/nova/nova-compute.log 
+  123  fg
+  124  vim network/neutronv2/api.py
+  125  tail -f /var/log/nova/nova-compute.log 
+  126  vim network/neutronv2/api.py
+  127  tail -f /var/log/nova/nova-compute.log 
+  128  fg
+  129  tail -f /var/log/nova/nova-compute.log 
+  130  fg
+  131  less /var/log/nova/nova-compute.log 
+  132  fg
+  133  vim network/neutronv2/api.py
+  134  tail -f /var/log/nova/nova-compute.log 
+  135  less /var/log/nova/nova-compute.log 
+  136  dirs
+  137  pushd ../neutronclient/
+  138  ls
+  139  popd
+  140  fg
+  141  less /var/log/nova/nova-compute.log 
+  142  pushd ../neutronclient/
+  143  vim v2_0/client.py
+  144  ls
+  145  fg
+  146  less /var/log/nova/nova-compute.log 
+  147  jobs
+  148  less /var/log/nova/nova-compute.log 
+  149  fg
+  150  tail -f /var/log/nova/nova-compute.log 
+  151  fg
+  152  less /var/log/nova/nova-compute.log 
+  153  tail -f /var/log/nova/nova-compute.log 
+  154  less /var/log/nova/nova-compute.log 
+  155  fg
+  156  tail -f /var/log/nova/nova-compute.log 
+  157  fg
+  158  vi /etc/nova/nova.conf 
+  159  vim /etc/nova/nova.conf 
+  160  vim /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini 
+  161  tail -f /var/log/nova/nova-compute.log 
+  162  brctl show
+  163  vim /etc/nova/nova.conf 
+  164  tail -f /var/log/nova/nova-compute.log 
+  165  brctl show
+  166  virsh list
+  167  virsh dumpxml instance-00000019 | less
+  168  brctl show
+  169  ovs-vsctl show
+  170  virsh dumpxml instance-00000019 | less
+  171  brctl show
+  172  virsh dumpxml instance-00000019 | less
+  173  brctl show
+  174  virsh dumpxml instance-00000019 | less
+  175  vim /etc/nova/nova.conf 
+  176  tail -f /var/log/nova/nova-compute.log 
+  177  brctl show
+  178  virsh list
+  179  virsh dumpxml instance-0000001a | less
+  180  brctl show
+  181  brctl del-br qbr331ffe43-b3
+  182  brctl delbr qbr331ffe43-b3
+  183  ip link set down qbr331ffe43-b3
+  184  brctl delbr qbr331ffe43-b3
+  185  brctl show
+  186  tail -f /var/log/nova/nova-compute.log 
+  187  brctl show
+  188  ls
+  189  virsh list
+  190  virsh list --help
+  191  virsh list --uuid
+  192  virsh dumpxml $(virsh list --uuid)
+  193  vim /etc/nova/nova.conf 
+  194  brctl show
+  195  ip link set down qbr32366d9b-64
+  196  brctl delbr qbr32366d9b-64
+  197  brctl show
+  198  tail -f /var/log/nova/nova-compute.log 
+  199  brctl show
+  200  virsh dumpxml $(virsh list --uuid)
+  201  brctl show
+  202  vim /etc/nova/nova.conf 
+  203  brctl show
+  204  tail -f /var/log/nova/nova-compute.log 
+  205  brctl show
+  206  less /etc/nova/nova.conf 
+  207  vim /etc/nova/nova.conf 
+  208  vim /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini 
+  209  brctl show
+  210  ip link set down qbraa7354a8-f7
+  211  brctl delbr qbraa7354a8-f7
+  212  brctl show
+  213  tail -f /var/log/nova/nova-compute.log 
+  214  brctl show
+  215  vim /etc/nova/nova.conf 
+  216  tail -f /var/log/nova/nova-compute.log 
+  217  vim /etc/nova/nova.conf 
+  218  brctl show
+  219  vim /etc/nova/nova.conf 
+  220  brctl show
+  221  vim /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini 
+  222  brctl show
+  223  fg
+  224  man htags
+  225  which global
+  226  hostname
+  227  man ldapsearch
+  228  yum install openldap-clients
+  229  ldapsearch 
+  230  ldapsearch --help
+  231  man ldapsearch
+  232  ldapsearch -b dc=test,dc=local -h 10.0.1.111 -p 389 -D "cn=Manager,dc=test,dc=local" -w password
+  233  ls
+  234  ldapsearch -b dc=test,dc=local -h 10.0.1.111 -p 389 -D "cn=Manager,dc=test,dc=local" -w password
+  235  history > history.log
+  236  vim history.log 
+  237  nova service-list
+  238  history
+  239  history > c.history.txt

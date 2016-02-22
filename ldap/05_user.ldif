@@ -1,0 +1,25 @@
+dn: uid=user01,ou=User,o=Linux Users,dc=test,dc=local
+uid: user01
+cn: Test User01
+uidNumber: 5001
+gidNumber: 3001
+homeDirectory: /home/user01
+loginShell: /bin/bash
+userPassword: P@ssw0rd
+gecos: Test User No01
+objectClass: account
+objectClass: posixAccount
+objectClass: shadowAccount
+
+dn: uid=user02,ou=User,o=Linux Users,dc=test,dc=local
+uid: user02
+cn: Test User02
+uidNumber: 5002
+gidNumber: 3002
+homeDirectory: /home/user02
+loginShell: /bin/bash
+userPassword: {SSHA}KpJwwA2Sbt29GGNZxdasq5XRml6J5q2Z
+gecos: Test User No02
+objectClass: account
+objectClass: posixAccount
+objectClass: shadowAccount

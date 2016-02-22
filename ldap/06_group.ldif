@@ -1,0 +1,12 @@
+#--- group01 ---
+dn: cn=group01,ou=Group,o=Linux Users,dc=test,dc=local
+cn: group01
+gidNumber: 3001
+objectClass: posixGroup
+
+#--- group02 ---
+dn: cn=group02,ou=Group,o=Linux Users,dc=test,dc=local
+cn: group02
+gidNumber: 3002
+memberUid: 5001
+objectClass: posixGroup

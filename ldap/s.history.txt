@@ -1,0 +1,854 @@
+    1  ip a
+    2  ip r
+    3  ls
+    4  ip a
+    5  ls
+    6  shutdown -h now
+    7  ip a
+    8  cat /etc/sysconfig/network-scripts/ifcfg-eth1 
+    9  sed -e 's/10.0.1.11/10.0.1.111/' /etc/sysconfig/network-scripts/ifcfg-eth1 
+   10  sed -i -e 's/10.0.1.11/10.0.1.111/' /etc/sysconfig/network-scripts/ifcfg-eth1 
+   11  reboot
+   12  vi /etc/hosts
+   13  hostname
+   14  vi /etc/ssh/sshd_config 
+   15  systemctl restart sshd
+   16  ip r
+   17  ip a
+   18  ip addr del 10.0.2.11/24 eth2
+   19  ip addr del 10.0.2.11/24 dev eth2
+   20  ip r
+   21  ip a
+   22  uname -r
+   23  yum update
+   24  curl http://debugs.nrt.redhat.com/reposync/RHEL7/repos/bootstrap/repodata/repomd.xml
+   25  curl http://debugs.nrt.redhat.com/reposync/RHEL7/repos/
+   26  curl http://debugs.nrt.redhat.com/reposync/RHEL7/
+   27  curl http://debugs.nrt.redhat.com/reposync/
+   28  curl http://debugs.nrt.redhat.com/
+   29  vi /etc/resolv.conf 
+   30  curl http://debugs.nrt.redhat.com/
+   31  vi /etc/resolv.conf 
+   32  curl http://debugs.nrt.redhat.com/
+   33  ping debugs.nrt.redhat.com
+   34  vi /etc/resolv.conf 
+   35  ping 10.64.255.25
+   36  ip a
+   37  ip r
+   38  ip a
+   39  ip route delete default
+   40  ifup eth0
+   41  vi /etc/sysconfig/network-scripts/ifcfg-eth0 
+   42  ifup eth0
+   43  ls
+   44  nmcli c s
+   45  ip a
+   46  ip route add to default via 10.0.1.254
+   47  ping 10.64.255.25
+   48  ip route delete default
+   49  ip route add to default via 10.0.1.253
+   50  ping 10.64.255.25
+   51  ip route delete default
+   52  ip a
+   53  ip r
+   54  ip route delete default
+   55  ip r
+   56  ip route add to default via 10.0.1.253
+   57  ping 10.64.255.25
+   58  ip r
+   59  vi /etc/sysconfig/network-scripts/ifcfg-eth1 
+   60  ip a
+   61  systemctl restart network
+   62  ip a
+   63  ip a
+   64  ip r
+   65  ip route delete default && systemctl restart network
+   66  ip a
+   67  ip r
+   68  curl http://debugs.nrt.redhat.com/reposync/RHEL7/repos/bootstrap/repodata/repomd.xml
+   69  cat /etc/resolv.conf 
+   70  ls
+   71  ip r
+   72  ip a
+   73  vi /etc/resolv.cnf
+   74  vi /etc/resolv.conf
+   75  ip r
+   76  vi /etc/resolv.conf 
+   77  ls
+   78  ip r
+   79  ip a
+   80  df
+   81  w
+   82  ps ax
+   83  ls
+   84  hostname
+   85  reboot
+   86  ip a
+   87  ps ax
+   88  ip a
+   89  shutdown -h now
+   90  ls
+   91  cd setup_openstack/
+   92  git pull
+   93  i pr
+   94  ip r
+   95  ping www.google.com
+   96  cat /etc/resolv.conf 
+   97  vi /etc/resolv.conf
+   98  ping 10.64.255.25
+   99  ip r
+  100  ping 10.0.1.254
+  101  ping 10.0.1.253
+  102  vi /etc/resolv.conf
+  103  vi /etc/sysconfig/network-scripts/ifcfg-eth0 
+  104  ip a
+  105  cat /etc/rc.local 
+  106  ls
+  107  vi /etc/sysconfig/network-scripts/ifcfg-eth1 
+  108  systemctl restart network
+  109  ping www.google.com
+  110  journalctl 
+  111  ip a s eth0
+  112  vi /etc/sysconfig/network-scripts/ifcfg-eth0
+  113  systemctl restart network
+  114  ping -c 3 www.google.com
+  115  ls
+  116  cd
+  117  systemctl stop NetworkManager; systemctl disable NetworkManager
+  118  ping www.google.com
+  119  systemctl stop NetworkManager; systemctl disable NetworkManager
+  120  systemctl enable network
+  121  yum clean all
+  122  vi /etc/yum.repos.d/reposyncer.repo 
+  123  yum repolist
+  124  vi /etc/yum.repos.d/reposyncer.repo 
+  125  yum clean all; yum repolist
+  126  ip a
+  127  vi /etc/sysconfig/network-scripts/ifcfg-eth2
+  128  vi /etc/sysconfig/network-scripts/ifcfg-eth0
+  129  ls
+  130  cd setup_openstack/
+  131  git pull
+  132  ls
+  133  cd rhelosp7/
+  134  ls
+  135  vim ovs_vlan.patch 
+  136  vim answers.txt 
+  137  yum install -y openstack-packstack
+  138  time packstack --answer-file answers.txt 
+  139  ls
+  140  ps ax | grep neutron
+  141  ovs-vsctl show
+  142  ovs-vsctl --help | less
+  143  ovs-vsctl list-ports br-tun
+  144  ls
+  145  cd ..
+  146  ls
+  147  cd 
+  148  ls
+  149  cp keystonerc_admin keystonerc_demo
+  150  vim keystonerc_demo 
+  151  cd setup_openstack/common/
+  152  ls
+  153  ./user_create.sh demo demo demo demo
+  154  ls
+  155  vim prepare.sh 
+  156  ./prepare.sh demo
+  157  nova flavor-list
+  158  source ~/keystonerc_admin 
+  159  nova flavor-list
+  160  vim prepare.sh 
+  161  nova flavor-delete m1.nano 
+  162  nova flavor-delete m1.nano22
+  163  ls
+  164  nova flavor-lit
+  165  nova flavor-list
+  166  cat prepare.sh 
+  167  nova flavor-create m1.nano 6 64 1 1
+  168  openstack help flavor create
+  169  fg
+  170  openstack flavor create --id 7 --ram 64 --ephemeral 1 --vcpus 1 m1.nano2
+  171  openstack flavor create --id 8 --ram 64 --ephemeral 1 --vcpus 1 m1.nano3
+  172  nova flavor-list
+  173  nova flavor-delete m1.nano3
+  174  openstack flavor create --id 8 --ram 64 --disk 1 --vcpus 1 m1.nano3
+  175  nova flavor-list
+  176  fg
+  177  vim prepare.sh 
+  178  nova flavor-list
+  179  ls
+  180  ./glance.sh 
+  181  ./neutron.sh external-create
+  182  source ~/keystonerc_demo
+  183  ls
+  184  ./neutron.sh create
+  185  ./nova.sh -v vm1 start
+  186  ./nova.sh -v vm1 boot
+  187  nova console-log vm1
+  188  ./neutron.sh -v vm1 floatingip-create-and-associate 
+  189  nova list
+  190  nova delete vm1
+  191  ls
+  192  vi /etc/nova/nova.conf 
+  193  ./nova.sh -v vm1 boot
+  194  nova list
+  195  neutron net-list
+  196  neutron port-list
+  197  nova delete vm1
+  198  ls
+  199  vi /etc/nova/nova.conf 
+  200  less /etc/neutron/neutron.conf 
+  201  less /etc/neutron/plugins/ml2/ml2_conf.ini 
+  202  less /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini 
+  203  less /etc/neutron/plugins/ml2/ml2_conf.ini 
+  204  vi /etc/nova/nova.conf 
+  205  nova list
+  206  vim /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini 
+  207  ls
+  208  vi psh.sh 
+  209  vim dsh.sh
+  210  chmod +x dsh.sh 
+  211  ./dsh.sh uptime
+  212  ./dsh.sh 'openstack-service restart neutron'
+  213  ./nova.sh -v vm1 boot
+  214  vim /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini 
+  215  nova delete vm1
+  216  vi /etc/neutron/plugins/ml2/ml2_conf.ini 
+  217  vim /etc/neutron/plugins/ml2/ml2_conf.ini 
+  218  ./dsh.sh 'openstack-service restart neutron'
+  219  ./nova.sh -v vm1 boot
+  220  nova list
+  221  nova delete vm1
+  222  vi /etc/nova/nova.conf 
+  223  ./dsh.sh 'openstack-service restart nova'
+  224  ./nova.sh -v vm1 boot
+  225  nova list
+  226  nova delete vm1
+  227  vi /etc/nova/nova.conf 
+  228  vim /etc/nova/nova.conf 
+  229  vi /etc/neutron/plugins/ml2/ml2_conf.ini 
+  230  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  231  nova list
+  232  ./nova.sh -v vm1 boot
+  233  nova list
+  234  ls
+  235  vim gnu_global.sh
+  236  mkdir work
+  237  cd work
+  238  curl -O 'http://tamacom.com/global/global-6.5.2.tar.gz'
+  239  ls
+  240  tar zxvf global-6.5.2.tar.gz 
+  241  cd global-6.5.2
+  242  ls
+  243  which cc
+  244  yum install gcc
+  245  vim ../../gnu_global.sh 
+  246  ls
+  247  ./configure --prefix=/usr/local 2>&1 | tee log.configure
+  248  yum search ctags
+  249  fg
+  250  yum search pygments
+  251  yum install python-pygments
+  252  fg
+  253  ls
+  254  yum install curses
+  255  yum search curses
+  256  yum install ncurses-devel
+  257  fg
+  258  vim ../../gnu_global.sh 
+  259  ./configure --prefix=/usr/local 2>&1 | tee log.configure
+  260  less log.configure 
+  261  ./configure --help | less
+  262  ./configure --prefix=/usr/local --with-exuberant-ctags --with-pygments 2>&1 | tee log.configure
+  263  ./configure --prefix=/usr/local --with-exuberant-ctags 2>&1 | tee log.configure
+  264  less log.configure 
+  265  fg
+  266  make 2>&1 | tee log.make
+  267  fg
+  268  sudo make install 2>&1 | tee log.install
+  269  fg
+  270  vim ../../gnu_global.sh 
+  271  ls /usr/local/etc/
+  272  ls /usr/local
+  273  ls /usr/local/share/
+  274  ls /usr/local/share/gtags/
+  275  vim /usr/local/share/gtags/gtags.conf 
+  276  which ruby
+  277  vim hello.rb
+  278  global
+  279  global --gtagslabel=pygments 
+  280* 
+  281  gtags --gtagslabel=pygments 
+  282  vim /usr/local/share/gtags/script/pygments_parser.py 
+  283  which ctags
+  284  rpm -qa | grep ctags
+  285  ctags
+  286  yum install ctags
+  287  ctags
+  288  gtags --gtagslabel=pygments 
+  289  ls
+  290  make distclean
+  291  which ctags
+  292  ./configure --prefix=/usr/local --with-exuberant-ctags=/usr/bin/ctags 2>&1 | tee log.configure
+  293  make
+  294  sudo make install 2>&1 | tee log.install
+  295  ls
+  296  gtags --gtagslabel=pygments 
+  297  pwd
+  298  cd ..
+  299  ls
+  300  mv global-6.5.2/hello.rb .
+  301  mkdir tmp
+  302  cd tmp
+  303  mv ../hello.rb .
+  304  gtags --gtagslabel=pygments 
+  305  ls
+  306  global -x message hello.rb 
+  307  global -rx message hello.rb 
+  308  gtags --debug
+  309  rm G*
+  310  rm -f G*
+  311  gtags --debug --gtagslabel=pygments
+  312  vim /usr/local/share/gtags/gtags.conf 
+  313  cp /usr/local/share/gtags/gtags.conf /usr/local/etc/
+  314  gtags --debug --gtagslabel=pygments
+  315  ls
+  316  global -rx message hello.rb 
+  317  global -x message hello.rb 
+  318  ls
+  319  pushd /usr/lib/python2.7/site-packages/nova
+  320  ls
+  321  gtags --debug --gtagslabel=pygments
+  322  ls
+  323  global plug_vifs
+  324  global -x plug_vifs
+  325  mkdir ~/.vim/plugin
+  326  fg
+  327  vim ../../gnu_global.sh 
+  328  vim ~/setup_openstack/common/gnu_global.sh 
+  329  mkdir -p ~/.vim/plugin
+  330  cp /usr/local/share/gtags/gtags.vim ~/.vim/plugin/
+  331  fg
+  332  vim ~/.vimrc 
+  333  ls
+  334  vim virt/driver.py
+  335  ls
+  336  vim virt/driver.py
+  337  popd
+  338  neutron net-list
+  339  nova list
+  340  neutron port-list
+  341  neutron port-show 3e7fa70c-d9e5-4d8b-b309-b6e66883a02b
+  342  nova list
+  343  source ~/keystonerc_admin 
+  344  neutron port-show 3e7fa70c-d9e5-4d8b-b309-b6e66883a02b
+  345  nova list
+  346  ./nova.sh -v vm1 boot
+  347  pushd
+  348  dirs
+  349  pushd ../..
+  350  ./nova.sh -v vm1 boot
+  351  source ~/keystonerc_demo
+  352  ./nova.sh -v vm1 boot
+  353  grep XXX /var/log/nova/*
+  354  nova delete vm1
+  355  nova list
+  356  nova delete bf66cf5d-90d1-4338-b059-85cb40fa56b6
+  357  nova delete vm1
+  358  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  359  ./nova.sh -v vm1 boot
+  360  grep XXX /var/log/nova/*
+  361  nova list
+  362  nova delete vm1
+  363  ./nova.sh -v vm1 boot
+  364  source ~/keystonerc_admin 
+  365  neutron port-list
+  366  neutron port-show 7c49ed4e-ca48-4456-905b-77ce3358cc9a
+  367  source ~/keystonerc_demo
+  368  nova list
+  369  nova delete vm1
+  370  vim /etc/nova/nova.conf 
+  371  vim /etc/neutron/plugins/ml2/ml2_conf.ini 
+  372  vim /etc/nova/nova.conf 
+  373  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  374  ./nova.sh -v vm1 boot
+  375  nova list
+  376  source ~/keystonerc_admin 
+  377  neutron port-list
+  378  neutron port-show 0c9f5f20-13b1-4f89-955d-ddbcd97db2bd
+  379  vim /etc/nova/nova.conf 
+  380  nova list
+  381  source ~/keystonerc_demo
+  382  nova list
+  383  nova delete vm1
+  384  vi /etc/nova/nova.conf 
+  385  vim /etc/nova/nova.conf 
+  386  vi /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini 
+  387  vim /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini 
+  388  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  389  ./nova.sh -v vm1 boot
+  390  nova port-list
+  391  neutron port-list
+  392  nova list
+  393  vi /etc/nova/nova.conf 
+  394  vi /etc/neutron/neutron.conf 
+  395  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  396  vi /etc/nova/nova.conf 
+  397  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  398  nova list
+  399  nova delete vm1
+  400  nova list
+  401  ./nova.sh -v vm1 boot
+  402  nova list
+  403  less /etc/nova/nova.conf 
+  404  less /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini 
+  405  less /var/log/neutron/openvswitch-agent.log 
+  406  vi /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini 
+  407  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  408  nova list
+  409  nova delete vm1
+  410  ./nova.sh -v vm1 boot
+  411  nova list
+  412  nova delete vm1
+  413  vim /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini 
+  414  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  415  ./nova.sh -v vm1 boot
+  416  grep -R ERROR /var/log
+  417  grep -R ERROR /var/log | less
+  418  nova list
+  419  nova delete vm`
+  420  nova delete vm1
+  421  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  422  ./nova.sh -v vm1 boot
+  423  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  424  nova list
+  425  nova delete vm1
+  426  ./nova.sh -v vm1 boot
+  427  pushd work/global-6.5.2
+  428  ls
+  429  gtags --debug --gtagslabel=pygments
+  430  find . -type f -name '*.c' | xargs gtags -v
+  431  ls global
+  432  ls gtags
+  433  cd global
+  434  gtags -v
+  435  ls
+  436  vim global.c
+  437  vim ~/.vim/plugin/gtags.vim 
+  438  vim ~/.vimrc
+  439  ls
+  440  global -f global.c
+  441  man global
+  442  ls
+  443  cd ../gtags
+  444  ls
+  445  cd ..
+  446  ls
+  447  less config.h
+  448  grep -R EXUBERANT_CTAGS .
+  449  vim plugin-factory/exuberant-ctags.c 
+  450  ./configure --help | less
+  451  ls
+  452  gtags -f globa
+  453  gtags -f global
+  454  global -f global
+  455  ctags --version
+  456  vim /usr/local/etc/gtags.conf 
+  457  ls
+  458  ps ax | grep neutron
+  459  ls /usr/share/neutron/neutron-dist.conf /etc/neutron/conf.d/common/
+  460  ls /usr/share/neutron/neutron-dist.conf /etc/neutron/conf.d/
+  461  find /etc/neutron/conf.d
+  462  less /usr/share/neutron/neutron-dist.conf 
+  463  find /etc/neutron/conf.d -type f
+  464  less /etc/neutron/conf.d/README 
+  465  ls /etc/nova/
+  466  ps ax | grep nova
+  467  ps ax | grep neutron
+  468  ps auxww | grep nova
+  469  less /usr/lib/systemd/system/openstack-nova-api.service 
+  470  ls /usr/share/nov
+  471  ls /usr/share/nova/
+  472  less /usr/share/nova//nova-dist.conf 
+  473  less /etc/nova/nova.conf 
+  474  less -i /etc/nova/nova.conf 
+  475  less -i /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini 
+  476  less -i /etc/nova/nova.conf 
+  477  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  478  pushd
+  479  popd
+  480  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  481  nova list
+  482  nova delete vm1
+  483  ./nova.sh -v vm1 boot
+  484  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  485  nova list
+  486  nova delete vm1
+  487  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  488  ./nova.sh -v vm1 boot
+  489  nova delete vm1
+  490  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  491  ./nova.sh -v vm1 boot
+  492  nova delete vm1
+  493  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  494  nova list
+  495  nova delete f726a3fe-a68f-48b8-883c-a93f752b9e41
+  496  nova delete b973f97f-9c3f-4c66-907a-f66d8d6b46b4
+  497  nova delete 5e44855d-e1e9-40ee-816f-c5d55c3694b4
+  498  nova list
+  499  ./nova.sh -v vm1 boot
+  500  nova list
+  501  nova delete 5e44855d-e1e9-40ee-816f-c5d55c3694b4
+  502  nov alist
+  503  nova list
+  504  nova delete vm1
+  505  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  506  ./nova.sh -v vm1 boot
+  507  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  508  nova list
+  509  nova delete vm1
+  510  ./nova.sh -v vm1 boot
+  511  nova list
+  512  nova delete vm1
+  513  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  514  ./nova.sh -v vm1 boot
+  515  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  516  nova help boot | less
+  517  cat nova.sh 
+  518  vi /etc/nova/nova.conf 
+  519  vim /etc/nova/nova.conf 
+  520  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  521  less /etc/nova/nova.conf 
+  522  vim /etc/nova/nova.conf 
+  523  vim /etc/neutron/plugins/ml2/ml2_conf.ini 
+  524  vim /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini 
+  525  nova list
+  526  nova delete vm1
+  527  ./nova.sh -v vm1 boot
+  528  nova list
+  529  vim /etc/nova/nova.conf 
+  530  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  531  nova list
+  532  nova delete vm1
+  533  ./nova.sh -v vm1 boot
+  534  nova list
+  535  vim /etc/nova/nova.conf 
+  536  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  537  nova delete vm1
+  538  ./nova.sh -v vm1 boot
+  539  nova list
+  540  vi /etc/nova/nova.conf 
+  541  nova list
+  542  nova delete vm1
+  543  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  544  nova list
+  545  nov alist
+  546  nova list
+  547  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  548  nova list
+  549  grep crudini *
+  550  cp provider_network.sh check_conf.sh
+  551  vim check_conf.sh 
+  552  ./check_conf.sh config
+  553  nova list
+  554  ./nova.sh -v vm1 boot
+  555  nova list
+  556  vim /etc/nova/nova.conf 
+  557  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  558  nova list
+  559  nova delete vm1
+  560  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  561  vim /etc/nova/nova.conf 
+  562  ./nova.sh -v vm1 boot
+  563  nova list
+  564  ./check_conf.sh config
+  565  nova list
+  566  neutron net-list
+  567  neutron port-list
+  568  neutron port-show
+  569  neutron port-show a1a8a3a0-cd45-491f-869c-8849f1200513
+  570  nova delete vm1
+  571  vim /etc/nova/nova.conf 
+  572  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  573  ./check_conf.sh 
+  574  ./check_conf.sh config
+  575  nova list
+  576  ./nova.sh -v vm1 boot
+  577  nova list
+  578  nova port-list
+  579  neutron port-list
+  580  neutron port-show aa7354a8-f755-4a74-85e7-80b11484ca66
+  581  vim /etc/nova/nova.conf 
+  582  vim /etc/neutron/plugins/ml2/ml2_conf.ini 
+  583  grep -R enable_security_group /etc/
+  584  fg
+  585  vim /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini 
+  586  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  587  nova list
+  588  nova delete vm1
+  589  ./nova.sh -v vm1 boot
+  590  nova list
+  591  neutron port-list
+  592  neutron port-show b642fd27-a536-4770-af4f-6b04897c4cee
+  593  nova delete vm1
+  594  vim /etc/nova/nova.conf 
+  595  nova delete vm1
+  596  nova list
+  597  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  598  ./nova.sh -v vm1 boot
+  599  nova list
+  600  neutron port-list
+  601  neutron port-show 959ae9bd-b143-4114-9365-a8ca56b8e3fb
+  602  vim /etc/nova/nova.conf 
+  603  vim /etc/neutron/plugins/ml2/ml2_conf.ini 
+  604  nova list
+  605  nova delete vm1
+  606  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  607  ./nova.sh -v vm1 boot
+  608  nova list
+  609  neutron port-list
+  610  ./check_conf.sh 
+  611  ./check_conf.sh config
+  612  nova delete vm1
+  613  vim /etc/nova/nova.conf 
+  614  ./check_conf.sh config
+  615  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  616  ./nova.sh -v vm1 boot
+  617  ./check_conf.sh config
+  618  vim /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini 
+  619  vim /etc/neutron/plugins/ml2/ml2_conf.ini 
+  620  ./dsh.sh 'openstack-service restart nova; openstack-service restart neutron'
+  621  ./nova.sh -v vm1 boot
+  622  nova list
+  623  nova delete b509bc79-0da9-45e6-a9ba-89f5837e354a
+  624  nova list
+  625  ./check_conf.sh config
+  626  fg
+  627  git status
+  628  git diff
+  629  git add prepare.sh 
+  630  git commit -m 'fix how to add flavor.'
+  631  git status
+  632  git diff
+  633  ls
+  634  git status
+  635  git add check_conf.sh dsh.sh gnu_global.sh 
+  636  git status
+  637  git commit -m 'new files.'
+  638  git push
+  639  ls
+  640  git status
+  641  git stauts
+  642  git status
+  643  vim /usr/local/etc/gtags.conf 
+  644  sed -e 's/:tc=native:/\0tc=pygments:/' /usr/local/share/gtags/gtags.conf 
+  645  sed -e 's/:tc=native:/\0tc=pygments:/' /usr/local/share/gtags/gtags.conf  | less
+  646  sed -e 's/:tc=native:/\0tc=pygments:/' /usr/local/share/gtags/gtags.conf > tmpfile
+  647  diff -u /usr/local/etc/gtags.conf tmpfile 
+  648  vim gnu_global.sh 
+  649  git status
+  650  git diff
+  651  git commit -m 'use pygments in default.'
+  652  git commit -m 'use pygments in default.' gnu_global.sh 
+  653  git push
+  654  git status
+  655  git pull
+  656  git commit -m 'use pygments in default.' gnu_global.sh 
+  657  git status
+  658  vim gnu_global.sh 
+  659  git status
+  660  git push'
+  661  git push
+  662  ls
+  663  ip r
+  664  ip route del to default
+  665  ip a
+  666  ip addr add to default via 10.64.193.254
+  667  ip route add to default via 10.64.193.254
+  668  mv /var/www/html/HTML /var/www/html/_HTML
+  669  pushd /var/www/html/HTML/
+  670  ls
+  671  ls cgi-bin/
+  672  ls -l ..
+  673  ls -l ../..
+  674  ls -l ../../cgi-bin/
+  675  ls -l ../../cgi-bin/keystone/
+  676  ls
+  677  vim .htaccess 
+  678  vim /etc/httpd/conf/httpd.conf 
+  679  vim /etc/httpd/conf.d/15-default.conf 
+  680  systemctl restart httpd
+  681  less /var/log/httpd/error_log 
+  682  less /var/log/httpd/access_log 
+  683  ls
+  684  vi cgi-bin/global.cgi 
+  685  vim cgi-bin/global.cgi 
+  686  ./cgi-bin/global.cgi 
+  687  less /var/log/httpd/access_log 
+  688  ls
+  689  cp -rp /usr/lib/python2.7/site-packages/nova/G* .
+  690  ls
+  691  vim cgi-bin/global.cgi 
+  692  ls
+  693  vim FILEMAP 
+  694  ls
+  695  ./cgi-bin/global.cgi 
+  696  vim cgi-bin/global.cgi 
+  697  ./cgi-bin/global.cgi allocate_for_instance
+  698  pattern=allocate_for_instance ./cgi-bin/global.cgi
+  699  ./cgi-bin/global.cgi pattern=allocate_for_instance
+  700  pattern=allocate_for_instance ./cgi-bin/global.cgi 
+  701  vim cgi-bin/global.cgi 
+  702  QUERY_STRING='pattern=allocate_for_instance' ./cgi-bin/global.cgi 
+  703  ./cgi-bin/global.cgi pattern=allocate_for_instance
+  704  s
+  705  ls
+  706  mv G* ..
+  707  ./cgi-bin/global.cgi pattern=allocate_for_instance
+  708  QUERY_STRING='pattern=allocate_for_instance' ./cgi-bin/global.cgi 
+  709  ls
+  710  vim style.css 
+  711  fg
+  712  vim style.css 
+  713  popd
+  714  yum install openldap-server openldap-client
+  715  yum search openldap
+  716  yum install openldap-servers openldap-clients
+  717  ls /etc/openldap/
+  718  ls /etc/openldap/slapd.d/
+  719  less /etc/openldap/slapd.d/cn\=config.ldif 
+  720  ls /etc/openldap/
+  721  ls /etc/openldap/schema/
+  722  ls /etc/openldap/slapd.d
+  723  rpm -qli openldap-servers | less
+  724  ls
+  725  pushd /etc/openldap/
+  726  ls
+  727  ls slapd.d.orig/
+  728  ls slapd.d
+  729  rpm -qli openldap-servers | less
+  730  ls
+  731  rpm -e openldap-servers
+  732  yum install openldap-servers
+  733  ls /etc/openldap/
+  734  rpm -qli openldap-servers | less
+  735  ls /etc/openldap/slapd.conf
+  736  ls
+  737  mkdir tmp
+  738  cd tmp
+  739  yumdownloader openldap-servers
+  740  rpm2cpio openldap-servers-2.4.40-8.el7.x86_64.rpm | cpio -idv
+  741  ls
+  742  ls etc/
+  743  ls etc/openldap/
+  744  yum search openldap
+  745  yum install openldap
+  746  yum install compat-openldap
+  747  rpm -qli compat-openldap
+  748  rpm -qli openldap-servers | less
+  749  yum list openldap-servers
+  750  yum list openldap-servers --showduplicates
+  751  yum delete openldap-servers
+  752  yum remove openldap-servers
+  753  yum install openldap-servers 2.4.39-7.el7_1
+  754  yum install openldap-servers-2.4.39-7.el7_1
+  755  yum remove openldap openldap-clients
+  756  yum remove openldap-clients
+  757  rpm -qa | grep openldap
+  758  yum remove compat-openldap
+  759  yum remove openldap
+  760  yum install openldap-servers-2.4.39-7.el7_1
+  761  ls
+  762  yumdownloader openldap-servers-2.4.39-7.el7_1
+  763  ls
+  764  rm -rf etc/ usr/ var/
+  765  ls
+  766  rpm2cpio openldap-servers-2.4.39-7.el7_1.x86_64.rpm | cpio -idv
+  767  ls etc/
+  768  ls etc/openldap/
+  769  rpm -qlip openldap-servers-2.4.39-7.el7_1.x86_64.rpm | less
+  770  yum install openldap-servers openldap-clients
+  771  cp -p /usr/share/openldap-servers/DB_CONFIG.example /var/lib/ldap/DB_CONFIG 
+  772  systemctl enable slapd
+  773  systemctl start slapd
+  774  pwd
+  775  ls
+  776  cd ..
+  777  ls
+  778  rm -rf tmp
+  779  ls
+  780  mkdir work
+  781  cd work
+  782  slappasswd
+  783  slappasswd -s password
+  784  vi add_rootpw.ldif
+  785  ldapadd -Y EXTERNAL -H ldapi:// -f ./add_rootpw.ldif 
+  786  vi change_domain.ldif
+  787  ldapmodify -x -D cn=config -w secret -f change_domain.ldif 
+  788  ldapmodify -x -D cn=config -w password -f change_domain.ldif 
+  789  vim base.ldif
+  790  ldapadd -x -D "cn=Manager,dc=test,dc=local" -w password -f base.ldif 
+  791  systemctl status firewalld
+  792  iptables -nL | less
+  793  iptables -I 1 INPUT  -p tcp -m tcp --dport 389 -j ACCEPT
+  794  iptables -I INPUT 1 -p tcp -m tcp --dport 389 -j ACCEPT
+  795  ls
+  796  mv add_rootpw.ldif 00_add_rootpw.ldif 
+  797  mv change_domain.ldif 01_change_domain.ldif 
+  798  mv base.ldif 02_base.ldif 
+  799  vim 03_domain.ldif
+  800  vim 02_base.ldif 
+  801  vim 03_domain.ldif
+  802  ls
+  803  cat 01_change_domain.ldif 
+  804  fg
+  805  cat 01_change_domain.ldif 
+  806  fg
+  807  ls
+  808  ldapadd -x -D "cn=Manager,dc=test,dc=local" -w password -f 03_domain.ldif 
+  809  ldapadd -x -D "cn=Manager,dc=test,dc=local" -w password -f 04_user.ldif 
+  810  ldapadd -x -D "cn=Manager,dc=test,dc=local" -w password -f 05_user.ldif 
+  811  vim 05_user.ldif 
+  812  ldapadd -x -D "cn=Manager,dc=test,dc=local" -w password -f 05_user.ldif 
+  813  vim 05_user.ldif 
+  814  ls
+  815  ls ..
+  816  ls ../schema/
+  817  grep homeDirectory /etc/openldap/
+  818  grep -R homeDirectory /etc/openldap/
+  819  ls /etc/openldap/slapd.d
+  820  less /etc/openldap/slapd.d/cn\=config.ldif 
+  821  less /etc/openldap/slapd.d/cn\=config/cn\=schema.ldif 
+  822  less /etc/openldap/slapd.d/cn\=config/cn\=schema/cn\=\{0\}core.ldif 
+  823  less /etc/openldap/slapd.d/cn\=config/olcDatabase\=\{0\}config.ldif 
+  824  grep -R schema /etc/openldap/
+  825  grep -R schema /etc/openldap/slapd.d
+  826  ls /etc/openldap/schema/
+  827  ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/nis.ldif 
+  828  vim /etc/openldap/schema/nis.ldif 
+  829  ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/nis.ldif 
+  830  vim /etc/openldap/schema/nis.ldif 
+  831  vim /etc/openldap/schema/cosine.ldif 
+  832  ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/cosine.ldif 
+  833  ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/nis.ldif 
+  834  ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/inetorgperson.ldif 
+  835  ldapadd -x -D "cn=Manager,dc=test,dc=local" -w password -f 05_user.ldif 
+  836  ldapadd -x -D "cn=Manager,dc=test,dc=local" -w password -f 06_group.ldif 
+  837  history > history.log
+  838  vim history.log 
+  839  nova help | less
+  840  nova quota-list
+  841  nova help | less
+  842  nova quota-defaults
+  843  nova quota-show 
+  844  nova help quota-show 
+  845  nova help | less
+  846  nova quota-update
+  847  ls
+  848  nova list
+  849  nova service-list
+  850  ls
+  851  history
+  852  pwd
+  853  ls
+  854  history > s.history.txt

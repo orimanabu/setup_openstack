@@ -1,0 +1,7 @@
+dn: o=Linux Users,dc=test,dc=local
+o: Linux Users
+objectClass: organization
+
+dn: o=Smaba Users,dc=test,dc=local
+o: Smaba Users
+objectClass: organization

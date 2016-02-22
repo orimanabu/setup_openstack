@@ -1,0 +1,13 @@
+dn: dc=test,dc=local
+objectClass: dcObject
+objectClass: organization
+dc: Test
+o: Test Inc.
+
+dn: ou=People,dc=test,dc=local
+objectClass: organizationalUnit
+ou: People
+
+dn: ou=Group,dc=test,dc=local
+objectClass: organizationalUnit
+ou: Group

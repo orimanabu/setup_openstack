@@ -1,0 +1,68 @@
+  770  yum install openldap-servers openldap-clients
+  771  cp -p /usr/share/openldap-servers/DB_CONFIG.example /var/lib/ldap/DB_CONFIG 
+  772  systemctl enable slapd
+  773  systemctl start slapd
+  774  pwd
+  775  ls
+  776  cd ..
+  777  ls
+  778  rm -rf tmp
+  779  ls
+  780  mkdir work
+  781  cd work
+  782  slappasswd
+  783  slappasswd -s password
+  784  vi add_rootpw.ldif
+  785  ldapadd -Y EXTERNAL -H ldapi:// -f ./add_rootpw.ldif 
+  786  vi change_domain.ldif
+  787  ldapmodify -x -D cn=config -w secret -f change_domain.ldif 
+  788  ldapmodify -x -D cn=config -w password -f change_domain.ldif 
+  789  vim base.ldif
+  790  ldapadd -x -D "cn=Manager,dc=test,dc=local" -w password -f base.ldif 
+  791  systemctl status firewalld
+  792  iptables -nL | less
+  793  iptables -I 1 INPUT  -p tcp -m tcp --dport 389 -j ACCEPT
+  794  iptables -I INPUT 1 -p tcp -m tcp --dport 389 -j ACCEPT
+  795  ls
+  796  mv add_rootpw.ldif 00_add_rootpw.ldif 
+  797  mv change_domain.ldif 01_change_domain.ldif 
+  798  mv base.ldif 02_base.ldif 
+  799  vim 03_domain.ldif
+  800  vim 02_base.ldif 
+  801  vim 03_domain.ldif
+  802  ls
+  803  cat 01_change_domain.ldif 
+  804  fg
+  805  cat 01_change_domain.ldif 
+  806  fg
+  807  ls
+  808  ldapadd -x -D "cn=Manager,dc=test,dc=local" -w password -f 03_domain.ldif 
+  809  ldapadd -x -D "cn=Manager,dc=test,dc=local" -w password -f 04_user.ldif 
+  810  ldapadd -x -D "cn=Manager,dc=test,dc=local" -w password -f 05_user.ldif 
+  811  vim 05_user.ldif 
+  812  ldapadd -x -D "cn=Manager,dc=test,dc=local" -w password -f 05_user.ldif 
+  813  vim 05_user.ldif 
+  814  ls
+  815  ls ..
+  816  ls ../schema/
+  817  grep homeDirectory /etc/openldap/
+  818  grep -R homeDirectory /etc/openldap/
+  819  ls /etc/openldap/slapd.d
+  820  less /etc/openldap/slapd.d/cn\=config.ldif 
+  821  less /etc/openldap/slapd.d/cn\=config/cn\=schema.ldif 
+  822  less /etc/openldap/slapd.d/cn\=config/cn\=schema/cn\=\{0\}core.ldif 
+  823  less /etc/openldap/slapd.d/cn\=config/olcDatabase\=\{0\}config.ldif 
+  824  grep -R schema /etc/openldap/
+  825  grep -R schema /etc/openldap/slapd.d
+  826  ls /etc/openldap/schema/
+  827  ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/nis.ldif 
+  828  vim /etc/openldap/schema/nis.ldif 
+  829  ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/nis.ldif 
+  830  vim /etc/openldap/schema/nis.ldif 
+  831  vim /etc/openldap/schema/cosine.ldif 
+  832  ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/cosine.ldif 
+  833  ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/nis.ldif 
+  834  ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/inetorgperson.ldif 
+  835  ldapadd -x -D "cn=Manager,dc=test,dc=local" -w password -f 05_user.ldif 
+  836  ldapadd -x -D "cn=Manager,dc=test,dc=local" -w password -f 06_group.ldif 
+  837  history > history.log

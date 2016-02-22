@@ -1,0 +1,7 @@
+dn: ou=User,o=Linux Users,dc=test,dc=local
+ou: User
+objectClass: organizationalUnit
+
+dn: ou=Group,o=Linux Users,dc=test,dc=local
+ou: Group
+objectClass: organizationalUnit
