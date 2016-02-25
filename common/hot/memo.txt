@@ -1,0 +1,3 @@
+ip netns exec qrouter-$(neutron router-list | awk '/test/ {print $2}') ssh 192.168.88.3 -l cloud-user
+ip netns exec qrouter-$(neutron router-list | awk '/test/ {print $2}') iptables -t nat -nL
+nova console-log $(nova list | awk '/ACTIVE/ {print $4}')
