@@ -1,0 +1,157 @@
+#!/usr/bin/python
+#
+# Copyright 2014 Red Hat, Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# obtained from: https://github.com/jim-minter/heat-agent/blob/master/heat-agent
+
+import base64
+import email.parser
+import hashlib
+import hmac
+import itertools
+import json
+import os
+import StringIO
+import subprocess
+import tarfile
+import time
+import urllib
+import urllib2
+import urlparse
+import xml.etree.ElementTree
+
+
+def get_user_data(filename):
+    user_data = urllib.urlopen("http://169.254.169.254/latest/user-data")
+    msg = email.parser.Parser().parse(user_data)
+    for part in msg.walk():
+        if part.get_filename() == filename:
+            return part.get_payload()
+
+
+def canonical_qs(d):
+    l = []
+    for k in sorted(d):
+        v = urllib.quote(d[k].encode("utf-8"), safe="-_~")
+        l.append(urllib.quote(k, safe="") + "=" + v)
+    return "&".join(l)
+
+
+def sign(cfn_config, d):
+    d.update({"AWSAccessKeyId": cfn_config["access_key_id"],
+              "SignatureVersion": "2",
+              "SignatureMethod": "HmacSHA256"})
+
+    url = urlparse.urlparse(cfn_config["metadata_url"])
+
+    msg = "\n".join(["GET", url.netloc, url.path, canonical_qs(d)])
+    h = hmac.new(str(cfn_config["secret_access_key"]), msg, hashlib.sha256)
+    d["Signature"] = base64.b64encode(h.digest())
+
+    return d
+
+
+def describe_stack_resource(cfn_config):
+    d = {"StackName": cfn_config["stack_name"],
+         "Action": "DescribeStackResource",
+         "LogicalResourceId": cfn_config["path"].split(".")[0]}
+
+    d = sign(cfn_config, d)
+
+    r = urllib.urlopen(cfn_config["metadata_url"] + "?" + urllib.urlencode(d))
+    x = xml.etree.ElementTree.parse(r)
+
+    return json.loads(x.find("DescribeStackResourceResult/" +
+                             "StackResourceDetail/Metadata").text)
+
+
+def deploy_signal(deployment, output, returncode):
+    deploy_signal_id = [x for x in deployment["inputs"]
+                        if x["name"] == "deploy_signal_id"][0]["value"]
+    r = urllib2.Request(deploy_signal_id,
+                        json.dumps({"deploy_stdout": output,
+                                    "deploy_stderr": "",
+                                    "deploy_status_code": returncode}),
+                        {"Content-Type": "application/json"})
+    urllib2.urlopen(r)
+
+
+def run_script(deployment, script, stdout, cwd):
+    env = dict(os.environ)
+    for x in deployment["inputs"]:
+        if x["value"] is None:
+            if x["name"] in env:
+                del env[x["name"]]
+        else:
+            env[x["name"]] = str(x["value"])
+
+    rv = subprocess.call([script], stdout=open(stdout, "w"),
+                         stderr=subprocess.STDOUT, cwd=cwd, env=env)
+
+    with open(stdout, "r") as f:
+        output = f.read()
+
+    deploy_signal(deployment, output, rv)
+
+
+def main():
+    try:
+        cfn_init_data = get_user_data("cfn-init-data")
+    except IOError as e:
+        # http://bugs.python.org/issue6471
+        if e.errno == "socket error" and e.strerror.errno == 110:
+            return
+        else:
+            raise
+
+    if cfn_init_data is None:
+        return
+
+    cfn_config = json.loads(cfn_init_data)["os-collect-config"]["cfn"]
+    completed = set()
+
+    while True:
+        metadata = describe_stack_resource(cfn_config)
+
+        for deployment in metadata["deployments"]:
+            if deployment["id"] in completed:
+                continue
+
+            i = len(completed)
+
+            if deployment["group"] == "tgz":
+                os.mkdir("/tmp/heat-agent-%d-tgz" % i)
+                f = StringIO.StringIO(base64.b64decode(deployment["config"]))
+                t = tarfile.open(fileobj=f)
+                t.extractall("/tmp/heat-agent-%d-tgz" % i)
+
+                run_script(deployment, "/tmp/heat-agent-%d-tgz/install" % i,
+                           "/tmp/heat-agent-%d-output.log" % i,
+                           "/tmp/heat-agent-%d-tgz" % i)
+
+            elif deployment["group"] == "script":
+                with open("/tmp/heat-agent-%d-script.sh" % i, "w") as f:
+                    f.write(deployment["config"].encode("utf-8"))
+                os.chmod("/tmp/heat-agent-%d-script.sh" % i, 0o755)
+
+                run_script(deployment, "/tmp/heat-agent-%d-script.sh" % i,
+                           "/tmp/heat-agent-%d-output.log" % i, "/tmp")
+
+            completed.add(deployment["id"])
+
+        time.sleep(10)
+
+if __name__ == "__main__":
+    main()
