@@ -53,6 +53,18 @@ for name in $(echo ${images} | tr ',' ' '); do
 		#rhel7=$(find /usr/share/rhel-guest-image-7 -type f | grep 'x86_64$')
 		rhel7=$(find /usr/share/rhel-guest-image-7 | grep 'qcow2$')
 		;;
+	trusty)
+		# http://cloud-images.ubuntu.com/releases/14.04/release/ubuntu-14.04-server-cloudimg-amd64.tar.gz
+		version=14.04
+		codename=trusty
+		img=${codename}-server-cloudimg-amd64.img
+		trusty=${imagedir}/${img}
+		mkdir -p ${imagedir}
+		if [ ! -f ${trusty} ]; then
+			(cd ${imagedir} && curl -O -k -L "http://cloud-images.ubuntu.com/releases/${version}/release/ubuntu-${version}-server-cloudimg-amd64.tar.gz")
+			(cd ${imagedir} && tar zxvf ubuntu-${version}-server-cloudimg-amd64.tar.gz)
+		fi
+		;;
 	*)
 		echo "unknown image: ${name}"
 		exit 1
