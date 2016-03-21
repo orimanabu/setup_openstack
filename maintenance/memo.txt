@@ -1,0 +1,11 @@
+cinder create --image-id $(glance image-list | awk '/cirros/ {print $2}') --display-name cirros1 1
+nova boot --flavor m1.tiny --key-name sshkey --nic net-id=$(neutron net-list | awk '/demo/ {print $2}') --block-device-mapping vda=$(cinder list | awk '/cirros1/ {print $2}'):::0 vm1
+nova show $(nova list --all-tenants | awk '/vm1/ {print $2}')
+./neutron.sh -v vm1 -f 172.16.99.176 floatingip-associate
+nova evacuate $(nova list --all-tenants | awk '/vm1/ {print $2}')
+
+mysql nova -e "update instances set vm_state=deleted,deleted=1 where uuid=''"
+mysql cinder -e "update volumes set status='available',attach_status='detached' where id=''"
+
+mysql nova -e "update instances set vm_state=deleted,deleted=1 where uuid='"$(nova list | awk '/vm1/ {print $2}')"'"
+mysql cinder -e "update volumes set status='available',attach_status='detached' where id='"$(cinder list | awk '/cirros1/ {print $2}')"'"
