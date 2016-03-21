@@ -1,0 +1,157 @@
+heat_template_version: 2013-05-23
+
+description: SoftwareConfig sample
+
+parameters:
+  image:
+    type: string
+    label: Image name or ID
+    description: Image to be used for the server. Please use an Ubuntu based image.
+    default: rhel7-custom
+  flavor:
+    type: string
+    label: Flavor
+    description: Type of instance (flavor) to be used on the compute instance.
+    default: m1.rhel
+  key_name:
+    type: string
+    label: Key name
+    description: Name of key-pair to be installed on the compute instance.
+    default: sshkey
+  public_network:
+    type: string
+    label: Public network name or ID
+    description: Public network with floating IP addresses.
+    default: external
+  repo_server:
+    type: string
+    label: test parameter
+    description: test test parameter
+    default: 10.64.200.85
+#  test_param:
+#    type: string
+#    label: test parameter
+#    description: test test parameter
+
+resources:
+#  wait_condition:
+#    type: OS::Heat::WaitCondition
+#    properties:
+#      handle: { get_resource: wait_handle }
+#      count: 1
+#      timeout: 600
+#
+#  wait_handle:
+#    type: OS::Heat::WaitConditionHandle
+
+  web_server_security_group:
+    type: OS::Neutron::SecurityGroup
+    properties:
+      name: web_server_security_group
+      rules:
+        - protocol: icmp
+        - protocol: tcp
+          port_range_min: 22
+          port_range_max: 22
+        - protocol: tcp
+          port_range_min: 443
+          port_range_max: 443
+        - protocol: tcp
+          port_range_min: 80
+          port_range_max: 80
+
+#  the_sg:
+#    type: OS::Neutron::SecurityGroup
+#    properties:
+#      name: the_sg
+#      description: Ping and SSH
+#      rules:
+#      - protocol: icmp
+#      - protocol: tcp
+#        port_range_min: 22
+#        port_range_max: 22
+
+  private_network:
+    type: OS::Neutron::Net
+
+  private_subnet:
+    type: OS::Neutron::Subnet
+    properties:
+      network_id: { get_resource: private_network }
+      cidr: 192.168.88.0/24
+      dns_nameservers:
+        - 8.8.8.8
+
+  router:
+    type: OS::Neutron::Router
+    properties:
+      external_gateway_info:
+        network: { get_param: public_network }
+
+  router-interface:
+    type: OS::Neutron::RouterInterface
+    properties:
+      router_id: { get_resource: router }
+      subnet: { get_resource: private_subnet }
+
+  http_port:
+    type: OS::Neutron::Port
+    properties:
+      network: { get_resource: private_network }
+      security_groups:
+        - { get_resource: web_server_security_group }
+
+  config:
+    type: OS::Heat::SoftwareConfig
+    properties:
+      group: script
+      inputs:
+      - name: foo
+      - name: bar
+      - name: repo_server
+      outputs:
+      - name: result
+      config: |
+        #!/bin/sh -x
+        echo "Writing to /tmp/$bar"
+        echo $foo > /tmp/$bar
+        echo -n "The file /tmp/$bar contains `cat /tmp/$bar` for server $deploy_server_id during $deploy_action" > $heat_outputs_path.result
+        echo "Written to /tmp/$bar"
+        echo "Output to stderr" 1>&2
+
+  deployment:
+    type: OS::Heat::SoftwareDeployment
+    properties:
+      config:
+        get_resource: config
+      server:
+        get_resource: server
+      input_values:
+        foo: fooooo
+        bar: baaaaa
+
+  server:
+    type: OS::Nova::Server
+    properties:
+      image: {get_param: image}
+      flavor: {get_param: flavor}
+      key_name: {get_param: key_name}
+#      security_groups:
+#      - {get_resource: the_sg}
+      networks:
+        - port: { get_resource: http_port }
+      user_data_format: SOFTWARE_CONFIG
+
+outputs:
+  result:
+    value:
+      get_attr: [deployment, result]
+  stdout:
+    value:
+      get_attr: [deployment, deploy_stdout]
+  stderr:
+    value:
+      get_attr: [deployment, deploy_stderr]
+  status_code:
+    value:
+      get_attr: [deployment, deploy_status_code]

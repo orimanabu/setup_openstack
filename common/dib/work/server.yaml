@@ -1,0 +1,164 @@
+heat_template_version: 2013-05-23
+
+description: This template deploys a HTTP single instance server
+
+parameters:
+  image:
+    type: string
+    label: Image name or ID
+    description: Image to be used for the server. Please use an Ubuntu based image.
+    default: rhel7
+  flavor:
+    type: string
+    label: Flavor
+    description: Type of instance (flavor) to be used on the compute instance.
+    default: m1.rhel
+  key:
+    type: string
+    label: Key name
+    description: Name of key-pair to be installed on the compute instance.
+    default: sshkey
+  public_network:
+    type: string
+    label: Public network name or ID
+    description: Public network with floating IP addresses.
+    default: external
+  repo_server:
+    type: string
+    label: test parameter
+    description: test test parameter
+  test_param:
+    type: string
+    label: test parameter
+    description: test test parameter
+
+resources:
+  wait_condition:
+    type: OS::Heat::WaitCondition
+    properties:
+      handle: { get_resource: wait_handle }
+      count: 1
+      timeout: 600
+
+  wait_handle:
+    type: OS::Heat::WaitConditionHandle
+
+  web_server_security_group:
+    type: OS::Neutron::SecurityGroup
+    properties:
+      name: web_server_security_group
+      rules:
+        - protocol: icmp
+        - protocol: tcp
+          port_range_min: 22
+          port_range_max: 22
+        - protocol: tcp
+          port_range_min: 443
+          port_range_max: 443
+        - protocol: tcp
+          port_range_min: 80
+          port_range_max: 80
+
+  private_network:
+    type: OS::Neutron::Net
+
+  private_subnet:
+    type: OS::Neutron::Subnet
+    properties:
+      network_id: { get_resource: private_network }
+      cidr: 192.168.88.0/24
+      dns_nameservers:
+        - 8.8.8.8
+
+  router:
+    type: OS::Neutron::Router
+    properties:
+      external_gateway_info:
+        network: { get_param: public_network }
+
+  router-interface:
+    type: OS::Neutron::RouterInterface
+    properties:
+      router_id: { get_resource: router }
+      subnet: { get_resource: private_subnet }
+
+  http_port:
+    type: OS::Neutron::Port
+    properties:
+      network: { get_resource: private_network }
+      security_groups:
+        - { get_resource: web_server_security_group }
+
+  http_instance:
+    type: OS::Nova::Server
+    properties:
+      image: { get_param: image }
+      flavor: { get_param: flavor }
+      key_name: { get_param: key }
+      networks:
+        - port: { get_resource: http_port }
+      user_data_format: RAW
+      user_data:
+        str_replace:
+          params:
+            __repo_server__: { get_param: repo_server }
+            __test_param__: { get_param: test_param }
+            wc_notify: { get_attr: ['wait_handle', 'curl_cli'] }
+          template: |
+            #!/bin/bash -ex
+
+            # ssh customize
+            sed -i -e 's/.*UseDNS.*/UseDNS no/' /etc/ssh/sshd_config
+            systemctl restart sshd
+
+            # create repo file
+            cat > /etc/yum.repos.d/reposyncer.repo <<END
+            [rhel-7-server-rpms]
+            name = Red Hat Enterprise Linux 7 Server (RPMs)
+            baseurl = http://__repo_server__/reposync/RHEL7/repos/rhel-7-server-rpms
+            enabled = 1
+            gpgcheck = 0
+            gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+            END
+
+            # install httpd
+            yum install -y httpd git bind-utils telnet
+
+            # create index.html
+            cat >> /var/www/html/index.html <<END
+            <html><title>__test_param__</title></html>
+            <body>
+            <blockquote><pre>
+            END
+
+            hostname >> /var/www/html/index.html 
+
+            cat >> /var/www/html/index.html <<END
+            </pre></blockquote>
+            </body>
+            END
+
+            systemctl start httpd
+            systemctl enable httpd
+            #sleep 10
+            echo "wc_notify --data-binary '{\"status\": \"SUCCESS\"}'" > /tmp/xxx.txt
+            wc_notify --data-binary '{"status": "SUCCESS"}'
+
+  floating_ip:
+    type: OS::Neutron::FloatingIP
+    properties:
+      floating_network: { get_param: public_network }
+
+  floating_ip_assoc:
+    type: OS::Neutron::FloatingIPAssociation
+    properties:
+      floatingip_id: { get_resource: floating_ip }
+      port_id: { get_resource: http_port }
+
+outputs:
+  instance_name:
+    description: Name of the instance
+    value: { get_attr: [http_instance, name] }
+  instance_ip:
+    description: The IP address of the deployed instance
+    value: { get_attr: [floating_ip, floating_ip_address] }

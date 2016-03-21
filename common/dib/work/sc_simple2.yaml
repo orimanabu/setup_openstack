@@ -1,0 +1,114 @@
+heat_template_version: 2013-05-23
+
+description: SoftwareConfig sample
+
+parameters:
+  image:
+    type: string
+    label: Image name or ID
+    description: Image to be used for the server. Please use an Ubuntu based image.
+    default: rhel7-custom
+  flavor:
+    type: string
+    label: Flavor
+    description: Type of instance (flavor) to be used on the compute instance.
+    default: m1.rhel
+  key_name:
+    type: string
+    label: Key name
+    description: Name of key-pair to be installed on the compute instance.
+    default: sshkey
+  public_network:
+    type: string
+    label: Public network name or ID
+    description: Public network with floating IP addresses.
+    default: external
+  repo_server:
+    type: string
+    label: test parameter
+    description: test test parameter
+    default: 10.64.200.85
+#  test_param:
+#    type: string
+#    label: test parameter
+#    description: test test parameter
+
+resources:
+#  wait_condition:
+#    type: OS::Heat::WaitCondition
+#    properties:
+#      handle: { get_resource: wait_handle }
+#      count: 1
+#      timeout: 600
+#
+#  wait_handle:
+#    type: OS::Heat::WaitConditionHandle
+
+#  the_sg:
+#    type: OS::Neutron::SecurityGroup
+#    properties:
+#      name: the_sg
+#      description: Ping and SSH
+#      rules:
+#      - protocol: icmp
+#      - protocol: tcp
+#        port_range_min: 22
+#        port_range_max: 22
+
+
+  network:
+    type: sc_network.yaml
+    properties:
+      public_network: { get_param: public_network }
+
+  config:
+    type: OS::Heat::SoftwareConfig
+    properties:
+      group: script
+      inputs:
+      - name: foo
+      - name: bar
+      - name: repo_server
+      outputs:
+      - name: result
+      config: |
+        #!/bin/sh -x
+        echo "Writing to /tmp/$bar"
+        echo $foo > /tmp/$bar
+        echo -n "The file /tmp/$bar contains `cat /tmp/$bar` for server $deploy_server_id during $deploy_action" > $heat_outputs_path.result
+        echo "Written to /tmp/$bar"
+        echo "Output to stderr" 1>&2
+
+  deployment:
+    type: OS::Heat::SoftwareDeployment
+    properties:
+      config:
+        get_resource: config
+      server:
+        get_resource: server1
+      input_values:
+        foo: fooooo
+        bar: baaaaa
+
+  server1:
+    type: sc_server.yaml
+    properties:
+      image: {get_param: image}
+      flavor: {get_param: flavor}
+      key_name: {get_param: key_name}
+      private_network: { get_attr: [network, name] }
+#      user_data_format: SOFTWARE_CONFIG
+
+#outputs:
+#  result:
+#    value:
+#      get_attr: [deployment, result]
+#  stdout:
+#    value:
+#      get_attr: [deployment, deploy_stdout]
+#  stderr:
+#    value:
+#      get_attr: [deployment, deploy_stderr]
+#  status_code:
+#    value:
+#      get_attr: [deployment, deploy_status_code]

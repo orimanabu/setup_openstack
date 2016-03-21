@@ -1,0 +1,65 @@
+heat_template_version: 2013-05-23
+
+description: SoftwareConfig sample
+
+parameters:
+  image:
+    type: string
+    label: Image name or ID
+    description: Image to be used for the server. Please use an Ubuntu based image.
+    default: rhel7-custom
+  flavor:
+    type: string
+    label: Flavor
+    description: Type of instance (flavor) to be used on the compute instance.
+    default: m1.rhel
+  key_name:
+    type: string
+    label: Key name
+    description: Name of key-pair to be installed on the compute instance.
+    default: sshkey
+  private_network:
+    type: string
+    label: Private network name or ID
+    description: Network to attach server to.
+    default: private
+  user_data_format:
+    type: string
+    label: user data format
+    description: user adta format
+    default: SOFTWARE_CONFIG
+
+
+resources:
+  secgroup:
+    type: OS::Neutron::SecurityGroup
+    properties:
+      name: secgroup
+      rules:
+        - protocol: icmp
+        - protocol: tcp
+          port_range_min: 22
+          port_range_max: 22
+        - protocol: tcp
+          port_range_min: 443
+          port_range_max: 443
+        - protocol: tcp
+          port_range_min: 80
+          port_range_max: 80
+
+  port:
+    type: OS::Neutron::Port
+    properties:
+      network: { get_param: private_network }
+      security_groups:
+        - { get_resource: secgroup }
+
+  test_server:
+    type: OS::Nova::Server
+    properties:
+      image: {get_param: image}
+      flavor: {get_param: flavor}
+      key_name: {get_param: key_name}
+      networks:
+        - port: { get_resource: port }
+      user_data_format: {get_param: user_data_format}
