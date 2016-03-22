@@ -11,7 +11,7 @@ name=$1; shift
 
 case ${op} in
 boot|create)
-	nova boot --nic net_id=$(neutron net-list | awk '/provisioin/ {print $2}') --flavor baremetal --image rhel7_user_i ${name}
+	nova boot --poll --nic net-id=$(neutron net-list | awk '/provision/ {print $2}') --flavor baremetal --image rhel7_user_i ${name}
 	;;
 delete)
 	nova delete ${name}
