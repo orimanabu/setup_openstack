@@ -92,11 +92,14 @@ delete-provisioned-demo)
 	$0 -n private -s private_subnet -p public -r router1 delete
 	neutron net-delete public
 	;;
+baremetal-create)
+	do_command neutron net-create provision --provider:network_type flat --provider:physical_network physnet-provision
+	do_command neutron subnet-create provision 192.168.180.0/24 --name provision_subnet --enable-dhcp --gateway 192.168.180.254 --allocation-pool start=192.168.180.200,end=192.168.180.249
+	;;
 external-create)
 	source ~/keystonerc_admin
-	#do_command neutron net-create ${public_network} --provider:network_type flat --provider:physical_network physnet-external --router:external
-	do_command neutron net-create ${public_network} --router:external
-	#do_command neutron net-create ${public_network} --router:external True
+	do_command neutron net-create ${public_network} --provider:network_type flat --provider:physical_network physnet-external --router:external
+	#do_command neutron net-create ${public_network} --router:external
 	do_command neutron subnet-create ${public_network} 172.16.99.0/24 --name ${public_network}_subnet --disable-dhcp --gateway 172.16.99.254 --allocation-pool start=172.16.99.100,end=172.16.99.199
 	;;
 create)
