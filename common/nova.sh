@@ -114,7 +114,7 @@ boot)
 	if [ x"${user_data}" != x"" ]; then
 		extra_options="--user-data ${user_data}"
 	fi
-	do_command nova boot ${extra_options} --flavor ${flavor} --key-name ${key} --nic net-id=$(neutron net-list | awk '/'${net}'/ {print $2}') --image ${image} ${vm}
+	do_command nova boot ${extra_options} --poll --flavor ${flavor} --key-name ${key} --nic net-id=$(neutron net-list | awk '/'${net}'/ {print $2}') --image ${image} ${vm}
 	;;
 boot_from_volume)
 	if [ x"${vm}" == x"" -o x"${volume}" == x"" -o x"${size}" == x"" ]; then
