@@ -8,6 +8,7 @@ tenant=$1; shift
 source subr.sh
 rcfile=~/keystonerc_${tenant}
 keyname=sshkey
+secgroup=sg_demo
 
 echo "* rcfile: ${rcfile}"
 echo "* tenant: ${tenant}"
@@ -41,12 +42,14 @@ else
 #	do_command nova keypair-add --pub-key ${pubkey} sshkey
 	do_command openstack keypair create --public-key ${pubkey} sshkey
 fi
+do_command neutron security-group-create ${secgroup}
+#do_command openstack security group create ${secgroup}
 #do_command neutron security-group-rule-create --protocol icmp --direction ingress default
-do_command openstack security group rule create default --proto icmp --dst-port 0
+do_command openstack security group rule create ${secgroup} --proto icmp --dst-port 0
 #do_command neutron security-group-rule-create --protocol tcp --port-range-min 22 --port-range-max 22 --direction ingress default
-do_command openstack security group rule create default --proto tcp --dst-port 22:22
+do_command openstack security group rule create ${secgroup} --proto tcp --dst-port 22:22
 #do_command neutron security-group-rule-create --protocol tcp --port-range-min 3389 --port-range-max 3389 --direction ingress default # RDP
-do_command openstack security group rule create default --proto tcp --dst-port 3389:3389 # RDP
+do_command openstack security group rule create ${secgroup} --proto tcp --dst-port 3389:3389 # RDP
 
 #do_command nova flavor-list
 do_command openstack flavor list

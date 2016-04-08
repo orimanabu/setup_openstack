@@ -12,6 +12,7 @@ region=RegionOne
 region=regionOne
 image=cirros
 flavor=m1.tiny
+secgroup=sg_demo
 
 while [[ $# > 1 ]]; do
 	key="$1"
@@ -53,6 +54,10 @@ while [[ $# > 1 ]]; do
 		size="$1"
 		shift
 		;;
+	-g|--secgroup)
+		secgroup="$1"
+		shift
+		;;
 	-u|--user-data)
 		user_data="$1"
 		shift
@@ -85,6 +90,7 @@ echo "* region:	${region}"
 echo "* tenant:	${tenant}"
 echo "* flavor:	${flavor}"
 echo "* network:	${net}"
+echo "* secgroup:	${secgroup}"
 echo "* image:	${image}"
 echo "* vm:	${vm}"
 echo "* volume:	${volume}"
@@ -114,7 +120,7 @@ boot)
 	if [ x"${user_data}" != x"" ]; then
 		extra_options="--user-data ${user_data}"
 	fi
-	do_command nova boot ${extra_options} --poll --flavor ${flavor} --key-name ${key} --nic net-id=$(neutron net-list | awk '/'${net}'/ {print $2}') --image ${image} ${vm}
+	do_command nova boot ${extra_options} --poll --flavor ${flavor} --key-name ${key} --nic net-id=$(neutron net-list | awk '/'${net}'/ {print $2}') --image ${image} --security-groups ${secgroup} ${vm}
 	;;
 boot_from_volume)
 	if [ x"${vm}" == x"" -o x"${volume}" == x"" -o x"${size}" == x"" ]; then
