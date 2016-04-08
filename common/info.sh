@@ -43,6 +43,11 @@ for ns in $(ip netns | awk '{print $1}'); do
 #	do_command ip netns exec ${ns} iptables -nL -t nat
 done
 
+file=~/keystonerc_admin
+if [ ! -f ${file} ]; then
+	echo "${file} not found."
+	exit
+fi
 source ~/keystonerc_admin
 
 do_command openstack catalog list
