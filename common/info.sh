@@ -1,11 +1,37 @@
 #!/bin/bash
 
 source subr.sh
-source ~/keystonerc_admin
+
+if [ x"$#" != x"1" ]; then
+	echo "$0 tenant"
+	exit 1
+fi
+tenant=$1; shift
+rcfile=~/keystonerc_${tenant}
 
 #do_command iptables -nL
 #do_command iptables -nL -t nat
+which brctl > /dev/null 2>&1 || yum install -y bridge-utils
 do_command brctl show
+which ovs-vsctl > /dev/null 2>&1
+if [ x"$?" = x"0" ]; then
+	echo "=> ovs"
+	do_command ovs-vsctl show
+	do_command ovs-vsctl list-br
+	ovs-vsctl list-br | while read br; do
+		echo "==> br: ${br}"
+		do_command ovs-vsctl list-ports ${br}
+		do_command ovs-ofctl show ${br}
+#		do_command ovs-ofctl dump-tables ${br}
+		do_command ovs-ofctl dump-ports ${br}
+		do_command ovs-ofctl dump-ports-desc ${br}
+		do_command ovs-ofctl dump-aggregate ${br}
+		do_command ovs-ofctl queue-stats ${br}
+		do_command ovs-dpctl show ${br}
+	done
+else
+	echo "=> no ovs"
+fi
 do_command ip -d a
 do_command ip netns
 
@@ -16,6 +42,8 @@ for ns in $(ip netns | awk '{print $1}'); do
 #	do_command ip netns exec ${ns} iptables -nL
 #	do_command ip netns exec ${ns} iptables -nL -t nat
 done
+
+source ~/keystonerc_admin
 
 do_command openstack catalog list
 do_command openstack endpoint list --long
@@ -81,13 +109,16 @@ openstack hypervisor list -f csv -c ID -c Name --quote none | grep -v ID | while
 	echo "==> hypervisor: ${name} / ${id}"
 	do_command nova hypervisor-show ${id}
 done
+
+do_command nova usage-list
+
+source ${rcfile}
 do_command nova keypair-list
 #openstack keypair list -f csv -c ID -c Name --quote none | grep -v ID | while IFS=, read id name; do
 openstack keypair list -f csv -c Name --quote none | grep -v Name | while IFS=, read name; do
 	echo "==> keypair: ${name}"
 	do_command nova keypair-show ${name}
 done
-do_command nova usage-list
 do_command nova list
 openstack server list -f csv -c ID -c Name --quote none | grep -v ID | while IFS=, read id name; do
 	echo "==> vm: ${name} / ${id}"
