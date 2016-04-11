@@ -1,0 +1,6 @@
+
+[filter:keystone]
+use = egg:swift#keystoneauth
+operator_roles = admin, SwiftOperator
+is_admin = true
+reseller_prefix = AUTH_

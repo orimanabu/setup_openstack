@@ -1,0 +1,14 @@
+
+[filter:authtoken]
+log_name = swift
+signing_dir = /var/cache/swift
+paste.filter_factory = keystonemiddleware.auth_token:filter_factory
+
+auth_uri = http://10.0.1.111:5000/v2.0
+identity_uri = http://10.0.1.111:35357
+admin_tenant_name = services
+admin_user = swift
+admin_password = swift
+delay_auth_decision = 1
+cache = swift.cache
+include_service_catalog = False

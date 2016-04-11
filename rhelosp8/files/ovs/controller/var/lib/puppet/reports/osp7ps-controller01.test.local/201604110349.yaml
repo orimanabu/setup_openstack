@@ -1,0 +1,578 @@
+--- !ruby/object:Puppet::Transaction::Report
+  metrics: 
+    resources: !ruby/object:Puppet::Util::Metric
+      name: resources
+      label: Resources
+      values: 
+        - - total
+          - Total
+          - 15
+        - - skipped
+          - Skipped
+          - 0
+        - - failed
+          - Failed
+          - 0
+        - - failed_to_restart
+          - "Failed to restart"
+          - 0
+        - - restarted
+          - Restarted
+          - 0
+        - - changed
+          - Changed
+          - 6
+        - - out_of_sync
+          - "Out of sync"
+          - 6
+        - - scheduled
+          - Scheduled
+          - 0
+    time: !ruby/object:Puppet::Util::Metric
+      name: time
+      label: Time
+      values: 
+        - - schedule
+          - Schedule
+          - 0.000552231
+        - - anchor
+          - Anchor
+          - 0.000196068
+        - - package
+          - Package
+          - 4.113987947
+        - - filebucket
+          - Filebucket
+          - 0.000112844
+        - - firewall
+          - Firewall
+          - 0.230236402
+        - - file
+          - File
+          - 0.036466619
+        - - service
+          - Service
+          - 0.207649733
+        - - config_retrieval
+          - "Config retrieval"
+          - 0.539730122
+        - - total
+          - Total
+          - 5.128931966
+    changes: !ruby/object:Puppet::Util::Metric
+      name: changes
+      label: Changes
+      values: 
+        - - total
+          - Total
+          - 6
+    events: !ruby/object:Puppet::Util::Metric
+      name: events
+      label: Events
+      values: 
+        - - total
+          - Total
+          - 6
+        - - failure
+          - Failure
+          - 0
+        - - success
+          - Success
+          - 6
+  logs: 
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - package
+        - redis
+        - class
+        - "redis::install"
+        - install
+      message: created
+      source: "/Stage[main]/Redis::Install/Package[redis]/ensure"
+      time: 2016-04-11 12:49:55.592109 +09:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - firewall
+        - "packstack::firewall"
+        - packstack
+        - class
+      message: created
+      source: "/Stage[main]/Main/Packstack::Firewall[redis service from 10.0.1.111]/Firewall[001 redis service incoming redis service from 10.0.1.111]/ensure"
+      time: 2016-04-11 12:49:55.875479 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/packstack/manifests/firewall.pp
+      line: 50
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - file
+        - class
+        - "redis::config"
+        - redis
+        - config
+      message: "mode changed '0750' to '0755'"
+      source: "/Stage[main]/Redis::Config/File[/var/log/redis]/mode"
+      time: 2016-04-11 12:49:55.936187 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/redis/manifests/config.pp
+      line: 82
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - file
+        - class
+        - "redis::config"
+        - redis
+        - config
+      message: created
+      source: "/Stage[main]/Redis::Config/File[/etc/redis]/ensure"
+      time: 2016-04-11 12:49:55.940410 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/redis/manifests/config.pp
+      line: 82
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - file
+        - class
+        - "redis::config"
+        - redis
+        - config
+      message: "content changed '{md5}cbe7f661cd8c7e28f16be6ec89f3923f' to '{md5}b2e901abb623718bc9dcb28becb8b1d3'"
+      source: "/Stage[main]/Redis::Config/File[/etc/redis.conf]/content"
+      time: 2016-04-11 12:49:55.971055 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/redis/manifests/config.pp
+      line: 82
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - service
+        - redis
+        - class
+        - "redis::service"
+      message: "ensure changed 'stopped' to 'running'"
+      source: "/Stage[main]/Redis::Service/Service[redis]/ensure"
+      time: 2016-04-11 12:49:56.183654 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/redis/manifests/service.pp
+      line: 13
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+      message: "Finished catalog run in 5.28 seconds"
+      source: Puppet
+      time: 2016-04-11 12:49:56.409146 +09:00
+  resource_statuses: 
+    Schedule[daily]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[daily]
+      file: 
+      line: 
+      evaluation_time: 9.7752e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - daily
+      time: 2016-04-11 12:49:51.368987 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: daily
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[daily]
+    Schedule[monthly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[monthly]
+      file: 
+      line: 
+      evaluation_time: 5.6493e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - monthly
+      time: 2016-04-11 12:49:51.369184 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: monthly
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[monthly]
+    Schedule[hourly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[hourly]
+      file: 
+      line: 
+      evaluation_time: 4.1048e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - hourly
+      time: 2016-04-11 12:49:51.369310 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: hourly
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[hourly]
+    "Anchor[redis::begin]": !ruby/object:Puppet::Resource::Status
+      resource: "Anchor[redis::begin]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/redis/manifests/init.pp
+      line: 494
+      evaluation_time: 9.0078e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - anchor
+        - "redis::begin"
+        - redis
+        - begin
+        - class
+      time: 2016-04-11 12:49:51.379733 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Anchor
+      title: "redis::begin"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Redis
+        - "Anchor[redis::begin]"
+    Package[redis]: !ruby/object:Puppet::Resource::Status
+      resource: Package[redis]
+      file: 
+      line: 
+      evaluation_time: 4.113987947
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - package
+        - redis
+        - class
+        - "redis::install"
+        - install
+      time: 2016-04-11 12:49:51.478303 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym package_installed
+          status: success
+          time: 2016-04-11 12:49:51.504790 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Package
+      title: redis
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Redis::Install"
+        - Package[redis]
+    Schedule[never]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[never]
+      file: 
+      line: 
+      evaluation_time: 0.000133079
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - never
+      time: 2016-04-11 12:49:55.592642 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: never
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[never]
+    Filebucket[puppet]: !ruby/object:Puppet::Resource::Status
+      resource: Filebucket[puppet]
+      file: 
+      line: 
+      evaluation_time: 0.000112844
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - filebucket
+        - puppet
+      time: 2016-04-11 12:49:55.592967 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Filebucket
+      title: puppet
+      skipped: false
+      failed: false
+      containment_path: 
+        - Filebucket[puppet]
+    "Firewall[001 redis service incoming redis service from 10.0.1.111]": !ruby/object:Puppet::Resource::Status
+      resource: "Firewall[001 redis service incoming redis service from 10.0.1.111]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/packstack/manifests/firewall.pp
+      line: 50
+      evaluation_time: 0.230236402
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - firewall
+        - "packstack::firewall"
+        - packstack
+        - class
+      time: 2016-04-11 12:49:55.697104 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym firewall_created
+          status: success
+          time: 2016-04-11 12:49:55.761715 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Firewall
+      title: "001 redis service incoming redis service from 10.0.1.111"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Packstack::Firewall[redis service from 10.0.1.111]"
+        - "Firewall[001 redis service incoming redis service from 10.0.1.111]"
+    Schedule[weekly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[weekly]
+      file: 
+      line: 
+      evaluation_time: 0.000111872
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - weekly
+      time: 2016-04-11 12:49:55.928302 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: weekly
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[weekly]
+    Schedule[puppet]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[puppet]
+      file: 
+      line: 
+      evaluation_time: 0.000111987
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - puppet
+      time: 2016-04-11 12:49:55.928576 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: puppet
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[puppet]
+    File[/var/log/redis]: !ruby/object:Puppet::Resource::Status
+      resource: File[/var/log/redis]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/redis/manifests/config.pp
+      line: 82
+      evaluation_time: 0.002536105
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - file
+        - class
+        - "redis::config"
+        - redis
+        - config
+      time: 2016-04-11 12:49:55.934930 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: mode
+          previous_value: "750"
+          desired_value: "755"
+          historical_value: 
+          message: "mode changed '0750' to '0755'"
+          name: !ruby/sym mode_changed
+          status: success
+          time: 2016-04-11 12:49:55.936041 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: File
+      title: /var/log/redis
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Redis::Config"
+        - File[/var/log/redis]
+    File[/etc/redis]: !ruby/object:Puppet::Resource::Status
+      resource: File[/etc/redis]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/redis/manifests/config.pp
+      line: 82
+      evaluation_time: 0.002749107
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - file
+        - class
+        - "redis::config"
+        - redis
+        - config
+      time: 2016-04-11 12:49:55.937806 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym directory
+          historical_value: 
+          message: created
+          name: !ruby/sym directory_created
+          status: success
+          time: 2016-04-11 12:49:55.938123 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: File
+      title: /etc/redis
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Redis::Config"
+        - File[/etc/redis]
+    File[/etc/redis.conf]: !ruby/object:Puppet::Resource::Status
+      resource: File[/etc/redis.conf]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/redis/manifests/config.pp
+      line: 82
+      evaluation_time: 0.031181407
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - file
+        - class
+        - "redis::config"
+        - redis
+        - config
+      time: 2016-04-11 12:49:55.940864 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: content
+          previous_value: "{md5}cbe7f661cd8c7e28f16be6ec89f3923f"
+          desired_value: "{md5}b2e901abb623718bc9dcb28becb8b1d3"
+          historical_value: 
+          message: "content changed '{md5}cbe7f661cd8c7e28f16be6ec89f3923f' to '{md5}b2e901abb623718bc9dcb28becb8b1d3'"
+          name: !ruby/sym content_changed
+          status: success
+          time: 2016-04-11 12:49:55.941597 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: File
+      title: /etc/redis.conf
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Redis::Config"
+        - File[/etc/redis.conf]
+    Service[redis]: !ruby/object:Puppet::Resource::Status
+      resource: Service[redis]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/redis/manifests/service.pp
+      line: 13
+      evaluation_time: 0.207649733
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - service
+        - redis
+        - class
+        - "redis::service"
+      time: 2016-04-11 12:49:55.976157 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym stopped
+          desired_value: !ruby/sym running
+          historical_value: 
+          message: "ensure changed 'stopped' to 'running'"
+          name: !ruby/sym service_started
+          status: success
+          time: 2016-04-11 12:49:56.024145 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Service
+      title: redis
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Redis::Service"
+        - Service[redis]
+    "Anchor[redis::end]": !ruby/object:Puppet::Resource::Status
+      resource: "Anchor[redis::end]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/redis/manifests/init.pp
+      line: 495
+      evaluation_time: 0.00010599
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - anchor
+        - "redis::end"
+        - redis
+        - end
+        - class
+      time: 2016-04-11 12:49:56.187085 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Anchor
+      title: "redis::end"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Redis
+        - "Anchor[redis::end]"
+  host: osp7ps-controller01.test.local
+  time: 2016-04-11 12:49:50.922796 +09:00
+  kind: apply
+  report_format: 4
+  puppet_version: "3.6.2"
+  configuration_version: 1460346589
+  transaction_uuid: "911c6b7d-b036-4477-b3ba-ff9f09c5765a"
+  environment: production
+  status: changed

@@ -1,0 +1,8 @@
+
+[filter:ratelimit]
+use = egg:swift#ratelimit
+clock_accuracy = 1000
+max_sleep_time_seconds = 60
+log_sleep_time_seconds = 0
+rate_buffer_seconds = 5
+account_ratelimit = 0

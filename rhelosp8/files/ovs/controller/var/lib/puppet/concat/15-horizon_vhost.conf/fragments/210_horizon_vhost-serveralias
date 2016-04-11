@@ -1,0 +1,5 @@
+
+  ## Server aliases
+  ServerAlias 10.0.1.111
+  ServerAlias osp7ps-controller01.test.local
+  ServerAlias localhost

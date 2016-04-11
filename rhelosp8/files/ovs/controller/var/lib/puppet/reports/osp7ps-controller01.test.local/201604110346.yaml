@@ -1,0 +1,411 @@
+--- !ruby/object:Puppet::Transaction::Report
+  metrics: 
+    resources: !ruby/object:Puppet::Util::Metric
+      name: resources
+      label: Resources
+      values: 
+        - - total
+          - Total
+          - 14
+        - - skipped
+          - Skipped
+          - 0
+        - - failed
+          - Failed
+          - 0
+        - - failed_to_restart
+          - "Failed to restart"
+          - 0
+        - - restarted
+          - Restarted
+          - 0
+        - - changed
+          - Changed
+          - 1
+        - - out_of_sync
+          - "Out of sync"
+          - 1
+        - - scheduled
+          - Scheduled
+          - 0
+    time: !ruby/object:Puppet::Util::Metric
+      name: time
+      label: Time
+      values: 
+        - - schedule
+          - Schedule
+          - 0.016335565
+        - - package
+          - Package
+          - 0.001721585
+        - - filebucket
+          - Filebucket
+          - 9.5999e-05
+        - - file
+          - File
+          - 0.005517083
+        - - config_retrieval
+          - "Config retrieval"
+          - 0.220148037
+        - - total
+          - Total
+          - 0.24381826899999998
+    changes: !ruby/object:Puppet::Util::Metric
+      name: changes
+      label: Changes
+      values: 
+        - - total
+          - Total
+          - 1
+    events: !ruby/object:Puppet::Util::Metric
+      name: events
+      label: Events
+      values: 
+        - - total
+          - Total
+          - 1
+        - - failure
+          - Failure
+          - 0
+        - - success
+          - Success
+          - 1
+  logs: 
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - file
+        - class
+      message: "defined content as '{md5}968db27f882097febc378688ddddb6f7'"
+      source: /Stage[main]/Main/File[/root/keystonerc_admin]/ensure
+      time: 2016-04-11 12:46:00.105543 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_osclient.pp
+      line: 60
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+      message: "Finished catalog run in 0.44 seconds"
+      source: Puppet
+      time: 2016-04-11 12:46:00.248181 +09:00
+  resource_statuses: 
+    Schedule[daily]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[daily]
+      file: 
+      line: 
+      evaluation_time: 9.4396e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - daily
+      time: 2016-04-11 12:45:59.965155 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: daily
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[daily]
+    Schedule[monthly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[monthly]
+      file: 
+      line: 
+      evaluation_time: 4.6526e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - monthly
+      time: 2016-04-11 12:45:59.965347 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: monthly
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[monthly]
+    Schedule[hourly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[hourly]
+      file: 
+      line: 
+      evaluation_time: 4.3667e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - hourly
+      time: 2016-04-11 12:45:59.965481 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: hourly
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[hourly]
+    Package[python-iso8601]: !ruby/object:Puppet::Resource::Status
+      resource: Package[python-iso8601]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_osclient.pp
+      line: 12
+      evaluation_time: 0.00063573
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - package
+        - python-iso8601
+        - class
+      time: 2016-04-11 12:46:00.075198 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Package
+      title: python-iso8601
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - Package[python-iso8601]
+    Package[python-novaclient]: !ruby/object:Puppet::Resource::Status
+      resource: Package[python-novaclient]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_osclient.pp
+      line: 18
+      evaluation_time: 0.000235005
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - package
+        - python-novaclient
+        - class
+      time: 2016-04-11 12:46:00.076284 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Package
+      title: python-novaclient
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - Package[python-novaclient]
+    Package[python-cinderclient]: !ruby/object:Puppet::Resource::Status
+      resource: Package[python-cinderclient]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_osclient.pp
+      line: 18
+      evaluation_time: 0.000236864
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - package
+        - python-cinderclient
+        - class
+      time: 2016-04-11 12:46:00.081516 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Package
+      title: python-cinderclient
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - Package[python-cinderclient]
+    Schedule[never]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[never]
+      file: 
+      line: 
+      evaluation_time: 0.015987025
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - never
+      time: 2016-04-11 12:46:00.082166 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: never
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[never]
+    Package[python-openstackclient]: !ruby/object:Puppet::Resource::Status
+      resource: Package[python-openstackclient]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_osclient.pp
+      line: 18
+      evaluation_time: 0.00022183
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - package
+        - python-openstackclient
+        - class
+      time: 2016-04-11 12:46:00.098576 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Package
+      title: python-openstackclient
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - Package[python-openstackclient]
+    Package[python-glanceclient]: !ruby/object:Puppet::Resource::Status
+      resource: Package[python-glanceclient]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_osclient.pp
+      line: 18
+      evaluation_time: 0.000186568
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - package
+        - python-glanceclient
+        - class
+      time: 2016-04-11 12:46:00.099059 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Package
+      title: python-glanceclient
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - Package[python-glanceclient]
+    Filebucket[puppet]: !ruby/object:Puppet::Resource::Status
+      resource: Filebucket[puppet]
+      file: 
+      line: 
+      evaluation_time: 9.5999e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - filebucket
+        - puppet
+      time: 2016-04-11 12:46:00.099403 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Filebucket
+      title: puppet
+      skipped: false
+      failed: false
+      containment_path: 
+        - Filebucket[puppet]
+    Package[python-swiftclient]: !ruby/object:Puppet::Resource::Status
+      resource: Package[python-swiftclient]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_osclient.pp
+      line: 18
+      evaluation_time: 0.000205588
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - package
+        - python-swiftclient
+        - class
+      time: 2016-04-11 12:46:00.099793 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Package
+      title: python-swiftclient
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - Package[python-swiftclient]
+    File[/root/keystonerc_admin]: !ruby/object:Puppet::Resource::Status
+      resource: File[/root/keystonerc_admin]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_osclient.pp
+      line: 60
+      evaluation_time: 0.005517083
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - file
+        - class
+      time: 2016-04-11 12:46:00.100214 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym file
+          historical_value: 
+          message: "defined content as '{md5}968db27f882097febc378688ddddb6f7'"
+          name: !ruby/sym file_created
+          status: success
+          time: 2016-04-11 12:46:00.100574 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: File
+      title: /root/keystonerc_admin
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - File[/root/keystonerc_admin]
+    Schedule[weekly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[weekly]
+      file: 
+      line: 
+      evaluation_time: 8.369e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - weekly
+      time: 2016-04-11 12:46:00.106015 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: weekly
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[weekly]
+    Schedule[puppet]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[puppet]
+      file: 
+      line: 
+      evaluation_time: 8.0261e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - puppet
+      time: 2016-04-11 12:46:00.106260 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: puppet
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[puppet]
+  host: osp7ps-controller01.test.local
+  time: 2016-04-11 12:45:59.682663 +09:00
+  kind: apply
+  report_format: 4
+  puppet_version: "3.6.2"
+  configuration_version: 1460346359
+  transaction_uuid: "957149a3-bb3f-4c1d-9f92-ecdbec944454"
+  environment: production
+  status: changed

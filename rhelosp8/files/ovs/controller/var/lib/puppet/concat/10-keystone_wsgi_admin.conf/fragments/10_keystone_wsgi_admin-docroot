@@ -1,0 +1,3 @@
+
+  ## Vhost docroot
+  DocumentRoot "/var/www/cgi-bin/keystone"

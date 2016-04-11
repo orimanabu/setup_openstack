@@ -1,0 +1,25 @@
+# This file is being maintained by Puppet.
+# DO NOT EDIT
+
+pid file = /var/run/rsyncd.pid
+uid = nobody
+gid = nobody
+use chroot = no
+log format = %t %a %m %f %b
+syslog facility = local3
+timeout = 300
+address = 10.0.1.111
+# This file is being maintained by Puppet.
+# DO NOT EDIT
+
+[ swift_server ]
+path             = /etc/swift
+read only        = true
+write only       = no
+list             = yes
+uid              = swift
+gid              = swift
+incoming chmod   = 0644
+outgoing chmod   = 0644
+max connections  = 5
+lock file        = /var/lock/swift_server.lock

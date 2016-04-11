@@ -1,0 +1,3 @@
+
+  ## Logging
+  ErrorLog "/var/log/httpd/default_error.log"

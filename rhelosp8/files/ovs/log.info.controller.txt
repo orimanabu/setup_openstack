@@ -1,0 +1,1863 @@
+=====> [20160411-151143] host: (local), command: iptables -nL
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+neutron-openvswi-INPUT  all  --  0.0.0.0/0            0.0.0.0/0           
+nova-api-INPUT  all  --  0.0.0.0/0            0.0.0.0/0           
+ACCEPT     tcp  --  10.0.1.111           0.0.0.0/0            multiport dports 5671,5672 /* 001 amqp incoming amqp_10.0.1.111 */
+ACCEPT     tcp  --  10.0.1.131           0.0.0.0/0            multiport dports 5671,5672 /* 001 amqp incoming amqp_10.0.1.131 */
+ACCEPT     tcp  --  10.0.1.132           0.0.0.0/0            multiport dports 5671,5672 /* 001 amqp incoming amqp_10.0.1.132 */
+ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0            multiport dports 8777 /* 001 ceilometer-api incoming ceilometer_api */
+ACCEPT     tcp  --  10.0.1.131           0.0.0.0/0            multiport dports 3260 /* 001 cinder incoming cinder_10.0.1.131 */
+ACCEPT     tcp  --  10.0.1.132           0.0.0.0/0            multiport dports 3260 /* 001 cinder incoming cinder_10.0.1.132 */
+ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0            multiport dports 8776 /* 001 cinder-api incoming cinder_api */
+ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0            multiport dports 9292 /* 001 glance incoming glance_api */
+ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0            multiport dports 8004 /* 001 heat incoming heat */
+ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0            multiport dports 80 /* 001 horizon 80  incoming */
+ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0            multiport dports 5000,35357 /* 001 keystone incoming keystone */
+ACCEPT     tcp  --  10.0.1.111           0.0.0.0/0            multiport dports 3306 /* 001 mariadb incoming mariadb_10.0.1.111 */
+ACCEPT     tcp  --  10.0.1.131           0.0.0.0/0            multiport dports 3306 /* 001 mariadb incoming mariadb_10.0.1.131 */
+ACCEPT     tcp  --  10.0.1.132           0.0.0.0/0            multiport dports 3306 /* 001 mariadb incoming mariadb_10.0.1.132 */
+ACCEPT     tcp  --  10.0.1.111           0.0.0.0/0            multiport dports 27017 /* 001 mongodb-server incoming mongodb_server */
+ACCEPT     udp  --  0.0.0.0/0            0.0.0.0/0            multiport dports 67 /* 001 neutron dhcp in incoming neutron_dhcp_in_10.0.1.111 */
+ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0            multiport dports 9696 /* 001 neutron server incoming neutron_server_10.0.1.111 */
+ACCEPT     udp  --  10.0.2.111           0.0.0.0/0            multiport dports 4789 /* 001 neutron tunnel port incoming neutron_tunnel_10.0.1.111_10.0.2.111 */
+ACCEPT     udp  --  10.0.2.131           0.0.0.0/0            multiport dports 4789 /* 001 neutron tunnel port incoming neutron_tunnel_10.0.1.111_10.0.2.131 */
+ACCEPT     udp  --  10.0.2.132           0.0.0.0/0            multiport dports 4789 /* 001 neutron tunnel port incoming neutron_tunnel_10.0.1.111_10.0.2.132 */
+ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0            multiport dports 8773,8774,8775 /* 001 nova api incoming nova_api */
+ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0            multiport dports 6080 /* 001 novncproxy incoming */
+ACCEPT     tcp  --  10.0.1.111           0.0.0.0/0            multiport dports 6379 /* 001 redis service incoming redis service from 10.0.1.111 */
+ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0            multiport dports 8080 /* 001 swift proxy incoming swift_proxy */
+ACCEPT     tcp  --  10.0.1.111           0.0.0.0/0            multiport dports 6000,6001,6002,873 /* 001 swift storage and rsync incoming swift_storage_and_rsync_10.0.1.111 */
+ACCEPT     tcp  --  10.0.1.131           0.0.0.0/0            multiport dports 6000,6001,6002,873 /* 001 swift storage and rsync incoming swift_storage_and_rsync_10.0.1.131 */
+ACCEPT     tcp  --  10.0.1.132           0.0.0.0/0            multiport dports 6000,6001,6002,873 /* 001 swift storage and rsync incoming swift_storage_and_rsync_10.0.1.132 */
+ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0            state RELATED,ESTABLISHED
+ACCEPT     icmp --  0.0.0.0/0            0.0.0.0/0           
+ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0           
+ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0            state NEW tcp dpt:22
+REJECT     all  --  0.0.0.0/0            0.0.0.0/0            reject-with icmp-host-prohibited
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination         
+neutron-filter-top  all  --  0.0.0.0/0            0.0.0.0/0           
+neutron-openvswi-FORWARD  all  --  0.0.0.0/0            0.0.0.0/0           
+nova-filter-top  all  --  0.0.0.0/0            0.0.0.0/0           
+nova-api-FORWARD  all  --  0.0.0.0/0            0.0.0.0/0           
+REJECT     all  --  0.0.0.0/0            0.0.0.0/0            reject-with icmp-host-prohibited
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+neutron-filter-top  all  --  0.0.0.0/0            0.0.0.0/0           
+neutron-openvswi-OUTPUT  all  --  0.0.0.0/0            0.0.0.0/0           
+ACCEPT     udp  --  0.0.0.0/0            0.0.0.0/0            multiport dports 68 /* 001 neutron dhcp out outgoing neutron_dhcp_out_10.0.1.111 */
+nova-filter-top  all  --  0.0.0.0/0            0.0.0.0/0           
+nova-api-OUTPUT  all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain neutron-filter-top (2 references)
+target     prot opt source               destination         
+neutron-openvswi-local  all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain neutron-openvswi-FORWARD (1 references)
+target     prot opt source               destination         
+
+Chain neutron-openvswi-INPUT (1 references)
+target     prot opt source               destination         
+
+Chain neutron-openvswi-OUTPUT (1 references)
+target     prot opt source               destination         
+
+Chain neutron-openvswi-local (1 references)
+target     prot opt source               destination         
+
+Chain neutron-openvswi-sg-chain (0 references)
+target     prot opt source               destination         
+ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain neutron-openvswi-sg-fallback (0 references)
+target     prot opt source               destination         
+DROP       all  --  0.0.0.0/0            0.0.0.0/0            /* Default drop rule for unmatched traffic. */
+
+Chain nova-api-FORWARD (1 references)
+target     prot opt source               destination         
+
+Chain nova-api-INPUT (1 references)
+target     prot opt source               destination         
+ACCEPT     tcp  --  0.0.0.0/0            10.0.1.111           tcp dpt:8775
+
+Chain nova-api-OUTPUT (1 references)
+target     prot opt source               destination         
+
+Chain nova-api-local (1 references)
+target     prot opt source               destination         
+
+Chain nova-filter-top (2 references)
+target     prot opt source               destination         
+nova-api-local  all  --  0.0.0.0/0            0.0.0.0/0           
+=====> [20160411-151143] host: (local), command: iptables -nL -t nat
+Chain PREROUTING (policy ACCEPT)
+target     prot opt source               destination         
+neutron-openvswi-PREROUTING  all  --  0.0.0.0/0            0.0.0.0/0           
+nova-api-PREROUTING  all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+neutron-openvswi-OUTPUT  all  --  0.0.0.0/0            0.0.0.0/0           
+nova-api-OUTPUT  all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain POSTROUTING (policy ACCEPT)
+target     prot opt source               destination         
+neutron-openvswi-POSTROUTING  all  --  0.0.0.0/0            0.0.0.0/0           
+neutron-postrouting-bottom  all  --  0.0.0.0/0            0.0.0.0/0           
+nova-api-POSTROUTING  all  --  0.0.0.0/0            0.0.0.0/0           
+nova-postrouting-bottom  all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain neutron-openvswi-OUTPUT (1 references)
+target     prot opt source               destination         
+
+Chain neutron-openvswi-POSTROUTING (1 references)
+target     prot opt source               destination         
+
+Chain neutron-openvswi-PREROUTING (1 references)
+target     prot opt source               destination         
+
+Chain neutron-openvswi-float-snat (1 references)
+target     prot opt source               destination         
+
+Chain neutron-openvswi-snat (1 references)
+target     prot opt source               destination         
+neutron-openvswi-float-snat  all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain neutron-postrouting-bottom (1 references)
+target     prot opt source               destination         
+neutron-openvswi-snat  all  --  0.0.0.0/0            0.0.0.0/0            /* Perform source NAT on outgoing traffic. */
+
+Chain nova-api-OUTPUT (1 references)
+target     prot opt source               destination         
+
+Chain nova-api-POSTROUTING (1 references)
+target     prot opt source               destination         
+
+Chain nova-api-PREROUTING (1 references)
+target     prot opt source               destination         
+
+Chain nova-api-float-snat (1 references)
+target     prot opt source               destination         
+
+Chain nova-api-snat (1 references)
+target     prot opt source               destination         
+nova-api-float-snat  all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain nova-postrouting-bottom (1 references)
+target     prot opt source               destination         
+nova-api-snat  all  --  0.0.0.0/0            0.0.0.0/0           
+=> virsh not found
+=====> [20160411-151143] host: (local), command: brctl show
+bridge name	bridge id		STP enabled	interfaces
+=> ovs
+=====> [20160411-151143] host: (local), command: ovs-vsctl show
+0cef0058-09ba-47b0-81e9-dbf89ed28d76
+    Bridge br-int
+        fail_mode: secure
+        Port "tap05135504-80"
+            tag: 2
+            Interface "tap05135504-80"
+                type: internal
+        Port "qr-eb119fc3-3b"
+            tag: 2
+            Interface "qr-eb119fc3-3b"
+                type: internal
+        Port int-br-ex
+            Interface int-br-ex
+                type: patch
+                options: {peer=phy-br-ex}
+        Port "qg-b51aab56-82"
+            tag: 1
+            Interface "qg-b51aab56-82"
+                type: internal
+        Port br-int
+            Interface br-int
+                type: internal
+        Port patch-tun
+            Interface patch-tun
+                type: patch
+                options: {peer=patch-int}
+    Bridge br-ex
+        Port br-ex
+            Interface br-ex
+                type: internal
+        Port "eth3"
+            Interface "eth3"
+        Port phy-br-ex
+            Interface phy-br-ex
+                type: patch
+                options: {peer=int-br-ex}
+    Bridge br-tun
+        fail_mode: secure
+        Port "vxlan-0a000283"
+            Interface "vxlan-0a000283"
+                type: vxlan
+                options: {df_default="true", in_key=flow, local_ip="10.0.2.111", out_key=flow, remote_ip="10.0.2.131"}
+        Port patch-int
+            Interface patch-int
+                type: patch
+                options: {peer=patch-tun}
+        Port "vxlan-0a000284"
+            Interface "vxlan-0a000284"
+                type: vxlan
+                options: {df_default="true", in_key=flow, local_ip="10.0.2.111", out_key=flow, remote_ip="10.0.2.132"}
+        Port br-tun
+            Interface br-tun
+                type: internal
+    ovs_version: "2.4.0"
+=====> [20160411-151143] host: (local), command: ovs-vsctl list-br
+br-ex
+br-int
+br-tun
+==> br: br-ex
+=====> [20160411-151143] host: (local), command: ovs-vsctl list-ports br-ex
+eth3
+phy-br-ex
+=====> [20160411-151143] host: (local), command: ovs-ofctl show br-ex
+OFPT_FEATURES_REPLY (xid=0x2): dpid:00002eb139952a47
+n_tables:254, n_buffers:256
+capabilities: FLOW_STATS TABLE_STATS PORT_STATS QUEUE_STATS ARP_MATCH_IP
+actions: output enqueue set_vlan_vid set_vlan_pcp strip_vlan mod_dl_src mod_dl_dst mod_nw_src mod_nw_dst mod_nw_tos mod_tp_src mod_tp_dst
+ 1(eth3): addr:52:54:00:89:e2:92
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ 2(phy-br-ex): addr:7e:03:a5:df:b9:2f
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ LOCAL(br-ex): addr:2e:b1:39:95:2a:47
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+OFPT_GET_CONFIG_REPLY (xid=0x4): frags=normal miss_send_len=0
+=====> [20160411-151143] host: (local), command: ovs-ofctl dump-ports br-ex
+OFPST_PORT reply (xid=0x2): 3 ports
+  port LOCAL: rx pkts=12, bytes=816, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=63, bytes=5460, drop=0, errs=0, coll=0
+  port  1: rx pkts=4815, bytes=261348, drop=315, errs=0, frame=0, over=0, crc=0
+           tx pkts=125, bytes=12354, drop=0, errs=0, coll=0
+  port  2: rx pkts=127, bytes=12428, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=91, bytes=11517, drop=0, errs=0, coll=0
+=====> [20160411-151143] host: (local), command: ovs-ofctl dump-ports-desc br-ex
+OFPST_PORT_DESC reply (xid=0x2):
+ 1(eth3): addr:52:54:00:89:e2:92
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ 2(phy-br-ex): addr:7e:03:a5:df:b9:2f
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ LOCAL(br-ex): addr:2e:b1:39:95:2a:47
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+=====> [20160411-151143] host: (local), command: ovs-ofctl dump-flows br-ex
+NXST_FLOW reply (xid=0x4):
+ cookie=0x0, duration=203.204s, table=0, n_packets=40, n_bytes=4442, idle_age=14, priority=4,in_port=2,dl_vlan=1 actions=mod_vlan_vid:100,NORMAL
+ cookie=0x0, duration=228.214s, table=0, n_packets=39, n_bytes=3594, idle_age=133, priority=2,in_port=2 actions=drop
+ cookie=0x0, duration=228.260s, table=0, n_packets=169, n_bytes=14877, idle_age=2, priority=0 actions=NORMAL
+=====> [20160411-151143] host: (local), command: ovs-ofctl dump-aggregate br-ex
+NXST_AGGREGATE reply (xid=0x4): packet_count=248 byte_count=22913 flow_count=3
+=====> [20160411-151143] host: (local), command: ovs-ofctl queue-stats br-ex
+OFPST_QUEUE reply (xid=0x2): 0 queues
+=====> [20160411-151143] host: (local), command: ovs-dpctl show br-ex
+ovs-dpctl: opening datapath br-ex failed (No such device)
+==> br: br-int
+=====> [20160411-151143] host: (local), command: ovs-vsctl list-ports br-int
+int-br-ex
+patch-tun
+qg-b51aab56-82
+qr-eb119fc3-3b
+tap05135504-80
+=====> [20160411-151143] host: (local), command: ovs-ofctl show br-int
+OFPT_FEATURES_REPLY (xid=0x2): dpid:0000465d86512745
+n_tables:254, n_buffers:256
+capabilities: FLOW_STATS TABLE_STATS PORT_STATS QUEUE_STATS ARP_MATCH_IP
+actions: output enqueue set_vlan_vid set_vlan_pcp strip_vlan mod_dl_src mod_dl_dst mod_nw_src mod_nw_dst mod_nw_tos mod_tp_src mod_tp_dst
+ 1(int-br-ex): addr:32:87:6c:76:b6:1a
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ 8(patch-tun): addr:72:80:cc:0d:90:3c
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ 9(qg-b51aab56-82): addr:00:00:00:00:00:00
+     config:     PORT_DOWN
+     state:      LINK_DOWN
+     speed: 0 Mbps now, 0 Mbps max
+ 10(tap05135504-80): addr:00:00:00:00:00:00
+     config:     PORT_DOWN
+     state:      LINK_DOWN
+     speed: 0 Mbps now, 0 Mbps max
+ 11(qr-eb119fc3-3b): addr:00:00:00:00:00:00
+     config:     PORT_DOWN
+     state:      LINK_DOWN
+     speed: 0 Mbps now, 0 Mbps max
+ LOCAL(br-int): addr:46:5d:86:51:27:45
+     config:     PORT_DOWN
+     state:      LINK_DOWN
+     speed: 0 Mbps now, 0 Mbps max
+OFPT_GET_CONFIG_REPLY (xid=0x4): frags=normal miss_send_len=0
+=====> [20160411-151143] host: (local), command: ovs-ofctl dump-ports br-int
+OFPST_PORT reply (xid=0x2): 6 ports
+  port 11: rx pkts=116, bytes=14445, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=148, bytes=15194, drop=0, errs=0, coll=0
+  port 10: rx pkts=18, bytes=1971, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=24, bytes=2334, drop=1, errs=0, coll=0
+  port  8: rx pkts=147, bytes=15202, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=170, bytes=20066, drop=0, errs=0, coll=0
+  port LOCAL: rx pkts=0, bytes=0, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=0, bytes=0, drop=114, errs=0, coll=0
+  port  1: rx pkts=91, bytes=11517, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=127, bytes=12428, drop=0, errs=0, coll=0
+  port  9: rx pkts=49, bytes=5156, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=55, bytes=8729, drop=0, errs=0, coll=0
+=====> [20160411-151143] host: (local), command: ovs-ofctl dump-ports-desc br-int
+OFPST_PORT_DESC reply (xid=0x2):
+ 1(int-br-ex): addr:32:87:6c:76:b6:1a
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ 8(patch-tun): addr:72:80:cc:0d:90:3c
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ 9(qg-b51aab56-82): addr:00:00:00:00:00:00
+     config:     PORT_DOWN
+     state:      LINK_DOWN
+     speed: 0 Mbps now, 0 Mbps max
+ 10(tap05135504-80): addr:00:00:00:00:00:00
+     config:     PORT_DOWN
+     state:      LINK_DOWN
+     speed: 0 Mbps now, 0 Mbps max
+ 11(qr-eb119fc3-3b): addr:00:00:00:00:00:00
+     config:     PORT_DOWN
+     state:      LINK_DOWN
+     speed: 0 Mbps now, 0 Mbps max
+ LOCAL(br-int): addr:46:5d:86:51:27:45
+     config:     PORT_DOWN
+     state:      LINK_DOWN
+     speed: 0 Mbps now, 0 Mbps max
+=====> [20160411-151143] host: (local), command: ovs-ofctl dump-flows br-int
+NXST_FLOW reply (xid=0x4):
+ cookie=0xb2534c80e5dc6dbb, duration=203.240s, table=0, n_packets=55, n_bytes=8949, idle_age=14, priority=3,in_port=1,dl_vlan=100 actions=mod_vlan_vid:1,NORMAL
+ cookie=0xb2534c80e5dc6dbb, duration=228.261s, table=0, n_packets=0, n_bytes=0, idle_age=228, priority=2,in_port=1 actions=drop
+ cookie=0xb2534c80e5dc6dbb, duration=228.351s, table=0, n_packets=330, n_bytes=36774, idle_age=14, priority=0 actions=NORMAL
+ cookie=0xb2534c80e5dc6dbb, duration=228.345s, table=23, n_packets=0, n_bytes=0, idle_age=228, priority=0 actions=drop
+ cookie=0xb2534c80e5dc6dbb, duration=228.340s, table=24, n_packets=0, n_bytes=0, idle_age=228, priority=0 actions=drop
+=====> [20160411-151143] host: (local), command: ovs-ofctl dump-aggregate br-int
+NXST_AGGREGATE reply (xid=0x4): packet_count=385 byte_count=45723 flow_count=5
+=====> [20160411-151143] host: (local), command: ovs-ofctl queue-stats br-int
+OFPST_QUEUE reply (xid=0x2): 0 queues
+=====> [20160411-151143] host: (local), command: ovs-dpctl show br-int
+ovs-dpctl: opening datapath br-int failed (No such device)
+==> br: br-tun
+=====> [20160411-151143] host: (local), command: ovs-vsctl list-ports br-tun
+patch-int
+vxlan-0a000283
+vxlan-0a000284
+=====> [20160411-151143] host: (local), command: ovs-ofctl show br-tun
+OFPT_FEATURES_REPLY (xid=0x2): dpid:0000ca6982f52d4a
+n_tables:254, n_buffers:256
+capabilities: FLOW_STATS TABLE_STATS PORT_STATS QUEUE_STATS ARP_MATCH_IP
+actions: output enqueue set_vlan_vid set_vlan_pcp strip_vlan mod_dl_src mod_dl_dst mod_nw_src mod_nw_dst mod_nw_tos mod_tp_src mod_tp_dst
+ 1(patch-int): addr:d6:d5:db:cb:87:c1
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ 2(vxlan-0a000284): addr:ea:9a:a7:90:f7:89
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ 3(vxlan-0a000283): addr:5e:f8:d8:f9:f6:0d
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ LOCAL(br-tun): addr:ca:69:82:f5:2d:4a
+     config:     PORT_DOWN
+     state:      LINK_DOWN
+     speed: 0 Mbps now, 0 Mbps max
+OFPT_GET_CONFIG_REPLY (xid=0x4): frags=normal miss_send_len=0
+=====> [20160411-151143] host: (local), command: ovs-ofctl dump-ports br-tun
+OFPST_PORT reply (xid=0x2): 4 ports
+  port LOCAL: rx pkts=0, bytes=0, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=0, bytes=0, drop=0, errs=0, coll=0
+  port  1: rx pkts=317, bytes=37468, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=292, bytes=30224, drop=0, errs=0, coll=0
+  port  2: rx pkts=0, bytes=0, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=21, bytes=1626, drop=0, errs=0, coll=0
+  port  3: rx pkts=292, bytes=30224, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=248, bytes=30908, drop=0, errs=0, coll=0
+=====> [20160411-151143] host: (local), command: ovs-ofctl dump-ports-desc br-tun
+OFPST_PORT_DESC reply (xid=0x2):
+ 1(patch-int): addr:d6:d5:db:cb:87:c1
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ 2(vxlan-0a000284): addr:ea:9a:a7:90:f7:89
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ 3(vxlan-0a000283): addr:5e:f8:d8:f9:f6:0d
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ LOCAL(br-tun): addr:ca:69:82:f5:2d:4a
+     config:     PORT_DOWN
+     state:      LINK_DOWN
+     speed: 0 Mbps now, 0 Mbps max
+=====> [20160411-151143] host: (local), command: ovs-ofctl dump-flows br-tun
+NXST_FLOW reply (xid=0x4):
+ cookie=0xb2534c80e5dc6dbb, duration=228.149s, table=0, n_packets=170, n_bytes=20066, idle_age=14, priority=1,in_port=1 actions=resubmit(,2)
+ cookie=0xb2534c80e5dc6dbb, duration=226.721s, table=0, n_packets=147, n_bytes=15202, idle_age=14, priority=1,in_port=3 actions=resubmit(,4)
+ cookie=0xb2534c80e5dc6dbb, duration=226.690s, table=0, n_packets=0, n_bytes=0, idle_age=226, priority=1,in_port=2 actions=resubmit(,4)
+ cookie=0xb2534c80e5dc6dbb, duration=228.148s, table=0, n_packets=0, n_bytes=0, idle_age=228, priority=0 actions=drop
+ cookie=0xb2534c80e5dc6dbb, duration=228.146s, table=2, n_packets=116, n_bytes=14904, idle_age=14, priority=0,dl_dst=00:00:00:00:00:00/01:00:00:00:00:00 actions=resubmit(,20)
+ cookie=0xb2534c80e5dc6dbb, duration=228.146s, table=2, n_packets=54, n_bytes=5162, idle_age=33, priority=0,dl_dst=01:00:00:00:00:00/01:00:00:00:00:00 actions=resubmit(,22)
+ cookie=0xb2534c80e5dc6dbb, duration=228.146s, table=3, n_packets=0, n_bytes=0, idle_age=228, priority=0 actions=drop
+ cookie=0xb2534c80e5dc6dbb, duration=201.500s, table=4, n_packets=147, n_bytes=15202, idle_age=14, priority=1,tun_id=0x34 actions=mod_vlan_vid:2,resubmit(,10)
+ cookie=0xb2534c80e5dc6dbb, duration=228.145s, table=4, n_packets=0, n_bytes=0, idle_age=228, priority=0 actions=drop
+ cookie=0xb2534c80e5dc6dbb, duration=228.145s, table=6, n_packets=0, n_bytes=0, idle_age=228, priority=0 actions=drop
+ cookie=0xb2534c80e5dc6dbb, duration=228.144s, table=10, n_packets=147, n_bytes=15202, idle_age=14, priority=1 actions=learn(table=20,hard_timeout=300,priority=1,cookie=0xb2534c80e5dc6dbb,NXM_OF_VLAN_TCI[0..11],NXM_OF_ETH_DST[]=NXM_OF_ETH_SRC[],load:0->NXM_OF_VLAN_TCI[],load:NXM_NX_TUN_ID[]->NXM_NX_TUN_ID[],output:NXM_OF_IN_PORT[]),output:1
+ cookie=0xb2534c80e5dc6dbb, duration=146.806s, table=20, n_packets=0, n_bytes=0, hard_timeout=300, idle_age=146, hard_age=142, priority=1,vlan_tci=0x0002/0x0fff,dl_dst=46:79:bc:a6:ae:d3 actions=load:0->NXM_OF_VLAN_TCI[],load:0x34->NXM_NX_TUN_ID[],output:3
+ cookie=0xb2534c80e5dc6dbb, duration=142.675s, table=20, n_packets=116, n_bytes=14904, hard_timeout=300, idle_age=14, hard_age=14, priority=1,vlan_tci=0x0002/0x0fff,dl_dst=fa:16:3e:cd:09:17 actions=load:0->NXM_OF_VLAN_TCI[],load:0x34->NXM_NX_TUN_ID[],output:3
+ cookie=0xb2534c80e5dc6dbb, duration=228.144s, table=20, n_packets=0, n_bytes=0, idle_age=228, priority=0 actions=resubmit(,22)
+ cookie=0xb2534c80e5dc6dbb, duration=201.513s, table=22, n_packets=6, n_bytes=432, idle_age=193, dl_vlan=2 actions=strip_vlan,set_tunnel:0x34,output:3,output:2
+ cookie=0xb2534c80e5dc6dbb, duration=228.098s, table=22, n_packets=48, n_bytes=4730, idle_age=33, priority=0 actions=drop
+=====> [20160411-151143] host: (local), command: ovs-ofctl dump-aggregate br-tun
+NXST_AGGREGATE reply (xid=0x4): packet_count=951 byte_count=105804 flow_count=16
+=====> [20160411-151143] host: (local), command: ovs-ofctl queue-stats br-tun
+OFPST_QUEUE reply (xid=0x2): 0 queues
+=====> [20160411-151143] host: (local), command: ovs-dpctl show br-tun
+ovs-dpctl: opening datapath br-tun failed (No such device)
+=====> [20160411-151143] host: (local), command: ip -d a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN 
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00 promiscuity 0 
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 52:54:00:79:ba:bf brd ff:ff:ff:ff:ff:ff promiscuity 0 
+    inet 10.64.193.111/23 brd 10.64.193.255 scope global dynamic eth0
+       valid_lft 77009sec preferred_lft 77009sec
+    inet6 fe80::5054:ff:fe79:babf/64 scope link 
+       valid_lft forever preferred_lft forever
+3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 52:54:00:98:fb:c8 brd ff:ff:ff:ff:ff:ff promiscuity 0 
+    inet 10.0.1.111/24 brd 10.0.1.255 scope global eth1
+       valid_lft forever preferred_lft forever
+    inet6 fe80::5054:ff:fe98:fbc8/64 scope link 
+       valid_lft forever preferred_lft forever
+4: eth2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 52:54:00:43:cb:7d brd ff:ff:ff:ff:ff:ff promiscuity 0 
+    inet 10.0.2.111/24 brd 10.0.2.255 scope global eth2
+       valid_lft forever preferred_lft forever
+    inet6 fe80::5054:ff:fe43:cb7d/64 scope link 
+       valid_lft forever preferred_lft forever
+5: eth3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast master ovs-system state UP qlen 1000
+    link/ether 52:54:00:89:e2:92 brd ff:ff:ff:ff:ff:ff promiscuity 1 
+    inet6 fe80::5054:ff:fe89:e292/64 scope link 
+       valid_lft forever preferred_lft forever
+6: ovs-system: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN 
+    link/ether 6e:ea:5e:5e:76:62 brd ff:ff:ff:ff:ff:ff promiscuity 1 
+    openvswitch 
+8: br-ex: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN 
+    link/ether 2e:b1:39:95:2a:47 brd ff:ff:ff:ff:ff:ff promiscuity 1 
+    openvswitch 
+    inet 172.16.99.111/24 brd 172.16.99.255 scope global br-ex
+       valid_lft forever preferred_lft forever
+    inet6 fe80::2cb1:39ff:fe95:2a47/64 scope link 
+       valid_lft forever preferred_lft forever
+9: br-int: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN 
+    link/ether 46:5d:86:51:27:45 brd ff:ff:ff:ff:ff:ff promiscuity 1 
+    openvswitch 
+10: br-tun: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN 
+    link/ether ca:69:82:f5:2d:4a brd ff:ff:ff:ff:ff:ff promiscuity 1 
+    openvswitch 
+=====> [20160411-151143] host: (local), command: ip netns
+qdhcp-0fe9dd8a-8565-41ed-b3fc-3110f9a026d6
+qrouter-1a800afd-55c4-4404-bf05-38ef7e703152
+==> netns: qdhcp-0fe9dd8a-8565-41ed-b3fc-3110f9a026d6
+=====> [20160411-151143] host: (local), command: ip netns exec qdhcp-0fe9dd8a-8565-41ed-b3fc-3110f9a026d6 ip -d a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN 
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00 promiscuity 0 
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+18: tap05135504-80: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN 
+    link/ether fa:16:3e:2b:82:66 brd ff:ff:ff:ff:ff:ff promiscuity 1 
+    openvswitch 
+    inet 192.168.99.100/24 brd 192.168.99.255 scope global tap05135504-80
+       valid_lft forever preferred_lft forever
+    inet6 fe80::f816:3eff:fe2b:8266/64 scope link 
+       valid_lft forever preferred_lft forever
+=====> [20160411-151143] host: (local), command: ip netns exec qdhcp-0fe9dd8a-8565-41ed-b3fc-3110f9a026d6 ip -d r
+default via 192.168.99.1 dev tap05135504-80 
+192.168.99.0/24 dev tap05135504-80  proto kernel  scope link  src 192.168.99.100 
+=====> [20160411-151143] host: (local), command: ip netns exec qdhcp-0fe9dd8a-8565-41ed-b3fc-3110f9a026d6 iptables -nL
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+neutron-dhcp-age-INPUT  all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination         
+neutron-filter-top  all  --  0.0.0.0/0            0.0.0.0/0           
+neutron-dhcp-age-FORWARD  all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+neutron-filter-top  all  --  0.0.0.0/0            0.0.0.0/0           
+neutron-dhcp-age-OUTPUT  all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain neutron-dhcp-age-FORWARD (1 references)
+target     prot opt source               destination         
+
+Chain neutron-dhcp-age-INPUT (1 references)
+target     prot opt source               destination         
+
+Chain neutron-dhcp-age-OUTPUT (1 references)
+target     prot opt source               destination         
+
+Chain neutron-dhcp-age-local (1 references)
+target     prot opt source               destination         
+
+Chain neutron-filter-top (2 references)
+target     prot opt source               destination         
+neutron-dhcp-age-local  all  --  0.0.0.0/0            0.0.0.0/0           
+=====> [20160411-151143] host: (local), command: ip netns exec qdhcp-0fe9dd8a-8565-41ed-b3fc-3110f9a026d6 iptables -nL -t nat
+Chain PREROUTING (policy ACCEPT)
+target     prot opt source               destination         
+neutron-dhcp-age-PREROUTING  all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+neutron-dhcp-age-OUTPUT  all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain POSTROUTING (policy ACCEPT)
+target     prot opt source               destination         
+neutron-dhcp-age-POSTROUTING  all  --  0.0.0.0/0            0.0.0.0/0           
+neutron-postrouting-bottom  all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain neutron-dhcp-age-OUTPUT (1 references)
+target     prot opt source               destination         
+
+Chain neutron-dhcp-age-POSTROUTING (1 references)
+target     prot opt source               destination         
+
+Chain neutron-dhcp-age-PREROUTING (1 references)
+target     prot opt source               destination         
+
+Chain neutron-dhcp-age-float-snat (1 references)
+target     prot opt source               destination         
+
+Chain neutron-dhcp-age-snat (1 references)
+target     prot opt source               destination         
+neutron-dhcp-age-float-snat  all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain neutron-postrouting-bottom (1 references)
+target     prot opt source               destination         
+neutron-dhcp-age-snat  all  --  0.0.0.0/0            0.0.0.0/0            /* Perform source NAT on outgoing traffic. */
+==> netns: qrouter-1a800afd-55c4-4404-bf05-38ef7e703152
+=====> [20160411-151143] host: (local), command: ip netns exec qrouter-1a800afd-55c4-4404-bf05-38ef7e703152 ip -d a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN 
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00 promiscuity 0 
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+17: qg-b51aab56-82: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN 
+    link/ether fa:16:3e:5e:51:c7 brd ff:ff:ff:ff:ff:ff promiscuity 1 
+    openvswitch 
+    inet 172.16.88.100/24 brd 172.16.88.255 scope global qg-b51aab56-82
+       valid_lft forever preferred_lft forever
+    inet 172.16.88.101/32 brd 172.16.88.101 scope global qg-b51aab56-82
+       valid_lft forever preferred_lft forever
+    inet6 fe80::f816:3eff:fe5e:51c7/64 scope link 
+       valid_lft forever preferred_lft forever
+19: qr-eb119fc3-3b: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN 
+    link/ether fa:16:3e:ac:3f:5c brd ff:ff:ff:ff:ff:ff promiscuity 1 
+    openvswitch 
+    inet 192.168.99.1/24 brd 192.168.99.255 scope global qr-eb119fc3-3b
+       valid_lft forever preferred_lft forever
+    inet6 fe80::f816:3eff:feac:3f5c/64 scope link 
+       valid_lft forever preferred_lft forever
+=====> [20160411-151143] host: (local), command: ip netns exec qrouter-1a800afd-55c4-4404-bf05-38ef7e703152 ip -d r
+default via 172.16.88.254 dev qg-b51aab56-82 
+172.16.88.0/24 dev qg-b51aab56-82  proto kernel  scope link  src 172.16.88.100 
+192.168.99.0/24 dev qr-eb119fc3-3b  proto kernel  scope link  src 192.168.99.1 
+=====> [20160411-151143] host: (local), command: ip netns exec qrouter-1a800afd-55c4-4404-bf05-38ef7e703152 iptables -nL
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+neutron-l3-agent-INPUT  all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination         
+neutron-filter-top  all  --  0.0.0.0/0            0.0.0.0/0           
+neutron-l3-agent-FORWARD  all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+neutron-filter-top  all  --  0.0.0.0/0            0.0.0.0/0           
+neutron-l3-agent-OUTPUT  all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain neutron-filter-top (2 references)
+target     prot opt source               destination         
+neutron-l3-agent-local  all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain neutron-l3-agent-FORWARD (1 references)
+target     prot opt source               destination         
+
+Chain neutron-l3-agent-INPUT (1 references)
+target     prot opt source               destination         
+ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0            mark match 0x1/0xffff
+DROP       tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:9697
+
+Chain neutron-l3-agent-OUTPUT (1 references)
+target     prot opt source               destination         
+
+Chain neutron-l3-agent-local (1 references)
+target     prot opt source               destination         
+=====> [20160411-151143] host: (local), command: ip netns exec qrouter-1a800afd-55c4-4404-bf05-38ef7e703152 iptables -nL -t nat
+Chain PREROUTING (policy ACCEPT)
+target     prot opt source               destination         
+neutron-l3-agent-PREROUTING  all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+neutron-l3-agent-OUTPUT  all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain POSTROUTING (policy ACCEPT)
+target     prot opt source               destination         
+neutron-l3-agent-POSTROUTING  all  --  0.0.0.0/0            0.0.0.0/0           
+neutron-postrouting-bottom  all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain neutron-l3-agent-OUTPUT (1 references)
+target     prot opt source               destination         
+DNAT       all  --  0.0.0.0/0            172.16.88.101        to:192.168.99.101
+
+Chain neutron-l3-agent-POSTROUTING (1 references)
+target     prot opt source               destination         
+ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0            ! ctstate DNAT
+
+Chain neutron-l3-agent-PREROUTING (1 references)
+target     prot opt source               destination         
+REDIRECT   tcp  --  0.0.0.0/0            169.254.169.254      tcp dpt:80 redir ports 9697
+DNAT       all  --  0.0.0.0/0            172.16.88.101        to:192.168.99.101
+
+Chain neutron-l3-agent-float-snat (1 references)
+target     prot opt source               destination         
+SNAT       all  --  192.168.99.101       0.0.0.0/0            to:172.16.88.101
+
+Chain neutron-l3-agent-snat (1 references)
+target     prot opt source               destination         
+neutron-l3-agent-float-snat  all  --  0.0.0.0/0            0.0.0.0/0           
+SNAT       all  --  0.0.0.0/0            0.0.0.0/0            to:172.16.88.100
+SNAT       all  --  0.0.0.0/0            0.0.0.0/0            mark match ! 0x2/0xffff ctstate DNAT to:172.16.88.100
+
+Chain neutron-postrouting-bottom (1 references)
+target     prot opt source               destination         
+neutron-l3-agent-snat  all  --  0.0.0.0/0            0.0.0.0/0            /* Perform source NAT on outgoing traffic. */
+=====> [20160411-151143] host: (local), command: openstack catalog list
++------------+---------------+--------------------------------------------------------------------------------+
+| Name       | Type          | Endpoints                                                                      |
++------------+---------------+--------------------------------------------------------------------------------+
+| nova       | compute       | RegionOne                                                                      |
+|            |               |   publicURL: http://10.0.1.111:8774/v2/d8bfa2f7e4994784acdee67e64a849ff        |
+|            |               |   internalURL: http://10.0.1.111:8774/v2/d8bfa2f7e4994784acdee67e64a849ff      |
+|            |               |   adminURL: http://10.0.1.111:8774/v2/d8bfa2f7e4994784acdee67e64a849ff         |
+|            |               |                                                                                |
+| neutron    | network       | RegionOne                                                                      |
+|            |               |   publicURL: http://10.0.1.111:9696                                            |
+|            |               |   internalURL: http://10.0.1.111:9696                                          |
+|            |               |   adminURL: http://10.0.1.111:9696                                             |
+|            |               |                                                                                |
+| cinderv2   | volumev2      | RegionOne                                                                      |
+|            |               |   publicURL: http://10.0.1.111:8776/v2/d8bfa2f7e4994784acdee67e64a849ff        |
+|            |               |   internalURL: http://10.0.1.111:8776/v2/d8bfa2f7e4994784acdee67e64a849ff      |
+|            |               |   adminURL: http://10.0.1.111:8776/v2/d8bfa2f7e4994784acdee67e64a849ff         |
+|            |               |                                                                                |
+| novav3     | computev3     | RegionOne                                                                      |
+|            |               |   publicURL: http://127.0.0.1:8774/v3                                          |
+|            |               |   internalURL: http://127.0.0.1:8774/v3                                        |
+|            |               |   adminURL: http://127.0.0.1:8774/v3                                           |
+|            |               |                                                                                |
+| glance     | image         | RegionOne                                                                      |
+|            |               |   publicURL: http://10.0.1.111:9292                                            |
+|            |               |   internalURL: http://10.0.1.111:9292                                          |
+|            |               |   adminURL: http://10.0.1.111:9292                                             |
+|            |               |                                                                                |
+| ceilometer | metering      | RegionOne                                                                      |
+|            |               |   publicURL: http://10.0.1.111:8777                                            |
+|            |               |   internalURL: http://10.0.1.111:8777                                          |
+|            |               |   adminURL: http://10.0.1.111:8777                                             |
+|            |               |                                                                                |
+| cinder     | volume        | RegionOne                                                                      |
+|            |               |   publicURL: http://10.0.1.111:8776/v1/d8bfa2f7e4994784acdee67e64a849ff        |
+|            |               |   internalURL: http://10.0.1.111:8776/v1/d8bfa2f7e4994784acdee67e64a849ff      |
+|            |               |   adminURL: http://10.0.1.111:8776/v1/d8bfa2f7e4994784acdee67e64a849ff         |
+|            |               |                                                                                |
+| nova_ec2   | ec2           | RegionOne                                                                      |
+|            |               |   publicURL: http://10.0.1.111:8773/services/Cloud                             |
+|            |               |   internalURL: http://10.0.1.111:8773/services/Cloud                           |
+|            |               |   adminURL: http://10.0.1.111:8773/services/Admin                              |
+|            |               |                                                                                |
+| heat       | orchestration | RegionOne                                                                      |
+|            |               |   publicURL: http://10.0.1.111:8004/v1/d8bfa2f7e4994784acdee67e64a849ff        |
+|            |               |   internalURL: http://10.0.1.111:8004/v1/d8bfa2f7e4994784acdee67e64a849ff      |
+|            |               |   adminURL: http://10.0.1.111:8004/v1/d8bfa2f7e4994784acdee67e64a849ff         |
+|            |               |                                                                                |
+| swift      | object-store  | RegionOne                                                                      |
+|            |               |   publicURL: http://10.0.1.111:8080/v1/AUTH_d8bfa2f7e4994784acdee67e64a849ff   |
+|            |               |   internalURL: http://10.0.1.111:8080/v1/AUTH_d8bfa2f7e4994784acdee67e64a849ff |
+|            |               |   adminURL: http://10.0.1.111:8080                                             |
+|            |               |                                                                                |
+| keystone   | identity      | RegionOne                                                                      |
+|            |               |   publicURL: http://10.0.1.111:5000/v2.0                                       |
+|            |               |   internalURL: http://10.0.1.111:5000/v2.0                                     |
+|            |               |   adminURL: http://10.0.1.111:35357/v2.0                                       |
+|            |               |                                                                                |
++------------+---------------+--------------------------------------------------------------------------------+
+=====> [20160411-151144] host: (local), command: openstack endpoint list --long
++----------------------------------+-----------+--------------+---------------+----------------------------------------------+-----------------------------------------+----------------------------------------------+
+| ID                               | Region    | Service Name | Service Type  | PublicURL                                    | AdminURL                                | InternalURL                                  |
++----------------------------------+-----------+--------------+---------------+----------------------------------------------+-----------------------------------------+----------------------------------------------+
+| 97429c7ea9814a5d9fbb9aaceb8739a4 | RegionOne | nova_ec2     | ec2           | http://10.0.1.111:8773/services/Cloud        | http://10.0.1.111:8773/services/Admin   | http://10.0.1.111:8773/services/Cloud        |
+| 41cc111d220447c4922315d9a63be7d6 | RegionOne | neutron      | network       | http://10.0.1.111:9696                       | http://10.0.1.111:9696                  | http://10.0.1.111:9696                       |
+| 5bef5bd2fe3642178ab9672bf8e4da32 | RegionOne | novav3       | computev3     | http://127.0.0.1:8774/v3                     | http://127.0.0.1:8774/v3                | http://127.0.0.1:8774/v3                     |
+| d73097d95725477583ed4e6353f3f7d4 | RegionOne | nova         | compute       | http://10.0.1.111:8774/v2/%(tenant_id)s      | http://10.0.1.111:8774/v2/%(tenant_id)s | http://10.0.1.111:8774/v2/%(tenant_id)s      |
+| dac952ca31ed47faa578162f675927c7 | RegionOne | glance       | image         | http://10.0.1.111:9292                       | http://10.0.1.111:9292                  | http://10.0.1.111:9292                       |
+| f89bc937800c469aa317a8d8ac59a48d | RegionOne | heat         | orchestration | http://10.0.1.111:8004/v1/%(tenant_id)s      | http://10.0.1.111:8004/v1/%(tenant_id)s | http://10.0.1.111:8004/v1/%(tenant_id)s      |
+| d71776ab5d7941c198057830742522cc | RegionOne | cinderv2     | volumev2      | http://10.0.1.111:8776/v2/%(tenant_id)s      | http://10.0.1.111:8776/v2/%(tenant_id)s | http://10.0.1.111:8776/v2/%(tenant_id)s      |
+| b01491decbe44ca9baed6529bf010419 | RegionOne | keystone     | identity      | http://10.0.1.111:5000/v2.0                  | http://10.0.1.111:35357/v2.0            | http://10.0.1.111:5000/v2.0                  |
+| 4ebbf53bb07e4149814bbe400a85b620 | RegionOne | ceilometer   | metering      | http://10.0.1.111:8777                       | http://10.0.1.111:8777                  | http://10.0.1.111:8777                       |
+| 8113b3182bef473199eed3ffee4398f0 | RegionOne | cinder       | volume        | http://10.0.1.111:8776/v1/%(tenant_id)s      | http://10.0.1.111:8776/v1/%(tenant_id)s | http://10.0.1.111:8776/v1/%(tenant_id)s      |
+| 44a09087d37141c79a2ea0ad9cd8c98d | RegionOne | swift        | object-store  | http://10.0.1.111:8080/v1/AUTH_%(tenant_id)s | http://10.0.1.111:8080                  | http://10.0.1.111:8080/v1/AUTH_%(tenant_id)s |
++----------------------------------+-----------+--------------+---------------+----------------------------------------------+-----------------------------------------+----------------------------------------------+
+=====> [20160411-151145] host: (local), command: openstack project list
++----------------------------------+----------+
+| ID                               | Name     |
++----------------------------------+----------+
+| 08735be59d3c419ab6e92be6497311d5 | services |
+| d8bfa2f7e4994784acdee67e64a849ff | admin    |
+| f21cfeed248e432bae16aa83accf208e | demo     |
++----------------------------------+----------+
+==> project: services / 08735be59d3c419ab6e92be6497311d5
+=====> [20160411-151146] host: (local), command: openstack project show 08735be59d3c419ab6e92be6497311d5
++-------------+-----------------------------------+
+| Field       | Value                             |
++-------------+-----------------------------------+
+| description | Tenant for the openstack services |
+| enabled     | True                              |
+| id          | 08735be59d3c419ab6e92be6497311d5  |
+| name        | services                          |
++-------------+-----------------------------------+
+==> project: admin / d8bfa2f7e4994784acdee67e64a849ff
+=====> [20160411-151147] host: (local), command: openstack project show d8bfa2f7e4994784acdee67e64a849ff
++-------------+----------------------------------+
+| Field       | Value                            |
++-------------+----------------------------------+
+| description | admin tenant                     |
+| enabled     | True                             |
+| id          | d8bfa2f7e4994784acdee67e64a849ff |
+| name        | admin                            |
++-------------+----------------------------------+
+==> project: demo / f21cfeed248e432bae16aa83accf208e
+=====> [20160411-151148] host: (local), command: openstack project show f21cfeed248e432bae16aa83accf208e
++-------------+----------------------------------+
+| Field       | Value                            |
++-------------+----------------------------------+
+| description | demo_tenant                      |
+| enabled     | True                             |
+| id          | f21cfeed248e432bae16aa83accf208e |
+| name        | demo                             |
++-------------+----------------------------------+
+=====> [20160411-151149] host: (local), command: openstack user list
++----------------------------------+------------+
+| ID                               | Name       |
++----------------------------------+------------+
+| 04fd899bf69c4729ac8b1206c0f23f0a | neutron    |
+| 112d027945284a82b00db6c7a23a687a | glance     |
+| 25ee83b20c084030837b3db6613e9e03 | admin      |
+| 2e195ef50636400c9632ea1fe8d97c6a | demo       |
+| 602d89dbb4ce488a9cefec3bdc678788 | swift      |
+| 86bc6b1c4efa4b1eb81f61ec797696a3 | nova       |
+| b7c1be46dedf479fa4eb900e9691cee7 | ceilometer |
+| c79b7889acbc40339fef26dbdb719160 | cinder     |
+| fa12db88541f4146a0ebf0be3e009c92 | heat       |
++----------------------------------+------------+
+==> user: neutron / 04fd899bf69c4729ac8b1206c0f23f0a
+=====> [20160411-151150] host: (local), command: openstack user show 04fd899bf69c4729ac8b1206c0f23f0a
++----------+----------------------------------+
+| Field    | Value                            |
++----------+----------------------------------+
+| email    | neutron@localhost                |
+| enabled  | True                             |
+| id       | 04fd899bf69c4729ac8b1206c0f23f0a |
+| name     | neutron                          |
+| username | neutron                          |
++----------+----------------------------------+
+==> user: glance / 112d027945284a82b00db6c7a23a687a
+=====> [20160411-151151] host: (local), command: openstack user show 112d027945284a82b00db6c7a23a687a
++----------+----------------------------------+
+| Field    | Value                            |
++----------+----------------------------------+
+| email    | glance@localhost                 |
+| enabled  | True                             |
+| id       | 112d027945284a82b00db6c7a23a687a |
+| name     | glance                           |
+| username | glance                           |
++----------+----------------------------------+
+==> user: admin / 25ee83b20c084030837b3db6613e9e03
+=====> [20160411-151152] host: (local), command: openstack user show 25ee83b20c084030837b3db6613e9e03
++----------+----------------------------------+
+| Field    | Value                            |
++----------+----------------------------------+
+| email    | root@localhost                   |
+| enabled  | True                             |
+| id       | 25ee83b20c084030837b3db6613e9e03 |
+| name     | admin                            |
+| username | admin                            |
++----------+----------------------------------+
+==> user: demo / 2e195ef50636400c9632ea1fe8d97c6a
+=====> [20160411-151152] host: (local), command: openstack user show 2e195ef50636400c9632ea1fe8d97c6a
++------------+----------------------------------+
+| Field      | Value                            |
++------------+----------------------------------+
+| email      | ori@redhat.com                   |
+| enabled    | True                             |
+| id         | 2e195ef50636400c9632ea1fe8d97c6a |
+| name       | demo                             |
+| project_id | f21cfeed248e432bae16aa83accf208e |
+| username   | demo                             |
++------------+----------------------------------+
+==> user: swift / 602d89dbb4ce488a9cefec3bdc678788
+=====> [20160411-151153] host: (local), command: openstack user show 602d89dbb4ce488a9cefec3bdc678788
++----------+----------------------------------+
+| Field    | Value                            |
++----------+----------------------------------+
+| email    | swift@localhost                  |
+| enabled  | True                             |
+| id       | 602d89dbb4ce488a9cefec3bdc678788 |
+| name     | swift                            |
+| username | swift                            |
++----------+----------------------------------+
+==> user: nova / 86bc6b1c4efa4b1eb81f61ec797696a3
+=====> [20160411-151154] host: (local), command: openstack user show 86bc6b1c4efa4b1eb81f61ec797696a3
++----------+----------------------------------+
+| Field    | Value                            |
++----------+----------------------------------+
+| email    | nova@localhost                   |
+| enabled  | True                             |
+| id       | 86bc6b1c4efa4b1eb81f61ec797696a3 |
+| name     | nova                             |
+| username | nova                             |
++----------+----------------------------------+
+==> user: ceilometer / b7c1be46dedf479fa4eb900e9691cee7
+=====> [20160411-151155] host: (local), command: openstack user show b7c1be46dedf479fa4eb900e9691cee7
++----------+----------------------------------+
+| Field    | Value                            |
++----------+----------------------------------+
+| email    | ceilometer@localhost             |
+| enabled  | True                             |
+| id       | b7c1be46dedf479fa4eb900e9691cee7 |
+| name     | ceilometer                       |
+| username | ceilometer                       |
++----------+----------------------------------+
+==> user: cinder / c79b7889acbc40339fef26dbdb719160
+=====> [20160411-151155] host: (local), command: openstack user show c79b7889acbc40339fef26dbdb719160
++----------+----------------------------------+
+| Field    | Value                            |
++----------+----------------------------------+
+| email    | cinder@localhost                 |
+| enabled  | True                             |
+| id       | c79b7889acbc40339fef26dbdb719160 |
+| name     | cinder                           |
+| username | cinder                           |
++----------+----------------------------------+
+==> user: heat / fa12db88541f4146a0ebf0be3e009c92
+=====> [20160411-151156] host: (local), command: openstack user show fa12db88541f4146a0ebf0be3e009c92
++----------+----------------------------------+
+| Field    | Value                            |
++----------+----------------------------------+
+| email    | heat@localhost                   |
+| enabled  | True                             |
+| id       | fa12db88541f4146a0ebf0be3e009c92 |
+| name     | heat                             |
+| username | heat                             |
++----------+----------------------------------+
+=====> [20160411-151157] host: (local), command: openstack role list
++----------------------------------+------------------+
+| ID                               | Name             |
++----------------------------------+------------------+
+| 018887f6c813488da26bee8740568711 | ResellerAdmin    |
+| 566672596d1b4c81a97ad02e91dce40c | heat_stack_user  |
+| 9fe2ff9ee4384b1894a90878d3e92bab | _member_         |
+| b0228d8b33284da2813934d34cc3af7e | admin            |
+| b7440314417d4df39fa6e01b3da0ab9e | demo             |
+| bbf5bc0e22364562ab072a1571a63624 | heat_stack_owner |
+| cf0d0db2a5f2495197f9b44a5d20ef2f | SwiftOperator    |
++----------------------------------+------------------+
+==> role: ResellerAdmin / 018887f6c813488da26bee8740568711
+=====> [20160411-151158] host: (local), command: openstack role show 018887f6c813488da26bee8740568711
++-------+----------------------------------+
+| Field | Value                            |
++-------+----------------------------------+
+| id    | 018887f6c813488da26bee8740568711 |
+| name  | ResellerAdmin                    |
++-------+----------------------------------+
+==> role: heat_stack_user / 566672596d1b4c81a97ad02e91dce40c
+=====> [20160411-151159] host: (local), command: openstack role show 566672596d1b4c81a97ad02e91dce40c
++-------+----------------------------------+
+| Field | Value                            |
++-------+----------------------------------+
+| id    | 566672596d1b4c81a97ad02e91dce40c |
+| name  | heat_stack_user                  |
++-------+----------------------------------+
+==> role: _member_ / 9fe2ff9ee4384b1894a90878d3e92bab
+=====> [20160411-151200] host: (local), command: openstack role show 9fe2ff9ee4384b1894a90878d3e92bab
++-------+----------------------------------+
+| Field | Value                            |
++-------+----------------------------------+
+| id    | 9fe2ff9ee4384b1894a90878d3e92bab |
+| name  | _member_                         |
++-------+----------------------------------+
+==> role: admin / b0228d8b33284da2813934d34cc3af7e
+=====> [20160411-151200] host: (local), command: openstack role show b0228d8b33284da2813934d34cc3af7e
++-------+----------------------------------+
+| Field | Value                            |
++-------+----------------------------------+
+| id    | b0228d8b33284da2813934d34cc3af7e |
+| name  | admin                            |
++-------+----------------------------------+
+==> role: demo / b7440314417d4df39fa6e01b3da0ab9e
+=====> [20160411-151201] host: (local), command: openstack role show b7440314417d4df39fa6e01b3da0ab9e
++-------+----------------------------------+
+| Field | Value                            |
++-------+----------------------------------+
+| id    | b7440314417d4df39fa6e01b3da0ab9e |
+| name  | demo                             |
++-------+----------------------------------+
+==> role: heat_stack_owner / bbf5bc0e22364562ab072a1571a63624
+=====> [20160411-151202] host: (local), command: openstack role show bbf5bc0e22364562ab072a1571a63624
++-------+----------------------------------+
+| Field | Value                            |
++-------+----------------------------------+
+| id    | bbf5bc0e22364562ab072a1571a63624 |
+| name  | heat_stack_owner                 |
++-------+----------------------------------+
+==> role: SwiftOperator / cf0d0db2a5f2495197f9b44a5d20ef2f
+=====> [20160411-151203] host: (local), command: openstack role show cf0d0db2a5f2495197f9b44a5d20ef2f
++-------+----------------------------------+
+| Field | Value                            |
++-------+----------------------------------+
+| id    | cf0d0db2a5f2495197f9b44a5d20ef2f |
+| name  | SwiftOperator                    |
++-------+----------------------------------+
+=====> [20160411-151203] host: (local), command: neutron agent-list
++--------------------------------------+--------------------+--------------------------------+-------+----------------+---------------------------+
+| id                                   | agent_type         | host                           | alive | admin_state_up | binary                    |
++--------------------------------------+--------------------+--------------------------------+-------+----------------+---------------------------+
+| 1505fb68-15e7-452f-a67f-5257dff7705c | Metadata agent     | osp7ps-controller01.test.local | :-)   | True           | neutron-metadata-agent    |
+| 20c93408-3cf6-41d2-952d-23eae7104fc8 | DHCP agent         | osp7ps-controller01.test.local | :-)   | True           | neutron-dhcp-agent        |
+| 41fc2190-18ae-4775-a7e5-6bcdad1da6bf | Open vSwitch agent | osp7ps-controller01.test.local | :-)   | True           | neutron-openvswitch-agent |
+| 80fcd4c7-7883-46a7-9bbd-37c45842b725 | L3 agent           | osp7ps-controller01.test.local | :-)   | True           | neutron-l3-agent          |
+| 823bee81-3ad0-41b0-a03d-34960bfb87ba | Open vSwitch agent | osp7ps-compute02.test.local    | :-)   | True           | neutron-openvswitch-agent |
+| e49aff2f-9a8c-413a-9f52-2e819bc2ba21 | Open vSwitch agent | osp7ps-compute01.test.local    | :-)   | True           | neutron-openvswitch-agent |
++--------------------------------------+--------------------+--------------------------------+-------+----------------+---------------------------+
+==> agent: Metadata agent / 1505fb68-15e7-452f-a67f-5257dff7705c
+=====> [20160411-151205] host: (local), command: neutron agent-show 1505fb68-15e7-452f-a67f-5257dff7705c
++---------------------+-----------------------------------------------------------------+
+| Field               | Value                                                           |
++---------------------+-----------------------------------------------------------------+
+| admin_state_up      | True                                                            |
+| agent_type          | Metadata agent                                                  |
+| alive               | True                                                            |
+| binary              | neutron-metadata-agent                                          |
+| configurations      | {                                                               |
+|                     |      "log_agent_heartbeats": false,                             |
+|                     |      "nova_metadata_ip": "10.0.1.111",                          |
+|                     |      "nova_metadata_port": 8775,                                |
+|                     |      "metadata_proxy_socket": "/var/lib/neutron/metadata_proxy" |
+|                     | }                                                               |
+| created_at          | 2016-04-11 03:46:43                                             |
+| description         |                                                                 |
+| heartbeat_timestamp | 2016-04-11 06:11:54                                             |
+| host                | osp7ps-controller01.test.local                                  |
+| id                  | 1505fb68-15e7-452f-a67f-5257dff7705c                            |
+| started_at          | 2016-04-11 03:46:43                                             |
+| topic               | N/A                                                             |
++---------------------+-----------------------------------------------------------------+
+==> agent: DHCP agent / 20c93408-3cf6-41d2-952d-23eae7104fc8
+=====> [20160411-151205] host: (local), command: neutron agent-show 20c93408-3cf6-41d2-952d-23eae7104fc8
++---------------------+----------------------------------------------------------+
+| Field               | Value                                                    |
++---------------------+----------------------------------------------------------+
+| admin_state_up      | True                                                     |
+| agent_type          | DHCP agent                                               |
+| alive               | True                                                     |
+| binary              | neutron-dhcp-agent                                       |
+| configurations      | {                                                        |
+|                     |      "subnets": 1,                                       |
+|                     |      "use_namespaces": true,                             |
+|                     |      "dhcp_lease_duration": 86400,                       |
+|                     |      "dhcp_driver": "neutron.agent.linux.dhcp.Dnsmasq",  |
+|                     |      "ports": 2,                                         |
+|                     |      "log_agent_heartbeats": false,                      |
+|                     |      "networks": 1                                       |
+|                     | }                                                        |
+| created_at          | 2016-04-11 03:46:43                                      |
+| description         |                                                          |
+| heartbeat_timestamp | 2016-04-11 06:11:54                                      |
+| host                | osp7ps-controller01.test.local                           |
+| id                  | 20c93408-3cf6-41d2-952d-23eae7104fc8                     |
+| started_at          | 2016-04-11 03:46:43                                      |
+| topic               | dhcp_agent                                               |
++---------------------+----------------------------------------------------------+
+==> agent: Open vSwitch agent / 41fc2190-18ae-4775-a7e5-6bcdad1da6bf
+=====> [20160411-151206] host: (local), command: neutron agent-show 41fc2190-18ae-4775-a7e5-6bcdad1da6bf
++---------------------+-------------------------------------------------------+
+| Field               | Value                                                 |
++---------------------+-------------------------------------------------------+
+| admin_state_up      | True                                                  |
+| agent_type          | Open vSwitch agent                                    |
+| alive               | True                                                  |
+| binary              | neutron-openvswitch-agent                             |
+| configurations      | {                                                     |
+|                     |      "in_distributed_mode": false,                    |
+|                     |      "datapath_type": "system",                       |
+|                     |      "arp_responder_enabled": false,                  |
+|                     |      "tunneling_ip": "10.0.2.111",                    |
+|                     |      "vhostuser_socket_dir": "/var/run/openvswitch",  |
+|                     |      "devices": 3,                                    |
+|                     |      "ovs_capabilities": {                            |
+|                     |           "datapath_types": [                         |
+|                     |                "netdev",                              |
+|                     |                "system"                               |
+|                     |           ],                                          |
+|                     |           "iface_types": [                            |
+|                     |                "geneve",                              |
+|                     |                "gre",                                 |
+|                     |                "gre64",                               |
+|                     |                "internal",                            |
+|                     |                "ipsec_gre",                           |
+|                     |                "ipsec_gre64",                         |
+|                     |                "lisp",                                |
+|                     |                "patch",                               |
+|                     |                "stt",                                 |
+|                     |                "system",                              |
+|                     |                "tap",                                 |
+|                     |                "vxlan"                                |
+|                     |           ]                                           |
+|                     |      },                                               |
+|                     |      "log_agent_heartbeats": false,                   |
+|                     |      "l2_population": false,                          |
+|                     |      "tunnel_types": [                                |
+|                     |           "vxlan"                                     |
+|                     |      ],                                               |
+|                     |      "extensions": [],                                |
+|                     |      "enable_distributed_routing": false,             |
+|                     |      "bridge_mappings": {                             |
+|                     |           "physnet-external": "br-ex"                 |
+|                     |      }                                                |
+|                     | }                                                     |
+| created_at          | 2016-04-11 03:46:43                                   |
+| description         |                                                       |
+| heartbeat_timestamp | 2016-04-11 06:11:55                                   |
+| host                | osp7ps-controller01.test.local                        |
+| id                  | 41fc2190-18ae-4775-a7e5-6bcdad1da6bf                  |
+| started_at          | 2016-04-11 06:07:56                                   |
+| topic               | N/A                                                   |
++---------------------+-------------------------------------------------------+
+==> agent: L3 agent / 80fcd4c7-7883-46a7-9bbd-37c45842b725
+=====> [20160411-151207] host: (local), command: neutron agent-show 80fcd4c7-7883-46a7-9bbd-37c45842b725
++---------------------+-------------------------------------------------------------------------------+
+| Field               | Value                                                                         |
++---------------------+-------------------------------------------------------------------------------+
+| admin_state_up      | True                                                                          |
+| agent_type          | L3 agent                                                                      |
+| alive               | True                                                                          |
+| binary              | neutron-l3-agent                                                              |
+| configurations      | {                                                                             |
+|                     |      "router_id": "",                                                         |
+|                     |      "agent_mode": "legacy",                                                  |
+|                     |      "gateway_external_network_id": "",                                       |
+|                     |      "handle_internal_only_routers": true,                                    |
+|                     |      "use_namespaces": true,                                                  |
+|                     |      "routers": 1,                                                            |
+|                     |      "interfaces": 1,                                                         |
+|                     |      "floating_ips": 1,                                                       |
+|                     |      "interface_driver": "neutron.agent.linux.interface.OVSInterfaceDriver",  |
+|                     |      "log_agent_heartbeats": false,                                           |
+|                     |      "external_network_bridge": "",                                           |
+|                     |      "ex_gw_ports": 1                                                         |
+|                     | }                                                                             |
+| created_at          | 2016-04-11 03:46:42                                                           |
+| description         |                                                                               |
+| heartbeat_timestamp | 2016-04-11 06:11:56                                                           |
+| host                | osp7ps-controller01.test.local                                                |
+| id                  | 80fcd4c7-7883-46a7-9bbd-37c45842b725                                          |
+| started_at          | 2016-04-11 06:07:56                                                           |
+| topic               | l3_agent                                                                      |
++---------------------+-------------------------------------------------------------------------------+
+==> agent: Open vSwitch agent / 823bee81-3ad0-41b0-a03d-34960bfb87ba
+=====> [20160411-151208] host: (local), command: neutron agent-show 823bee81-3ad0-41b0-a03d-34960bfb87ba
++---------------------+-------------------------------------------------------+
+| Field               | Value                                                 |
++---------------------+-------------------------------------------------------+
+| admin_state_up      | True                                                  |
+| agent_type          | Open vSwitch agent                                    |
+| alive               | True                                                  |
+| binary              | neutron-openvswitch-agent                             |
+| configurations      | {                                                     |
+|                     |      "in_distributed_mode": false,                    |
+|                     |      "datapath_type": "system",                       |
+|                     |      "arp_responder_enabled": false,                  |
+|                     |      "tunneling_ip": "10.0.2.132",                    |
+|                     |      "vhostuser_socket_dir": "/var/run/openvswitch",  |
+|                     |      "devices": 0,                                    |
+|                     |      "ovs_capabilities": {                            |
+|                     |           "datapath_types": [                         |
+|                     |                "netdev",                              |
+|                     |                "system"                               |
+|                     |           ],                                          |
+|                     |           "iface_types": [                            |
+|                     |                "geneve",                              |
+|                     |                "gre",                                 |
+|                     |                "gre64",                               |
+|                     |                "internal",                            |
+|                     |                "ipsec_gre",                           |
+|                     |                "ipsec_gre64",                         |
+|                     |                "lisp",                                |
+|                     |                "patch",                               |
+|                     |                "stt",                                 |
+|                     |                "system",                              |
+|                     |                "tap",                                 |
+|                     |                "vxlan"                                |
+|                     |           ]                                           |
+|                     |      },                                               |
+|                     |      "log_agent_heartbeats": false,                   |
+|                     |      "l2_population": false,                          |
+|                     |      "tunnel_types": [                                |
+|                     |           "vxlan"                                     |
+|                     |      ],                                               |
+|                     |      "extensions": [],                                |
+|                     |      "enable_distributed_routing": false,             |
+|                     |      "bridge_mappings": {}                            |
+|                     | }                                                     |
+| created_at          | 2016-04-11 03:46:29                                   |
+| description         |                                                       |
+| heartbeat_timestamp | 2016-04-11 06:11:59                                   |
+| host                | osp7ps-compute02.test.local                           |
+| id                  | 823bee81-3ad0-41b0-a03d-34960bfb87ba                  |
+| started_at          | 2016-04-11 03:46:29                                   |
+| topic               | N/A                                                   |
++---------------------+-------------------------------------------------------+
+==> agent: Open vSwitch agent / e49aff2f-9a8c-413a-9f52-2e819bc2ba21
+=====> [20160411-151208] host: (local), command: neutron agent-show e49aff2f-9a8c-413a-9f52-2e819bc2ba21
++---------------------+-------------------------------------------------------+
+| Field               | Value                                                 |
++---------------------+-------------------------------------------------------+
+| admin_state_up      | True                                                  |
+| agent_type          | Open vSwitch agent                                    |
+| alive               | True                                                  |
+| binary              | neutron-openvswitch-agent                             |
+| configurations      | {                                                     |
+|                     |      "in_distributed_mode": false,                    |
+|                     |      "datapath_type": "system",                       |
+|                     |      "arp_responder_enabled": false,                  |
+|                     |      "tunneling_ip": "10.0.2.131",                    |
+|                     |      "vhostuser_socket_dir": "/var/run/openvswitch",  |
+|                     |      "devices": 1,                                    |
+|                     |      "ovs_capabilities": {                            |
+|                     |           "datapath_types": [                         |
+|                     |                "netdev",                              |
+|                     |                "system"                               |
+|                     |           ],                                          |
+|                     |           "iface_types": [                            |
+|                     |                "geneve",                              |
+|                     |                "gre",                                 |
+|                     |                "gre64",                               |
+|                     |                "internal",                            |
+|                     |                "ipsec_gre",                           |
+|                     |                "ipsec_gre64",                         |
+|                     |                "lisp",                                |
+|                     |                "patch",                               |
+|                     |                "stt",                                 |
+|                     |                "system",                              |
+|                     |                "tap",                                 |
+|                     |                "vxlan"                                |
+|                     |           ]                                           |
+|                     |      },                                               |
+|                     |      "log_agent_heartbeats": false,                   |
+|                     |      "l2_population": false,                          |
+|                     |      "tunnel_types": [                                |
+|                     |           "vxlan"                                     |
+|                     |      ],                                               |
+|                     |      "extensions": [],                                |
+|                     |      "enable_distributed_routing": false,             |
+|                     |      "bridge_mappings": {}                            |
+|                     | }                                                     |
+| created_at          | 2016-04-11 03:46:31                                   |
+| description         |                                                       |
+| heartbeat_timestamp | 2016-04-11 06:12:01                                   |
+| host                | osp7ps-compute01.test.local                           |
+| id                  | e49aff2f-9a8c-413a-9f52-2e819bc2ba21                  |
+| started_at          | 2016-04-11 03:46:31                                   |
+| topic               | N/A                                                   |
++---------------------+-------------------------------------------------------+
+=====> [20160411-151209] host: (local), command: neutron net-list
++--------------------------------------+----------+------------------------------------------------------+
+| id                                   | name     | subnets                                              |
++--------------------------------------+----------+------------------------------------------------------+
+| 0fe9dd8a-8565-41ed-b3fc-3110f9a026d6 | demo_net | 36834b46-2d31-4fe7-817c-dfa949729024 192.168.99.0/24 |
+| 03edb577-c0f3-4610-a11a-f71b3d32e2bd | external | d736de4f-232a-40b0-8503-9b9f32f5c549 172.16.88.0/24  |
++--------------------------------------+----------+------------------------------------------------------+
+==> net: demo_net / 0fe9dd8a-8565-41ed-b3fc-3110f9a026d6
+=====> [20160411-151211] host: (local), command: neutron net-show 0fe9dd8a-8565-41ed-b3fc-3110f9a026d6
++---------------------------+--------------------------------------+
+| Field                     | Value                                |
++---------------------------+--------------------------------------+
+| admin_state_up            | True                                 |
+| id                        | 0fe9dd8a-8565-41ed-b3fc-3110f9a026d6 |
+| mtu                       | 0                                    |
+| name                      | demo_net                             |
+| provider:network_type     | vxlan                                |
+| provider:physical_network |                                      |
+| provider:segmentation_id  | 52                                   |
+| router:external           | False                                |
+| shared                    | False                                |
+| status                    | ACTIVE                               |
+| subnets                   | 36834b46-2d31-4fe7-817c-dfa949729024 |
+| tenant_id                 | f21cfeed248e432bae16aa83accf208e     |
++---------------------------+--------------------------------------+
+==> net: external / 03edb577-c0f3-4610-a11a-f71b3d32e2bd
+=====> [20160411-151211] host: (local), command: neutron net-show 03edb577-c0f3-4610-a11a-f71b3d32e2bd
++---------------------------+--------------------------------------+
+| Field                     | Value                                |
++---------------------------+--------------------------------------+
+| admin_state_up            | True                                 |
+| id                        | 03edb577-c0f3-4610-a11a-f71b3d32e2bd |
+| mtu                       | 0                                    |
+| name                      | external                             |
+| provider:network_type     | vlan                                 |
+| provider:physical_network | physnet-external                     |
+| provider:segmentation_id  | 100                                  |
+| router:external           | True                                 |
+| shared                    | False                                |
+| status                    | ACTIVE                               |
+| subnets                   | d736de4f-232a-40b0-8503-9b9f32f5c549 |
+| tenant_id                 | d8bfa2f7e4994784acdee67e64a849ff     |
++---------------------------+--------------------------------------+
+=====> [20160411-151212] host: (local), command: neutron subnet-list
++--------------------------------------+-----------------+-----------------+------------------------------------------------------+
+| id                                   | name            | cidr            | allocation_pools                                     |
++--------------------------------------+-----------------+-----------------+------------------------------------------------------+
+| d736de4f-232a-40b0-8503-9b9f32f5c549 | external_subnet | 172.16.88.0/24  | {"start": "172.16.88.100", "end": "172.16.88.199"}   |
+| 36834b46-2d31-4fe7-817c-dfa949729024 | demo_net_subnet | 192.168.99.0/24 | {"start": "192.168.99.100", "end": "192.168.99.199"} |
++--------------------------------------+-----------------+-----------------+------------------------------------------------------+
+==> subnet: demo_net_subnet / 36834b46-2d31-4fe7-817c-dfa949729024
+=====> [20160411-151214] host: (local), command: neutron subnet-show 36834b46-2d31-4fe7-817c-dfa949729024
++-------------------+------------------------------------------------------+
+| Field             | Value                                                |
++-------------------+------------------------------------------------------+
+| allocation_pools  | {"start": "192.168.99.100", "end": "192.168.99.199"} |
+| cidr              | 192.168.99.0/24                                      |
+| dns_nameservers   |                                                      |
+| enable_dhcp       | True                                                 |
+| gateway_ip        | 192.168.99.1                                         |
+| host_routes       |                                                      |
+| id                | 36834b46-2d31-4fe7-817c-dfa949729024                 |
+| ip_version        | 4                                                    |
+| ipv6_address_mode |                                                      |
+| ipv6_ra_mode      |                                                      |
+| name              | demo_net_subnet                                      |
+| network_id        | 0fe9dd8a-8565-41ed-b3fc-3110f9a026d6                 |
+| subnetpool_id     |                                                      |
+| tenant_id         | f21cfeed248e432bae16aa83accf208e                     |
++-------------------+------------------------------------------------------+
+==> subnet: external_subnet / d736de4f-232a-40b0-8503-9b9f32f5c549
+=====> [20160411-151214] host: (local), command: neutron subnet-show d736de4f-232a-40b0-8503-9b9f32f5c549
++-------------------+----------------------------------------------------+
+| Field             | Value                                              |
++-------------------+----------------------------------------------------+
+| allocation_pools  | {"start": "172.16.88.100", "end": "172.16.88.199"} |
+| cidr              | 172.16.88.0/24                                     |
+| dns_nameservers   |                                                    |
+| enable_dhcp       | False                                              |
+| gateway_ip        | 172.16.88.254                                      |
+| host_routes       |                                                    |
+| id                | d736de4f-232a-40b0-8503-9b9f32f5c549               |
+| ip_version        | 4                                                  |
+| ipv6_address_mode |                                                    |
+| ipv6_ra_mode      |                                                    |
+| name              | external_subnet                                    |
+| network_id        | 03edb577-c0f3-4610-a11a-f71b3d32e2bd               |
+| subnetpool_id     |                                                    |
+| tenant_id         | d8bfa2f7e4994784acdee67e64a849ff                   |
++-------------------+----------------------------------------------------+
+=====> [20160411-151215] host: (local), command: neutron router-list
++--------------------------------------+-------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+-------+
+| id                                   | name        | external_gateway_info                                                                                                                                                                     | distributed | ha    |
++--------------------------------------+-------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+-------+
+| 1a800afd-55c4-4404-bf05-38ef7e703152 | router_demo | {"network_id": "03edb577-c0f3-4610-a11a-f71b3d32e2bd", "enable_snat": true, "external_fixed_ips": [{"subnet_id": "d736de4f-232a-40b0-8503-9b9f32f5c549", "ip_address": "172.16.88.100"}]} | False       | False |
++--------------------------------------+-------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+-------+
+==> router: router_demo / 1a800afd-55c4-4404-bf05-38ef7e703152
+=====> [20160411-151217] host: (local), command: neutron router-show 1a800afd-55c4-4404-bf05-38ef7e703152
++-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Field                 | Value                                                                                                                                                                                     |
++-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| admin_state_up        | True                                                                                                                                                                                      |
+| distributed           | False                                                                                                                                                                                     |
+| external_gateway_info | {"network_id": "03edb577-c0f3-4610-a11a-f71b3d32e2bd", "enable_snat": true, "external_fixed_ips": [{"subnet_id": "d736de4f-232a-40b0-8503-9b9f32f5c549", "ip_address": "172.16.88.100"}]} |
+| ha                    | False                                                                                                                                                                                     |
+| id                    | 1a800afd-55c4-4404-bf05-38ef7e703152                                                                                                                                                      |
+| name                  | router_demo                                                                                                                                                                               |
+| routes                |                                                                                                                                                                                           |
+| status                | ACTIVE                                                                                                                                                                                    |
+| tenant_id             | f21cfeed248e432bae16aa83accf208e                                                                                                                                                          |
++-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+=====> [20160411-151217] host: (local), command: neutron router-port-list 1a800afd-55c4-4404-bf05-38ef7e703152
++--------------------------------------+------+-------------------+--------------------------------------------------------------------------------------+
+| id                                   | name | mac_address       | fixed_ips                                                                            |
++--------------------------------------+------+-------------------+--------------------------------------------------------------------------------------+
+| b51aab56-82f8-4bde-86a1-c42177ac5512 |      | fa:16:3e:5e:51:c7 | {"subnet_id": "d736de4f-232a-40b0-8503-9b9f32f5c549", "ip_address": "172.16.88.100"} |
+| eb119fc3-3b18-467b-a9b3-acb8dc036da9 |      | fa:16:3e:ac:3f:5c | {"subnet_id": "36834b46-2d31-4fe7-817c-dfa949729024", "ip_address": "192.168.99.1"}  |
++--------------------------------------+------+-------------------+--------------------------------------------------------------------------------------+
+=====> [20160411-151218] host: (local), command: neutron port-list
++--------------------------------------+------+-------------------+---------------------------------------------------------------------------------------+
+| id                                   | name | mac_address       | fixed_ips                                                                             |
++--------------------------------------+------+-------------------+---------------------------------------------------------------------------------------+
+| 05135504-80f3-43ca-bbbc-ed988a761fe4 |      | fa:16:3e:2b:82:66 | {"subnet_id": "36834b46-2d31-4fe7-817c-dfa949729024", "ip_address": "192.168.99.100"} |
+| b51aab56-82f8-4bde-86a1-c42177ac5512 |      | fa:16:3e:5e:51:c7 | {"subnet_id": "d736de4f-232a-40b0-8503-9b9f32f5c549", "ip_address": "172.16.88.100"}  |
+| c88c4e4f-a1ad-4062-a0d2-428f8a5e5d52 |      | fa:16:3e:cd:09:17 | {"subnet_id": "36834b46-2d31-4fe7-817c-dfa949729024", "ip_address": "192.168.99.101"} |
+| eb119fc3-3b18-467b-a9b3-acb8dc036da9 |      | fa:16:3e:ac:3f:5c | {"subnet_id": "36834b46-2d31-4fe7-817c-dfa949729024", "ip_address": "192.168.99.1"}   |
+| f48a6db9-614e-4175-a7a8-3c139f797d1f |      | fa:16:3e:dc:b2:12 | {"subnet_id": "d736de4f-232a-40b0-8503-9b9f32f5c549", "ip_address": "172.16.88.101"}  |
++--------------------------------------+------+-------------------+---------------------------------------------------------------------------------------+
+==> port:  / 05135504-80f3-43ca-bbbc-ed988a761fe4
+=====> [20160411-151220] host: (local), command: neutron port-show 05135504-80f3-43ca-bbbc-ed988a761fe4
++-----------------------+--------------------------------------------------------------------------------------------------------------------+
+| Field                 | Value                                                                                                              |
++-----------------------+--------------------------------------------------------------------------------------------------------------------+
+| admin_state_up        | True                                                                                                               |
+| allowed_address_pairs |                                                                                                                    |
+| binding:host_id       | osp7ps-controller01.test.local                                                                                     |
+| binding:profile       | {}                                                                                                                 |
+| binding:vif_details   | {"port_filter": true, "ovs_hybrid_plug": true}                                                                     |
+| binding:vif_type      | ovs                                                                                                                |
+| binding:vnic_type     | normal                                                                                                             |
+| device_id             | dhcp4b8dbcef-fecf-5059-98b1-e5f251626bae-0fe9dd8a-8565-41ed-b3fc-3110f9a026d6                                      |
+| device_owner          | network:dhcp                                                                                                       |
+| dns_assignment        | {"hostname": "host-192-168-99-100", "ip_address": "192.168.99.100", "fqdn": "host-192-168-99-100.openstacklocal."} |
+| dns_name              |                                                                                                                    |
+| extra_dhcp_opts       |                                                                                                                    |
+| fixed_ips             | {"subnet_id": "36834b46-2d31-4fe7-817c-dfa949729024", "ip_address": "192.168.99.100"}                              |
+| id                    | 05135504-80f3-43ca-bbbc-ed988a761fe4                                                                               |
+| mac_address           | fa:16:3e:2b:82:66                                                                                                  |
+| name                  |                                                                                                                    |
+| network_id            | 0fe9dd8a-8565-41ed-b3fc-3110f9a026d6                                                                               |
+| security_groups       |                                                                                                                    |
+| status                | ACTIVE                                                                                                             |
+| tenant_id             | f21cfeed248e432bae16aa83accf208e                                                                                   |
++-----------------------+--------------------------------------------------------------------------------------------------------------------+
+==> port:  / b51aab56-82f8-4bde-86a1-c42177ac5512
+=====> [20160411-151221] host: (local), command: neutron port-show b51aab56-82f8-4bde-86a1-c42177ac5512
++-----------------------+-----------------------------------------------------------------------------------------------------------------+
+| Field                 | Value                                                                                                           |
++-----------------------+-----------------------------------------------------------------------------------------------------------------+
+| admin_state_up        | True                                                                                                            |
+| allowed_address_pairs |                                                                                                                 |
+| binding:host_id       | osp7ps-controller01.test.local                                                                                  |
+| binding:profile       | {}                                                                                                              |
+| binding:vif_details   | {"port_filter": true, "ovs_hybrid_plug": true}                                                                  |
+| binding:vif_type      | ovs                                                                                                             |
+| binding:vnic_type     | normal                                                                                                          |
+| device_id             | 1a800afd-55c4-4404-bf05-38ef7e703152                                                                            |
+| device_owner          | network:router_gateway                                                                                          |
+| dns_assignment        | {"hostname": "host-172-16-88-100", "ip_address": "172.16.88.100", "fqdn": "host-172-16-88-100.openstacklocal."} |
+| dns_name              |                                                                                                                 |
+| extra_dhcp_opts       |                                                                                                                 |
+| fixed_ips             | {"subnet_id": "d736de4f-232a-40b0-8503-9b9f32f5c549", "ip_address": "172.16.88.100"}                            |
+| id                    | b51aab56-82f8-4bde-86a1-c42177ac5512                                                                            |
+| mac_address           | fa:16:3e:5e:51:c7                                                                                               |
+| name                  |                                                                                                                 |
+| network_id            | 03edb577-c0f3-4610-a11a-f71b3d32e2bd                                                                            |
+| security_groups       |                                                                                                                 |
+| status                | ACTIVE                                                                                                          |
+| tenant_id             |                                                                                                                 |
++-----------------------+-----------------------------------------------------------------------------------------------------------------+
+==> port:  / c88c4e4f-a1ad-4062-a0d2-428f8a5e5d52
+=====> [20160411-151221] host: (local), command: neutron port-show c88c4e4f-a1ad-4062-a0d2-428f8a5e5d52
++-----------------------+--------------------------------------------------------------------------------------------------------------------+
+| Field                 | Value                                                                                                              |
++-----------------------+--------------------------------------------------------------------------------------------------------------------+
+| admin_state_up        | True                                                                                                               |
+| allowed_address_pairs |                                                                                                                    |
+| binding:host_id       | osp7ps-compute01.test.local                                                                                        |
+| binding:profile       | {}                                                                                                                 |
+| binding:vif_details   | {"port_filter": true, "ovs_hybrid_plug": true}                                                                     |
+| binding:vif_type      | ovs                                                                                                                |
+| binding:vnic_type     | normal                                                                                                             |
+| device_id             | 04bdf81b-4458-4c84-8e9d-c1c2a7ead4bc                                                                               |
+| device_owner          | compute:None                                                                                                       |
+| dns_assignment        | {"hostname": "host-192-168-99-101", "ip_address": "192.168.99.101", "fqdn": "host-192-168-99-101.openstacklocal."} |
+| dns_name              |                                                                                                                    |
+| extra_dhcp_opts       |                                                                                                                    |
+| fixed_ips             | {"subnet_id": "36834b46-2d31-4fe7-817c-dfa949729024", "ip_address": "192.168.99.101"}                              |
+| id                    | c88c4e4f-a1ad-4062-a0d2-428f8a5e5d52                                                                               |
+| mac_address           | fa:16:3e:cd:09:17                                                                                                  |
+| name                  |                                                                                                                    |
+| network_id            | 0fe9dd8a-8565-41ed-b3fc-3110f9a026d6                                                                               |
+| security_groups       | 25b53b06-d95c-4051-bb89-3f480162f367                                                                               |
+| status                | ACTIVE                                                                                                             |
+| tenant_id             | f21cfeed248e432bae16aa83accf208e                                                                                   |
++-----------------------+--------------------------------------------------------------------------------------------------------------------+
+==> port:  / eb119fc3-3b18-467b-a9b3-acb8dc036da9
+=====> [20160411-151222] host: (local), command: neutron port-show eb119fc3-3b18-467b-a9b3-acb8dc036da9
++-----------------------+--------------------------------------------------------------------------------------------------------------+
+| Field                 | Value                                                                                                        |
++-----------------------+--------------------------------------------------------------------------------------------------------------+
+| admin_state_up        | True                                                                                                         |
+| allowed_address_pairs |                                                                                                              |
+| binding:host_id       | osp7ps-controller01.test.local                                                                               |
+| binding:profile       | {}                                                                                                           |
+| binding:vif_details   | {"port_filter": true, "ovs_hybrid_plug": true}                                                               |
+| binding:vif_type      | ovs                                                                                                          |
+| binding:vnic_type     | normal                                                                                                       |
+| device_id             | 1a800afd-55c4-4404-bf05-38ef7e703152                                                                         |
+| device_owner          | network:router_interface                                                                                     |
+| dns_assignment        | {"hostname": "host-192-168-99-1", "ip_address": "192.168.99.1", "fqdn": "host-192-168-99-1.openstacklocal."} |
+| dns_name              |                                                                                                              |
+| extra_dhcp_opts       |                                                                                                              |
+| fixed_ips             | {"subnet_id": "36834b46-2d31-4fe7-817c-dfa949729024", "ip_address": "192.168.99.1"}                          |
+| id                    | eb119fc3-3b18-467b-a9b3-acb8dc036da9                                                                         |
+| mac_address           | fa:16:3e:ac:3f:5c                                                                                            |
+| name                  |                                                                                                              |
+| network_id            | 0fe9dd8a-8565-41ed-b3fc-3110f9a026d6                                                                         |
+| security_groups       |                                                                                                              |
+| status                | ACTIVE                                                                                                       |
+| tenant_id             | f21cfeed248e432bae16aa83accf208e                                                                             |
++-----------------------+--------------------------------------------------------------------------------------------------------------+
+==> port:  / f48a6db9-614e-4175-a7a8-3c139f797d1f
+=====> [20160411-151223] host: (local), command: neutron port-show f48a6db9-614e-4175-a7a8-3c139f797d1f
++-----------------------+-----------------------------------------------------------------------------------------------------------------+
+| Field                 | Value                                                                                                           |
++-----------------------+-----------------------------------------------------------------------------------------------------------------+
+| admin_state_up        | True                                                                                                            |
+| allowed_address_pairs |                                                                                                                 |
+| binding:host_id       |                                                                                                                 |
+| binding:profile       | {}                                                                                                              |
+| binding:vif_details   | {}                                                                                                              |
+| binding:vif_type      | unbound                                                                                                         |
+| binding:vnic_type     | normal                                                                                                          |
+| device_id             | 24f57ead-31f9-4046-992a-2e0aa15f6a2c                                                                            |
+| device_owner          | network:floatingip                                                                                              |
+| dns_assignment        | {"hostname": "host-172-16-88-101", "ip_address": "172.16.88.101", "fqdn": "host-172-16-88-101.openstacklocal."} |
+| dns_name              |                                                                                                                 |
+| extra_dhcp_opts       |                                                                                                                 |
+| fixed_ips             | {"subnet_id": "d736de4f-232a-40b0-8503-9b9f32f5c549", "ip_address": "172.16.88.101"}                            |
+| id                    | f48a6db9-614e-4175-a7a8-3c139f797d1f                                                                            |
+| mac_address           | fa:16:3e:dc:b2:12                                                                                               |
+| name                  |                                                                                                                 |
+| network_id            | 03edb577-c0f3-4610-a11a-f71b3d32e2bd                                                                            |
+| security_groups       |                                                                                                                 |
+| status                | N/A                                                                                                             |
+| tenant_id             |                                                                                                                 |
++-----------------------+-----------------------------------------------------------------------------------------------------------------+
+=====> [20160411-151224] host: (local), command: nova service-list
++----+------------------+--------------------------------+----------+---------+-------+----------------------------+-----------------+
+| Id | Binary           | Host                           | Zone     | Status  | State | Updated_at                 | Disabled Reason |
++----+------------------+--------------------------------+----------+---------+-------+----------------------------+-----------------+
+| 1  | nova-consoleauth | osp7ps-controller01.test.local | internal | enabled | up    | 2016-04-11T06:12:16.000000 | -               |
+| 2  | nova-scheduler   | osp7ps-controller01.test.local | internal | enabled | up    | 2016-04-11T06:12:18.000000 | -               |
+| 3  | nova-conductor   | osp7ps-controller01.test.local | internal | enabled | up    | 2016-04-11T06:12:21.000000 | -               |
+| 4  | nova-cert        | osp7ps-controller01.test.local | internal | enabled | up    | 2016-04-11T06:12:17.000000 | -               |
+| 5  | nova-compute     | osp7ps-compute02.test.local    | nova     | enabled | up    | 2016-04-11T06:12:18.000000 | -               |
+| 6  | nova-compute     | osp7ps-compute01.test.local    | nova     | enabled | up    | 2016-04-11T06:12:15.000000 | -               |
++----+------------------+--------------------------------+----------+---------+-------+----------------------------+-----------------+
+=====> [20160411-151224] host: (local), command: nova agent-list
++----------+------------+----+--------------+---------+---------+-----+
+| Agent_id | Hypervisor | OS | Architecture | Version | Md5hash | Url |
++----------+------------+----+--------------+---------+---------+-----+
++----------+------------+----+--------------+---------+---------+-----+
+=====> [20160411-151225] host: (local), command: nova aggregate-list
++----+------+-------------------+
+| Id | Name | Availability Zone |
++----+------+-------------------+
++----+------+-------------------+
+=====> [20160411-151226] host: (local), command: nova availability-zone-list
++-----------------------------------+----------------------------------------+
+| Name                              | Status                                 |
++-----------------------------------+----------------------------------------+
+| internal                          | available                              |
+| |- osp7ps-controller01.test.local |                                        |
+| | |- nova-conductor               | enabled :-) 2016-04-11T06:12:21.000000 |
+| | |- nova-consoleauth             | enabled :-) 2016-04-11T06:12:16.000000 |
+| | |- nova-scheduler               | enabled :-) 2016-04-11T06:12:18.000000 |
+| | |- nova-cert                    | enabled :-) 2016-04-11T06:12:17.000000 |
+| nova                              | available                              |
+| |- osp7ps-compute01.test.local    |                                        |
+| | |- nova-compute                 | enabled :-) 2016-04-11T06:12:25.000000 |
+| |- osp7ps-compute02.test.local    |                                        |
+| | |- nova-compute                 | enabled :-) 2016-04-11T06:12:18.000000 |
++-----------------------------------+----------------------------------------+
+=====> [20160411-151226] host: (local), command: nova flavor-list
++----+-----------+-----------+------+-----------+------+-------+-------------+-----------+
+| ID | Name      | Memory_MB | Disk | Ephemeral | Swap | VCPUs | RXTX_Factor | Is_Public |
++----+-----------+-----------+------+-----------+------+-------+-------------+-----------+
+| 1  | m1.tiny   | 512       | 1    | 0         |      | 1     | 1.0         | True      |
+| 2  | m1.small  | 2048      | 20   | 0         |      | 1     | 1.0         | True      |
+| 3  | m1.medium | 4096      | 40   | 0         |      | 2     | 1.0         | True      |
+| 4  | m1.large  | 8192      | 80   | 0         |      | 4     | 1.0         | True      |
+| 5  | m1.xlarge | 16384     | 160  | 0         |      | 8     | 1.0         | True      |
+| 6  | m1.nano   | 64        | 1    | 0         |      | 1     | 1.0         | True      |
+| 7  | m1.nano2  | 64        | 1    | 0         |      | 1     | 1.0         | True      |
++----+-----------+-----------+------+-----------+------+-------+-------------+-----------+
+==> flavor: m1.tiny / 1
+=====> [20160411-151228] host: (local), command: nova flavor-show 1
++----------------------------+---------+
+| Property                   | Value   |
++----------------------------+---------+
+| OS-FLV-DISABLED:disabled   | False   |
+| OS-FLV-EXT-DATA:ephemeral  | 0       |
+| disk                       | 1       |
+| extra_specs                | {}      |
+| id                         | 1       |
+| name                       | m1.tiny |
+| os-flavor-access:is_public | True    |
+| ram                        | 512     |
+| rxtx_factor                | 1.0     |
+| swap                       |         |
+| vcpus                      | 1       |
++----------------------------+---------+
+==> flavor: m1.small / 2
+=====> [20160411-151229] host: (local), command: nova flavor-show 2
++----------------------------+----------+
+| Property                   | Value    |
++----------------------------+----------+
+| OS-FLV-DISABLED:disabled   | False    |
+| OS-FLV-EXT-DATA:ephemeral  | 0        |
+| disk                       | 20       |
+| extra_specs                | {}       |
+| id                         | 2        |
+| name                       | m1.small |
+| os-flavor-access:is_public | True     |
+| ram                        | 2048     |
+| rxtx_factor                | 1.0      |
+| swap                       |          |
+| vcpus                      | 1        |
++----------------------------+----------+
+==> flavor: m1.medium / 3
+=====> [20160411-151229] host: (local), command: nova flavor-show 3
++----------------------------+-----------+
+| Property                   | Value     |
++----------------------------+-----------+
+| OS-FLV-DISABLED:disabled   | False     |
+| OS-FLV-EXT-DATA:ephemeral  | 0         |
+| disk                       | 40        |
+| extra_specs                | {}        |
+| id                         | 3         |
+| name                       | m1.medium |
+| os-flavor-access:is_public | True      |
+| ram                        | 4096      |
+| rxtx_factor                | 1.0       |
+| swap                       |           |
+| vcpus                      | 2         |
++----------------------------+-----------+
+==> flavor: m1.large / 4
+=====> [20160411-151230] host: (local), command: nova flavor-show 4
++----------------------------+----------+
+| Property                   | Value    |
++----------------------------+----------+
+| OS-FLV-DISABLED:disabled   | False    |
+| OS-FLV-EXT-DATA:ephemeral  | 0        |
+| disk                       | 80       |
+| extra_specs                | {}       |
+| id                         | 4        |
+| name                       | m1.large |
+| os-flavor-access:is_public | True     |
+| ram                        | 8192     |
+| rxtx_factor                | 1.0      |
+| swap                       |          |
+| vcpus                      | 4        |
++----------------------------+----------+
+==> flavor: m1.xlarge / 5
+=====> [20160411-151231] host: (local), command: nova flavor-show 5
++----------------------------+-----------+
+| Property                   | Value     |
++----------------------------+-----------+
+| OS-FLV-DISABLED:disabled   | False     |
+| OS-FLV-EXT-DATA:ephemeral  | 0         |
+| disk                       | 160       |
+| extra_specs                | {}        |
+| id                         | 5         |
+| name                       | m1.xlarge |
+| os-flavor-access:is_public | True      |
+| ram                        | 16384     |
+| rxtx_factor                | 1.0       |
+| swap                       |           |
+| vcpus                      | 8         |
++----------------------------+-----------+
+==> flavor: m1.nano / 6
+=====> [20160411-151231] host: (local), command: nova flavor-show 6
++----------------------------+---------+
+| Property                   | Value   |
++----------------------------+---------+
+| OS-FLV-DISABLED:disabled   | False   |
+| OS-FLV-EXT-DATA:ephemeral  | 0       |
+| disk                       | 1       |
+| extra_specs                | {}      |
+| id                         | 6       |
+| name                       | m1.nano |
+| os-flavor-access:is_public | True    |
+| ram                        | 64      |
+| rxtx_factor                | 1.0     |
+| swap                       |         |
+| vcpus                      | 1       |
++----------------------------+---------+
+==> flavor: m1.nano2 / 7
+=====> [20160411-151232] host: (local), command: nova flavor-show 7
++----------------------------+----------+
+| Property                   | Value    |
++----------------------------+----------+
+| OS-FLV-DISABLED:disabled   | False    |
+| OS-FLV-EXT-DATA:ephemeral  | 0        |
+| disk                       | 1        |
+| extra_specs                | {}       |
+| id                         | 7        |
+| name                       | m1.nano2 |
+| os-flavor-access:is_public | True     |
+| ram                        | 64       |
+| rxtx_factor                | 1.0      |
+| swap                       |          |
+| vcpus                      | 1        |
++----------------------------+----------+
+=====> [20160411-151233] host: (local), command: nova host-list
++--------------------------------+-------------+----------+
+| host_name                      | service     | zone     |
++--------------------------------+-------------+----------+
+| osp7ps-controller01.test.local | consoleauth | internal |
+| osp7ps-controller01.test.local | scheduler   | internal |
+| osp7ps-controller01.test.local | conductor   | internal |
+| osp7ps-controller01.test.local | cert        | internal |
+| osp7ps-compute02.test.local    | compute     | nova     |
+| osp7ps-compute01.test.local    | compute     | nova     |
++--------------------------------+-------------+----------+
+=====> [20160411-151233] host: (local), command: nova hypervisor-list
++----+-----------------------------+-------+---------+
+| ID | Hypervisor hostname         | State | Status  |
++----+-----------------------------+-------+---------+
+| 1  | osp7ps-compute02.test.local | up    | enabled |
+| 2  | osp7ps-compute01.test.local | up    | enabled |
++----+-----------------------------+-------+---------+
+==> hypervisor:  / 1
+=====> [20160411-151235] host: (local), command: nova hypervisor-show 1
++---------------------------+------------------------------------------+
+| Property                  | Value                                    |
++---------------------------+------------------------------------------+
+| cpu_info_arch             | x86_64                                   |
+| cpu_info_features         | ["pge", "avx", "clflush", "sep",         |
+|                           | "syscall", "vme", "msr", "xsave", "vmx", |
+|                           | "cmov", "fpu", "pat", "lm", "tsc", "nx", |
+|                           | "fxsr", "sse4.1", "pae", "sse4.2",       |
+|                           | "pclmuldq", "tsc-deadline", "mmx",       |
+|                           | "osxsave", "cx8", "mce", "de", "rdtscp", |
+|                           | "mca", "pse", "pni", "popcnt", "apic",   |
+|                           | "sse", "lahf_lm", "aes", "sse2",         |
+|                           | "hypervisor", "ssse3", "cx16", "pse36",  |
+|                           | "mtrr", "x2apic"]                        |
+| cpu_info_model            | SandyBridge                              |
+| cpu_info_topology_cells   | 1                                        |
+| cpu_info_topology_cores   | 1                                        |
+| cpu_info_topology_sockets | 2                                        |
+| cpu_info_topology_threads | 1                                        |
+| cpu_info_vendor           | Intel                                    |
+| current_workload          | 0                                        |
+| disk_available_least      | 4                                        |
+| free_disk_gb              | 6                                        |
+| free_ram_mb               | 1327                                     |
+| host_ip                   | 10.0.1.132                               |
+| hypervisor_hostname       | osp7ps-compute02.test.local              |
+| hypervisor_type           | QEMU                                     |
+| hypervisor_version        | 2003000                                  |
+| id                        | 1                                        |
+| local_gb                  | 6                                        |
+| local_gb_used             | 0                                        |
+| memory_mb                 | 1839                                     |
+| memory_mb_used            | 512                                      |
+| running_vms               | 0                                        |
+| service_disabled_reason   | None                                     |
+| service_host              | osp7ps-compute02.test.local              |
+| service_id                | 5                                        |
+| state                     | up                                       |
+| status                    | enabled                                  |
+| vcpus                     | 2                                        |
+| vcpus_used                | 0                                        |
++---------------------------+------------------------------------------+
+==> hypervisor:  / 2
+=====> [20160411-151236] host: (local), command: nova hypervisor-show 2
++---------------------------+------------------------------------------+
+| Property                  | Value                                    |
++---------------------------+------------------------------------------+
+| cpu_info_arch             | x86_64                                   |
+| cpu_info_features         | ["pge", "avx", "clflush", "sep",         |
+|                           | "syscall", "vme", "msr", "xsave", "vmx", |
+|                           | "cmov", "fpu", "pat", "lm", "tsc", "nx", |
+|                           | "fxsr", "sse4.1", "pae", "sse4.2",       |
+|                           | "pclmuldq", "tsc-deadline", "mmx",       |
+|                           | "osxsave", "cx8", "mce", "de", "rdtscp", |
+|                           | "mca", "pse", "pni", "popcnt", "apic",   |
+|                           | "sse", "lahf_lm", "aes", "sse2",         |
+|                           | "hypervisor", "ssse3", "cx16", "pse36",  |
+|                           | "mtrr", "x2apic"]                        |
+| cpu_info_model            | SandyBridge                              |
+| cpu_info_topology_cells   | 1                                        |
+| cpu_info_topology_cores   | 1                                        |
+| cpu_info_topology_sockets | 2                                        |
+| cpu_info_topology_threads | 1                                        |
+| cpu_info_vendor           | Intel                                    |
+| current_workload          | 0                                        |
+| disk_available_least      | 3                                        |
+| free_disk_gb              | 5                                        |
+| free_ram_mb               | 815                                      |
+| host_ip                   | 10.0.1.131                               |
+| hypervisor_hostname       | osp7ps-compute01.test.local              |
+| hypervisor_type           | QEMU                                     |
+| hypervisor_version        | 2003000                                  |
+| id                        | 2                                        |
+| local_gb                  | 6                                        |
+| local_gb_used             | 1                                        |
+| memory_mb                 | 1839                                     |
+| memory_mb_used            | 1024                                     |
+| running_vms               | 1                                        |
+| service_disabled_reason   | None                                     |
+| service_host              | osp7ps-compute01.test.local              |
+| service_id                | 6                                        |
+| state                     | up                                       |
+| status                    | enabled                                  |
+| vcpus                     | 2                                        |
+| vcpus_used                | 1                                        |
++---------------------------+------------------------------------------+
+=====> [20160411-151236] host: (local), command: nova usage-list
+Usage from 2016-03-14 to 2016-04-12:
++----------------------------------+---------+--------------+-----------+---------------+
+| Tenant ID                        | Servers | RAM MB-Hours | CPU Hours | Disk GB-Hours |
++----------------------------------+---------+--------------+-----------+---------------+
+| f21cfeed248e432bae16aa83accf208e | 2       | 455.58       | 0.89      | 0.89          |
++----------------------------------+---------+--------------+-----------+---------------+
+=====> [20160411-151237] host: (local), command: nova list
++----+------+--------+------------+-------------+----------+
+| ID | Name | Status | Task State | Power State | Networks |
++----+------+--------+------------+-------------+----------+
++----+------+--------+------------+-------------+----------+
+==> vm: vm1 / 04bdf81b-4458-4c84-8e9d-c1c2a7ead4bc
+=====> [20160411-151239] host: (local), command: nova show 04bdf81b-4458-4c84-8e9d-c1c2a7ead4bc
++--------------------------------------+----------------------------------------------------------+
+| Property                             | Value                                                    |
++--------------------------------------+----------------------------------------------------------+
+| OS-DCF:diskConfig                    | MANUAL                                                   |
+| OS-EXT-AZ:availability_zone          | nova                                                     |
+| OS-EXT-SRV-ATTR:host                 | osp7ps-compute01.test.local                              |
+| OS-EXT-SRV-ATTR:hypervisor_hostname  | osp7ps-compute01.test.local                              |
+| OS-EXT-SRV-ATTR:instance_name        | instance-00000002                                        |
+| OS-EXT-STS:power_state               | 1                                                        |
+| OS-EXT-STS:task_state                | -                                                        |
+| OS-EXT-STS:vm_state                  | active                                                   |
+| OS-SRV-USG:launched_at               | 2016-04-11T06:09:15.000000                               |
+| OS-SRV-USG:terminated_at             | -                                                        |
+| accessIPv4                           |                                                          |
+| accessIPv6                           |                                                          |
+| config_drive                         |                                                          |
+| created                              | 2016-04-11T06:09:09Z                                     |
+| demo_net network                     | 192.168.99.101, 172.16.88.101                            |
+| flavor                               | m1.tiny (1)                                              |
+| hostId                               | 02e12fa9df2fd3fadacacaee722a5017e302c80dbca4690d2bb5d686 |
+| id                                   | 04bdf81b-4458-4c84-8e9d-c1c2a7ead4bc                     |
+| image                                | cirros (d8a78437-d0c6-4ed1-853d-205ac41a6b9c)            |
+| key_name                             | sshkey                                                   |
+| metadata                             | {}                                                       |
+| name                                 | vm1                                                      |
+| os-extended-volumes:volumes_attached | []                                                       |
+| progress                             | 0                                                        |
+| security_groups                      | sg_demo                                                  |
+| status                               | ACTIVE                                                   |
+| tenant_id                            | f21cfeed248e432bae16aa83accf208e                         |
+| updated                              | 2016-04-11T06:09:15Z                                     |
+| user_id                              | 2e195ef50636400c9632ea1fe8d97c6a                         |
++--------------------------------------+----------------------------------------------------------+
+=====> [20160411-151240] host: (local), command: nova keypair-list
++--------+-------------------------------------------------+
+| Name   | Fingerprint                                     |
++--------+-------------------------------------------------+
+| sshkey | 59:a7:74:ba:66:b7:67:a3:2f:97:29:0c:e6:45:c4:cf |
++--------+-------------------------------------------------+
+==> keypair: sshkey
+=====> [20160411-151241] host: (local), command: nova keypair-show sshkey
++-------------+-------------------------------------------------+
+| Property    | Value                                           |
++-------------+-------------------------------------------------+
+| created_at  | 2016-04-11T04:59:22.000000                      |
+| deleted     | False                                           |
+| deleted_at  | -                                               |
+| fingerprint | 59:a7:74:ba:66:b7:67:a3:2f:97:29:0c:e6:45:c4:cf |
+| id          | 1                                               |
+| name        | sshkey                                          |
+| updated_at  | -                                               |
+| user_id     | 2e195ef50636400c9632ea1fe8d97c6a                |
++-------------+-------------------------------------------------+
+Public key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC+ZbO8/v/mkzZqci0ZW/aUESn1aFm3ecUsatl2Rlh3ogheYg0pUsew5/QOIwP0aPD84jmdvmKi/TDgk6WaqvpZpvZ/IXKvyas5GwKMzt8HXdGkFfs8/HIoPhgLzLcjdlOwKOzZ2rVk6DbyGegR8SULYbZ+Z2U3UdSeP+XQddtdL9//MPoHO5s2GyImv0YQtKSTqcJoJh1DVfjrptDDCeF9Ltck9/ve/wC/SNTLeYVoKL7Nv+LY7lsJFQv1HCQjyt/g1smkBpC6Sgu6Jo5qttg+xQbPJvJxXnIx5dcr+5QV8n4OpK2pdWSaZl6MGEeiRxFTaft1fWeVpNcsVE3imFC9 ori@firegoby
+
+=====> [20160411-151242] host: (local), command: nova list
++--------------------------------------+------+--------+------------+-------------+----------------------------------------+
+| ID                                   | Name | Status | Task State | Power State | Networks                               |
++--------------------------------------+------+--------+------------+-------------+----------------------------------------+
+| 04bdf81b-4458-4c84-8e9d-c1c2a7ead4bc | vm1  | ACTIVE | -          | Running     | demo_net=192.168.99.101, 172.16.88.101 |
++--------------------------------------+------+--------+------------+-------------+----------------------------------------+
+==> vm: vm1 / 04bdf81b-4458-4c84-8e9d-c1c2a7ead4bc
+=====> [20160411-151244] host: (local), command: nova show 04bdf81b-4458-4c84-8e9d-c1c2a7ead4bc
++--------------------------------------+----------------------------------------------------------+
+| Property                             | Value                                                    |
++--------------------------------------+----------------------------------------------------------+
+| OS-DCF:diskConfig                    | MANUAL                                                   |
+| OS-EXT-AZ:availability_zone          | nova                                                     |
+| OS-EXT-STS:power_state               | 1                                                        |
+| OS-EXT-STS:task_state                | -                                                        |
+| OS-EXT-STS:vm_state                  | active                                                   |
+| OS-SRV-USG:launched_at               | 2016-04-11T06:09:15.000000                               |
+| OS-SRV-USG:terminated_at             | -                                                        |
+| accessIPv4                           |                                                          |
+| accessIPv6                           |                                                          |
+| config_drive                         |                                                          |
+| created                              | 2016-04-11T06:09:09Z                                     |
+| demo_net network                     | 192.168.99.101, 172.16.88.101                            |
+| flavor                               | m1.tiny (1)                                              |
+| hostId                               | 02e12fa9df2fd3fadacacaee722a5017e302c80dbca4690d2bb5d686 |
+| id                                   | 04bdf81b-4458-4c84-8e9d-c1c2a7ead4bc                     |
+| image                                | cirros (d8a78437-d0c6-4ed1-853d-205ac41a6b9c)            |
+| key_name                             | sshkey                                                   |
+| metadata                             | {}                                                       |
+| name                                 | vm1                                                      |
+| os-extended-volumes:volumes_attached | []                                                       |
+| progress                             | 0                                                        |
+| security_groups                      | sg_demo                                                  |
+| status                               | ACTIVE                                                   |
+| tenant_id                            | f21cfeed248e432bae16aa83accf208e                         |
+| updated                              | 2016-04-11T06:09:15Z                                     |
+| user_id                              | 2e195ef50636400c9632ea1fe8d97c6a                         |
++--------------------------------------+----------------------------------------------------------+

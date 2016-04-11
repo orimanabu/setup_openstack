@@ -1,0 +1,4116 @@
+--- !ruby/object:Puppet::Transaction::Report
+  metrics: 
+    resources: !ruby/object:Puppet::Util::Metric
+      name: resources
+      label: Resources
+      values: 
+        - - total
+          - Total
+          - 99
+        - - skipped
+          - Skipped
+          - 0
+        - - failed
+          - Failed
+          - 0
+        - - failed_to_restart
+          - "Failed to restart"
+          - 0
+        - - restarted
+          - Restarted
+          - 1
+        - - changed
+          - Changed
+          - 65
+        - - out_of_sync
+          - "Out of sync"
+          - 65
+        - - scheduled
+          - Scheduled
+          - 0
+    time: !ruby/object:Puppet::Util::Metric
+      name: time
+      label: Time
+      values: 
+        - - schedule
+          - Schedule
+          - 0.000555063
+        - - package
+          - Package
+          - 45.711017741999996
+        - - ceilometer_config
+          - "Ceilometer config"
+          - 0.45951199600000003
+        - - group
+          - Group
+          - 0.00035738
+        - - user
+          - User
+          - 0.000467959
+        - - filebucket
+          - Filebucket
+          - 0.000112687
+        - - firewall
+          - Firewall
+          - 0.194335307
+        - - service
+          - Service
+          - 3.510934419
+        - - exec
+          - Exec
+          - 0.000162199
+        - - config_retrieval
+          - "Config retrieval"
+          - 1.046289529
+        - - total
+          - Total
+          - 50.923744281
+    changes: !ruby/object:Puppet::Util::Metric
+      name: changes
+      label: Changes
+      values: 
+        - - total
+          - Total
+          - 65
+    events: !ruby/object:Puppet::Util::Metric
+      name: events
+      label: Events
+      values: 
+        - - total
+          - Total
+          - 65
+        - - failure
+          - Failure
+          - 0
+        - - success
+          - Success
+          - 65
+  logs: 
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - package
+        - openstack-ceilometer-notification
+        - openstack
+        - class
+        - "ceilometer::agent::notification"
+        - ceilometer
+        - agent
+        - notification
+      message: created
+      source: "/Stage[main]/Ceilometer::Agent::Notification/Package[openstack-ceilometer-notification]/ensure"
+      time: 2016-04-11 12:50:13.934580 +09:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - package
+        - openstack-ceilometer-collector
+        - class
+        - "ceilometer::collector"
+        - ceilometer
+        - collector
+      message: created
+      source: "/Stage[main]/Ceilometer::Collector/Package[openstack-ceilometer-collector]/ensure"
+      time: 2016-04-11 12:50:18.658196 +09:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - package
+        - ceilometer-agent-central
+        - openstack
+        - ceilometer-package
+        - class
+        - "ceilometer::agent::central"
+        - ceilometer
+        - agent
+        - central
+      message: created
+      source: "/Stage[main]/Ceilometer::Agent::Central/Package[ceilometer-agent-central]/ensure"
+      time: 2016-04-11 12:50:44.297284 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/agent/central.pp
+      line: 37
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - ceilometer
+      message: created
+      source: /Stage[main]/Ceilometer/Ceilometer_config[oslo_messaging_rabbit/rabbit_password]/ensure
+      time: 2016-04-11 12:50:44.339941 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 224
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::agent::auth"
+        - ceilometer
+        - agent
+        - auth
+      message: created
+      source: "/Stage[main]/Ceilometer::Agent::Auth/Ceilometer_config[service_credentials/os_username]/ensure"
+      time: 2016-04-11 12:50:44.352989 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/agent/auth.pp
+      line: 60
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::agent::auth"
+        - ceilometer
+        - agent
+        - auth
+      message: created
+      source: "/Stage[main]/Ceilometer::Agent::Auth/Ceilometer_config[service_credentials/os_tenant_name]/ensure"
+      time: 2016-04-11 12:50:44.362479 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/agent/auth.pp
+      line: 60
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - ceilometer
+      message: created
+      source: /Stage[main]/Ceilometer/Ceilometer_config[database/event_time_to_live]/ensure
+      time: 2016-04-11 12:50:44.373292 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 295
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::db"
+        - ceilometer
+        - db
+      message: created
+      source: "/Stage[main]/Ceilometer::Db/Ceilometer_config[database/min_pool_size]/ensure"
+      time: 2016-04-11 12:50:44.382785 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/db.pp
+      line: 112
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::db"
+        - ceilometer
+        - db
+      message: created
+      source: "/Stage[main]/Ceilometer::Db/Ceilometer_config[database/retry_interval]/ensure"
+      time: 2016-04-11 12:50:44.389377 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/db.pp
+      line: 112
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::agent::notification"
+        - ceilometer
+        - agent
+        - notification
+      message: created
+      source: "/Stage[main]/Ceilometer::Agent::Notification/Ceilometer_config[notification/ack_on_event_error]/ensure"
+      time: 2016-04-11 12:50:44.402258 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/agent/notification.pp
+      line: 89
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - ceilometer
+      message: created
+      source: /Stage[main]/Ceilometer/Ceilometer_config[DEFAULT/rpc_backend]/ensure
+      time: 2016-04-11 12:50:44.408944 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 295
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::alarm::evaluator"
+        - ceilometer
+        - alarm
+        - evaluator
+      message: created
+      source: "/Stage[main]/Ceilometer::Alarm::Evaluator/Ceilometer_config[alarm/evaluation_service]/ensure"
+      time: 2016-04-11 12:50:44.449694 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/alarm/evaluator.pp
+      line: 78
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - ceilometer
+      message: created
+      source: /Stage[main]/Ceilometer/Ceilometer_config[oslo_messaging_rabbit/rabbit_hosts]/ensure
+      time: 2016-04-11 12:50:44.456219 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 208
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::agent::central"
+        - ceilometer
+        - agent
+        - central
+      message: created
+      source: "/Stage[main]/Ceilometer::Agent::Central/Ceilometer_config[coordination/backend_url]/ensure"
+      time: 2016-04-11 12:50:44.462777 +09:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - ceilometer
+      message: created
+      source: /Stage[main]/Ceilometer/Ceilometer_config[DEFAULT/http_timeout]/ensure
+      time: 2016-04-11 12:50:44.469332 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 295
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - ceilometer
+      message: created
+      source: /Stage[main]/Ceilometer/Ceilometer_config[DEFAULT/notification_topics]/ensure
+      time: 2016-04-11 12:50:44.526611 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 295
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::db"
+        - ceilometer
+        - db
+      message: created
+      source: "/Stage[main]/Ceilometer::Db/Ceilometer_config[database/max_retries]/ensure"
+      time: 2016-04-11 12:50:44.534836 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/db.pp
+      line: 112
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::agent::auth"
+        - ceilometer
+        - agent
+        - auth
+      message: created
+      source: "/Stage[main]/Ceilometer::Agent::Auth/Ceilometer_config[service_credentials/os_auth_url]/ensure"
+      time: 2016-04-11 12:50:44.544528 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/agent/auth.pp
+      line: 60
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::logging"
+        - ceilometer
+        - logging
+      message: created
+      source: "/Stage[main]/Ceilometer::Logging/Ceilometer_config[DEFAULT/use_syslog]/ensure"
+      time: 2016-04-11 12:50:44.551460 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/logging.pp
+      line: 129
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::collector"
+        - ceilometer
+        - collector
+      message: created
+      source: "/Stage[main]/Ceilometer::Collector/Ceilometer_config[collector/udp_address]/ensure"
+      time: 2016-04-11 12:50:44.557711 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/collector.pp
+      line: 60
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::alarm::evaluator"
+        - ceilometer
+        - alarm
+        - evaluator
+      message: created
+      source: "/Stage[main]/Ceilometer::Alarm::Evaluator/Ceilometer_config[alarm/record_history]/ensure"
+      time: 2016-04-11 12:50:44.565186 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/alarm/evaluator.pp
+      line: 78
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::logging"
+        - ceilometer
+        - logging
+      message: created
+      source: "/Stage[main]/Ceilometer::Logging/Ceilometer_config[DEFAULT/use_stderr]/ensure"
+      time: 2016-04-11 12:50:44.574223 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/logging.pp
+      line: 129
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::alarm::evaluator"
+        - ceilometer
+        - alarm
+        - evaluator
+      message: created
+      source: "/Stage[main]/Ceilometer::Alarm::Evaluator/Ceilometer_config[alarm/evaluation_interval]/ensure"
+      time: 2016-04-11 12:50:44.580351 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/alarm/evaluator.pp
+      line: 78
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - ceilometer
+      message: created
+      source: /Stage[main]/Ceilometer/Ceilometer_config[oslo_messaging_rabbit/rabbit_ha_queues]/ensure
+      time: 2016-04-11 12:50:44.586834 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 214
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - ceilometer
+      message: created
+      source: /Stage[main]/Ceilometer/Ceilometer_config[oslo_messaging_rabbit/rabbit_host]/ensure
+      time: 2016-04-11 12:50:44.593142 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 204
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::agent::auth"
+        - ceilometer
+        - agent
+        - auth
+      message: created
+      source: "/Stage[main]/Ceilometer::Agent::Auth/Ceilometer_config[service_credentials/os_region_name]/ensure"
+      time: 2016-04-11 12:50:44.599230 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/agent/auth.pp
+      line: 60
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::agent::notification"
+        - ceilometer
+        - agent
+        - notification
+      message: created
+      source: "/Stage[main]/Ceilometer::Agent::Notification/Ceilometer_config[notification/store_events]/ensure"
+      time: 2016-04-11 12:50:44.605579 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/agent/notification.pp
+      line: 89
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::api"
+        - ceilometer
+        - api
+      message: created
+      source: "/Stage[main]/Ceilometer::Api/Ceilometer_config[keystone_authtoken/auth_uri]/ensure"
+      time: 2016-04-11 12:50:44.611710 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/api.pp
+      line: 219
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::collector"
+        - ceilometer
+        - collector
+      message: created
+      source: "/Stage[main]/Ceilometer::Collector/Ceilometer_config[collector/udp_port]/ensure"
+      time: 2016-04-11 12:50:44.623628 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/collector.pp
+      line: 60
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::db"
+        - ceilometer
+        - db
+      message: created
+      source: "/Stage[main]/Ceilometer::Db/Ceilometer_config[database/idle_timeout]/ensure"
+      time: 2016-04-11 12:50:44.629668 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/db.pp
+      line: 112
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::collector"
+        - ceilometer
+        - collector
+      message: created
+      source: "/Stage[main]/Ceilometer::Collector/Ceilometer_config[DEFAULT/meter_dispatcher]/ensure"
+      time: 2016-04-11 12:50:44.639537 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/collector.pp
+      line: 60
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - ceilometer
+      message: created
+      source: /Stage[main]/Ceilometer/Ceilometer_config[database/alarm_history_time_to_live]/ensure
+      time: 2016-04-11 12:50:44.652589 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 295
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::api"
+        - ceilometer
+        - api
+      message: created
+      source: "/Stage[main]/Ceilometer::Api/Ceilometer_config[keystone_authtoken/identity_uri]/ensure"
+      time: 2016-04-11 12:50:44.658780 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/api.pp
+      line: 224
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::db"
+        - ceilometer
+        - db
+      message: created
+      source: "/Stage[main]/Ceilometer::Db/Ceilometer_config[database/max_overflow]/ensure"
+      time: 2016-04-11 12:50:44.664930 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/db.pp
+      line: 112
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::logging"
+        - ceilometer
+        - logging
+      message: created
+      source: "/Stage[main]/Ceilometer::Logging/Ceilometer_config[DEFAULT/log_dir]/ensure"
+      time: 2016-04-11 12:50:44.671266 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/logging.pp
+      line: 129
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::logging"
+        - ceilometer
+        - logging
+      message: created
+      source: "/Stage[main]/Ceilometer::Logging/Ceilometer_config[DEFAULT/verbose]/ensure"
+      time: 2016-04-11 12:50:44.677417 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/logging.pp
+      line: 129
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::api"
+        - ceilometer
+        - api
+      message: created
+      source: "/Stage[main]/Ceilometer::Api/Ceilometer_config[api/host]/ensure"
+      time: 2016-04-11 12:50:44.687539 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/api.pp
+      line: 153
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::api"
+        - ceilometer
+        - api
+      message: created
+      source: "/Stage[main]/Ceilometer::Api/Ceilometer_config[keystone_authtoken/admin_user]/ensure"
+      time: 2016-04-11 12:50:44.696762 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/api.pp
+      line: 153
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - ceilometer
+      message: created
+      source: /Stage[main]/Ceilometer/Ceilometer_config[oslo_messaging_rabbit/rabbit_virtual_host]/ensure
+      time: 2016-04-11 12:50:44.706065 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 224
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::alarm::evaluator"
+        - ceilometer
+        - alarm
+        - evaluator
+      message: created
+      source: "/Stage[main]/Ceilometer::Alarm::Evaluator/Ceilometer_config[alarm/partition_rpc_topic]/ensure"
+      time: 2016-04-11 12:50:44.712306 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/alarm/evaluator.pp
+      line: 78
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - ceilometer
+      message: created
+      source: /Stage[main]/Ceilometer/Ceilometer_config[oslo_messaging_rabbit/rabbit_port]/ensure
+      time: 2016-04-11 12:50:44.718486 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 205
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - ceilometer
+      message: created
+      source: /Stage[main]/Ceilometer/Ceilometer_config[oslo_messaging_rabbit/heartbeat_timeout_threshold]/ensure
+      time: 2016-04-11 12:50:44.724937 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 224
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::api"
+        - ceilometer
+        - api
+      message: created
+      source: "/Stage[main]/Ceilometer::Api/Ceilometer_config[keystone_authtoken/admin_tenant_name]/ensure"
+      time: 2016-04-11 12:50:44.734502 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/api.pp
+      line: 153
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - ceilometer
+      message: created
+      source: /Stage[main]/Ceilometer/Ceilometer_config[oslo_messaging_rabbit/rabbit_userid]/ensure
+      time: 2016-04-11 12:50:44.754827 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 224
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - package
+        - ceilometer-api
+        - openstack
+        - ceilometer-package
+        - class
+        - "ceilometer::api"
+        - ceilometer
+        - api
+      message: created
+      source: "/Stage[main]/Ceilometer::Api/Package[ceilometer-api]/ensure"
+      time: 2016-04-11 12:50:48.698102 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/api.pp
+      line: 109
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::db"
+        - ceilometer
+        - db
+      message: created
+      source: "/Stage[main]/Ceilometer::Db/Ceilometer_config[database/max_pool_size]/ensure"
+      time: 2016-04-11 12:50:48.709637 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/db.pp
+      line: 112
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::agent::auth"
+        - ceilometer
+        - agent
+        - auth
+      message: created
+      source: "/Stage[main]/Ceilometer::Agent::Auth/Ceilometer_config[service_credentials/os_password]/ensure"
+      time: 2016-04-11 12:50:48.719636 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/agent/auth.pp
+      line: 60
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - ceilometer
+      message: created
+      source: /Stage[main]/Ceilometer/Ceilometer_config[oslo_messaging_rabbit/heartbeat_rate]/ensure
+      time: 2016-04-11 12:50:48.726459 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 224
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::api"
+        - ceilometer
+        - api
+      message: created
+      source: "/Stage[main]/Ceilometer::Api/Ceilometer_config[keystone_authtoken/admin_password]/ensure"
+      time: 2016-04-11 12:50:48.733194 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/api.pp
+      line: 153
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - package
+        - openstack-ceilometer-alarm
+        - openstack
+        - class
+        - "ceilometer::alarm::notifier"
+        - ceilometer
+        - alarm
+        - notifier
+      message: created
+      source: "/Stage[main]/Ceilometer::Alarm::Notifier/Package[openstack-ceilometer-alarm]/ensure"
+      time: 2016-04-11 12:50:52.748376 +09:00
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - ceilometer
+      message: created
+      source: /Stage[main]/Ceilometer/Ceilometer_config[database/metering_time_to_live]/ensure
+      time: 2016-04-11 12:50:52.759021 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 295
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::db"
+        - ceilometer
+        - db
+      message: created
+      source: "/Stage[main]/Ceilometer::Db/Ceilometer_config[database/connection]/ensure"
+      time: 2016-04-11 12:50:52.767599 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/db.pp
+      line: 112
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - ceilometer
+      message: created
+      source: /Stage[main]/Ceilometer/Ceilometer_config[oslo_messaging_rabbit/rabbit_use_ssl]/ensure
+      time: 2016-04-11 12:50:52.778646 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 224
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::logging"
+        - ceilometer
+        - logging
+      message: created
+      source: "/Stage[main]/Ceilometer::Logging/Ceilometer_config[DEFAULT/debug]/ensure"
+      time: 2016-04-11 12:50:52.785969 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/logging.pp
+      line: 129
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::api"
+        - ceilometer
+        - api
+      message: created
+      source: "/Stage[main]/Ceilometer::Api/Ceilometer_config[api/port]/ensure"
+      time: 2016-04-11 12:50:52.792730 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/api.pp
+      line: 153
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::collector"
+        - ceilometer
+        - collector
+      message: created
+      source: "/Stage[main]/Ceilometer::Collector/Ceilometer_config[DEFAULT/event_dispatcher]/ensure"
+      time: 2016-04-11 12:50:52.810130 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/collector.pp
+      line: 60
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - firewall
+        - "packstack::firewall"
+        - packstack
+        - ceilometer_api
+        - class
+      message: created
+      source: "/Stage[main]/Main/Packstack::Firewall[ceilometer_api]/Firewall[001 ceilometer-api incoming ceilometer_api]/ensure"
+      time: 2016-04-11 12:50:53.025179 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/packstack/manifests/firewall.pp
+      line: 50
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - ceilometer
+      message: created
+      source: /Stage[main]/Ceilometer/Ceilometer_config[publisher/metering_secret]/ensure
+      time: 2016-04-11 12:50:53.072823 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 295
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - ceilometer_config
+        - class
+        - "ceilometer::logging"
+        - ceilometer
+        - logging
+      message: created
+      source: "/Stage[main]/Ceilometer::Logging/Ceilometer_config[DEFAULT/syslog_log_facility]/ensure"
+      time: 2016-04-11 12:50:53.081947 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/logging.pp
+      line: 129
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - service
+        - ceilometer-agent-notification
+        - class
+        - "ceilometer::agent::notification"
+        - ceilometer
+        - agent
+        - notification
+      message: "ensure changed 'stopped' to 'running'"
+      source: "/Stage[main]/Ceilometer::Agent::Notification/Service[ceilometer-agent-notification]/ensure"
+      time: 2016-04-11 12:50:53.326736 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/agent/notification.pp
+      line: 84
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - service
+        - ceilometer-collector
+        - class
+        - "ceilometer::collector"
+        - ceilometer
+        - collector
+      message: "ensure changed 'stopped' to 'running'"
+      source: "/Stage[main]/Ceilometer::Collector/Service[ceilometer-collector]/ensure"
+      time: 2016-04-11 12:50:54.253995 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/collector.pp
+      line: 82
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - exec
+        - ceilometer-dbsync
+        - class
+        - "ceilometer::db::sync"
+        - ceilometer
+        - db
+        - sync
+        - "ceilometer::db"
+      message: "Triggered 'refresh' from 3 events"
+      source: "/Stage[main]/Ceilometer::Db::Sync/Exec[ceilometer-dbsync]"
+      time: 2016-04-11 12:50:55.842576 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/db/sync.pp
+      line: 29
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - service
+        - ceilometer-agent-central
+        - ceilometer-service
+        - class
+        - "ceilometer::agent::central"
+        - ceilometer
+        - agent
+        - central
+      message: "ensure changed 'stopped' to 'running'"
+      source: "/Stage[main]/Ceilometer::Agent::Central/Service[ceilometer-agent-central]/ensure"
+      time: 2016-04-11 12:50:56.288945 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/agent/central.pp
+      line: 55
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - service
+        - ceilometer-alarm-notifier
+        - class
+        - "ceilometer::alarm::notifier"
+        - ceilometer
+        - alarm
+        - notifier
+      message: "ensure changed 'stopped' to 'running'"
+      source: "/Stage[main]/Ceilometer::Alarm::Notifier/Service[ceilometer-alarm-notifier]/ensure"
+      time: 2016-04-11 12:50:56.842329 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/alarm/notifier.pp
+      line: 65
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - service
+        - ceilometer-api
+        - ceilometer-service
+        - class
+        - "ceilometer::api"
+        - ceilometer
+        - api
+      message: "ensure changed 'stopped' to 'running'"
+      source: "/Stage[main]/Ceilometer::Api/Service[ceilometer-api]/ensure"
+      time: 2016-04-11 12:50:57.480539 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/api.pp
+      line: 130
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - service
+        - ceilometer-alarm-evaluator
+        - class
+        - "ceilometer::alarm::evaluator"
+        - ceilometer
+        - alarm
+        - evaluator
+      message: "ensure changed 'stopped' to 'running'"
+      source: "/Stage[main]/Ceilometer::Alarm::Evaluator/Service[ceilometer-alarm-evaluator]/ensure"
+      time: 2016-04-11 12:50:58.200408 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/alarm/evaluator.pp
+      line: 71
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+      message: "Finished catalog run in 52.58 seconds"
+      source: Puppet
+      time: 2016-04-11 12:50:58.727358 +09:00
+  resource_statuses: 
+    Schedule[daily]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[daily]
+      file: 
+      line: 
+      evaluation_time: 0.000118542
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - daily
+      time: 2016-04-11 12:50:06.484378 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: daily
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[daily]
+    Schedule[monthly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[monthly]
+      file: 
+      line: 
+      evaluation_time: 4.8404e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - monthly
+      time: 2016-04-11 12:50:06.484600 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: monthly
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[monthly]
+    Schedule[hourly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[hourly]
+      file: 
+      line: 
+      evaluation_time: 4.7353e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - hourly
+      time: 2016-04-11 12:50:06.484725 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: hourly
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[hourly]
+    Package[openstack-ceilometer-notification]: !ruby/object:Puppet::Resource::Status
+      resource: Package[openstack-ceilometer-notification]
+      file: 
+      line: 
+      evaluation_time: 7.341968315
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - package
+        - openstack-ceilometer-notification
+        - openstack
+        - class
+        - "ceilometer::agent::notification"
+        - ceilometer
+        - agent
+        - notification
+      time: 2016-04-11 12:50:06.592861 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym package_installed
+          status: success
+          time: 2016-04-11 12:50:06.620280 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Package
+      title: openstack-ceilometer-notification
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Agent::Notification"
+        - Package[openstack-ceilometer-notification]
+    Package[openstack-ceilometer-collector]: !ruby/object:Puppet::Resource::Status
+      resource: Package[openstack-ceilometer-collector]
+      file: 
+      line: 
+      evaluation_time: 4.717983624
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - package
+        - openstack-ceilometer-collector
+        - class
+        - "ceilometer::collector"
+        - ceilometer
+        - collector
+      time: 2016-04-11 12:50:13.940448 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym package_installed
+          status: success
+          time: 2016-04-11 12:50:13.977318 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Package
+      title: openstack-ceilometer-collector
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Collector"
+        - Package[openstack-ceilometer-collector]
+    Package[ceilometer-agent-central]: !ruby/object:Puppet::Resource::Status
+      resource: Package[ceilometer-agent-central]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/agent/central.pp
+      line: 37
+      evaluation_time: 25.635031394
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - package
+        - ceilometer-agent-central
+        - openstack
+        - ceilometer-package
+        - class
+        - "ceilometer::agent::central"
+        - ceilometer
+        - agent
+        - central
+      time: 2016-04-11 12:50:18.662579 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym package_installed
+          status: success
+          time: 2016-04-11 12:50:18.694224 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Package
+      title: ceilometer-agent-central
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Agent::Central"
+        - Package[ceilometer-agent-central]
+    Package[ceilometer-common]: !ruby/object:Puppet::Resource::Status
+      resource: Package[ceilometer-common]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 192
+      evaluation_time: 0.033441876
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - package
+        - ceilometer-common
+        - openstack
+        - ceilometer-package
+        - class
+        - ceilometer
+      time: 2016-04-11 12:50:44.298543 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Package
+      title: ceilometer-common
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Ceilometer
+        - Package[ceilometer-common]
+    Ceilometer_config[oslo_messaging_rabbit/rabbit_password]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[oslo_messaging_rabbit/rabbit_password]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 224
+      evaluation_time: 0.006913527
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - ceilometer
+      time: 2016-04-11 12:50:44.333212 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.336726 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: oslo_messaging_rabbit/rabbit_password
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Ceilometer
+        - Ceilometer_config[oslo_messaging_rabbit/rabbit_password]
+    Ceilometer_config[DEFAULT/publish_errors]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[DEFAULT/publish_errors]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/logging.pp
+      line: 209
+      evaluation_time: 0.003219822
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::logging"
+        - ceilometer
+        - logging
+      time: 2016-04-11 12:50:44.340512 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Ceilometer_config
+      title: DEFAULT/publish_errors
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Logging"
+        - Ceilometer_config[DEFAULT/publish_errors]
+    Ceilometer_config[keystone_authtoken/auth_admin_prefix]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[keystone_authtoken/auth_admin_prefix]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/api.pp
+      line: 208
+      evaluation_time: 0.003116553
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::api"
+        - ceilometer
+        - api
+      time: 2016-04-11 12:50:44.344066 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Ceilometer_config
+      title: keystone_authtoken/auth_admin_prefix
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Api"
+        - Ceilometer_config[keystone_authtoken/auth_admin_prefix]
+    Ceilometer_config[service_credentials/os_username]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[service_credentials/os_username]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/agent/auth.pp
+      line: 60
+      evaluation_time: 0.005737839
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::agent::auth"
+        - ceilometer
+        - agent
+        - auth
+      time: 2016-04-11 12:50:44.347422 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.350271 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: service_credentials/os_username
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Agent::Auth"
+        - Ceilometer_config[service_credentials/os_username]
+    Ceilometer_config[DEFAULT/logging_exception_prefix]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[DEFAULT/logging_exception_prefix]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/logging.pp
+      line: 175
+      evaluation_time: 0.002930771
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::logging"
+        - ceilometer
+        - logging
+      time: 2016-04-11 12:50:44.353618 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Ceilometer_config
+      title: DEFAULT/logging_exception_prefix
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Logging"
+        - Ceilometer_config[DEFAULT/logging_exception_prefix]
+    Ceilometer_config[service_credentials/os_tenant_name]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[service_credentials/os_tenant_name]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/agent/auth.pp
+      line: 60
+      evaluation_time: 0.00584372
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::agent::auth"
+        - ceilometer
+        - agent
+        - auth
+      time: 2016-04-11 12:50:44.356784 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.359632 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: service_credentials/os_tenant_name
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Agent::Auth"
+        - Ceilometer_config[service_credentials/os_tenant_name]
+    Group[ceilometer]: !ruby/object:Puppet::Resource::Status
+      resource: Group[ceilometer]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 179
+      evaluation_time: 0.00035738
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - group
+        - ceilometer
+        - class
+      time: 2016-04-11 12:50:44.363558 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Group
+      title: ceilometer
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Ceilometer
+        - Group[ceilometer]
+    Ceilometer_config[DEFAULT/logging_context_format_string]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[DEFAULT/logging_context_format_string]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/logging.pp
+      line: 140
+      evaluation_time: 0.00306555
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::logging"
+        - ceilometer
+        - logging
+      time: 2016-04-11 12:50:44.364100 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Ceilometer_config
+      title: DEFAULT/logging_context_format_string
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Logging"
+        - Ceilometer_config[DEFAULT/logging_context_format_string]
+    Ceilometer_config[database/event_time_to_live]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[database/event_time_to_live]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 295
+      evaluation_time: 0.006015724
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - ceilometer
+      time: 2016-04-11 12:50:44.367424 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.370385 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: database/event_time_to_live
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Ceilometer
+        - Ceilometer_config[database/event_time_to_live]
+    Ceilometer_config[database/min_pool_size]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[database/min_pool_size]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/db.pp
+      line: 112
+      evaluation_time: 0.006249733
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::db"
+        - ceilometer
+        - db
+      time: 2016-04-11 12:50:44.376736 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.379822 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: database/min_pool_size
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Db"
+        - Ceilometer_config[database/min_pool_size]
+    Ceilometer_config[database/retry_interval]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[database/retry_interval]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/db.pp
+      line: 112
+      evaluation_time: 0.006188702
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::db"
+        - ceilometer
+        - db
+      time: 2016-04-11 12:50:44.383366 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.386367 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: database/retry_interval
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Db"
+        - Ceilometer_config[database/retry_interval]
+    Ceilometer_config[database/mongodb_replica_set]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[database/mongodb_replica_set]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/db.pp
+      line: 85
+      evaluation_time: 0.002826383
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::db"
+        - ceilometer
+        - db
+      time: 2016-04-11 12:50:44.389970 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Ceilometer_config
+      title: database/mongodb_replica_set
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Db"
+        - Ceilometer_config[database/mongodb_replica_set]
+    Ceilometer_config[keystone_authtoken/auth_host]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[keystone_authtoken/auth_host]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/api.pp
+      line: 208
+      evaluation_time: 0.00262702
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::api"
+        - ceilometer
+        - api
+      time: 2016-04-11 12:50:44.393041 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Ceilometer_config
+      title: keystone_authtoken/auth_host
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Api"
+        - Ceilometer_config[keystone_authtoken/auth_host]
+    Ceilometer_config[notification/ack_on_event_error]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[notification/ack_on_event_error]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/agent/notification.pp
+      line: 89
+      evaluation_time: 0.006435644
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::agent::notification"
+        - ceilometer
+        - agent
+        - notification
+      time: 2016-04-11 12:50:44.395986 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.399114 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: notification/ack_on_event_error
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Agent::Notification"
+        - Ceilometer_config[notification/ack_on_event_error]
+    Ceilometer_config[DEFAULT/rpc_backend]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[DEFAULT/rpc_backend]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 295
+      evaluation_time: 0.006262946
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - ceilometer
+      time: 2016-04-11 12:50:44.402827 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.405606 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: DEFAULT/rpc_backend
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Ceilometer
+        - Ceilometer_config[DEFAULT/rpc_backend]
+    Ceilometer_config[DEFAULT/fatal_deprecations]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[DEFAULT/fatal_deprecations]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/logging.pp
+      line: 220
+      evaluation_time: 0.002765237
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::logging"
+        - ceilometer
+        - logging
+      time: 2016-04-11 12:50:44.409496 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Ceilometer_config
+      title: DEFAULT/fatal_deprecations
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Logging"
+        - Ceilometer_config[DEFAULT/fatal_deprecations]
+    Ceilometer_config[oslo_messaging_rabbit/kombu_ssl_keyfile]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[oslo_messaging_rabbit/kombu_ssl_keyfile]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 258
+      evaluation_time: 0.002572879
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - ceilometer_config
+        - class
+        - ceilometer
+      time: 2016-04-11 12:50:44.412471 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Ceilometer_config
+      title: oslo_messaging_rabbit/kombu_ssl_keyfile
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Ceilometer
+        - Ceilometer_config[oslo_messaging_rabbit/kombu_ssl_keyfile]
+    Package[ceilometer-backend-package]: !ruby/object:Puppet::Resource::Status
+      resource: Package[ceilometer-backend-package]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/db.pp
+      line: 101
+      evaluation_time: 0.027646572
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - package
+        - ceilometer-backend-package
+        - openstack
+        - class
+        - "ceilometer::db"
+        - ceilometer
+        - db
+      time: 2016-04-11 12:50:44.415418 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Package
+      title: ceilometer-backend-package
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Db"
+        - Package[ceilometer-backend-package]
+    Ceilometer_config[alarm/evaluation_service]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[alarm/evaluation_service]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/alarm/evaluator.pp
+      line: 78
+      evaluation_time: 0.006397844
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::alarm::evaluator"
+        - ceilometer
+        - alarm
+        - evaluator
+      time: 2016-04-11 12:50:44.443557 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.446696 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: alarm/evaluation_service
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Alarm::Evaluator"
+        - Ceilometer_config[alarm/evaluation_service]
+    Ceilometer_config[oslo_messaging_rabbit/rabbit_hosts]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[oslo_messaging_rabbit/rabbit_hosts]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 208
+      evaluation_time: 0.005806461
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - ceilometer
+      time: 2016-04-11 12:50:44.450547 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.453416 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: oslo_messaging_rabbit/rabbit_hosts
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Ceilometer
+        - Ceilometer_config[oslo_messaging_rabbit/rabbit_hosts]
+    Ceilometer_config[coordination/backend_url]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[coordination/backend_url]
+      file: 
+      line: 
+      evaluation_time: 0.006047682
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::agent::central"
+        - ceilometer
+        - agent
+        - central
+      time: 2016-04-11 12:50:44.456921 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.459801 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: coordination/backend_url
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Agent::Central"
+        - Ceilometer_config[coordination/backend_url]
+    Ceilometer_config[DEFAULT/http_timeout]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[DEFAULT/http_timeout]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 295
+      evaluation_time: 0.006136431
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - ceilometer
+      time: 2016-04-11 12:50:44.463371 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.466279 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: DEFAULT/http_timeout
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Ceilometer
+        - Ceilometer_config[DEFAULT/http_timeout]
+    Ceilometer_config[DEFAULT/notification_topics]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[DEFAULT/notification_topics]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 295
+      evaluation_time: 0.056900161
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - ceilometer
+      time: 2016-04-11 12:50:44.469932 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.516943 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: DEFAULT/notification_topics
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Ceilometer
+        - Ceilometer_config[DEFAULT/notification_topics]
+    Ceilometer_config[database/max_retries]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[database/max_retries]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/db.pp
+      line: 112
+      evaluation_time: 0.007489751
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::db"
+        - ceilometer
+        - db
+      time: 2016-04-11 12:50:44.527530 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.531227 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: database/max_retries
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Db"
+        - Ceilometer_config[database/max_retries]
+    Ceilometer_config[service_credentials/os_auth_url]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[service_credentials/os_auth_url]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/agent/auth.pp
+      line: 60
+      evaluation_time: 0.009180887
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::agent::auth"
+        - ceilometer
+        - agent
+        - auth
+      time: 2016-04-11 12:50:44.535520 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.539989 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: service_credentials/os_auth_url
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Agent::Auth"
+        - Ceilometer_config[service_credentials/os_auth_url]
+    Ceilometer_config[DEFAULT/use_syslog]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[DEFAULT/use_syslog]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/logging.pp
+      line: 129
+      evaluation_time: 0.006299836
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::logging"
+        - ceilometer
+        - logging
+      time: 2016-04-11 12:50:44.545280 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.548470 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: DEFAULT/use_syslog
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Logging"
+        - Ceilometer_config[DEFAULT/use_syslog]
+    Ceilometer_config[collector/udp_address]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[collector/udp_address]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/collector.pp
+      line: 60
+      evaluation_time: 0.005823442
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::collector"
+        - ceilometer
+        - collector
+      time: 2016-04-11 12:50:44.552023 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.554984 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: collector/udp_address
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Collector"
+        - Ceilometer_config[collector/udp_address]
+    User[ceilometer]: !ruby/object:Puppet::Resource::Status
+      resource: User[ceilometer]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 186
+      evaluation_time: 0.000467959
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - user
+        - ceilometer
+        - class
+      time: 2016-04-11 12:50:44.558661 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: User
+      title: ceilometer
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Ceilometer
+        - User[ceilometer]
+    Ceilometer_config[alarm/record_history]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[alarm/record_history]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/alarm/evaluator.pp
+      line: 78
+      evaluation_time: 0.006002612
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::alarm::evaluator"
+        - ceilometer
+        - alarm
+        - evaluator
+      time: 2016-04-11 12:50:44.559371 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.562406 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: alarm/record_history
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Alarm::Evaluator"
+        - Ceilometer_config[alarm/record_history]
+    Ceilometer_config[DEFAULT/default_log_levels]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[DEFAULT/default_log_levels]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/logging.pp
+      line: 198
+      evaluation_time: 0.002709145
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::logging"
+        - ceilometer
+        - logging
+      time: 2016-04-11 12:50:44.565711 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Ceilometer_config
+      title: DEFAULT/default_log_levels
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Logging"
+        - Ceilometer_config[DEFAULT/default_log_levels]
+    Ceilometer_config[DEFAULT/use_stderr]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[DEFAULT/use_stderr]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/logging.pp
+      line: 129
+      evaluation_time: 0.005746388
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::logging"
+        - ceilometer
+        - logging
+      time: 2016-04-11 12:50:44.568591 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.571381 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: DEFAULT/use_stderr
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Logging"
+        - Ceilometer_config[DEFAULT/use_stderr]
+    Ceilometer_config[alarm/evaluation_interval]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[alarm/evaluation_interval]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/alarm/evaluator.pp
+      line: 78
+      evaluation_time: 0.005807955
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::alarm::evaluator"
+        - ceilometer
+        - alarm
+        - evaluator
+      time: 2016-04-11 12:50:44.574717 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.577599 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: alarm/evaluation_interval
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Alarm::Evaluator"
+        - Ceilometer_config[alarm/evaluation_interval]
+    Ceilometer_config[oslo_messaging_rabbit/rabbit_ha_queues]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[oslo_messaging_rabbit/rabbit_ha_queues]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 214
+      evaluation_time: 0.006113754
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - ceilometer
+      time: 2016-04-11 12:50:44.580903 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.583983 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: oslo_messaging_rabbit/rabbit_ha_queues
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Ceilometer
+        - Ceilometer_config[oslo_messaging_rabbit/rabbit_ha_queues]
+    Ceilometer_config[oslo_messaging_rabbit/rabbit_host]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[oslo_messaging_rabbit/rabbit_host]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 204
+      evaluation_time: 0.005871778
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - ceilometer
+      time: 2016-04-11 12:50:44.587409 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.590347 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: oslo_messaging_rabbit/rabbit_host
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Ceilometer
+        - Ceilometer_config[oslo_messaging_rabbit/rabbit_host]
+    Ceilometer_config[service_credentials/os_region_name]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[service_credentials/os_region_name]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/agent/auth.pp
+      line: 60
+      evaluation_time: 0.005674155
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::agent::auth"
+        - ceilometer
+        - agent
+        - auth
+      time: 2016-04-11 12:50:44.593704 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.596589 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: service_credentials/os_region_name
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Agent::Auth"
+        - Ceilometer_config[service_credentials/os_region_name]
+    Ceilometer_config[notification/store_events]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[notification/store_events]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/agent/notification.pp
+      line: 89
+      evaluation_time: 0.005984391
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::agent::notification"
+        - ceilometer
+        - agent
+        - notification
+      time: 2016-04-11 12:50:44.599777 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.602752 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: notification/store_events
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Agent::Notification"
+        - Ceilometer_config[notification/store_events]
+    Ceilometer_config[keystone_authtoken/auth_uri]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[keystone_authtoken/auth_uri]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/api.pp
+      line: 219
+      evaluation_time: 0.005689639
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::api"
+        - ceilometer
+        - api
+      time: 2016-04-11 12:50:44.606223 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.609026 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: keystone_authtoken/auth_uri
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Api"
+        - Ceilometer_config[keystone_authtoken/auth_uri]
+    Ceilometer_config[DEFAULT/memcached_servers]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[DEFAULT/memcached_servers]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 308
+      evaluation_time: 0.002745086
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - ceilometer_config
+        - class
+        - ceilometer
+      time: 2016-04-11 12:50:44.612294 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Ceilometer_config
+      title: DEFAULT/memcached_servers
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Ceilometer
+        - Ceilometer_config[DEFAULT/memcached_servers]
+    Ceilometer_config[DEFAULT/instance_uuid_format]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[DEFAULT/instance_uuid_format]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/logging.pp
+      line: 242
+      evaluation_time: 0.002703461
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::logging"
+        - ceilometer
+        - logging
+      time: 2016-04-11 12:50:44.615222 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Ceilometer_config
+      title: DEFAULT/instance_uuid_format
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Logging"
+        - Ceilometer_config[DEFAULT/instance_uuid_format]
+    Ceilometer_config[collector/udp_port]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[collector/udp_port]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/collector.pp
+      line: 60
+      evaluation_time: 0.005616881
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::collector"
+        - ceilometer
+        - collector
+      time: 2016-04-11 12:50:44.618147 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.620960 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: collector/udp_port
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Collector"
+        - Ceilometer_config[collector/udp_port]
+    Ceilometer_config[database/idle_timeout]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[database/idle_timeout]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/db.pp
+      line: 112
+      evaluation_time: 0.005628969
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::db"
+        - ceilometer
+        - db
+      time: 2016-04-11 12:50:44.624188 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.627011 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: database/idle_timeout
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Db"
+        - Ceilometer_config[database/idle_timeout]
+    Ceilometer_config[DEFAULT/meter_dispatcher]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[DEFAULT/meter_dispatcher]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/collector.pp
+      line: 60
+      evaluation_time: 0.009494176
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::collector"
+        - ceilometer
+        - collector
+      time: 2016-04-11 12:50:44.630205 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.632989 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: DEFAULT/meter_dispatcher
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Collector"
+        - Ceilometer_config[DEFAULT/meter_dispatcher]
+    Ceilometer_config[keystone_authtoken/auth_protocol]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[keystone_authtoken/auth_protocol]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/api.pp
+      line: 208
+      evaluation_time: 0.00296821
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::api"
+        - ceilometer
+        - api
+      time: 2016-04-11 12:50:44.640351 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Ceilometer_config
+      title: keystone_authtoken/auth_protocol
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Api"
+        - Ceilometer_config[keystone_authtoken/auth_protocol]
+    Ceilometer_config[DEFAULT/logging_default_format_string]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[DEFAULT/logging_default_format_string]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/logging.pp
+      line: 152
+      evaluation_time: 0.002728998
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::logging"
+        - ceilometer
+        - logging
+      time: 2016-04-11 12:50:44.643527 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Ceilometer_config
+      title: DEFAULT/logging_default_format_string
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Logging"
+        - Ceilometer_config[DEFAULT/logging_default_format_string]
+    Ceilometer_config[database/alarm_history_time_to_live]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[database/alarm_history_time_to_live]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 295
+      evaluation_time: 0.006212309
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - ceilometer
+      time: 2016-04-11 12:50:44.646508 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.649346 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: database/alarm_history_time_to_live
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Ceilometer
+        - Ceilometer_config[database/alarm_history_time_to_live]
+    Ceilometer_config[keystone_authtoken/identity_uri]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[keystone_authtoken/identity_uri]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/api.pp
+      line: 224
+      evaluation_time: 0.005813242
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::api"
+        - ceilometer
+        - api
+      time: 2016-04-11 12:50:44.653160 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.656008 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: keystone_authtoken/identity_uri
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Api"
+        - Ceilometer_config[keystone_authtoken/identity_uri]
+    Ceilometer_config[database/max_overflow]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[database/max_overflow]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/db.pp
+      line: 112
+      evaluation_time: 0.005761347
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::db"
+        - ceilometer
+        - db
+      time: 2016-04-11 12:50:44.659342 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.662170 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: database/max_overflow
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Db"
+        - Ceilometer_config[database/max_overflow]
+    Schedule[never]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[never]
+      file: 
+      line: 
+      evaluation_time: 7.685e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - never
+      time: 2016-04-11 12:50:44.665389 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: never
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[never]
+    Ceilometer_config[DEFAULT/log_dir]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[DEFAULT/log_dir]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/logging.pp
+      line: 129
+      evaluation_time: 0.005778871
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::logging"
+        - ceilometer
+        - logging
+      time: 2016-04-11 12:50:44.665621 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.668443 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: DEFAULT/log_dir
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Logging"
+        - Ceilometer_config[DEFAULT/log_dir]
+    Ceilometer_config[DEFAULT/verbose]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[DEFAULT/verbose]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/logging.pp
+      line: 129
+      evaluation_time: 0.005877095
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::logging"
+        - ceilometer
+        - logging
+      time: 2016-04-11 12:50:44.671726 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.674586 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: DEFAULT/verbose
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Logging"
+        - Ceilometer_config[DEFAULT/verbose]
+    Ceilometer_config[api/host]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[api/host]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/api.pp
+      line: 153
+      evaluation_time: 0.00582264
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::api"
+        - ceilometer
+        - api
+      time: 2016-04-11 12:50:44.681854 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.684822 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: api/host
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Api"
+        - Ceilometer_config[api/host]
+    Ceilometer_config[oslo_messaging_rabbit/kombu_ssl_version]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[oslo_messaging_rabbit/kombu_ssl_version]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 258
+      evaluation_time: 0.002801756
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - ceilometer_config
+        - class
+        - ceilometer
+      time: 2016-04-11 12:50:44.688086 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Ceilometer_config
+      title: oslo_messaging_rabbit/kombu_ssl_version
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Ceilometer
+        - Ceilometer_config[oslo_messaging_rabbit/kombu_ssl_version]
+    Ceilometer_config[keystone_authtoken/admin_user]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[keystone_authtoken/admin_user]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/api.pp
+      line: 153
+      evaluation_time: 0.005818478
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::api"
+        - ceilometer
+        - api
+      time: 2016-04-11 12:50:44.691123 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.693999 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: keystone_authtoken/admin_user
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Api"
+        - Ceilometer_config[keystone_authtoken/admin_user]
+    Ceilometer_config[oslo_messaging_rabbit/kombu_ssl_ca_certs]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[oslo_messaging_rabbit/kombu_ssl_ca_certs]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 258
+      evaluation_time: 0.002839649
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - ceilometer_config
+        - class
+        - ceilometer
+      time: 2016-04-11 12:50:44.697287 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Ceilometer_config
+      title: oslo_messaging_rabbit/kombu_ssl_ca_certs
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Ceilometer
+        - Ceilometer_config[oslo_messaging_rabbit/kombu_ssl_ca_certs]
+    Ceilometer_config[oslo_messaging_rabbit/rabbit_virtual_host]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[oslo_messaging_rabbit/rabbit_virtual_host]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 224
+      evaluation_time: 0.005837836
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - ceilometer
+      time: 2016-04-11 12:50:44.700346 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.703262 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: oslo_messaging_rabbit/rabbit_virtual_host
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Ceilometer
+        - Ceilometer_config[oslo_messaging_rabbit/rabbit_virtual_host]
+    Ceilometer_config[alarm/partition_rpc_topic]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[alarm/partition_rpc_topic]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/alarm/evaluator.pp
+      line: 78
+      evaluation_time: 0.005904895
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::alarm::evaluator"
+        - ceilometer
+        - alarm
+        - evaluator
+      time: 2016-04-11 12:50:44.706580 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.709568 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: alarm/partition_rpc_topic
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Alarm::Evaluator"
+        - Ceilometer_config[alarm/partition_rpc_topic]
+    Ceilometer_config[oslo_messaging_rabbit/rabbit_port]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[oslo_messaging_rabbit/rabbit_port]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 205
+      evaluation_time: 0.005760737
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - ceilometer
+      time: 2016-04-11 12:50:44.712844 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.715784 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: oslo_messaging_rabbit/rabbit_port
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Ceilometer
+        - Ceilometer_config[oslo_messaging_rabbit/rabbit_port]
+    Ceilometer_config[oslo_messaging_rabbit/heartbeat_timeout_threshold]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[oslo_messaging_rabbit/heartbeat_timeout_threshold]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 224
+      evaluation_time: 0.006047014
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - ceilometer
+      time: 2016-04-11 12:50:44.719009 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.721986 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: oslo_messaging_rabbit/heartbeat_timeout_threshold
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Ceilometer
+        - Ceilometer_config[oslo_messaging_rabbit/heartbeat_timeout_threshold]
+    Ceilometer_config[DEFAULT/instance_format]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[DEFAULT/instance_format]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/logging.pp
+      line: 231
+      evaluation_time: 0.002886003
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::logging"
+        - ceilometer
+        - logging
+      time: 2016-04-11 12:50:44.725394 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Ceilometer_config
+      title: DEFAULT/instance_format
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Logging"
+        - Ceilometer_config[DEFAULT/instance_format]
+    Filebucket[puppet]: !ruby/object:Puppet::Resource::Status
+      resource: Filebucket[puppet]
+      file: 
+      line: 
+      evaluation_time: 0.000112687
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - filebucket
+        - puppet
+      time: 2016-04-11 12:50:44.728484 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Filebucket
+      title: puppet
+      skipped: false
+      failed: false
+      containment_path: 
+        - Filebucket[puppet]
+    Ceilometer_config[keystone_authtoken/admin_tenant_name]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[keystone_authtoken/admin_tenant_name]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/api.pp
+      line: 153
+      evaluation_time: 0.005814917
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::api"
+        - ceilometer
+        - api
+      time: 2016-04-11 12:50:44.728810 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.731712 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: keystone_authtoken/admin_tenant_name
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Api"
+        - Ceilometer_config[keystone_authtoken/admin_tenant_name]
+    Ceilometer_config[DEFAULT/logging_debug_format_suffix]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[DEFAULT/logging_debug_format_suffix]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/logging.pp
+      line: 164
+      evaluation_time: 0.002791749
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::logging"
+        - ceilometer
+        - logging
+      time: 2016-04-11 12:50:44.735000 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Ceilometer_config
+      title: DEFAULT/logging_debug_format_suffix
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Logging"
+        - Ceilometer_config[DEFAULT/logging_debug_format_suffix]
+    Ceilometer_config[oslo_messaging_rabbit/kombu_ssl_certfile]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[oslo_messaging_rabbit/kombu_ssl_certfile]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 258
+      evaluation_time: 0.002806802
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - ceilometer_config
+        - class
+        - ceilometer
+      time: 2016-04-11 12:50:44.738032 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Ceilometer_config
+      title: oslo_messaging_rabbit/kombu_ssl_certfile
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Ceilometer
+        - Ceilometer_config[oslo_messaging_rabbit/kombu_ssl_certfile]
+    Ceilometer_config[oslo_messaging_rabbit/rabbit_userid]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[oslo_messaging_rabbit/rabbit_userid]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 224
+      evaluation_time: 0.014010291
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - ceilometer
+      time: 2016-04-11 12:50:44.741066 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:44.743957 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: oslo_messaging_rabbit/rabbit_userid
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Ceilometer
+        - Ceilometer_config[oslo_messaging_rabbit/rabbit_userid]
+    Package[ceilometer-api]: !ruby/object:Puppet::Resource::Status
+      resource: Package[ceilometer-api]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/api.pp
+      line: 109
+      evaluation_time: 3.942334678
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - package
+        - ceilometer-api
+        - openstack
+        - ceilometer-package
+        - class
+        - "ceilometer::api"
+        - ceilometer
+        - api
+      time: 2016-04-11 12:50:44.755997 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym package_installed
+          status: success
+          time: 2016-04-11 12:50:44.789704 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Package
+      title: ceilometer-api
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Api"
+        - Package[ceilometer-api]
+    Ceilometer_config[database/max_pool_size]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[database/max_pool_size]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/db.pp
+      line: 112
+      evaluation_time: 0.006715836
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::db"
+        - ceilometer
+        - db
+      time: 2016-04-11 12:50:48.703123 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:48.706486 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: database/max_pool_size
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Db"
+        - Ceilometer_config[database/max_pool_size]
+    Ceilometer_config[DEFAULT/log_date_format]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[DEFAULT/log_date_format]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/logging.pp
+      line: 253
+      evaluation_time: 0.003127852
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::logging"
+        - ceilometer
+        - logging
+      time: 2016-04-11 12:50:48.710257 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Ceilometer_config
+      title: DEFAULT/log_date_format
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Logging"
+        - Ceilometer_config[DEFAULT/log_date_format]
+    Ceilometer_config[service_credentials/os_password]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[service_credentials/os_password]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/agent/auth.pp
+      line: 60
+      evaluation_time: 0.006227395
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::agent::auth"
+        - ceilometer
+        - agent
+        - auth
+      time: 2016-04-11 12:50:48.713623 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:48.716756 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: service_credentials/os_password
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Agent::Auth"
+        - Ceilometer_config[service_credentials/os_password]
+    Ceilometer_config[oslo_messaging_rabbit/heartbeat_rate]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[oslo_messaging_rabbit/heartbeat_rate]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 224
+      evaluation_time: 0.006331726
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - ceilometer
+      time: 2016-04-11 12:50:48.720279 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:48.723533 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: oslo_messaging_rabbit/heartbeat_rate
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Ceilometer
+        - Ceilometer_config[oslo_messaging_rabbit/heartbeat_rate]
+    Ceilometer_config[keystone_authtoken/admin_password]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[keystone_authtoken/admin_password]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/api.pp
+      line: 153
+      evaluation_time: 0.006236676
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::api"
+        - ceilometer
+        - api
+      time: 2016-04-11 12:50:48.727092 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:48.730206 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: keystone_authtoken/admin_password
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Api"
+        - Ceilometer_config[keystone_authtoken/admin_password]
+    Package[openstack-ceilometer-alarm]: !ruby/object:Puppet::Resource::Status
+      resource: Package[openstack-ceilometer-alarm]
+      file: 
+      line: 
+      evaluation_time: 4.012611283
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - package
+        - openstack-ceilometer-alarm
+        - openstack
+        - class
+        - "ceilometer::alarm::notifier"
+        - ceilometer
+        - alarm
+        - notifier
+      time: 2016-04-11 12:50:48.736094 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym package_installed
+          status: success
+          time: 2016-04-11 12:50:48.809047 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Package
+      title: openstack-ceilometer-alarm
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Alarm::Notifier"
+        - Package[openstack-ceilometer-alarm]
+    Schedule[weekly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[weekly]
+      file: 
+      line: 
+      evaluation_time: 0.000149737
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - weekly
+      time: 2016-04-11 12:50:52.749287 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: weekly
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[weekly]
+    Ceilometer_config[database/metering_time_to_live]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[database/metering_time_to_live]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 295
+      evaluation_time: 0.009473241
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - ceilometer
+      time: 2016-04-11 12:50:52.749768 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:52.754973 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: database/metering_time_to_live
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Ceilometer
+        - Ceilometer_config[database/metering_time_to_live]
+    Ceilometer_config[database/connection]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[database/connection]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/db.pp
+      line: 112
+      evaluation_time: 0.007957482
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::db"
+        - ceilometer
+        - db
+      time: 2016-04-11 12:50:52.759796 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:52.764028 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: database/connection
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Db"
+        - Ceilometer_config[database/connection]
+    Ceilometer_config[oslo_messaging_rabbit/rabbit_use_ssl]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[oslo_messaging_rabbit/rabbit_use_ssl]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 224
+      evaluation_time: 0.00737132
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - ceilometer
+      time: 2016-04-11 12:50:52.771460 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:52.775458 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: oslo_messaging_rabbit/rabbit_use_ssl
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Ceilometer
+        - Ceilometer_config[oslo_messaging_rabbit/rabbit_use_ssl]
+    Ceilometer_config[DEFAULT/debug]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[DEFAULT/debug]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/logging.pp
+      line: 129
+      evaluation_time: 0.006883033
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::logging"
+        - ceilometer
+        - logging
+      time: 2016-04-11 12:50:52.779235 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:52.782505 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: DEFAULT/debug
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Logging"
+        - Ceilometer_config[DEFAULT/debug]
+    Ceilometer_config[api/port]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[api/port]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/api.pp
+      line: 153
+      evaluation_time: 0.006321401
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::api"
+        - ceilometer
+        - api
+      time: 2016-04-11 12:50:52.786608 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:52.789934 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: api/port
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Api"
+        - Ceilometer_config[api/port]
+    Schedule[puppet]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[puppet]
+      file: 
+      line: 
+      evaluation_time: 0.000114177
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - puppet
+      time: 2016-04-11 12:50:52.793376 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: puppet
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[puppet]
+    Ceilometer_config[service_credentials/os_cacert]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[service_credentials/os_cacert]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/agent/auth.pp
+      line: 49
+      evaluation_time: 0.003539248
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::agent::auth"
+        - ceilometer
+        - agent
+        - auth
+      time: 2016-04-11 12:50:52.793755 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Ceilometer_config
+      title: service_credentials/os_cacert
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Agent::Auth"
+        - Ceilometer_config[service_credentials/os_cacert]
+    Ceilometer_config[keystone_authtoken/auth_port]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[keystone_authtoken/auth_port]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/api.pp
+      line: 208
+      evaluation_time: 0.002873144
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::api"
+        - ceilometer
+        - api
+      time: 2016-04-11 12:50:52.800034 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Ceilometer_config
+      title: keystone_authtoken/auth_port
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Api"
+        - Ceilometer_config[keystone_authtoken/auth_port]
+    Ceilometer_config[DEFAULT/event_dispatcher]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[DEFAULT/event_dispatcher]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/collector.pp
+      line: 60
+      evaluation_time: 0.007180016
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::collector"
+        - ceilometer
+        - collector
+      time: 2016-04-11 12:50:52.803134 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:52.806498 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: DEFAULT/event_dispatcher
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Collector"
+        - Ceilometer_config[DEFAULT/event_dispatcher]
+    Ceilometer_config[DEFAULT/log_config_append]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[DEFAULT/log_config_append]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/logging.pp
+      line: 186
+      evaluation_time: 0.00298934
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::logging"
+        - ceilometer
+        - logging
+      time: 2016-04-11 12:50:52.810634 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Ceilometer_config
+      title: DEFAULT/log_config_append
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Logging"
+        - Ceilometer_config[DEFAULT/log_config_append]
+    "Firewall[001 ceilometer-api incoming ceilometer_api]": !ruby/object:Puppet::Resource::Status
+      resource: "Firewall[001 ceilometer-api incoming ceilometer_api]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/packstack/manifests/firewall.pp
+      line: 50
+      evaluation_time: 0.194335307
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - firewall
+        - "packstack::firewall"
+        - packstack
+        - ceilometer_api
+        - class
+      time: 2016-04-11 12:50:52.868934 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym firewall_created
+          status: success
+          time: 2016-04-11 12:50:52.964984 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Firewall
+      title: "001 ceilometer-api incoming ceilometer_api"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Packstack::Firewall[ceilometer_api]"
+        - "Firewall[001 ceilometer-api incoming ceilometer_api]"
+    Ceilometer_config[publisher/metering_secret]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[publisher/metering_secret]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/init.pp
+      line: 295
+      evaluation_time: 0.006912401
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - ceilometer
+      time: 2016-04-11 12:50:53.066105 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:53.069380 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: publisher/metering_secret
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Ceilometer
+        - Ceilometer_config[publisher/metering_secret]
+    Ceilometer_config[DEFAULT/syslog_log_facility]: !ruby/object:Puppet::Resource::Status
+      resource: Ceilometer_config[DEFAULT/syslog_log_facility]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/logging.pp
+      line: 129
+      evaluation_time: 0.006446111
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - ceilometer_config
+        - class
+        - "ceilometer::logging"
+        - ceilometer
+        - logging
+      time: 2016-04-11 12:50:53.075619 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym ceilometer_config_created
+          status: success
+          time: 2016-04-11 12:50:53.078803 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Ceilometer_config
+      title: DEFAULT/syslog_log_facility
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Logging"
+        - Ceilometer_config[DEFAULT/syslog_log_facility]
+    Service[ceilometer-agent-notification]: !ruby/object:Puppet::Resource::Status
+      resource: Service[ceilometer-agent-notification]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/agent/notification.pp
+      line: 84
+      evaluation_time: 0.243856285
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - service
+        - ceilometer-agent-notification
+        - class
+        - "ceilometer::agent::notification"
+        - ceilometer
+        - agent
+        - notification
+      time: 2016-04-11 12:50:53.083091 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym stopped
+          desired_value: !ruby/sym running
+          historical_value: 
+          message: "ensure changed 'stopped' to 'running'"
+          name: !ruby/sym service_started
+          status: success
+          time: 2016-04-11 12:50:53.105939 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Service
+      title: ceilometer-agent-notification
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Agent::Notification"
+        - Service[ceilometer-agent-notification]
+    Service[ceilometer-collector]: !ruby/object:Puppet::Resource::Status
+      resource: Service[ceilometer-collector]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/collector.pp
+      line: 82
+      evaluation_time: 0.926424442
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - service
+        - ceilometer-collector
+        - class
+        - "ceilometer::collector"
+        - ceilometer
+        - collector
+      time: 2016-04-11 12:50:53.327842 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym stopped
+          desired_value: !ruby/sym running
+          historical_value: 
+          message: "ensure changed 'stopped' to 'running'"
+          name: !ruby/sym service_started
+          status: success
+          time: 2016-04-11 12:50:53.499804 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Service
+      title: ceilometer-collector
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Collector"
+        - Service[ceilometer-collector]
+    Exec[ceilometer-dbsync]: !ruby/object:Puppet::Resource::Status
+      resource: Exec[ceilometer-dbsync]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/db/sync.pp
+      line: 29
+      evaluation_time: 0.000162199
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - exec
+        - ceilometer-dbsync
+        - class
+        - "ceilometer::db::sync"
+        - ceilometer
+        - db
+        - sync
+        - "ceilometer::db"
+      time: 2016-04-11 12:50:54.411738 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Exec
+      title: ceilometer-dbsync
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Db::Sync"
+        - Exec[ceilometer-dbsync]
+    Service[ceilometer-agent-central]: !ruby/object:Puppet::Resource::Status
+      resource: Service[ceilometer-agent-central]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/agent/central.pp
+      line: 55
+      evaluation_time: 0.442342824
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - service
+        - ceilometer-agent-central
+        - ceilometer-service
+        - class
+        - "ceilometer::agent::central"
+        - ceilometer
+        - agent
+        - central
+      time: 2016-04-11 12:50:55.846906 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym stopped
+          desired_value: !ruby/sym running
+          historical_value: 
+          message: "ensure changed 'stopped' to 'running'"
+          name: !ruby/sym service_started
+          status: success
+          time: 2016-04-11 12:50:55.874030 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Service
+      title: ceilometer-agent-central
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Agent::Central"
+        - Service[ceilometer-agent-central]
+    Service[ceilometer-alarm-notifier]: !ruby/object:Puppet::Resource::Status
+      resource: Service[ceilometer-alarm-notifier]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/alarm/notifier.pp
+      line: 65
+      evaluation_time: 0.547943003
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - service
+        - ceilometer-alarm-notifier
+        - class
+        - "ceilometer::alarm::notifier"
+        - ceilometer
+        - alarm
+        - notifier
+      time: 2016-04-11 12:50:56.294659 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym stopped
+          desired_value: !ruby/sym running
+          historical_value: 
+          message: "ensure changed 'stopped' to 'running'"
+          name: !ruby/sym service_started
+          status: success
+          time: 2016-04-11 12:50:56.445946 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Service
+      title: ceilometer-alarm-notifier
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Alarm::Notifier"
+        - Service[ceilometer-alarm-notifier]
+    Service[ceilometer-api]: !ruby/object:Puppet::Resource::Status
+      resource: Service[ceilometer-api]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/api.pp
+      line: 130
+      evaluation_time: 0.634409339
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - service
+        - ceilometer-api
+        - ceilometer-service
+        - class
+        - "ceilometer::api"
+        - ceilometer
+        - api
+      time: 2016-04-11 12:50:56.846421 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym stopped
+          desired_value: !ruby/sym running
+          historical_value: 
+          message: "ensure changed 'stopped' to 'running'"
+          name: !ruby/sym service_started
+          status: success
+          time: 2016-04-11 12:50:56.954799 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Service
+      title: ceilometer-api
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Api"
+        - Service[ceilometer-api]
+    Service[ceilometer-alarm-evaluator]: !ruby/object:Puppet::Resource::Status
+      resource: Service[ceilometer-alarm-evaluator]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/ceilometer/manifests/alarm/evaluator.pp
+      line: 71
+      evaluation_time: 0.715958526
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - service
+        - ceilometer-alarm-evaluator
+        - class
+        - "ceilometer::alarm::evaluator"
+        - ceilometer
+        - alarm
+        - evaluator
+      time: 2016-04-11 12:50:57.484734 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym stopped
+          desired_value: !ruby/sym running
+          historical_value: 
+          message: "ensure changed 'stopped' to 'running'"
+          name: !ruby/sym service_started
+          status: success
+          time: 2016-04-11 12:50:57.694818 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Service
+      title: ceilometer-alarm-evaluator
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Ceilometer::Alarm::Evaluator"
+        - Service[ceilometer-alarm-evaluator]
+  host: osp7ps-controller01.test.local
+  time: 2016-04-11 12:50:05.979529 +09:00
+  kind: apply
+  report_format: 4
+  puppet_version: "3.6.2"
+  configuration_version: 1460346604
+  transaction_uuid: "65cbcb6a-55b2-48fa-84fc-01b8bc1b8a0a"
+  environment: production
+  status: changed

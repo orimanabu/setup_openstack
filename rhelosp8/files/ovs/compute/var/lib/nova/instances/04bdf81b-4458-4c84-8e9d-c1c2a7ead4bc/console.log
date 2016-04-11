@@ -1,0 +1,322 @@
+[    0.000000] Initializing cgroup subsys cpuset
+[    0.000000] Initializing cgroup subsys cpu
+[    0.000000] Linux version 3.2.0-80-virtual (buildd@batsu) (gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5) ) #116-Ubuntu SMP Mon Mar 23 17:28:52 UTC 2015 (Ubuntu 3.2.0-80.116-virtual 3.2.68)
+[    0.000000] Command line: LABEL=cirros-rootfs ro console=tty1 console=ttyS0
+[    0.000000] KERNEL supported cpus:
+[    0.000000]   Intel GenuineIntel
+[    0.000000]   AMD AuthenticAMD
+[    0.000000]   Centaur CentaurHauls
+[    0.000000] BIOS-provided physical RAM map:
+[    0.000000]  BIOS-e820: 0000000000000000 - 000000000009fc00 (usable)
+[    0.000000]  BIOS-e820: 000000000009fc00 - 00000000000a0000 (reserved)
+[    0.000000]  BIOS-e820: 00000000000f0000 - 0000000000100000 (reserved)
+[    0.000000]  BIOS-e820: 0000000000100000 - 000000001ffe0000 (usable)
+[    0.000000]  BIOS-e820: 000000001ffe0000 - 0000000020000000 (reserved)
+[    0.000000]  BIOS-e820: 00000000feffc000 - 00000000ff000000 (reserved)
+[    0.000000]  BIOS-e820: 00000000fffc0000 - 0000000100000000 (reserved)
+[    0.000000] NX (Execute Disable) protection: active
+[    0.000000] SMBIOS 2.8 present.
+[    0.000000] No AGP bridge found
+[    0.000000] last_pfn = 0x1ffe0 max_arch_pfn = 0x400000000
+[    0.000000] PAT not supported by CPU.
+[    0.000000] found SMP MP-table at [ffff8800000f2050] f2050
+[    0.000000] init_memory_mapping: 0000000000000000-000000001ffe0000
+[    0.000000] RAMDISK: 1fc72000 - 1ffd0000
+[    0.000000] ACPI: RSDP 00000000000f1e20 00014 (v00 BOCHS )
+[    0.000000] ACPI: RSDT 000000001ffe169c 00030 (v01 BOCHS  BXPCRSDT 00000001 BXPC 00000001)
+[    0.000000] ACPI: FACP 000000001ffe0c14 00074 (v01 BOCHS  BXPCFACP 00000001 BXPC 00000001)
+[    0.000000] ACPI: DSDT 000000001ffe0040 00BD4 (v01 BOCHS  BXPCDSDT 00000001 BXPC 00000001)
+[    0.000000] ACPI: FACS 000000001ffe0000 00040
+[    0.000000] ACPI: SSDT 000000001ffe0c88 0099C (v01 BOCHS  BXPCSSDT 00000001 BXPC 00000001)
+[    0.000000] ACPI: APIC 000000001ffe1624 00078 (v01 BOCHS  BXPCAPIC 00000001 BXPC 00000001)
+[    0.000000] No NUMA configuration found
+[    0.000000] Faking a node at 0000000000000000-000000001ffe0000
+[    0.000000] Initmem setup node 0 0000000000000000-000000001ffe0000
+[    0.000000]   NODE_DATA [000000001ffd8000 - 000000001ffdcfff]
+[    0.000000] kvm-clock: Using msrs 4b564d01 and 4b564d00
+[    0.000000] kvm-clock: cpu 0, msr 0:1cf76c1, boot clock
+[    0.000000] Zone PFN ranges:
+[    0.000000]   DMA      0x00000010 -> 0x00001000
+[    0.000000]   DMA32    0x00001000 -> 0x00100000
+[    0.000000]   Normal   empty
+[    0.000000] Movable zone start PFN for each node
+[    0.000000] early_node_map[2] active PFN ranges
+[    0.000000]     0: 0x00000010 -> 0x0000009f
+[    0.000000]     0: 0x00000100 -> 0x0001ffe0
+[    0.000000] ACPI: PM-Timer IO Port: 0x608
+[    0.000000] ACPI: LAPIC (acpi_id[0x00] lapic_id[0x00] enabled)
+[    0.000000] ACPI: LAPIC_NMI (acpi_id[0xff] dfl dfl lint[0x1])
+[    0.000000] ACPI: IOAPIC (id[0x00] address[0xfec00000] gsi_base[0])
+[    0.000000] IOAPIC[0]: apic_id 0, version 17, address 0xfec00000, GSI 0-23
+[    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 0 global_irq 2 dfl dfl)
+[    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 5 global_irq 5 high level)
+[    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 9 global_irq 9 high level)
+[    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 10 global_irq 10 high level)
+[    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 11 global_irq 11 high level)
+[    0.000000] Using ACPI (MADT) for SMP configuration information
+[    0.000000] SMP: Allowing 1 CPUs, 0 hotplug CPUs
+[    0.000000] PM: Registered nosave memory: 000000000009f000 - 00000000000a0000
+[    0.000000] PM: Registered nosave memory: 00000000000a0000 - 00000000000f0000
+[    0.000000] PM: Registered nosave memory: 00000000000f0000 - 0000000000100000
+[    0.000000] Allocating PCI resources starting at 20000000 (gap: 20000000:deffc000)
+[    0.000000] Booting paravirtualized kernel on KVM
+[    0.000000] setup_percpu: NR_CPUS:64 nr_cpumask_bits:64 nr_cpu_ids:1 nr_node_ids:1
+[    0.000000] PERCPU: Embedded 27 pages/cpu @ffff88001fa00000 s78848 r8192 d23552 u2097152
+[    0.000000] kvm-clock: cpu 0, msr 0:1fa126c1, primary cpu clock
+[    0.000000] KVM setup async PF for cpu 0
+[    0.000000] kvm-stealtime: cpu 0, msr 1fa0cd40
+[    0.000000] Built 1 zonelists in Node order, mobility grouping on.  Total pages: 128874
+[    0.000000] Policy zone: DMA32
+[    0.000000] Kernel command line: LABEL=cirros-rootfs ro console=tty1 console=ttyS0
+[    0.000000] PID hash table entries: 2048 (order: 2, 16384 bytes)
+[    0.000000] Checking aperture...
+[    0.000000] No AGP bridge found
+[    0.000000] Memory: 496176k/524160k available (6576k kernel code, 452k absent, 27532k reserved, 6620k data, 928k init)
+[    0.000000] SLUB: Genslabs=15, HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] Hierarchical RCU implementation.
+[    0.000000] 	RCU dyntick-idle grace-period acceleration is enabled.
+[    0.000000] NR_IRQS:4352 nr_irqs:256 16
+[    0.000000] Console: colour VGA+ 80x25
+[    0.000000] console [tty1] enabled
+[    0.000000] console [ttyS0] enabled
+[    0.000000] allocated 4194304 bytes of page_cgroup
+[    0.000000] please try 'cgroup_disable=memory' option if you don't want memory cgroups
+[    0.000000] Detected 2893.406 MHz processor.
+[    0.012000] Calibrating delay loop (skipped) preset value.. 5786.81 BogoMIPS (lpj=11573624)
+[    0.016027] pid_max: default: 32768 minimum: 301
+[    0.020056] Security Framework initialized
+[    0.024047] AppArmor: AppArmor initialized
+[    0.028030] Yama: becoming mindful.
+[    0.032100] Dentry cache hash table entries: 65536 (order: 7, 524288 bytes)
+[    0.036133] Inode-cache hash table entries: 32768 (order: 6, 262144 bytes)
+[    0.040085] Mount-cache hash table entries: 256
+[    0.044109] Initializing cgroup subsys cpuacct
+[    0.048043] Initializing cgroup subsys memory
+[    0.052035] Initializing cgroup subsys devices
+[    0.056027] Initializing cgroup subsys freezer
+[    0.060032] Initializing cgroup subsys blkio
+[    0.064048] Initializing cgroup subsys perf_event
+[    0.069128] mce: CPU supports 10 MCE banks
+[    0.076221] SMP alternatives: switching to UP code
+[    0.304545] Freeing SMP alternatives: 24k freed
+[    0.308048] ACPI: Core revision 20110623
+[    0.312741] ftrace: allocating 26610 entries in 105 pages
+[    0.325355] Enabling x2apic
+[    0.328019] Enabled x2apic
+[    0.328042] Switched APIC routing to physical x2apic.
+[    0.345075] ..TIMER: vector=0x30 apic1=0 pin1=2 apic2=-1 pin2=-1
+[    0.348024] CPU0: Intel QEMU Virtual CPU version 2.3.0 stepping 03
+[    0.364022] Performance Events: Broken PMU hardware detected, using software events only.
+[    0.368124] NMI watchdog disabled (cpu0): hardware events not enabled
+[    0.372040] Brought up 1 CPUs
+[    0.376026] Total of 1 processors activated (5786.81 BogoMIPS).
+[    0.385901] devtmpfs: initialized
+[    0.388411] EVM: security.selinux
+[    0.392026] EVM: security.SMACK64
+[    0.396081] EVM: security.capability
+[    0.400637] print_constraints: dummy: 
+[    0.404517] RTC time:  6:09:18, date: 04/11/16
+[    0.408059] NET: Registered protocol family 16
+[    0.412173] ACPI: bus type pci registered
+[    0.416520] PCI: Using configuration type 1 for base access
+[    0.420571] bio: create slab <bio-0> at 0
+[    0.424833] ACPI: Added _OSI(Module Device)
+[    0.428031] ACPI: Added _OSI(Processor Device)
+[    0.432031] ACPI: Added _OSI(3.0 _SCP Extensions)
+[    0.436031] ACPI: Added _OSI(Processor Aggregator Device)
+[    0.444495] ACPI: Interpreter enabled
+[    0.448030] ACPI: (supports S0 S5)
+[    0.456032] ACPI: Using IOAPIC for interrupt routing
+[    0.464225] ACPI: No dock devices found.
+[    0.468031] HEST: Table not found.
+[    0.472032] PCI: Using host bridge windows from ACPI; if necessary, use "pci=nocrs" and report a bug
+[    0.476047] ACPI: PCI Root Bridge [PCI0] (domain 0000 [bus 00-ff])
+[    0.480069] pci_root PNP0A03:00: host bridge window [io  0x0000-0x0cf7]
+[    0.484033] pci_root PNP0A03:00: host bridge window [io  0x0d00-0xffff]
+[    0.488033] pci_root PNP0A03:00: host bridge window [mem 0x000a0000-0x000bffff]
+[    0.492033] pci_root PNP0A03:00: host bridge window [mem 0x20000000-0xfebfffff]
+[    0.529466] pci 0000:00:01.3: quirk: [io  0x0600-0x063f] claimed by PIIX4 ACPI
+[    0.532102] pci 0000:00:01.3: quirk: [io  0x0700-0x070f] claimed by PIIX4 SMB
+[    0.634844]  pci0000:00: Unable to request _OSC control (_OSC support mask: 0x1e)
+[    0.641358] ACPI: PCI Interrupt Link [LNKA] (IRQs 5 *10 11)
+[    0.656503] ACPI: PCI Interrupt Link [LNKB] (IRQs 5 *10 11)
+[    0.668326] ACPI: PCI Interrupt Link [LNKC] (IRQs 5 10 *11)
+[    0.680330] ACPI: PCI Interrupt Link [LNKD] (IRQs 5 10 *11)
+[    0.692208] ACPI: PCI Interrupt Link [LNKS] (IRQs *9)
+[    0.704313] vgaarb: device added: PCI:0000:00:02.0,decodes=io+mem,owns=io+mem,locks=none
+[    0.708049] vgaarb: loaded
+[    0.712047] vgaarb: bridge control possible 0000:00:02.0
+[    0.716117] i2c-core: driver [aat2870] using legacy suspend method
+[    0.720048] i2c-core: driver [aat2870] using legacy resume method
+[    0.724105] SCSI subsystem initialized
+[    0.728124] usbcore: registered new interface driver usbfs
+[    0.732069] usbcore: registered new interface driver hub
+[    0.736075] usbcore: registered new device driver usb
+[    0.740131] PCI: Using ACPI for IRQ routing
+[    0.745245] NetLabel: Initializing
+[    0.748049] NetLabel:  domain hash size = 128
+[    0.752048] NetLabel:  protocols = UNLABELED CIPSOv4
+[    0.756074] NetLabel:  unlabeled traffic allowed by default
+[    0.764108] Switching to clocksource kvm-clock
+[    0.772448] AppArmor: AppArmor Filesystem Enabled
+[    0.779824] pnp: PnP ACPI init
+[    0.785533] ACPI: bus type pnp registered
+[    0.793832] pnp: PnP ACPI: found 10 devices
+[    0.800573] ACPI: ACPI bus type pnp unregistered
+[    0.814231] NET: Registered protocol family 2
+[    0.822266] IP route cache hash table entries: 4096 (order: 3, 32768 bytes)
+[    0.832264] TCP established hash table entries: 16384 (order: 6, 262144 bytes)
+[    0.844469] TCP bind hash table entries: 16384 (order: 6, 262144 bytes)
+[    0.855401] TCP: Hash tables configured (established 16384 bind 16384)
+[    0.864807] TCP reno registered
+[    0.870608] UDP hash table entries: 256 (order: 1, 8192 bytes)
+[    0.879644] UDP-Lite hash table entries: 256 (order: 1, 8192 bytes)
+[    0.889712] NET: Registered protocol family 1
+[    0.897986] pci 0000:00:00.0: Limiting direct PCI/PCI transfers
+[    0.907309] pci 0000:00:01.0: PIIX3: Enabling Passive Release
+[    0.917574] pci 0000:00:01.0: Activating ISA DMA hang workarounds
+[    0.933225] ACPI: PCI Interrupt Link [LNKD] enabled at IRQ 11
+[    0.947136] pci 0000:00:01.2: PCI INT D -> Link[LNKD] -> GSI 11 (level, high) -> IRQ 11
+[    0.970936] pci 0000:00:01.2: PCI INT D disabled
+[    0.984141] audit: initializing netlink socket (disabled)
+[    0.994200] type=2000 audit(1460354957.992:1): initialized
+[    1.020500] Trying to unpack rootfs image as initramfs...
+[    1.060556] HugeTLB registered 2 MB page size, pre-allocated 0 pages
+[    1.084222] VFS: Disk quotas dquot_6.5.2
+[    1.091229] Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    1.112786] Freeing initrd memory: 3448k freed
+[    1.120364] fuse init (API version 7.17)
+[    1.129353] msgmni has been set to 975
+[    1.136886] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 253)
+[    1.153792] io scheduler noop registered
+[    1.162078] io scheduler deadline registered (default)
+[    1.171453] io scheduler cfq registered
+[    1.179910] pci_hotplug: PCI Hot Plug PCI Core version: 0.5
+[    1.190240] pciehp: PCI Express Hot Plug Controller Driver version: 0.4
+[    1.201117] input: Power Button as /devices/LNXSYSTM:00/LNXPWRBN:00/input/input0
+[    1.213888] ACPI: Power Button [PWRF]
+[    1.221366] ERST: Table is not found!
+[    1.227787] GHES: HEST is not enabled!
+[    1.235062] ACPI: PCI Interrupt Link [LNKC] enabled at IRQ 10
+[    1.243516] virtio-pci 0000:00:03.0: PCI INT A -> Link[LNKC] -> GSI 10 (level, high) -> IRQ 10
+[    1.259572] virtio-pci 0000:00:04.0: PCI INT A -> Link[LNKD] -> GSI 11 (level, high) -> IRQ 11
+[    1.274502] ACPI: PCI Interrupt Link [LNKA] enabled at IRQ 10
+[    1.283169] virtio-pci 0000:00:05.0: PCI INT A -> Link[LNKA] -> GSI 10 (level, high) -> IRQ 10
+[    1.297574] Serial: 8250/16550 driver, 32 ports, IRQ sharing enabled
+[    1.338701] serial8250: ttyS0 at I/O 0x3f8 (irq = 4) is a 16550A
+[    1.381603] serial8250: ttyS1 at I/O 0x2f8 (irq = 3) is a 16550A
+[    1.423975] 00:05: ttyS0 at I/O 0x3f8 (irq = 4) is a 16550A
+[    1.466248] 00:06: ttyS1 at I/O 0x2f8 (irq = 3) is a 16550A
+[    1.475199] Linux agpgart interface v0.103
+[    1.482758] brd: module loaded
+[    1.488856] loop: module loaded
+[    1.498383]  vda: vda1
+[    1.506088] scsi0 : ata_piix
+[    1.511545] scsi1 : ata_piix
+[    1.516985] ata1: PATA max MWDMA2 cmd 0x1f0 ctl 0x3f6 bmdma 0xc0a0 irq 14
+[    1.526060] ata2: PATA max MWDMA2 cmd 0x170 ctl 0x376 bmdma 0xc0a8 irq 15
+[    1.535613] Fixed MDIO Bus: probed
+[    1.541254] tun: Universal TUN/TAP device driver, 1.6
+[    1.549858] tun: (C) 1999-2004 Max Krasnyansky <maxk@qualcomm.com>
+[    1.565470] PPP generic driver version 2.4.2
+[    1.572244] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    1.581443] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    1.589947] uhci_hcd: USB Universal Host Controller Interface driver
+[    1.598598] uhci_hcd 0000:00:01.2: PCI INT D -> Link[LNKD] -> GSI 11 (level, high) -> IRQ 11
+[    1.612798] uhci_hcd 0000:00:01.2: UHCI Host Controller
+[    1.620421] uhci_hcd 0000:00:01.2: new USB bus registered, assigned bus number 1
+[    1.632494] uhci_hcd 0000:00:01.2: irq 11, io base 0x0000c040
+[    1.640921] hub 1-0:1.0: USB hub found
+[    1.647253] hub 1-0:1.0: 2 ports detected
+[    1.654001] usbcore: registered new interface driver libusual
+[    1.662259] i8042: PNP: PS/2 Controller [PNP0303:KBD,PNP0f13:MOU] at 0x60,0x64 irq 1,12
+[    1.679176] serio: i8042 KBD port at 0x60,0x64 irq 1
+[    1.686508] serio: i8042 AUX port at 0x60,0x64 irq 12
+[    1.694312] mousedev: PS/2 mouse device common for all mice
+[    1.703699] input: AT Translated Set 2 keyboard as /devices/platform/i8042/serio0/input/input1
+[    1.718522] rtc_cmos 00:01: RTC can wake from S4
+[    1.726886] rtc_cmos 00:01: rtc core: registered rtc_cmos as rtc0
+[    1.736324] rtc0: alarms up to one day, 114 bytes nvram
+[    1.744121] device-mapper: uevent: version 1.0.3
+[    1.753502] device-mapper: ioctl: 4.22.0-ioctl (2011-10-19) initialised: dm-devel@redhat.com
+[    1.766799] cpuidle: using governor ladder
+[    1.773370] cpuidle: using governor menu
+[    1.779647] EFI Variables Facility v0.08 2004-May-17
+[    1.786985] TCP cubic registered
+[    1.792675] NET: Registered protocol family 10
+[    1.800509] NET: Registered protocol family 17
+[    1.807453] Registering the dns_resolver key type
+[    1.814814] registered taskstats version 1
+[    1.824267]   Magic number: 12:64:165
+[    1.834107] rtc_cmos 00:01: setting system clock to 2016-04-11 06:09:20 UTC (1460354960)
+[    1.848047] BIOS EDD facility v0.16 2004-Jun-25, 0 devices found
+[    1.857508] EDD information not available.
+[    1.873208] Freeing unused kernel memory: 928k freed
+[    1.883245] Write protecting the kernel read-only data: 12288k
+[    1.897538] Freeing unused kernel memory: 1596k freed
+[    1.907407] Freeing unused kernel memory: 1184k freed
+
+info: initramfs: up at 1.92
+GROWROOT: CHANGED: partition=1 start=16065 old: size=64260 end=80325 new: size=2072385,end=2088450
+info: initramfs loading root from /dev/vda1
+info: /etc/init.d/rc.sysinit: up at 2.00
+info: container: none
+Starting logging: OK
+modprobe: module virtio_blk not found in modules.dep
+modprobe: module virtio_net not found in modules.dep
+WARN: /etc/rc3.d/S10-load-modules failed
+Initializing random number generator... done.
+Starting acpid: OK
+cirros-ds 'local' up at 2.09
+no results found for mode=local. up 2.12. searched: nocloud configdrive ec2
+Starting network...
+udhcpc (v1.20.1) started
+Sending discover...
+Sending select for 192.168.99.101...
+Lease of 192.168.99.101 obtained, lease time 86400
+cirros-ds 'net' up at 2.16
+checking http://169.254.169.254/2009-04-04/instance-id
+successful after 1/20 tries: up 2.17. iid=i-00000002
+failed to get http://169.254.169.254/2009-04-04/user-data
+warning: no ec2 metadata for user-data
+found datasource (ec2, net)
+Starting dropbear sshd: generating rsa key... generating dsa key... OK
+/run/cirros/datasource/data/user-data was not '#!' or executable
+=== system information ===
+Platform: Red Hat OpenStack Compute
+Container: none
+Arch: x86_64
+CPU(s): 1 @ 2893.406 MHz
+Cores/Sockets/Threads: 1/1/1
+Virt-type: 
+RAM Size: 491MB
+Disks:
+NAME MAJ:MIN       SIZE LABEL         MOUNTPOINT
+vda  253:0   1073741824               
+vda1 253:1   1061061120 cirros-rootfs /
+=== sshd host keys ===
+-----BEGIN SSH HOST KEY KEYS-----
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgwDEfH4g2p+c+v6ES9brWoJpIIrElYjfUT8tmwTfxrgZEM/TRu/oH/FuZ/EybMXUiU43OOlYD1hmc6FSRbnoBOagNmiGv5x2c/GHMBQEioF9+d+9qdtyyhie6tdEJ7Jr6NN/tCV67+90muUe45UmAayOqXbUHJX6TMNVSxziKA9nGaSL root@vm1
+ssh-dss AAAAB3NzaC1kc3MAAACBAOjnHUWWp8bwXQIyWwB4q7VLWsMfOChHF4zvb9IN+fkEKaKh0W7pm0gUUJjf/1fwAcaKSGDY5m9QWjIkPgQ+JPNc/sebmfrty9U7Et5glO/vqspcsRsk9v9UrVa97B60nVx0g/3V52EBgaDx+wuYXQG7LRzyS/M08VlH94P+w4RnAAAAFQD5BUrRx+WdlLut1sWTzpjyP3R0rQAAAIEA6Ni8zV0lzpY9Lz379i4RM+t5KA6MP/5VMRMLu0qL25jyIoXarOCaJu0ZhKsObLowAkxlNlWjkc/4g5y2N4yi/mXvBNn2dT0Z/QewqOefk7QtwIOxAwYpPeW5b/KMpQB/byqG3OXalZ1NivsUmvCi/il/G8CU/Y15aIIGzxpbxLsAAACAV86emasItzc5K82LgNxfyUxucH/3HNkwS5fSLvV2IHzg0kkuSNyP3uGuguV/xSVUuvBufKtCxVJYaqcg92YxDI6CblftKXjO82+iNUACWXYJbve72aAAhxHxhUbc4ub9VvQT/5i5YCBX2wSlBRy+3KWhi5m2UA7klH5bbf9ZZ5Q= root@vm1
+-----END SSH HOST KEY KEYS-----
+=== network info ===
+if-info: lo,up,127.0.0.1,8,::1
+if-info: eth0,up,192.168.99.101,24,fe80::f816:3eff:fecd:917
+ip-route:default via 192.168.99.1 dev eth0 
+ip-route:192.168.99.0/24 dev eth0  src 192.168.99.101 
+=== datasource: ec2 net ===
+instance-id: i-00000002
+name: N/A
+availability-zone: nova
+local-hostname: vm1.novalocal
+launch-index: 0
+=== cirros: current=0.3.4 uptime=3.76 ===
+  ____               ____  ____
+ / __/ __ ____ ____ / __ \/ __/
+/ /__ / // __// __// /_/ /\ \ 
+\___//_//_/  /_/   \____/___/ 
+   http://cirros-cloud.net
+
+
+login as 'cirros' user. default password: 'cubswin:)'. use 'sudo' for root.
+vm1 login: 

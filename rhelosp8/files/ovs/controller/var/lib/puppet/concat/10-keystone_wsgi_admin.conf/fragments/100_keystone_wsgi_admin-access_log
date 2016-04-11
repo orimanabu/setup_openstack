@@ -1,0 +1,1 @@
+  CustomLog "/var/log/httpd/keystone_wsgi_admin_access.log" combined 

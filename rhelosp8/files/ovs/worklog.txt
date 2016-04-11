@@ -1,0 +1,303 @@
+[root@osp7ps-controller01 common(keystone_admin)]# ./neutron.sh external-create
+* op: external-create
+* ha: 0
+* tenant: admin
+* public_network: external
+* network: admin_net
+* subnet: admin_net_subnet
+* router: router_admin
+* cidr: 192.168.99.0/24
+* prefix: 192.168.99
+* prefixlen: 24
+* pool_start: 192.168.99.100
+* pool_end: 192.168.99.199
+* gateway: 192.168.99.1
+=====> [20160411-145924] host: (local), command: neutron net-create external --provider:network_type vlan --provider:physical_network physnet-external --router:external --provider:segmentation_id 100
+Created a new network:
++---------------------------+--------------------------------------+
+| Field                     | Value                                |
++---------------------------+--------------------------------------+
+| admin_state_up            | True                                 |
+| id                        | 59a00c2d-e1ea-42d9-baa7-788a35f05a3e |
+| mtu                       | 0                                    |
+| name                      | external                             |
+| provider:network_type     | vlan                                 |
+| provider:physical_network | physnet-external                     |
+| provider:segmentation_id  | 100                                  |
+| router:external           | True                                 |
+| shared                    | False                                |
+| status                    | ACTIVE                               |
+| subnets                   |                                      |
+| tenant_id                 | d8bfa2f7e4994784acdee67e64a849ff     |
++---------------------------+--------------------------------------+
+=====> [20160411-145925] host: (local), command: neutron subnet-create external 172.16.88.0/24 --name external_subnet --disable-dhcp --gateway 172.16.88.254 --allocation-pool start=172.16.88.100,end=172.16.88.199
+Created a new subnet:
++-------------------+----------------------------------------------------+
+| Field             | Value                                              |
++-------------------+----------------------------------------------------+
+| allocation_pools  | {"start": "172.16.88.100", "end": "172.16.88.199"} |
+| cidr              | 172.16.88.0/24                                     |
+| dns_nameservers   |                                                    |
+| enable_dhcp       | False                                              |
+| gateway_ip        | 172.16.88.254                                      |
+| host_routes       |                                                    |
+| id                | ff0e4908-d0b3-4363-b212-020f092b816a               |
+| ip_version        | 4                                                  |
+| ipv6_address_mode |                                                    |
+| ipv6_ra_mode      |                                                    |
+| name              | external_subnet                                    |
+| network_id        | 59a00c2d-e1ea-42d9-baa7-788a35f05a3e               |
+| subnetpool_id     |                                                    |
+| tenant_id         | d8bfa2f7e4994784acdee67e64a849ff                   |
++-------------------+----------------------------------------------------+
+[root@osp7ps-controller01 common(keystone_admin)]#
+
+
+[root@osp7ps-controller01 common(keystone_demo)]# ./neutron.sh create
+* op: create
+* ha: 0
+* tenant: demo
+* public_network: external
+* network: demo_net
+* subnet: demo_net_subnet
+* router: router_demo
+* cidr: 192.168.99.0/24
+* prefix: 192.168.99
+* prefixlen: 24
+* pool_start: 192.168.99.100
+* pool_end: 192.168.99.199
+* gateway: 192.168.99.1
+=====> [20160411-150017] host: (local), command: neutron router-create --tenant-id f21cfeed248e432bae16aa83accf208e router_demo
+Created a new router:
++-----------------------+--------------------------------------+
+| Field                 | Value                                |
++-----------------------+--------------------------------------+
+| admin_state_up        | True                                 |
+| distributed           | False                                |
+| external_gateway_info |                                      |
+| ha                    | False                                |
+| id                    | 7ec3ff47-f7a2-4df4-84e4-6db691ccb073 |
+| name                  | router_demo                          |
+| routes                |                                      |
+| status                | ACTIVE                               |
+| tenant_id             | f21cfeed248e432bae16aa83accf208e     |
++-----------------------+--------------------------------------+
+=====> [20160411-150019] host: (local), command: neutron router-gateway-set 7ec3ff47-f7a2-4df4-84e4-6db691ccb073 59a00c2d-e1ea-42d9-baa7-788a35f05a3e
+Set gateway for router 7ec3ff47-f7a2-4df4-84e4-6db691ccb073
+=====> [20160411-150020] host: (local), command: neutron net-create demo_net
+Created a new network:
++-----------------+--------------------------------------+
+| Field           | Value                                |
++-----------------+--------------------------------------+
+| admin_state_up  | True                                 |
+| id              | 440b401f-36f6-45ed-8f69-7e0b7a330ee7 |
+| mtu             | 0                                    |
+| name            | demo_net                             |
+| router:external | False                                |
+| shared          | False                                |
+| status          | ACTIVE                               |
+| subnets         |                                      |
+| tenant_id       | f21cfeed248e432bae16aa83accf208e     |
++-----------------+--------------------------------------+
+=====> [20160411-150021] host: (local), command: neutron subnet-create demo_net 192.168.99.0/24 --name demo_net_subnet --enable_dhcp True --gateway 192.168.99.1 --allocation-pool start=192.168.99.100,end=192.168.99.199
+Created a new subnet:
++-------------------+------------------------------------------------------+
+| Field             | Value                                                |
++-------------------+------------------------------------------------------+
+| allocation_pools  | {"start": "192.168.99.100", "end": "192.168.99.199"} |
+| cidr              | 192.168.99.0/24                                      |
+| dns_nameservers   |                                                      |
+| enable_dhcp       | True                                                 |
+| gateway_ip        | 192.168.99.1                                         |
+| host_routes       |                                                      |
+| id                | cdfc6f63-d54a-4093-ad97-2556fa6ae59c                 |
+| ip_version        | 4                                                    |
+| ipv6_address_mode |                                                      |
+| ipv6_ra_mode      |                                                      |
+| name              | demo_net_subnet                                      |
+| network_id        | 440b401f-36f6-45ed-8f69-7e0b7a330ee7                 |
+| subnetpool_id     |                                                      |
+| tenant_id         | f21cfeed248e432bae16aa83accf208e                     |
++-------------------+------------------------------------------------------+
+=====> [20160411-150023] host: (local), command: neutron router-interface-add 7ec3ff47-f7a2-4df4-84e4-6db691ccb073 demo_net_subnet
+Added interface efba6876-60eb-4507-9e0c-321253a43320 to router 7ec3ff47-f7a2-4df4-84e4-6db691ccb073.
+[root@osp7ps-controller01 common(keystone_demo)]# ./neutron.sh delete
+* op: delete
+* ha: 0
+* tenant: demo
+* public_network: external
+* network: demo_net
+* subnet: demo_net_subnet
+* router: router_demo
+* cidr: 192.168.99.0/24
+* prefix: 192.168.99
+* prefixlen: 24
+* pool_start: 192.168.99.100
+* pool_end: 192.168.99.199
+* gateway: 192.168.99.1
+=====> [20160411-150705] host: (local), command: neutron router-interface-delete 7ec3ff47-f7a2-4df4-84e4-6db691ccb073 demo_net_subnet
+Removed interface from router 7ec3ff47-f7a2-4df4-84e4-6db691ccb073.
+=====> [20160411-150705] host: (local), command: neutron subnet-delete demo_net_subnet
+Deleted subnet: demo_net_subnet
+=====> [20160411-150706] host: (local), command: neutron net-delete demo_net
+Deleted network: demo_net
+=====> [20160411-150708] host: (local), command: neutron router-gateway-clear 7ec3ff47-f7a2-4df4-84e4-6db691ccb073
+Removed gateway from router 7ec3ff47-f7a2-4df4-84e4-6db691ccb073
+=====> [20160411-150709] host: (local), command: neutron router-delete router_demo
+Deleted router: router_demo
+[root@osp7ps-controller01 common(keystone_demo)]# ./neutron.sh create
+* op: create
+* ha: 0
+* tenant: demo
+* public_network: external
+* network: demo_net
+* subnet: demo_net_subnet
+* router: router_demo
+* cidr: 192.168.99.0/24
+* prefix: 192.168.99
+* prefixlen: 24
+* pool_start: 192.168.99.100
+* pool_end: 192.168.99.199
+* gateway: 192.168.99.1
+=====> [20160411-150814] host: (local), command: neutron router-create --tenant-id f21cfeed248e432bae16aa83accf208e router_demo
+Created a new router:
++-----------------------+--------------------------------------+
+| Field                 | Value                                |
++-----------------------+--------------------------------------+
+| admin_state_up        | True                                 |
+| distributed           | False                                |
+| external_gateway_info |                                      |
+| ha                    | False                                |
+| id                    | 1a800afd-55c4-4404-bf05-38ef7e703152 |
+| name                  | router_demo                          |
+| routes                |                                      |
+| status                | ACTIVE                               |
+| tenant_id             | f21cfeed248e432bae16aa83accf208e     |
++-----------------------+--------------------------------------+
+=====> [20160411-150817] host: (local), command: neutron router-gateway-set 1a800afd-55c4-4404-bf05-38ef7e703152 03edb577-c0f3-4610-a11a-f71b3d32e2bd
+Set gateway for router 1a800afd-55c4-4404-bf05-38ef7e703152
+=====> [20160411-150818] host: (local), command: neutron net-create demo_net
+Created a new network:
++-----------------+--------------------------------------+
+| Field           | Value                                |
++-----------------+--------------------------------------+
+| admin_state_up  | True                                 |
+| id              | 0fe9dd8a-8565-41ed-b3fc-3110f9a026d6 |
+| mtu             | 0                                    |
+| name            | demo_net                             |
+| router:external | False                                |
+| shared          | False                                |
+| status          | ACTIVE                               |
+| subnets         |                                      |
+| tenant_id       | f21cfeed248e432bae16aa83accf208e     |
++-----------------+--------------------------------------+
+=====> [20160411-150818] host: (local), command: neutron subnet-create demo_net 192.168.99.0/24 --name demo_net_subnet --enable_dhcp True --gateway 192.168.99.1 --allocation-pool start=192.168.99.100,end=192.168.99.199
+Created a new subnet:
++-------------------+------------------------------------------------------+
+| Field             | Value                                                |
++-------------------+------------------------------------------------------+
+| allocation_pools  | {"start": "192.168.99.100", "end": "192.168.99.199"} |
+| cidr              | 192.168.99.0/24                                      |
+| dns_nameservers   |                                                      |
+| enable_dhcp       | True                                                 |
+| gateway_ip        | 192.168.99.1                                         |
+| host_routes       |                                                      |
+| id                | 36834b46-2d31-4fe7-817c-dfa949729024                 |
+| ip_version        | 4                                                    |
+| ipv6_address_mode |                                                      |
+| ipv6_ra_mode      |                                                      |
+| name              | demo_net_subnet                                      |
+| network_id        | 0fe9dd8a-8565-41ed-b3fc-3110f9a026d6                 |
+| subnetpool_id     |                                                      |
+| tenant_id         | f21cfeed248e432bae16aa83accf208e                     |
++-------------------+------------------------------------------------------+
+=====> [20160411-150821] host: (local), command: neutron router-interface-add 1a800afd-55c4-4404-bf05-38ef7e703152 demo_net_subnet
+Added interface eb119fc3-3b18-467b-a9b3-acb8dc036da9 to router 1a800afd-55c4-4404-bf05-38ef7e703152.
+[root@osp7ps-controller01 common(keystone_demo)]# ./nova.sh -v vm1 boot
+* rcfile:       /root/keystonerc
+* region:       regionOne
+* tenant:       demo
+* flavor:       m1.tiny
+* network:      demo_net
+* secgroup:     sg_demo
+* image:        cirros
+* vm:   vm1
+* volume:
+=====> [20160411-150907] host: (local), command: nova boot --poll --flavor m1.tiny --key-name sshkey --nic net-id=0fe9dd8a-8565-41ed-b3fc-3110f9a026d6 --image cirros --security-groups sg_demo vm1
++--------------------------------------+-----------------------------------------------+
+| Property                             | Value                                         |
++--------------------------------------+-----------------------------------------------+
+| OS-DCF:diskConfig                    | MANUAL                                        |
+| OS-EXT-AZ:availability_zone          |                                               |
+| OS-EXT-STS:power_state               | 0                                             |
+| OS-EXT-STS:task_state                | scheduling                                    |
+| OS-EXT-STS:vm_state                  | building                                      |
+| OS-SRV-USG:launched_at               | -                                             |
+| OS-SRV-USG:terminated_at             | -                                             |
+| accessIPv4                           |                                               |
+| accessIPv6                           |                                               |
+| adminPass                            | WbwKrcvY6t7S                                  |
+| config_drive                         |                                               |
+| created                              | 2016-04-11T06:09:09Z                          |
+| flavor                               | m1.tiny (1)                                   |
+| hostId                               |                                               |
+| id                                   | 04bdf81b-4458-4c84-8e9d-c1c2a7ead4bc          |
+| image                                | cirros (d8a78437-d0c6-4ed1-853d-205ac41a6b9c) |
+| key_name                             | sshkey                                        |
+| metadata                             | {}                                            |
+| name                                 | vm1                                           |
+| os-extended-volumes:volumes_attached | []                                            |
+| progress                             | 0                                             |
+| security_groups                      | sg_demo                                       |
+| status                               | BUILD                                         |
+| tenant_id                            | f21cfeed248e432bae16aa83accf208e              |
+| updated                              | 2016-04-11T06:09:09Z                          |
+| user_id                              | 2e195ef50636400c9632ea1fe8d97c6a              |
++--------------------------------------+-----------------------------------------------+
+
+Server building... 100% complete
+Finished
+[root@osp7ps-controller01 common(keystone_demo)]# nova list
++--------------------------------------+------+--------+------------+-------------+-------------------------+
+| ID                                   | Name | Status | Task State | Power State | Networks                |
++--------------------------------------+------+--------+------------+-------------+-------------------------+
+| 04bdf81b-4458-4c84-8e9d-c1c2a7ead4bc | vm1  | ACTIVE | -          | Running     | demo_net=192.168.99.101 |
++--------------------------------------+------+--------+------------+-------------+-------------------------+
+[root@osp7ps-controller01 common(keystone_demo)]# ./neutron.sh -v vm1 floatingip-create-and-associate
+* op: floatingip-create-and-associate
+* ha: 0
+* tenant: demo
+* public_network: external
+* network: demo_net
+* subnet: demo_net_subnet
+* router: router_demo
+* cidr: 192.168.99.0/24
+* prefix: 192.168.99
+* prefixlen: 24
+* pool_start: 192.168.99.100
+* pool_end: 192.168.99.199
+* gateway: 192.168.99.1
+* vm: vm1
+* vmaddr: 192.168.99.101
+* port_id: c88c4e4f-a1ad-4062-a0d2-428f8a5e5d52
+=====> [20160411-150941] host: (local), command: neutron floatingip-create --port-id c88c4e4f-a1ad-4062-a0d2-428f8a5e5d52 --fixed-ip-address 192.168.99.101 external
+Created a new floatingip:
++---------------------+--------------------------------------+
+| Field               | Value                                |
++---------------------+--------------------------------------+
+| fixed_ip_address    | 192.168.99.101                       |
+| floating_ip_address | 172.16.88.101                        |
+| floating_network_id | 03edb577-c0f3-4610-a11a-f71b3d32e2bd |
+| id                  | 24f57ead-31f9-4046-992a-2e0aa15f6a2c |
+| port_id             | c88c4e4f-a1ad-4062-a0d2-428f8a5e5d52 |
+| router_id           | 1a800afd-55c4-4404-bf05-38ef7e703152 |
+| status              | DOWN                                 |
+| tenant_id           | f21cfeed248e432bae16aa83accf208e     |
++---------------------+--------------------------------------+
+[root@osp7ps-controller01 common(keystone_demo)]# cat vlan.sh
+#!/bin/bash
+
+int=eth0
+vlanid=100
+echo ip link add link ${int} name ${int}.${vlanid} type vlan id ${vlanid}
+[root@osp7ps-controller01 common(keystone_demo)]#

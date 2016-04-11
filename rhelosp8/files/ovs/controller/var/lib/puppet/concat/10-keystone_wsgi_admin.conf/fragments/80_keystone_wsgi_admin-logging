@@ -1,0 +1,3 @@
+
+  ## Logging
+  ErrorLog "/var/log/httpd/keystone_wsgi_admin_error.log"
