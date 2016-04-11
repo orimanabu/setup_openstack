@@ -1,0 +1,80 @@
+<domain type="kvm">
+  <uuid>46341d22-732e-404e-b9f3-2f469773ea5e</uuid>
+  <name>instance-00000001</name>
+  <memory>524288</memory>
+  <vcpu>1</vcpu>
+  <metadata>
+    <nova:instance xmlns:nova="http://openstack.org/xmlns/libvirt/nova/1.0">
+      <nova:package version="12.0.2-5.el7ost"/>
+      <nova:name>vm1</nova:name>
+      <nova:creationTime>2016-04-11 05:05:10</nova:creationTime>
+      <nova:flavor name="m1.tiny">
+        <nova:memory>512</nova:memory>
+        <nova:disk>1</nova:disk>
+        <nova:swap>0</nova:swap>
+        <nova:ephemeral>0</nova:ephemeral>
+        <nova:vcpus>1</nova:vcpus>
+      </nova:flavor>
+      <nova:owner>
+        <nova:user uuid="2e195ef50636400c9632ea1fe8d97c6a">demo</nova:user>
+        <nova:project uuid="f21cfeed248e432bae16aa83accf208e">demo</nova:project>
+      </nova:owner>
+      <nova:root type="image" uuid="d8a78437-d0c6-4ed1-853d-205ac41a6b9c"/>
+    </nova:instance>
+  </metadata>
+  <sysinfo type="smbios">
+    <system>
+      <entry name="manufacturer">Red Hat</entry>
+      <entry name="product">OpenStack Compute</entry>
+      <entry name="version">12.0.2-5.el7ost</entry>
+      <entry name="serial">77db7044-32ca-46e5-a800-3855c87e941e</entry>
+      <entry name="uuid">46341d22-732e-404e-b9f3-2f469773ea5e</entry>
+      <entry name="family">Virtual Machine</entry>
+    </system>
+  </sysinfo>
+  <os>
+    <type>hvm</type>
+    <boot dev="hd"/>
+    <smbios mode="sysinfo"/>
+  </os>
+  <features>
+    <acpi/>
+    <apic/>
+  </features>
+  <cputune>
+    <shares>1024</shares>
+  </cputune>
+  <clock offset="utc">
+    <timer name="pit" tickpolicy="delay"/>
+    <timer name="rtc" tickpolicy="catchup"/>
+    <timer name="hpet" present="no"/>
+  </clock>
+  <cpu match="exact">
+    <topology sockets="1" cores="1" threads="1"/>
+  </cpu>
+  <devices>
+    <disk type="file" device="disk">
+      <driver name="qemu" type="qcow2" cache="none"/>
+      <source file="/var/lib/nova/instances/46341d22-732e-404e-b9f3-2f469773ea5e/disk"/>
+      <target bus="virtio" dev="vda"/>
+    </disk>
+    <interface type="bridge">
+      <mac address="fa:16:3e:50:c4:8d"/>
+      <model type="virtio"/>
+      <source bridge="qbrf0b5e2a9-dd"/>
+      <target dev="tapf0b5e2a9-dd"/>
+    </interface>
+    <serial type="file">
+      <source path="/var/lib/nova/instances/46341d22-732e-404e-b9f3-2f469773ea5e/console.log"/>
+    </serial>
+    <serial type="pty"/>
+    <input type="tablet" bus="usb"/>
+    <graphics type="vnc" autoport="yes" keymap="en-us" listen="0.0.0.0"/>
+    <video>
+      <model type="cirrus"/>
+    </video>
+    <memballoon model="virtio">
+      <stats period="10"/>
+    </memballoon>
+  </devices>
+</domain>

@@ -1,0 +1,5 @@
+  WSGIApplicationGroup %{GLOBAL}
+  WSGIDaemonProcess keystone_main display-name=keystone-main group=keystone processes=1 threads=2 user=keystone
+  WSGIProcessGroup keystone_main
+  WSGIScriptAlias / "/var/www/cgi-bin/keystone/main"
+  WSGIPassAuthorization On

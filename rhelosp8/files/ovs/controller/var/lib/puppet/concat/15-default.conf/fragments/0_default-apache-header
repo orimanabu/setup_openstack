@@ -1,0 +1,8 @@
+# ************************************
+# Vhost template in module puppetlabs-apache
+# Managed by Puppet
+# ************************************
+
+<VirtualHost *:80>
+  ServerName default
+  ServerAdmin root@localhost

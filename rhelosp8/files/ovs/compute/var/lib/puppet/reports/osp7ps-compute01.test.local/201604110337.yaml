@@ -1,0 +1,902 @@
+--- !ruby/object:Puppet::Transaction::Report
+  metrics: 
+    resources: !ruby/object:Puppet::Util::Metric
+      name: resources
+      label: Resources
+      values: 
+        - - total
+          - Total
+          - 24
+        - - skipped
+          - Skipped
+          - 0
+        - - failed
+          - Failed
+          - 0
+        - - failed_to_restart
+          - "Failed to restart"
+          - 0
+        - - restarted
+          - Restarted
+          - 0
+        - - changed
+          - Changed
+          - 9
+        - - out_of_sync
+          - "Out of sync"
+          - 9
+        - - scheduled
+          - Scheduled
+          - 0
+    time: !ruby/object:Puppet::Util::Metric
+      name: time
+      label: Time
+      values: 
+        - - schedule
+          - Schedule
+          - 0.0007510859999999999
+        - - package
+          - Package
+          - 61.08272523
+        - - service
+          - Service
+          - 0.059537933
+        - - file
+          - File
+          - 0.00647271
+        - - filebucket
+          - Filebucket
+          - 0.000129342
+        - - exec
+          - Exec
+          - 0.009005142
+        - - sysctl
+          - Sysctl
+          - 0.049398893000000006
+        - - sysctl_runtime
+          - "Sysctl runtime"
+          - 0.024100245
+        - - config_retrieval
+          - "Config retrieval"
+          - 0.63667821
+        - - total
+          - Total
+          - 61.868798791
+    changes: !ruby/object:Puppet::Util::Metric
+      name: changes
+      label: Changes
+      values: 
+        - - total
+          - Total
+          - 9
+    events: !ruby/object:Puppet::Util::Metric
+      name: events
+      label: Events
+      values: 
+        - - total
+          - Total
+          - 9
+        - - failure
+          - Failure
+          - 0
+        - - success
+          - Success
+          - 9
+  logs: 
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - package
+        - sos
+        - class
+      message: created
+      source: /Stage[main]/Main/Package[sos]/ensure
+      time: 2016-04-11 12:36:54.590116 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/manifests/10.0.1.131_prescript.pp
+      line: 21
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - package
+        - openstack-selinux
+        - class
+      message: created
+      source: /Stage[main]/Main/Package[openstack-selinux]/ensure
+      time: 2016-04-11 12:37:49.532537 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/manifests/10.0.1.131_prescript.pp
+      line: 16
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - file
+        - class
+        - "firewall::linux::redhat"
+        - firewall
+        - linux
+        - redhat
+        - "firewall::linux"
+      message: "seluser changed 'system_u' to 'unconfined_u'"
+      source: "/Stage[main]/Firewall::Linux::Redhat/File[/etc/sysconfig/iptables]/seluser"
+      time: 2016-04-11 12:37:49.577172 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/firewall/manifests/linux/redhat.pp
+      line: 80
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - sysctl
+        - net.ipv4.tcp_keepalive_intvl
+        - "sysctl::value"
+        - value
+        - class
+      message: created
+      source: "/Stage[main]/Main/Sysctl::Value[net.ipv4.tcp_keepalive_intvl]/Sysctl[net.ipv4.tcp_keepalive_intvl]/ensure"
+      time: 2016-04-11 12:37:49.637109 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/sysctl/manifests/value.pp
+      line: 24
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - sysctl
+        - net.ipv4.tcp_keepalive_time
+        - "sysctl::value"
+        - value
+        - class
+      message: created
+      source: "/Stage[main]/Main/Sysctl::Value[net.ipv4.tcp_keepalive_time]/Sysctl[net.ipv4.tcp_keepalive_time]/ensure"
+      time: 2016-04-11 12:37:49.683444 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/sysctl/manifests/value.pp
+      line: 24
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - sysctl_runtime
+        - net.ipv4.tcp_keepalive_time
+        - "sysctl::value"
+        - sysctl
+        - value
+        - class
+      message: "val changed '7200' to '5'"
+      source: "/Stage[main]/Main/Sysctl::Value[net.ipv4.tcp_keepalive_time]/Sysctl_runtime[net.ipv4.tcp_keepalive_time]/val"
+      time: 2016-04-11 12:37:49.756654 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/sysctl/manifests/value.pp
+      line: 27
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - sysctl
+        - net.ipv4.tcp_keepalive_probes
+        - "sysctl::value"
+        - value
+        - class
+      message: created
+      source: "/Stage[main]/Main/Sysctl::Value[net.ipv4.tcp_keepalive_probes]/Sysctl[net.ipv4.tcp_keepalive_probes]/ensure"
+      time: 2016-04-11 12:37:49.758618 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/sysctl/manifests/value.pp
+      line: 24
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - sysctl_runtime
+        - net.ipv4.tcp_keepalive_probes
+        - "sysctl::value"
+        - sysctl
+        - value
+        - class
+      message: "val changed '9' to '5'"
+      source: "/Stage[main]/Main/Sysctl::Value[net.ipv4.tcp_keepalive_probes]/Sysctl_runtime[net.ipv4.tcp_keepalive_probes]/val"
+      time: 2016-04-11 12:37:49.768292 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/sysctl/manifests/value.pp
+      line: 27
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - sysctl_runtime
+        - net.ipv4.tcp_keepalive_intvl
+        - "sysctl::value"
+        - sysctl
+        - value
+        - class
+      message: "val changed '75' to '1'"
+      source: "/Stage[main]/Main/Sysctl::Value[net.ipv4.tcp_keepalive_intvl]/Sysctl_runtime[net.ipv4.tcp_keepalive_intvl]/val"
+      time: 2016-04-11 12:37:49.777449 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/sysctl/manifests/value.pp
+      line: 27
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+      message: "Finished catalog run in 61.51 seconds"
+      source: Puppet
+      time: 2016-04-11 12:37:49.791614 +09:00
+  resource_statuses: 
+    Schedule[daily]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[daily]
+      file: 
+      line: 
+      evaluation_time: 0.00017609
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - daily
+      time: 2016-04-11 12:36:48.292689 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: daily
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[daily]
+    Schedule[monthly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[monthly]
+      file: 
+      line: 
+      evaluation_time: 0.000117188
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - monthly
+      time: 2016-04-11 12:36:48.293085 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: monthly
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[monthly]
+    Schedule[hourly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[hourly]
+      file: 
+      line: 
+      evaluation_time: 0.000105904
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - hourly
+      time: 2016-04-11 12:36:48.293375 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: hourly
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[hourly]
+    Package[sos]: !ruby/object:Puppet::Resource::Status
+      resource: Package[sos]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/manifests/10.0.1.131_prescript.pp
+      line: 21
+      evaluation_time: 6.14743714
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - package
+        - sos
+        - class
+      time: 2016-04-11 12:36:48.442973 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym package_installed
+          status: success
+          time: 2016-04-11 12:36:48.495458 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Package
+      title: sos
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - Package[sos]
+    Package[openstack-selinux]: !ruby/object:Puppet::Resource::Status
+      resource: Package[openstack-selinux]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/manifests/10.0.1.131_prescript.pp
+      line: 16
+      evaluation_time: 54.934404365
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - package
+        - openstack-selinux
+        - class
+      time: 2016-04-11 12:36:54.598385 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym package_installed
+          status: success
+          time: 2016-04-11 12:36:54.644437 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Package
+      title: openstack-selinux
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - Package[openstack-selinux]
+    Package[audit]: !ruby/object:Puppet::Resource::Status
+      resource: Package[audit]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/manifests/10.0.1.131_prescript.pp
+      line: 25
+      evaluation_time: 0.000330825
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - package
+        - audit
+        - class
+      time: 2016-04-11 12:37:49.540047 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Package
+      title: audit
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - Package[audit]
+    Service[auditd]: !ruby/object:Puppet::Resource::Status
+      resource: Service[auditd]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/manifests/10.0.1.131_prescript.pp
+      line: 29
+      evaluation_time: 0.026488434
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - service
+        - auditd
+        - class
+      time: 2016-04-11 12:37:49.540835 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Service
+      title: auditd
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - Service[auditd]
+    Schedule[never]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[never]
+      file: 
+      line: 
+      evaluation_time: 0.000156218
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - never
+      time: 2016-04-11 12:37:49.567644 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: never
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[never]
+    Package[iptables]: !ruby/object:Puppet::Resource::Status
+      resource: Package[iptables]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/firewall/manifests/linux.pp
+      line: 26
+      evaluation_time: 0.000267754
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - package
+        - iptables
+        - class
+        - "firewall::linux"
+        - firewall
+        - linux
+      time: 2016-04-11 12:37:49.571110 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Package
+      title: iptables
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Firewall::Linux"
+        - Package[iptables]
+    File[/etc/sysconfig/iptables]: !ruby/object:Puppet::Resource::Status
+      resource: File[/etc/sysconfig/iptables]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/firewall/manifests/linux/redhat.pp
+      line: 80
+      evaluation_time: 0.004186159
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - file
+        - class
+        - "firewall::linux::redhat"
+        - firewall
+        - linux
+        - redhat
+        - "firewall::linux"
+      time: 2016-04-11 12:37:49.574351 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: seluser
+          previous_value: system_u
+          desired_value: unconfined_u
+          historical_value: 
+          message: "seluser changed 'system_u' to 'unconfined_u'"
+          name: !ruby/sym seluser_changed
+          status: success
+          time: 2016-04-11 12:37:49.576635 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: File
+      title: /etc/sysconfig/iptables
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Firewall::Linux::Redhat"
+        - File[/etc/sysconfig/iptables]
+    Filebucket[puppet]: !ruby/object:Puppet::Resource::Status
+      resource: Filebucket[puppet]
+      file: 
+      line: 
+      evaluation_time: 0.000129342
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - filebucket
+        - puppet
+      time: 2016-04-11 12:37:49.581426 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Filebucket
+      title: puppet
+      skipped: false
+      failed: false
+      containment_path: 
+        - Filebucket[puppet]
+    Service[firewalld]: !ruby/object:Puppet::Resource::Status
+      resource: Service[firewalld]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/firewall/manifests/linux/redhat.pp
+      line: 32
+      evaluation_time: 0.016837812
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - service
+        - firewalld
+        - class
+        - "firewall::linux::redhat"
+        - firewall
+        - linux
+        - redhat
+        - "firewall::linux"
+      time: 2016-04-11 12:37:49.581931 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Service
+      title: firewalld
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Firewall::Linux::Redhat"
+        - Service[firewalld]
+    Package[iptables-services]: !ruby/object:Puppet::Resource::Status
+      resource: Package[iptables-services]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/firewall/manifests/linux/redhat.pp
+      line: 39
+      evaluation_time: 0.000285146
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - package
+        - iptables-services
+        - class
+        - "firewall::linux::redhat"
+        - firewall
+        - linux
+        - redhat
+        - "firewall::linux"
+      time: 2016-04-11 12:37:49.599515 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Package
+      title: iptables-services
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Firewall::Linux::Redhat"
+        - Package[iptables-services]
+    "Exec[/usr/bin/systemctl daemon-reload]": !ruby/object:Puppet::Resource::Status
+      resource: "Exec[/usr/bin/systemctl daemon-reload]"
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/firewall/manifests/linux/redhat.pp
+      line: 50
+      evaluation_time: 0.009005142
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - exec
+        - class
+        - "firewall::linux::redhat"
+        - firewall
+        - linux
+        - redhat
+        - "firewall::linux"
+      time: 2016-04-11 12:37:49.600242 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Exec
+      title: "/usr/bin/systemctl daemon-reload"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Firewall::Linux::Redhat"
+        - "Exec[/usr/bin/systemctl daemon-reload]"
+    Service[iptables]: !ruby/object:Puppet::Resource::Status
+      resource: Service[iptables]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/firewall/manifests/linux/redhat.pp
+      line: 59
+      evaluation_time: 0.016211687
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - service
+        - iptables
+        - class
+        - "firewall::linux::redhat"
+        - firewall
+        - linux
+        - redhat
+        - "firewall::linux"
+      time: 2016-04-11 12:37:49.609900 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Service
+      title: iptables
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Firewall::Linux::Redhat"
+        - Service[iptables]
+    Schedule[weekly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[weekly]
+      file: 
+      line: 
+      evaluation_time: 8.0191e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - weekly
+      time: 2016-04-11 12:37:49.629566 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: weekly
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[weekly]
+    Schedule[puppet]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[puppet]
+      file: 
+      line: 
+      evaluation_time: 0.000115495
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - puppet
+      time: 2016-04-11 12:37:49.629880 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: puppet
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[puppet]
+    File[/etc/sysctl.conf]: !ruby/object:Puppet::Resource::Status
+      resource: File[/etc/sysctl.conf]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/sysctl/manifests/base.pp
+      line: 8
+      evaluation_time: 0.002286551
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - file
+        - class
+        - "sysctl::base"
+        - sysctl
+        - base
+        - "sysctl::value"
+        - value
+        - net.ipv4.tcp_keepalive_intvl
+      time: 2016-04-11 12:37:49.630358 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: File
+      title: /etc/sysctl.conf
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Sysctl::Base"
+        - File[/etc/sysctl.conf]
+    Sysctl[net.ipv4.tcp_keepalive_intvl]: !ruby/object:Puppet::Resource::Status
+      resource: Sysctl[net.ipv4.tcp_keepalive_intvl]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/sysctl/manifests/value.pp
+      line: 24
+      evaluation_time: 0.045642609
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - sysctl
+        - net.ipv4.tcp_keepalive_intvl
+        - "sysctl::value"
+        - value
+        - class
+      time: 2016-04-11 12:37:49.636569 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym sysctl_created
+          status: success
+          time: 2016-04-11 12:37:49.636943 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Sysctl
+      title: net.ipv4.tcp_keepalive_intvl
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Sysctl::Value[net.ipv4.tcp_keepalive_intvl]"
+        - Sysctl[net.ipv4.tcp_keepalive_intvl]
+    Sysctl[net.ipv4.tcp_keepalive_time]: !ruby/object:Puppet::Resource::Status
+      resource: Sysctl[net.ipv4.tcp_keepalive_time]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/sysctl/manifests/value.pp
+      line: 24
+      evaluation_time: 0.00178248
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - sysctl
+        - net.ipv4.tcp_keepalive_time
+        - "sysctl::value"
+        - value
+        - class
+      time: 2016-04-11 12:37:49.682857 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym sysctl_created
+          status: success
+          time: 2016-04-11 12:37:49.683311 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Sysctl
+      title: net.ipv4.tcp_keepalive_time
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Sysctl::Value[net.ipv4.tcp_keepalive_time]"
+        - Sysctl[net.ipv4.tcp_keepalive_time]
+    Sysctl_runtime[net.ipv4.tcp_keepalive_time]: !ruby/object:Puppet::Resource::Status
+      resource: Sysctl_runtime[net.ipv4.tcp_keepalive_time]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/sysctl/manifests/value.pp
+      line: 27
+      evaluation_time: 0.008175328
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - sysctl_runtime
+        - net.ipv4.tcp_keepalive_time
+        - "sysctl::value"
+        - sysctl
+        - value
+        - class
+      time: 2016-04-11 12:37:49.748753 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: val
+          previous_value: "7200"
+          desired_value: "5"
+          historical_value: 
+          message: "val changed '7200' to '5'"
+          name: !ruby/sym val_changed
+          status: success
+          time: 2016-04-11 12:37:49.749295 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Sysctl_runtime
+      title: net.ipv4.tcp_keepalive_time
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Sysctl::Value[net.ipv4.tcp_keepalive_time]"
+        - Sysctl_runtime[net.ipv4.tcp_keepalive_time]
+    Sysctl[net.ipv4.tcp_keepalive_probes]: !ruby/object:Puppet::Resource::Status
+      resource: Sysctl[net.ipv4.tcp_keepalive_probes]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/sysctl/manifests/value.pp
+      line: 24
+      evaluation_time: 0.001973804
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - sysctl
+        - net.ipv4.tcp_keepalive_probes
+        - "sysctl::value"
+        - value
+        - class
+      time: 2016-04-11 12:37:49.758100 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym sysctl_created
+          status: success
+          time: 2016-04-11 12:37:49.758494 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Sysctl
+      title: net.ipv4.tcp_keepalive_probes
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Sysctl::Value[net.ipv4.tcp_keepalive_probes]"
+        - Sysctl[net.ipv4.tcp_keepalive_probes]
+    Sysctl_runtime[net.ipv4.tcp_keepalive_probes]: !ruby/object:Puppet::Resource::Status
+      resource: Sysctl_runtime[net.ipv4.tcp_keepalive_probes]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/sysctl/manifests/value.pp
+      line: 27
+      evaluation_time: 0.007929145
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - sysctl_runtime
+        - net.ipv4.tcp_keepalive_probes
+        - "sysctl::value"
+        - sysctl
+        - value
+        - class
+      time: 2016-04-11 12:37:49.760637 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: val
+          previous_value: "9"
+          desired_value: "5"
+          historical_value: 
+          message: "val changed '9' to '5'"
+          name: !ruby/sym val_changed
+          status: success
+          time: 2016-04-11 12:37:49.761031 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Sysctl_runtime
+      title: net.ipv4.tcp_keepalive_probes
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Sysctl::Value[net.ipv4.tcp_keepalive_probes]"
+        - Sysctl_runtime[net.ipv4.tcp_keepalive_probes]
+    Sysctl_runtime[net.ipv4.tcp_keepalive_intvl]: !ruby/object:Puppet::Resource::Status
+      resource: Sysctl_runtime[net.ipv4.tcp_keepalive_intvl]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/sysctl/manifests/value.pp
+      line: 27
+      evaluation_time: 0.007995772
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - sysctl_runtime
+        - net.ipv4.tcp_keepalive_intvl
+        - "sysctl::value"
+        - sysctl
+        - value
+        - class
+      time: 2016-04-11 12:37:49.769735 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: val
+          previous_value: "75"
+          desired_value: "1"
+          historical_value: 
+          message: "val changed '75' to '1'"
+          name: !ruby/sym val_changed
+          status: success
+          time: 2016-04-11 12:37:49.770144 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Sysctl_runtime
+      title: net.ipv4.tcp_keepalive_intvl
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Sysctl::Value[net.ipv4.tcp_keepalive_intvl]"
+        - Sysctl_runtime[net.ipv4.tcp_keepalive_intvl]
+  host: osp7ps-compute01.test.local
+  time: 2016-04-11 12:36:48.278561 +09:00
+  kind: apply
+  report_format: 4
+  puppet_version: "3.6.2"
+  configuration_version: 1460345806
+  transaction_uuid: c74ca6eb-1a27-474b-896b-140c9d37f181
+  environment: production
+  status: changed

@@ -1,0 +1,3827 @@
+--- !ruby/object:Puppet::Transaction::Report
+  metrics: 
+    resources: !ruby/object:Puppet::Util::Metric
+      name: resources
+      label: Resources
+      values: 
+        - - total
+          - Total
+          - 87
+        - - skipped
+          - Skipped
+          - 0
+        - - failed
+          - Failed
+          - 0
+        - - failed_to_restart
+          - "Failed to restart"
+          - 0
+        - - restarted
+          - Restarted
+          - 0
+        - - changed
+          - Changed
+          - 68
+        - - out_of_sync
+          - "Out of sync"
+          - 68
+        - - scheduled
+          - Scheduled
+          - 0
+    time: !ruby/object:Puppet::Util::Metric
+      name: time
+      label: Time
+      values: 
+        - - schedule
+          - Schedule
+          - 0.000641636
+        - - package
+          - Package
+          - 27.05081196
+        - - neutron_config
+          - "Neutron config"
+          - 0.5956179979999999
+        - - firewall
+          - Firewall
+          - 0.457437998
+        - - file
+          - File
+          - 0.017371516
+        - - service
+          - Service
+          - 0.535691496
+        - - filebucket
+          - Filebucket
+          - 0.000233542
+        - - exec
+          - Exec
+          - 0.047876466
+        - - file_line
+          - "File line"
+          - 0.003983979
+        - - neutron_agent_ovs
+          - "Neutron agent ovs"
+          - 0.06477415500000001
+        - - config_retrieval
+          - "Config retrieval"
+          - 1.206935177
+        - - total
+          - Total
+          - 29.981375923
+    changes: !ruby/object:Puppet::Util::Metric
+      name: changes
+      label: Changes
+      values: 
+        - - total
+          - Total
+          - 68
+    events: !ruby/object:Puppet::Util::Metric
+      name: events
+      label: Events
+      values: 
+        - - total
+          - Total
+          - 68
+        - - failure
+          - Failure
+          - 0
+        - - success
+          - Success
+          - 68
+  logs: 
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - package
+        - neutron
+        - openstack
+        - neutron-package
+        - class
+      message: created
+      source: /Stage[main]/Neutron/Package[neutron]/ensure
+      time: 2016-04-11 12:45:15.549756 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 358
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[DEFAULT/use_ssl]/ensure
+      time: 2016-04-11 12:45:15.578701 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 523
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[oslo_messaging_rabbit/rabbit_hosts]/ensure
+      time: 2016-04-11 12:45:15.584949 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 450
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[oslo_messaging_rabbit/kombu_reconnect_delay]/ensure
+      time: 2016-04-11 12:45:15.591548 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 462
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[DEFAULT/use_syslog]/ensure
+      time: 2016-04-11 12:45:15.602539 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 550
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[DEFAULT/dhcp_agent_notification]/ensure
+      time: 2016-04-11 12:45:15.615379 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[DEFAULT/log_dir]/ensure
+      time: 2016-04-11 12:45:15.622740 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 401
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[oslo_messaging_rabbit/heartbeat_rate]/ensure
+      time: 2016-04-11 12:45:15.630659 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 462
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[agent/root_helper]/ensure
+      time: 2016-04-11 12:45:15.669055 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[DEFAULT/rpc_backend]/ensure
+      time: 2016-04-11 12:45:15.678199 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[DEFAULT/state_path]/ensure
+      time: 2016-04-11 12:45:15.684586 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[DEFAULT/advertise_mtu]/ensure
+      time: 2016-04-11 12:45:15.691204 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[DEFAULT/service_plugins]/ensure
+      time: 2016-04-11 12:45:15.701773 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 423
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[DEFAULT/control_exchange]/ensure
+      time: 2016-04-11 12:45:15.726301 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[DEFAULT/core_plugin]/ensure
+      time: 2016-04-11 12:45:15.736500 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[DEFAULT/rpc_response_timeout]/ensure
+      time: 2016-04-11 12:45:15.774432 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - firewall
+        - "packstack::firewall"
+        - packstack
+        - neutron_tunnel_10.0.1.131_10.0.2.132
+        - class
+      message: created
+      source: "/Stage[main]/Main/Packstack::Firewall[neutron_tunnel_10.0.1.131_10.0.2.132]/Firewall[001 neutron tunnel port incoming neutron_tunnel_10.0.1.131_10.0.2.132]/ensure"
+      time: 2016-04-11 12:45:15.858946 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/packstack/manifests/firewall.pp
+      line: 50
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[agent/report_interval]/ensure
+      time: 2016-04-11 12:45:15.981504 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[DEFAULT/auth_strategy]/ensure
+      time: 2016-04-11 12:45:15.990919 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[DEFAULT/allow_overlapping_ips]/ensure
+      time: 2016-04-11 12:45:15.998976 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - firewall
+        - "packstack::firewall"
+        - packstack
+        - neutron_tunnel_10.0.1.131_10.0.2.111
+        - class
+      message: created
+      source: "/Stage[main]/Main/Packstack::Firewall[neutron_tunnel_10.0.1.131_10.0.2.111]/Firewall[001 neutron tunnel port incoming neutron_tunnel_10.0.1.131_10.0.2.111]/ensure"
+      time: 2016-04-11 12:45:16.078235 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/packstack/manifests/firewall.pp
+      line: 50
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[oslo_messaging_rabbit/rabbit_virtual_host]/ensure
+      time: 2016-04-11 12:45:16.189186 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 462
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[DEFAULT/debug]/ensure
+      time: 2016-04-11 12:45:16.199826 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[oslo_messaging_rabbit/rabbit_use_ssl]/ensure
+      time: 2016-04-11 12:45:16.210577 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 462
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[DEFAULT/verbose]/ensure
+      time: 2016-04-11 12:45:16.224758 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - file
+        - bridge-module-loader
+        - class
+        - "packstack::neutron::bridge"
+        - packstack
+        - neutron
+        - bridge
+      message: "defined content as '{md5}c126fa499d7190a56e08fa92079993e8'"
+      source: "/Stage[main]/Packstack::Neutron::Bridge/File[bridge-module-loader]/ensure"
+      time: 2016-04-11 12:45:16.251035 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/packstack/manifests/neutron/bridge.pp
+      line: 10
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[DEFAULT/bind_host]/ensure
+      time: 2016-04-11 12:45:16.263658 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[DEFAULT/allow_sorting]/ensure
+      time: 2016-04-11 12:45:16.302755 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[DEFAULT/mac_generation_retries]/ensure
+      time: 2016-04-11 12:45:16.317858 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[oslo_messaging_rabbit/rabbit_password]/ensure
+      time: 2016-04-11 12:45:16.329066 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 462
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[oslo_messaging_rabbit/rabbit_ha_queues]/ensure
+      time: 2016-04-11 12:45:16.340641 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 451
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[DEFAULT/dhcp_agents_per_network]/ensure
+      time: 2016-04-11 12:45:16.353555 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[DEFAULT/use_stderr]/ensure
+      time: 2016-04-11 12:45:16.364382 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[DEFAULT/lock_path]/ensure
+      time: 2016-04-11 12:45:16.378861 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[DEFAULT/allow_bulk]/ensure
+      time: 2016-04-11 12:45:16.420865 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[DEFAULT/bind_port]/ensure
+      time: 2016-04-11 12:45:16.427951 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - package
+        - openvswitch
+        - class
+        - "vswitch::ovs"
+        - vswitch
+        - ovs
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+      message: created
+      source: "/Stage[main]/Vswitch::Ovs/Package[openvswitch]/ensure"
+      time: 2016-04-11 12:45:22.748462 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/vswitch/manifests/ovs.pp
+      line: 100
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - service
+        - openvswitch
+        - class
+        - "vswitch::ovs"
+        - vswitch
+        - ovs
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+      message: "ensure changed 'stopped' to 'running'"
+      source: "/Stage[main]/Vswitch::Ovs/Service[openvswitch]/ensure"
+      time: 2016-04-11 12:45:22.987272 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/vswitch/manifests/ovs.pp
+      line: 72
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[oslo_messaging_rabbit/rabbit_host]/ensure
+      time: 2016-04-11 12:45:23.013462 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 448
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[DEFAULT/allow_pagination]/ensure
+      time: 2016-04-11 12:45:23.037180 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[DEFAULT/dhcp_lease_duration]/ensure
+      time: 2016-04-11 12:45:23.076648 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[oslo_messaging_rabbit/heartbeat_timeout_threshold]/ensure
+      time: 2016-04-11 12:45:23.095224 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 462
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[DEFAULT/base_mac]/ensure
+      time: 2016-04-11 12:45:23.106314 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - exec
+        - load-bridge
+        - class
+        - "packstack::neutron::bridge"
+        - packstack
+        - neutron
+        - bridge
+      message: "executed successfully"
+      source: "/Stage[main]/Packstack::Neutron::Bridge/Exec[load-bridge]/returns"
+      time: 2016-04-11 12:45:23.129443 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/packstack/manifests/neutron/bridge.pp
+      line: 14
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - file_line
+        - class
+        - "packstack::neutron::bridge"
+        - packstack
+        - neutron
+        - bridge
+      message: created
+      source: "/Stage[main]/Packstack::Neutron::Bridge/File_line[/etc/sysctl.conf bridge-nf-call-ip6tables]/ensure"
+      time: 2016-04-11 12:45:23.144481 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/packstack/manifests/neutron/bridge.pp
+      line: 23
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - file_line
+        - class
+        - "packstack::neutron::bridge"
+        - packstack
+        - neutron
+        - bridge
+      message: created
+      source: "/Stage[main]/Packstack::Neutron::Bridge/File_line[/etc/sysctl.conf bridge-nf-call-iptables]/ensure"
+      time: 2016-04-11 12:45:23.146321 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/packstack/manifests/neutron/bridge.pp
+      line: 27
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - file_line
+        - class
+        - "packstack::neutron::bridge"
+        - packstack
+        - neutron
+        - bridge
+      message: created
+      source: "/Stage[main]/Packstack::Neutron::Bridge/File_line[/etc/sysctl.conf bridge-nf-call-arptables]/ensure"
+      time: 2016-04-11 12:45:23.148069 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/packstack/manifests/neutron/bridge.pp
+      line: 31
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - exec
+        - sysctl_refresh
+        - class
+        - "packstack::neutron::bridge"
+        - packstack
+        - neutron
+        - bridge
+      message: "executed successfully"
+      source: "/Stage[main]/Packstack::Neutron::Bridge/Exec[sysctl_refresh]/returns"
+      time: 2016-04-11 12:45:23.162873 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/packstack/manifests/neutron/bridge.pp
+      line: 35
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - package
+        - neutron-ovs-agent
+        - openstack
+        - neutron-package
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      message: created
+      source: "/Stage[main]/Neutron::Agents::Ml2::Ovs/Package[neutron-ovs-agent]/ensure"
+      time: 2016-04-11 12:45:29.847154 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 242
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_agent_ovs
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      message: created
+      source: "/Stage[main]/Neutron::Agents::Ml2::Ovs/Neutron_agent_ovs[ovs/local_ip]/ensure"
+      time: 2016-04-11 12:45:29.851178 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 205
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_agent_ovs
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      message: created
+      source: "/Stage[main]/Neutron::Agents::Ml2::Ovs/Neutron_agent_ovs[agent/extensions]/ensure"
+      time: 2016-04-11 12:45:29.853671 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 192
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_agent_ovs
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      message: created
+      source: "/Stage[main]/Neutron::Agents::Ml2::Ovs/Neutron_agent_ovs[agent/enable_distributed_routing]/ensure"
+      time: 2016-04-11 12:45:29.855752 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 192
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_agent_ovs
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      message: created
+      source: "/Stage[main]/Neutron::Agents::Ml2::Ovs/Neutron_agent_ovs[ovs/tunnel_bridge]/ensure"
+      time: 2016-04-11 12:45:29.859747 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 205
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_agent_ovs
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      message: created
+      source: "/Stage[main]/Neutron::Agents::Ml2::Ovs/Neutron_agent_ovs[agent/prevent_arp_spoofing]/ensure"
+      time: 2016-04-11 12:45:29.864349 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 192
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_agent_ovs
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      message: created
+      source: "/Stage[main]/Neutron::Agents::Ml2::Ovs/Neutron_agent_ovs[ovs/enable_tunneling]/ensure"
+      time: 2016-04-11 12:45:29.868355 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 205
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_agent_ovs
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      message: created
+      source: "/Stage[main]/Neutron::Agents::Ml2::Ovs/Neutron_agent_ovs[ovs/integration_bridge]/ensure"
+      time: 2016-04-11 12:45:29.872122 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 192
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_agent_ovs
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      message: created
+      source: "/Stage[main]/Neutron::Agents::Ml2::Ovs/Neutron_agent_ovs[securitygroup/firewall_driver]/ensure"
+      time: 2016-04-11 12:45:29.901800 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 195
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - service
+        - ovs-cleanup-service
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      message: "enable changed 'false' to 'true'"
+      source: "/Stage[main]/Neutron::Agents::Ml2::Ovs/Service[ovs-cleanup-service]/enable"
+      time: 2016-04-11 12:45:30.014772 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 269
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_agent_ovs
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      message: created
+      source: "/Stage[main]/Neutron::Agents::Ml2::Ovs/Neutron_agent_ovs[agent/arp_responder]/ensure"
+      time: 2016-04-11 12:45:30.018710 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 192
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_agent_ovs
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      message: created
+      source: "/Stage[main]/Neutron::Agents::Ml2::Ovs/Neutron_agent_ovs[agent/polling_interval]/ensure"
+      time: 2016-04-11 12:45:30.021133 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 192
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_agent_ovs
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      message: created
+      source: "/Stage[main]/Neutron::Agents::Ml2::Ovs/Neutron_agent_ovs[agent/drop_flows_on_start]/ensure"
+      time: 2016-04-11 12:45:30.024762 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 192
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_agent_ovs
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      message: created
+      source: "/Stage[main]/Neutron::Agents::Ml2::Ovs/Neutron_agent_ovs[agent/vxlan_udp_port]/ensure"
+      time: 2016-04-11 12:45:30.028047 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 216
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_agent_ovs
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      message: created
+      source: "/Stage[main]/Neutron::Agents::Ml2::Ovs/Neutron_agent_ovs[agent/l2_population]/ensure"
+      time: 2016-04-11 12:45:30.034608 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 192
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_agent_ovs
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      message: created
+      source: "/Stage[main]/Neutron::Agents::Ml2::Ovs/Neutron_agent_ovs[agent/tunnel_types]/ensure"
+      time: 2016-04-11 12:45:30.037275 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 210
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[oslo_messaging_rabbit/rabbit_userid]/ensure
+      time: 2016-04-11 12:45:30.048463 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 462
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - neutron_config
+        - class
+        - neutron
+      message: created
+      source: /Stage[main]/Neutron/Neutron_config[oslo_messaging_rabbit/rabbit_port]/ensure
+      time: 2016-04-11 12:45:30.061274 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 449
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - service
+        - neutron-ovs-agent-service
+        - neutron-service
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      message: "ensure changed 'stopped' to 'running'"
+      source: "/Stage[main]/Neutron::Agents::Ml2::Ovs/Service[neutron-ovs-agent-service]/ensure"
+      time: 2016-04-11 12:45:30.249902 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 262
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - firewall
+        - "packstack::firewall"
+        - packstack
+        - neutron_tunnel_10.0.1.131_10.0.2.131
+        - class
+      message: created
+      source: "/Stage[main]/Main/Packstack::Firewall[neutron_tunnel_10.0.1.131_10.0.2.131]/Firewall[001 neutron tunnel port incoming neutron_tunnel_10.0.1.131_10.0.2.131]/ensure"
+      time: 2016-04-11 12:45:30.339639 +09:00
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/packstack/manifests/firewall.pp
+      line: 50
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+      message: "Finished catalog run in 29.27 seconds"
+      source: Puppet
+      time: 2016-04-11 12:45:30.486468 +09:00
+  resource_statuses: 
+    Schedule[daily]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[daily]
+      file: 
+      line: 
+      evaluation_time: 0.000130185
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - daily
+      time: 2016-04-11 12:45:01.333154 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: daily
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[daily]
+    Schedule[monthly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[monthly]
+      file: 
+      line: 
+      evaluation_time: 5.4107e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - monthly
+      time: 2016-04-11 12:45:01.333419 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: monthly
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[monthly]
+    Schedule[hourly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[hourly]
+      file: 
+      line: 
+      evaluation_time: 4.8346e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - hourly
+      time: 2016-04-11 12:45:01.333570 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: hourly
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[hourly]
+    Package[neutron]: !ruby/object:Puppet::Resource::Status
+      resource: Package[neutron]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 358
+      evaluation_time: 14.051857371
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - package
+        - neutron
+        - openstack
+        - neutron-package
+        - class
+      time: 2016-04-11 12:45:01.498202 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym package_installed
+          status: success
+          time: 2016-04-11 12:45:01.528562 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Package
+      title: neutron
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Package[neutron]
+    Neutron_config[DEFAULT/use_ssl]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/use_ssl]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 523
+      evaluation_time: 0.027883349
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:15.551116 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:15.555114 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: DEFAULT/use_ssl
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/use_ssl]
+    Neutron_config[oslo_messaging_rabbit/rabbit_hosts]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[oslo_messaging_rabbit/rabbit_hosts]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 450
+      evaluation_time: 0.005712576
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:15.579410 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:15.582576 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: oslo_messaging_rabbit/rabbit_hosts
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[oslo_messaging_rabbit/rabbit_hosts]
+    Neutron_config[oslo_messaging_rabbit/kombu_reconnect_delay]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[oslo_messaging_rabbit/kombu_reconnect_delay]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 462
+      evaluation_time: 0.006253845
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:15.585479 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:15.588680 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: oslo_messaging_rabbit/kombu_reconnect_delay
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[oslo_messaging_rabbit/kombu_reconnect_delay]
+    Neutron_config[oslo_messaging_rabbit/kombu_ssl_certfile]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[oslo_messaging_rabbit/kombu_ssl_certfile]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 496
+      evaluation_time: 0.002328328
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:15.592098 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Neutron_config
+      title: oslo_messaging_rabbit/kombu_ssl_certfile
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[oslo_messaging_rabbit/kombu_ssl_certfile]
+    Neutron_config[DEFAULT/use_syslog]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/use_syslog]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 550
+      evaluation_time: 0.008099363
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:15.594718 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:15.598541 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: DEFAULT/use_syslog
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/use_syslog]
+    Neutron_config[DEFAULT/ssl_ca_file]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/ssl_ca_file]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 539
+      evaluation_time: 0.002787276
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:15.603193 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Neutron_config
+      title: DEFAULT/ssl_ca_file
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/ssl_ca_file]
+    Neutron_config[DEFAULT/dhcp_agent_notification]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/dhcp_agent_notification]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+      evaluation_time: 0.009194929
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:15.606433 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:15.609736 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: DEFAULT/dhcp_agent_notification
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/dhcp_agent_notification]
+    Neutron_config[DEFAULT/log_dir]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/log_dir]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 401
+      evaluation_time: 0.006836618
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:15.616224 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:15.619499 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: DEFAULT/log_dir
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/log_dir]
+    Neutron_config[oslo_messaging_rabbit/heartbeat_rate]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[oslo_messaging_rabbit/heartbeat_rate]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 462
+      evaluation_time: 0.007653887
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:15.623486 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:15.627432 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: oslo_messaging_rabbit/heartbeat_rate
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[oslo_messaging_rabbit/heartbeat_rate]
+    Neutron_config[DEFAULT/log_file]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/log_file]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 401
+      evaluation_time: 0.002945736
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:15.631525 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Neutron_config
+      title: DEFAULT/log_file
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/log_file]
+    Neutron_config[oslo_messaging_rabbit/kombu_ssl_version]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[oslo_messaging_rabbit/kombu_ssl_version]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 496
+      evaluation_time: 0.003506004
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:15.635168 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Neutron_config
+      title: oslo_messaging_rabbit/kombu_ssl_version
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[oslo_messaging_rabbit/kombu_ssl_version]
+    Neutron_config[agent/root_helper]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[agent/root_helper]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+      evaluation_time: 0.030187844
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:15.639078 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:15.665629 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: agent/root_helper
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[agent/root_helper]
+    Neutron_config[DEFAULT/rpc_backend]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/rpc_backend]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+      evaluation_time: 0.008635407
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:15.669757 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:15.673590 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: DEFAULT/rpc_backend
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/rpc_backend]
+    Neutron_config[DEFAULT/state_path]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/state_path]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+      evaluation_time: 0.0059721
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:15.678813 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:15.682209 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: DEFAULT/state_path
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/state_path]
+    Neutron_config[DEFAULT/advertise_mtu]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/advertise_mtu]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+      evaluation_time: 0.006463942
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:15.685151 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:15.687624 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: DEFAULT/advertise_mtu
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/advertise_mtu]
+    Neutron_config[DEFAULT/service_plugins]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/service_plugins]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 423
+      evaluation_time: 0.009800411
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:15.692155 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:15.696909 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: DEFAULT/service_plugins
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/service_plugins]
+    Neutron_config[DEFAULT/ssl_cert_file]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/ssl_cert_file]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 539
+      evaluation_time: 0.00312451
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:15.702377 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Neutron_config
+      title: DEFAULT/ssl_cert_file
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/ssl_cert_file]
+    Neutron_config[DEFAULT/control_exchange]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/control_exchange]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+      evaluation_time: 0.020377761
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:15.706133 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:15.709154 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: DEFAULT/control_exchange
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/control_exchange]
+    Neutron_config[DEFAULT/memcached_servers]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/memcached_servers]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 436
+      evaluation_time: 0.002829522
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:15.727004 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Neutron_config
+      title: DEFAULT/memcached_servers
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/memcached_servers]
+    Neutron_config[DEFAULT/core_plugin]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/core_plugin]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+      evaluation_time: 0.006070606
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:15.730612 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:15.733421 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: DEFAULT/core_plugin
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/core_plugin]
+    Neutron_config[DEFAULT/rpc_response_timeout]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/rpc_response_timeout]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+      evaluation_time: 0.036981979
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:15.737692 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:15.768350 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: DEFAULT/rpc_response_timeout
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/rpc_response_timeout]
+    "Firewall[001 neutron tunnel port incoming neutron_tunnel_10.0.1.131_10.0.2.132]": !ruby/object:Puppet::Resource::Status
+      resource: "Firewall[001 neutron tunnel port incoming neutron_tunnel_10.0.1.131_10.0.2.132]"
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/packstack/manifests/firewall.pp
+      line: 50
+      evaluation_time: 0.140304516
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - firewall
+        - "packstack::firewall"
+        - packstack
+        - neutron_tunnel_10.0.1.131_10.0.2.132
+        - class
+      time: 2016-04-11 12:45:15.798089 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym firewall_created
+          status: success
+          time: 2016-04-11 12:45:15.824565 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Firewall
+      title: "001 neutron tunnel port incoming neutron_tunnel_10.0.1.131_10.0.2.132"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Packstack::Firewall[neutron_tunnel_10.0.1.131_10.0.2.132]"
+        - "Firewall[001 neutron tunnel port incoming neutron_tunnel_10.0.1.131_10.0.2.132]"
+    Neutron_config[agent/report_interval]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[agent/report_interval]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+      evaluation_time: 0.010319524
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:15.971462 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:15.976571 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: agent/report_interval
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[agent/report_interval]
+    Neutron_config[DEFAULT/auth_strategy]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/auth_strategy]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+      evaluation_time: 0.008687982
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:15.982434 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:15.987080 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: DEFAULT/auth_strategy
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/auth_strategy]
+    Neutron_config[DEFAULT/allow_overlapping_ips]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/allow_overlapping_ips]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+      evaluation_time: 0.007667123
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:15.991501 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:15.995341 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: DEFAULT/allow_overlapping_ips
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/allow_overlapping_ips]
+    "Firewall[001 neutron tunnel port incoming neutron_tunnel_10.0.1.131_10.0.2.111]": !ruby/object:Puppet::Resource::Status
+      resource: "Firewall[001 neutron tunnel port incoming neutron_tunnel_10.0.1.131_10.0.2.111]"
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/packstack/manifests/firewall.pp
+      line: 50
+      evaluation_time: 0.157183542
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - firewall
+        - "packstack::firewall"
+        - packstack
+        - neutron_tunnel_10.0.1.131_10.0.2.111
+        - class
+      time: 2016-04-11 12:45:15.999683 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym firewall_created
+          status: success
+          time: 2016-04-11 12:45:16.021009 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Firewall
+      title: "001 neutron tunnel port incoming neutron_tunnel_10.0.1.131_10.0.2.111"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Packstack::Firewall[neutron_tunnel_10.0.1.131_10.0.2.111]"
+        - "Firewall[001 neutron tunnel port incoming neutron_tunnel_10.0.1.131_10.0.2.111]"
+    Neutron_config[oslo_messaging_rabbit/rabbit_virtual_host]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[oslo_messaging_rabbit/rabbit_virtual_host]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 462
+      evaluation_time: 0.03114433
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:16.158276 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:16.184678 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: oslo_messaging_rabbit/rabbit_virtual_host
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[oslo_messaging_rabbit/rabbit_virtual_host]
+    Neutron_config[oslo_messaging_rabbit/kombu_ssl_ca_certs]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[oslo_messaging_rabbit/kombu_ssl_ca_certs]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 496
+      evaluation_time: 0.002921154
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:16.189775 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Neutron_config
+      title: oslo_messaging_rabbit/kombu_ssl_ca_certs
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[oslo_messaging_rabbit/kombu_ssl_ca_certs]
+    Neutron_config[DEFAULT/debug]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/debug]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+      evaluation_time: 0.007004369
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:16.192982 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:16.196641 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: DEFAULT/debug
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/debug]
+    Neutron_config[oslo_messaging_rabbit/rabbit_use_ssl]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[oslo_messaging_rabbit/rabbit_use_ssl]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 462
+      evaluation_time: 0.010430451
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:16.200462 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:16.205770 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: oslo_messaging_rabbit/rabbit_use_ssl
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[oslo_messaging_rabbit/rabbit_use_ssl]
+    Neutron_config[DEFAULT/verbose]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/verbose]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+      evaluation_time: 0.013816079
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:16.211403 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:16.216543 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: DEFAULT/verbose
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/verbose]
+    Neutron_config[DEFAULT/ssl_key_file]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/ssl_key_file]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 539
+      evaluation_time: 0.003901781
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:16.225939 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Neutron_config
+      title: DEFAULT/ssl_key_file
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/ssl_key_file]
+    File[bridge-module-loader]: !ruby/object:Puppet::Resource::Status
+      resource: File[bridge-module-loader]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/packstack/manifests/neutron/bridge.pp
+      line: 10
+      evaluation_time: 0.017371516
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - file
+        - bridge-module-loader
+        - class
+        - "packstack::neutron::bridge"
+        - packstack
+        - neutron
+        - bridge
+      time: 2016-04-11 12:45:16.234009 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym file
+          historical_value: 
+          message: "defined content as '{md5}c126fa499d7190a56e08fa92079993e8'"
+          name: !ruby/sym file_created
+          status: success
+          time: 2016-04-11 12:45:16.234593 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: File
+      title: bridge-module-loader
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Packstack::Neutron::Bridge"
+        - File[bridge-module-loader]
+    Neutron_config[DEFAULT/bind_host]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/bind_host]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+      evaluation_time: 0.011932462
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:16.251984 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:16.258201 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: DEFAULT/bind_host
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/bind_host]
+    Neutron_config[DEFAULT/allow_sorting]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/allow_sorting]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+      evaluation_time: 0.038546315
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:16.264430 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:16.297135 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: DEFAULT/allow_sorting
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/allow_sorting]
+    Schedule[never]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[never]
+      file: 
+      line: 
+      evaluation_time: 0.000119292
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - never
+      time: 2016-04-11 12:45:16.303363 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: never
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[never]
+    Neutron_config[DEFAULT/mac_generation_retries]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/mac_generation_retries]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+      evaluation_time: 0.01074763
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:16.307374 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:16.312487 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: DEFAULT/mac_generation_retries
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/mac_generation_retries]
+    Neutron_config[oslo_messaging_rabbit/rabbit_password]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[oslo_messaging_rabbit/rabbit_password]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 462
+      evaluation_time: 0.010736349
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:16.318571 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:16.323839 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: oslo_messaging_rabbit/rabbit_password
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[oslo_messaging_rabbit/rabbit_password]
+    Neutron_config[oslo_messaging_rabbit/rabbit_ha_queues]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[oslo_messaging_rabbit/rabbit_ha_queues]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 451
+      evaluation_time: 0.011181402
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:16.329778 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:16.334936 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: oslo_messaging_rabbit/rabbit_ha_queues
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[oslo_messaging_rabbit/rabbit_ha_queues]
+    Neutron_config[DEFAULT/dhcp_agents_per_network]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/dhcp_agents_per_network]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+      evaluation_time: 0.012181228
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:16.341556 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:16.347555 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: DEFAULT/dhcp_agents_per_network
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/dhcp_agents_per_network]
+    Neutron_config[DEFAULT/use_stderr]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/use_stderr]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+      evaluation_time: 0.010410926
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:16.354206 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:16.359182 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: DEFAULT/use_stderr
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/use_stderr]
+    Neutron_config[DEFAULT/lock_path]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/lock_path]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+      evaluation_time: 0.01398294
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:16.365130 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:16.370098 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: DEFAULT/lock_path
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/lock_path]
+    Neutron_config[DEFAULT/allow_bulk]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/allow_bulk]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+      evaluation_time: 0.04162946
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:16.379436 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:16.411971 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: DEFAULT/allow_bulk
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/allow_bulk]
+    Neutron_config[DEFAULT/bind_port]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/bind_port]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+      evaluation_time: 0.00697449
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:16.421395 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:16.424178 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: DEFAULT/bind_port
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/bind_port]
+    Package[openvswitch]: !ruby/object:Puppet::Resource::Status
+      resource: Package[openvswitch]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/vswitch/manifests/ovs.pp
+      line: 100
+      evaluation_time: 6.319305644
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - package
+        - openvswitch
+        - class
+        - "vswitch::ovs"
+        - vswitch
+        - ovs
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+      time: 2016-04-11 12:45:16.429368 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym package_installed
+          status: success
+          time: 2016-04-11 12:45:16.464605 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Package
+      title: openvswitch
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Vswitch::Ovs"
+        - Package[openvswitch]
+    Service[openvswitch]: !ruby/object:Puppet::Resource::Status
+      resource: Service[openvswitch]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/vswitch/manifests/ovs.pp
+      line: 72
+      evaluation_time: 0.238091161
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - service
+        - openvswitch
+        - class
+        - "vswitch::ovs"
+        - vswitch
+        - ovs
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+      time: 2016-04-11 12:45:22.749526 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym stopped
+          desired_value: !ruby/sym running
+          historical_value: 
+          message: "ensure changed 'stopped' to 'running'"
+          name: !ruby/sym service_started
+          status: success
+          time: 2016-04-11 12:45:22.772236 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Service
+      title: openvswitch
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Vswitch::Ovs"
+        - Service[openvswitch]
+    Neutron_config[DEFAULT/network_device_mtu]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/network_device_mtu]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 417
+      evaluation_time: 0.006296321
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:22.994918 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Neutron_config
+      title: DEFAULT/network_device_mtu
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/network_device_mtu]
+    Neutron_config[oslo_messaging_rabbit/rabbit_host]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[oslo_messaging_rabbit/rabbit_host]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 448
+      evaluation_time: 0.012035722
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:23.001663 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:23.007615 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: oslo_messaging_rabbit/rabbit_host
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[oslo_messaging_rabbit/rabbit_host]
+    Filebucket[puppet]: !ruby/object:Puppet::Resource::Status
+      resource: Filebucket[puppet]
+      file: 
+      line: 
+      evaluation_time: 0.000233542
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - filebucket
+        - puppet
+      time: 2016-04-11 12:45:23.014178 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Filebucket
+      title: puppet
+      skipped: false
+      failed: false
+      containment_path: 
+        - Filebucket[puppet]
+    Neutron_config[DEFAULT/api_extensions_path]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/api_extensions_path]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+      evaluation_time: 0.006095049
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:23.014758 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Neutron_config
+      title: DEFAULT/api_extensions_path
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/api_extensions_path]
+    Neutron_config[DEFAULT/allow_pagination]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/allow_pagination]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+      evaluation_time: 0.012311428
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:23.025106 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:23.031513 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: DEFAULT/allow_pagination
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/allow_pagination]
+    Neutron_config[DEFAULT/dhcp_lease_duration]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/dhcp_lease_duration]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+      evaluation_time: 0.038882652
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:23.037993 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:23.044269 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: DEFAULT/dhcp_lease_duration
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/dhcp_lease_duration]
+    Neutron_config[oslo_messaging_rabbit/heartbeat_timeout_threshold]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[oslo_messaging_rabbit/heartbeat_timeout_threshold]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 462
+      evaluation_time: 0.010627286
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:23.084828 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:23.090051 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: oslo_messaging_rabbit/heartbeat_timeout_threshold
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[oslo_messaging_rabbit/heartbeat_timeout_threshold]
+    Schedule[weekly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[weekly]
+      file: 
+      line: 
+      evaluation_time: 0.000173825
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - weekly
+      time: 2016-04-11 12:45:23.095833 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: weekly
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[weekly]
+    Neutron_config[DEFAULT/base_mac]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[DEFAULT/base_mac]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 389
+      evaluation_time: 0.010147223
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:23.096384 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:23.101235 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: DEFAULT/base_mac
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[DEFAULT/base_mac]
+    Exec[load-bridge]: !ruby/object:Puppet::Resource::Status
+      resource: Exec[load-bridge]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/packstack/manifests/neutron/bridge.pp
+      line: 14
+      evaluation_time: 0.022506435
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - exec
+        - load-bridge
+        - class
+        - "packstack::neutron::bridge"
+        - packstack
+        - neutron
+        - bridge
+      time: 2016-04-11 12:45:23.107286 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: returns
+          previous_value: !ruby/sym notrun
+          desired_value: 
+            - "0"
+          historical_value: 
+          message: "executed successfully"
+          name: !ruby/sym executed_command
+          status: success
+          time: 2016-04-11 12:45:23.107966 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Exec
+      title: load-bridge
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Packstack::Neutron::Bridge"
+        - Exec[load-bridge]
+    Exec[load-bridge-netfilter]: !ruby/object:Puppet::Resource::Status
+      resource: Exec[load-bridge-netfilter]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/packstack/manifests/neutron/bridge.pp
+      line: 19
+      evaluation_time: 0.011123114
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - exec
+        - load-bridge-netfilter
+        - class
+        - "packstack::neutron::bridge"
+        - packstack
+        - neutron
+        - bridge
+      time: 2016-04-11 12:45:23.130669 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Exec
+      title: load-bridge-netfilter
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Packstack::Neutron::Bridge"
+        - Exec[load-bridge-netfilter]
+    "File_line[/etc/sysctl.conf bridge-nf-call-ip6tables]": !ruby/object:Puppet::Resource::Status
+      resource: "File_line[/etc/sysctl.conf bridge-nf-call-ip6tables]"
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/packstack/manifests/neutron/bridge.pp
+      line: 23
+      evaluation_time: 0.001572618
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - file_line
+        - class
+        - "packstack::neutron::bridge"
+        - packstack
+        - neutron
+        - bridge
+      time: 2016-04-11 12:45:23.143158 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym file_line_created
+          status: success
+          time: 2016-04-11 12:45:23.143907 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: File_line
+      title: "/etc/sysctl.conf bridge-nf-call-ip6tables"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Packstack::Neutron::Bridge"
+        - "File_line[/etc/sysctl.conf bridge-nf-call-ip6tables]"
+    "File_line[/etc/sysctl.conf bridge-nf-call-iptables]": !ruby/object:Puppet::Resource::Status
+      resource: "File_line[/etc/sysctl.conf bridge-nf-call-iptables]"
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/packstack/manifests/neutron/bridge.pp
+      line: 27
+      evaluation_time: 0.001211685
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - file_line
+        - class
+        - "packstack::neutron::bridge"
+        - packstack
+        - neutron
+        - bridge
+      time: 2016-04-11 12:45:23.145339 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym file_line_created
+          status: success
+          time: 2016-04-11 12:45:23.145789 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: File_line
+      title: "/etc/sysctl.conf bridge-nf-call-iptables"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Packstack::Neutron::Bridge"
+        - "File_line[/etc/sysctl.conf bridge-nf-call-iptables]"
+    "File_line[/etc/sysctl.conf bridge-nf-call-arptables]": !ruby/object:Puppet::Resource::Status
+      resource: "File_line[/etc/sysctl.conf bridge-nf-call-arptables]"
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/packstack/manifests/neutron/bridge.pp
+      line: 31
+      evaluation_time: 0.001199676
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - file_line
+        - class
+        - "packstack::neutron::bridge"
+        - packstack
+        - neutron
+        - bridge
+      time: 2016-04-11 12:45:23.147073 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym file_line_created
+          status: success
+          time: 2016-04-11 12:45:23.147509 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: File_line
+      title: "/etc/sysctl.conf bridge-nf-call-arptables"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Packstack::Neutron::Bridge"
+        - "File_line[/etc/sysctl.conf bridge-nf-call-arptables]"
+    Exec[sysctl_refresh]: !ruby/object:Puppet::Resource::Status
+      resource: Exec[sysctl_refresh]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/packstack/manifests/neutron/bridge.pp
+      line: 35
+      evaluation_time: 0.014246917
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - exec
+        - sysctl_refresh
+        - class
+        - "packstack::neutron::bridge"
+        - packstack
+        - neutron
+        - bridge
+      time: 2016-04-11 12:45:23.148940 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: returns
+          previous_value: !ruby/sym notrun
+          desired_value: 
+            - "0"
+          historical_value: 
+          message: "executed successfully"
+          name: !ruby/sym executed_command
+          status: success
+          time: 2016-04-11 12:45:23.149323 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Exec
+      title: sysctl_refresh
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Packstack::Neutron::Bridge"
+        - Exec[sysctl_refresh]
+    Package[neutron-ovs-agent]: !ruby/object:Puppet::Resource::Status
+      resource: Package[neutron-ovs-agent]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 242
+      evaluation_time: 6.679648945
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - package
+        - neutron-ovs-agent
+        - openstack
+        - neutron-package
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      time: 2016-04-11 12:45:23.167917 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym package_installed
+          status: success
+          time: 2016-04-11 12:45:23.212358 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Package
+      title: neutron-ovs-agent
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Neutron::Agents::Ml2::Ovs"
+        - Package[neutron-ovs-agent]
+    Neutron_agent_ovs[ovs/local_ip]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_agent_ovs[ovs/local_ip]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 205
+      evaluation_time: 0.002768055
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_agent_ovs
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      time: 2016-04-11 12:45:29.848653 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_agent_ovs_created
+          status: success
+          time: 2016-04-11 12:45:29.850186 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_agent_ovs
+      title: ovs/local_ip
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Neutron::Agents::Ml2::Ovs"
+        - Neutron_agent_ovs[ovs/local_ip]
+    Neutron_agent_ovs[agent/extensions]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_agent_ovs[agent/extensions]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 192
+      evaluation_time: 0.001894915
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_agent_ovs
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      time: 2016-04-11 12:45:29.851930 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_agent_ovs_created
+          status: success
+          time: 2016-04-11 12:45:29.852878 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_agent_ovs
+      title: agent/extensions
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Neutron::Agents::Ml2::Ovs"
+        - Neutron_agent_ovs[agent/extensions]
+    Neutron_agent_ovs[agent/enable_distributed_routing]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_agent_ovs[agent/enable_distributed_routing]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 192
+      evaluation_time: 0.001696359
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_agent_ovs
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      time: 2016-04-11 12:45:29.854215 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_agent_ovs_created
+          status: success
+          time: 2016-04-11 12:45:29.855083 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_agent_ovs
+      title: agent/enable_distributed_routing
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Neutron::Agents::Ml2::Ovs"
+        - Neutron_agent_ovs[agent/enable_distributed_routing]
+    Neutron_agent_ovs[ovs/tunnel_bridge]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_agent_ovs[ovs/tunnel_bridge]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 205
+      evaluation_time: 0.003826319
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_agent_ovs
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      time: 2016-04-11 12:45:29.856288 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_agent_ovs_created
+          status: success
+          time: 2016-04-11 12:45:29.858310 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_agent_ovs
+      title: ovs/tunnel_bridge
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Neutron::Agents::Ml2::Ovs"
+        - Neutron_agent_ovs[ovs/tunnel_bridge]
+    Neutron_agent_ovs[agent/prevent_arp_spoofing]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_agent_ovs[agent/prevent_arp_spoofing]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 192
+      evaluation_time: 0.003698579
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_agent_ovs
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      time: 2016-04-11 12:45:29.860886 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_agent_ovs_created
+          status: success
+          time: 2016-04-11 12:45:29.862816 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_agent_ovs
+      title: agent/prevent_arp_spoofing
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Neutron::Agents::Ml2::Ovs"
+        - Neutron_agent_ovs[agent/prevent_arp_spoofing]
+    Neutron_agent_ovs[ovs/enable_tunneling]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_agent_ovs[ovs/enable_tunneling]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 205
+      evaluation_time: 0.003211728
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_agent_ovs
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      time: 2016-04-11 12:45:29.865337 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_agent_ovs_created
+          status: success
+          time: 2016-04-11 12:45:29.867104 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_agent_ovs
+      title: ovs/enable_tunneling
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Neutron::Agents::Ml2::Ovs"
+        - Neutron_agent_ovs[ovs/enable_tunneling]
+    Neutron_agent_ovs[ovs/integration_bridge]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_agent_ovs[ovs/integration_bridge]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 192
+      evaluation_time: 0.003163885
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_agent_ovs
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      time: 2016-04-11 12:45:29.869194 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_agent_ovs_created
+          status: success
+          time: 2016-04-11 12:45:29.870848 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_agent_ovs
+      title: ovs/integration_bridge
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Neutron::Agents::Ml2::Ovs"
+        - Neutron_agent_ovs[ovs/integration_bridge]
+    Neutron_agent_ovs[securitygroup/firewall_driver]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_agent_ovs[securitygroup/firewall_driver]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 195
+      evaluation_time: 0.028991079
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_agent_ovs
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      time: 2016-04-11 12:45:29.873106 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_agent_ovs_created
+          status: success
+          time: 2016-04-11 12:45:29.901014 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_agent_ovs
+      title: securitygroup/firewall_driver
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Neutron::Agents::Ml2::Ovs"
+        - Neutron_agent_ovs[securitygroup/firewall_driver]
+    Service[ovs-cleanup-service]: !ruby/object:Puppet::Resource::Status
+      resource: Service[ovs-cleanup-service]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 269
+      evaluation_time: 0.112255325
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - service
+        - ovs-cleanup-service
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      time: 2016-04-11 12:45:29.902870 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: enable
+          previous_value: !ruby/sym "false"
+          desired_value: !ruby/sym "true"
+          historical_value: 
+          message: "enable changed 'false' to 'true'"
+          name: !ruby/sym service_enabled
+          status: success
+          time: 2016-04-11 12:45:29.941626 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Service
+      title: ovs-cleanup-service
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Neutron::Agents::Ml2::Ovs"
+        - Service[ovs-cleanup-service]
+    Neutron_agent_ovs[agent/arp_responder]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_agent_ovs[agent/arp_responder]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 192
+      evaluation_time: 0.00308174
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_agent_ovs
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      time: 2016-04-11 12:45:30.015817 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_agent_ovs_created
+          status: success
+          time: 2016-04-11 12:45:30.017473 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_agent_ovs
+      title: agent/arp_responder
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Neutron::Agents::Ml2::Ovs"
+        - Neutron_agent_ovs[agent/arp_responder]
+    Neutron_agent_ovs[agent/polling_interval]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_agent_ovs[agent/polling_interval]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 192
+      evaluation_time: 0.002036093
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_agent_ovs
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      time: 2016-04-11 12:45:30.019321 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_agent_ovs_created
+          status: success
+          time: 2016-04-11 12:45:30.020299 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_agent_ovs
+      title: agent/polling_interval
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Neutron::Agents::Ml2::Ovs"
+        - Neutron_agent_ovs[agent/polling_interval]
+    Neutron_agent_ovs[agent/drop_flows_on_start]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_agent_ovs[agent/drop_flows_on_start]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 192
+      evaluation_time: 0.003067048
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_agent_ovs
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      time: 2016-04-11 12:45:30.021924 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_agent_ovs_created
+          status: success
+          time: 2016-04-11 12:45:30.023424 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_agent_ovs
+      title: agent/drop_flows_on_start
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Neutron::Agents::Ml2::Ovs"
+        - Neutron_agent_ovs[agent/drop_flows_on_start]
+    Neutron_agent_ovs[agent/vxlan_udp_port]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_agent_ovs[agent/vxlan_udp_port]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 216
+      evaluation_time: 0.002749318
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_agent_ovs
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      time: 2016-04-11 12:45:30.025595 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_agent_ovs_created
+          status: success
+          time: 2016-04-11 12:45:30.026810 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_agent_ovs
+      title: agent/vxlan_udp_port
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Neutron::Agents::Ml2::Ovs"
+        - Neutron_agent_ovs[agent/vxlan_udp_port]
+    Neutron_config[oslo_messaging_rabbit/kombu_ssl_keyfile]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[oslo_messaging_rabbit/kombu_ssl_keyfile]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 496
+      evaluation_time: 0.002983245
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:30.028796 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Neutron_config
+      title: oslo_messaging_rabbit/kombu_ssl_keyfile
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[oslo_messaging_rabbit/kombu_ssl_keyfile]
+    Schedule[puppet]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[puppet]
+      file: 
+      line: 
+      evaluation_time: 0.000115881
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - puppet
+      time: 2016-04-11 12:45:30.032067 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: puppet
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[puppet]
+    Neutron_agent_ovs[agent/l2_population]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_agent_ovs[agent/l2_population]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 192
+      evaluation_time: 0.002378689
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_agent_ovs
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      time: 2016-04-11 12:45:30.032437 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_agent_ovs_created
+          status: success
+          time: 2016-04-11 12:45:30.033446 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_agent_ovs
+      title: agent/l2_population
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Neutron::Agents::Ml2::Ovs"
+        - Neutron_agent_ovs[agent/l2_population]
+    Neutron_agent_ovs[agent/tunnel_types]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_agent_ovs[agent/tunnel_types]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 210
+      evaluation_time: 0.002210348
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_agent_ovs
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      time: 2016-04-11 12:45:30.035287 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_agent_ovs_created
+          status: success
+          time: 2016-04-11 12:45:30.036425 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_agent_ovs
+      title: agent/tunnel_types
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Neutron::Agents::Ml2::Ovs"
+        - Neutron_agent_ovs[agent/tunnel_types]
+    Neutron_config[oslo_messaging_rabbit/rabbit_userid]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[oslo_messaging_rabbit/rabbit_userid]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 462
+      evaluation_time: 0.010711342
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:30.038061 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:30.043354 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: oslo_messaging_rabbit/rabbit_userid
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[oslo_messaging_rabbit/rabbit_userid]
+    Neutron_config[oslo_messaging_rabbit/rabbit_port]: !ruby/object:Puppet::Resource::Status
+      resource: Neutron_config[oslo_messaging_rabbit/rabbit_port]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/init.pp
+      line: 449
+      evaluation_time: 0.007665742
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - neutron_config
+        - class
+        - neutron
+      time: 2016-04-11 12:45:30.053818 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym neutron_config_created
+          status: success
+          time: 2016-04-11 12:45:30.058298 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Neutron_config
+      title: oslo_messaging_rabbit/rabbit_port
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Neutron
+        - Neutron_config[oslo_messaging_rabbit/rabbit_port]
+    Service[neutron-ovs-agent-service]: !ruby/object:Puppet::Resource::Status
+      resource: Service[neutron-ovs-agent-service]
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/neutron/manifests/agents/ml2/ovs.pp
+      line: 262
+      evaluation_time: 0.18534501
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - service
+        - neutron-ovs-agent-service
+        - neutron-service
+        - class
+        - "neutron::agents::ml2::ovs"
+        - neutron
+        - agents
+        - ml2
+        - ovs
+      time: 2016-04-11 12:45:30.064849 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym stopped
+          desired_value: !ruby/sym running
+          historical_value: 
+          message: "ensure changed 'stopped' to 'running'"
+          name: !ruby/sym service_started
+          status: success
+          time: 2016-04-11 12:45:30.105641 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Service
+      title: neutron-ovs-agent-service
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Neutron::Agents::Ml2::Ovs"
+        - Service[neutron-ovs-agent-service]
+    "Firewall[001 neutron tunnel port incoming neutron_tunnel_10.0.1.131_10.0.2.131]": !ruby/object:Puppet::Resource::Status
+      resource: "Firewall[001 neutron tunnel port incoming neutron_tunnel_10.0.1.131_10.0.2.131]"
+      file: /var/tmp/packstack/1aaa1946e0c744778638cf96f62d8a52/modules/packstack/manifests/firewall.pp
+      line: 50
+      evaluation_time: 0.15994994
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - firewall
+        - "packstack::firewall"
+        - packstack
+        - neutron_tunnel_10.0.1.131_10.0.2.131
+        - class
+      time: 2016-04-11 12:45:30.253709 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym firewall_created
+          status: success
+          time: 2016-04-11 12:45:30.309640 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Firewall
+      title: "001 neutron tunnel port incoming neutron_tunnel_10.0.1.131_10.0.2.131"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Packstack::Firewall[neutron_tunnel_10.0.1.131_10.0.2.131]"
+        - "Firewall[001 neutron tunnel port incoming neutron_tunnel_10.0.1.131_10.0.2.131]"
+  host: osp7ps-compute01.test.local
+  time: 2016-04-11 12:45:01.195295 +09:00
+  kind: apply
+  report_format: 4
+  puppet_version: "3.6.2"
+  configuration_version: 1460346299
+  transaction_uuid: c5267831-5d1c-477a-907e-d1cc717e92da
+  environment: production
+  status: changed

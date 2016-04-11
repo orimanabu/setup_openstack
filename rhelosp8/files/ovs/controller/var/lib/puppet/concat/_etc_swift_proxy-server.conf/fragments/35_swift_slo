@@ -1,0 +1,9 @@
+
+[filter:slo]
+use = egg:swift#slo
+max_manifest_segments = 1000
+max_manifest_size = 2097152
+min_segment_size = 1048576
+rate_limit_after_segment = 10
+rate_limit_segments_per_sec = 0
+max_get_time = 86400

@@ -1,0 +1,7 @@
+
+[filter:bulk]
+use = egg:swift#bulk
+max_containers_per_extraction = 10000
+max_failed_extractions = 1000
+max_deletes_per_request = 10000
+yield_frequency = 60

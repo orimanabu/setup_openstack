@@ -1,0 +1,488 @@
+=====> [20160411-141836] host: (local), command: iptables -nL
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+neutron-openvswi-INPUT  all  --  0.0.0.0/0            0.0.0.0/0           
+ACCEPT     udp  --  10.0.2.111           0.0.0.0/0            multiport dports 4789 /* 001 neutron tunnel port incoming neutron_tunnel_10.0.1.131_10.0.2.111 */
+ACCEPT     udp  --  10.0.2.131           0.0.0.0/0            multiport dports 4789 /* 001 neutron tunnel port incoming neutron_tunnel_10.0.1.131_10.0.2.131 */
+ACCEPT     udp  --  10.0.2.132           0.0.0.0/0            multiport dports 4789 /* 001 neutron tunnel port incoming neutron_tunnel_10.0.1.131_10.0.2.132 */
+ACCEPT     tcp  --  10.0.1.111           0.0.0.0/0            multiport dports 5900:5999 /* 001 nova compute incoming nova_compute */
+ACCEPT     tcp  --  10.0.1.131           0.0.0.0/0            multiport dports 16509,49152:49215 /* 001 nova qemu migration incoming nova_qemu_migration_10.0.1.131_10.0.1.131 */
+ACCEPT     tcp  --  10.0.1.132           0.0.0.0/0            multiport dports 16509,49152:49215 /* 001 nova qemu migration incoming nova_qemu_migration_10.0.1.131_10.0.1.132 */
+ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0            state RELATED,ESTABLISHED
+ACCEPT     icmp --  0.0.0.0/0            0.0.0.0/0           
+ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0           
+ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0            state NEW tcp dpt:22
+REJECT     all  --  0.0.0.0/0            0.0.0.0/0            reject-with icmp-host-prohibited
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination         
+neutron-filter-top  all  --  0.0.0.0/0            0.0.0.0/0           
+neutron-openvswi-FORWARD  all  --  0.0.0.0/0            0.0.0.0/0           
+REJECT     all  --  0.0.0.0/0            0.0.0.0/0            reject-with icmp-host-prohibited
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+neutron-filter-top  all  --  0.0.0.0/0            0.0.0.0/0           
+neutron-openvswi-OUTPUT  all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain neutron-filter-top (2 references)
+target     prot opt source               destination         
+neutron-openvswi-local  all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain neutron-openvswi-FORWARD (1 references)
+target     prot opt source               destination         
+neutron-openvswi-sg-chain  all  --  0.0.0.0/0            0.0.0.0/0            PHYSDEV match --physdev-out tapf0b5e2a9-dd --physdev-is-bridged /* Direct traffic from the VM interface to the security group chain. */
+neutron-openvswi-sg-chain  all  --  0.0.0.0/0            0.0.0.0/0            PHYSDEV match --physdev-in tapf0b5e2a9-dd --physdev-is-bridged /* Direct traffic from the VM interface to the security group chain. */
+
+Chain neutron-openvswi-INPUT (1 references)
+target     prot opt source               destination         
+neutron-openvswi-of0b5e2a9-d  all  --  0.0.0.0/0            0.0.0.0/0            PHYSDEV match --physdev-in tapf0b5e2a9-dd --physdev-is-bridged /* Direct incoming traffic from VM to the security group chain. */
+
+Chain neutron-openvswi-OUTPUT (1 references)
+target     prot opt source               destination         
+
+Chain neutron-openvswi-if0b5e2a9-d (1 references)
+target     prot opt source               destination         
+RETURN     all  --  0.0.0.0/0            0.0.0.0/0            state RELATED,ESTABLISHED /* Direct packets associated with a known session to the RETURN chain. */
+RETURN     udp  --  192.168.99.100       0.0.0.0/0            udp spt:67 udp dpt:68
+RETURN     tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:22
+RETURN     icmp --  0.0.0.0/0            0.0.0.0/0           
+RETURN     tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:3389
+DROP       all  --  0.0.0.0/0            0.0.0.0/0            state INVALID /* Drop packets that appear related to an existing connection (e.g. TCP ACK/FIN) but do not have an entry in conntrack. */
+neutron-openvswi-sg-fallback  all  --  0.0.0.0/0            0.0.0.0/0            /* Send unmatched traffic to the fallback chain. */
+
+Chain neutron-openvswi-local (1 references)
+target     prot opt source               destination         
+
+Chain neutron-openvswi-of0b5e2a9-d (2 references)
+target     prot opt source               destination         
+RETURN     udp  --  0.0.0.0/0            0.0.0.0/0            udp spt:68 udp dpt:67 /* Allow DHCP client traffic. */
+neutron-openvswi-sf0b5e2a9-d  all  --  0.0.0.0/0            0.0.0.0/0           
+DROP       udp  --  0.0.0.0/0            0.0.0.0/0            udp spt:67 udp dpt:68 /* Prevent DHCP Spoofing by VM. */
+RETURN     all  --  0.0.0.0/0            0.0.0.0/0            state RELATED,ESTABLISHED /* Direct packets associated with a known session to the RETURN chain. */
+RETURN     all  --  0.0.0.0/0            0.0.0.0/0           
+DROP       all  --  0.0.0.0/0            0.0.0.0/0            state INVALID /* Drop packets that appear related to an existing connection (e.g. TCP ACK/FIN) but do not have an entry in conntrack. */
+neutron-openvswi-sg-fallback  all  --  0.0.0.0/0            0.0.0.0/0            /* Send unmatched traffic to the fallback chain. */
+
+Chain neutron-openvswi-sf0b5e2a9-d (1 references)
+target     prot opt source               destination         
+RETURN     all  --  192.168.99.101       0.0.0.0/0            MAC FA:16:3E:50:C4:8D /* Allow traffic from defined IP/MAC pairs. */
+DROP       all  --  0.0.0.0/0            0.0.0.0/0            /* Drop traffic without an IP/MAC allow rule. */
+
+Chain neutron-openvswi-sg-chain (2 references)
+target     prot opt source               destination         
+neutron-openvswi-if0b5e2a9-d  all  --  0.0.0.0/0            0.0.0.0/0            PHYSDEV match --physdev-out tapf0b5e2a9-dd --physdev-is-bridged /* Jump to the VM specific chain. */
+neutron-openvswi-of0b5e2a9-d  all  --  0.0.0.0/0            0.0.0.0/0            PHYSDEV match --physdev-in tapf0b5e2a9-dd --physdev-is-bridged /* Jump to the VM specific chain. */
+ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain neutron-openvswi-sg-fallback (2 references)
+target     prot opt source               destination         
+DROP       all  --  0.0.0.0/0            0.0.0.0/0            /* Default drop rule for unmatched traffic. */
+=====> [20160411-141836] host: (local), command: iptables -nL -t nat
+Chain PREROUTING (policy ACCEPT)
+target     prot opt source               destination         
+neutron-openvswi-PREROUTING  all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+neutron-openvswi-OUTPUT  all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain POSTROUTING (policy ACCEPT)
+target     prot opt source               destination         
+neutron-openvswi-POSTROUTING  all  --  0.0.0.0/0            0.0.0.0/0           
+neutron-postrouting-bottom  all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain neutron-openvswi-OUTPUT (1 references)
+target     prot opt source               destination         
+
+Chain neutron-openvswi-POSTROUTING (1 references)
+target     prot opt source               destination         
+
+Chain neutron-openvswi-PREROUTING (1 references)
+target     prot opt source               destination         
+
+Chain neutron-openvswi-float-snat (1 references)
+target     prot opt source               destination         
+
+Chain neutron-openvswi-snat (1 references)
+target     prot opt source               destination         
+neutron-openvswi-float-snat  all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain neutron-postrouting-bottom (1 references)
+target     prot opt source               destination         
+neutron-openvswi-snat  all  --  0.0.0.0/0            0.0.0.0/0            /* Perform source NAT on outgoing traffic. */
+=====> [20160411-141836] host: (local), command: virsh list
+ Id    Name                           State
+----------------------------------------------------
+ 2     instance-00000001              running
+
+=====> [20160411-141836] host: (local), command: virsh dumpxml instance-00000001
+<domain type='kvm' id='2'>
+  <name>instance-00000001</name>
+  <uuid>46341d22-732e-404e-b9f3-2f469773ea5e</uuid>
+  <metadata>
+    <nova:instance xmlns:nova="http://openstack.org/xmlns/libvirt/nova/1.0">
+      <nova:package version="12.0.2-5.el7ost"/>
+      <nova:name>vm1</nova:name>
+      <nova:creationTime>2016-04-11 05:05:10</nova:creationTime>
+      <nova:flavor name="m1.tiny">
+        <nova:memory>512</nova:memory>
+        <nova:disk>1</nova:disk>
+        <nova:swap>0</nova:swap>
+        <nova:ephemeral>0</nova:ephemeral>
+        <nova:vcpus>1</nova:vcpus>
+      </nova:flavor>
+      <nova:owner>
+        <nova:user uuid="2e195ef50636400c9632ea1fe8d97c6a">demo</nova:user>
+        <nova:project uuid="f21cfeed248e432bae16aa83accf208e">demo</nova:project>
+      </nova:owner>
+      <nova:root type="image" uuid="d8a78437-d0c6-4ed1-853d-205ac41a6b9c"/>
+    </nova:instance>
+  </metadata>
+  <memory unit='KiB'>524288</memory>
+  <currentMemory unit='KiB'>524288</currentMemory>
+  <vcpu placement='static'>1</vcpu>
+  <cputune>
+    <shares>1024</shares>
+  </cputune>
+  <resource>
+    <partition>/machine</partition>
+  </resource>
+  <sysinfo type='smbios'>
+    <system>
+      <entry name='manufacturer'>Red Hat</entry>
+      <entry name='product'>OpenStack Compute</entry>
+      <entry name='version'>12.0.2-5.el7ost</entry>
+      <entry name='serial'>77db7044-32ca-46e5-a800-3855c87e941e</entry>
+      <entry name='uuid'>46341d22-732e-404e-b9f3-2f469773ea5e</entry>
+      <entry name='family'>Virtual Machine</entry>
+    </system>
+  </sysinfo>
+  <os>
+    <type arch='x86_64' machine='pc-i440fx-rhel7.2.0'>hvm</type>
+    <boot dev='hd'/>
+    <smbios mode='sysinfo'/>
+  </os>
+  <features>
+    <acpi/>
+    <apic/>
+  </features>
+  <cpu>
+    <topology sockets='1' cores='1' threads='1'/>
+  </cpu>
+  <clock offset='utc'>
+    <timer name='pit' tickpolicy='delay'/>
+    <timer name='rtc' tickpolicy='catchup'/>
+    <timer name='hpet' present='no'/>
+  </clock>
+  <on_poweroff>destroy</on_poweroff>
+  <on_reboot>restart</on_reboot>
+  <on_crash>destroy</on_crash>
+  <devices>
+    <emulator>/usr/libexec/qemu-kvm</emulator>
+    <disk type='file' device='disk'>
+      <driver name='qemu' type='qcow2' cache='none'/>
+      <source file='/var/lib/nova/instances/46341d22-732e-404e-b9f3-2f469773ea5e/disk'/>
+      <backingStore type='file' index='1'>
+        <format type='raw'/>
+        <source file='/var/lib/nova/instances/_base/b6a1cda7b59c392128ead2d6f1996bc4fdf389c0'/>
+        <backingStore/>
+      </backingStore>
+      <target dev='vda' bus='virtio'/>
+      <alias name='virtio-disk0'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x04' function='0x0'/>
+    </disk>
+    <controller type='usb' index='0'>
+      <alias name='usb'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x01' function='0x2'/>
+    </controller>
+    <controller type='pci' index='0' model='pci-root'>
+      <alias name='pci.0'/>
+    </controller>
+    <interface type='bridge'>
+      <mac address='fa:16:3e:50:c4:8d'/>
+      <source bridge='qbrf0b5e2a9-dd'/>
+      <target dev='tapf0b5e2a9-dd'/>
+      <model type='virtio'/>
+      <alias name='net0'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/>
+    </interface>
+    <serial type='file'>
+      <source path='/var/lib/nova/instances/46341d22-732e-404e-b9f3-2f469773ea5e/console.log'/>
+      <target port='0'/>
+      <alias name='serial0'/>
+    </serial>
+    <serial type='pty'>
+      <source path='/dev/pts/1'/>
+      <target port='1'/>
+      <alias name='serial1'/>
+    </serial>
+    <console type='file'>
+      <source path='/var/lib/nova/instances/46341d22-732e-404e-b9f3-2f469773ea5e/console.log'/>
+      <target type='serial' port='0'/>
+      <alias name='serial0'/>
+    </console>
+    <input type='tablet' bus='usb'>
+      <alias name='input0'/>
+    </input>
+    <input type='mouse' bus='ps2'/>
+    <input type='keyboard' bus='ps2'/>
+    <graphics type='vnc' port='5900' autoport='yes' listen='0.0.0.0' keymap='en-us'>
+      <listen type='address' address='0.0.0.0'/>
+    </graphics>
+    <video>
+      <model type='cirrus' vram='16384' heads='1'/>
+      <alias name='video0'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x0'/>
+    </video>
+    <memballoon model='virtio'>
+      <stats period='10'/>
+      <alias name='balloon0'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x05' function='0x0'/>
+    </memballoon>
+  </devices>
+  <seclabel type='dynamic' model='selinux' relabel='yes'>
+    <label>system_u:system_r:svirt_t:s0:c313,c845</label>
+    <imagelabel>system_u:object_r:svirt_image_t:s0:c313,c845</imagelabel>
+  </seclabel>
+</domain>
+
+=====> [20160411-141836] host: (local), command: brctl show
+bridge name	bridge id		STP enabled	interfaces
+qbrf0b5e2a9-dd		8000.de9bc724335a	no		qvbf0b5e2a9-dd
+							tapf0b5e2a9-dd
+=> ovs
+=====> [20160411-141836] host: (local), command: ovs-vsctl show
+470dd5be-d283-4f20-9c06-31e462096783
+    Bridge br-int
+        fail_mode: secure
+        Port "qvof0b5e2a9-dd"
+            tag: 1
+            Interface "qvof0b5e2a9-dd"
+        Port patch-tun
+            Interface patch-tun
+                type: patch
+                options: {peer=patch-int}
+        Port br-int
+            Interface br-int
+                type: internal
+    Bridge br-tun
+        fail_mode: secure
+        Port "vxlan-0a000284"
+            Interface "vxlan-0a000284"
+                type: vxlan
+                options: {df_default="true", in_key=flow, local_ip="10.0.2.131", out_key=flow, remote_ip="10.0.2.132"}
+        Port br-tun
+            Interface br-tun
+                type: internal
+        Port patch-int
+            Interface patch-int
+                type: patch
+                options: {peer=patch-tun}
+        Port "vxlan-0a00026f"
+            Interface "vxlan-0a00026f"
+                type: vxlan
+                options: {df_default="true", in_key=flow, local_ip="10.0.2.131", out_key=flow, remote_ip="10.0.2.111"}
+    ovs_version: "2.4.0"
+=====> [20160411-141836] host: (local), command: ovs-vsctl list-br
+br-int
+br-tun
+==> br: br-int
+=====> [20160411-141836] host: (local), command: ovs-vsctl list-ports br-int
+patch-tun
+qvof0b5e2a9-dd
+=====> [20160411-141836] host: (local), command: ovs-ofctl show br-int
+OFPT_FEATURES_REPLY (xid=0x2): dpid:0000be62dc177641
+n_tables:254, n_buffers:256
+capabilities: FLOW_STATS TABLE_STATS PORT_STATS QUEUE_STATS ARP_MATCH_IP
+actions: output enqueue set_vlan_vid set_vlan_pcp strip_vlan mod_dl_src mod_dl_dst mod_nw_src mod_nw_dst mod_nw_tos mod_tp_src mod_tp_dst
+ 1(patch-tun): addr:5e:46:03:a9:99:51
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ 2(qvof0b5e2a9-dd): addr:be:74:c5:5e:eb:53
+     config:     0
+     state:      0
+     current:    10GB-FD COPPER
+     speed: 10000 Mbps now, 0 Mbps max
+ LOCAL(br-int): addr:be:62:dc:17:76:41
+     config:     PORT_DOWN
+     state:      LINK_DOWN
+     speed: 0 Mbps now, 0 Mbps max
+OFPT_GET_CONFIG_REPLY (xid=0x4): frags=normal miss_send_len=0
+=====> [20160411-141836] host: (local), command: ovs-ofctl dump-ports br-int
+OFPST_PORT reply (xid=0x2): 3 ports
+  port LOCAL: rx pkts=0, bytes=0, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=0, bytes=0, drop=17, errs=0, coll=0
+  port  1: rx pkts=111, bytes=14378, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=150, bytes=15440, drop=0, errs=0, coll=0
+  port  2: rx pkts=151, bytes=15530, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=119, bytes=15026, drop=0, errs=0, coll=0
+=====> [20160411-141836] host: (local), command: ovs-ofctl dump-ports-desc br-int
+OFPST_PORT_DESC reply (xid=0x2):
+ 1(patch-tun): addr:5e:46:03:a9:99:51
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ 2(qvof0b5e2a9-dd): addr:be:74:c5:5e:eb:53
+     config:     0
+     state:      0
+     current:    10GB-FD COPPER
+     speed: 10000 Mbps now, 0 Mbps max
+ LOCAL(br-int): addr:be:62:dc:17:76:41
+     config:     PORT_DOWN
+     state:      LINK_DOWN
+     speed: 0 Mbps now, 0 Mbps max
+=====> [20160411-141836] host: (local), command: ovs-ofctl dump-flows br-int
+NXST_FLOW reply (xid=0x4):
+ cookie=0x8f542ac7d4eeffe6, duration=804.317s, table=0, n_packets=0, n_bytes=0, idle_age=804, priority=10,icmp6,in_port=2,icmp_type=136 actions=resubmit(,24)
+ cookie=0x8f542ac7d4eeffe6, duration=804.304s, table=0, n_packets=5, n_bytes=210, idle_age=741, priority=10,arp,in_port=2 actions=resubmit(,24)
+ cookie=0x8f542ac7d4eeffe6, duration=5585.900s, table=0, n_packets=256, n_bytes=29608, idle_age=741, priority=0 actions=NORMAL
+ cookie=0x8f542ac7d4eeffe6, duration=5585.894s, table=23, n_packets=0, n_bytes=0, idle_age=5585, priority=0 actions=drop
+ cookie=0x8f542ac7d4eeffe6, duration=804.324s, table=24, n_packets=0, n_bytes=0, idle_age=804, priority=2,icmp6,in_port=2,icmp_type=136,nd_target=fe80::f816:3eff:fe50:c48d actions=NORMAL
+ cookie=0x8f542ac7d4eeffe6, duration=804.310s, table=24, n_packets=5, n_bytes=210, idle_age=741, priority=2,arp,in_port=2,arp_spa=192.168.99.101 actions=NORMAL
+ cookie=0x8f542ac7d4eeffe6, duration=5585.887s, table=24, n_packets=0, n_bytes=0, idle_age=5585, priority=0 actions=drop
+=====> [20160411-141836] host: (local), command: ovs-ofctl dump-aggregate br-int
+NXST_AGGREGATE reply (xid=0x4): packet_count=266 byte_count=30028 flow_count=7
+=====> [20160411-141836] host: (local), command: ovs-ofctl queue-stats br-int
+OFPST_QUEUE reply (xid=0x2): 0 queues
+=====> [20160411-141836] host: (local), command: ovs-dpctl show br-int
+ovs-dpctl: opening datapath br-int failed (No such device)
+==> br: br-tun
+=====> [20160411-141836] host: (local), command: ovs-vsctl list-ports br-tun
+patch-int
+vxlan-0a00026f
+vxlan-0a000284
+=====> [20160411-141836] host: (local), command: ovs-ofctl show br-tun
+OFPT_FEATURES_REPLY (xid=0x2): dpid:0000daa920f19949
+n_tables:254, n_buffers:256
+capabilities: FLOW_STATS TABLE_STATS PORT_STATS QUEUE_STATS ARP_MATCH_IP
+actions: output enqueue set_vlan_vid set_vlan_pcp strip_vlan mod_dl_src mod_dl_dst mod_nw_src mod_nw_dst mod_nw_tos mod_tp_src mod_tp_dst
+ 1(patch-int): addr:be:3c:de:9a:39:f1
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ 2(vxlan-0a000284): addr:be:41:1a:df:6a:cf
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ 3(vxlan-0a00026f): addr:2a:96:27:0f:d8:d3
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ LOCAL(br-tun): addr:da:a9:20:f1:99:49
+     config:     PORT_DOWN
+     state:      LINK_DOWN
+     speed: 0 Mbps now, 0 Mbps max
+OFPT_GET_CONFIG_REPLY (xid=0x4): frags=normal miss_send_len=0
+=====> [20160411-141836] host: (local), command: ovs-ofctl dump-ports br-tun
+OFPST_PORT reply (xid=0x2): 4 ports
+  port LOCAL: rx pkts=0, bytes=0, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=0, bytes=0, drop=0, errs=0, coll=0
+  port  1: rx pkts=150, bytes=15440, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=111, bytes=14378, drop=0, errs=0, coll=0
+  port  2: rx pkts=0, bytes=0, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=12, bytes=1368, drop=0, errs=0, coll=0
+  port  3: rx pkts=120, bytes=15120, drop=0, errs=0, frame=0, over=0, crc=0
+           tx pkts=145, bytes=15022, drop=0, errs=0, coll=0
+=====> [20160411-141836] host: (local), command: ovs-ofctl dump-ports-desc br-tun
+OFPST_PORT_DESC reply (xid=0x2):
+ 1(patch-int): addr:be:3c:de:9a:39:f1
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ 2(vxlan-0a000284): addr:be:41:1a:df:6a:cf
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ 3(vxlan-0a00026f): addr:2a:96:27:0f:d8:d3
+     config:     0
+     state:      0
+     speed: 0 Mbps now, 0 Mbps max
+ LOCAL(br-tun): addr:da:a9:20:f1:99:49
+     config:     PORT_DOWN
+     state:      LINK_DOWN
+     speed: 0 Mbps now, 0 Mbps max
+=====> [20160411-141836] host: (local), command: ovs-ofctl dump-flows br-tun
+NXST_FLOW reply (xid=0x4):
+ cookie=0x8f542ac7d4eeffe6, duration=5585.799s, table=0, n_packets=150, n_bytes=15440, idle_age=741, priority=1,in_port=1 actions=resubmit(,2)
+ cookie=0x8f542ac7d4eeffe6, duration=5525.142s, table=0, n_packets=0, n_bytes=0, idle_age=5525, priority=1,in_port=2 actions=resubmit(,4)
+ cookie=0x8f542ac7d4eeffe6, duration=5512.920s, table=0, n_packets=120, n_bytes=15120, idle_age=741, priority=1,in_port=3 actions=resubmit(,4)
+ cookie=0x8f542ac7d4eeffe6, duration=5585.799s, table=0, n_packets=0, n_bytes=0, idle_age=5585, priority=0 actions=drop
+ cookie=0x8f542ac7d4eeffe6, duration=5585.799s, table=2, n_packets=133, n_bytes=13654, idle_age=741, priority=0,dl_dst=00:00:00:00:00:00/01:00:00:00:00:00 actions=resubmit(,20)
+ cookie=0x8f542ac7d4eeffe6, duration=5585.798s, table=2, n_packets=17, n_bytes=1786, idle_age=787, priority=0,dl_dst=01:00:00:00:00:00/01:00:00:00:00:00 actions=resubmit(,22)
+ cookie=0x8f542ac7d4eeffe6, duration=5585.798s, table=3, n_packets=0, n_bytes=0, idle_age=5585, priority=0 actions=drop
+ cookie=0x8f542ac7d4eeffe6, duration=804.414s, table=4, n_packets=111, n_bytes=14378, idle_age=741, priority=1,tun_id=0x5a actions=mod_vlan_vid:1,resubmit(,10)
+ cookie=0x8f542ac7d4eeffe6, duration=5585.798s, table=4, n_packets=9, n_bytes=742, idle_age=892, priority=0 actions=drop
+ cookie=0x8f542ac7d4eeffe6, duration=5585.798s, table=6, n_packets=0, n_bytes=0, idle_age=5585, priority=0 actions=drop
+ cookie=0x8f542ac7d4eeffe6, duration=5585.798s, table=10, n_packets=111, n_bytes=14378, idle_age=741, priority=1 actions=learn(table=20,hard_timeout=300,priority=1,cookie=0x8f542ac7d4eeffe6,NXM_OF_VLAN_TCI[0..11],NXM_OF_ETH_DST[]=NXM_OF_ETH_SRC[],load:0->NXM_OF_VLAN_TCI[],load:NXM_NX_TUN_ID[]->NXM_NX_TUN_ID[],output:NXM_OF_IN_PORT[]),output:1
+ cookie=0x8f542ac7d4eeffe6, duration=5585.797s, table=20, n_packets=0, n_bytes=0, idle_age=5585, priority=0 actions=resubmit(,22)
+ cookie=0x8f542ac7d4eeffe6, duration=804.421s, table=22, n_packets=12, n_bytes=1368, idle_age=787, dl_vlan=1 actions=strip_vlan,set_tunnel:0x5a,output:3,output:2
+ cookie=0x8f542ac7d4eeffe6, duration=5585.787s, table=22, n_packets=5, n_bytes=418, idle_age=804, priority=0 actions=drop
+=====> [20160411-141836] host: (local), command: ovs-ofctl dump-aggregate br-tun
+NXST_AGGREGATE reply (xid=0x4): packet_count=668 byte_count=77284 flow_count=14
+=====> [20160411-141836] host: (local), command: ovs-ofctl queue-stats br-tun
+OFPST_QUEUE reply (xid=0x2): 0 queues
+=====> [20160411-141836] host: (local), command: ovs-dpctl show br-tun
+ovs-dpctl: opening datapath br-tun failed (No such device)
+=====> [20160411-141836] host: (local), command: ip -d a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN 
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00 promiscuity 0 
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 52:54:00:68:8a:5c brd ff:ff:ff:ff:ff:ff promiscuity 0 
+    inet 10.64.193.73/23 brd 10.64.193.255 scope global dynamic eth0
+       valid_lft 80197sec preferred_lft 80197sec
+    inet6 fe80::5054:ff:fe68:8a5c/64 scope link 
+       valid_lft forever preferred_lft forever
+3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 52:54:00:e1:d1:51 brd ff:ff:ff:ff:ff:ff promiscuity 0 
+    inet 10.0.1.131/24 brd 10.0.1.255 scope global eth1
+       valid_lft forever preferred_lft forever
+    inet6 fe80::5054:ff:fee1:d151/64 scope link 
+       valid_lft forever preferred_lft forever
+4: eth2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 52:54:00:b2:39:7c brd ff:ff:ff:ff:ff:ff promiscuity 0 
+    inet 10.0.2.131/24 brd 10.0.2.255 scope global eth2
+       valid_lft forever preferred_lft forever
+    inet6 fe80::5054:ff:feb2:397c/64 scope link 
+       valid_lft forever preferred_lft forever
+5: eth3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 52:54:00:c5:d0:72 brd ff:ff:ff:ff:ff:ff promiscuity 0 
+    inet6 fe80::5054:ff:fec5:d072/64 scope link 
+       valid_lft forever preferred_lft forever
+6: ovs-system: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN 
+    link/ether 1e:45:20:8d:3f:57 brd ff:ff:ff:ff:ff:ff promiscuity 1 
+    openvswitch 
+7: br-int: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN 
+    link/ether be:62:dc:17:76:41 brd ff:ff:ff:ff:ff:ff promiscuity 1 
+    openvswitch 
+8: br-tun: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN 
+    link/ether da:a9:20:f1:99:49 brd ff:ff:ff:ff:ff:ff promiscuity 1 
+    openvswitch 
+9: qbrf0b5e2a9-dd: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP 
+    link/ether de:9b:c7:24:33:5a brd ff:ff:ff:ff:ff:ff promiscuity 0 
+    bridge 
+10: qvof0b5e2a9-dd@qvbf0b5e2a9-dd: <BROADCAST,MULTICAST,PROMISC,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast master ovs-system state UP qlen 1000
+    link/ether be:74:c5:5e:eb:53 brd ff:ff:ff:ff:ff:ff promiscuity 2 
+    veth 
+    inet6 fe80::bc74:c5ff:fe5e:eb53/64 scope link 
+       valid_lft forever preferred_lft forever
+11: qvbf0b5e2a9-dd@qvof0b5e2a9-dd: <BROADCAST,MULTICAST,PROMISC,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast master qbrf0b5e2a9-dd state UP qlen 1000
+    link/ether de:9b:c7:24:33:5a brd ff:ff:ff:ff:ff:ff promiscuity 2 
+    veth 
+    inet6 fe80::dc9b:c7ff:fe24:335a/64 scope link 
+       valid_lft forever preferred_lft forever
+12: tapf0b5e2a9-dd: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast master qbrf0b5e2a9-dd state UNKNOWN qlen 500
+    link/ether fe:16:3e:50:c4:8d brd ff:ff:ff:ff:ff:ff promiscuity 1 
+    tun 
+    inet6 fe80::fc16:3eff:fe50:c48d/64 scope link 
+       valid_lft forever preferred_lft forever
+=====> [20160411-141836] host: (local), command: ip netns
+/root/keystonerc_admin not found.

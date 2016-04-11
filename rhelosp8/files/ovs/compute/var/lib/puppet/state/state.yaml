@@ -1,0 +1,956 @@
+--- 
+  File[/etc/puppet]: 
+    !ruby/sym checked: 2016-04-11 12:36:48.167254 +09:00
+  File[/var/lib/puppet]: 
+    !ruby/sym checked: 2016-04-11 12:36:48.170229 +09:00
+  File[/var/lib/puppet/facts.d]: 
+    !ruby/sym checked: 2016-04-11 12:36:48.173427 +09:00
+    !ruby/sym synced: 2016-04-11 12:36:48.213667 +09:00
+  File[/var/log/puppet]: 
+    !ruby/sym checked: 2016-04-11 12:36:48.214991 +09:00
+  File[/var/lib/puppet/ssl]: 
+    !ruby/sym checked: 2016-04-11 12:36:48.217681 +09:00
+    !ruby/sym synced: 2016-04-11 12:36:48.222389 +09:00
+  File[/var/lib/puppet/ssl/private_keys]: 
+    !ruby/sym checked: 2016-04-11 12:36:48.223239 +09:00
+    !ruby/sym synced: 2016-04-11 12:36:48.226912 +09:00
+  File[/var/lib/puppet/ssl/public_keys]: 
+    !ruby/sym checked: 2016-04-11 12:36:48.227642 +09:00
+    !ruby/sym synced: 2016-04-11 12:36:48.231043 +09:00
+  File[/var/lib/puppet/ssl/certs]: 
+    !ruby/sym checked: 2016-04-11 12:36:48.231785 +09:00
+    !ruby/sym synced: 2016-04-11 12:36:48.235501 +09:00
+  File[/var/run/puppet]: 
+    !ruby/sym checked: 2016-04-11 12:36:48.237263 +09:00
+  File[/var/lib/puppet/client_data]: 
+    !ruby/sym checked: 2016-04-11 12:36:48.240080 +09:00
+    !ruby/sym synced: 2016-04-11 12:36:48.243271 +09:00
+  File[/var/lib/puppet/state]: 
+    !ruby/sym checked: 2016-04-11 12:36:48.244076 +09:00
+    !ruby/sym synced: 2016-04-11 12:36:48.247286 +09:00
+  File[/var/lib/puppet/state/graphs]: 
+    !ruby/sym checked: 2016-04-11 12:36:48.248139 +09:00
+    !ruby/sym synced: 2016-04-11 12:36:48.251909 +09:00
+  File[/var/lib/puppet/client_yaml]: 
+    !ruby/sym checked: 2016-04-11 12:36:48.252804 +09:00
+    !ruby/sym synced: 2016-04-11 12:36:48.256381 +09:00
+  File[/var/lib/puppet/ssl/private]: 
+    !ruby/sym checked: 2016-04-11 12:36:48.257294 +09:00
+    !ruby/sym synced: 2016-04-11 12:36:48.261239 +09:00
+  File[/var/lib/puppet/lib]: 
+    !ruby/sym checked: 2016-04-11 12:36:48.261969 +09:00
+    !ruby/sym synced: 2016-04-11 12:36:48.265015 +09:00
+  File[/var/lib/puppet/clientbucket]: 
+    !ruby/sym checked: 2016-04-11 12:36:48.265771 +09:00
+    !ruby/sym synced: 2016-04-11 12:36:48.269071 +09:00
+  File[/var/lib/puppet/ssl/certificate_requests]: 
+    !ruby/sym checked: 2016-04-11 12:36:48.269927 +09:00
+    !ruby/sym synced: 2016-04-11 12:36:48.274271 +09:00
+  File[/etc/puppet/hiera.yaml]: 
+    !ruby/sym checked: 2016-04-11 12:36:48.275328 +09:00
+    !ruby/sym synced: 2016-04-11 12:36:48.278103 +09:00
+  !ruby/sym configuration: {}
+  Schedule[daily]: 
+    !ruby/sym checked: 2016-04-11 12:51:09.075571 +09:00
+  Schedule[monthly]: 
+    !ruby/sym checked: 2016-04-11 12:51:09.075787 +09:00
+  Schedule[hourly]: 
+    !ruby/sym checked: 2016-04-11 12:51:09.075968 +09:00
+  Stage[main]: 
+    !ruby/sym checked: 2016-04-11 12:51:10.617847 +09:00
+  Class[Main]: 
+    !ruby/sym checked: 2016-04-11 12:51:10.615895 +09:00
+  "Class[Firewall::Params]": 
+    !ruby/sym checked: 2016-04-11 12:36:48.333805 +09:00
+  "Class[Sysctl::Base]": 
+    !ruby/sym checked: 2016-04-11 12:37:49.635079 +09:00
+  Package[sos]: 
+    !ruby/sym checked: 2016-04-11 12:36:48.494864 +09:00
+    !ruby/sym synced: 2016-04-11 12:36:54.590381 +09:00
+  Class[Firewall]: 
+    !ruby/sym checked: 2016-04-11 12:36:54.597428 +09:00
+  Package[openstack-selinux]: 
+    !ruby/sym checked: 2016-04-11 12:36:54.644013 +09:00
+    !ruby/sym synced: 2016-04-11 12:37:49.532760 +09:00
+  Class[Settings]: 
+    !ruby/sym checked: 2016-04-11 12:51:10.613176 +09:00
+  Package[audit]: 
+    !ruby/sym checked: 2016-04-11 12:37:49.540332 +09:00
+  Service[auditd]: 
+    !ruby/sym checked: 2016-04-11 12:37:49.567244 +09:00
+  Schedule[never]: 
+    !ruby/sym checked: 2016-04-11 12:51:10.613458 +09:00
+  "Class[Firewall::Linux]": 
+    !ruby/sym checked: 2016-04-11 12:37:49.581140 +09:00
+  Package[iptables]: 
+    !ruby/sym checked: 2016-04-11 12:37:49.571348 +09:00
+  "Class[Firewall::Linux::Redhat]": 
+    !ruby/sym checked: 2016-04-11 12:37:49.629087 +09:00
+  File[/etc/sysconfig/iptables]: 
+    !ruby/sym checked: 2016-04-11 12:37:49.575512 +09:00
+    !ruby/sym synced: 2016-04-11 12:37:49.578489 +09:00
+  Filebucket[puppet]: 
+    !ruby/sym checked: 2016-04-11 12:51:10.613727 +09:00
+  Service[firewalld]: 
+    !ruby/sym checked: 2016-04-11 12:37:49.598699 +09:00
+  Package[iptables-services]: 
+    !ruby/sym checked: 2016-04-11 12:37:49.599768 +09:00
+  "Exec[/usr/bin/systemctl daemon-reload]": 
+    !ruby/sym checked: 2016-04-11 12:37:49.609198 +09:00
+  Service[iptables]: 
+    !ruby/sym checked: 2016-04-11 12:37:49.626048 +09:00
+  Schedule[weekly]: 
+    !ruby/sym checked: 2016-04-11 12:51:10.613892 +09:00
+  Schedule[puppet]: 
+    !ruby/sym checked: 2016-04-11 12:51:10.614226 +09:00
+  File[/etc/sysctl.conf]: 
+    !ruby/sym checked: 2016-04-11 12:37:49.630818 +09:00
+  "Sysctl::Value[net.ipv4.tcp_keepalive_probes]": 
+    !ruby/sym checked: 2016-04-11 12:37:49.769097 +09:00
+  "Sysctl::Value[net.ipv4.tcp_keepalive_time]": 
+    !ruby/sym checked: 2016-04-11 12:37:49.757523 +09:00
+  "Sysctl::Value[net.ipv4.tcp_keepalive_intvl]": 
+    !ruby/sym checked: 2016-04-11 12:37:49.778262 +09:00
+  Sysctl[net.ipv4.tcp_keepalive_intvl]: 
+    !ruby/sym checked: 2016-04-11 12:37:49.636705 +09:00
+    !ruby/sym synced: 2016-04-11 12:37:49.637251 +09:00
+  Sysctl[net.ipv4.tcp_keepalive_time]: 
+    !ruby/sym checked: 2016-04-11 12:37:49.683069 +09:00
+    !ruby/sym synced: 2016-04-11 12:37:49.683643 +09:00
+  Sysctl_runtime[net.ipv4.tcp_keepalive_time]: 
+    !ruby/sym checked: 2016-04-11 12:37:49.749030 +09:00
+    !ruby/sym synced: 2016-04-11 12:37:49.756905 +09:00
+  Sysctl[net.ipv4.tcp_keepalive_probes]: 
+    !ruby/sym checked: 2016-04-11 12:37:49.758265 +09:00
+    !ruby/sym synced: 2016-04-11 12:37:49.758766 +09:00
+  Sysctl_runtime[net.ipv4.tcp_keepalive_probes]: 
+    !ruby/sym checked: 2016-04-11 12:37:49.760806 +09:00
+    !ruby/sym synced: 2016-04-11 12:37:49.768543 +09:00
+  Sysctl_runtime[net.ipv4.tcp_keepalive_intvl]: 
+    !ruby/sym checked: 2016-04-11 12:37:49.769918 +09:00
+    !ruby/sym synced: 2016-04-11 12:37:49.777712 +09:00
+  "Class[Ceilometer::Agent::Compute]": 
+    !ruby/sym checked: 2016-04-11 12:44:51.560869 +09:00
+  "Class[Ceilometer::Logging]": 
+    !ruby/sym checked: 2016-04-11 12:44:51.564003 +09:00
+  "Class[Nova::Utilities]": 
+    !ruby/sym checked: 2016-04-11 12:43:36.364094 +09:00
+  Sshkey[ecdsa-sha2-nistp256.10.0.1.131]: 
+    !ruby/sym checked: 2016-04-11 12:42:44.548516 +09:00
+    !ruby/sym synced: 2016-04-11 12:42:44.548891 +09:00
+  "Class[Nova::Db]": 
+    !ruby/sym checked: 2016-04-11 12:44:46.995238 +09:00
+  "Class[Nova::Compute]": 
+    !ruby/sym checked: 2016-04-11 12:44:51.291048 +09:00
+  Package[ceilometer-agent-compute]: 
+    !ruby/sym checked: 2016-04-11 12:42:44.722370 +09:00
+    !ruby/sym synced: 2016-04-11 12:43:36.360096 +09:00
+  "Class[Nova::Logging]": 
+    !ruby/sym checked: 2016-04-11 12:44:47.449903 +09:00
+  Sshkey[ssh-rsa.10.0.1.132]: 
+    !ruby/sym checked: 2016-04-11 12:43:36.364504 +09:00
+    !ruby/sym synced: 2016-04-11 12:43:36.364859 +09:00
+  Exec[qemu-kvm]: 
+    !ruby/sym checked: 2016-04-11 12:43:46.527915 +09:00
+  "Class[Nova::Network::Neutron]": 
+    !ruby/sym checked: 2016-04-11 12:44:47.072144 +09:00
+  "Class[Nova::Migration::Libvirt]": 
+    !ruby/sym checked: 2016-04-11 12:44:48.214552 +09:00
+  "Packstack::Firewall[nova_qemu_migration_10.0.1.131_10.0.1.131]": 
+    !ruby/sym checked: 2016-04-11 12:43:46.619677 +09:00
+  "Firewall[001 nova qemu migration incoming nova_qemu_migration_10.0.1.131_10.0.1.131]": 
+    !ruby/sym checked: 2016-04-11 12:43:46.559680 +09:00
+    !ruby/sym synced: 2016-04-11 12:43:46.585780 +09:00
+  "Class[Nova::Params]": 
+    !ruby/sym checked: 2016-04-11 12:44:47.056562 +09:00
+  "Nova::Generic_service[compute]": 
+    !ruby/sym checked: 2016-04-11 12:44:51.274304 +09:00
+  "Packstack::Firewall[nova_qemu_migration_10.0.1.131_10.0.1.132]": 
+    !ruby/sym checked: 2016-04-11 12:44:46.868500 +09:00
+  "Firewall[001 nova qemu migration incoming nova_qemu_migration_10.0.1.131_10.0.1.132]": 
+    !ruby/sym checked: 2016-04-11 12:43:46.722272 +09:00
+    !ruby/sym synced: 2016-04-11 12:43:46.749280 +09:00
+  "Packstack::Firewall[nova_compute]": 
+    !ruby/sym checked: 2016-04-11 12:44:18.194750 +09:00
+  "Class[Ceilometer::Agent::Auth]": 
+    !ruby/sym checked: 2016-04-11 12:44:47.441476 +09:00
+  Package[tuned]: 
+    !ruby/sym checked: 2016-04-11 12:43:46.790868 +09:00
+  "Class[Nova::Compute::Neutron]": 
+    !ruby/sym checked: 2016-04-11 12:44:17.829793 +09:00
+  Package[python-cinderclient]: 
+    !ruby/sym checked: 2016-04-11 12:43:46.822251 +09:00
+    !ruby/sym synced: 2016-04-11 12:43:50.999941 +09:00
+  "Firewall[001 nova compute incoming nova_compute]": 
+    !ruby/sym checked: 2016-04-11 12:43:51.016628 +09:00
+    !ruby/sym synced: 2016-04-11 12:43:51.038479 +09:00
+  "Class[Nova::Compute::Libvirt]": 
+    !ruby/sym checked: 2016-04-11 12:44:48.223699 +09:00
+  Class[Nova]: 
+    !ruby/sym checked: 2016-04-11 12:44:51.294588 +09:00
+  Anchor[nova-start]: 
+    !ruby/sym checked: 2016-04-11 12:43:51.075323 +09:00
+  Package[python-nova]: 
+    !ruby/sym checked: 2016-04-11 12:43:51.104457 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:07.101442 +09:00
+  Package[nova-common]: 
+    !ruby/sym checked: 2016-04-11 12:44:07.128917 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:11.950663 +09:00
+  Nova_config[neutron/admin_auth_url]: 
+    !ruby/sym checked: 2016-04-11 12:44:11.959831 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:11.967977 +09:00
+  Nova_config[DEFAULT/network_api_class]: 
+    !ruby/sym checked: 2016-04-11 12:44:11.976119 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:11.984434 +09:00
+  Nova_config[DEFAULT/force_raw_images]: 
+    !ruby/sym checked: 2016-04-11 12:44:11.991371 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:11.999712 +09:00
+  Nova_config[DEFAULT/debug]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.006234 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.014063 +09:00
+  Nova_config[DEFAULT/log_dir]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.020718 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.028894 +09:00
+  Class[Ceilometer]: 
+    !ruby/sym checked: 2016-04-11 12:44:48.205643 +09:00
+  Nova_config[neutron/extension_sync_interval]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.038412 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.045194 +09:00
+  Nova_config[DEFAULT/vncserver_proxyclient_address]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.052328 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.060860 +09:00
+  Nova_config[DEFAULT/metadata_host]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.067832 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.076055 +09:00
+  Nova_config[libvirt/remove_unused_kernels]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.082968 +09:00
+  Nova_config[DEFAULT/notify_api_faults]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.089335 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.096221 +09:00
+  Nova_config[neutron/admin_username]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.103066 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.109958 +09:00
+  Nova_config[oslo_messaging_rabbit/kombu_ssl_keyfile]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.154345 +09:00
+  Nova_config[DEFAULT/log_config_append]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.161495 +09:00
+  Nova_config[DEFAULT/use_stderr]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.168222 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.176923 +09:00
+  Nova_config[DEFAULT/memcached_servers]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.184231 +09:00
+  Nova_config[oslo_messaging_rabbit/rabbit_userid]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.191009 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.197946 +09:00
+  Nova_config[neutron/admin_tenant_name]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.204909 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.212040 +09:00
+  Nova_config[DEFAULT/log_date_format]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.218345 +09:00
+  Nova_config[DEFAULT/notification_driver]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.224619 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.232948 +09:00
+  File[/etc/nova/nova.conf]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.234279 +09:00
+  Nova_config[DEFAULT/compute_manager]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.241430 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.253386 +09:00
+  Nova_config[DEFAULT/ssl_ca_file]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.259558 +09:00
+  Nova_config[oslo_messaging_rabbit/rabbit_password]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.265700 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.272405 +09:00
+  Nova_config[upgrade_levels/cert]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.278747 +09:00
+  Nova_config[libvirt/inject_partition]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.284998 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.291940 +09:00
+  Nova_config[DEFAULT/remove_unused_base_images]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.298035 +09:00
+  Nova_config[upgrade_levels/conductor]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.304313 +09:00
+  Nova_config[DEFAULT/instance_format]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.310248 +09:00
+  Nova_config[DEFAULT/network_device_mtu]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.316521 +09:00
+  Nova_config[DEFAULT/state_path]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.322836 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.330168 +09:00
+  Nova_config[libvirt/inject_password]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.336527 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.343341 +09:00
+  Nova_config[DEFAULT/report_interval]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.349552 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.356661 +09:00
+  Nova_config[DEFAULT/verbose]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.362997 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.370785 +09:00
+  Nova_config[oslo_messaging_rabbit/rabbit_ha_queues]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.377373 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.384201 +09:00
+  Nova_config[libvirt/vif_driver]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.390494 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.397603 +09:00
+  Nova_config[DEFAULT/security_group_api]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.404098 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.411712 +09:00
+  Nova_config[DEFAULT/logging_default_format_string]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.418319 +09:00
+  Nova_config[DEFAULT/logging_context_format_string]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.424814 +09:00
+  Nova_config[DEFAULT/remove_unused_original_minimum_age_seconds]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.463175 +09:00
+  Nova_config[libvirt/disk_cachemodes]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.475096 +09:00
+  Nova_config[DEFAULT/vnc_keymap]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.481916 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.490722 +09:00
+  Nova_config[neutron/ca_certificates_file]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.497295 +09:00
+  Nova_config[DEFAULT/sql_connection]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.503631 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.511718 +09:00
+  Nova_config[upgrade_levels/network]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.518080 +09:00
+  Nova_config[DEFAULT/vnc_enabled]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.524392 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.532502 +09:00
+  Nova_config[oslo_messaging_rabbit/rabbit_virtual_host]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.538839 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.545617 +09:00
+  Nova_config[glance/api_servers]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.551865 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.573684 +09:00
+  Nova_config[DEFAULT/force_snat_range]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.580180 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.587882 +09:00
+  Nova_config[oslo_messaging_rabbit/rabbit_port]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.594229 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.600961 +09:00
+  Nova_config[DEFAULT/image_service]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.607459 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.615241 +09:00
+  Nova_config[DEFAULT/volume_api_class]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.621688 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.628792 +09:00
+  Nova_config[upgrade_levels/compute]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.635131 +09:00
+  Nova_config[DEFAULT/heal_instance_info_cache_interval]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.641385 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.648778 +09:00
+  Nova_config[DEFAULT/notify_on_state_change]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.654906 +09:00
+  Nova_config[DEFAULT/firewall_driver]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.661101 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.668799 +09:00
+  Nova_config[DEFAULT/instance_usage_audit]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.675063 +09:00
+  Nova_config[cinder/catalog_info]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.681278 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.687900 +09:00
+  Nova_config[oslo_messaging_rabbit/kombu_reconnect_delay]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.694325 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.701082 +09:00
+  Nova_config[libvirt/live_migration_uri]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.707233 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.714130 +09:00
+  Nova_config[neutron/admin_password]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.720732 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.727531 +09:00
+  Nova_config[libvirt/cpu_mode]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.734070 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.740943 +09:00
+  Nova_config[upgrade_levels/intercell]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.747331 +09:00
+  Nova_config[oslo_messaging_rabbit/rabbit_host]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.777855 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.784660 +09:00
+  Nova_config[DEFAULT/use_ipv6]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.791142 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.839218 +09:00
+  Nova_config[neutron/timeout]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.846244 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.861742 +09:00
+  Nova_config[DEFAULT/reserved_host_memory_mb]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.868390 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.876183 +09:00
+  Nova_config[DEFAULT/default_availability_zone]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.883140 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.889968 +09:00
+  Nova_config[oslo_messaging_rabbit/amqp_durable_queues]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.896646 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.903358 +09:00
+  Nova_config[oslo_messaging_rabbit/heartbeat_rate]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.909780 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.916495 +09:00
+  Nova_config[libvirt/cpu_model]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.922866 +09:00
+  Nova_config[oslo_messaging_rabbit/kombu_ssl_certfile]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.928985 +09:00
+  Nova_config[DEFAULT/internal_service_availability_zone]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.935312 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.941816 +09:00
+  Nova_config[oslo_messaging_rabbit/heartbeat_timeout_threshold]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.948191 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:12.954891 +09:00
+  Package[libvirt-nwfilter]: 
+    !ruby/sym checked: 2016-04-11 12:44:12.981978 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:17.820764 +09:00
+  Nova_config[DEFAULT/instance_uuid_format]: 
+    !ruby/sym checked: 2016-04-11 12:44:17.827792 +09:00
+  Nova_config[DEFAULT/fatal_deprecations]: 
+    !ruby/sym checked: 2016-04-11 12:44:17.836618 +09:00
+  Package[ceilometer-common]: 
+    !ruby/sym checked: 2016-04-11 12:44:17.865686 +09:00
+  Ceilometer_config[oslo_messaging_rabbit/rabbit_password]: 
+    !ruby/sym checked: 2016-04-11 12:44:17.869499 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:17.873079 +09:00
+  Ceilometer_config[DEFAULT/publish_errors]: 
+    !ruby/sym checked: 2016-04-11 12:44:17.876307 +09:00
+  Ceilometer_config[service_credentials/os_username]: 
+    !ruby/sym checked: 2016-04-11 12:44:17.879245 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:17.882839 +09:00
+  Ceilometer_config[DEFAULT/logging_exception_prefix]: 
+    !ruby/sym checked: 2016-04-11 12:44:17.886123 +09:00
+  Ceilometer_config[service_credentials/os_tenant_name]: 
+    !ruby/sym checked: 2016-04-11 12:44:17.889025 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:17.892014 +09:00
+  Group[ceilometer]: 
+    !ruby/sym checked: 2016-04-11 12:44:17.893161 +09:00
+  Ceilometer_config[DEFAULT/logging_context_format_string]: 
+    !ruby/sym checked: 2016-04-11 12:44:17.896086 +09:00
+  Ceilometer_config[database/event_time_to_live]: 
+    !ruby/sym checked: 2016-04-11 12:44:17.899095 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:17.902293 +09:00
+  Ceilometer_config[DEFAULT/rpc_backend]: 
+    !ruby/sym checked: 2016-04-11 12:44:17.905528 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:17.914942 +09:00
+  Ceilometer_config[DEFAULT/fatal_deprecations]: 
+    !ruby/sym checked: 2016-04-11 12:44:17.918172 +09:00
+  Ceilometer_config[oslo_messaging_rabbit/kombu_ssl_keyfile]: 
+    !ruby/sym checked: 2016-04-11 12:44:17.921294 +09:00
+  Ceilometer_config[oslo_messaging_rabbit/rabbit_hosts]: 
+    !ruby/sym checked: 2016-04-11 12:44:17.924366 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:17.927476 +09:00
+  Ceilometer_config[DEFAULT/http_timeout]: 
+    !ruby/sym checked: 2016-04-11 12:44:17.930529 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:17.933572 +09:00
+  Ceilometer_config[DEFAULT/notification_topics]: 
+    !ruby/sym checked: 2016-04-11 12:44:17.936546 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:17.939727 +09:00
+  Ceilometer_config[service_credentials/os_auth_url]: 
+    !ruby/sym checked: 2016-04-11 12:44:17.942831 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:17.946156 +09:00
+  Ceilometer_config[DEFAULT/use_syslog]: 
+    !ruby/sym checked: 2016-04-11 12:44:17.951432 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:17.957097 +09:00
+  User[ceilometer]: 
+    !ruby/sym checked: 2016-04-11 12:44:17.958291 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:17.981958 +09:00
+  Ceilometer_config[DEFAULT/default_log_levels]: 
+    !ruby/sym checked: 2016-04-11 12:44:17.985273 +09:00
+  Ceilometer_config[DEFAULT/use_stderr]: 
+    !ruby/sym checked: 2016-04-11 12:44:17.988737 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:17.992316 +09:00
+  Ceilometer_config[oslo_messaging_rabbit/rabbit_ha_queues]: 
+    !ruby/sym checked: 2016-04-11 12:44:17.995570 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:17.998910 +09:00
+  Ceilometer_config[oslo_messaging_rabbit/rabbit_host]: 
+    !ruby/sym checked: 2016-04-11 12:44:18.002039 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:18.005307 +09:00
+  Ceilometer_config[service_credentials/os_region_name]: 
+    !ruby/sym checked: 2016-04-11 12:44:18.008532 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:18.011722 +09:00
+  Ceilometer_config[DEFAULT/memcached_servers]: 
+    !ruby/sym checked: 2016-04-11 12:44:18.015089 +09:00
+  Ceilometer_config[DEFAULT/instance_uuid_format]: 
+    !ruby/sym checked: 2016-04-11 12:44:18.018214 +09:00
+  Ceilometer_config[DEFAULT/logging_default_format_string]: 
+    !ruby/sym checked: 2016-04-11 12:44:18.021295 +09:00
+  Ceilometer_config[database/alarm_history_time_to_live]: 
+    !ruby/sym checked: 2016-04-11 12:44:18.024497 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:18.056611 +09:00
+  Nova_config[DEFAULT/vif_plugging_is_fatal]: 
+    !ruby/sym checked: 2016-04-11 12:44:18.124756 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:18.148924 +09:00
+  Nova_config[DEFAULT/os_region_name]: 
+    !ruby/sym checked: 2016-04-11 12:44:18.160658 +09:00
+  Nova_config[libvirt/virt_type]: 
+    !ruby/sym checked: 2016-04-11 12:44:18.172777 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:18.180232 +09:00
+  Nova_config[oslo_messaging_rabbit/rabbit_use_ssl]: 
+    !ruby/sym checked: 2016-04-11 12:44:18.187173 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:18.194343 +09:00
+  Package[libvirt]: 
+    !ruby/sym checked: 2016-04-11 12:44:18.223578 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:24.494901 +09:00
+  "File_line[/etc/libvirt/libvirtd.conf auth_tcp]": 
+    !ruby/sym checked: 2016-04-11 12:44:24.497528 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:24.504220 +09:00
+  Ceilometer_config[DEFAULT/log_dir]: 
+    !ruby/sym checked: 2016-04-11 12:44:24.510290 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:24.517188 +09:00
+  Ceilometer_config[DEFAULT/verbose]: 
+    !ruby/sym checked: 2016-04-11 12:44:24.523342 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:24.530090 +09:00
+  Nova_config[upgrade_levels/consoleauth]: 
+    !ruby/sym checked: 2016-04-11 12:44:24.542988 +09:00
+  Nova_config[cinder/os_region_name]: 
+    !ruby/sym checked: 2016-04-11 12:44:24.555448 +09:00
+  "Class[Ceilometer::Params]": 
+    !ruby/sym checked: 2016-04-11 12:44:24.561415 +09:00
+  Nova_config[neutron/auth_strategy]: 
+    !ruby/sym checked: 2016-04-11 12:44:24.573894 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:24.588964 +09:00
+  Nova_config[neutron/default_tenant_id]: 
+    !ruby/sym checked: 2016-04-11 12:44:24.601856 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:24.617242 +09:00
+  Nova_config[DEFAULT/lock_path]: 
+    !ruby/sym checked: 2016-04-11 12:44:24.630276 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:24.646401 +09:00
+  Ceilometer_config[oslo_messaging_rabbit/kombu_ssl_version]: 
+    !ruby/sym checked: 2016-04-11 12:44:24.651193 +09:00
+  Nova_config[oslo_messaging_rabbit/kombu_ssl_ca_certs]: 
+    !ruby/sym checked: 2016-04-11 12:44:24.661169 +09:00
+  Nova_config[upgrade_levels/scheduler]: 
+    !ruby/sym checked: 2016-04-11 12:44:24.671423 +09:00
+  Nova_config[neutron/url]: 
+    !ruby/sym checked: 2016-04-11 12:44:24.682459 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:24.697449 +09:00
+  Nova_config[DEFAULT/service_down_time]: 
+    !ruby/sym checked: 2016-04-11 12:44:24.710059 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:24.726093 +09:00
+  Ceilometer_config[oslo_messaging_rabbit/kombu_ssl_ca_certs]: 
+    !ruby/sym checked: 2016-04-11 12:44:24.732509 +09:00
+  Nova_config[DEFAULT/syslog_log_facility]: 
+    !ruby/sym checked: 2016-04-11 12:44:24.744946 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:24.754720 +09:00
+  Nova_config[DEFAULT/vncserver_listen]: 
+    !ruby/sym checked: 2016-04-11 12:44:24.765665 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:24.780411 +09:00
+  Ceilometer_config[oslo_messaging_rabbit/rabbit_virtual_host]: 
+    !ruby/sym checked: 2016-04-11 12:44:24.785129 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:24.790312 +09:00
+  "File_line[/etc/libvirt/libvirtd.conf listen_tls]": 
+    !ruby/sym checked: 2016-04-11 12:44:24.791869 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:24.796557 +09:00
+  Ceilometer_config[oslo_messaging_rabbit/rabbit_port]: 
+    !ruby/sym checked: 2016-04-11 12:44:24.801674 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:24.806799 +09:00
+  Nova_config[DEFAULT/ssl_cert_file]: 
+    !ruby/sym checked: 2016-04-11 12:44:24.817158 +09:00
+  Nova_config[upgrade_levels/console]: 
+    !ruby/sym checked: 2016-04-11 12:44:24.862976 +09:00
+  Nova_config[neutron/ovs_bridge]: 
+    !ruby/sym checked: 2016-04-11 12:44:24.874635 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:24.885889 +09:00
+  Nova_config[DEFAULT/notification_topics]: 
+    !ruby/sym checked: 2016-04-11 12:44:24.897948 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:24.914090 +09:00
+  Ceilometer_config[oslo_messaging_rabbit/heartbeat_timeout_threshold]: 
+    !ruby/sym checked: 2016-04-11 12:44:24.919879 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:24.925553 +09:00
+  Ceilometer_config[DEFAULT/instance_format]: 
+    !ruby/sym checked: 2016-04-11 12:44:24.930686 +09:00
+  Sshkey[ecdsa-sha2-nistp256.10.0.1.132]: 
+    !ruby/sym checked: 2016-04-11 12:44:24.931290 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:24.931700 +09:00
+  Nova_config[oslo_messaging_rabbit/kombu_ssl_version]: 
+    !ruby/sym checked: 2016-04-11 12:44:25.006862 +09:00
+  Package[nova-compute]: 
+    !ruby/sym checked: 2016-04-11 12:44:25.051921 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:46.783614 +09:00
+  "File_line[/etc/sysconfig/libvirtd libvirtd args]": 
+    !ruby/sym checked: 2016-04-11 12:44:46.784541 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:46.785677 +09:00
+  Ceilometer_config[DEFAULT/logging_debug_format_suffix]: 
+    !ruby/sym checked: 2016-04-11 12:44:46.789980 +09:00
+  Sshkey[ssh-rsa.10.0.1.131]: 
+    !ruby/sym checked: 2016-04-11 12:44:46.790501 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:46.790893 +09:00
+  Nova_config[DEFAULT/ssl_key_file]: 
+    !ruby/sym checked: 2016-04-11 12:44:46.805071 +09:00
+  Nova_config[libvirt/inject_key]: 
+    !ruby/sym checked: 2016-04-11 12:44:46.812674 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:46.824364 +09:00
+  Nova_config[DEFAULT/instance_usage_audit_period]: 
+    !ruby/sym checked: 2016-04-11 12:44:46.831581 +09:00
+  Ceilometer_config[oslo_messaging_rabbit/kombu_ssl_certfile]: 
+    !ruby/sym checked: 2016-04-11 12:44:46.834930 +09:00
+  Nova_config[DEFAULT/default_log_levels]: 
+    !ruby/sym checked: 2016-04-11 12:44:46.841402 +09:00
+  Nova_config[DEFAULT/auth_strategy]: 
+    !ruby/sym checked: 2016-04-11 12:44:46.847847 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:46.855011 +09:00
+  Nova_config[neutron/region_name]: 
+    !ruby/sym checked: 2016-04-11 12:44:46.861420 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:46.868054 +09:00
+  Ceilometer_config[oslo_messaging_rabbit/rabbit_userid]: 
+    !ruby/sym checked: 2016-04-11 12:44:46.871663 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:46.874736 +09:00
+  Nova_config[DEFAULT/compute_driver]: 
+    !ruby/sym checked: 2016-04-11 12:44:46.881074 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:46.888558 +09:00
+  Ceilometer_config[DEFAULT/log_date_format]: 
+    !ruby/sym checked: 2016-04-11 12:44:46.891678 +09:00
+  File[/etc/nova/ssh]: 
+    !ruby/sym checked: 2016-04-11 12:44:46.892148 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:46.894399 +09:00
+  File[/etc/nova/ssh/nova_migration_key]: 
+    !ruby/sym checked: 2016-04-11 12:44:46.894889 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:46.907462 +09:00
+  Nova_config[DEFAULT/rootwrap_config]: 
+    !ruby/sym checked: 2016-04-11 12:44:46.913864 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:46.920711 +09:00
+  Ceilometer_config[service_credentials/os_password]: 
+    !ruby/sym checked: 2016-04-11 12:44:46.923755 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:46.926675 +09:00
+  Ceilometer_config[oslo_messaging_rabbit/heartbeat_rate]: 
+    !ruby/sym checked: 2016-04-11 12:44:46.929552 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:46.932407 +09:00
+  Nova_config[oslo_messaging_rabbit/rabbit_hosts]: 
+    !ruby/sym checked: 2016-04-11 12:44:46.938574 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:46.944937 +09:00
+  File[/var/lib/nova/.ssh]: 
+    !ruby/sym checked: 2016-04-11 12:44:46.945568 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:46.947624 +09:00
+  Ssh_authorized_key[nova-migration-public-key]: 
+    !ruby/sym checked: 2016-04-11 12:44:46.948191 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:46.948518 +09:00
+  File[/var/lib/nova/.ssh/id_rsa]: 
+    !ruby/sym checked: 2016-04-11 12:44:46.950917 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:46.958810 +09:00
+  Nova_config[DEFAULT/rpc_backend]: 
+    !ruby/sym checked: 2016-04-11 12:44:46.965310 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:46.972968 +09:00
+  Nova_config[DEFAULT/vif_plugging_timeout]: 
+    !ruby/sym checked: 2016-04-11 12:44:46.979276 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:46.986805 +09:00
+  Nova_config[DEFAULT/logging_debug_format_suffix]: 
+    !ruby/sym checked: 2016-04-11 12:44:46.992911 +09:00
+  "File_line[/etc/libvirt/libvirtd.conf listen_tcp]": 
+    !ruby/sym checked: 2016-04-11 12:44:46.996430 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:46.999658 +09:00
+  Nova_config[DEFAULT/use_syslog]: 
+    !ruby/sym checked: 2016-04-11 12:44:47.033650 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:47.041771 +09:00
+  Nova_config[upgrade_levels/cells]: 
+    !ruby/sym checked: 2016-04-11 12:44:47.048539 +09:00
+  Ceilometer_config[database/metering_time_to_live]: 
+    !ruby/sym checked: 2016-04-11 12:44:47.051740 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:47.054707 +09:00
+  Nova_config[DEFAULT/dhcp_domain]: 
+    !ruby/sym checked: 2016-04-11 12:44:47.062700 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:47.070175 +09:00
+  Nova_config[DEFAULT/force_config_drive]: 
+    !ruby/sym checked: 2016-04-11 12:44:47.078531 +09:00
+  Ceilometer_config[oslo_messaging_rabbit/rabbit_use_ssl]: 
+    !ruby/sym checked: 2016-04-11 12:44:47.081476 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:47.084393 +09:00
+  Nova_config[DEFAULT/allow_resize_to_same_host]: 
+    !ruby/sym checked: 2016-04-11 12:44:47.132540 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:47.140231 +09:00
+  Ceilometer_config[DEFAULT/debug]: 
+    !ruby/sym checked: 2016-04-11 12:44:47.143363 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:47.146276 +09:00
+  Nova_config[DEFAULT/logging_exception_prefix]: 
+    !ruby/sym checked: 2016-04-11 12:44:47.152680 +09:00
+  Service[messagebus]: 
+    !ruby/sym checked: 2016-04-11 12:44:47.178837 +09:00
+  Service[libvirt]: 
+    !ruby/sym checked: 2016-04-11 12:44:47.197960 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:47.271392 +09:00
+  Exec[virsh-net-destroy-default]: 
+    !ruby/sym checked: 2016-04-11 12:44:47.417449 +09:00
+  Exec[virsh-net-undefine-default]: 
+    !ruby/sym checked: 2016-04-11 12:44:47.436032 +09:00
+  Ceilometer_config[service_credentials/os_cacert]: 
+    !ruby/sym checked: 2016-04-11 12:44:47.439437 +09:00
+  Nova_config[DEFAULT/publish_errors]: 
+    !ruby/sym checked: 2016-04-11 12:44:47.448080 +09:00
+  Ceilometer_config[DEFAULT/log_config_append]: 
+    !ruby/sym checked: 2016-04-11 12:44:47.452911 +09:00
+  Service[tuned]: 
+    !ruby/sym checked: 2016-04-11 12:44:47.466967 +09:00
+  Exec[tuned-virtual-host]: 
+    !ruby/sym checked: 2016-04-11 12:44:47.554822 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:48.169199 +09:00
+  "Class[Nova::Vncproxy::Common]": 
+    !ruby/sym checked: 2016-04-11 12:44:48.196308 +09:00
+  Nova_config[DEFAULT/novncproxy_base_url]: 
+    !ruby/sym checked: 2016-04-11 12:44:48.183381 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:48.193895 +09:00
+  Ceilometer_config[publisher/metering_secret]: 
+    !ruby/sym checked: 2016-04-11 12:44:48.199943 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:48.203376 +09:00
+  Nova_config[DEFAULT/enabled_ssl_apis]: 
+    !ruby/sym checked: 2016-04-11 12:44:48.212565 +09:00
+  Nova_config[libvirt/remove_unused_resized_minimum_age_seconds]: 
+    !ruby/sym checked: 2016-04-11 12:44:48.221527 +09:00
+  Exec[post-nova_config]: 
+    !ruby/sym checked: 2016-04-11 12:44:48.225040 +09:00
+  Service[nova-compute]: 
+    !ruby/sym checked: 2016-04-11 12:44:48.256847 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:51.270426 +09:00
+  File_line[libvirt-guests]: 
+    !ruby/sym checked: 2016-04-11 12:44:51.271893 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:51.273275 +09:00
+  Exec[networking-refresh]: 
+    !ruby/sym checked: 2016-04-11 12:44:51.275642 +09:00
+  Exec[load_kvm]: 
+    !ruby/sym checked: 2016-04-11 12:44:51.312537 +09:00
+  Ceilometer_config[DEFAULT/syslog_log_facility]: 
+    !ruby/sym checked: 2016-04-11 12:44:51.322379 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:51.328525 +09:00
+  Service[ceilometer-agent-compute]: 
+    !ruby/sym checked: 2016-04-11 12:44:51.368697 +09:00
+    !ruby/sym synced: 2016-04-11 12:44:51.557181 +09:00
+  "Class[Vswitch::Ovs]": 
+    !ruby/sym checked: 2016-04-11 12:45:23.080711 +09:00
+  Class[Neutron]: 
+    !ruby/sym checked: 2016-04-11 12:45:30.064097 +09:00
+  "Packstack::Firewall[neutron_tunnel_10.0.1.131_10.0.2.132]": 
+    !ruby/sym checked: 2016-04-11 12:45:15.939249 +09:00
+  Package[neutron]: 
+    !ruby/sym checked: 2016-04-11 12:45:01.528193 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:15.550003 +09:00
+  Neutron_config[DEFAULT/use_ssl]: 
+    !ruby/sym checked: 2016-04-11 12:45:15.554778 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:15.578980 +09:00
+  Neutron_config[oslo_messaging_rabbit/rabbit_hosts]: 
+    !ruby/sym checked: 2016-04-11 12:45:15.582258 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:15.585113 +09:00
+  Neutron_config[oslo_messaging_rabbit/kombu_reconnect_delay]: 
+    !ruby/sym checked: 2016-04-11 12:45:15.588435 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:15.591725 +09:00
+  Neutron_config[oslo_messaging_rabbit/kombu_ssl_certfile]: 
+    !ruby/sym checked: 2016-04-11 12:45:15.594380 +09:00
+  Neutron_config[DEFAULT/use_syslog]: 
+    !ruby/sym checked: 2016-04-11 12:45:15.598233 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:15.602806 +09:00
+  Neutron_config[DEFAULT/ssl_ca_file]: 
+    !ruby/sym checked: 2016-04-11 12:45:15.605891 +09:00
+  Neutron_config[DEFAULT/dhcp_agent_notification]: 
+    !ruby/sym checked: 2016-04-11 12:45:15.609505 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:15.615610 +09:00
+  Neutron_config[DEFAULT/log_dir]: 
+    !ruby/sym checked: 2016-04-11 12:45:15.619106 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:15.622988 +09:00
+  Neutron_config[oslo_messaging_rabbit/heartbeat_rate]: 
+    !ruby/sym checked: 2016-04-11 12:45:15.626962 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:15.631128 +09:00
+  Neutron_config[DEFAULT/log_file]: 
+    !ruby/sym checked: 2016-04-11 12:45:15.634415 +09:00
+  Neutron_config[oslo_messaging_rabbit/kombu_ssl_version]: 
+    !ruby/sym checked: 2016-04-11 12:45:15.638595 +09:00
+  Neutron_config[agent/root_helper]: 
+    !ruby/sym checked: 2016-04-11 12:45:15.665172 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:15.669253 +09:00
+  Neutron_config[DEFAULT/rpc_backend]: 
+    !ruby/sym checked: 2016-04-11 12:45:15.673090 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:15.678375 +09:00
+  Neutron_config[DEFAULT/state_path]: 
+    !ruby/sym checked: 2016-04-11 12:45:15.681758 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:15.684774 +09:00
+  Neutron_config[DEFAULT/advertise_mtu]: 
+    !ruby/sym checked: 2016-04-11 12:45:15.687456 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:15.691599 +09:00
+  Neutron_config[DEFAULT/service_plugins]: 
+    !ruby/sym checked: 2016-04-11 12:45:15.696603 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:15.701942 +09:00
+  Neutron_config[DEFAULT/ssl_cert_file]: 
+    !ruby/sym checked: 2016-04-11 12:45:15.705442 +09:00
+  Neutron_config[DEFAULT/control_exchange]: 
+    !ruby/sym checked: 2016-04-11 12:45:15.708807 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:15.726493 +09:00
+  Neutron_config[DEFAULT/memcached_servers]: 
+    !ruby/sym checked: 2016-04-11 12:45:15.729764 +09:00
+  Neutron_config[DEFAULT/core_plugin]: 
+    !ruby/sym checked: 2016-04-11 12:45:15.733229 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:15.736662 +09:00
+  "Packstack::Firewall[neutron_tunnel_10.0.1.131_10.0.2.111]": 
+    !ruby/sym checked: 2016-04-11 12:45:16.157534 +09:00
+  Neutron_config[DEFAULT/rpc_response_timeout]: 
+    !ruby/sym checked: 2016-04-11 12:45:15.767985 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:15.774659 +09:00
+  "Firewall[001 neutron tunnel port incoming neutron_tunnel_10.0.1.131_10.0.2.132]": 
+    !ruby/sym checked: 2016-04-11 12:45:15.824128 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:15.859224 +09:00
+  Neutron_config[agent/report_interval]: 
+    !ruby/sym checked: 2016-04-11 12:45:15.975948 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:15.981768 +09:00
+  Neutron_config[DEFAULT/auth_strategy]: 
+    !ruby/sym checked: 2016-04-11 12:45:15.986709 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:15.991108 +09:00
+  Neutron_config[DEFAULT/allow_overlapping_ips]: 
+    !ruby/sym checked: 2016-04-11 12:45:15.995049 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:15.999151 +09:00
+  "Firewall[001 neutron tunnel port incoming neutron_tunnel_10.0.1.131_10.0.2.111]": 
+    !ruby/sym checked: 2016-04-11 12:45:16.020797 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:16.078476 +09:00
+  "Packstack::Firewall[neutron_tunnel_10.0.1.131_10.0.2.131]": 
+    !ruby/sym checked: 2016-04-11 12:45:30.414275 +09:00
+  Neutron_config[oslo_messaging_rabbit/rabbit_virtual_host]: 
+    !ruby/sym checked: 2016-04-11 12:45:16.184482 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:16.189404 +09:00
+  Neutron_config[oslo_messaging_rabbit/kombu_ssl_ca_certs]: 
+    !ruby/sym checked: 2016-04-11 12:45:16.192607 +09:00
+  Neutron_config[DEFAULT/debug]: 
+    !ruby/sym checked: 2016-04-11 12:45:16.196435 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:16.199974 +09:00
+  Neutron_config[oslo_messaging_rabbit/rabbit_use_ssl]: 
+    !ruby/sym checked: 2016-04-11 12:45:16.205343 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:16.210878 +09:00
+  Neutron_config[DEFAULT/verbose]: 
+    !ruby/sym checked: 2016-04-11 12:45:16.216237 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:16.225202 +09:00
+  Neutron_config[DEFAULT/ssl_key_file]: 
+    !ruby/sym checked: 2016-04-11 12:45:16.229776 +09:00
+  "Class[Packstack::Neutron::Bridge]": 
+    !ruby/sym checked: 2016-04-11 12:45:23.166894 +09:00
+  File[bridge-module-loader]: 
+    !ruby/sym checked: 2016-04-11 12:45:16.234299 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:16.251312 +09:00
+  Neutron_config[DEFAULT/bind_host]: 
+    !ruby/sym checked: 2016-04-11 12:45:16.257756 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:16.263903 +09:00
+  Neutron_config[DEFAULT/allow_sorting]: 
+    !ruby/sym checked: 2016-04-11 12:45:16.269559 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:16.302960 +09:00
+  "Class[Neutron::Params]": 
+    !ruby/sym checked: 2016-04-11 12:45:22.994059 +09:00
+  Neutron_config[DEFAULT/mac_generation_retries]: 
+    !ruby/sym checked: 2016-04-11 12:45:16.312191 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:16.318099 +09:00
+  Neutron_config[oslo_messaging_rabbit/rabbit_password]: 
+    !ruby/sym checked: 2016-04-11 12:45:16.323383 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:16.329291 +09:00
+  Neutron_config[oslo_messaging_rabbit/rabbit_ha_queues]: 
+    !ruby/sym checked: 2016-04-11 12:45:16.334439 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:16.340910 +09:00
+  Neutron_config[DEFAULT/dhcp_agents_per_network]: 
+    !ruby/sym checked: 2016-04-11 12:45:16.346959 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:16.353725 +09:00
+  Neutron_config[DEFAULT/use_stderr]: 
+    !ruby/sym checked: 2016-04-11 12:45:16.358895 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:16.364602 +09:00
+  Neutron_config[DEFAULT/lock_path]: 
+    !ruby/sym checked: 2016-04-11 12:45:16.369791 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:16.379100 +09:00
+  Neutron_config[DEFAULT/allow_bulk]: 
+    !ruby/sym checked: 2016-04-11 12:45:16.411569 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:16.421049 +09:00
+  Neutron_config[DEFAULT/bind_port]: 
+    !ruby/sym checked: 2016-04-11 12:45:16.423951 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:16.428352 +09:00
+  Package[openvswitch]: 
+    !ruby/sym checked: 2016-04-11 12:45:16.464150 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:22.748647 +09:00
+  Service[openvswitch]: 
+    !ruby/sym checked: 2016-04-11 12:45:22.771933 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:22.987583 +09:00
+  Neutron_config[DEFAULT/network_device_mtu]: 
+    !ruby/sym checked: 2016-04-11 12:45:23.001127 +09:00
+  Neutron_config[oslo_messaging_rabbit/rabbit_host]: 
+    !ruby/sym checked: 2016-04-11 12:45:23.007133 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:23.013681 +09:00
+  Neutron_config[DEFAULT/api_extensions_path]: 
+    !ruby/sym checked: 2016-04-11 12:45:23.020788 +09:00
+  "Class[Vswitch::Params]": 
+    !ruby/sym checked: 2016-04-11 12:45:30.053321 +09:00
+  Neutron_config[DEFAULT/allow_pagination]: 
+    !ruby/sym checked: 2016-04-11 12:45:23.031080 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:23.037405 +09:00
+  Neutron_config[DEFAULT/dhcp_lease_duration]: 
+    !ruby/sym checked: 2016-04-11 12:45:23.043775 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:23.076860 +09:00
+  "Class[Neutron::Agents::Ml2::Ovs]": 
+    !ruby/sym checked: 2016-04-11 12:45:30.253243 +09:00
+  Neutron_config[oslo_messaging_rabbit/heartbeat_timeout_threshold]: 
+    !ruby/sym checked: 2016-04-11 12:45:23.089614 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:23.095440 +09:00
+  Neutron_config[DEFAULT/base_mac]: 
+    !ruby/sym checked: 2016-04-11 12:45:23.100960 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:23.106510 +09:00
+  Exec[load-bridge]: 
+    !ruby/sym checked: 2016-04-11 12:45:23.107583 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:23.129763 +09:00
+  Exec[load-bridge-netfilter]: 
+    !ruby/sym checked: 2016-04-11 12:45:23.141737 +09:00
+  "File_line[/etc/sysctl.conf bridge-nf-call-ip6tables]": 
+    !ruby/sym checked: 2016-04-11 12:45:23.143571 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:23.144717 +09:00
+  "File_line[/etc/sysctl.conf bridge-nf-call-iptables]": 
+    !ruby/sym checked: 2016-04-11 12:45:23.145570 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:23.146540 +09:00
+  "File_line[/etc/sysctl.conf bridge-nf-call-arptables]": 
+    !ruby/sym checked: 2016-04-11 12:45:23.147277 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:23.148262 +09:00
+  Exec[sysctl_refresh]: 
+    !ruby/sym checked: 2016-04-11 12:45:23.149104 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:23.163167 +09:00
+  Package[neutron-ovs-agent]: 
+    !ruby/sym checked: 2016-04-11 12:45:23.211829 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:29.847539 +09:00
+  Neutron_agent_ovs[ovs/local_ip]: 
+    !ruby/sym checked: 2016-04-11 12:45:29.849889 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:29.851406 +09:00
+  Neutron_agent_ovs[agent/extensions]: 
+    !ruby/sym checked: 2016-04-11 12:45:29.852689 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:29.853817 +09:00
+  Neutron_agent_ovs[agent/enable_distributed_routing]: 
+    !ruby/sym checked: 2016-04-11 12:45:29.854893 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:29.855905 +09:00
+  Neutron_agent_ovs[ovs/tunnel_bridge]: 
+    !ruby/sym checked: 2016-04-11 12:45:29.857933 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:29.860100 +09:00
+  Neutron_agent_ovs[agent/prevent_arp_spoofing]: 
+    !ruby/sym checked: 2016-04-11 12:45:29.862380 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:29.864571 +09:00
+  Neutron_agent_ovs[ovs/enable_tunneling]: 
+    !ruby/sym checked: 2016-04-11 12:45:29.866764 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:29.868537 +09:00
+  Neutron_agent_ovs[ovs/integration_bridge]: 
+    !ruby/sym checked: 2016-04-11 12:45:29.870558 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:29.872346 +09:00
+  Neutron_agent_ovs[securitygroup/firewall_driver]: 
+    !ruby/sym checked: 2016-04-11 12:45:29.900672 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:29.902087 +09:00
+  Service[ovs-cleanup-service]: 
+    !ruby/sym checked: 2016-04-11 12:45:29.941137 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:30.015080 +09:00
+  Neutron_agent_ovs[agent/arp_responder]: 
+    !ruby/sym checked: 2016-04-11 12:45:30.017175 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:30.018887 +09:00
+  Neutron_agent_ovs[agent/polling_interval]: 
+    !ruby/sym checked: 2016-04-11 12:45:30.020130 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:30.021344 +09:00
+  Neutron_agent_ovs[agent/drop_flows_on_start]: 
+    !ruby/sym checked: 2016-04-11 12:45:30.023160 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:30.024980 +09:00
+  Neutron_agent_ovs[agent/vxlan_udp_port]: 
+    !ruby/sym checked: 2016-04-11 12:45:30.026640 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:30.028334 +09:00
+  Neutron_config[oslo_messaging_rabbit/kombu_ssl_keyfile]: 
+    !ruby/sym checked: 2016-04-11 12:45:30.031723 +09:00
+  Neutron_agent_ovs[agent/l2_population]: 
+    !ruby/sym checked: 2016-04-11 12:45:30.033248 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:30.034806 +09:00
+  Neutron_agent_ovs[agent/tunnel_types]: 
+    !ruby/sym checked: 2016-04-11 12:45:30.036182 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:30.037482 +09:00
+  Neutron_config[oslo_messaging_rabbit/rabbit_userid]: 
+    !ruby/sym checked: 2016-04-11 12:45:30.042886 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:30.048746 +09:00
+  Neutron_config[oslo_messaging_rabbit/rabbit_port]: 
+    !ruby/sym checked: 2016-04-11 12:45:30.057984 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:30.061473 +09:00
+  Service[neutron-ovs-agent-service]: 
+    !ruby/sym checked: 2016-04-11 12:45:30.105059 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:30.250172 +09:00
+  "Firewall[001 neutron tunnel port incoming neutron_tunnel_10.0.1.131_10.0.2.131]": 
+    !ruby/sym checked: 2016-04-11 12:45:30.309407 +09:00
+    !ruby/sym synced: 2016-04-11 12:45:30.339904 +09:00
+  Exec[update-selinux-policy]: 
+    !ruby/sym checked: 2016-04-11 12:51:09.094309 +09:00
+    !ruby/sym synced: 2016-04-11 12:51:10.609416 +09:00

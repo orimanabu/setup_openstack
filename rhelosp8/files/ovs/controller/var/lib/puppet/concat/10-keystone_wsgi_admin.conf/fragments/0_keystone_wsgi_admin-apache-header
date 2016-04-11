@@ -1,0 +1,7 @@
+# ************************************
+# Vhost template in module puppetlabs-apache
+# Managed by Puppet
+# ************************************
+
+<VirtualHost *:35357>
+  ServerName osp7ps-controller01.test.local

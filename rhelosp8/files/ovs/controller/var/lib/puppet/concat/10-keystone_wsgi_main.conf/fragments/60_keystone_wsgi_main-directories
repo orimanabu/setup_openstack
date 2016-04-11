@@ -1,0 +1,8 @@
+
+  ## Directories, there should at least be a declaration for /var/www/cgi-bin/keystone
+
+  <Directory "/var/www/cgi-bin/keystone">
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride None
+    Require all granted
+  </Directory>

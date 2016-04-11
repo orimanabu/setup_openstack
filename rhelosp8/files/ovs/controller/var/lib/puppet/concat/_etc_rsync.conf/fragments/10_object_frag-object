@@ -1,0 +1,14 @@
+# This file is being maintained by Puppet.
+# DO NOT EDIT
+
+[ object ]
+path             = /srv/node
+read only        = false
+write only       = no
+list             = yes
+uid              = swift
+gid              = swift
+incoming chmod   = 0644
+outgoing chmod   = 0644
+max connections  = 25
+lock file        = /var/lock/object.lock

@@ -1,0 +1,4986 @@
+--- !ruby/object:Puppet::Transaction::Report
+  metrics: 
+    resources: !ruby/object:Puppet::Util::Metric
+      name: resources
+      label: Resources
+      values: 
+        - - total
+          - Total
+          - 130
+        - - skipped
+          - Skipped
+          - 0
+        - - failed
+          - Failed
+          - 0
+        - - failed_to_restart
+          - "Failed to restart"
+          - 0
+        - - restarted
+          - Restarted
+          - 5
+        - - changed
+          - Changed
+          - 67
+        - - out_of_sync
+          - "Out of sync"
+          - 67
+        - - scheduled
+          - Scheduled
+          - 0
+    time: !ruby/object:Puppet::Util::Metric
+      name: time
+      label: Time
+      values: 
+        - - schedule
+          - Schedule
+          - 0.000494165
+        - - file
+          - File
+          - 0.008388154
+        - - exec
+          - Exec
+          - 4.515642548000001
+        - - anchor
+          - Anchor
+          - 7.3257e-05
+        - - package
+          - Package
+          - 20.216849328000002
+        - - cinder_config
+          - "Cinder config"
+          - 1.173926079999999
+        - - cron
+          - Cron
+          - 0.008414627
+        - - firewall
+          - Firewall
+          - 0.455514603
+        - - cinder_api_paste_ini
+          - "Cinder api paste ini"
+          - 0.000476561
+        - - filebucket
+          - Filebucket
+          - 0.000113635
+        - - file_line
+          - "File line"
+          - 0.043704674
+        - - service
+          - Service
+          - 1.020941841
+        - - config_retrieval
+          - "Config retrieval"
+          - 1.210184365
+        - - total
+          - Total
+          - 28.654723838000002
+    changes: !ruby/object:Puppet::Util::Metric
+      name: changes
+      label: Changes
+      values: 
+        - - total
+          - Total
+          - 67
+    events: !ruby/object:Puppet::Util::Metric
+      name: events
+      label: Events
+      values: 
+        - - total
+          - Total
+          - 67
+        - - failure
+          - Failure
+          - 0
+        - - success
+          - Success
+          - 67
+  logs: 
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - file
+        - openstack-losetup
+        - class
+      message: "defined content as '{md5}3fee7f98eb9b581c420311aed91f0aaa'"
+      source: /Stage[main]/Main/File[openstack-losetup]/ensure
+      time: 2016-04-11 12:41:23.633695 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_cinder.pp
+      line: 132
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - exec
+        - class
+      message: "Triggered 'refresh' from 1 events"
+      source: "/Stage[main]/Main/Exec[/usr/bin/systemctl daemon-reload]"
+      time: 2016-04-11 12:41:23.706321 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_cinder.pp
+      line: 137
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - package
+        - cinder
+        - openstack
+        - cinder-package
+        - class
+      message: created
+      source: /Stage[main]/Cinder/Package[cinder]/ensure
+      time: 2016-04-11 12:41:39.401595 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 326
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - cinder
+      message: created
+      source: /Stage[main]/Cinder/Cinder_config[DEFAULT/host]/ensure
+      time: 2016-04-11 12:41:39.418086 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 422
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - cinder
+      message: created
+      source: /Stage[main]/Cinder/Cinder_config[oslo_messaging_rabbit/rabbit_ha_queues]/ensure
+      time: 2016-04-11 12:41:39.487216 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 359
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - cinder
+      message: created
+      source: /Stage[main]/Cinder/Cinder_config[oslo_messaging_rabbit/amqp_durable_queues]/ensure
+      time: 2016-04-11 12:41:39.500409 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 348
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - cinder
+      message: created
+      source: /Stage[main]/Cinder/Cinder_config[DEFAULT/enable_v2_api]/ensure
+      time: 2016-04-11 12:41:39.513481 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 444
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - cinder
+      message: created
+      source: /Stage[main]/Cinder/Cinder_config[oslo_messaging_rabbit/heartbeat_rate]/ensure
+      time: 2016-04-11 12:41:39.531779 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 348
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      message: created
+      source: "/Stage[main]/Cinder::Api/Cinder_config[keystone_authtoken/admin_password]/ensure"
+      time: 2016-04-11 12:41:39.550339 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 298
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - "cinder::backup::swift"
+        - cinder
+        - backup
+        - swift
+      message: created
+      source: "/Stage[main]/Cinder::Backup::Swift/Cinder_config[DEFAULT/backup_swift_container]/ensure"
+      time: 2016-04-11 12:41:39.563540 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backup/swift.pp
+      line: 80
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - cinder
+      message: created
+      source: /Stage[main]/Cinder/Cinder_config[DEFAULT/api_paste_config]/ensure
+      time: 2016-04-11 12:41:39.585519 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 422
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cron
+        - class
+        - "cinder::cron::db_purge"
+        - cinder
+        - db_purge
+      message: created
+      source: "/Stage[main]/Cinder::Cron::Db_purge/Cron[cinder-manage db purge]/ensure"
+      time: 2016-04-11 12:41:39.610969 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/cron/db_purge.pp
+      line: 75
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - "cinder::backends"
+        - cinder
+        - backends
+      message: created
+      source: "/Stage[main]/Cinder::Backends/Cinder_config[DEFAULT/enabled_backends]/ensure"
+      time: 2016-04-11 12:41:39.641430 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backends.pp
+      line: 27
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - "cinder::backup::swift"
+        - cinder
+        - backup
+        - swift
+      message: created
+      source: "/Stage[main]/Cinder::Backup::Swift/Cinder_config[DEFAULT/backup_driver]/ensure"
+      time: 2016-04-11 12:41:39.657762 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backup/swift.pp
+      line: 80
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - "cinder::logging"
+        - cinder
+        - logging
+      message: created
+      source: "/Stage[main]/Cinder::Logging/Cinder_config[DEFAULT/debug]/ensure"
+      time: 2016-04-11 12:41:39.698571 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/logging.pp
+      line: 147
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - cinder
+      message: created
+      source: /Stage[main]/Cinder/Cinder_config[oslo_messaging_rabbit/rabbit_host]/ensure
+      time: 2016-04-11 12:41:39.710951 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 356
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - cinder
+      message: created
+      source: /Stage[main]/Cinder/Cinder_config[DEFAULT/storage_availability_zone]/ensure
+      time: 2016-04-11 12:41:39.727862 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 422
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      message: created
+      source: "/Stage[main]/Cinder::Api/Cinder_config[DEFAULT/nova_catalog_info]/ensure"
+      time: 2016-04-11 12:41:39.772336 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 250
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - cinder
+      message: created
+      source: /Stage[main]/Cinder/Cinder_config[oslo_messaging_rabbit/rabbit_use_ssl]/ensure
+      time: 2016-04-11 12:41:39.854206 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 348
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - cinder
+      message: created
+      source: /Stage[main]/Cinder/Cinder_config[oslo_messaging_rabbit/kombu_ssl_keyfile]/ensure
+      time: 2016-04-11 12:41:39.869153 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 348
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - "cinder::logging"
+        - cinder
+        - logging
+      message: created
+      source: "/Stage[main]/Cinder::Logging/Cinder_config[DEFAULT/log_dir]/ensure"
+      time: 2016-04-11 12:41:39.903268 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/logging.pp
+      line: 147
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      message: created
+      source: "/Stage[main]/Cinder::Api/Cinder_config[DEFAULT/auth_strategy]/ensure"
+      time: 2016-04-11 12:41:39.926670 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 298
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      message: created
+      source: "/Stage[main]/Cinder::Api/Cinder_config[DEFAULT/osapi_volume_listen]/ensure"
+      time: 2016-04-11 12:41:39.942783 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 245
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      message: created
+      source: "/Stage[main]/Cinder::Api/Cinder_config[DEFAULT/osapi_volume_workers]/ensure"
+      time: 2016-04-11 12:41:39.957853 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 245
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - cinder
+      message: created
+      source: /Stage[main]/Cinder/Cinder_config[oslo_messaging_rabbit/kombu_ssl_ca_certs]/ensure
+      time: 2016-04-11 12:41:39.977772 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 348
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - cinder
+      message: created
+      source: /Stage[main]/Cinder/Cinder_config[oslo_messaging_rabbit/rabbit_hosts]/ensure
+      time: 2016-04-11 12:41:39.991304 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 358
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - firewall
+        - "packstack::firewall"
+        - packstack
+        - cinder_10.0.1.132
+        - class
+      message: created
+      source: "/Stage[main]/Main/Packstack::Firewall[cinder_10.0.1.132]/Firewall[001 cinder incoming cinder_10.0.1.132]/ensure"
+      time: 2016-04-11 12:41:40.124363 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/packstack/manifests/firewall.pp
+      line: 50
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      message: created
+      source: "/Stage[main]/Cinder::Api/Cinder_config[keystone_authtoken/admin_tenant_name]/ensure"
+      time: 2016-04-11 12:41:40.184524 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 298
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - cinder
+      message: created
+      source: /Stage[main]/Cinder/Cinder_config[DEFAULT/default_availability_zone]/ensure
+      time: 2016-04-11 12:41:40.212366 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 422
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      message: created
+      source: "/Stage[main]/Cinder::Api/Cinder_config[keystone_authtoken/auth_uri]/ensure"
+      time: 2016-04-11 12:41:40.245450 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 290
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+      message: created
+      source: /Stage[main]/Main/Cinder_config[DEFAULT/glance_host]/ensure
+      time: 2016-04-11 12:41:40.285227 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_cinder.pp
+      line: 42
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - "cinder::logging"
+        - cinder
+        - logging
+      message: created
+      source: "/Stage[main]/Cinder::Logging/Cinder_config[DEFAULT/verbose]/ensure"
+      time: 2016-04-11 12:41:40.298650 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/logging.pp
+      line: 147
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - cinder
+      message: created
+      source: /Stage[main]/Cinder/Cinder_config[DEFAULT/control_exchange]/ensure
+      time: 2016-04-11 12:41:40.312213 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 348
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - cinder
+      message: created
+      source: /Stage[main]/Cinder/Cinder_config[DEFAULT/enable_v1_api]/ensure
+      time: 2016-04-11 12:41:40.328679 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 444
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - firewall
+        - "packstack::firewall"
+        - packstack
+        - cinder_api
+        - class
+      message: created
+      source: "/Stage[main]/Main/Packstack::Firewall[cinder_api]/Firewall[001 cinder-api incoming cinder_api]/ensure"
+      time: 2016-04-11 12:41:40.418390 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/packstack/manifests/firewall.pp
+      line: 50
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - cinder
+      message: created
+      source: /Stage[main]/Cinder/Cinder_config[oslo_messaging_rabbit/rabbit_port]/ensure
+      time: 2016-04-11 12:41:40.463861 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 357
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - file_line
+        - snapshot_autoextend_threshold
+        - class
+      message: created
+      source: /Stage[main]/Main/File_line[snapshot_autoextend_threshold]/ensure
+      time: 2016-04-11 12:41:40.487566 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_cinder.pp
+      line: 159
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - "cinder::backend::iscsi"
+        - cinder
+        - backend
+        - iscsi
+        - lvm
+        - class
+      message: created
+      source: "/Stage[main]/Main/Cinder::Backend::Iscsi[lvm]/Cinder_config[lvm/iscsi_helper]/ensure"
+      time: 2016-04-11 12:41:40.500031 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backend/iscsi.pp
+      line: 60
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - package
+        - targetcli
+        - "cinder::backend::iscsi"
+        - cinder
+        - backend
+        - iscsi
+        - lvm
+        - class
+      message: created
+      source: "/Stage[main]/Main/Cinder::Backend::Iscsi[lvm]/Package[targetcli]/ensure"
+      time: 2016-04-11 12:41:45.112980 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backend/iscsi.pp
+      line: 99
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - "cinder::backend::iscsi"
+        - cinder
+        - backend
+        - iscsi
+        - lvm
+        - class
+      message: created
+      source: "/Stage[main]/Main/Cinder::Backend::Iscsi[lvm]/Cinder_config[lvm/volume_group]/ensure"
+      time: 2016-04-11 12:41:45.127617 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backend/iscsi.pp
+      line: 60
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - "cinder::backend::iscsi"
+        - cinder
+        - backend
+        - iscsi
+        - lvm
+        - class
+      message: created
+      source: "/Stage[main]/Main/Cinder::Backend::Iscsi[lvm]/Cinder_config[lvm/iscsi_ip_address]/ensure"
+      time: 2016-04-11 12:41:45.141510 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backend/iscsi.pp
+      line: 60
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - "cinder::backend::iscsi"
+        - cinder
+        - backend
+        - iscsi
+        - lvm
+        - class
+      message: created
+      source: "/Stage[main]/Main/Cinder::Backend::Iscsi[lvm]/Cinder_config[lvm/volume_driver]/ensure"
+      time: 2016-04-11 12:41:45.154712 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backend/iscsi.pp
+      line: 60
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - "cinder::backend::iscsi"
+        - cinder
+        - backend
+        - iscsi
+        - lvm
+        - class
+      message: created
+      source: "/Stage[main]/Main/Cinder::Backend::Iscsi[lvm]/Cinder_config[lvm/volumes_dir]/ensure"
+      time: 2016-04-11 12:41:45.167365 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backend/iscsi.pp
+      line: 60
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - "cinder::backend::iscsi"
+        - cinder
+        - backend
+        - iscsi
+        - lvm
+        - class
+      message: created
+      source: "/Stage[main]/Main/Cinder::Backend::Iscsi[lvm]/Cinder_config[lvm/iscsi_protocol]/ensure"
+      time: 2016-04-11 12:41:45.186809 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backend/iscsi.pp
+      line: 60
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - cinder
+      message: created
+      source: /Stage[main]/Cinder/Cinder_config[oslo_messaging_rabbit/heartbeat_timeout_threshold]/ensure
+      time: 2016-04-11 12:41:45.211363 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 348
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - cinder
+      message: created
+      source: /Stage[main]/Cinder/Cinder_config[oslo_messaging_rabbit/rabbit_virtual_host]/ensure
+      time: 2016-04-11 12:41:45.240256 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 348
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - "cinder::backend::iscsi"
+        - cinder
+        - backend
+        - iscsi
+        - lvm
+        - class
+      message: created
+      source: "/Stage[main]/Main/Cinder::Backend::Iscsi[lvm]/Cinder_config[lvm/volume_backend_name]/ensure"
+      time: 2016-04-11 12:41:45.275915 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backend/iscsi.pp
+      line: 60
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - "cinder::ceilometer"
+        - cinder
+        - ceilometer
+      message: created
+      source: "/Stage[main]/Cinder::Ceilometer/Cinder_config[DEFAULT/notification_driver]/ensure"
+      time: 2016-04-11 12:41:45.314250 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/ceilometer.pp
+      line: 22
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - service
+        - target
+        - "cinder::backend::iscsi"
+        - cinder
+        - backend
+        - iscsi
+        - lvm
+        - class
+      message: "ensure changed 'stopped' to 'running'"
+      source: "/Stage[main]/Main/Cinder::Backend::Iscsi[lvm]/Service[target]/ensure"
+      time: 2016-04-11 12:41:45.519973 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backend/iscsi.pp
+      line: 94
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      message: created
+      source: "/Stage[main]/Cinder::Api/Cinder_config[DEFAULT/nova_catalog_admin_info]/ensure"
+      time: 2016-04-11 12:41:45.535976 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 250
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - cinder
+      message: created
+      source: /Stage[main]/Cinder/Cinder_config[oslo_messaging_rabbit/rabbit_password]/ensure
+      time: 2016-04-11 12:41:45.553846 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 348
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - cinder
+      message: created
+      source: /Stage[main]/Cinder/Cinder_config[DEFAULT/rpc_backend]/ensure
+      time: 2016-04-11 12:41:45.567966 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 422
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      message: created
+      source: "/Stage[main]/Cinder::Api/Cinder_config[keystone_authtoken/identity_uri]/ensure"
+      time: 2016-04-11 12:41:45.633127 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 363
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - cinder
+      message: created
+      source: /Stage[main]/Cinder/Cinder_config[oslo_messaging_rabbit/rabbit_userid]/ensure
+      time: 2016-04-11 12:41:45.645590 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 348
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - file_line
+        - snapshot_autoextend_percent
+        - class
+      message: created
+      source: /Stage[main]/Main/File_line[snapshot_autoextend_percent]/ensure
+      time: 2016-04-11 12:41:45.667392 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_cinder.pp
+      line: 166
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - exec
+        - class
+        - "cinder::setup_test_volume"
+        - cinder
+        - setup_test_volume
+      message: "executed successfully"
+      source: "/Stage[main]/Cinder::Setup_test_volume/Exec[create_/var/lib/cinder/cinder-volumes]/returns"
+      time: 2016-04-11 12:41:45.697570 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/setup_test_volume.pp
+      line: 40
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - exec
+        - class
+        - "cinder::setup_test_volume"
+        - cinder
+        - setup_test_volume
+      message: "Triggered 'refresh' from 1 events"
+      source: "/Stage[main]/Cinder::Setup_test_volume/Exec[losetup /dev/loop2 /var/lib/cinder/cinder-volumes]"
+      time: 2016-04-11 12:41:45.724698 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/setup_test_volume.pp
+      line: 46
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - exec
+        - class
+        - "cinder::setup_test_volume"
+        - cinder
+        - setup_test_volume
+      message: "Triggered 'refresh' from 1 events"
+      source: "/Stage[main]/Cinder::Setup_test_volume/Exec[pvcreate /dev/loop2]"
+      time: 2016-04-11 12:41:45.762736 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/setup_test_volume.pp
+      line: 52
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - exec
+        - class
+        - "cinder::setup_test_volume"
+        - cinder
+        - setup_test_volume
+      message: "Triggered 'refresh' from 1 events"
+      source: "/Stage[main]/Cinder::Setup_test_volume/Exec[vgcreate cinder-volumes /dev/loop2]"
+      time: 2016-04-11 12:41:45.796099 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/setup_test_volume.pp
+      line: 58
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - service
+        - openstack-losetup
+        - class
+      message: "ensure changed 'stopped' to 'running'"
+      source: /Stage[main]/Main/Service[openstack-losetup]/ensure
+      time: 2016-04-11 12:41:45.918485 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_cinder.pp
+      line: 143
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      message: created
+      source: "/Stage[main]/Cinder::Api/Cinder_config[keystone_authtoken/admin_user]/ensure"
+      time: 2016-04-11 12:41:45.931053 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 298
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - "cinder::backup::swift"
+        - cinder
+        - backup
+        - swift
+      message: created
+      source: "/Stage[main]/Cinder::Backup::Swift/Cinder_config[DEFAULT/backup_swift_url]/ensure"
+      time: 2016-04-11 12:41:45.956994 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backup/swift.pp
+      line: 80
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - cinder
+      message: created
+      source: /Stage[main]/Cinder/Cinder_config[oslo_messaging_rabbit/kombu_ssl_certfile]/ensure
+      time: 2016-04-11 12:41:45.972736 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 348
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - cinder_config
+        - class
+        - "cinder::db"
+        - cinder
+        - db
+      message: created
+      source: "/Stage[main]/Cinder::Db/Cinder_config[database/connection]/ensure"
+      time: 2016-04-11 12:41:46.025758 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/db.pp
+      line: 99
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - firewall
+        - "packstack::firewall"
+        - packstack
+        - cinder_10.0.1.131
+        - class
+      message: created
+      source: "/Stage[main]/Main/Packstack::Firewall[cinder_10.0.1.131]/Firewall[001 cinder incoming cinder_10.0.1.131]/ensure"
+      time: 2016-04-11 12:41:46.204686 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/packstack/manifests/firewall.pp
+      line: 50
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - exec
+        - class
+        - "cinder::db::sync"
+        - cinder
+        - db
+        - sync
+        - "cinder::api"
+        - api
+      message: "Triggered 'refresh' from 51 events"
+      source: "/Stage[main]/Cinder::Db::Sync/Exec[cinder-manage db_sync]"
+      time: 2016-04-11 12:41:49.183551 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/db/sync.pp
+      line: 30
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - service
+        - cinder-api
+        - cinder-service
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      message: "ensure changed 'stopped' to 'running'"
+      source: "/Stage[main]/Cinder::Api/Service[cinder-api]/ensure"
+      time: 2016-04-11 12:41:49.345307 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 238
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - service
+        - cinder-backup
+        - cinder-service
+        - class
+        - "cinder::backup"
+        - cinder
+        - backup
+      message: "ensure changed 'stopped' to 'running'"
+      source: "/Stage[main]/Cinder::Backup/Service[cinder-backup]/ensure"
+      time: 2016-04-11 12:41:49.515825 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backup.pp
+      line: 89
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - exec
+        - "cinder::type"
+        - cinder
+        - type
+        - iscsi
+        - class
+      message: "executed successfully"
+      source: "/Stage[main]/Main/Cinder::Type[iscsi]/Exec[cinder type-create iscsi]/returns"
+      time: 2016-04-11 12:41:52.811509 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/type.pp
+      line: 75
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - exec
+        - "cinder::type_set"
+        - cinder
+        - type_set
+        - lvm
+        - "cinder::type"
+        - type
+        - iscsi
+        - class
+      message: "executed successfully"
+      source: "/Stage[main]/Main/Cinder::Type[iscsi]/Cinder::Type_set[lvm]/Exec[cinder type-key iscsi set volume_backend_name=lvm]/returns"
+      time: 2016-04-11 12:41:54.013152 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/type_set.pp
+      line: 68
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - service
+        - cinder-volume
+        - cinder-service
+        - class
+        - "cinder::volume"
+        - cinder
+        - volume
+      message: "ensure changed 'stopped' to 'running'"
+      source: "/Stage[main]/Cinder::Volume/Service[cinder-volume]/ensure"
+      time: 2016-04-11 12:41:54.161883 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/volume.pp
+      line: 54
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - service
+        - cinder-scheduler
+        - cinder-service
+        - class
+        - "cinder::scheduler"
+        - cinder
+        - scheduler
+      message: "ensure changed 'stopped' to 'running'"
+      source: "/Stage[main]/Cinder::Scheduler/Service[cinder-scheduler]/ensure"
+      time: 2016-04-11 12:41:54.392016 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/scheduler.pp
+      line: 63
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+      message: "Finished catalog run in 31.13 seconds"
+      source: Puppet
+      time: 2016-04-11 12:41:54.590173 +09:00
+  resource_statuses: 
+    Schedule[daily]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[daily]
+      file: 
+      line: 
+      evaluation_time: 9.744e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - daily
+      time: 2016-04-11 12:41:23.622528 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: daily
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[daily]
+    Schedule[monthly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[monthly]
+      file: 
+      line: 
+      evaluation_time: 6.6445e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - monthly
+      time: 2016-04-11 12:41:23.622717 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: monthly
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[monthly]
+    Schedule[hourly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[hourly]
+      file: 
+      line: 
+      evaluation_time: 5.1812e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - hourly
+      time: 2016-04-11 12:41:23.622850 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: hourly
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[hourly]
+    File[openstack-losetup]: !ruby/object:Puppet::Resource::Status
+      resource: File[openstack-losetup]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_cinder.pp
+      line: 132
+      evaluation_time: 0.00621374
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - file
+        - openstack-losetup
+        - class
+      time: 2016-04-11 12:41:23.627642 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym file
+          historical_value: 
+          message: "defined content as '{md5}3fee7f98eb9b581c420311aed91f0aaa'"
+          name: !ruby/sym file_created
+          status: success
+          time: 2016-04-11 12:41:23.627944 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: File
+      title: openstack-losetup
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - File[openstack-losetup]
+    "Exec[/usr/bin/systemctl daemon-reload]": !ruby/object:Puppet::Resource::Status
+      resource: "Exec[/usr/bin/systemctl daemon-reload]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_cinder.pp
+      line: 137
+      evaluation_time: 0.000119423
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - exec
+        - class
+      time: 2016-04-11 12:41:23.644498 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Exec
+      title: "/usr/bin/systemctl daemon-reload"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Exec[/usr/bin/systemctl daemon-reload]"
+    Anchor[cinder-start]: !ruby/object:Puppet::Resource::Status
+      resource: Anchor[cinder-start]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 319
+      evaluation_time: 7.3257e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - anchor
+        - cinder-start
+        - class
+        - cinder
+      time: 2016-04-11 12:41:23.714759 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Anchor
+      title: cinder-start
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Anchor[cinder-start]
+    Package[cinder]: !ruby/object:Puppet::Resource::Status
+      resource: Package[cinder]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 326
+      evaluation_time: 15.60374846
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - package
+        - cinder
+        - openstack
+        - cinder-package
+        - class
+      time: 2016-04-11 12:41:23.798019 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym package_installed
+          status: success
+          time: 2016-04-11 12:41:23.823493 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Package
+      title: cinder
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Package[cinder]
+    Cinder_config[DEFAULT/host]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/host]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 422
+      evaluation_time: 0.015259631
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - cinder
+      time: 2016-04-11 12:41:39.402974 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:39.410953 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: DEFAULT/host
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Cinder_config[DEFAULT/host]
+    Cinder_config[DEFAULT/os_region_name]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/os_region_name]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 245
+      evaluation_time: 0.052205858
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      time: 2016-04-11 12:41:39.418949 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/os_region_name
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Api"
+        - Cinder_config[DEFAULT/os_region_name]
+    Cinder_config[oslo_messaging_rabbit/rabbit_ha_queues]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[oslo_messaging_rabbit/rabbit_ha_queues]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 359
+      evaluation_time: 0.015875499
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - cinder
+      time: 2016-04-11 12:41:39.471503 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:39.479087 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: oslo_messaging_rabbit/rabbit_ha_queues
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Cinder_config[oslo_messaging_rabbit/rabbit_ha_queues]
+    Cinder_config[oslo_messaging_rabbit/amqp_durable_queues]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[oslo_messaging_rabbit/amqp_durable_queues]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 348
+      evaluation_time: 0.012729331
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - cinder
+      time: 2016-04-11 12:41:39.487801 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:39.493954 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: oslo_messaging_rabbit/amqp_durable_queues
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Cinder_config[oslo_messaging_rabbit/amqp_durable_queues]
+    Cinder_config[DEFAULT/enable_v2_api]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/enable_v2_api]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 444
+      evaluation_time: 0.012652885
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - cinder
+      time: 2016-04-11 12:41:39.500952 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:39.506852 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: DEFAULT/enable_v2_api
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Cinder_config[DEFAULT/enable_v2_api]
+    Cinder_config[oslo_messaging_rabbit/heartbeat_rate]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[oslo_messaging_rabbit/heartbeat_rate]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 348
+      evaluation_time: 0.017948428
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - cinder
+      time: 2016-04-11 12:41:39.513998 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:39.519932 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: oslo_messaging_rabbit/heartbeat_rate
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Cinder_config[oslo_messaging_rabbit/heartbeat_rate]
+    Cinder_config[DEFAULT/lock_path]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/lock_path]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 444
+      evaluation_time: 0.005672776
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - cinder
+      time: 2016-04-11 12:41:39.532347 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/lock_path
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Cinder_config[DEFAULT/lock_path]
+    Cinder_config[keystone_authtoken/admin_password]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[keystone_authtoken/admin_password]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 298
+      evaluation_time: 0.012219862
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      time: 2016-04-11 12:41:39.538292 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:39.544116 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: keystone_authtoken/admin_password
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Api"
+        - Cinder_config[keystone_authtoken/admin_password]
+    Cinder_config[DEFAULT/backup_swift_container]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/backup_swift_container]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backup/swift.pp
+      line: 80
+      evaluation_time: 0.012764226
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::backup::swift"
+        - cinder
+        - backup
+        - swift
+      time: 2016-04-11 12:41:39.550963 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:39.556804 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: DEFAULT/backup_swift_container
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Backup::Swift"
+        - Cinder_config[DEFAULT/backup_swift_container]
+    Cinder_config[DEFAULT/use_syslog]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/use_syslog]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/logging.pp
+      line: 147
+      evaluation_time: 0.006797457
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::logging"
+        - cinder
+        - logging
+      time: 2016-04-11 12:41:39.564114 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/use_syslog
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Logging"
+        - Cinder_config[DEFAULT/use_syslog]
+    Cinder_config[DEFAULT/api_paste_config]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/api_paste_config]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 422
+      evaluation_time: 0.014505765
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - cinder
+      time: 2016-04-11 12:41:39.571186 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:39.577155 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: DEFAULT/api_paste_config
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Cinder_config[DEFAULT/api_paste_config]
+    Cinder_config[DEFAULT/ssl_key_file]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/ssl_key_file]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 436
+      evaluation_time: 0.005689548
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - cinder
+      time: 2016-04-11 12:41:39.586111 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/ssl_key_file
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Cinder_config[DEFAULT/ssl_key_file]
+    "Cron[cinder-manage db purge]": !ruby/object:Puppet::Resource::Status
+      resource: "Cron[cinder-manage db purge]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/cron/db_purge.pp
+      line: 75
+      evaluation_time: 0.008414627
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cron
+        - class
+        - "cinder::cron::db_purge"
+        - cinder
+        - db_purge
+      time: 2016-04-11 12:41:39.610391 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cron_created
+          status: success
+          time: 2016-04-11 12:41:39.610823 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cron
+      title: "cinder-manage db purge"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Cron::Db_purge"
+        - "Cron[cinder-manage db purge]"
+    Cinder_config[DEFAULT/default_volume_type]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/default_volume_type]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 245
+      evaluation_time: 0.00576186
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      time: 2016-04-11 12:41:39.619381 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/default_volume_type
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Api"
+        - Cinder_config[DEFAULT/default_volume_type]
+    Cinder_config[DEFAULT/enabled_backends]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/enabled_backends]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backends.pp
+      line: 27
+      evaluation_time: 0.016221588
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::backends"
+        - cinder
+        - backends
+      time: 2016-04-11 12:41:39.625371 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:39.630975 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: DEFAULT/enabled_backends
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Backends"
+        - Cinder_config[DEFAULT/enabled_backends]
+    Cinder_config[DEFAULT/backup_driver]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/backup_driver]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backup/swift.pp
+      line: 80
+      evaluation_time: 0.013874438
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::backup::swift"
+        - cinder
+        - backup
+        - swift
+      time: 2016-04-11 12:41:39.644092 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:39.650241 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: DEFAULT/backup_driver
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Backup::Swift"
+        - Cinder_config[DEFAULT/backup_driver]
+    Cinder_config[DEFAULT/publish_errors]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/publish_errors]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/logging.pp
+      line: 147
+      evaluation_time: 0.006512448
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::logging"
+        - cinder
+        - logging
+      time: 2016-04-11 12:41:39.658340 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/publish_errors
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Logging"
+        - Cinder_config[DEFAULT/publish_errors]
+    Cinder_config[DEFAULT/use_stderr]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/use_stderr]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/logging.pp
+      line: 147
+      evaluation_time: 0.006357019
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::logging"
+        - cinder
+        - logging
+      time: 2016-04-11 12:41:39.665044 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/use_stderr
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Logging"
+        - Cinder_config[DEFAULT/use_stderr]
+    Cinder_config[DEFAULT/instance_format]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/instance_format]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/logging.pp
+      line: 147
+      evaluation_time: 0.006105479
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::logging"
+        - cinder
+        - logging
+      time: 2016-04-11 12:41:39.671565 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/instance_format
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Logging"
+        - Cinder_config[DEFAULT/instance_format]
+    Cinder_config[DEFAULT/backup_swift_retry_backoff]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/backup_swift_retry_backoff]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backup/swift.pp
+      line: 80
+      evaluation_time: 0.006017853
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::backup::swift"
+        - cinder
+        - backup
+        - swift
+      time: 2016-04-11 12:41:39.677907 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/backup_swift_retry_backoff
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Backup::Swift"
+        - Cinder_config[DEFAULT/backup_swift_retry_backoff]
+    Cinder_config[DEFAULT/debug]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/debug]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/logging.pp
+      line: 147
+      evaluation_time: 0.01460511
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::logging"
+        - cinder
+        - logging
+      time: 2016-04-11 12:41:39.684080 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:39.690005 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: DEFAULT/debug
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Logging"
+        - Cinder_config[DEFAULT/debug]
+    Cinder_config[oslo_messaging_rabbit/rabbit_host]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[oslo_messaging_rabbit/rabbit_host]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 356
+      evaluation_time: 0.012002442
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - cinder
+      time: 2016-04-11 12:41:39.699093 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:39.704937 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: oslo_messaging_rabbit/rabbit_host
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Cinder_config[oslo_messaging_rabbit/rabbit_host]
+    Cinder_config[DEFAULT/storage_availability_zone]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/storage_availability_zone]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 422
+      evaluation_time: 0.016579852
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - cinder
+      time: 2016-04-11 12:41:39.711443 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:39.717016 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: DEFAULT/storage_availability_zone
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Cinder_config[DEFAULT/storage_availability_zone]
+    Cinder_config[DEFAULT/logging_default_format_string]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/logging_default_format_string]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/logging.pp
+      line: 147
+      evaluation_time: 0.006248894
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::logging"
+        - cinder
+        - logging
+      time: 2016-04-11 12:41:39.728378 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/logging_default_format_string
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Logging"
+        - Cinder_config[DEFAULT/logging_default_format_string]
+    Cinder_config[DEFAULT/ssl_cert_file]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/ssl_cert_file]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 436
+      evaluation_time: 0.01193305
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - cinder
+      time: 2016-04-11 12:41:39.735216 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/ssl_cert_file
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Cinder_config[DEFAULT/ssl_cert_file]
+    Cinder_config[DEFAULT/nova_catalog_info]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/nova_catalog_info]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 250
+      evaluation_time: 0.025028873
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      time: 2016-04-11 12:41:39.747570 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:39.758304 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: DEFAULT/nova_catalog_info
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Api"
+        - Cinder_config[DEFAULT/nova_catalog_info]
+    Cinder_config[DEFAULT/syslog_log_facility]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/syslog_log_facility]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/logging.pp
+      line: 147
+      evaluation_time: 0.009512019
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::logging"
+        - cinder
+        - logging
+      time: 2016-04-11 12:41:39.773130 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/syslog_log_facility
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Logging"
+        - Cinder_config[DEFAULT/syslog_log_facility]
+    Cinder_config[oslo_messaging_rabbit/kombu_ssl_version]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[oslo_messaging_rabbit/kombu_ssl_version]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 348
+      evaluation_time: 0.009128499
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - cinder
+      time: 2016-04-11 12:41:39.782975 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: oslo_messaging_rabbit/kombu_ssl_version
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Cinder_config[oslo_messaging_rabbit/kombu_ssl_version]
+    Cinder_config[oslo_messaging_rabbit/rabbit_use_ssl]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[oslo_messaging_rabbit/rabbit_use_ssl]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 348
+      evaluation_time: 0.061944697
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - cinder
+      time: 2016-04-11 12:41:39.792421 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:39.846571 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: oslo_messaging_rabbit/rabbit_use_ssl
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Cinder_config[oslo_messaging_rabbit/rabbit_use_ssl]
+    Cinder_config[oslo_messaging_rabbit/kombu_ssl_keyfile]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[oslo_messaging_rabbit/kombu_ssl_keyfile]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 348
+      evaluation_time: 0.014565315
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - cinder
+      time: 2016-04-11 12:41:39.854781 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:39.861889 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: oslo_messaging_rabbit/kombu_ssl_keyfile
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Cinder_config[oslo_messaging_rabbit/kombu_ssl_keyfile]
+    Cinder_config[keystone_authtoken/auth_port]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[keystone_authtoken/auth_port]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 356
+      evaluation_time: 0.006956828
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      time: 2016-04-11 12:41:39.869753 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: keystone_authtoken/auth_port
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Api"
+        - Cinder_config[keystone_authtoken/auth_port]
+    Cinder_config[DEFAULT/backup_swift_retry_attempts]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/backup_swift_retry_attempts]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backup/swift.pp
+      line: 80
+      evaluation_time: 0.006333842
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::backup::swift"
+        - cinder
+        - backup
+        - swift
+      time: 2016-04-11 12:41:39.877004 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/backup_swift_retry_attempts
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Backup::Swift"
+        - Cinder_config[DEFAULT/backup_swift_retry_attempts]
+    Cinder_config[DEFAULT/log_dir]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/log_dir]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/logging.pp
+      line: 147
+      evaluation_time: 0.019873844
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::logging"
+        - cinder
+        - logging
+      time: 2016-04-11 12:41:39.883501 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:39.889731 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: DEFAULT/log_dir
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Logging"
+        - Cinder_config[DEFAULT/log_dir]
+    Cinder_config[keystone_authtoken/auth_host]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[keystone_authtoken/auth_host]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 356
+      evaluation_time: 0.006010479
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      time: 2016-04-11 12:41:39.903780 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: keystone_authtoken/auth_host
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Api"
+        - Cinder_config[keystone_authtoken/auth_host]
+    Cinder_config[DEFAULT/auth_strategy]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/auth_strategy]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 298
+      evaluation_time: 0.016675226
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      time: 2016-04-11 12:41:39.910171 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:39.918073 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: DEFAULT/auth_strategy
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Api"
+        - Cinder_config[DEFAULT/auth_strategy]
+    Cinder_config[DEFAULT/osapi_volume_listen]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/osapi_volume_listen]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 245
+      evaluation_time: 0.01558687
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      time: 2016-04-11 12:41:39.927401 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:39.934640 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: DEFAULT/osapi_volume_listen
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Api"
+        - Cinder_config[DEFAULT/osapi_volume_listen]
+    Cinder_config[DEFAULT/osapi_volume_workers]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/osapi_volume_workers]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 245
+      evaluation_time: 0.014623084
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      time: 2016-04-11 12:41:39.943428 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:39.950244 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: DEFAULT/osapi_volume_workers
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Api"
+        - Cinder_config[DEFAULT/osapi_volume_workers]
+    Cinder_config[oslo_messaging_rabbit/kombu_ssl_ca_certs]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[oslo_messaging_rabbit/kombu_ssl_ca_certs]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 348
+      evaluation_time: 0.017498602
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - cinder
+      time: 2016-04-11 12:41:39.960434 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:39.966799 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: oslo_messaging_rabbit/kombu_ssl_ca_certs
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Cinder_config[oslo_messaging_rabbit/kombu_ssl_ca_certs]
+    Cinder_config[oslo_messaging_rabbit/rabbit_hosts]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[oslo_messaging_rabbit/rabbit_hosts]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 358
+      evaluation_time: 0.013135116
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - cinder
+      time: 2016-04-11 12:41:39.978351 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:39.984669 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: oslo_messaging_rabbit/rabbit_hosts
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Cinder_config[oslo_messaging_rabbit/rabbit_hosts]
+    Cinder_config[DEFAULT/log_config_append]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/log_config_append]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/logging.pp
+      line: 147
+      evaluation_time: 0.006286934
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::logging"
+        - cinder
+        - logging
+      time: 2016-04-11 12:41:39.991810 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/log_config_append
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Logging"
+        - Cinder_config[DEFAULT/log_config_append]
+    Cinder_config[DEFAULT/os_privileged_user_name]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/os_privileged_user_name]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 269
+      evaluation_time: 0.005989507
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      time: 2016-04-11 12:41:39.998348 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/os_privileged_user_name
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Api"
+        - Cinder_config[DEFAULT/os_privileged_user_name]
+    Cinder_config[DEFAULT/instance_uuid_format]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/instance_uuid_format]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/logging.pp
+      line: 147
+      evaluation_time: 0.005882848
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::logging"
+        - cinder
+        - logging
+      time: 2016-04-11 12:41:40.004494 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/instance_uuid_format
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Logging"
+        - Cinder_config[DEFAULT/instance_uuid_format]
+    "Firewall[001 cinder incoming cinder_10.0.1.132]": !ruby/object:Puppet::Resource::Status
+      resource: "Firewall[001 cinder incoming cinder_10.0.1.132]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/packstack/manifests/firewall.pp
+      line: 50
+      evaluation_time: 0.12874786
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - firewall
+        - "packstack::firewall"
+        - packstack
+        - cinder_10.0.1.132
+        - class
+      time: 2016-04-11 12:41:40.031686 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym firewall_created
+          status: success
+          time: 2016-04-11 12:41:40.054172 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Firewall
+      title: "001 cinder incoming cinder_10.0.1.132"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Packstack::Firewall[cinder_10.0.1.132]"
+        - "Firewall[001 cinder incoming cinder_10.0.1.132]"
+    Cinder_config[DEFAULT/logging_debug_format_suffix]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/logging_debug_format_suffix]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/logging.pp
+      line: 147
+      evaluation_time: 0.00807326
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::logging"
+        - cinder
+        - logging
+      time: 2016-04-11 12:41:40.161527 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/logging_debug_format_suffix
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Logging"
+        - Cinder_config[DEFAULT/logging_debug_format_suffix]
+    Cinder_config[keystone_authtoken/admin_tenant_name]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[keystone_authtoken/admin_tenant_name]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 298
+      evaluation_time: 0.014721261
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      time: 2016-04-11 12:41:40.169974 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:40.177378 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: keystone_authtoken/admin_tenant_name
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Api"
+        - Cinder_config[keystone_authtoken/admin_tenant_name]
+    Cinder_config[oslo_messaging_rabbit/kombu_reconnect_delay]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[oslo_messaging_rabbit/kombu_reconnect_delay]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 348
+      evaluation_time: 0.006133258
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - cinder
+      time: 2016-04-11 12:41:40.185119 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: oslo_messaging_rabbit/kombu_reconnect_delay
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Cinder_config[oslo_messaging_rabbit/kombu_reconnect_delay]
+    "Cinder_api_paste_ini[filter:authtoken/auth_admin_prefix]": !ruby/object:Puppet::Resource::Status
+      resource: "Cinder_api_paste_ini[filter:authtoken/auth_admin_prefix]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 351
+      evaluation_time: 0.000476561
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_api_paste_ini
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      time: 2016-04-11 12:41:40.191513 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_api_paste_ini
+      title: "filter:authtoken/auth_admin_prefix"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Api"
+        - "Cinder_api_paste_ini[filter:authtoken/auth_admin_prefix]"
+    Cinder_config[DEFAULT/os_privileged_user_tenant]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/os_privileged_user_tenant]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 269
+      evaluation_time: 0.006261521
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      time: 2016-04-11 12:41:40.194159 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/os_privileged_user_tenant
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Api"
+        - Cinder_config[DEFAULT/os_privileged_user_tenant]
+    Cinder_config[DEFAULT/default_availability_zone]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/default_availability_zone]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 422
+      evaluation_time: 0.011837612
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - cinder
+      time: 2016-04-11 12:41:40.200635 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:40.206195 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: DEFAULT/default_availability_zone
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Cinder_config[DEFAULT/default_availability_zone]
+    Cinder_config[DEFAULT/backup_swift_object_size]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/backup_swift_object_size]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backup/swift.pp
+      line: 80
+      evaluation_time: 0.005509459
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::backup::swift"
+        - cinder
+        - backup
+        - swift
+      time: 2016-04-11 12:41:40.212850 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/backup_swift_object_size
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Backup::Swift"
+        - Cinder_config[DEFAULT/backup_swift_object_size]
+    Cinder_config[DEFAULT/ssl_ca_file]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/ssl_ca_file]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 436
+      evaluation_time: 0.00537422
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - cinder
+      time: 2016-04-11 12:41:40.218551 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/ssl_ca_file
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Cinder_config[DEFAULT/ssl_ca_file]
+    Cinder_config[keystone_authtoken/auth_protocol]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[keystone_authtoken/auth_protocol]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 356
+      evaluation_time: 0.005315084
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      time: 2016-04-11 12:41:40.224119 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: keystone_authtoken/auth_protocol
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Api"
+        - Cinder_config[keystone_authtoken/auth_protocol]
+    Cinder_config[keystone_authtoken/auth_uri]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[keystone_authtoken/auth_uri]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 290
+      evaluation_time: 0.01598319
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      time: 2016-04-11 12:41:40.229627 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:40.235060 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: keystone_authtoken/auth_uri
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Api"
+        - Cinder_config[keystone_authtoken/auth_uri]
+    Cinder_config[DEFAULT/backup_manager]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/backup_manager]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backup.pp
+      line: 96
+      evaluation_time: 0.005633061
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::backup"
+        - cinder
+        - backup
+      time: 2016-04-11 12:41:40.249219 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/backup_manager
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Backup"
+        - Cinder_config[DEFAULT/backup_manager]
+    Cinder_config[DEFAULT/backup_topic]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/backup_topic]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backup.pp
+      line: 96
+      evaluation_time: 0.005494732
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::backup"
+        - cinder
+        - backup
+      time: 2016-04-11 12:41:40.255066 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/backup_topic
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Backup"
+        - Cinder_config[DEFAULT/backup_topic]
+    Cinder_config[DEFAULT/backup_name_template]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/backup_name_template]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backup.pp
+      line: 96
+      evaluation_time: 0.005372692
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::backup"
+        - cinder
+        - backup
+      time: 2016-04-11 12:41:40.260756 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/backup_name_template
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Backup"
+        - Cinder_config[DEFAULT/backup_name_template]
+    Schedule[never]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[never]
+      file: 
+      line: 
+      evaluation_time: 6.0919e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - never
+      time: 2016-04-11 12:41:40.267743 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: never
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[never]
+    Cinder_config[DEFAULT/fatal_deprecations]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/fatal_deprecations]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/logging.pp
+      line: 147
+      evaluation_time: 0.005493258
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::logging"
+        - cinder
+        - logging
+      time: 2016-04-11 12:41:40.267937 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/fatal_deprecations
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Logging"
+        - Cinder_config[DEFAULT/fatal_deprecations]
+    Cinder_config[DEFAULT/glance_host]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/glance_host]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_cinder.pp
+      line: 42
+      evaluation_time: 0.011702176
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+      time: 2016-04-11 12:41:40.273622 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:40.279152 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: DEFAULT/glance_host
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - Cinder_config[DEFAULT/glance_host]
+    Cinder_config[DEFAULT/verbose]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/verbose]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/logging.pp
+      line: 147
+      evaluation_time: 0.013075482
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::logging"
+        - cinder
+        - logging
+      time: 2016-04-11 12:41:40.285656 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:40.291112 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: DEFAULT/verbose
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Logging"
+        - Cinder_config[DEFAULT/verbose]
+    Cinder_config[DEFAULT/control_exchange]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/control_exchange]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 348
+      evaluation_time: 0.013174351
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - cinder
+      time: 2016-04-11 12:41:40.299139 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:40.304598 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: DEFAULT/control_exchange
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Cinder_config[DEFAULT/control_exchange]
+    Cinder_config[DEFAULT/enable_v1_api]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/enable_v1_api]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 444
+      evaluation_time: 0.01614175
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - cinder
+      time: 2016-04-11 12:41:40.312677 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:40.318168 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: DEFAULT/enable_v1_api
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Cinder_config[DEFAULT/enable_v1_api]
+    Cinder_config[DEFAULT/logging_exception_prefix]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/logging_exception_prefix]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/logging.pp
+      line: 147
+      evaluation_time: 0.005649146
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::logging"
+        - cinder
+        - logging
+      time: 2016-04-11 12:41:40.329179 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/logging_exception_prefix
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Logging"
+        - Cinder_config[DEFAULT/logging_exception_prefix]
+    "Firewall[001 cinder-api incoming cinder_api]": !ruby/object:Puppet::Resource::Status
+      resource: "Firewall[001 cinder-api incoming cinder_api]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/packstack/manifests/firewall.pp
+      line: 50
+      evaluation_time: 0.113530105
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - firewall
+        - "packstack::firewall"
+        - packstack
+        - cinder_api
+        - class
+      time: 2016-04-11 12:41:40.335322 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym firewall_created
+          status: success
+          time: 2016-04-11 12:41:40.355082 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Firewall
+      title: "001 cinder-api incoming cinder_api"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Packstack::Firewall[cinder_api]"
+        - "Firewall[001 cinder-api incoming cinder_api]"
+    Cinder_config[oslo_messaging_rabbit/rabbit_port]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[oslo_messaging_rabbit/rabbit_port]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 357
+      evaluation_time: 0.014214083
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - cinder
+      time: 2016-04-11 12:41:40.449809 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:40.456902 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: oslo_messaging_rabbit/rabbit_port
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Cinder_config[oslo_messaging_rabbit/rabbit_port]
+    Filebucket[puppet]: !ruby/object:Puppet::Resource::Status
+      resource: Filebucket[puppet]
+      file: 
+      line: 
+      evaluation_time: 0.000113635
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - filebucket
+        - puppet
+      time: 2016-04-11 12:41:40.464383 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Filebucket
+      title: puppet
+      skipped: false
+      failed: false
+      containment_path: 
+        - Filebucket[puppet]
+    Package[lvm2]: !ruby/object:Puppet::Resource::Status
+      resource: Package[lvm2]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/setup_test_volume.pp
+      line: 27
+      evaluation_time: 0.000187113
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - package
+        - lvm2
+        - class
+        - "cinder::setup_test_volume"
+        - cinder
+        - setup_test_volume
+      time: 2016-04-11 12:41:40.464991 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Package
+      title: lvm2
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Setup_test_volume"
+        - Package[lvm2]
+    File_line[snapshot_autoextend_threshold]: !ruby/object:Puppet::Resource::Status
+      resource: File_line[snapshot_autoextend_threshold]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_cinder.pp
+      line: 159
+      evaluation_time: 0.022271684
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - file_line
+        - snapshot_autoextend_threshold
+        - class
+      time: 2016-04-11 12:41:40.465408 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym file_line_created
+          status: success
+          time: 2016-04-11 12:41:40.468343 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: File_line
+      title: snapshot_autoextend_threshold
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - File_line[snapshot_autoextend_threshold]
+    Cinder_config[lvm/iscsi_helper]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[lvm/iscsi_helper]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backend/iscsi.pp
+      line: 60
+      evaluation_time: 0.011801533
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - "cinder::backend::iscsi"
+        - cinder
+        - backend
+        - iscsi
+        - lvm
+        - class
+      time: 2016-04-11 12:41:40.488356 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:40.494220 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: lvm/iscsi_helper
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Cinder::Backend::Iscsi[lvm]"
+        - Cinder_config[lvm/iscsi_helper]
+    Package[targetcli]: !ruby/object:Puppet::Resource::Status
+      resource: Package[targetcli]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backend/iscsi.pp
+      line: 99
+      evaluation_time: 4.612544641
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - package
+        - targetcli
+        - "cinder::backend::iscsi"
+        - cinder
+        - backend
+        - iscsi
+        - lvm
+        - class
+      time: 2016-04-11 12:41:40.500663 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym package_installed
+          status: success
+          time: 2016-04-11 12:41:40.526262 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Package
+      title: targetcli
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Cinder::Backend::Iscsi[lvm]"
+        - Package[targetcli]
+    Cinder_config[lvm/volume_group]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[lvm/volume_group]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backend/iscsi.pp
+      line: 60
+      evaluation_time: 0.014056396
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - "cinder::backend::iscsi"
+        - cinder
+        - backend
+        - iscsi
+        - lvm
+        - class
+      time: 2016-04-11 12:41:45.113703 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:45.120780 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: lvm/volume_group
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Cinder::Backend::Iscsi[lvm]"
+        - Cinder_config[lvm/volume_group]
+    Cinder_config[lvm/iscsi_ip_address]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[lvm/iscsi_ip_address]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backend/iscsi.pp
+      line: 60
+      evaluation_time: 0.013330057
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - "cinder::backend::iscsi"
+        - cinder
+        - backend
+        - iscsi
+        - lvm
+        - class
+      time: 2016-04-11 12:41:45.128322 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:45.134950 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: lvm/iscsi_ip_address
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Cinder::Backend::Iscsi[lvm]"
+        - Cinder_config[lvm/iscsi_ip_address]
+    Cinder_config[lvm/volume_driver]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[lvm/volume_driver]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backend/iscsi.pp
+      line: 60
+      evaluation_time: 0.012718865
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - "cinder::backend::iscsi"
+        - cinder
+        - backend
+        - iscsi
+        - lvm
+        - class
+      time: 2016-04-11 12:41:45.142107 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:45.148391 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: lvm/volume_driver
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Cinder::Backend::Iscsi[lvm]"
+        - Cinder_config[lvm/volume_driver]
+    Cinder_config[lvm/volumes_dir]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[lvm/volumes_dir]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backend/iscsi.pp
+      line: 60
+      evaluation_time: 0.012224234
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - "cinder::backend::iscsi"
+        - cinder
+        - backend
+        - iscsi
+        - lvm
+        - class
+      time: 2016-04-11 12:41:45.155254 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:45.161381 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: lvm/volumes_dir
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Cinder::Backend::Iscsi[lvm]"
+        - Cinder_config[lvm/volumes_dir]
+    Cinder_config[lvm/iscsi_protocol]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[lvm/iscsi_protocol]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backend/iscsi.pp
+      line: 60
+      evaluation_time: 0.019066525
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - "cinder::backend::iscsi"
+        - cinder
+        - backend
+        - iscsi
+        - lvm
+        - class
+      time: 2016-04-11 12:41:45.167920 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:45.173853 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: lvm/iscsi_protocol
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Cinder::Backend::Iscsi[lvm]"
+        - Cinder_config[lvm/iscsi_protocol]
+    Cinder_config[oslo_messaging_rabbit/heartbeat_timeout_threshold]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[oslo_messaging_rabbit/heartbeat_timeout_threshold]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 348
+      evaluation_time: 0.024235051
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - cinder
+      time: 2016-04-11 12:41:45.187406 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:45.194333 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: oslo_messaging_rabbit/heartbeat_timeout_threshold
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Cinder_config[oslo_messaging_rabbit/heartbeat_timeout_threshold]
+    Cinder_config[oslo_messaging_rabbit/rabbit_virtual_host]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[oslo_messaging_rabbit/rabbit_virtual_host]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 348
+      evaluation_time: 0.028046224
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - cinder
+      time: 2016-04-11 12:41:45.212518 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:45.226684 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: oslo_messaging_rabbit/rabbit_virtual_host
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Cinder_config[oslo_messaging_rabbit/rabbit_virtual_host]
+    Cinder_config[DEFAULT/os_privileged_user_auth_url]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/os_privileged_user_auth_url]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 269
+      evaluation_time: 0.011767575
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      time: 2016-04-11 12:41:45.241373 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/os_privileged_user_auth_url
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Api"
+        - Cinder_config[DEFAULT/os_privileged_user_auth_url]
+    Cinder_config[lvm/volume_backend_name]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[lvm/volume_backend_name]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backend/iscsi.pp
+      line: 60
+      evaluation_time: 0.022555153
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - "cinder::backend::iscsi"
+        - cinder
+        - backend
+        - iscsi
+        - lvm
+        - class
+      time: 2016-04-11 12:41:45.253603 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:45.265069 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: lvm/volume_backend_name
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Cinder::Backend::Iscsi[lvm]"
+        - Cinder_config[lvm/volume_backend_name]
+    Cinder_config[DEFAULT/logging_context_format_string]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/logging_context_format_string]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/logging.pp
+      line: 147
+      evaluation_time: 0.010062814
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::logging"
+        - cinder
+        - logging
+      time: 2016-04-11 12:41:45.276666 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/logging_context_format_string
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Logging"
+        - Cinder_config[DEFAULT/logging_context_format_string]
+    Cinder_config[DEFAULT/notification_driver]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/notification_driver]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/ceilometer.pp
+      line: 22
+      evaluation_time: 0.027320459
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::ceilometer"
+        - cinder
+        - ceilometer
+      time: 2016-04-11 12:41:45.287138 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:45.296553 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: DEFAULT/notification_driver
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Ceilometer"
+        - Cinder_config[DEFAULT/notification_driver]
+    Service[target]: !ruby/object:Puppet::Resource::Status
+      resource: Service[target]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backend/iscsi.pp
+      line: 94
+      evaluation_time: 0.202011683
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - service
+        - target
+        - "cinder::backend::iscsi"
+        - cinder
+        - backend
+        - iscsi
+        - lvm
+        - class
+      time: 2016-04-11 12:41:45.318213 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym stopped
+          desired_value: !ruby/sym running
+          historical_value: 
+          message: "ensure changed 'stopped' to 'running'"
+          name: !ruby/sym service_started
+          status: success
+          time: 2016-04-11 12:41:45.346690 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Service
+      title: target
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Cinder::Backend::Iscsi[lvm]"
+        - Service[target]
+    Cinder_config[DEFAULT/nova_catalog_admin_info]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/nova_catalog_admin_info]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 250
+      evaluation_time: 0.014656987
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      time: 2016-04-11 12:41:45.521499 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:45.528298 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: DEFAULT/nova_catalog_admin_info
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Api"
+        - Cinder_config[DEFAULT/nova_catalog_admin_info]
+    Cinder_config[DEFAULT/backup_compression_algorithm]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/backup_compression_algorithm]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backup/swift.pp
+      line: 80
+      evaluation_time: 0.005556114
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::backup::swift"
+        - cinder
+        - backup
+        - swift
+      time: 2016-04-11 12:41:45.536582 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/backup_compression_algorithm
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Backup::Swift"
+        - Cinder_config[DEFAULT/backup_compression_algorithm]
+    Cinder_config[oslo_messaging_rabbit/rabbit_password]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[oslo_messaging_rabbit/rabbit_password]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 348
+      evaluation_time: 0.011681544
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - cinder
+      time: 2016-04-11 12:41:45.542337 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:45.547898 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: oslo_messaging_rabbit/rabbit_password
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Cinder_config[oslo_messaging_rabbit/rabbit_password]
+    Schedule[weekly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[weekly]
+      file: 
+      line: 
+      evaluation_time: 7.089e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - weekly
+      time: 2016-04-11 12:41:45.554300 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: weekly
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[weekly]
+    Cinder_config[DEFAULT/rpc_backend]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/rpc_backend]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 422
+      evaluation_time: 0.050410088
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - cinder
+      time: 2016-04-11 12:41:45.554544 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:45.560125 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: DEFAULT/rpc_backend
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Cinder_config[DEFAULT/rpc_backend]
+    Cinder_config[keymgr/encryption_auth_url]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[keymgr/encryption_auth_url]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 290
+      evaluation_time: 0.006227819
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      time: 2016-04-11 12:41:45.609895 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: keymgr/encryption_auth_url
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Api"
+        - Cinder_config[keymgr/encryption_auth_url]
+    Cinder_config[keystone_authtoken/identity_uri]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[keystone_authtoken/identity_uri]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 363
+      evaluation_time: 0.01690149
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      time: 2016-04-11 12:41:45.616396 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:45.622378 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: keystone_authtoken/identity_uri
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Api"
+        - Cinder_config[keystone_authtoken/identity_uri]
+    Cinder_config[oslo_messaging_rabbit/rabbit_userid]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[oslo_messaging_rabbit/rabbit_userid]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 348
+      evaluation_time: 0.012026893
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - cinder
+      time: 2016-04-11 12:41:45.633686 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:45.639651 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: oslo_messaging_rabbit/rabbit_userid
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Cinder_config[oslo_messaging_rabbit/rabbit_userid]
+    File_line[snapshot_autoextend_percent]: !ruby/object:Puppet::Resource::Status
+      resource: File_line[snapshot_autoextend_percent]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_cinder.pp
+      line: 166
+      evaluation_time: 0.02143299
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - file_line
+        - snapshot_autoextend_percent
+        - class
+      time: 2016-04-11 12:41:45.646099 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym file_line_created
+          status: success
+          time: 2016-04-11 12:41:45.649149 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: File_line
+      title: snapshot_autoextend_percent
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - File_line[snapshot_autoextend_percent]
+    Schedule[puppet]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[puppet]
+      file: 
+      line: 
+      evaluation_time: 0.000146659
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - puppet
+      time: 2016-04-11 12:41:45.667840 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: puppet
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[puppet]
+    File[/var/lib/cinder]: !ruby/object:Puppet::Resource::Status
+      resource: File[/var/lib/cinder]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/setup_test_volume.pp
+      line: 34
+      evaluation_time: 0.002174414
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - file
+        - class
+        - "cinder::setup_test_volume"
+        - cinder
+        - setup_test_volume
+      time: 2016-04-11 12:41:45.673212 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: File
+      title: /var/lib/cinder
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Setup_test_volume"
+        - File[/var/lib/cinder]
+    Exec[create_/var/lib/cinder/cinder-volumes]: !ruby/object:Puppet::Resource::Status
+      resource: Exec[create_/var/lib/cinder/cinder-volumes]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/setup_test_volume.pp
+      line: 40
+      evaluation_time: 0.022098815
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - exec
+        - class
+        - "cinder::setup_test_volume"
+        - cinder
+        - setup_test_volume
+      time: 2016-04-11 12:41:45.675673 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: returns
+          previous_value: !ruby/sym notrun
+          desired_value: 
+            - "0"
+          historical_value: 
+          message: "executed successfully"
+          name: !ruby/sym executed_command
+          status: success
+          time: 2016-04-11 12:41:45.687191 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Exec
+      title: create_/var/lib/cinder/cinder-volumes
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Setup_test_volume"
+        - Exec[create_/var/lib/cinder/cinder-volumes]
+    "Exec[losetup /dev/loop2 /var/lib/cinder/cinder-volumes]": !ruby/object:Puppet::Resource::Status
+      resource: "Exec[losetup /dev/loop2 /var/lib/cinder/cinder-volumes]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/setup_test_volume.pp
+      line: 46
+      evaluation_time: 0.000178191
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - exec
+        - class
+        - "cinder::setup_test_volume"
+        - cinder
+        - setup_test_volume
+      time: 2016-04-11 12:41:45.698311 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Exec
+      title: "losetup /dev/loop2 /var/lib/cinder/cinder-volumes"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Setup_test_volume"
+        - "Exec[losetup /dev/loop2 /var/lib/cinder/cinder-volumes]"
+    "Exec[pvcreate /dev/loop2]": !ruby/object:Puppet::Resource::Status
+      resource: "Exec[pvcreate /dev/loop2]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/setup_test_volume.pp
+      line: 52
+      evaluation_time: 0.00023848
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - exec
+        - class
+        - "cinder::setup_test_volume"
+        - cinder
+        - setup_test_volume
+      time: 2016-04-11 12:41:45.725703 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Exec
+      title: "pvcreate /dev/loop2"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Setup_test_volume"
+        - "Exec[pvcreate /dev/loop2]"
+    "Exec[vgcreate cinder-volumes /dev/loop2]": !ruby/object:Puppet::Resource::Status
+      resource: "Exec[vgcreate cinder-volumes /dev/loop2]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/setup_test_volume.pp
+      line: 58
+      evaluation_time: 0.000167603
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - exec
+        - class
+        - "cinder::setup_test_volume"
+        - cinder
+        - setup_test_volume
+      time: 2016-04-11 12:41:45.763669 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Exec
+      title: "vgcreate cinder-volumes /dev/loop2"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Setup_test_volume"
+        - "Exec[vgcreate cinder-volumes /dev/loop2]"
+    Service[openstack-losetup]: !ruby/object:Puppet::Resource::Status
+      resource: Service[openstack-losetup]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_cinder.pp
+      line: 143
+      evaluation_time: 0.11723601
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - service
+        - openstack-losetup
+        - class
+      time: 2016-04-11 12:41:45.801402 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym stopped
+          desired_value: !ruby/sym running
+          historical_value: 
+          message: "ensure changed 'stopped' to 'running'"
+          name: !ruby/sym service_started
+          status: success
+          time: 2016-04-11 12:41:45.823613 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Service
+      title: openstack-losetup
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - Service[openstack-losetup]
+    Cinder_config[keystone_authtoken/admin_user]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[keystone_authtoken/admin_user]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 298
+      evaluation_time: 0.012173539
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      time: 2016-04-11 12:41:45.919059 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:45.924965 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: keystone_authtoken/admin_user
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Api"
+        - Cinder_config[keystone_authtoken/admin_user]
+    Cinder_config[DEFAULT/scheduler_driver]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/scheduler_driver]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/scheduler.pp
+      line: 37
+      evaluation_time: 0.005767728
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::scheduler"
+        - cinder
+        - scheduler
+      time: 2016-04-11 12:41:45.933392 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/scheduler_driver
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Scheduler"
+        - Cinder_config[DEFAULT/scheduler_driver]
+    Cinder_config[DEFAULT/log_date_format]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/log_date_format]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/logging.pp
+      line: 147
+      evaluation_time: 0.005610335
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::logging"
+        - cinder
+        - logging
+      time: 2016-04-11 12:41:45.939332 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/log_date_format
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Logging"
+        - Cinder_config[DEFAULT/log_date_format]
+    Cinder_config[DEFAULT/backup_swift_url]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/backup_swift_url]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backup/swift.pp
+      line: 80
+      evaluation_time: 0.012015632
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::backup::swift"
+        - cinder
+        - backup
+        - swift
+      time: 2016-04-11 12:41:45.945148 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:45.950739 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: DEFAULT/backup_swift_url
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Backup::Swift"
+        - Cinder_config[DEFAULT/backup_swift_url]
+    Package[python-cinderclient]: !ruby/object:Puppet::Resource::Status
+      resource: Package[python-cinderclient]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/client.pp
+      line: 21
+      evaluation_time: 0.00018212
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - package
+        - python-cinderclient
+        - openstack
+        - class
+        - "cinder::client"
+        - cinder
+        - client
+      time: 2016-04-11 12:41:45.959542 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Package
+      title: python-cinderclient
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Client"
+        - Package[python-cinderclient]
+    Cinder_config[oslo_messaging_rabbit/kombu_ssl_certfile]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[oslo_messaging_rabbit/kombu_ssl_certfile]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/init.pp
+      line: 348
+      evaluation_time: 0.01134431
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - cinder
+      time: 2016-04-11 12:41:45.961490 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:45.967027 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: oslo_messaging_rabbit/kombu_ssl_certfile
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Cinder
+        - Cinder_config[oslo_messaging_rabbit/kombu_ssl_certfile]
+    Package[python-mysqldb]: !ruby/object:Puppet::Resource::Status
+      resource: Package[python-mysqldb]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/mysql/manifests/bindings/python.pp
+      line: 9
+      evaluation_time: 0.000186994
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - package
+        - python-mysqldb
+        - class
+        - "mysql::bindings::python"
+        - mysql
+        - bindings
+        - python
+        - "cinder::db"
+        - cinder
+        - db
+      time: 2016-04-11 12:41:45.977881 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Package
+      title: python-mysqldb
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Mysql::Bindings::Python"
+        - Package[python-mysqldb]
+    Cinder_config[database/idle_timeout]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[database/idle_timeout]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/db.pp
+      line: 99
+      evaluation_time: 0.005455184
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::db"
+        - cinder
+        - db
+      time: 2016-04-11 12:41:45.981127 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: database/idle_timeout
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Db"
+        - Cinder_config[database/idle_timeout]
+    Cinder_config[database/max_pool_size]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[database/max_pool_size]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/db.pp
+      line: 99
+      evaluation_time: 0.005471241
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::db"
+        - cinder
+        - db
+      time: 2016-04-11 12:41:45.986722 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: database/max_pool_size
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Db"
+        - Cinder_config[database/max_pool_size]
+    Cinder_config[database/max_retries]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[database/max_retries]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/db.pp
+      line: 99
+      evaluation_time: 0.005420784
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::db"
+        - cinder
+        - db
+      time: 2016-04-11 12:41:45.992333 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: database/max_retries
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Db"
+        - Cinder_config[database/max_retries]
+    Cinder_config[database/retry_interval]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[database/retry_interval]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/db.pp
+      line: 99
+      evaluation_time: 0.005422684
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::db"
+        - cinder
+        - db
+      time: 2016-04-11 12:41:45.997897 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: database/retry_interval
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Db"
+        - Cinder_config[database/retry_interval]
+    Cinder_config[database/max_overflow]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[database/max_overflow]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/db.pp
+      line: 99
+      evaluation_time: 0.005398388
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::db"
+        - cinder
+        - db
+      time: 2016-04-11 12:41:46.003458 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: database/max_overflow
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Db"
+        - Cinder_config[database/max_overflow]
+    Cinder_config[database/min_pool_size]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[database/min_pool_size]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/db.pp
+      line: 99
+      evaluation_time: 0.005424308
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::db"
+        - cinder
+        - db
+      time: 2016-04-11 12:41:46.009017 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: database/min_pool_size
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Db"
+        - Cinder_config[database/min_pool_size]
+    Cinder_config[database/connection]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[database/connection]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/db.pp
+      line: 99
+      evaluation_time: 0.011299056
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::db"
+        - cinder
+        - db
+      time: 2016-04-11 12:41:46.014577 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym cinder_config_created
+          status: success
+          time: 2016-04-11 12:41:46.020075 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Cinder_config
+      title: database/connection
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Db"
+        - Cinder_config[database/connection]
+    Cinder_config[DEFAULT/default_log_levels]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/default_log_levels]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/logging.pp
+      line: 147
+      evaluation_time: 0.005647115
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::logging"
+        - cinder
+        - logging
+      time: 2016-04-11 12:41:46.027989 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/default_log_levels
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Logging"
+        - Cinder_config[DEFAULT/default_log_levels]
+    "Firewall[001 cinder incoming cinder_10.0.1.131]": !ruby/object:Puppet::Resource::Status
+      resource: "Firewall[001 cinder incoming cinder_10.0.1.131]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/packstack/manifests/firewall.pp
+      line: 50
+      evaluation_time: 0.213236638
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - firewall
+        - "packstack::firewall"
+        - packstack
+        - cinder_10.0.1.131
+        - class
+      time: 2016-04-11 12:41:46.037014 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym firewall_created
+          status: success
+          time: 2016-04-11 12:41:46.158433 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Firewall
+      title: "001 cinder incoming cinder_10.0.1.131"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Packstack::Firewall[cinder_10.0.1.131]"
+        - "Firewall[001 cinder incoming cinder_10.0.1.131]"
+    Cinder_config[DEFAULT/os_privileged_user_password]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/os_privileged_user_password]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 269
+      evaluation_time: 0.008310004
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      time: 2016-04-11 12:41:46.251550 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/os_privileged_user_password
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Api"
+        - Cinder_config[DEFAULT/os_privileged_user_password]
+    Cinder_config[DEFAULT/backup_api_class]: !ruby/object:Puppet::Resource::Status
+      resource: Cinder_config[DEFAULT/backup_api_class]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backup.pp
+      line: 96
+      evaluation_time: 0.007786473
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - cinder_config
+        - class
+        - "cinder::backup"
+        - cinder
+        - backup
+      time: 2016-04-11 12:41:46.260154 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Cinder_config
+      title: DEFAULT/backup_api_class
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Backup"
+        - Cinder_config[DEFAULT/backup_api_class]
+    "Exec[cinder-manage db_sync]": !ruby/object:Puppet::Resource::Status
+      resource: "Exec[cinder-manage db_sync]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/db/sync.pp
+      line: 30
+      evaluation_time: 0.000134928
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - exec
+        - class
+        - "cinder::db::sync"
+        - cinder
+        - db
+        - sync
+        - "cinder::api"
+        - api
+      time: 2016-04-11 12:41:46.268715 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Exec
+      title: "cinder-manage db_sync"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Db::Sync"
+        - "Exec[cinder-manage db_sync]"
+    Service[cinder-api]: !ruby/object:Puppet::Resource::Status
+      resource: Service[cinder-api]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/api.pp
+      line: 238
+      evaluation_time: 0.160433214
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - service
+        - cinder-api
+        - cinder-service
+        - class
+        - "cinder::api"
+        - cinder
+        - api
+      time: 2016-04-11 12:41:49.185063 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym stopped
+          desired_value: !ruby/sym running
+          historical_value: 
+          message: "ensure changed 'stopped' to 'running'"
+          name: !ruby/sym service_started
+          status: success
+          time: 2016-04-11 12:41:49.214299 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Service
+      title: cinder-api
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Api"
+        - Service[cinder-api]
+    Service[cinder-backup]: !ruby/object:Puppet::Resource::Status
+      resource: Service[cinder-backup]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/backup.pp
+      line: 89
+      evaluation_time: 0.166966949
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - service
+        - cinder-backup
+        - cinder-service
+        - class
+        - "cinder::backup"
+        - cinder
+        - backup
+      time: 2016-04-11 12:41:49.349057 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym stopped
+          desired_value: !ruby/sym running
+          historical_value: 
+          message: "ensure changed 'stopped' to 'running'"
+          name: !ruby/sym service_started
+          status: success
+          time: 2016-04-11 12:41:49.371754 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Service
+      title: cinder-backup
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Backup"
+        - Service[cinder-backup]
+    "Exec[cinder type-create iscsi]": !ruby/object:Puppet::Resource::Status
+      resource: "Exec[cinder type-create iscsi]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/type.pp
+      line: 75
+      evaluation_time: 3.292488109
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - exec
+        - "cinder::type"
+        - cinder
+        - type
+        - iscsi
+        - class
+      time: 2016-04-11 12:41:49.519216 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: returns
+          previous_value: !ruby/sym notrun
+          desired_value: 
+            - "0"
+          historical_value: 
+          message: "executed successfully"
+          name: !ruby/sym executed_command
+          status: success
+          time: 2016-04-11 12:41:51.862330 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Exec
+      title: "cinder type-create iscsi"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Cinder::Type[iscsi]"
+        - "Exec[cinder type-create iscsi]"
+    "Exec[cinder type-key iscsi set volume_backend_name=lvm]": !ruby/object:Puppet::Resource::Status
+      resource: "Exec[cinder type-key iscsi set volume_backend_name=lvm]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/type_set.pp
+      line: 68
+      evaluation_time: 1.200216999
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - exec
+        - "cinder::type_set"
+        - cinder
+        - type_set
+        - lvm
+        - "cinder::type"
+        - type
+        - iscsi
+        - class
+      time: 2016-04-11 12:41:52.813117 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: returns
+          previous_value: !ruby/sym notrun
+          desired_value: 
+            - "0"
+          historical_value: 
+          message: "executed successfully"
+          name: !ruby/sym executed_command
+          status: success
+          time: 2016-04-11 12:41:53.429735 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Exec
+      title: "cinder type-key iscsi set volume_backend_name=lvm"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Cinder::Type[iscsi]"
+        - "Cinder::Type_set[lvm]"
+        - "Exec[cinder type-key iscsi set volume_backend_name=lvm]"
+    Service[cinder-volume]: !ruby/object:Puppet::Resource::Status
+      resource: Service[cinder-volume]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/volume.pp
+      line: 54
+      evaluation_time: 0.147241761
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - service
+        - cinder-volume
+        - cinder-service
+        - class
+        - "cinder::volume"
+        - cinder
+        - volume
+      time: 2016-04-11 12:41:54.014840 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym stopped
+          desired_value: !ruby/sym running
+          historical_value: 
+          message: "ensure changed 'stopped' to 'running'"
+          name: !ruby/sym service_started
+          status: success
+          time: 2016-04-11 12:41:54.033744 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Service
+      title: cinder-volume
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Volume"
+        - Service[cinder-volume]
+    Service[cinder-scheduler]: !ruby/object:Puppet::Resource::Status
+      resource: Service[cinder-scheduler]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/cinder/manifests/scheduler.pp
+      line: 63
+      evaluation_time: 0.227052224
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - service
+        - cinder-scheduler
+        - cinder-service
+        - class
+        - "cinder::scheduler"
+        - cinder
+        - scheduler
+      time: 2016-04-11 12:41:54.165143 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym stopped
+          desired_value: !ruby/sym running
+          historical_value: 
+          message: "ensure changed 'stopped' to 'running'"
+          name: !ruby/sym service_started
+          status: success
+          time: 2016-04-11 12:41:54.183038 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Service
+      title: cinder-scheduler
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Scheduler"
+        - Service[cinder-scheduler]
+  host: osp7ps-controller01.test.local
+  time: 2016-04-11 12:41:23.389108 +09:00
+  kind: apply
+  report_format: 4
+  puppet_version: "3.6.2"
+  configuration_version: 1460346081
+  transaction_uuid: "4b57ff80-99e9-4609-91e4-9cea48fe7c3a"
+  environment: production
+  status: changed

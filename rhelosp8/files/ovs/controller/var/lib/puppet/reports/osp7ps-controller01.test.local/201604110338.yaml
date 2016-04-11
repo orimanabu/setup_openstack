@@ -1,0 +1,2879 @@
+--- !ruby/object:Puppet::Transaction::Report
+  metrics: 
+    resources: !ruby/object:Puppet::Util::Metric
+      name: resources
+      label: Resources
+      values: 
+        - - total
+          - Total
+          - 63
+        - - skipped
+          - Skipped
+          - 0
+        - - failed
+          - Failed
+          - 0
+        - - failed_to_restart
+          - "Failed to restart"
+          - 0
+        - - restarted
+          - Restarted
+          - 3
+        - - changed
+          - Changed
+          - 36
+        - - out_of_sync
+          - "Out of sync"
+          - 36
+        - - scheduled
+          - Scheduled
+          - 0
+    time: !ruby/object:Puppet::Util::Metric
+      name: time
+      label: Time
+      values: 
+        - - schedule
+          - Schedule
+          - 0.0005119629999999999
+        - - firewall
+          - Firewall
+          - 0.36065832600000003
+        - - anchor
+          - Anchor
+          - 0.0010726969999999998
+        - - package
+          - Package
+          - 13.132004340999998
+        - - file
+          - File
+          - 0.045534103000000006
+        - - filebucket
+          - Filebucket
+          - 0.00012389
+        - - mysql_datadir
+          - "Mysql datadir"
+          - 2.587494713
+        - - service
+          - Service
+          - 5.036685485
+        - - exec
+          - Exec
+          - 0.019570374
+        - - mysql_user
+          - "Mysql user"
+          - 0.43353039
+        - - mysql_database
+          - "Mysql database"
+          - 0.068296656
+        - - mysql_grant
+          - "Mysql grant"
+          - 0.163414953
+        - - config_retrieval
+          - "Config retrieval"
+          - 1.419843381
+        - - total
+          - Total
+          - 23.268741272
+    changes: !ruby/object:Puppet::Util::Metric
+      name: changes
+      label: Changes
+      values: 
+        - - total
+          - Total
+          - 36
+    events: !ruby/object:Puppet::Util::Metric
+      name: events
+      label: Events
+      values: 
+        - - total
+          - Total
+          - 36
+        - - failure
+          - Failure
+          - 0
+        - - success
+          - Success
+          - 36
+  logs: 
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - firewall
+        - "packstack::firewall"
+        - packstack
+        - mariadb_10.0.1.131
+        - class
+      message: created
+      source: "/Stage[main]/Main/Packstack::Firewall[mariadb_10.0.1.131]/Firewall[001 mariadb incoming mariadb_10.0.1.131]/ensure"
+      time: 2016-04-11 12:38:27.271492 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/packstack/manifests/firewall.pp
+      line: 50
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - package
+        - mysql_client
+        - class
+        - "mysql::client::install"
+        - mysql
+        - client
+        - install
+        - "mysql::client"
+        - "openstacklib::db::mysql"
+        - openstacklib
+        - db
+        - keystone
+        - "keystone::db::mysql"
+      message: created
+      source: "/Stage[main]/Mysql::Client::Install/Package[mysql_client]/ensure"
+      time: 2016-04-11 12:38:32.190086 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/mysql/manifests/client/install.pp
+      line: 10
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - firewall
+        - "packstack::firewall"
+        - packstack
+        - mariadb_10.0.1.132
+        - class
+      message: created
+      source: "/Stage[main]/Main/Packstack::Firewall[mariadb_10.0.1.132]/Firewall[001 mariadb incoming mariadb_10.0.1.132]/ensure"
+      time: 2016-04-11 12:38:32.294842 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/packstack/manifests/firewall.pp
+      line: 50
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - package
+        - mysql-server
+        - class
+        - "mysql::server::install"
+        - mysql
+        - server
+        - install
+        - "mysql::server"
+      message: created
+      source: "/Stage[main]/Mysql::Server::Install/Package[mysql-server]/ensure"
+      time: 2016-04-11 12:38:40.669924 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/mysql/manifests/server/install.pp
+      line: 10
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - file
+        - mysql-config-file
+        - class
+        - "mysql::server::config"
+        - mysql
+        - server
+        - config
+        - "mysql::server"
+      message: "content changed '{md5}e15579698c69a9373a88696e342f6fd4' to '{md5}794dc8352f2819a6196aa9c6b9b2dd90'"
+      source: "/Stage[main]/Mysql::Server::Config/File[mysql-config-file]/content"
+      time: 2016-04-11 12:38:40.696694 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/mysql/manifests/server/config.pp
+      line: 44
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - firewall
+        - "packstack::firewall"
+        - packstack
+        - mariadb_10.0.1.111
+        - class
+      message: created
+      source: "/Stage[main]/Main/Packstack::Firewall[mariadb_10.0.1.111]/Firewall[001 mariadb incoming mariadb_10.0.1.111]/ensure"
+      time: 2016-04-11 12:38:40.821570 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/packstack/manifests/firewall.pp
+      line: 50
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - mysql_datadir
+        - class
+        - "mysql::server::installdb"
+        - mysql
+        - server
+        - installdb
+        - "mysql::server"
+      message: created
+      source: "/Stage[main]/Mysql::Server::Installdb/Mysql_datadir[/var/lib/mysql]/ensure"
+      time: 2016-04-11 12:38:43.461346 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/mysql/manifests/server/installdb.pp
+      line: 24
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - file
+        - class
+        - "mysql::server::service"
+        - mysql
+        - server
+        - service
+        - "mysql::server"
+      message: "seluser changed 'unconfined_u' to 'system_u'"
+      source: /File[/var/log/mariadb/mariadb.log]/seluser
+      time: 2016-04-11 12:38:43.478105 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/mysql/manifests/server/service.pp
+      line: 26
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - service
+        - mysqld
+        - class
+        - "mysql::server::service"
+        - mysql
+        - server
+        - "mysql::server"
+      message: "ensure changed 'stopped' to 'running'"
+      source: "/Stage[main]/Mysql::Server::Service/Service[mysqld]/ensure"
+      time: 2016-04-11 12:38:48.517437 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/mysql/manifests/server/service.pp
+      line: 35
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - exec
+        - wait_for_mysql_socket_to_open
+        - class
+        - "mysql::server::service"
+        - mysql
+        - server
+        - service
+        - "mysql::server"
+      message: "Triggered 'refresh' from 1 events"
+      source: "/Stage[main]/Mysql::Server::Service/Exec[wait_for_mysql_socket_to_open]"
+      time: 2016-04-11 12:38:48.539068 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/mysql/manifests/server/service.pp
+      line: 64
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - mysql_user
+        - class
+        - "mysql::server::root_password"
+        - mysql
+        - server
+        - root_password
+        - "mysql::server"
+      message: "defined 'password_hash' as '*E74858DB86EBA20BC33D0AECAE8A8108C56B17FA'"
+      source: "/Stage[main]/Mysql::Server::Root_password/Mysql_user[root@localhost]/password_hash"
+      time: 2016-04-11 12:38:48.668934 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/mysql/manifests/server/root_password.pp
+      line: 27
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - file
+        - class
+        - "mysql::server::root_password"
+        - mysql
+        - server
+        - root_password
+        - "mysql::server"
+      message: "defined content as '{md5}941badba6af4de3cc6abb19dfa4455ba'"
+      source: "/Stage[main]/Mysql::Server::Root_password/File[/root/.my.cnf]/ensure"
+      time: 2016-04-11 12:38:48.687025 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/mysql/manifests/server/root_password.pp
+      line: 35
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - mysql_database
+        - neutron
+        - "openstacklib::db::mysql"
+        - openstacklib
+        - db
+        - mysql
+        - class
+        - "neutron::db::mysql"
+      message: created
+      source: "/Stage[main]/Neutron::Db::Mysql/Openstacklib::Db::Mysql[neutron]/Mysql_database[neutron]/ensure"
+      time: 2016-04-11 12:38:48.781386 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql.pp
+      line: 58
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - mysql_database
+        - nova
+        - "openstacklib::db::mysql"
+        - openstacklib
+        - db
+        - mysql
+        - class
+        - "nova::db::mysql"
+      message: created
+      source: "/Stage[main]/Nova::Db::Mysql/Openstacklib::Db::Mysql[nova]/Mysql_database[nova]/ensure"
+      time: 2016-04-11 12:38:48.794282 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql.pp
+      line: 58
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - mysql_database
+        - glance
+        - "openstacklib::db::mysql"
+        - openstacklib
+        - db
+        - mysql
+        - class
+        - "glance::db::mysql"
+      message: created
+      source: "/Stage[main]/Glance::Db::Mysql/Openstacklib::Db::Mysql[glance]/Mysql_database[glance]/ensure"
+      time: 2016-04-11 12:38:48.806537 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql.pp
+      line: 58
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - mysql_database
+        - heat
+        - "openstacklib::db::mysql"
+        - openstacklib
+        - db
+        - mysql
+        - class
+        - "heat::db::mysql"
+      message: created
+      source: "/Stage[main]/Heat::Db::Mysql/Openstacklib::Db::Mysql[heat]/Mysql_database[heat]/ensure"
+      time: 2016-04-11 12:38:48.819290 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql.pp
+      line: 58
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - mysql_user
+        - "openstacklib::db::mysql::host_access"
+        - openstacklib
+        - db
+        - mysql
+        - host_access
+        - "openstacklib::db::mysql"
+        - heat
+        - class
+        - "heat::db::mysql"
+      message: created
+      source: "/Stage[main]/Heat::Db::Mysql/Openstacklib::Db::Mysql[heat]/Openstacklib::Db::Mysql::Host_access[heat_%]/Mysql_user[heat@%]/ensure"
+      time: 2016-04-11 12:38:48.844264 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql/host_access.pp
+      line: 33
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - mysql_grant
+        - "openstacklib::db::mysql::host_access"
+        - openstacklib
+        - db
+        - mysql
+        - host_access
+        - "openstacklib::db::mysql"
+        - heat
+        - class
+        - "heat::db::mysql"
+      message: created
+      source: "/Stage[main]/Heat::Db::Mysql/Openstacklib::Db::Mysql[heat]/Openstacklib::Db::Mysql::Host_access[heat_%]/Mysql_grant[heat@%/heat.*]/ensure"
+      time: 2016-04-11 12:38:48.929022 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql/host_access.pp
+      line: 40
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - mysql_user
+        - "openstacklib::db::mysql::host_access"
+        - openstacklib
+        - db
+        - mysql
+        - host_access
+        - "openstacklib::db::mysql"
+        - glance
+        - class
+        - "glance::db::mysql"
+      message: created
+      source: "/Stage[main]/Glance::Db::Mysql/Openstacklib::Db::Mysql[glance]/Openstacklib::Db::Mysql::Host_access[glance_%]/Mysql_user[glance@%]/ensure"
+      time: 2016-04-11 12:38:48.963486 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql/host_access.pp
+      line: 33
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - mysql_user
+        - "openstacklib::db::mysql::host_access"
+        - openstacklib
+        - db
+        - mysql
+        - host_access
+        - "openstacklib::db::mysql"
+        - nova
+        - class
+        - "nova::db::mysql"
+      message: created
+      source: "/Stage[main]/Nova::Db::Mysql/Openstacklib::Db::Mysql[nova]/Openstacklib::Db::Mysql::Host_access[nova_%]/Mysql_user[nova@%]/ensure"
+      time: 2016-04-11 12:38:48.986576 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql/host_access.pp
+      line: 33
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - mysql_grant
+        - "openstacklib::db::mysql::host_access"
+        - openstacklib
+        - db
+        - mysql
+        - host_access
+        - "openstacklib::db::mysql"
+        - nova
+        - class
+        - "nova::db::mysql"
+      message: created
+      source: "/Stage[main]/Nova::Db::Mysql/Openstacklib::Db::Mysql[nova]/Openstacklib::Db::Mysql::Host_access[nova_%]/Mysql_grant[nova@%/nova.*]/ensure"
+      time: 2016-04-11 12:38:48.998262 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql/host_access.pp
+      line: 40
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - mysql_grant
+        - "openstacklib::db::mysql::host_access"
+        - openstacklib
+        - db
+        - mysql
+        - host_access
+        - "openstacklib::db::mysql"
+        - glance
+        - class
+        - "glance::db::mysql"
+      message: created
+      source: "/Stage[main]/Glance::Db::Mysql/Openstacklib::Db::Mysql[glance]/Openstacklib::Db::Mysql::Host_access[glance_%]/Mysql_grant[glance@%/glance.*]/ensure"
+      time: 2016-04-11 12:38:49.019449 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql/host_access.pp
+      line: 40
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - mysql_database
+        - cinder
+        - "openstacklib::db::mysql"
+        - openstacklib
+        - db
+        - mysql
+        - class
+        - "cinder::db::mysql"
+      message: created
+      source: "/Stage[main]/Cinder::Db::Mysql/Openstacklib::Db::Mysql[cinder]/Mysql_database[cinder]/ensure"
+      time: 2016-04-11 12:38:49.040672 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql.pp
+      line: 58
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - mysql_database
+        - keystone
+        - "openstacklib::db::mysql"
+        - openstacklib
+        - db
+        - mysql
+        - class
+        - "keystone::db::mysql"
+      message: created
+      source: "/Stage[main]/Keystone::Db::Mysql/Openstacklib::Db::Mysql[keystone]/Mysql_database[keystone]/ensure"
+      time: 2016-04-11 12:38:49.051453 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql.pp
+      line: 58
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - mysql_user
+        - "openstacklib::db::mysql::host_access"
+        - openstacklib
+        - db
+        - mysql
+        - host_access
+        - "openstacklib::db::mysql"
+        - cinder
+        - class
+        - "cinder::db::mysql"
+      message: created
+      source: "/Stage[main]/Cinder::Db::Mysql/Openstacklib::Db::Mysql[cinder]/Openstacklib::Db::Mysql::Host_access[cinder_%]/Mysql_user[cinder@%]/ensure"
+      time: 2016-04-11 12:38:49.071390 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql/host_access.pp
+      line: 33
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - mysql_user
+        - "openstacklib::db::mysql::host_access"
+        - openstacklib
+        - db
+        - mysql
+        - host_access
+        - "openstacklib::db::mysql"
+        - keystone
+        - class
+        - "keystone::db::mysql"
+      message: created
+      source: "/Stage[main]/Keystone::Db::Mysql/Openstacklib::Db::Mysql[keystone]/Openstacklib::Db::Mysql::Host_access[keystone_%]/Mysql_user[keystone_admin@%]/ensure"
+      time: 2016-04-11 12:38:49.091968 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql/host_access.pp
+      line: 33
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - mysql_grant
+        - "openstacklib::db::mysql::host_access"
+        - openstacklib
+        - db
+        - mysql
+        - host_access
+        - "openstacklib::db::mysql"
+        - keystone
+        - class
+        - "keystone::db::mysql"
+      message: created
+      source: "/Stage[main]/Keystone::Db::Mysql/Openstacklib::Db::Mysql[keystone]/Openstacklib::Db::Mysql::Host_access[keystone_%]/Mysql_grant[keystone_admin@%/keystone.*]/ensure"
+      time: 2016-04-11 12:38:49.102680 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql/host_access.pp
+      line: 40
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - anchor
+        - "heat::db::end"
+        - heat
+        - db
+        - end
+        - class
+        - "heat::deps"
+        - deps
+        - "heat::db::mysql"
+        - mysql
+      message: "Triggered 'refresh' from 1 events"
+      source: "/Stage[main]/Heat::Deps/Anchor[heat::db::end]"
+      time: 2016-04-11 12:38:49.116220 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/heat/manifests/deps.pp
+      line: 20
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - anchor
+        - "heat::dbsync::begin"
+        - heat
+        - dbsync
+        - begin
+        - class
+        - "heat::deps"
+        - deps
+        - "heat::db::mysql"
+        - db
+        - mysql
+      message: "Triggered 'refresh' from 1 events"
+      source: "/Stage[main]/Heat::Deps/Anchor[heat::dbsync::begin]"
+      time: 2016-04-11 12:38:49.116916 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/heat/manifests/deps.pp
+      line: 21
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - mysql_user
+        - "openstacklib::db::mysql::host_access"
+        - openstacklib
+        - db
+        - mysql
+        - host_access
+        - keystone_127.0.0.1
+        - "openstacklib::db::mysql"
+        - keystone
+        - class
+        - "keystone::db::mysql"
+      message: created
+      source: "/Stage[main]/Keystone::Db::Mysql/Openstacklib::Db::Mysql[keystone]/Openstacklib::Db::Mysql::Host_access[keystone_127.0.0.1]/Mysql_user[keystone_admin@127.0.0.1]/ensure"
+      time: 2016-04-11 12:38:49.139126 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql/host_access.pp
+      line: 33
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - mysql_grant
+        - "openstacklib::db::mysql::host_access"
+        - openstacklib
+        - db
+        - mysql
+        - host_access
+        - keystone_127.0.0.1
+        - "openstacklib::db::mysql"
+        - keystone
+        - class
+        - "keystone::db::mysql"
+      message: created
+      source: "/Stage[main]/Keystone::Db::Mysql/Openstacklib::Db::Mysql[keystone]/Openstacklib::Db::Mysql::Host_access[keystone_127.0.0.1]/Mysql_grant[keystone_admin@127.0.0.1/keystone.*]/ensure"
+      time: 2016-04-11 12:38:49.149928 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql/host_access.pp
+      line: 40
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - mysql_user
+        - class
+      message: removed
+      source: "/Stage[main]/Main/Mysql_user[@osp7ps-controller01.test.local]/ensure"
+      time: 2016-04-11 12:38:49.174221 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_mariadb.pp
+      line: 56
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - mysql_user
+        - "openstacklib::db::mysql::host_access"
+        - openstacklib
+        - db
+        - mysql
+        - host_access
+        - "openstacklib::db::mysql"
+        - neutron
+        - class
+        - "neutron::db::mysql"
+      message: created
+      source: "/Stage[main]/Neutron::Db::Mysql/Openstacklib::Db::Mysql[neutron]/Openstacklib::Db::Mysql::Host_access[neutron_%]/Mysql_user[neutron@%]/ensure"
+      time: 2016-04-11 12:38:49.284134 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql/host_access.pp
+      line: 33
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - mysql_user
+        - class
+      message: removed
+      source: "/Stage[main]/Main/Mysql_user[root@::1]/ensure"
+      time: 2016-04-11 12:38:49.340806 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_mariadb.pp
+      line: 50
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - mysql_user
+        - class
+      message: removed
+      source: "/Stage[main]/Main/Mysql_user[root@osp7ps-controller01.test.local]/ensure"
+      time: 2016-04-11 12:38:49.431290 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_mariadb.pp
+      line: 56
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - mysql_user
+        - class
+      message: removed
+      source: "/Stage[main]/Main/Mysql_user[@localhost]/ensure"
+      time: 2016-04-11 12:38:49.450219 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_mariadb.pp
+      line: 50
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - mysql_grant
+        - "openstacklib::db::mysql::host_access"
+        - openstacklib
+        - db
+        - mysql
+        - host_access
+        - "openstacklib::db::mysql"
+        - neutron
+        - class
+        - "neutron::db::mysql"
+      message: created
+      source: "/Stage[main]/Neutron::Db::Mysql/Openstacklib::Db::Mysql[neutron]/Openstacklib::Db::Mysql::Host_access[neutron_%]/Mysql_grant[neutron@%/neutron.*]/ensure"
+      time: 2016-04-11 12:38:49.472961 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql/host_access.pp
+      line: 40
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - mysql_user
+        - class
+      message: removed
+      source: "/Stage[main]/Main/Mysql_user[root@127.0.0.1]/ensure"
+      time: 2016-04-11 12:38:49.502971 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_mariadb.pp
+      line: 50
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - mysql_grant
+        - "openstacklib::db::mysql::host_access"
+        - openstacklib
+        - db
+        - mysql
+        - host_access
+        - "openstacklib::db::mysql"
+        - cinder
+        - class
+        - "cinder::db::mysql"
+      message: created
+      source: "/Stage[main]/Cinder::Db::Mysql/Openstacklib::Db::Mysql[cinder]/Openstacklib::Db::Mysql::Host_access[cinder_%]/Mysql_grant[cinder@%/cinder.*]/ensure"
+      time: 2016-04-11 12:38:49.514293 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql/host_access.pp
+      line: 40
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+      message: "Finished catalog run in 22.52 seconds"
+      source: Puppet
+      time: 2016-04-11 12:38:49.551681 +09:00
+  resource_statuses: 
+    Schedule[daily]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[daily]
+      file: 
+      line: 
+      evaluation_time: 0.000129422
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - daily
+      time: 2016-04-11 12:38:27.138845 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: daily
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[daily]
+    Schedule[monthly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[monthly]
+      file: 
+      line: 
+      evaluation_time: 4.9659e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - monthly
+      time: 2016-04-11 12:38:27.139076 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: monthly
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[monthly]
+    Schedule[hourly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[hourly]
+      file: 
+      line: 
+      evaluation_time: 4.9076e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - hourly
+      time: 2016-04-11 12:38:27.139212 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: hourly
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[hourly]
+    "Firewall[001 mariadb incoming mariadb_10.0.1.131]": !ruby/object:Puppet::Resource::Status
+      resource: "Firewall[001 mariadb incoming mariadb_10.0.1.131]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/packstack/manifests/firewall.pp
+      line: 50
+      evaluation_time: 0.115393266
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - firewall
+        - "packstack::firewall"
+        - packstack
+        - mariadb_10.0.1.131
+        - class
+      time: 2016-04-11 12:38:27.196168 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym firewall_created
+          status: success
+          time: 2016-04-11 12:38:27.238571 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Firewall
+      title: "001 mariadb incoming mariadb_10.0.1.131"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Packstack::Firewall[mariadb_10.0.1.131]"
+        - "Firewall[001 mariadb incoming mariadb_10.0.1.131]"
+    "Anchor[mysql::client::start]": !ruby/object:Puppet::Resource::Status
+      resource: "Anchor[mysql::client::start]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/mysql/manifests/client.pp
+      line: 25
+      evaluation_time: 8.9092e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - anchor
+        - "mysql::client::start"
+        - mysql
+        - client
+        - start
+        - class
+        - "mysql::client"
+        - "openstacklib::db::mysql"
+        - openstacklib
+        - db
+        - keystone
+        - "keystone::db::mysql"
+      time: 2016-04-11 12:38:27.316998 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Anchor
+      title: "mysql::client::start"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Mysql::Client"
+        - "Anchor[mysql::client::start]"
+    Package[mysql_client]: !ruby/object:Puppet::Resource::Status
+      resource: Package[mysql_client]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/mysql/manifests/client/install.pp
+      line: 10
+      evaluation_time: 4.796045753
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - package
+        - mysql_client
+        - class
+        - "mysql::client::install"
+        - mysql
+        - client
+        - install
+        - "mysql::client"
+        - "openstacklib::db::mysql"
+        - openstacklib
+        - db
+        - keystone
+        - "keystone::db::mysql"
+      time: 2016-04-11 12:38:27.394319 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym package_installed
+          status: success
+          time: 2016-04-11 12:38:27.421252 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Package
+      title: mysql_client
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Mysql::Client::Install"
+        - Package[mysql_client]
+    Package[mariadb-server]: !ruby/object:Puppet::Resource::Status
+      resource: Package[mariadb-server]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_mariadb.pp
+      line: 14
+      evaluation_time: 0.029862985
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - package
+        - mariadb-server
+        - class
+      time: 2016-04-11 12:38:32.194097 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Package
+      title: mariadb-server
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - Package[mariadb-server]
+    "Firewall[001 mariadb incoming mariadb_10.0.1.132]": !ruby/object:Puppet::Resource::Status
+      resource: "Firewall[001 mariadb incoming mariadb_10.0.1.132]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/packstack/manifests/firewall.pp
+      line: 50
+      evaluation_time: 0.083210642
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - firewall
+        - "packstack::firewall"
+        - packstack
+        - mariadb_10.0.1.132
+        - class
+      time: 2016-04-11 12:38:32.247496 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym firewall_created
+          status: success
+          time: 2016-04-11 12:38:32.268236 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Firewall
+      title: "001 mariadb incoming mariadb_10.0.1.132"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Packstack::Firewall[mariadb_10.0.1.132]"
+        - "Firewall[001 mariadb incoming mariadb_10.0.1.132]"
+    "Anchor[mysql::server::start]": !ruby/object:Puppet::Resource::Status
+      resource: "Anchor[mysql::server::start]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/mysql/manifests/server.pp
+      line: 69
+      evaluation_time: 0.00012
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - anchor
+        - "mysql::server::start"
+        - mysql
+        - server
+        - start
+        - class
+        - "mysql::server"
+      time: 2016-04-11 12:38:32.331989 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Anchor
+      title: "mysql::server::start"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Mysql::Server"
+        - "Anchor[mysql::server::start]"
+    "Anchor[mysql::client::end]": !ruby/object:Puppet::Resource::Status
+      resource: "Anchor[mysql::client::end]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/mysql/manifests/client.pp
+      line: 27
+      evaluation_time: 8.9874e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - anchor
+        - "mysql::client::end"
+        - mysql
+        - client
+        - end
+        - class
+        - "mysql::client"
+        - "openstacklib::db::mysql"
+        - openstacklib
+        - db
+        - keystone
+        - "keystone::db::mysql"
+      time: 2016-04-11 12:38:32.334668 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Anchor
+      title: "mysql::client::end"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Mysql::Client"
+        - "Anchor[mysql::client::end]"
+    Schedule[never]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[never]
+      file: 
+      line: 
+      evaluation_time: 8.4239e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - never
+      time: 2016-04-11 12:38:32.338777 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: never
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[never]
+    Package[mysql-server]: !ruby/object:Puppet::Resource::Status
+      resource: Package[mysql-server]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/mysql/manifests/server/install.pp
+      line: 10
+      evaluation_time: 8.306095603
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - package
+        - mysql-server
+        - class
+        - "mysql::server::install"
+        - mysql
+        - server
+        - install
+        - "mysql::server"
+      time: 2016-04-11 12:38:32.364069 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym package_installed
+          status: success
+          time: 2016-04-11 12:38:32.394627 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Package
+      title: mysql-server
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Mysql::Server::Install"
+        - Package[mysql-server]
+    File[mysql-config-file]: !ruby/object:Puppet::Resource::Status
+      resource: File[mysql-config-file]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/mysql/manifests/server/config.pp
+      line: 44
+      evaluation_time: 0.020932434
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - file
+        - mysql-config-file
+        - class
+        - "mysql::server::config"
+        - mysql
+        - server
+        - config
+        - "mysql::server"
+      time: 2016-04-11 12:38:40.675997 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: content
+          previous_value: "{md5}e15579698c69a9373a88696e342f6fd4"
+          desired_value: "{md5}794dc8352f2819a6196aa9c6b9b2dd90"
+          historical_value: 
+          message: "content changed '{md5}e15579698c69a9373a88696e342f6fd4' to '{md5}794dc8352f2819a6196aa9c6b9b2dd90'"
+          name: !ruby/sym content_changed
+          status: success
+          time: 2016-04-11 12:38:40.676842 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: File
+      title: mysql-config-file
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Mysql::Server::Config"
+        - File[mysql-config-file]
+    Filebucket[puppet]: !ruby/object:Puppet::Resource::Status
+      resource: Filebucket[puppet]
+      file: 
+      line: 
+      evaluation_time: 0.00012389
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - filebucket
+        - puppet
+      time: 2016-04-11 12:38:40.702310 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Filebucket
+      title: puppet
+      skipped: false
+      failed: false
+      containment_path: 
+        - Filebucket[puppet]
+    "Firewall[001 mariadb incoming mariadb_10.0.1.111]": !ruby/object:Puppet::Resource::Status
+      resource: "Firewall[001 mariadb incoming mariadb_10.0.1.111]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/packstack/manifests/firewall.pp
+      line: 50
+      evaluation_time: 0.162054418
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - firewall
+        - "packstack::firewall"
+        - packstack
+        - mariadb_10.0.1.111
+        - class
+      time: 2016-04-11 12:38:40.703000 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym firewall_created
+          status: success
+          time: 2016-04-11 12:38:40.780953 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Firewall
+      title: "001 mariadb incoming mariadb_10.0.1.111"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Packstack::Firewall[mariadb_10.0.1.111]"
+        - "Firewall[001 mariadb incoming mariadb_10.0.1.111]"
+    Schedule[weekly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[weekly]
+      file: 
+      line: 
+      evaluation_time: 0.000101507
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - weekly
+      time: 2016-04-11 12:38:40.866025 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: weekly
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[weekly]
+    Schedule[puppet]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[puppet]
+      file: 
+      line: 
+      evaluation_time: 9.806e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - puppet
+      time: 2016-04-11 12:38:40.866665 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: puppet
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[puppet]
+    "Anchor[heat::install::end]": !ruby/object:Puppet::Resource::Status
+      resource: "Anchor[heat::install::end]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/heat/manifests/deps.pp
+      line: 15
+      evaluation_time: 8.9971e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - anchor
+        - "heat::install::end"
+        - heat
+        - install
+        - end
+        - class
+        - "heat::deps"
+        - deps
+        - "heat::db::mysql"
+        - db
+        - mysql
+      time: 2016-04-11 12:38:40.869356 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Anchor
+      title: "heat::install::end"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Heat::Deps"
+        - "Anchor[heat::install::end]"
+    "Anchor[heat::install::begin]": !ruby/object:Puppet::Resource::Status
+      resource: "Anchor[heat::install::begin]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/heat/manifests/deps.pp
+      line: 13
+      evaluation_time: 6.3524e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - anchor
+        - "heat::install::begin"
+        - heat
+        - install
+        - begin
+        - class
+        - "heat::deps"
+        - deps
+        - "heat::db::mysql"
+        - db
+        - mysql
+      time: 2016-04-11 12:38:40.869715 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Anchor
+      title: "heat::install::begin"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Heat::Deps"
+        - "Anchor[heat::install::begin]"
+    "Anchor[heat::config::begin]": !ruby/object:Puppet::Resource::Status
+      resource: "Anchor[heat::config::begin]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/heat/manifests/deps.pp
+      line: 16
+      evaluation_time: 6.4298e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - anchor
+        - "heat::config::begin"
+        - heat
+        - config
+        - begin
+        - class
+        - "heat::deps"
+        - deps
+        - "heat::db::mysql"
+        - db
+        - mysql
+      time: 2016-04-11 12:38:40.869993 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Anchor
+      title: "heat::config::begin"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Heat::Deps"
+        - "Anchor[heat::config::begin]"
+    "Anchor[heat::config::end]": !ruby/object:Puppet::Resource::Status
+      resource: "Anchor[heat::config::end]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/heat/manifests/deps.pp
+      line: 18
+      evaluation_time: 6.2013e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - anchor
+        - "heat::config::end"
+        - heat
+        - config
+        - end
+        - class
+        - "heat::deps"
+        - deps
+        - "heat::db::mysql"
+        - db
+        - mysql
+      time: 2016-04-11 12:38:40.870267 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Anchor
+      title: "heat::config::end"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Heat::Deps"
+        - "Anchor[heat::config::end]"
+    "Anchor[heat::db::begin]": !ruby/object:Puppet::Resource::Status
+      resource: "Anchor[heat::db::begin]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/heat/manifests/deps.pp
+      line: 19
+      evaluation_time: 6.3478e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - anchor
+        - "heat::db::begin"
+        - heat
+        - db
+        - begin
+        - class
+        - "heat::deps"
+        - deps
+        - "heat::db::mysql"
+        - mysql
+      time: 2016-04-11 12:38:40.870549 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Anchor
+      title: "heat::db::begin"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Heat::Deps"
+        - "Anchor[heat::db::begin]"
+    "Anchor[heat::service::end]": !ruby/object:Puppet::Resource::Status
+      resource: "Anchor[heat::service::end]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/heat/manifests/deps.pp
+      line: 25
+      evaluation_time: 7.5956e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - anchor
+        - "heat::service::end"
+        - heat
+        - service
+        - end
+        - class
+        - "heat::deps"
+        - deps
+        - "heat::db::mysql"
+        - db
+        - mysql
+      time: 2016-04-11 12:38:40.873547 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Anchor
+      title: "heat::service::end"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Heat::Deps"
+        - "Anchor[heat::service::end]"
+    Mysql_datadir[/var/lib/mysql]: !ruby/object:Puppet::Resource::Status
+      resource: Mysql_datadir[/var/lib/mysql]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/mysql/manifests/server/installdb.pp
+      line: 24
+      evaluation_time: 2.587494713
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - mysql_datadir
+        - class
+        - "mysql::server::installdb"
+        - mysql
+        - server
+        - installdb
+        - "mysql::server"
+      time: 2016-04-11 12:38:40.874216 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym mysql_datadir_created
+          status: success
+          time: 2016-04-11 12:38:40.874648 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Mysql_datadir
+      title: /var/lib/mysql
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Mysql::Server::Installdb"
+        - Mysql_datadir[/var/lib/mysql]
+    File[/var/log/mariadb/mariadb.log]: !ruby/object:Puppet::Resource::Status
+      resource: File[/var/log/mariadb/mariadb.log]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/mysql/manifests/server/service.pp
+      line: 26
+      evaluation_time: 0.007121977
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - file
+        - class
+        - "mysql::server::service"
+        - mysql
+        - server
+        - service
+        - "mysql::server"
+      time: 2016-04-11 12:38:43.473059 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: seluser
+          previous_value: unconfined_u
+          desired_value: system_u
+          historical_value: 
+          message: "seluser changed 'unconfined_u' to 'system_u'"
+          name: !ruby/sym seluser_changed
+          status: success
+          time: 2016-04-11 12:38:43.476982 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: File
+      title: /var/log/mariadb/mariadb.log
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Mysql::Server::Service"
+        - File[/var/log/mariadb/mariadb.log]
+    Service[mysqld]: !ruby/object:Puppet::Resource::Status
+      resource: Service[mysqld]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/mysql/manifests/server/service.pp
+      line: 35
+      evaluation_time: 5.036685485
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - service
+        - mysqld
+        - class
+        - "mysql::server::service"
+        - mysql
+        - server
+        - "mysql::server"
+      time: 2016-04-11 12:38:43.481029 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym stopped
+          desired_value: !ruby/sym running
+          historical_value: 
+          message: "ensure changed 'stopped' to 'running'"
+          name: !ruby/sym service_started
+          status: success
+          time: 2016-04-11 12:38:43.520139 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Service
+      title: mysqld
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Mysql::Server::Service"
+        - Service[mysqld]
+    Exec[wait_for_mysql_socket_to_open]: !ruby/object:Puppet::Resource::Status
+      resource: Exec[wait_for_mysql_socket_to_open]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/mysql/manifests/server/service.pp
+      line: 64
+      evaluation_time: 0.010701281
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - exec
+        - wait_for_mysql_socket_to_open
+        - class
+        - "mysql::server::service"
+        - mysql
+        - server
+        - service
+        - "mysql::server"
+      time: 2016-04-11 12:38:48.518269 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Exec
+      title: wait_for_mysql_socket_to_open
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Mysql::Server::Service"
+        - Exec[wait_for_mysql_socket_to_open]
+    "Exec[remove install pass]": !ruby/object:Puppet::Resource::Status
+      resource: "Exec[remove install pass]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/mysql/manifests/server/root_password.pp
+      line: 19
+      evaluation_time: 0.008869093
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - exec
+        - class
+        - "mysql::server::root_password"
+        - mysql
+        - server
+        - root_password
+        - "mysql::server"
+      time: 2016-04-11 12:38:48.545576 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Exec
+      title: "remove install pass"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Mysql::Server::Root_password"
+        - "Exec[remove install pass]"
+    "Mysql_user[root@localhost]": !ruby/object:Puppet::Resource::Status
+      resource: "Mysql_user[root@localhost]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/mysql/manifests/server/root_password.pp
+      line: 27
+      evaluation_time: 0.012916877
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - mysql_user
+        - class
+        - "mysql::server::root_password"
+        - mysql
+        - server
+        - root_password
+        - "mysql::server"
+      time: 2016-04-11 12:38:48.656268 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: password_hash
+          previous_value: !ruby/sym absent
+          desired_value: "*E74858DB86EBA20BC33D0AECAE8A8108C56B17FA"
+          historical_value: 
+          message: "defined 'password_hash' as '*E74858DB86EBA20BC33D0AECAE8A8108C56B17FA'"
+          name: !ruby/sym password_hash_changed
+          status: success
+          time: 2016-04-11 12:38:48.656731 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Mysql_user
+      title: "root@localhost"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Mysql::Server::Root_password"
+        - "Mysql_user[root@localhost]"
+    File[/root/.my.cnf]: !ruby/object:Puppet::Resource::Status
+      resource: File[/root/.my.cnf]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/mysql/manifests/server/root_password.pp
+      line: 35
+      evaluation_time: 0.017479692
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - file
+        - class
+        - "mysql::server::root_password"
+        - mysql
+        - server
+        - root_password
+        - "mysql::server"
+      time: 2016-04-11 12:38:48.669721 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym file
+          historical_value: 
+          message: "defined content as '{md5}941badba6af4de3cc6abb19dfa4455ba'"
+          name: !ruby/sym file_created
+          status: success
+          time: 2016-04-11 12:38:48.670214 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: File
+      title: /root/.my.cnf
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Mysql::Server::Root_password"
+        - File[/root/.my.cnf]
+    "Anchor[mysql::server::end]": !ruby/object:Puppet::Resource::Status
+      resource: "Anchor[mysql::server::end]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/mysql/manifests/server.pp
+      line: 70
+      evaluation_time: 9.1687e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - anchor
+        - "mysql::server::end"
+        - mysql
+        - server
+        - end
+        - class
+        - "mysql::server"
+      time: 2016-04-11 12:38:48.694735 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Anchor
+      title: "mysql::server::end"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Mysql::Server"
+        - "Anchor[mysql::server::end]"
+    "Mysql_user[root@osp7ps-controller01]": !ruby/object:Puppet::Resource::Status
+      resource: "Mysql_user[root@osp7ps-controller01]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_mariadb.pp
+      line: 62
+      evaluation_time: 0.000202261
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - mysql_user
+        - class
+      time: 2016-04-11 12:38:48.697356 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Mysql_user
+      title: "root@osp7ps-controller01"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Mysql_user[root@osp7ps-controller01]"
+    Mysql_database[neutron]: !ruby/object:Puppet::Resource::Status
+      resource: Mysql_database[neutron]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql.pp
+      line: 58
+      evaluation_time: 0.012903152
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - mysql_database
+        - neutron
+        - "openstacklib::db::mysql"
+        - openstacklib
+        - db
+        - mysql
+        - class
+        - "neutron::db::mysql"
+      time: 2016-04-11 12:38:48.768841 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym mysql_database_created
+          status: success
+          time: 2016-04-11 12:38:48.769594 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Mysql_database
+      title: neutron
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Neutron::Db::Mysql"
+        - "Openstacklib::Db::Mysql[neutron]"
+        - Mysql_database[neutron]
+    Mysql_database[nova]: !ruby/object:Puppet::Resource::Status
+      resource: Mysql_database[nova]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql.pp
+      line: 58
+      evaluation_time: 0.012022663
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - mysql_database
+        - nova
+        - "openstacklib::db::mysql"
+        - openstacklib
+        - db
+        - mysql
+        - class
+        - "nova::db::mysql"
+      time: 2016-04-11 12:38:48.782507 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym mysql_database_created
+          status: success
+          time: 2016-04-11 12:38:48.782995 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Mysql_database
+      title: nova
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Db::Mysql"
+        - "Openstacklib::Db::Mysql[nova]"
+        - Mysql_database[nova]
+    Mysql_database[glance]: !ruby/object:Puppet::Resource::Status
+      resource: Mysql_database[glance]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql.pp
+      line: 58
+      evaluation_time: 0.011481502
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - mysql_database
+        - glance
+        - "openstacklib::db::mysql"
+        - openstacklib
+        - db
+        - mysql
+        - class
+        - "glance::db::mysql"
+      time: 2016-04-11 12:38:48.795317 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym mysql_database_created
+          status: success
+          time: 2016-04-11 12:38:48.795711 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Mysql_database
+      title: glance
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Glance::Db::Mysql"
+        - "Openstacklib::Db::Mysql[glance]"
+        - Mysql_database[glance]
+    "Mysql_user[@osp7ps-controller01]": !ruby/object:Puppet::Resource::Status
+      resource: "Mysql_user[@osp7ps-controller01]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_mariadb.pp
+      line: 62
+      evaluation_time: 0.000257059
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - mysql_user
+        - class
+      time: 2016-04-11 12:38:48.807441 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Mysql_user
+      title: "@osp7ps-controller01"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Mysql_user[@osp7ps-controller01]"
+    Mysql_database[heat]: !ruby/object:Puppet::Resource::Status
+      resource: Mysql_database[heat]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql.pp
+      line: 58
+      evaluation_time: 0.011354461
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - mysql_database
+        - heat
+        - "openstacklib::db::mysql"
+        - openstacklib
+        - db
+        - mysql
+        - class
+        - "heat::db::mysql"
+      time: 2016-04-11 12:38:48.808171 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym mysql_database_created
+          status: success
+          time: 2016-04-11 12:38:48.808528 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Mysql_database
+      title: heat
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Heat::Db::Mysql"
+        - "Openstacklib::Db::Mysql[heat]"
+        - Mysql_database[heat]
+    "Mysql_user[heat@%]": !ruby/object:Puppet::Resource::Status
+      resource: "Mysql_user[heat@%]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql/host_access.pp
+      line: 33
+      evaluation_time: 0.024200229
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - mysql_user
+        - "openstacklib::db::mysql::host_access"
+        - openstacklib
+        - db
+        - mysql
+        - host_access
+        - "openstacklib::db::mysql"
+        - heat
+        - class
+        - "heat::db::mysql"
+      time: 2016-04-11 12:38:48.820315 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym mysql_user_created
+          status: success
+          time: 2016-04-11 12:38:48.820761 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Mysql_user
+      title: "heat@%"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Heat::Db::Mysql"
+        - "Openstacklib::Db::Mysql[heat]"
+        - "Openstacklib::Db::Mysql::Host_access[heat_%]"
+        - "Mysql_user[heat@%]"
+    "Mysql_grant[heat@%/heat.*]": !ruby/object:Puppet::Resource::Status
+      resource: "Mysql_grant[heat@%/heat.*]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql/host_access.pp
+      line: 40
+      evaluation_time: 0.023475066
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - mysql_grant
+        - "openstacklib::db::mysql::host_access"
+        - openstacklib
+        - db
+        - mysql
+        - host_access
+        - "openstacklib::db::mysql"
+        - heat
+        - class
+        - "heat::db::mysql"
+      time: 2016-04-11 12:38:48.917226 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym mysql_grant_created
+          status: success
+          time: 2016-04-11 12:38:48.917759 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Mysql_grant
+      title: "heat@%/heat.*"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Heat::Db::Mysql"
+        - "Openstacklib::Db::Mysql[heat]"
+        - "Openstacklib::Db::Mysql::Host_access[heat_%]"
+        - "Mysql_grant[heat@%/heat.*]"
+    "Mysql_user[glance@%]": !ruby/object:Puppet::Resource::Status
+      resource: "Mysql_user[glance@%]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql/host_access.pp
+      line: 33
+      evaluation_time: 0.022303256
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - mysql_user
+        - "openstacklib::db::mysql::host_access"
+        - openstacklib
+        - db
+        - mysql
+        - host_access
+        - "openstacklib::db::mysql"
+        - glance
+        - class
+        - "glance::db::mysql"
+      time: 2016-04-11 12:38:48.941502 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym mysql_user_created
+          status: success
+          time: 2016-04-11 12:38:48.941989 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Mysql_user
+      title: "glance@%"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Glance::Db::Mysql"
+        - "Openstacklib::Db::Mysql[glance]"
+        - "Openstacklib::Db::Mysql::Host_access[glance_%]"
+        - "Mysql_user[glance@%]"
+    "Mysql_user[nova@%]": !ruby/object:Puppet::Resource::Status
+      resource: "Mysql_user[nova@%]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql/host_access.pp
+      line: 33
+      evaluation_time: 0.022309949
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - mysql_user
+        - "openstacklib::db::mysql::host_access"
+        - openstacklib
+        - db
+        - mysql
+        - host_access
+        - "openstacklib::db::mysql"
+        - nova
+        - class
+        - "nova::db::mysql"
+      time: 2016-04-11 12:38:48.964504 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym mysql_user_created
+          status: success
+          time: 2016-04-11 12:38:48.965009 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Mysql_user
+      title: "nova@%"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Db::Mysql"
+        - "Openstacklib::Db::Mysql[nova]"
+        - "Openstacklib::Db::Mysql::Host_access[nova_%]"
+        - "Mysql_user[nova@%]"
+    "Mysql_grant[nova@%/nova.*]": !ruby/object:Puppet::Resource::Status
+      resource: "Mysql_grant[nova@%/nova.*]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql/host_access.pp
+      line: 40
+      evaluation_time: 0.020804193
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - mysql_grant
+        - "openstacklib::db::mysql::host_access"
+        - openstacklib
+        - db
+        - mysql
+        - host_access
+        - "openstacklib::db::mysql"
+        - nova
+        - class
+        - "nova::db::mysql"
+      time: 2016-04-11 12:38:48.987588 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym mysql_grant_created
+          status: success
+          time: 2016-04-11 12:38:48.987982 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Mysql_grant
+      title: "nova@%/nova.*"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Db::Mysql"
+        - "Openstacklib::Db::Mysql[nova]"
+        - "Openstacklib::Db::Mysql::Host_access[nova_%]"
+        - "Mysql_grant[nova@%/nova.*]"
+    "Mysql_grant[glance@%/glance.*]": !ruby/object:Puppet::Resource::Status
+      resource: "Mysql_grant[glance@%/glance.*]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql/host_access.pp
+      line: 40
+      evaluation_time: 0.020145375
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - mysql_grant
+        - "openstacklib::db::mysql::host_access"
+        - openstacklib
+        - db
+        - mysql
+        - host_access
+        - "openstacklib::db::mysql"
+        - glance
+        - class
+        - "glance::db::mysql"
+      time: 2016-04-11 12:38:49.009126 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym mysql_grant_created
+          status: success
+          time: 2016-04-11 12:38:49.009586 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Mysql_grant
+      title: "glance@%/glance.*"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Glance::Db::Mysql"
+        - "Openstacklib::Db::Mysql[glance]"
+        - "Openstacklib::Db::Mysql::Host_access[glance_%]"
+        - "Mysql_grant[glance@%/glance.*]"
+    Mysql_database[cinder]: !ruby/object:Puppet::Resource::Status
+      resource: Mysql_database[cinder]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql.pp
+      line: 58
+      evaluation_time: 0.010366329
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - mysql_database
+        - cinder
+        - "openstacklib::db::mysql"
+        - openstacklib
+        - db
+        - mysql
+        - class
+        - "cinder::db::mysql"
+      time: 2016-04-11 12:38:49.030514 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym mysql_database_created
+          status: success
+          time: 2016-04-11 12:38:49.030844 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Mysql_database
+      title: cinder
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Db::Mysql"
+        - "Openstacklib::Db::Mysql[cinder]"
+        - Mysql_database[cinder]
+    Mysql_database[keystone]: !ruby/object:Puppet::Resource::Status
+      resource: Mysql_database[keystone]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql.pp
+      line: 58
+      evaluation_time: 0.010168549
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - mysql_database
+        - keystone
+        - "openstacklib::db::mysql"
+        - openstacklib
+        - db
+        - mysql
+        - class
+        - "keystone::db::mysql"
+      time: 2016-04-11 12:38:49.041475 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym mysql_database_created
+          status: success
+          time: 2016-04-11 12:38:49.041824 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Mysql_database
+      title: keystone
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Keystone::Db::Mysql"
+        - "Openstacklib::Db::Mysql[keystone]"
+        - Mysql_database[keystone]
+    "Mysql_user[cinder@%]": !ruby/object:Puppet::Resource::Status
+      resource: "Mysql_user[cinder@%]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql/host_access.pp
+      line: 33
+      evaluation_time: 0.019293199
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - mysql_user
+        - "openstacklib::db::mysql::host_access"
+        - openstacklib
+        - db
+        - mysql
+        - host_access
+        - "openstacklib::db::mysql"
+        - cinder
+        - class
+        - "cinder::db::mysql"
+      time: 2016-04-11 12:38:49.052363 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym mysql_user_created
+          status: success
+          time: 2016-04-11 12:38:49.052791 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Mysql_user
+      title: "cinder@%"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Db::Mysql"
+        - "Openstacklib::Db::Mysql[cinder]"
+        - "Openstacklib::Db::Mysql::Host_access[cinder_%]"
+        - "Mysql_user[cinder@%]"
+    "Mysql_user[keystone_admin@%]": !ruby/object:Puppet::Resource::Status
+      resource: "Mysql_user[keystone_admin@%]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql/host_access.pp
+      line: 33
+      evaluation_time: 0.019450762
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - mysql_user
+        - "openstacklib::db::mysql::host_access"
+        - openstacklib
+        - db
+        - mysql
+        - host_access
+        - "openstacklib::db::mysql"
+        - keystone
+        - class
+        - "keystone::db::mysql"
+      time: 2016-04-11 12:38:49.072760 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym mysql_user_created
+          status: success
+          time: 2016-04-11 12:38:49.073064 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Mysql_user
+      title: "keystone_admin@%"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Keystone::Db::Mysql"
+        - "Openstacklib::Db::Mysql[keystone]"
+        - "Openstacklib::Db::Mysql::Host_access[keystone_%]"
+        - "Mysql_user[keystone_admin@%]"
+    "Mysql_grant[keystone_admin@%/keystone.*]": !ruby/object:Puppet::Resource::Status
+      resource: "Mysql_grant[keystone_admin@%/keystone.*]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql/host_access.pp
+      line: 40
+      evaluation_time: 0.019374647
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - mysql_grant
+        - "openstacklib::db::mysql::host_access"
+        - openstacklib
+        - db
+        - mysql
+        - host_access
+        - "openstacklib::db::mysql"
+        - keystone
+        - class
+        - "keystone::db::mysql"
+      time: 2016-04-11 12:38:49.092820 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym mysql_grant_created
+          status: success
+          time: 2016-04-11 12:38:49.093251 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Mysql_grant
+      title: "keystone_admin@%/keystone.*"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Keystone::Db::Mysql"
+        - "Openstacklib::Db::Mysql[keystone]"
+        - "Openstacklib::Db::Mysql::Host_access[keystone_%]"
+        - "Mysql_grant[keystone_admin@%/keystone.*]"
+    "Anchor[heat::db::end]": !ruby/object:Puppet::Resource::Status
+      resource: "Anchor[heat::db::end]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/heat/manifests/deps.pp
+      line: 20
+      evaluation_time: 0.00010018
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - anchor
+        - "heat::db::end"
+        - heat
+        - db
+        - end
+        - class
+        - "heat::deps"
+        - deps
+        - "heat::db::mysql"
+        - mysql
+      time: 2016-04-11 12:38:49.116058 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Anchor
+      title: "heat::db::end"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Heat::Deps"
+        - "Anchor[heat::db::end]"
+    "Anchor[heat::dbsync::begin]": !ruby/object:Puppet::Resource::Status
+      resource: "Anchor[heat::dbsync::begin]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/heat/manifests/deps.pp
+      line: 21
+      evaluation_time: 5.7997e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - anchor
+        - "heat::dbsync::begin"
+        - heat
+        - dbsync
+        - begin
+        - class
+        - "heat::deps"
+        - deps
+        - "heat::db::mysql"
+        - db
+        - mysql
+      time: 2016-04-11 12:38:49.116806 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Anchor
+      title: "heat::dbsync::begin"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Heat::Deps"
+        - "Anchor[heat::dbsync::begin]"
+    "Anchor[heat::dbsync::end]": !ruby/object:Puppet::Resource::Status
+      resource: "Anchor[heat::dbsync::end]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/heat/manifests/deps.pp
+      line: 22
+      evaluation_time: 5.5549e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - anchor
+        - "heat::dbsync::end"
+        - heat
+        - dbsync
+        - end
+        - class
+        - "heat::deps"
+        - deps
+        - "heat::db::mysql"
+        - db
+        - mysql
+      time: 2016-04-11 12:38:49.117402 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Anchor
+      title: "heat::dbsync::end"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Heat::Deps"
+        - "Anchor[heat::dbsync::end]"
+    "Anchor[heat::service::begin]": !ruby/object:Puppet::Resource::Status
+      resource: "Anchor[heat::service::begin]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/heat/manifests/deps.pp
+      line: 23
+      evaluation_time: 4.9078e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - anchor
+        - "heat::service::begin"
+        - heat
+        - service
+        - begin
+        - class
+        - "heat::deps"
+        - deps
+        - "heat::db::mysql"
+        - db
+        - mysql
+      time: 2016-04-11 12:38:49.117727 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Anchor
+      title: "heat::service::begin"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Heat::Deps"
+        - "Anchor[heat::service::begin]"
+    "Mysql_user[@%]": !ruby/object:Puppet::Resource::Status
+      resource: "Mysql_user[@%]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_mariadb.pp
+      line: 50
+      evaluation_time: 0.000146344
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - mysql_user
+        - class
+      time: 2016-04-11 12:38:49.120001 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Mysql_user
+      title: "@%"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Mysql_user[@%]"
+    "Mysql_user[keystone_admin@127.0.0.1]": !ruby/object:Puppet::Resource::Status
+      resource: "Mysql_user[keystone_admin@127.0.0.1]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql/host_access.pp
+      line: 33
+      evaluation_time: 0.018839112
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - mysql_user
+        - "openstacklib::db::mysql::host_access"
+        - openstacklib
+        - db
+        - mysql
+        - host_access
+        - keystone_127.0.0.1
+        - "openstacklib::db::mysql"
+        - keystone
+        - class
+        - "keystone::db::mysql"
+      time: 2016-04-11 12:38:49.120536 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym mysql_user_created
+          status: success
+          time: 2016-04-11 12:38:49.120846 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Mysql_user
+      title: "keystone_admin@127.0.0.1"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Keystone::Db::Mysql"
+        - "Openstacklib::Db::Mysql[keystone]"
+        - "Openstacklib::Db::Mysql::Host_access[keystone_127.0.0.1]"
+        - "Mysql_user[keystone_admin@127.0.0.1]"
+    "Mysql_grant[keystone_admin@127.0.0.1/keystone.*]": !ruby/object:Puppet::Resource::Status
+      resource: "Mysql_grant[keystone_admin@127.0.0.1/keystone.*]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql/host_access.pp
+      line: 40
+      evaluation_time: 0.018940462
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - mysql_grant
+        - "openstacklib::db::mysql::host_access"
+        - openstacklib
+        - db
+        - mysql
+        - host_access
+        - keystone_127.0.0.1
+        - "openstacklib::db::mysql"
+        - keystone
+        - class
+        - "keystone::db::mysql"
+      time: 2016-04-11 12:38:49.140178 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym mysql_grant_created
+          status: success
+          time: 2016-04-11 12:38:49.140579 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Mysql_grant
+      title: "keystone_admin@127.0.0.1/keystone.*"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Keystone::Db::Mysql"
+        - "Openstacklib::Db::Mysql[keystone]"
+        - "Openstacklib::Db::Mysql::Host_access[keystone_127.0.0.1]"
+        - "Mysql_grant[keystone_admin@127.0.0.1/keystone.*]"
+    "Mysql_user[@osp7ps-controller01.test.local]": !ruby/object:Puppet::Resource::Status
+      resource: "Mysql_user[@osp7ps-controller01.test.local]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_mariadb.pp
+      line: 56
+      evaluation_time: 0.009479384
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - mysql_user
+        - class
+      time: 2016-04-11 12:38:49.164908 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym present
+          desired_value: !ruby/sym absent
+          historical_value: 
+          message: removed
+          name: !ruby/sym mysql_user_removed
+          status: success
+          time: 2016-04-11 12:38:49.165188 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Mysql_user
+      title: "@osp7ps-controller01.test.local"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Mysql_user[@osp7ps-controller01.test.local]"
+    "Mysql_user[neutron@%]": !ruby/object:Puppet::Resource::Status
+      resource: "Mysql_user[neutron@%]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql/host_access.pp
+      line: 33
+      evaluation_time: 0.109326334
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - mysql_user
+        - "openstacklib::db::mysql::host_access"
+        - openstacklib
+        - db
+        - mysql
+        - host_access
+        - "openstacklib::db::mysql"
+        - neutron
+        - class
+        - "neutron::db::mysql"
+      time: 2016-04-11 12:38:49.175024 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym mysql_user_created
+          status: success
+          time: 2016-04-11 12:38:49.175415 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Mysql_user
+      title: "neutron@%"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Neutron::Db::Mysql"
+        - "Openstacklib::Db::Mysql[neutron]"
+        - "Openstacklib::Db::Mysql::Host_access[neutron_%]"
+        - "Mysql_user[neutron@%]"
+    "Mysql_user[root@::1]": !ruby/object:Puppet::Resource::Status
+      resource: "Mysql_user[root@::1]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_mariadb.pp
+      line: 50
+      evaluation_time: 0.05566771
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - mysql_user
+        - class
+      time: 2016-04-11 12:38:49.285302 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym present
+          desired_value: !ruby/sym absent
+          historical_value: 
+          message: removed
+          name: !ruby/sym mysql_user_removed
+          status: success
+          time: 2016-04-11 12:38:49.285558 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Mysql_user
+      title: "root@::1"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Mysql_user[root@::1]"
+    "Mysql_user[root@osp7ps-controller01.test.local]": !ruby/object:Puppet::Resource::Status
+      resource: "Mysql_user[root@osp7ps-controller01.test.local]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_mariadb.pp
+      line: 56
+      evaluation_time: 0.090156047
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - mysql_user
+        - class
+      time: 2016-04-11 12:38:49.341474 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym present
+          desired_value: !ruby/sym absent
+          historical_value: 
+          message: removed
+          name: !ruby/sym mysql_user_removed
+          status: success
+          time: 2016-04-11 12:38:49.341778 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Mysql_user
+      title: "root@osp7ps-controller01.test.local"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Mysql_user[root@osp7ps-controller01.test.local]"
+    "Mysql_user[@localhost]": !ruby/object:Puppet::Resource::Status
+      resource: "Mysql_user[@localhost]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_mariadb.pp
+      line: 50
+      evaluation_time: 0.017512348
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - mysql_user
+        - class
+      time: 2016-04-11 12:38:49.432919 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym present
+          desired_value: !ruby/sym absent
+          historical_value: 
+          message: removed
+          name: !ruby/sym mysql_user_removed
+          status: success
+          time: 2016-04-11 12:38:49.433188 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Mysql_user
+      title: "@localhost"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Mysql_user[@localhost]"
+    "Mysql_grant[neutron@%/neutron.*]": !ruby/object:Puppet::Resource::Status
+      resource: "Mysql_grant[neutron@%/neutron.*]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql/host_access.pp
+      line: 40
+      evaluation_time: 0.039817168
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - mysql_grant
+        - "openstacklib::db::mysql::host_access"
+        - openstacklib
+        - db
+        - mysql
+        - host_access
+        - "openstacklib::db::mysql"
+        - neutron
+        - class
+        - "neutron::db::mysql"
+      time: 2016-04-11 12:38:49.451176 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym mysql_grant_created
+          status: success
+          time: 2016-04-11 12:38:49.451638 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Mysql_grant
+      title: "neutron@%/neutron.*"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Neutron::Db::Mysql"
+        - "Openstacklib::Db::Mysql[neutron]"
+        - "Openstacklib::Db::Mysql::Host_access[neutron_%]"
+        - "Mysql_grant[neutron@%/neutron.*]"
+    "Mysql_user[root@127.0.0.1]": !ruby/object:Puppet::Resource::Status
+      resource: "Mysql_user[root@127.0.0.1]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_mariadb.pp
+      line: 50
+      evaluation_time: 0.011469519
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - mysql_user
+        - class
+      time: 2016-04-11 12:38:49.491697 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym present
+          desired_value: !ruby/sym absent
+          historical_value: 
+          message: removed
+          name: !ruby/sym mysql_user_removed
+          status: success
+          time: 2016-04-11 12:38:49.492471 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Mysql_user
+      title: "root@127.0.0.1"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Mysql_user[root@127.0.0.1]"
+    "Mysql_grant[cinder@%/cinder.*]": !ruby/object:Puppet::Resource::Status
+      resource: "Mysql_grant[cinder@%/cinder.*]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/openstacklib/manifests/db/mysql/host_access.pp
+      line: 40
+      evaluation_time: 0.020858042
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - mysql_grant
+        - "openstacklib::db::mysql::host_access"
+        - openstacklib
+        - db
+        - mysql
+        - host_access
+        - "openstacklib::db::mysql"
+        - cinder
+        - class
+        - "cinder::db::mysql"
+      time: 2016-04-11 12:38:49.503807 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym mysql_grant_created
+          status: success
+          time: 2016-04-11 12:38:49.504267 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Mysql_grant
+      title: "cinder@%/cinder.*"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Cinder::Db::Mysql"
+        - "Openstacklib::Db::Mysql[cinder]"
+        - "Openstacklib::Db::Mysql::Host_access[cinder_%]"
+        - "Mysql_grant[cinder@%/cinder.*]"
+  host: osp7ps-controller01.test.local
+  time: 2016-04-11 12:38:27.024135 +09:00
+  kind: apply
+  report_format: 4
+  puppet_version: "3.6.2"
+  configuration_version: 1460345905
+  transaction_uuid: d7f339fb-cde4-47ac-94d6-1250d9443b44
+  environment: production
+  status: changed

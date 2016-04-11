@@ -1,0 +1,5 @@
+  WSGIApplicationGroup %{GLOBAL}
+  WSGIDaemonProcess keystone_admin display-name=keystone-admin group=keystone processes=1 threads=2 user=keystone
+  WSGIProcessGroup keystone_admin
+  WSGIScriptAlias / "/var/www/cgi-bin/keystone/admin"
+  WSGIPassAuthorization On

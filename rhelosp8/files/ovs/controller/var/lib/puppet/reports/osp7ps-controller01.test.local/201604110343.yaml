@@ -1,0 +1,3584 @@
+--- !ruby/object:Puppet::Transaction::Report
+  metrics: 
+    resources: !ruby/object:Puppet::Util::Metric
+      name: resources
+      label: Resources
+      values: 
+        - - total
+          - Total
+          - 122
+        - - skipped
+          - Skipped
+          - 0
+        - - failed
+          - Failed
+          - 0
+        - - failed_to_restart
+          - "Failed to restart"
+          - 0
+        - - restarted
+          - Restarted
+          - 1
+        - - changed
+          - Changed
+          - 19
+        - - out_of_sync
+          - "Out of sync"
+          - 19
+        - - scheduled
+          - Scheduled
+          - 0
+    time: !ruby/object:Puppet::Util::Metric
+      name: time
+      label: Time
+      values: 
+        - - schedule
+          - Schedule
+          - 0.000884756
+        - - filebucket
+          - Filebucket
+          - 0.000161157
+        - - firewall
+          - Firewall
+          - 0.182842789
+        - - exec
+          - Exec
+          - 0.000493816
+        - - anchor
+          - Anchor
+          - 0.000136582
+        - - package
+          - Package
+          - 27.061393503999998
+        - - nova_config
+          - "Nova config"
+          - 1.5819776790000004
+        - - file
+          - File
+          - 0.014148220999999999
+        - - ssh_authorized_key
+          - "Ssh authorized key"
+          - 0.000603846
+        - - service
+          - Service
+          - 8.961104322999999
+        - - config_retrieval
+          - "Config retrieval"
+          - 1.145198198
+        - - total
+          - Total
+          - 38.948944871
+    changes: !ruby/object:Puppet::Util::Metric
+      name: changes
+      label: Changes
+      values: 
+        - - total
+          - Total
+          - 19
+    events: !ruby/object:Puppet::Util::Metric
+      name: events
+      label: Events
+      values: 
+        - - total
+          - Total
+          - 19
+        - - failure
+          - Failure
+          - 0
+        - - success
+          - Success
+          - 19
+  logs: 
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - firewall
+        - class
+      message: created
+      source: "/Stage[main]/Main/Firewall[001 novncproxy incoming]/ensure"
+      time: 2016-04-11 12:42:44.023861 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_nova.pp
+      line: 61
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - nova_config
+        - class
+      message: created
+      source: /Stage[main]/Main/Nova_config[DEFAULT/scheduler_default_filters]/ensure
+      time: 2016-04-11 12:42:44.455732 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_nova.pp
+      line: 28
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - nova_config
+        - class
+        - "nova::conductor"
+        - nova
+        - conductor
+      message: created
+      source: "/Stage[main]/Nova::Conductor/Nova_config[conductor/use_local]/ensure"
+      time: 2016-04-11 12:42:44.494089 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/conductor.pp
+      line: 54
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - nova_config
+        - class
+        - "nova::vncproxy"
+        - nova
+        - vncproxy
+      message: created
+      source: "/Stage[main]/Nova::Vncproxy/Nova_config[DEFAULT/novncproxy_host]/ensure"
+      time: 2016-04-11 12:42:44.606063 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/vncproxy.pp
+      line: 53
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - package
+        - nova-consoleauth
+        - openstack
+        - nova-package
+        - "nova::generic_service"
+        - nova
+        - generic_service
+        - consoleauth
+        - class
+        - "nova::consoleauth"
+      message: created
+      source: "/Stage[main]/Nova::Consoleauth/Nova::Generic_service[consoleauth]/Package[nova-consoleauth]/ensure"
+      time: 2016-04-11 12:42:49.937613 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/generic_service.pp
+      line: 61
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - nova_config
+        - class
+        - "nova::vncproxy"
+        - nova
+        - vncproxy
+      message: created
+      source: "/Stage[main]/Nova::Vncproxy/Nova_config[DEFAULT/novncproxy_port]/ensure"
+      time: 2016-04-11 12:42:50.124475 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/vncproxy.pp
+      line: 53
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - nova_config
+        - class
+      message: created
+      source: /Stage[main]/Main/Nova_config[DEFAULT/ram_allocation_ratio]/ensure
+      time: 2016-04-11 12:42:50.187454 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_nova.pp
+      line: 28
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - nova_config
+        - class
+        - "nova::scheduler"
+        - nova
+        - scheduler
+      message: created
+      source: "/Stage[main]/Nova::Scheduler/Nova_config[DEFAULT/scheduler_driver]/ensure"
+      time: 2016-04-11 12:42:50.271731 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/scheduler.pp
+      line: 43
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - nova_config
+        - class
+      message: created
+      source: /Stage[main]/Main/Nova_config[DEFAULT/cpu_allocation_ratio]/ensure
+      time: 2016-04-11 12:42:50.485452 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_nova.pp
+      line: 28
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - package
+        - nova-conductor
+        - openstack
+        - nova-package
+        - "nova::generic_service"
+        - nova
+        - generic_service
+        - conductor
+        - class
+        - "nova::conductor"
+      message: created
+      source: "/Stage[main]/Nova::Conductor/Nova::Generic_service[conductor]/Package[nova-conductor]/ensure"
+      time: 2016-04-11 12:42:56.893008 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/generic_service.pp
+      line: 61
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - package
+        - nova-vncproxy
+        - openstack
+        - nova-package
+        - "nova::generic_service"
+        - nova
+        - generic_service
+        - vncproxy
+        - class
+        - "nova::vncproxy"
+      message: created
+      source: "/Stage[main]/Nova::Vncproxy/Nova::Generic_service[vncproxy]/Package[nova-vncproxy]/ensure"
+      time: 2016-04-11 12:43:02.770428 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/generic_service.pp
+      line: 61
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - package
+        - nova-scheduler
+        - openstack
+        - nova-package
+        - "nova::generic_service"
+        - nova
+        - generic_service
+        - scheduler
+        - class
+        - "nova::scheduler"
+      message: created
+      source: "/Stage[main]/Nova::Scheduler/Nova::Generic_service[scheduler]/Package[nova-scheduler]/ensure"
+      time: 2016-04-11 12:43:08.302805 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/generic_service.pp
+      line: 61
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - nova_config
+        - class
+        - "nova::vncproxy::common"
+        - nova
+        - vncproxy
+        - common
+        - "nova::vncproxy"
+      message: created
+      source: "/Stage[main]/Nova::Vncproxy::Common/Nova_config[DEFAULT/novncproxy_base_url]/ensure"
+      time: 2016-04-11 12:43:08.321809 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/vncproxy/common.pp
+      line: 52
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - exec
+        - post-nova_config
+        - class
+        - nova
+      message: "Triggered 'refresh' from 8 events"
+      source: /Stage[main]/Nova/Exec[post-nova_config]
+      time: 2016-04-11 12:43:08.385242 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 817
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - service
+        - nova-vncproxy
+        - nova-service
+        - "nova::generic_service"
+        - nova
+        - generic_service
+        - vncproxy
+        - class
+        - "nova::vncproxy"
+      message: "ensure changed 'stopped' to 'running'"
+      source: "/Stage[main]/Nova::Vncproxy/Nova::Generic_service[vncproxy]/Service[nova-vncproxy]/ensure"
+      time: 2016-04-11 12:43:08.598959 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/generic_service.pp
+      line: 89
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - service
+        - nova-consoleauth
+        - nova-service
+        - "nova::generic_service"
+        - nova
+        - generic_service
+        - consoleauth
+        - class
+        - "nova::consoleauth"
+      message: "ensure changed 'stopped' to 'running'"
+      source: "/Stage[main]/Nova::Consoleauth/Nova::Generic_service[consoleauth]/Service[nova-consoleauth]/ensure"
+      time: 2016-04-11 12:43:11.266618 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/generic_service.pp
+      line: 89
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - service
+        - nova-scheduler
+        - nova-service
+        - "nova::generic_service"
+        - nova
+        - generic_service
+        - scheduler
+        - class
+        - "nova::scheduler"
+      message: "ensure changed 'stopped' to 'running'"
+      source: "/Stage[main]/Nova::Scheduler/Nova::Generic_service[scheduler]/Service[nova-scheduler]/ensure"
+      time: 2016-04-11 12:43:13.380025 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/generic_service.pp
+      line: 89
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - service
+        - nova-conductor
+        - nova-service
+        - "nova::generic_service"
+        - nova
+        - generic_service
+        - conductor
+        - class
+        - "nova::conductor"
+      message: "ensure changed 'stopped' to 'running'"
+      source: "/Stage[main]/Nova::Conductor/Nova::Generic_service[conductor]/Service[nova-conductor]/ensure"
+      time: 2016-04-11 12:43:15.554346 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/generic_service.pp
+      line: 89
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - package
+        - nova-cert
+        - openstack
+        - nova-package
+        - "nova::generic_service"
+        - nova
+        - generic_service
+        - cert
+        - class
+        - "nova::cert"
+      message: created
+      source: "/Stage[main]/Nova::Cert/Nova::Generic_service[cert]/Package[nova-cert]/ensure"
+      time: 2016-04-11 12:43:20.147765 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/generic_service.pp
+      line: 61
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+        - service
+        - nova-cert
+        - nova-service
+        - "nova::generic_service"
+        - nova
+        - generic_service
+        - cert
+        - class
+        - "nova::cert"
+      message: "ensure changed 'stopped' to 'running'"
+      source: "/Stage[main]/Nova::Cert/Nova::Generic_service[cert]/Service[nova-cert]/ensure"
+      time: 2016-04-11 12:43:21.957330 +09:00
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/generic_service.pp
+      line: 89
+    - !ruby/object:Puppet::Util::Log
+      level: !ruby/sym notice
+      tags: 
+        - notice
+      message: "Finished catalog run in 38.77 seconds"
+      source: Puppet
+      time: 2016-04-11 12:43:22.214533 +09:00
+  resource_statuses: 
+    Schedule[daily]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[daily]
+      file: 
+      line: 
+      evaluation_time: 0.000197297
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - daily
+      time: 2016-04-11 12:42:43.731896 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: daily
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[daily]
+    Schedule[monthly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[monthly]
+      file: 
+      line: 
+      evaluation_time: 0.000103566
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - monthly
+      time: 2016-04-11 12:42:43.732280 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: monthly
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[monthly]
+    Schedule[hourly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[hourly]
+      file: 
+      line: 
+      evaluation_time: 8.7292e-05
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - hourly
+      time: 2016-04-11 12:42:43.732533 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: hourly
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[hourly]
+    Schedule[never]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[never]
+      file: 
+      line: 
+      evaluation_time: 0.000157174
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - never
+      time: 2016-04-11 12:42:43.776768 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: never
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[never]
+    Filebucket[puppet]: !ruby/object:Puppet::Resource::Status
+      resource: Filebucket[puppet]
+      file: 
+      line: 
+      evaluation_time: 0.000161157
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - filebucket
+        - puppet
+      time: 2016-04-11 12:42:43.777593 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Filebucket
+      title: puppet
+      skipped: false
+      failed: false
+      containment_path: 
+        - Filebucket[puppet]
+    "Firewall[001 novncproxy incoming]": !ruby/object:Puppet::Resource::Status
+      resource: "Firewall[001 novncproxy incoming]"
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_nova.pp
+      line: 61
+      evaluation_time: 0.182842789
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - firewall
+        - class
+      time: 2016-04-11 12:42:43.889612 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym firewall_created
+          status: success
+          time: 2016-04-11 12:42:43.950480 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Firewall
+      title: "001 novncproxy incoming"
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - "Firewall[001 novncproxy incoming]"
+    Exec[networking-refresh]: !ruby/object:Puppet::Resource::Status
+      resource: Exec[networking-refresh]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 525
+      evaluation_time: 0.00029276
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - exec
+        - networking-refresh
+        - class
+        - nova
+      time: 2016-04-11 12:42:44.077446 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Exec
+      title: networking-refresh
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Exec[networking-refresh]
+    Anchor[nova-start]: !ruby/object:Puppet::Resource::Status
+      resource: Anchor[nova-start]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 502
+      evaluation_time: 0.000136582
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - anchor
+        - nova-start
+        - class
+        - nova
+      time: 2016-04-11 12:42:44.078137 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Anchor
+      title: nova-start
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Anchor[nova-start]
+    Package[python-nova]: !ruby/object:Puppet::Resource::Status
+      resource: Package[python-nova]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 507
+      evaluation_time: 0.000494147
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - package
+        - python-nova
+        - openstack
+        - class
+        - nova
+      time: 2016-04-11 12:42:44.217220 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Package
+      title: python-nova
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Package[python-nova]
+    Package[nova-common]: !ruby/object:Puppet::Resource::Status
+      resource: Package[nova-common]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 514
+      evaluation_time: 0.000314307
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - package
+        - nova-common
+        - openstack
+        - nova-package
+        - class
+        - nova
+      time: 2016-04-11 12:42:44.218358 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Package
+      title: nova-common
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Package[nova-common]
+    Nova_config[neutron/admin_auth_url]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[neutron/admin_auth_url]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/network/neutron.pp
+      line: 133
+      evaluation_time: 0.013293183
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::network::neutron"
+        - nova
+        - network
+        - neutron
+      time: 2016-04-11 12:42:44.220638 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: neutron/admin_auth_url
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Network::Neutron"
+        - Nova_config[neutron/admin_auth_url]
+    Nova_config[DEFAULT/network_api_class]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/network_api_class]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/network/neutron.pp
+      line: 133
+      evaluation_time: 0.013019612
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::network::neutron"
+        - nova
+        - network
+        - neutron
+      time: 2016-04-11 12:42:44.234439 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/network_api_class
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Network::Neutron"
+        - Nova_config[DEFAULT/network_api_class]
+    Nova_config[DEFAULT/debug]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/debug]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/logging.pp
+      line: 129
+      evaluation_time: 0.063082117
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::logging"
+        - nova
+        - logging
+      time: 2016-04-11 12:42:44.247852 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/debug
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Logging"
+        - Nova_config[DEFAULT/debug]
+    Nova_config[DEFAULT/log_dir]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/log_dir]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/logging.pp
+      line: 129
+      evaluation_time: 0.011747948
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::logging"
+        - nova
+        - logging
+      time: 2016-04-11 12:42:44.311269 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/log_dir
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Logging"
+        - Nova_config[DEFAULT/log_dir]
+    Nova_config[neutron/extension_sync_interval]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[neutron/extension_sync_interval]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/network/neutron.pp
+      line: 133
+      evaluation_time: 0.011996053
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::network::neutron"
+        - nova
+        - network
+        - neutron
+      time: 2016-04-11 12:42:44.323461 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: neutron/extension_sync_interval
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Network::Neutron"
+        - Nova_config[neutron/extension_sync_interval]
+    Nova_config[DEFAULT/metadata_host]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/metadata_host]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_nova.pp
+      line: 135
+      evaluation_time: 0.011734784
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+      time: 2016-04-11 12:42:44.335846 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/metadata_host
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - Nova_config[DEFAULT/metadata_host]
+    Nova_config[DEFAULT/notify_api_faults]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/notify_api_faults]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 689
+      evaluation_time: 0.011910371
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:44.348013 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/notify_api_faults
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[DEFAULT/notify_api_faults]
+    Nova_config[neutron/admin_username]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[neutron/admin_username]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/network/neutron.pp
+      line: 133
+      evaluation_time: 0.01294862
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::network::neutron"
+        - nova
+        - network
+        - neutron
+      time: 2016-04-11 12:42:44.360424 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: neutron/admin_username
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Network::Neutron"
+        - Nova_config[neutron/admin_username]
+    Nova_config[oslo_messaging_rabbit/kombu_ssl_keyfile]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[oslo_messaging_rabbit/kombu_ssl_keyfile]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 590
+      evaluation_time: 0.012859563
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:44.373814 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: oslo_messaging_rabbit/kombu_ssl_keyfile
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[oslo_messaging_rabbit/kombu_ssl_keyfile]
+    Nova_config[DEFAULT/log_config_append]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/log_config_append]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/logging.pp
+      line: 186
+      evaluation_time: 0.012609921
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::logging"
+        - nova
+        - logging
+      time: 2016-04-11 12:42:44.387034 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/log_config_append
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Logging"
+        - Nova_config[DEFAULT/log_config_append]
+    Nova_config[DEFAULT/use_stderr]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/use_stderr]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/logging.pp
+      line: 129
+      evaluation_time: 0.012328329
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::logging"
+        - nova
+        - logging
+      time: 2016-04-11 12:42:44.400022 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/use_stderr
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Logging"
+        - Nova_config[DEFAULT/use_stderr]
+    Nova_config[DEFAULT/memcached_servers]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/memcached_servers]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 540
+      evaluation_time: 0.010210339
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:44.412777 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/memcached_servers
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[DEFAULT/memcached_servers]
+    Nova_config[DEFAULT/scheduler_default_filters]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/scheduler_default_filters]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_nova.pp
+      line: 28
+      evaluation_time: 0.032679707
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - nova_config
+        - class
+      time: 2016-04-11 12:42:44.423260 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym nova_config_created
+          status: success
+          time: 2016-04-11 12:42:44.435547 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Nova_config
+      title: DEFAULT/scheduler_default_filters
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - Nova_config[DEFAULT/scheduler_default_filters]
+    Nova_config[oslo_messaging_rabbit/rabbit_userid]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[oslo_messaging_rabbit/rabbit_userid]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 556
+      evaluation_time: 0.010316598
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:44.456429 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: oslo_messaging_rabbit/rabbit_userid
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[oslo_messaging_rabbit/rabbit_userid]
+    Nova_config[conductor/use_local]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[conductor/use_local]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/conductor.pp
+      line: 54
+      evaluation_time: 0.027114508
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - nova_config
+        - class
+        - "nova::conductor"
+        - nova
+        - conductor
+      time: 2016-04-11 12:42:44.467198 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym nova_config_created
+          status: success
+          time: 2016-04-11 12:42:44.480376 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Nova_config
+      title: conductor/use_local
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Conductor"
+        - Nova_config[conductor/use_local]
+    Nova_config[neutron/admin_tenant_name]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[neutron/admin_tenant_name]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/network/neutron.pp
+      line: 133
+      evaluation_time: 0.014505322
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::network::neutron"
+        - nova
+        - network
+        - neutron
+      time: 2016-04-11 12:42:44.495005 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: neutron/admin_tenant_name
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Network::Neutron"
+        - Nova_config[neutron/admin_tenant_name]
+    Nova_config[DEFAULT/log_date_format]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/log_date_format]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/logging.pp
+      line: 253
+      evaluation_time: 0.013485131
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::logging"
+        - nova
+        - logging
+      time: 2016-04-11 12:42:44.509862 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/log_date_format
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Logging"
+        - Nova_config[DEFAULT/log_date_format]
+    Nova_config[DEFAULT/notification_driver]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/notification_driver]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 672
+      evaluation_time: 0.012962623
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:44.523795 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/notification_driver
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[DEFAULT/notification_driver]
+    File[/etc/nova/nova.conf]: !ruby/object:Puppet::Resource::Status
+      resource: File[/etc/nova/nova.conf]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 518
+      evaluation_time: 0.002390192
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - file
+        - class
+        - nova
+      time: 2016-04-11 12:42:44.537339 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: File
+      title: /etc/nova/nova.conf
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - File[/etc/nova/nova.conf]
+    Nova_config[DEFAULT/ssl_ca_file]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/ssl_ca_file]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 666
+      evaluation_time: 0.013428383
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:44.540229 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/ssl_ca_file
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[DEFAULT/ssl_ca_file]
+    Nova_config[oslo_messaging_rabbit/rabbit_password]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[oslo_messaging_rabbit/rabbit_password]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 556
+      evaluation_time: 0.012498613
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:44.554142 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: oslo_messaging_rabbit/rabbit_password
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[oslo_messaging_rabbit/rabbit_password]
+    Nova_config[upgrade_levels/cert]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[upgrade_levels/cert]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 729
+      evaluation_time: 0.013862984
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:44.567147 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: upgrade_levels/cert
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[upgrade_levels/cert]
+    Nova_config[upgrade_levels/conductor]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[upgrade_levels/conductor]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 751
+      evaluation_time: 0.00796661
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:44.581455 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: upgrade_levels/conductor
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[upgrade_levels/conductor]
+    Nova_config[DEFAULT/novncproxy_host]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/novncproxy_host]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/vncproxy.pp
+      line: 53
+      evaluation_time: 0.016560572
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - nova_config
+        - class
+        - "nova::vncproxy"
+        - nova
+        - vncproxy
+      time: 2016-04-11 12:42:44.589720 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym nova_config_created
+          status: success
+          time: 2016-04-11 12:42:44.597054 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Nova_config
+      title: DEFAULT/novncproxy_host
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Vncproxy"
+        - Nova_config[DEFAULT/novncproxy_host]
+    Nova_config[DEFAULT/instance_format]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/instance_format]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/logging.pp
+      line: 231
+      evaluation_time: 0.007054378
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::logging"
+        - nova
+        - logging
+      time: 2016-04-11 12:42:44.606664 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/instance_format
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Logging"
+        - Nova_config[DEFAULT/instance_format]
+    Nova_config[DEFAULT/state_path]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/state_path]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 689
+      evaluation_time: 0.00622834
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:44.614004 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/state_path
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[DEFAULT/state_path]
+    Nova_config[DEFAULT/report_interval]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/report_interval]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 689
+      evaluation_time: 0.006531909
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:44.620473 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/report_interval
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[DEFAULT/report_interval]
+    Nova_config[DEFAULT/verbose]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/verbose]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/logging.pp
+      line: 129
+      evaluation_time: 0.006940786
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::logging"
+        - nova
+        - logging
+      time: 2016-04-11 12:42:44.627238 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/verbose
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Logging"
+        - Nova_config[DEFAULT/verbose]
+    Nova_config[oslo_messaging_rabbit/rabbit_ha_queues]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[oslo_messaging_rabbit/rabbit_ha_queues]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 605
+      evaluation_time: 0.008950988
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:44.634564 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: oslo_messaging_rabbit/rabbit_ha_queues
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[oslo_messaging_rabbit/rabbit_ha_queues]
+    Nova_config[libvirt/vif_driver]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[libvirt/vif_driver]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/compute/neutron.pp
+      line: 29
+      evaluation_time: 0.008522925
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::compute::neutron"
+        - nova
+        - compute
+        - neutron
+      time: 2016-04-11 12:42:44.643889 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: libvirt/vif_driver
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Compute::Neutron"
+        - Nova_config[libvirt/vif_driver]
+    Nova_config[DEFAULT/security_group_api]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/security_group_api]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/network/neutron.pp
+      line: 133
+      evaluation_time: 0.011758037
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::network::neutron"
+        - nova
+        - network
+        - neutron
+      time: 2016-04-11 12:42:44.652927 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/security_group_api
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Network::Neutron"
+        - Nova_config[DEFAULT/security_group_api]
+    Nova_config[DEFAULT/logging_default_format_string]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/logging_default_format_string]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/logging.pp
+      line: 152
+      evaluation_time: 0.044060173
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::logging"
+        - nova
+        - logging
+      time: 2016-04-11 12:42:44.665016 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/logging_default_format_string
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Logging"
+        - Nova_config[DEFAULT/logging_default_format_string]
+    Package[nova-consoleauth]: !ruby/object:Puppet::Resource::Status
+      resource: Package[nova-consoleauth]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/generic_service.pp
+      line: 61
+      evaluation_time: 5.228122204
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - package
+        - nova-consoleauth
+        - openstack
+        - nova-package
+        - "nova::generic_service"
+        - nova
+        - generic_service
+        - consoleauth
+        - class
+        - "nova::consoleauth"
+      time: 2016-04-11 12:42:44.709970 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym package_installed
+          status: success
+          time: 2016-04-11 12:42:44.739351 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Package
+      title: nova-consoleauth
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Consoleauth"
+        - "Nova::Generic_service[consoleauth]"
+        - Package[nova-consoleauth]
+    Nova_config[DEFAULT/logging_context_format_string]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/logging_context_format_string]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/logging.pp
+      line: 140
+      evaluation_time: 0.013705265
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::logging"
+        - nova
+        - logging
+      time: 2016-04-11 12:42:49.938803 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/logging_context_format_string
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Logging"
+        - Nova_config[DEFAULT/logging_context_format_string]
+    Nova_config[neutron/ca_certificates_file]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[neutron/ca_certificates_file]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/network/neutron.pp
+      line: 136
+      evaluation_time: 0.013439269
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::network::neutron"
+        - nova
+        - network
+        - neutron
+      time: 2016-04-11 12:42:49.953009 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: neutron/ca_certificates_file
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Network::Neutron"
+        - Nova_config[neutron/ca_certificates_file]
+    Nova_config[DEFAULT/sql_connection]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/sql_connection]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_nova.pp
+      line: 135
+      evaluation_time: 0.012693388
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+      time: 2016-04-11 12:42:49.966884 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/sql_connection
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - Nova_config[DEFAULT/sql_connection]
+    Nova_config[upgrade_levels/network]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[upgrade_levels/network]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 795
+      evaluation_time: 0.012295495
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:49.980008 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: upgrade_levels/network
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[upgrade_levels/network]
+    Nova_config[oslo_messaging_rabbit/rabbit_virtual_host]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[oslo_messaging_rabbit/rabbit_virtual_host]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 556
+      evaluation_time: 0.012426754
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:49.992726 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: oslo_messaging_rabbit/rabbit_virtual_host
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[oslo_messaging_rabbit/rabbit_virtual_host]
+    Nova_config[glance/api_servers]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[glance/api_servers]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 531
+      evaluation_time: 0.012426479
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.005607 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: glance/api_servers
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[glance/api_servers]
+    Nova_config[DEFAULT/force_snat_range]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/force_snat_range]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/compute/neutron.pp
+      line: 37
+      evaluation_time: 0.012310177
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::compute::neutron"
+        - nova
+        - compute
+        - neutron
+      time: 2016-04-11 12:42:50.018714 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/force_snat_range
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Compute::Neutron"
+        - Nova_config[DEFAULT/force_snat_range]
+    Nova_config[oslo_messaging_rabbit/rabbit_port]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[oslo_messaging_rabbit/rabbit_port]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 597
+      evaluation_time: 0.012751882
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.031574 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: oslo_messaging_rabbit/rabbit_port
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[oslo_messaging_rabbit/rabbit_port]
+    Nova_config[DEFAULT/image_service]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/image_service]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 527
+      evaluation_time: 0.012384309
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.044830 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/image_service
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[DEFAULT/image_service]
+    Nova_config[upgrade_levels/compute]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[upgrade_levels/compute]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 740
+      evaluation_time: 0.012252281
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.057749 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: upgrade_levels/compute
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[upgrade_levels/compute]
+    Nova_config[DEFAULT/notify_on_state_change]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/notify_on_state_change]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 696
+      evaluation_time: 0.011633419
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.070413 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/notify_on_state_change
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[DEFAULT/notify_on_state_change]
+    Nova_config[DEFAULT/firewall_driver]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/firewall_driver]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/network/neutron.pp
+      line: 133
+      evaluation_time: 0.011682801
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::network::neutron"
+        - nova
+        - network
+        - neutron
+      time: 2016-04-11 12:42:50.082541 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/firewall_driver
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Network::Neutron"
+        - Nova_config[DEFAULT/firewall_driver]
+    Nova_config[DEFAULT/novncproxy_port]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/novncproxy_port]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/vncproxy.pp
+      line: 53
+      evaluation_time: 0.030204868
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - nova_config
+        - class
+        - "nova::vncproxy"
+        - nova
+        - vncproxy
+      time: 2016-04-11 12:42:50.094722 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym nova_config_created
+          status: success
+          time: 2016-04-11 12:42:50.107748 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Nova_config
+      title: DEFAULT/novncproxy_port
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Vncproxy"
+        - Nova_config[DEFAULT/novncproxy_port]
+    Nova_config[cinder/catalog_info]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[cinder/catalog_info]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 689
+      evaluation_time: 0.009093345
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.125851 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: cinder/catalog_info
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[cinder/catalog_info]
+    Nova_config[oslo_messaging_rabbit/kombu_reconnect_delay]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[oslo_messaging_rabbit/kombu_reconnect_delay]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 556
+      evaluation_time: 0.01258433
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.135278 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: oslo_messaging_rabbit/kombu_reconnect_delay
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[oslo_messaging_rabbit/kombu_reconnect_delay]
+    Nova_config[neutron/admin_password]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[neutron/admin_password]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/network/neutron.pp
+      line: 133
+      evaluation_time: 0.011537396
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::network::neutron"
+        - nova
+        - network
+        - neutron
+      time: 2016-04-11 12:42:50.148440 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: neutron/admin_password
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Network::Neutron"
+        - Nova_config[neutron/admin_password]
+    Nova_config[DEFAULT/ram_allocation_ratio]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/ram_allocation_ratio]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_nova.pp
+      line: 28
+      evaluation_time: 0.027294888
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - nova_config
+        - class
+      time: 2016-04-11 12:42:50.160383 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym nova_config_created
+          status: success
+          time: 2016-04-11 12:42:50.172271 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Nova_config
+      title: DEFAULT/ram_allocation_ratio
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - Nova_config[DEFAULT/ram_allocation_ratio]
+    Nova_config[upgrade_levels/intercell]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[upgrade_levels/intercell]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 784
+      evaluation_time: 0.013845297
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.188380 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: upgrade_levels/intercell
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[upgrade_levels/intercell]
+    Nova_config[oslo_messaging_rabbit/rabbit_host]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[oslo_messaging_rabbit/rabbit_host]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 596
+      evaluation_time: 0.015297168
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.202698 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: oslo_messaging_rabbit/rabbit_host
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[oslo_messaging_rabbit/rabbit_host]
+    Nova_config[DEFAULT/use_ipv6]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/use_ipv6]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 689
+      evaluation_time: 0.013240984
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.218549 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/use_ipv6
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[DEFAULT/use_ipv6]
+    Nova_config[neutron/timeout]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[neutron/timeout]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/network/neutron.pp
+      line: 133
+      evaluation_time: 0.011281649
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::network::neutron"
+        - nova
+        - network
+        - neutron
+      time: 2016-04-11 12:42:50.232354 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: neutron/timeout
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Network::Neutron"
+        - Nova_config[neutron/timeout]
+    Nova_config[DEFAULT/scheduler_driver]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/scheduler_driver]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/scheduler.pp
+      line: 43
+      evaluation_time: 0.027688661
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - nova_config
+        - class
+        - "nova::scheduler"
+        - nova
+        - scheduler
+      time: 2016-04-11 12:42:50.244219 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym nova_config_created
+          status: success
+          time: 2016-04-11 12:42:50.259403 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Nova_config
+      title: DEFAULT/scheduler_driver
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Scheduler"
+        - Nova_config[DEFAULT/scheduler_driver]
+    Nova_config[oslo_messaging_rabbit/amqp_durable_queues]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[oslo_messaging_rabbit/amqp_durable_queues]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 556
+      evaluation_time: 0.010701211
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.272365 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: oslo_messaging_rabbit/amqp_durable_queues
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[oslo_messaging_rabbit/amqp_durable_queues]
+    Nova_config[oslo_messaging_rabbit/heartbeat_rate]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[oslo_messaging_rabbit/heartbeat_rate]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 556
+      evaluation_time: 0.012521683
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.283508 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: oslo_messaging_rabbit/heartbeat_rate
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[oslo_messaging_rabbit/heartbeat_rate]
+    Nova_config[oslo_messaging_rabbit/kombu_ssl_certfile]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[oslo_messaging_rabbit/kombu_ssl_certfile]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 590
+      evaluation_time: 0.050968132
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.296464 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: oslo_messaging_rabbit/kombu_ssl_certfile
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[oslo_messaging_rabbit/kombu_ssl_certfile]
+    Nova_config[oslo_messaging_rabbit/heartbeat_timeout_threshold]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[oslo_messaging_rabbit/heartbeat_timeout_threshold]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 556
+      evaluation_time: 0.012016941
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.347892 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: oslo_messaging_rabbit/heartbeat_timeout_threshold
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[oslo_messaging_rabbit/heartbeat_timeout_threshold]
+    Nova_config[DEFAULT/instance_uuid_format]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/instance_uuid_format]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/logging.pp
+      line: 242
+      evaluation_time: 0.014518015
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::logging"
+        - nova
+        - logging
+      time: 2016-04-11 12:42:50.360391 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/instance_uuid_format
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Logging"
+        - Nova_config[DEFAULT/instance_uuid_format]
+    Nova_config[DEFAULT/fatal_deprecations]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/fatal_deprecations]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/logging.pp
+      line: 220
+      evaluation_time: 0.066967152
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::logging"
+        - nova
+        - logging
+      time: 2016-04-11 12:42:50.379106 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/fatal_deprecations
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Logging"
+        - Nova_config[DEFAULT/fatal_deprecations]
+    Nova_config[DEFAULT/cpu_allocation_ratio]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/cpu_allocation_ratio]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/manifests/10.0.1.111_nova.pp
+      line: 28
+      evaluation_time: 0.039182455
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - nova_config
+        - class
+      time: 2016-04-11 12:42:50.446468 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym nova_config_created
+          status: success
+          time: 2016-04-11 12:42:50.459256 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Nova_config
+      title: DEFAULT/cpu_allocation_ratio
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Main
+        - Nova_config[DEFAULT/cpu_allocation_ratio]
+    Nova_config[DEFAULT/vif_plugging_is_fatal]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/vif_plugging_is_fatal]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/network/neutron.pp
+      line: 133
+      evaluation_time: 0.010153549
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::network::neutron"
+        - nova
+        - network
+        - neutron
+      time: 2016-04-11 12:42:50.486277 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/vif_plugging_is_fatal
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Network::Neutron"
+        - Nova_config[DEFAULT/vif_plugging_is_fatal]
+    Nova_config[DEFAULT/os_region_name]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/os_region_name]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 812
+      evaluation_time: 0.010565857
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.496962 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/os_region_name
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[DEFAULT/os_region_name]
+    Nova_config[oslo_messaging_rabbit/rabbit_use_ssl]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[oslo_messaging_rabbit/rabbit_use_ssl]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 556
+      evaluation_time: 0.008276666
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.508052 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: oslo_messaging_rabbit/rabbit_use_ssl
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[oslo_messaging_rabbit/rabbit_use_ssl]
+    Nova_config[upgrade_levels/consoleauth]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[upgrade_levels/consoleauth]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 773
+      evaluation_time: 0.011396737
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.516904 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: upgrade_levels/consoleauth
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[upgrade_levels/consoleauth]
+    Nova_config[cinder/os_region_name]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[cinder/os_region_name]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 707
+      evaluation_time: 0.011546797
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.528773 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: cinder/os_region_name
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[cinder/os_region_name]
+    Nova_config[neutron/auth_strategy]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[neutron/auth_strategy]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/network/neutron.pp
+      line: 133
+      evaluation_time: 0.012030535
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::network::neutron"
+        - nova
+        - network
+        - neutron
+      time: 2016-04-11 12:42:50.540898 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: neutron/auth_strategy
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Network::Neutron"
+        - Nova_config[neutron/auth_strategy]
+    Nova_config[neutron/default_tenant_id]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[neutron/default_tenant_id]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/network/neutron.pp
+      line: 133
+      evaluation_time: 0.011878047
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::network::neutron"
+        - nova
+        - network
+        - neutron
+      time: 2016-04-11 12:42:50.553476 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: neutron/default_tenant_id
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Network::Neutron"
+        - Nova_config[neutron/default_tenant_id]
+    Nova_config[DEFAULT/lock_path]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/lock_path]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 689
+      evaluation_time: 0.011969322
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.565807 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/lock_path
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[DEFAULT/lock_path]
+    Nova_config[oslo_messaging_rabbit/kombu_ssl_ca_certs]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[oslo_messaging_rabbit/kombu_ssl_ca_certs]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 590
+      evaluation_time: 0.011773663
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.578281 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: oslo_messaging_rabbit/kombu_ssl_ca_certs
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[oslo_messaging_rabbit/kombu_ssl_ca_certs]
+    Nova_config[upgrade_levels/scheduler]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[upgrade_levels/scheduler]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 806
+      evaluation_time: 0.012712719
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.590517 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: upgrade_levels/scheduler
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[upgrade_levels/scheduler]
+    Nova_config[neutron/url]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[neutron/url]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/network/neutron.pp
+      line: 133
+      evaluation_time: 0.012544168
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::network::neutron"
+        - nova
+        - network
+        - neutron
+      time: 2016-04-11 12:42:50.603783 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: neutron/url
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Network::Neutron"
+        - Nova_config[neutron/url]
+    Nova_config[DEFAULT/service_down_time]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/service_down_time]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 689
+      evaluation_time: 0.011956266
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.616831 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/service_down_time
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[DEFAULT/service_down_time]
+    Nova_config[DEFAULT/syslog_log_facility]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/syslog_log_facility]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/logging.pp
+      line: 129
+      evaluation_time: 0.011349397
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::logging"
+        - nova
+        - logging
+      time: 2016-04-11 12:42:50.629215 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/syslog_log_facility
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Logging"
+        - Nova_config[DEFAULT/syslog_log_facility]
+    Nova_config[DEFAULT/ssl_cert_file]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/ssl_cert_file]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 666
+      evaluation_time: 0.011732099
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.641057 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/ssl_cert_file
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[DEFAULT/ssl_cert_file]
+    Nova_config[upgrade_levels/console]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[upgrade_levels/console]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 762
+      evaluation_time: 0.011804999
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.653192 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: upgrade_levels/console
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[upgrade_levels/console]
+    Nova_config[neutron/ovs_bridge]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[neutron/ovs_bridge]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/network/neutron.pp
+      line: 133
+      evaluation_time: 0.012819126
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::network::neutron"
+        - nova
+        - network
+        - neutron
+      time: 2016-04-11 12:42:50.665464 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: neutron/ovs_bridge
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Network::Neutron"
+        - Nova_config[neutron/ovs_bridge]
+    Nova_config[DEFAULT/notification_topics]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/notification_topics]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 689
+      evaluation_time: 0.062068116
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.678730 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/notification_topics
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[DEFAULT/notification_topics]
+    Nova_config[oslo_messaging_rabbit/kombu_ssl_version]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[oslo_messaging_rabbit/kombu_ssl_version]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 590
+      evaluation_time: 0.011247481
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.741309 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: oslo_messaging_rabbit/kombu_ssl_version
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[oslo_messaging_rabbit/kombu_ssl_version]
+    Nova_config[DEFAULT/ssl_key_file]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/ssl_key_file]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 666
+      evaluation_time: 0.012042494
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.752967 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/ssl_key_file
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[DEFAULT/ssl_key_file]
+    Nova_config[DEFAULT/default_log_levels]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/default_log_levels]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/logging.pp
+      line: 198
+      evaluation_time: 0.011789786
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::logging"
+        - nova
+        - logging
+      time: 2016-04-11 12:42:50.765364 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/default_log_levels
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Logging"
+        - Nova_config[DEFAULT/default_log_levels]
+    Nova_config[DEFAULT/auth_strategy]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/auth_strategy]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 535
+      evaluation_time: 0.016763344
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.777611 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/auth_strategy
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[DEFAULT/auth_strategy]
+    Nova_config[neutron/region_name]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[neutron/region_name]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/network/neutron.pp
+      line: 133
+      evaluation_time: 0.012500881
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::network::neutron"
+        - nova
+        - network
+        - neutron
+      time: 2016-04-11 12:42:50.795009 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: neutron/region_name
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Network::Neutron"
+        - Nova_config[neutron/region_name]
+    Nova_config[DEFAULT/rootwrap_config]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/rootwrap_config]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 689
+      evaluation_time: 0.027636141
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.807971 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/rootwrap_config
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[DEFAULT/rootwrap_config]
+    Nova_config[oslo_messaging_rabbit/rabbit_hosts]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[oslo_messaging_rabbit/rabbit_hosts]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 598
+      evaluation_time: 0.02241789
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.836057 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: oslo_messaging_rabbit/rabbit_hosts
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[oslo_messaging_rabbit/rabbit_hosts]
+    File[/var/lib/nova/.ssh]: !ruby/object:Puppet::Resource::Status
+      resource: File[/var/lib/nova/.ssh]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 452
+      evaluation_time: 0.007858457
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - file
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.859756 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: File
+      title: /var/lib/nova/.ssh
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - File[/var/lib/nova/.ssh]
+    Ssh_authorized_key[nova-migration-public-key]: !ruby/object:Puppet::Resource::Status
+      resource: Ssh_authorized_key[nova-migration-public-key]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 465
+      evaluation_time: 0.000603846
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - ssh_authorized_key
+        - nova-migration-public-key
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.868885 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Ssh_authorized_key
+      title: nova-migration-public-key
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Ssh_authorized_key[nova-migration-public-key]
+    File[/var/lib/nova/.ssh/id_rsa]: !ruby/object:Puppet::Resource::Status
+      resource: File[/var/lib/nova/.ssh/id_rsa]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 490
+      evaluation_time: 0.003899572
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - file
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.870197 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: File
+      title: /var/lib/nova/.ssh/id_rsa
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - File[/var/lib/nova/.ssh/id_rsa]
+    Nova_config[DEFAULT/rpc_backend]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/rpc_backend]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 689
+      evaluation_time: 0.013899269
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:42:50.874809 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/rpc_backend
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[DEFAULT/rpc_backend]
+    Nova_config[DEFAULT/vif_plugging_timeout]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/vif_plugging_timeout]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/network/neutron.pp
+      line: 133
+      evaluation_time: 0.012945461
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::network::neutron"
+        - nova
+        - network
+        - neutron
+      time: 2016-04-11 12:42:50.889437 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/vif_plugging_timeout
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Network::Neutron"
+        - Nova_config[DEFAULT/vif_plugging_timeout]
+    Nova_config[DEFAULT/logging_debug_format_suffix]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/logging_debug_format_suffix]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/logging.pp
+      line: 164
+      evaluation_time: 0.070682642
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::logging"
+        - nova
+        - logging
+      time: 2016-04-11 12:42:50.902825 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/logging_debug_format_suffix
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Logging"
+        - Nova_config[DEFAULT/logging_debug_format_suffix]
+    Schedule[weekly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[weekly]
+      file: 
+      line: 
+      evaluation_time: 0.000151749
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - weekly
+      time: 2016-04-11 12:42:50.973814 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: weekly
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[weekly]
+    Package[nova-conductor]: !ruby/object:Puppet::Resource::Status
+      resource: Package[nova-conductor]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/generic_service.pp
+      line: 61
+      evaluation_time: 5.918267183
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - package
+        - nova-conductor
+        - openstack
+        - nova-package
+        - "nova::generic_service"
+        - nova
+        - generic_service
+        - conductor
+        - class
+        - "nova::conductor"
+      time: 2016-04-11 12:42:50.975122 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym package_installed
+          status: success
+          time: 2016-04-11 12:42:51.033055 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Package
+      title: nova-conductor
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Conductor"
+        - "Nova::Generic_service[conductor]"
+        - Package[nova-conductor]
+    Package[python-numpy]: !ruby/object:Puppet::Resource::Status
+      resource: Package[python-numpy]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/vncproxy.pp
+      line: 61
+      evaluation_time: 0.000501925
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - package
+        - python-numpy
+        - class
+        - "nova::vncproxy"
+        - nova
+        - vncproxy
+      time: 2016-04-11 12:42:56.898418 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Package
+      title: python-numpy
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Vncproxy"
+        - Package[python-numpy]
+    Package[nova-vncproxy]: !ruby/object:Puppet::Resource::Status
+      resource: Package[nova-vncproxy]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/generic_service.pp
+      line: 61
+      evaluation_time: 5.870455318
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - package
+        - nova-vncproxy
+        - openstack
+        - nova-package
+        - "nova::generic_service"
+        - nova
+        - generic_service
+        - vncproxy
+        - class
+        - "nova::vncproxy"
+      time: 2016-04-11 12:42:56.900378 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym package_installed
+          status: success
+          time: 2016-04-11 12:42:56.933800 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Package
+      title: nova-vncproxy
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Vncproxy"
+        - "Nova::Generic_service[vncproxy]"
+        - Package[nova-vncproxy]
+    Nova_config[DEFAULT/use_syslog]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/use_syslog]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/logging.pp
+      line: 129
+      evaluation_time: 0.009544689
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::logging"
+        - nova
+        - logging
+      time: 2016-04-11 12:43:02.771358 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/use_syslog
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Logging"
+        - Nova_config[DEFAULT/use_syslog]
+    Nova_config[upgrade_levels/cells]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[upgrade_levels/cells]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 718
+      evaluation_time: 0.009571903
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:43:02.781262 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: upgrade_levels/cells
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[upgrade_levels/cells]
+    Nova_config[DEFAULT/dhcp_domain]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/dhcp_domain]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/network/neutron.pp
+      line: 133
+      evaluation_time: 0.01099591
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::network::neutron"
+        - nova
+        - network
+        - neutron
+      time: 2016-04-11 12:43:02.795736 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/dhcp_domain
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Network::Neutron"
+        - Nova_config[DEFAULT/dhcp_domain]
+    Nova_config[DEFAULT/logging_exception_prefix]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/logging_exception_prefix]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/logging.pp
+      line: 175
+      evaluation_time: 0.01177761
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::logging"
+        - nova
+        - logging
+      time: 2016-04-11 12:43:02.810188 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/logging_exception_prefix
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Logging"
+        - Nova_config[DEFAULT/logging_exception_prefix]
+    Schedule[puppet]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[puppet]
+      file: 
+      line: 
+      evaluation_time: 0.000187678
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - puppet
+      time: 2016-04-11 12:43:02.822342 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: puppet
+      skipped: false
+      failed: false
+      containment_path: 
+        - Schedule[puppet]
+    Nova_config[DEFAULT/publish_errors]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/publish_errors]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/logging.pp
+      line: 209
+      evaluation_time: 0.0124143
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - "nova::logging"
+        - nova
+        - logging
+      time: 2016-04-11 12:43:02.826520 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/publish_errors
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Logging"
+        - Nova_config[DEFAULT/publish_errors]
+    Package[nova-scheduler]: !ruby/object:Puppet::Resource::Status
+      resource: Package[nova-scheduler]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/generic_service.pp
+      line: 61
+      evaluation_time: 5.459479785
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - package
+        - nova-scheduler
+        - openstack
+        - nova-package
+        - "nova::generic_service"
+        - nova
+        - generic_service
+        - scheduler
+        - class
+        - "nova::scheduler"
+      time: 2016-04-11 12:43:02.843593 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym package_installed
+          status: success
+          time: 2016-04-11 12:43:02.887342 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Package
+      title: nova-scheduler
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Scheduler"
+        - "Nova::Generic_service[scheduler]"
+        - Package[nova-scheduler]
+    Nova_config[DEFAULT/novncproxy_base_url]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/novncproxy_base_url]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/vncproxy/common.pp
+      line: 52
+      evaluation_time: 0.015956289
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - nova_config
+        - class
+        - "nova::vncproxy::common"
+        - nova
+        - vncproxy
+        - common
+        - "nova::vncproxy"
+      time: 2016-04-11 12:43:08.306028 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym nova_config_created
+          status: success
+          time: 2016-04-11 12:43:08.313097 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Nova_config
+      title: DEFAULT/novncproxy_base_url
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Vncproxy::Common"
+        - Nova_config[DEFAULT/novncproxy_base_url]
+    Nova_config[DEFAULT/enabled_ssl_apis]: !ruby/object:Puppet::Resource::Status
+      resource: Nova_config[DEFAULT/enabled_ssl_apis]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 666
+      evaluation_time: 0.051098405
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:43:08.324365 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Nova_config
+      title: DEFAULT/enabled_ssl_apis
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Nova_config[DEFAULT/enabled_ssl_apis]
+    Exec[post-nova_config]: !ruby/object:Puppet::Resource::Status
+      resource: Exec[post-nova_config]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/init.pp
+      line: 817
+      evaluation_time: 0.000201056
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - exec
+        - post-nova_config
+        - class
+        - nova
+      time: 2016-04-11 12:43:08.376579 +09:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Exec
+      title: post-nova_config
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - Nova
+        - Exec[post-nova_config]
+    Service[nova-vncproxy]: !ruby/object:Puppet::Resource::Status
+      resource: Service[nova-vncproxy]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/generic_service.pp
+      line: 89
+      evaluation_time: 0.212317502
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - service
+        - nova-vncproxy
+        - nova-service
+        - "nova::generic_service"
+        - nova
+        - generic_service
+        - vncproxy
+        - class
+        - "nova::vncproxy"
+      time: 2016-04-11 12:43:08.387192 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym stopped
+          desired_value: !ruby/sym running
+          historical_value: 
+          message: "ensure changed 'stopped' to 'running'"
+          name: !ruby/sym service_started
+          status: success
+          time: 2016-04-11 12:43:08.412155 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Service
+      title: nova-vncproxy
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Vncproxy"
+        - "Nova::Generic_service[vncproxy]"
+        - Service[nova-vncproxy]
+    Service[nova-consoleauth]: !ruby/object:Puppet::Resource::Status
+      resource: Service[nova-consoleauth]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/generic_service.pp
+      line: 89
+      evaluation_time: 2.66066071
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - service
+        - nova-consoleauth
+        - nova-service
+        - "nova::generic_service"
+        - nova
+        - generic_service
+        - consoleauth
+        - class
+        - "nova::consoleauth"
+      time: 2016-04-11 12:43:08.606333 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym stopped
+          desired_value: !ruby/sym running
+          historical_value: 
+          message: "ensure changed 'stopped' to 'running'"
+          name: !ruby/sym service_started
+          status: success
+          time: 2016-04-11 12:43:08.641688 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Service
+      title: nova-consoleauth
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Consoleauth"
+        - "Nova::Generic_service[consoleauth]"
+        - Service[nova-consoleauth]
+    Service[nova-scheduler]: !ruby/object:Puppet::Resource::Status
+      resource: Service[nova-scheduler]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/generic_service.pp
+      line: 89
+      evaluation_time: 2.108577129
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - service
+        - nova-scheduler
+        - nova-service
+        - "nova::generic_service"
+        - nova
+        - generic_service
+        - scheduler
+        - class
+        - "nova::scheduler"
+      time: 2016-04-11 12:43:11.271664 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym stopped
+          desired_value: !ruby/sym running
+          historical_value: 
+          message: "ensure changed 'stopped' to 'running'"
+          name: !ruby/sym service_started
+          status: success
+          time: 2016-04-11 12:43:11.290223 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Service
+      title: nova-scheduler
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Scheduler"
+        - "Nova::Generic_service[scheduler]"
+        - Service[nova-scheduler]
+    Service[nova-conductor]: !ruby/object:Puppet::Resource::Status
+      resource: Service[nova-conductor]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/generic_service.pp
+      line: 89
+      evaluation_time: 2.1712119
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - service
+        - nova-conductor
+        - nova-service
+        - "nova::generic_service"
+        - nova
+        - generic_service
+        - conductor
+        - class
+        - "nova::conductor"
+      time: 2016-04-11 12:43:13.383437 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym stopped
+          desired_value: !ruby/sym running
+          historical_value: 
+          message: "ensure changed 'stopped' to 'running'"
+          name: !ruby/sym service_started
+          status: success
+          time: 2016-04-11 12:43:13.416333 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Service
+      title: nova-conductor
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Conductor"
+        - "Nova::Generic_service[conductor]"
+        - Service[nova-conductor]
+    Package[nova-cert]: !ruby/object:Puppet::Resource::Status
+      resource: Package[nova-cert]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/generic_service.pp
+      line: 61
+      evaluation_time: 4.583758635
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - package
+        - nova-cert
+        - openstack
+        - nova-package
+        - "nova::generic_service"
+        - nova
+        - generic_service
+        - cert
+        - class
+        - "nova::cert"
+      time: 2016-04-11 12:43:15.564350 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym absent
+          desired_value: !ruby/sym present
+          historical_value: 
+          message: created
+          name: !ruby/sym package_installed
+          status: success
+          time: 2016-04-11 12:43:15.672159 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Package
+      title: nova-cert
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Cert"
+        - "Nova::Generic_service[cert]"
+        - Package[nova-cert]
+    Service[nova-cert]: !ruby/object:Puppet::Resource::Status
+      resource: Service[nova-cert]
+      file: /var/tmp/packstack/277a1acf56c940419e3a72de5a229c44/modules/nova/manifests/generic_service.pp
+      line: 89
+      evaluation_time: 1.808337082
+      change_count: 1
+      out_of_sync_count: 1
+      tags: 
+        - service
+        - nova-cert
+        - nova-service
+        - "nova::generic_service"
+        - nova
+        - generic_service
+        - cert
+        - class
+        - "nova::cert"
+      time: 2016-04-11 12:43:20.149339 +09:00
+      events: 
+        - !ruby/object:Puppet::Transaction::Event
+          audited: false
+          property: ensure
+          previous_value: !ruby/sym stopped
+          desired_value: !ruby/sym running
+          historical_value: 
+          message: "ensure changed 'stopped' to 'running'"
+          name: !ruby/sym service_started
+          status: success
+          time: 2016-04-11 12:43:20.170627 +09:00
+      out_of_sync: true
+      changed: true
+      resource_type: Service
+      title: nova-cert
+      skipped: false
+      failed: false
+      containment_path: 
+        - Stage[main]
+        - "Nova::Cert"
+        - "Nova::Generic_service[cert]"
+        - Service[nova-cert]
+  host: osp7ps-controller01.test.local
+  time: 2016-04-11 12:42:43.240739 +09:00
+  kind: apply
+  report_format: 4
+  puppet_version: "3.6.2"
+  configuration_version: 1460346161
+  transaction_uuid: "5bdc7156-ca9a-4120-872b-0d73bcc79345"
+  environment: production
+  status: changed

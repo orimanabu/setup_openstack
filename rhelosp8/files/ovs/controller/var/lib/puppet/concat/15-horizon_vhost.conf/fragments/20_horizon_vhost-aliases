@@ -1,0 +1,2 @@
+  ## Alias declarations for resources outside the DocumentRoot
+  Alias /dashboard/static "/usr/share/openstack-dashboard/static"

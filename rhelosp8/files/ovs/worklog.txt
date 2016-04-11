@@ -1,0 +1,863 @@
+[root@osp7ps-controller01 common]# ./user_create.sh demo demo demo demo
+=> keystone
+=====> [20160411-135846] host: (local), command: openstack project create demo --description demo_tenant --enable
++-------------+----------------------------------+
+| Field       | Value                            |
++-------------+----------------------------------+
+| description | demo_tenant                      |
+| enabled     | True                             |
+| id          | f21cfeed248e432bae16aa83accf208e |
+| name        | demo                             |
++-------------+----------------------------------+
+=====> [20160411-135847] host: (local), command: openstack user create --project demo --password demo --email ori@redhat.com --enable demo
++------------+----------------------------------+
+| Field      | Value                            |
++------------+----------------------------------+
+| email      | ori@redhat.com                   |
+| enabled    | True                             |
+| id         | 2e195ef50636400c9632ea1fe8d97c6a |
+| name       | demo                             |
+| project_id | f21cfeed248e432bae16aa83accf208e |
+| username   | demo                             |
++------------+----------------------------------+
+=====> [20160411-135847] host: (local), command: openstack role create demo
++-------+----------------------------------+
+| Field | Value                            |
++-------+----------------------------------+
+| id    | b7440314417d4df39fa6e01b3da0ab9e |
+| name  | demo                             |
++-------+----------------------------------+
+=====> [20160411-135848] host: (local), command: openstack role add --user demo --project demo demo
++-------+----------------------------------+
+| Field | Value                            |
++-------+----------------------------------+
+| id    | b7440314417d4df39fa6e01b3da0ab9e |
+| name  | demo                             |
++-------+----------------------------------+
+=====> [20160411-135849] host: (local), command: openstack project list
++----------------------------------+----------+
+| ID                               | Name     |
++----------------------------------+----------+
+| 08735be59d3c419ab6e92be6497311d5 | services |
+| d8bfa2f7e4994784acdee67e64a849ff | admin    |
+| f21cfeed248e432bae16aa83accf208e | demo     |
++----------------------------------+----------+
+=====> [20160411-135850] host: (local), command: openstack user list
++----------------------------------+------------+
+| ID                               | Name       |
++----------------------------------+------------+
+| 04fd899bf69c4729ac8b1206c0f23f0a | neutron    |
+| 112d027945284a82b00db6c7a23a687a | glance     |
+| 25ee83b20c084030837b3db6613e9e03 | admin      |
+| 2e195ef50636400c9632ea1fe8d97c6a | demo       |
+| 602d89dbb4ce488a9cefec3bdc678788 | swift      |
+| 86bc6b1c4efa4b1eb81f61ec797696a3 | nova       |
+| b7c1be46dedf479fa4eb900e9691cee7 | ceilometer |
+| c79b7889acbc40339fef26dbdb719160 | cinder     |
+| fa12db88541f4146a0ebf0be3e009c92 | heat       |
++----------------------------------+------------+
+=====> [20160411-135850] host: (local), command: openstack user show demo
++------------+----------------------------------+
+| Field      | Value                            |
++------------+----------------------------------+
+| email      | ori@redhat.com                   |
+| enabled    | True                             |
+| id         | 2e195ef50636400c9632ea1fe8d97c6a |
+| name       | demo                             |
+| project_id | f21cfeed248e432bae16aa83accf208e |
+| username   | demo                             |
++------------+----------------------------------+
+=====> [20160411-135851] host: (local), command: openstack user role list --project demo demo
++----------------------------------+----------+---------+------+
+| ID                               | Name     | Project | User |
++----------------------------------+----------+---------+------+
+| 9fe2ff9ee4384b1894a90878d3e92bab | _member_ | demo    | demo |
+| b7440314417d4df39fa6e01b3da0ab9e | demo     | demo    | demo |
++----------------------------------+----------+---------+------+
+[root@osp7ps-controller01 common]#
+
+
+[root@osp7ps-controller01 common]# ./prepare.sh demo
+* rcfile: /root/keystonerc_demo
+* tenant: demo
+creating m1.nano...
+=====> [20160411-135918] host: (local), command: nova flavor-create m1.nano 6 64 1 1
++----+---------+-----------+------+-----------+------+-------+-------------+-----------+
+| ID | Name    | Memory_MB | Disk | Ephemeral | Swap | VCPUs | RXTX_Factor | Is_Public |
++----+---------+-----------+------+-----------+------+-------+-------------+-----------+
+| 6  | m1.nano | 64        | 1    | 0         |      | 1     | 1.0         | True      |
++----+---------+-----------+------+-----------+------+-------+-------------+-----------+
+=====> [20160411-135920] host: (local), command: openstack flavor create --id 7 --ram 64 --disk 1 --vcpus 1 m1.nano2
++----------------------------+----------+
+| Field                      | Value    |
++----------------------------+----------+
+| OS-FLV-DISABLED:disabled   | False    |
+| OS-FLV-EXT-DATA:ephemeral  | 0        |
+| disk                       | 1        |
+| id                         | 7        |
+| name                       | m1.nano2 |
+| os-flavor-access:is_public | True     |
+| ram                        | 64       |
+| rxtx_factor                | 1.0      |
+| swap                       |          |
+| vcpus                      | 1        |
++----------------------------+----------+
+=====> [20160411-135921] host: (local), command: openstack keypair create --public-key /root/.ssh/id_rsa.pub sshkey
++-------------+-------------------------------------------------+
+| Field       | Value                                           |
++-------------+-------------------------------------------------+
+| fingerprint | 59:a7:74:ba:66:b7:67:a3:2f:97:29:0c:e6:45:c4:cf |
+| name        | sshkey                                          |
+| user_id     | 2e195ef50636400c9632ea1fe8d97c6a                |
++-------------+-------------------------------------------------+
+=====> [20160411-135922] host: (local), command: neutron security-group-create sg_demo
+Created a new security_group:
++----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Field                | Value                                                                                                                                                                                                                                                                                                                         |
++----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| description          |                                                                                                                                                                                                                                                                                                                               |
+| id                   | 25b53b06-d95c-4051-bb89-3f480162f367                                                                                                                                                                                                                                                                                          |
+| name                 | sg_demo                                                                                                                                                                                                                                                                                                                       |
+| security_group_rules | {"remote_group_id": null, "direction": "egress", "remote_ip_prefix": null, "protocol": null, "tenant_id": "f21cfeed248e432bae16aa83accf208e", "port_range_max": null, "security_group_id": "25b53b06-d95c-4051-bb89-3f480162f367", "port_range_min": null, "ethertype": "IPv4", "id": "c221e7cb-1bfc-4d6f-a9c9-812c47dbb1ef"} |
+|                      | {"remote_group_id": null, "direction": "egress", "remote_ip_prefix": null, "protocol": null, "tenant_id": "f21cfeed248e432bae16aa83accf208e", "port_range_max": null, "security_group_id": "25b53b06-d95c-4051-bb89-3f480162f367", "port_range_min": null, "ethertype": "IPv6", "id": "ebfedbf4-daca-46d8-83a0-4d053fb6a555"} |
+| tenant_id            | f21cfeed248e432bae16aa83accf208e                                                                                                                                                                                                                                                                                              |
++----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+=====> [20160411-135923] host: (local), command: openstack security group rule create sg_demo --proto icmp --dst-port 0
++-----------------+--------------------------------------+
+| Field           | Value                                |
++-----------------+--------------------------------------+
+| group           | {}                                   |
+| id              | 5a781561-d051-46a6-97c4-d47f2328007d |
+| ip_protocol     | icmp                                 |
+| ip_range        | 0.0.0.0/0                            |
+| parent_group_id | 25b53b06-d95c-4051-bb89-3f480162f367 |
+| port_range      |                                      |
++-----------------+--------------------------------------+
+=====> [20160411-135925] host: (local), command: openstack security group rule create sg_demo --proto tcp --dst-port 22:22
++-----------------+--------------------------------------+
+| Field           | Value                                |
++-----------------+--------------------------------------+
+| group           | {}                                   |
+| id              | 162bcd14-7c60-4493-b4ed-52f665995b70 |
+| ip_protocol     | tcp                                  |
+| ip_range        | 0.0.0.0/0                            |
+| parent_group_id | 25b53b06-d95c-4051-bb89-3f480162f367 |
+| port_range      | 22:22                                |
++-----------------+--------------------------------------+
+=====> [20160411-135926] host: (local), command: openstack security group rule create sg_demo --proto tcp --dst-port 3389:3389
++-----------------+--------------------------------------+
+| Field           | Value                                |
++-----------------+--------------------------------------+
+| group           | {}                                   |
+| id              | b0e1fbe9-f98d-4836-ba9e-d3e8254c7c05 |
+| ip_protocol     | tcp                                  |
+| ip_range        | 0.0.0.0/0                            |
+| parent_group_id | 25b53b06-d95c-4051-bb89-3f480162f367 |
+| port_range      | 3389:3389                            |
++-----------------+--------------------------------------+
+=====> [20160411-135927] host: (local), command: openstack flavor list
++----+-----------+-------+------+-----------+-------+-----------+
+| ID | Name      |   RAM | Disk | Ephemeral | VCPUs | Is Public |
++----+-----------+-------+------+-----------+-------+-----------+
+| 1  | m1.tiny   |   512 |    1 |         0 |     1 | True      |
+| 2  | m1.small  |  2048 |   20 |         0 |     1 | True      |
+| 3  | m1.medium |  4096 |   40 |         0 |     2 | True      |
+| 4  | m1.large  |  8192 |   80 |         0 |     4 | True      |
+| 5  | m1.xlarge | 16384 |  160 |         0 |     8 | True      |
+| 6  | m1.nano   |    64 |    1 |         0 |     1 | True      |
+| 7  | m1.nano2  |    64 |    1 |         0 |     1 | True      |
++----+-----------+-------+------+-----------+-------+-----------+
+=====> [20160411-135928] host: (local), command: openstack keypair list
++--------+-------------------------------------------------+
+| Name   | Fingerprint                                     |
++--------+-------------------------------------------------+
+| sshkey | 59:a7:74:ba:66:b7:67:a3:2f:97:29:0c:e6:45:c4:cf |
++--------+-------------------------------------------------+
+[root@osp7ps-controller01 common]#
+
+
+[root@osp7ps-controller01 common]# ./glance.sh -i cirros,rhel7
+format: qcow2
+images: cirros,rhel7
+tenant: demo
+=> fetching images
+==> fetch: cirros
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 12.6M  100 12.6M    0     0  2010k      0  0:00:06  0:00:06 --:--:-- 2668k
+==> fetch: rhel7
+package rhel-guest-image-7 is not installed
+Loaded plugins: priorities, product-id, search-disabled-repos, subscription-manager
+This system is not registered to Red Hat Subscription Management. You can use subscription-manager to register.
+bootstrap                                                                                                                                                                                                                                                | 2.9 kB  00:00:00
+rhel-7-server-eus-rh-common-rpms                                                                                                                                                                                                                         | 4.0 kB  00:00:00
+rhel-7-server-extras-rpms                                                                                                                                                                                                                                | 4.0 kB  00:00:00
+rhel-7-server-openstack-8-director-rpms                                                                                                                                                                                                                  | 4.0 kB  00:00:00
+rhel-7-server-openstack-8-optools-rpms                                                                                                                                                                                                                   | 4.0 kB  00:00:00
+rhel-7-server-openstack-8-rpms                                                                                                                                                                                                                           | 2.9 kB  00:00:00
+rhel-7-server-openstack-8-tools-rpms                                                                                                                                                                                                                     | 4.0 kB  00:00:00
+rhel-7-server-optional-rpms                                                                                                                                                                                                                              | 4.0 kB  00:00:00
+rhel-7-server-rpms                                                                                                                                                                                                                                       | 4.4 kB  00:00:00
+(1/3): rhel-7-server-eus-rh-common-rpms/group_gz                                                                                                                                                                                                         |   90 B  00:00:00
+(2/3): rhel-7-server-eus-rh-common-rpms/updateinfo                                                                                                                                                                                                       |   76 B  00:00:00
+(3/3): rhel-7-server-eus-rh-common-rpms/primary_db                                                                                                                                                                                                       | 1.1 kB  00:00:00
+No package rhel-guest-image-7 available.
+Error: Nothing to do
+find: '/usr/share/rhel-guest-image-7': No such file or directory
+=> importing to Glance
+==> import: cirros
+./images/cirros-0.3.4-x86_64-disk.img
+=====> [20160411-140025] host: (local), command: openstack image create cirros --public --disk-format qcow2 --container-format bare --file ./images/cirros-0.3.4-x86_64-disk.img
++------------------+------------------------------------------------------+
+| Field            | Value                                                |
++------------------+------------------------------------------------------+
+| checksum         | ee1eca47dc88f4879d8a229cc70a07c6                     |
+| container_format | bare                                                 |
+| created_at       | 2016-04-11T05:00:26Z                                 |
+| disk_format      | qcow2                                                |
+| file             | /v2/images/d8a78437-d0c6-4ed1-853d-205ac41a6b9c/file |
+| id               | d8a78437-d0c6-4ed1-853d-205ac41a6b9c                 |
+| min_disk         | 0                                                    |
+| min_ram          | 0                                                    |
+| name             | cirros                                               |
+| owner            | d8bfa2f7e4994784acdee67e64a849ff                     |
+| protected        | False                                                |
+| schema           | /v2/schemas/image                                    |
+| size             | 13287936                                             |
+| status           | active                                               |
+| updated_at       | 2016-04-11T05:00:26Z                                 |
+| virtual_size     | None                                                 |
+| visibility       | public                                               |
++------------------+------------------------------------------------------+
+==> import: rhel7
+
+=====> [20160411-140027] host: (local), command: openstack image create rhel7 --public --disk-format qcow2 --container-format bare --file
+usage: openstack image create [-h]
+                              [-f {html,json,json,shell,table,value,yaml,yaml}]
+                              [-c COLUMN] [--max-width <integer>] [--noindent]
+                              [--prefix PREFIX] [--id <id>]
+                              [--container-format <container-format>]
+                              [--disk-format <disk-format>]
+                              [--min-disk <disk-gb>] [--min-ram <ram-mb>]
+                              [--file <file>] [--protected | --unprotected]
+                              [--public | --private] [--property <key=value>]
+                              [--tag <tag>]
+                              <image-name>
+openstack image create: error: argument --file: expected one argument
+[root@osp7ps-controller01 common]# vim /etc/yum.repos.d/reposyncer-gps-nrt-rhel7.repo
+[root@osp7ps-controller01 common]# ./glance.sh -i rhel7
+format: qcow2
+images: rhel7
+tenant: demo
+=> fetching images
+==> fetch: rhel7
+package rhel-guest-image-7 is not installed
+Loaded plugins: priorities, product-id, search-disabled-repos, subscription-manager
+This system is not registered to Red Hat Subscription Management. You can use subscription-manager to register.
+bootstrap                                                                                                                                                                                                                                                | 2.9 kB  00:00:00
+rhel-7-server-extras-rpms                                                                                                                                                                                                                                | 4.0 kB  00:00:00
+rhel-7-server-openstack-8-director-rpms                                                                                                                                                                                                                  | 4.0 kB  00:00:00
+rhel-7-server-openstack-8-optools-rpms                                                                                                                                                                                                                   | 4.0 kB  00:00:00
+rhel-7-server-openstack-8-rpms                                                                                                                                                                                                                           | 2.9 kB  00:00:00
+rhel-7-server-openstack-8-tools-rpms                                                                                                                                                                                                                     | 4.0 kB  00:00:00
+rhel-7-server-optional-rpms                                                                                                                                                                                                                              | 4.0 kB  00:00:00
+rhel-7-server-rh-common-rpms                                                                                                                                                                                                                             | 4.0 kB  00:00:00
+rhel-7-server-rpms                                                                                                                                                                                                                                       | 4.4 kB  00:00:00
+(1/3): rhel-7-server-rh-common-rpms/group_gz                                                                                                                                                                                                             |   90 B  00:00:00
+(2/3): rhel-7-server-rh-common-rpms/primary_db                                                                                                                                                                                                           |  84 kB  00:00:00
+(3/3): rhel-7-server-rh-common-rpms/updateinfo                                                                                                                                                                                                           |  26 kB  00:00:00
+Resolving Dependencies
+--> Running transaction check
+---> Package rhel-guest-image-7.noarch 0:7.2-20160302.0.el7_2 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================================================================================================================================================================================================================
+ Package                                                           Arch                                                  Version                                                              Repository                                                                   Size
+================================================================================================================================================================================================================================================================================
+Installing:
+ rhel-guest-image-7                                                noarch                                                7.2-20160302.0.el7_2                                                 rhel-7-server-rh-common-rpms                                                453 M
+
+Transaction Summary
+================================================================================================================================================================================================================================================================================
+Install  1 Package
+
+Total download size: 453 M
+Installed size: 470 M
+Downloading packages:
+rhel-guest-image-7-7.2-20160302.0.el7_2.noarch.rpm                                                                                                                                                                                                       | 453 MB  00:00:07
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : rhel-guest-image-7-7.2-20160302.0.el7_2.noarch                                                                                                                                                                                                               1/1
+  Verifying  : rhel-guest-image-7-7.2-20160302.0.el7_2.noarch                                                                                                                                                                                                               1/1
+
+Installed:
+  rhel-guest-image-7.noarch 0:7.2-20160302.0.el7_2
+
+Complete!
+=> importing to Glance
+==> import: rhel7
+/usr/share/rhel-guest-image-7/rhel-guest-image-7.2-20160302.0.x86_64.qcow2
+=====> [20160411-140127] host: (local), command: openstack image create rhel7 --public --disk-format qcow2 --container-format bare --file /usr/share/rhel-guest-image-7/rhel-guest-image-7.2-20160302.0.x86_64.qcow2
++------------------+------------------------------------------------------+
+| Field            | Value                                                |
++------------------+------------------------------------------------------+
+| checksum         | 5907366ad7abe80c63d2936b92dec704                     |
+| container_format | bare                                                 |
+| created_at       | 2016-04-11T05:01:28Z                                 |
+| disk_format      | qcow2                                                |
+| file             | /v2/images/85c4831e-23c9-48a6-a6b6-f19de5fc5ae4/file |
+| id               | 85c4831e-23c9-48a6-a6b6-f19de5fc5ae4                 |
+| min_disk         | 0                                                    |
+| min_ram          | 0                                                    |
+| name             | rhel7                                                |
+| owner            | d8bfa2f7e4994784acdee67e64a849ff                     |
+| protected        | False                                                |
+| schema           | /v2/schemas/image                                    |
+| size             | 492692992                                            |
+| status           | active                                               |
+| updated_at       | 2016-04-11T05:01:31Z                                 |
+| virtual_size     | None                                                 |
+| visibility       | public                                               |
++------------------+------------------------------------------------------+
+[root@osp7ps-controller01 common]#
+
+
+
+[root@osp7ps-controller01 common(keystone_admin)]# ./neutron.sh external-create
+* op: external-create
+* ha: 0
+* tenant: admin
+* public_network: external
+* network: admin_net
+* subnet: admin_net_subnet
+* router: router_admin
+* cidr: 192.168.99.0/24
+* prefix: 192.168.99
+* prefixlen: 24
+* pool_start: 192.168.99.100
+* pool_end: 192.168.99.199
+* gateway: 192.168.99.1
+=====> [20160411-140301] host: (local), command: neutron net-create external --provider:network_type flat --provider:physical_network physnet-external --router:external
+Created a new network:
++---------------------------+--------------------------------------+
+| Field                     | Value                                |
++---------------------------+--------------------------------------+
+| admin_state_up            | True                                 |
+| id                        | 241fc5bf-fbb9-480f-a342-bd1baac79a52 |
+| mtu                       | 0                                    |
+| name                      | external                             |
+| provider:network_type     | flat                                 |
+| provider:physical_network | physnet-external                     |
+| provider:segmentation_id  |                                      |
+| router:external           | True                                 |
+| shared                    | False                                |
+| status                    | ACTIVE                               |
+| subnets                   |                                      |
+| tenant_id                 | d8bfa2f7e4994784acdee67e64a849ff     |
++---------------------------+--------------------------------------+
+=====> [20160411-140302] host: (local), command: neutron subnet-create external 172.16.99.0/24 --name external_subnet --disable-dhcp --gateway 172.16.99.254 --allocation-pool start=172.16.99.100,end=172.16.99.199
+Created a new subnet:
++-------------------+----------------------------------------------------+
+| Field             | Value                                              |
++-------------------+----------------------------------------------------+
+| allocation_pools  | {"start": "172.16.99.100", "end": "172.16.99.199"} |
+| cidr              | 172.16.99.0/24                                     |
+| dns_nameservers   |                                                    |
+| enable_dhcp       | False                                              |
+| gateway_ip        | 172.16.99.254                                      |
+| host_routes       |                                                    |
+| id                | b8839dcf-94ff-471a-8901-1a2643976fdf               |
+| ip_version        | 4                                                  |
+| ipv6_address_mode |                                                    |
+| ipv6_ra_mode      |                                                    |
+| name              | external_subnet                                    |
+| network_id        | 241fc5bf-fbb9-480f-a342-bd1baac79a52               |
+| subnetpool_id     |                                                    |
+| tenant_id         | d8bfa2f7e4994784acdee67e64a849ff                   |
++-------------------+----------------------------------------------------+
+[root@osp7ps-controller01 common(keystone_admin)]#
+
+
+[root@osp7ps-controller01 common(keystone_admin)]# source ~/keystonerc_demo
+[root@osp7ps-controller01 common(keystone_demo)]# ./neutron.sh create
+* op: create
+* ha: 0
+* tenant: demo
+* public_network: external
+* network: demo_net
+* subnet: demo_net_subnet
+* router: router_demo
+* cidr: 192.168.99.0/24
+* prefix: 192.168.99
+* prefixlen: 24
+* pool_start: 192.168.99.100
+* pool_end: 192.168.99.199
+* gateway: 192.168.99.1
+=====> [20160411-140329] host: (local), command: neutron router-create --tenant-id f21cfeed248e432bae16aa83accf208e router_demo
+Created a new router:
++-----------------------+--------------------------------------+
+| Field                 | Value                                |
++-----------------------+--------------------------------------+
+| admin_state_up        | True                                 |
+| distributed           | False                                |
+| external_gateway_info |                                      |
+| ha                    | False                                |
+| id                    | f82608bd-adf3-479d-a4e9-7c037596badc |
+| name                  | router_demo                          |
+| routes                |                                      |
+| status                | ACTIVE                               |
+| tenant_id             | f21cfeed248e432bae16aa83accf208e     |
++-----------------------+--------------------------------------+
+=====> [20160411-140331] host: (local), command: neutron router-gateway-set f82608bd-adf3-479d-a4e9-7c037596badc 241fc5bf-fbb9-480f-a342-bd1baac79a52
+Set gateway for router f82608bd-adf3-479d-a4e9-7c037596badc
+=====> [20160411-140332] host: (local), command: neutron net-create demo_net
+Created a new network:
++-----------------+--------------------------------------+
+| Field           | Value                                |
++-----------------+--------------------------------------+
+| admin_state_up  | True                                 |
+| id              | 306d1ee0-f193-429a-beb5-597b608204f9 |
+| mtu             | 0                                    |
+| name            | demo_net                             |
+| router:external | False                                |
+| shared          | False                                |
+| status          | ACTIVE                               |
+| subnets         |                                      |
+| tenant_id       | f21cfeed248e432bae16aa83accf208e     |
++-----------------+--------------------------------------+
+=====> [20160411-140333] host: (local), command: neutron subnet-create demo_net 192.168.99.0/24 --name demo_net_subnet --enable_dhcp True --gateway 192.168.99.1 --allocation-pool start=192.168.99.100,end=192.168.99.199
+Created a new subnet:
++-------------------+------------------------------------------------------+
+| Field             | Value                                                |
++-------------------+------------------------------------------------------+
+| allocation_pools  | {"start": "192.168.99.100", "end": "192.168.99.199"} |
+| cidr              | 192.168.99.0/24                                      |
+| dns_nameservers   |                                                      |
+| enable_dhcp       | True                                                 |
+| gateway_ip        | 192.168.99.1                                         |
+| host_routes       |                                                      |
+| id                | 38d7d53b-5824-4cab-8927-e0491798a14a                 |
+| ip_version        | 4                                                    |
+| ipv6_address_mode |                                                      |
+| ipv6_ra_mode      |                                                      |
+| name              | demo_net_subnet                                      |
+| network_id        | 306d1ee0-f193-429a-beb5-597b608204f9                 |
+| subnetpool_id     |                                                      |
+| tenant_id         | f21cfeed248e432bae16aa83accf208e                     |
++-------------------+------------------------------------------------------+
+=====> [20160411-140335] host: (local), command: neutron router-interface-add f82608bd-adf3-479d-a4e9-7c037596badc demo_net_subnet
+Added interface 7b93a690-7cb2-41d5-a142-4d573067f453 to router f82608bd-adf3-479d-a4e9-7c037596badc.
+[root@osp7ps-controller01 common(keystone_demo)]#
+
+
+[root@osp7ps-controller01 common(keystone_demo)]# ./nova.sh -v vm1 boot
+* rcfile:       /root/keystonerc
+* region:       regionOne
+* tenant:       demo
+* flavor:       m1.tiny
+* network:      demo_net
+* secgroup:     sg_demo
+* image:        cirros
+* vm:   vm1
+* volume:
+=====> [20160411-140506] host: (local), command: nova boot --poll --flavor m1.tiny --key-name sshkey --nic net-id=306d1ee0-f193-429a-beb5-597b608204f9 --image cirros --security-groups sg_demo vm1
++--------------------------------------+-----------------------------------------------+
+| Property                             | Value                                         |
++--------------------------------------+-----------------------------------------------+
+| OS-DCF:diskConfig                    | MANUAL                                        |
+| OS-EXT-AZ:availability_zone          |                                               |
+| OS-EXT-STS:power_state               | 0                                             |
+| OS-EXT-STS:task_state                | scheduling                                    |
+| OS-EXT-STS:vm_state                  | building                                      |
+| OS-SRV-USG:launched_at               | -                                             |
+| OS-SRV-USG:terminated_at             | -                                             |
+| accessIPv4                           |                                               |
+| accessIPv6                           |                                               |
+| adminPass                            | eHSFwc9iqqCc                                  |
+| config_drive                         |                                               |
+| created                              | 2016-04-11T05:05:08Z                          |
+| flavor                               | m1.tiny (1)                                   |
+| hostId                               |                                               |
+| id                                   | 46341d22-732e-404e-b9f3-2f469773ea5e          |
+| image                                | cirros (d8a78437-d0c6-4ed1-853d-205ac41a6b9c) |
+| key_name                             | sshkey                                        |
+| metadata                             | {}                                            |
+| name                                 | vm1                                           |
+| os-extended-volumes:volumes_attached | []                                            |
+| progress                             | 0                                             |
+| security_groups                      | sg_demo                                       |
+| status                               | BUILD                                         |
+| tenant_id                            | f21cfeed248e432bae16aa83accf208e              |
+| updated                              | 2016-04-11T05:05:08Z                          |
+| user_id                              | 2e195ef50636400c9632ea1fe8d97c6a              |
++--------------------------------------+-----------------------------------------------+
+
+Server building... 100% complete
+Finished
+[root@osp7ps-controller01 common(keystone_demo)]# nova list
++--------------------------------------+------+--------+------------+-------------+-------------------------+
+| ID                                   | Name | Status | Task State | Power State | Networks                |
++--------------------------------------+------+--------+------------+-------------+-------------------------+
+| 46341d22-732e-404e-b9f3-2f469773ea5e | vm1  | ACTIVE | -          | Running     | demo_net=192.168.99.101 |
++--------------------------------------+------+--------+------------+-------------+-------------------------+
+[root@osp7ps-controller01 common(keystone_demo)]# nova console-log vm1
+[    0.000000] Initializing cgroup subsys cpuset
+[    0.000000] Initializing cgroup subsys cpu
+[    0.000000] Linux version 3.2.0-80-virtual (buildd@batsu) (gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5) ) #116-Ubuntu SMP Mon Mar 23 17:28:52 UTC 2015 (Ubuntu 3.2.0-80.116-virtual 3.2.68)
+[    0.000000] Command line: LABEL=cirros-rootfs ro console=tty1 console=ttyS0
+[    0.000000] KERNEL supported cpus:
+[    0.000000]   Intel GenuineIntel
+[    0.000000]   AMD AuthenticAMD
+[    0.000000]   Centaur CentaurHauls
+[    0.000000] BIOS-provided physical RAM map:
+[    0.000000]  BIOS-e820: 0000000000000000 - 000000000009fc00 (usable)
+[    0.000000]  BIOS-e820: 000000000009fc00 - 00000000000a0000 (reserved)
+[    0.000000]  BIOS-e820: 00000000000f0000 - 0000000000100000 (reserved)
+[    0.000000]  BIOS-e820: 0000000000100000 - 000000001ffe0000 (usable)
+[    0.000000]  BIOS-e820: 000000001ffe0000 - 0000000020000000 (reserved)
+[    0.000000]  BIOS-e820: 00000000feffc000 - 00000000ff000000 (reserved)
+[    0.000000]  BIOS-e820: 00000000fffc0000 - 0000000100000000 (reserved)
+[    0.000000] NX (Execute Disable) protection: active
+[    0.000000] SMBIOS 2.8 present.
+[    0.000000] No AGP bridge found
+[    0.000000] last_pfn = 0x1ffe0 max_arch_pfn = 0x400000000
+[    0.000000] PAT not supported by CPU.
+[    0.000000] found SMP MP-table at [ffff8800000f2050] f2050
+[    0.000000] init_memory_mapping: 0000000000000000-000000001ffe0000
+[    0.000000] RAMDISK: 1fc72000 - 1ffd0000
+[    0.000000] ACPI: RSDP 00000000000f1e20 00014 (v00 BOCHS )
+[    0.000000] ACPI: RSDT 000000001ffe169c 00030 (v01 BOCHS  BXPCRSDT 00000001 BXPC 00000001)
+[    0.000000] ACPI: FACP 000000001ffe0c14 00074 (v01 BOCHS  BXPCFACP 00000001 BXPC 00000001)
+[    0.000000] ACPI: DSDT 000000001ffe0040 00BD4 (v01 BOCHS  BXPCDSDT 00000001 BXPC 00000001)
+[    0.000000] ACPI: FACS 000000001ffe0000 00040
+[    0.000000] ACPI: SSDT 000000001ffe0c88 0099C (v01 BOCHS  BXPCSSDT 00000001 BXPC 00000001)
+[    0.000000] ACPI: APIC 000000001ffe1624 00078 (v01 BOCHS  BXPCAPIC 00000001 BXPC 00000001)
+[    0.000000] No NUMA configuration found
+[    0.000000] Faking a node at 0000000000000000-000000001ffe0000
+[    0.000000] Initmem setup node 0 0000000000000000-000000001ffe0000
+[    0.000000]   NODE_DATA [000000001ffd8000 - 000000001ffdcfff]
+[    0.000000] kvm-clock: Using msrs 4b564d01 and 4b564d00
+[    0.000000] kvm-clock: cpu 0, msr 0:1cf76c1, boot clock
+[    0.000000] Zone PFN ranges:
+[    0.000000]   DMA      0x00000010 -> 0x00001000
+[    0.000000]   DMA32    0x00001000 -> 0x00100000
+[    0.000000]   Normal   empty
+[    0.000000] Movable zone start PFN for each node
+[    0.000000] early_node_map[2] active PFN ranges
+[    0.000000]     0: 0x00000010 -> 0x0000009f
+[    0.000000]     0: 0x00000100 -> 0x0001ffe0
+[    0.000000] ACPI: PM-Timer IO Port: 0x608
+[    0.000000] ACPI: LAPIC (acpi_id[0x00] lapic_id[0x00] enabled)
+[    0.000000] ACPI: LAPIC_NMI (acpi_id[0xff] dfl dfl lint[0x1])
+[    0.000000] ACPI: IOAPIC (id[0x00] address[0xfec00000] gsi_base[0])
+[    0.000000] IOAPIC[0]: apic_id 0, version 17, address 0xfec00000, GSI 0-23
+[    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 0 global_irq 2 dfl dfl)
+[    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 5 global_irq 5 high level)
+[    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 9 global_irq 9 high level)
+[    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 10 global_irq 10 high level)
+[    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 11 global_irq 11 high level)
+[    0.000000] Using ACPI (MADT) for SMP configuration information
+[    0.000000] SMP: Allowing 1 CPUs, 0 hotplug CPUs
+[    0.000000] PM: Registered nosave memory: 000000000009f000 - 00000000000a0000
+[    0.000000] PM: Registered nosave memory: 00000000000a0000 - 00000000000f0000
+[    0.000000] PM: Registered nosave memory: 00000000000f0000 - 0000000000100000
+[    0.000000] Allocating PCI resources starting at 20000000 (gap: 20000000:deffc000)
+[    0.000000] Booting paravirtualized kernel on KVM
+[    0.000000] setup_percpu: NR_CPUS:64 nr_cpumask_bits:64 nr_cpu_ids:1 nr_node_ids:1
+[    0.000000] PERCPU: Embedded 27 pages/cpu @ffff88001fa00000 s78848 r8192 d23552 u2097152
+[    0.000000] kvm-clock: cpu 0, msr 0:1fa126c1, primary cpu clock
+[    0.000000] KVM setup async PF for cpu 0
+[    0.000000] kvm-stealtime: cpu 0, msr 1fa0cd40
+[    0.000000] Built 1 zonelists in Node order, mobility grouping on.  Total pages: 128874
+[    0.000000] Policy zone: DMA32
+[    0.000000] Kernel command line: LABEL=cirros-rootfs ro console=tty1 console=ttyS0
+[    0.000000] PID hash table entries: 2048 (order: 2, 16384 bytes)
+[    0.000000] Checking aperture...
+[    0.000000] No AGP bridge found
+[    0.000000] Memory: 496176k/524160k available (6576k kernel code, 452k absent, 27532k reserved, 6620k data, 928k init)
+[    0.000000] SLUB: Genslabs=15, HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] Hierarchical RCU implementation.
+[    0.000000]  RCU dyntick-idle grace-period acceleration is enabled.
+[    0.000000] NR_IRQS:4352 nr_irqs:256 16
+[    0.000000] Console: colour VGA+ 80x25
+[    0.000000] console [tty1] enabled
+[    0.000000] console [ttyS0] enabled
+[    0.000000] allocated 4194304 bytes of page_cgroup
+[    0.000000] please try 'cgroup_disable=memory' option if you don't want memory cgroups
+[    0.000000] Detected 2893.406 MHz processor.
+[    0.012000] Calibrating delay loop (skipped) preset value.. 5786.81 BogoMIPS (lpj=11573624)
+[    0.016024] pid_max: default: 32768 minimum: 301
+[    0.020048] Security Framework initialized
+[    0.024035] AppArmor: AppArmor initialized
+[    0.028025] Yama: becoming mindful.
+[    0.032116] Dentry cache hash table entries: 65536 (order: 7, 524288 bytes)
+[    0.040061] Inode-cache hash table entries: 32768 (order: 6, 262144 bytes)
+[    0.044071] Mount-cache hash table entries: 256
+[    0.048123] Initializing cgroup subsys cpuacct
+[    0.052038] Initializing cgroup subsys memory
+[    0.056033] Initializing cgroup subsys devices
+[    0.060026] Initializing cgroup subsys freezer
+[    0.064026] Initializing cgroup subsys blkio
+[    0.068032] Initializing cgroup subsys perf_event
+[    0.073050] mce: CPU supports 10 MCE banks
+[    0.078210] SMP alternatives: switching to UP code
+[    0.286427] Freeing SMP alternatives: 24k freed
+[    0.288051] ACPI: Core revision 20110623
+[    0.292849] ftrace: allocating 26610 entries in 105 pages
+[    0.305248] Enabling x2apic
+[    0.308018] Enabled x2apic
+[    0.308042] Switched APIC routing to physical x2apic.
+[    0.324019] ..TIMER: vector=0x30 apic1=0 pin1=2 apic2=-1 pin2=-1
+[    0.324024] CPU0: Intel QEMU Virtual CPU version 2.3.0 stepping 03
+[    0.340020] APIC calibration not consistent with PM-Timer: 114ms instead of 100ms
+[    0.340020] APIC delta adjusted to PM-Timer: 6249571 (7154112)
+[    0.340208] Performance Events: Broken PMU hardware detected, using software events only.
+[    0.348138] NMI watchdog disabled (cpu0): hardware events not enabled
+[    0.352040] Brought up 1 CPUs
+[    0.356025] Total of 1 processors activated (5786.81 BogoMIPS).
+[    0.362722] devtmpfs: initialized
+[    0.364445] EVM: security.selinux
+[    0.368029] EVM: security.SMACK64
+[    0.372074] EVM: security.capability
+[    0.376724] print_constraints: dummy:
+[    0.380536] RTC time:  5:05:17, date: 04/11/16
+[    0.384080] NET: Registered protocol family 16
+[    0.388203] ACPI: bus type pci registered
+[    0.392558] PCI: Using configuration type 1 for base access
+[    0.396633] bio: create slab <bio-0> at 0
+[    0.401594] ACPI: Added _OSI(Module Device)
+[    0.404035] ACPI: Added _OSI(Processor Device)
+[    0.408034] ACPI: Added _OSI(3.0 _SCP Extensions)
+[    0.412036] ACPI: Added _OSI(Processor Aggregator Device)
+[    0.420553] ACPI: Interpreter enabled
+[    0.424029] ACPI: (supports S0 S5)
+[    0.434802] ACPI: Using IOAPIC for interrupt routing
+[    0.442302] ACPI: No dock devices found.
+[    0.444029] HEST: Table not found.
+[    0.448031] PCI: Using host bridge windows from ACPI; if necessary, use "pci=nocrs" and report a bug
+[    0.452046] ACPI: PCI Root Bridge [PCI0] (domain 0000 [bus 00-ff])
+[    0.456069] pci_root PNP0A03:00: host bridge window [io  0x0000-0x0cf7]
+[    0.460031] pci_root PNP0A03:00: host bridge window [io  0x0d00-0xffff]
+[    0.464031] pci_root PNP0A03:00: host bridge window [mem 0x000a0000-0x000bffff]
+[    0.468036] pci_root PNP0A03:00: host bridge window [mem 0x20000000-0xfebfffff]
+[    0.504094] pci 0000:00:01.3: quirk: [io  0x0600-0x063f] claimed by PIIX4 ACPI
+[    0.508099] pci 0000:00:01.3: quirk: [io  0x0700-0x070f] claimed by PIIX4 SMB
+[    0.609192]  pci0000:00: Unable to request _OSC control (_OSC support mask: 0x1e)
+[    0.613744] ACPI: PCI Interrupt Link [LNKA] (IRQs 5 *10 11)
+[    0.622939] ACPI: PCI Interrupt Link [LNKB] (IRQs 5 *10 11)
+[    0.630900] ACPI: PCI Interrupt Link [LNKC] (IRQs 5 10 *11)
+[    0.638952] ACPI: PCI Interrupt Link [LNKD] (IRQs 5 10 *11)
+[    0.646863] ACPI: PCI Interrupt Link [LNKS] (IRQs *9)
+[    0.652304] vgaarb: device added: PCI:0000:00:02.0,decodes=io+mem,owns=io+mem,locks=none
+[    0.656045] vgaarb: loaded
+[    0.660043] vgaarb: bridge control possible 0000:00:02.0
+[    0.664148] i2c-core: driver [aat2870] using legacy suspend method
+[    0.668043] i2c-core: driver [aat2870] using legacy resume method
+[    0.672101] SCSI subsystem initialized
+[    0.676146] usbcore: registered new interface driver usbfs
+[    0.680055] usbcore: registered new interface driver hub
+[    0.684071] usbcore: registered new device driver usb
+[    0.688113] PCI: Using ACPI for IRQ routing
+[    0.693282] NetLabel: Initializing
+[    0.696046] NetLabel:  domain hash size = 128
+[    0.700045] NetLabel:  protocols = UNLABELED CIPSOv4
+[    0.704061] NetLabel:  unlabeled traffic allowed by default
+[    0.708106] Switching to clocksource kvm-clock
+[    0.717152] AppArmor: AppArmor Filesystem Enabled
+[    0.724571] pnp: PnP ACPI init
+[    0.730257] ACPI: bus type pnp registered
+[    0.738694] pnp: PnP ACPI: found 10 devices
+[    0.745472] ACPI: ACPI bus type pnp unregistered
+[    0.758950] NET: Registered protocol family 2
+[    0.767291] IP route cache hash table entries: 4096 (order: 3, 32768 bytes)
+[    0.777288] TCP established hash table entries: 16384 (order: 6, 262144 bytes)
+[    0.794295] TCP bind hash table entries: 16384 (order: 6, 262144 bytes)
+[    0.807577] TCP: Hash tables configured (established 16384 bind 16384)
+[    0.819640] TCP reno registered
+[    0.826805] UDP hash table entries: 256 (order: 1, 8192 bytes)
+[    0.839444] UDP-Lite hash table entries: 256 (order: 1, 8192 bytes)
+[    0.852280] NET: Registered protocol family 1
+[    0.862518] pci 0000:00:00.0: Limiting direct PCI/PCI transfers
+[    0.872524] pci 0000:00:01.0: PIIX3: Enabling Passive Release
+[    0.883384] pci 0000:00:01.0: Activating ISA DMA hang workarounds
+[    0.892913] ACPI: PCI Interrupt Link [LNKD] enabled at IRQ 11
+[    0.901748] pci 0000:00:01.2: PCI INT D -> Link[LNKD] -> GSI 11 (level, high) -> IRQ 11
+[    0.915561] pci 0000:00:01.2: PCI INT D disabled
+[    0.924157] audit: initializing netlink socket (disabled)
+[    0.932719] type=2000 audit(1460351116.932:1): initialized
+[    0.957170] Trying to unpack rootfs image as initramfs...
+[    0.992548] HugeTLB registered 2 MB page size, pre-allocated 0 pages
+[    1.013129] VFS: Disk quotas dquot_6.5.2
+[    1.020106] Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    1.044160] fuse init (API version 7.17)
+[    1.052141] Freeing initrd memory: 3448k freed
+[    1.059637] msgmni has been set to 975
+[    1.066476] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 253)
+[    1.078540] io scheduler noop registered
+[    1.085179] io scheduler deadline registered (default)
+[    1.093018] io scheduler cfq registered
+[    1.099647] pci_hotplug: PCI Hot Plug PCI Core version: 0.5
+[    1.107760] pciehp: PCI Express Hot Plug Controller Driver version: 0.4
+[    1.117122] input: Power Button as /devices/LNXSYSTM:00/LNXPWRBN:00/input/input0
+[    1.128832] ACPI: Power Button [PWRF]
+[    1.136436] ERST: Table is not found!
+[    1.142813] GHES: HEST is not enabled!
+[    1.149997] ACPI: PCI Interrupt Link [LNKC] enabled at IRQ 10
+[    1.158343] virtio-pci 0000:00:03.0: PCI INT A -> Link[LNKC] -> GSI 10 (level, high) -> IRQ 10
+[    1.173077] virtio-pci 0000:00:04.0: PCI INT A -> Link[LNKD] -> GSI 11 (level, high) -> IRQ 11
+[    1.187555] ACPI: PCI Interrupt Link [LNKA] enabled at IRQ 10
+[    1.196046] virtio-pci 0000:00:05.0: PCI INT A -> Link[LNKA] -> GSI 10 (level, high) -> IRQ 10
+[    1.210640] Serial: 8250/16550 driver, 32 ports, IRQ sharing enabled
+[    1.250994] serial8250: ttyS0 at I/O 0x3f8 (irq = 4) is a 16550A
+[    1.290074] serial8250: ttyS1 at I/O 0x2f8 (irq = 3) is a 16550A
+[    1.336497] 00:05: ttyS0 at I/O 0x3f8 (irq = 4) is a 16550A
+[    1.378667] 00:06: ttyS1 at I/O 0x2f8 (irq = 3) is a 16550A
+[    1.387152] Linux agpgart interface v0.103
+[    1.397555] brd: module loaded
+[    1.403995] loop: module loaded
+[    1.414009]  vda: vda1
+[    1.421716] scsi0 : ata_piix
+[    1.427294] scsi1 : ata_piix
+[    1.433315] ata1: PATA max MWDMA2 cmd 0x1f0 ctl 0x3f6 bmdma 0xc0a0 irq 14
+[    1.442627] ata2: PATA max MWDMA2 cmd 0x170 ctl 0x376 bmdma 0xc0a8 irq 15
+[    1.451914] Fixed MDIO Bus: probed
+[    1.457656] tun: Universal TUN/TAP device driver, 1.6
+[    1.465040] tun: (C) 1999-2004 Max Krasnyansky <maxk@qualcomm.com>
+[    1.480628] PPP generic driver version 2.4.2
+[    1.487380] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    1.496213] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    1.504626] uhci_hcd: USB Universal Host Controller Interface driver
+[    1.513462] uhci_hcd 0000:00:01.2: PCI INT D -> Link[LNKD] -> GSI 11 (level, high) -> IRQ 11
+[    1.527818] uhci_hcd 0000:00:01.2: UHCI Host Controller
+[    1.535492] uhci_hcd 0000:00:01.2: new USB bus registered, assigned bus number 1
+[    1.547758] uhci_hcd 0000:00:01.2: irq 11, io base 0x0000c040
+[    1.556236] hub 1-0:1.0: USB hub found
+[    1.562537] hub 1-0:1.0: 2 ports detected
+[    1.569239] usbcore: registered new interface driver libusual
+[    1.583708] i8042: PNP: PS/2 Controller [PNP0303:KBD,PNP0f13:MOU] at 0x60,0x64 irq 1,12
+[    1.608124] serio: i8042 KBD port at 0x60,0x64 irq 1
+[    1.617782] serio: i8042 AUX port at 0x60,0x64 irq 12
+[    1.627581] mousedev: PS/2 mouse device common for all mice
+[    1.642205] input: AT Translated Set 2 keyboard as /devices/platform/i8042/serio0/input/input1
+[    1.657765] rtc_cmos 00:01: RTC can wake from S4
+[    1.667131] rtc_cmos 00:01: rtc core: registered rtc_cmos as rtc0
+[    1.677175] rtc0: alarms up to one day, 114 bytes nvram
+[    1.685384] device-mapper: uevent: version 1.0.3
+[    1.693826] device-mapper: ioctl: 4.22.0-ioctl (2011-10-19) initialised: dm-devel@redhat.com
+[    1.706588] cpuidle: using governor ladder
+[    1.713187] cpuidle: using governor menu
+[    1.719637] EFI Variables Facility v0.08 2004-May-17
+[    1.727285] TCP cubic registered
+[    1.733167] NET: Registered protocol family 10
+[    1.741959] NET: Registered protocol family 17
+[    1.749000] Registering the dns_resolver key type
+[    1.756283] registered taskstats version 1
+[    1.765514]   Magic number: 12:852:61
+[    1.772388] rtc_cmos 00:01: setting system clock to 2016-04-11 05:05:19 UTC (1460351119)
+[    1.785008] BIOS EDD facility v0.16 2004-Jun-25, 0 devices found
+[    1.793498] EDD information not available.
+[    1.802771] Freeing unused kernel memory: 928k freed
+[    1.810601] Write protecting the kernel read-only data: 12288k
+[    1.821776] Freeing unused kernel memory: 1596k freed
+[    1.831567] Freeing unused kernel memory: 1184k freed
+
+info: initramfs: up at 1.84
+GROWROOT: CHANGED: partition=1 start=16065 old: size=64260 end=80325 new: size=2072385,end=2088450
+info: initramfs loading root from /dev/vda1
+info: /etc/init.d/rc.sysinit: up at 1.95
+info: container: none
+Starting logging: OK
+modprobe: module virtio_blk not found in modules.dep
+modprobe: module virtio_net not found in modules.dep
+WARN: /etc/rc3.d/S10-load-modules failed
+Initializing random number generator... done.
+Starting acpid: OK
+cirros-ds 'local' up at 2.10
+no results found for mode=local. up 2.12. searched: nocloud configdrive ec2
+Starting network...
+udhcpc (v1.20.1) started
+Sending discover...
+Sending select for 192.168.99.101...
+Lease of 192.168.99.101 obtained, lease time 86400
+cirros-ds 'net' up at 2.16
+checking http://169.254.169.254/2009-04-04/instance-id
+successful after 1/20 tries: up 2.17. iid=i-00000001
+failed to get http://169.254.169.254/2009-04-04/user-data
+warning: no ec2 metadata for user-data
+found datasource (ec2, net)
+Starting dropbear sshd: generating rsa key... generating dsa key... OK
+/run/cirros/datasource/data/user-data was not '#!' or executable
+=== system information ===
+Platform: Red Hat OpenStack Compute
+Container: none
+Arch: x86_64
+CPU(s): 1 @ 2893.406 MHz
+Cores/Sockets/Threads: 1/1/1
+Virt-type:
+RAM Size: 491MB
+Disks:
+NAME MAJ:MIN       SIZE LABEL         MOUNTPOINT
+vda  253:0   1073741824
+vda1 253:1   1061061120 cirros-rootfs /
+=== sshd host keys ===
+-----BEGIN SSH HOST KEY KEYS-----
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgwC4nAGzCnhCTQS++sTY/sfHr40LK9jqHsT9SZ1Bo+9bIaEgBlX2gjwHKUDP5s8NT37BwIoWPXQwEem1/7vvwQN1ZywG4ip6FRlYnmgAH2mbNK3HvQGcyE+9z9H3fwKTEX1xxthenPz1IgrKGVcXqW73oFiBhOQHOepzNqcjdRs/UTrr root@vm1
+ssh-dss AAAAB3NzaC1kc3MAAACBAM9el2oAtlUwgXttJ6+/BnMkHSNPMkKeo847RZnDPJuaYU+YRp4/hjsIuEf9HrOEU/PiU3+jYmmTqWnrznKAl/u3w1J3qhFnWhTxjyX5gTDmrcuEOaJOI8N9RqiKSsXKs4Gr2Uzd4kYqHQ9Z5Ubxm/ZrmQfooMpyDzRLpxequDB9AAAAFQC7uzojWHM+OnFhcFD3EcbNiliJKQAAAIEAtvn6bCzGp4UUCuMODlYCwbifoF9uCNLnym2wGToPHiEkGvfkDezp7Nicx+qx+Ei/ORgpJdi7Gf8XHocOKvnsZZPUNcVRIuFistsqblYV5TJgJBppSSAdeqMmuK8rh9m8FxQRUjiqiKPgM+mAr3GDjRG3gL+KZ4ZBy817AMUDAewAAACBAKn3uWzDxyIvqGkwXhM52+31HNI0G0j6+hGa0sEfGwHYJLgrt22rCQYofmDs9/jk8gentKQM7ki+6iDCVTCXjVytuZzGFN57txLd/Cn1DCqcHM+OWU2jHLMQGbx24PAwOwKC386QX156kJSB2HykxsVI6sU/DnY/m/LJdqKFuYAe root@vm1
+-----END SSH HOST KEY KEYS-----
+=== network info ===
+if-info: lo,up,127.0.0.1,8,::1
+if-info: eth0,up,192.168.99.101,24,fe80::f816:3eff:fe50:c48d
+ip-route:default via 192.168.99.1 dev eth0
+ip-route:192.168.99.0/24 dev eth0  src 192.168.99.101
+=== datasource: ec2 net ===
+instance-id: i-00000001
+name: N/A
+availability-zone: nova
+local-hostname: vm1.novalocal
+launch-index: 0
+=== cirros: current=0.3.4 uptime=4.45 ===
+  ____               ____  ____
+ / __/ __ ____ ____ / __ \/ __/
+/ /__ / // __// __// /_/ /\ \
+\___//_//_/  /_/   \____/___/
+   http://cirros-cloud.net
+
+
+login as 'cirros' user. default password: 'cubswin:)'. use 'sudo' for root.
+vm1 login:
+[root@osp7ps-controller01 common(keystone_demo)]# ./neutron.sh -v vm1 floatingip-create-and-associate
+* op: floatingip-create-and-associate
+* ha: 0
+* tenant: demo
+* public_network: external
+* network: demo_net
+* subnet: demo_net_subnet
+* router: router_demo
+* cidr: 192.168.99.0/24
+* prefix: 192.168.99
+* prefixlen: 24
+* pool_start: 192.168.99.100
+* pool_end: 192.168.99.199
+* gateway: 192.168.99.1
+* vm: vm1
+* vmaddr: 192.168.99.101
+* port_id: f0b5e2a9-dd1b-43dd-9220-c0304f76e481
+=====> [20160411-140559] host: (local), command: neutron floatingip-create --port-id f0b5e2a9-dd1b-43dd-9220-c0304f76e481 --fixed-ip-address 192.168.99.101 external
+Created a new floatingip:
++---------------------+--------------------------------------+
+| Field               | Value                                |
++---------------------+--------------------------------------+
+| fixed_ip_address    | 192.168.99.101                       |
+| floating_ip_address | 172.16.99.101                        |
+| floating_network_id | 241fc5bf-fbb9-480f-a342-bd1baac79a52 |
+| id                  | b71a1687-49b1-4929-971d-c96ece132ddf |
+| port_id             | f0b5e2a9-dd1b-43dd-9220-c0304f76e481 |
+| router_id           | f82608bd-adf3-479d-a4e9-7c037596badc |
+| status              | DOWN                                 |
+| tenant_id           | f21cfeed248e432bae16aa83accf208e     |
++---------------------+--------------------------------------+
+[root@osp7ps-controller01 common(keystone_demo)]#

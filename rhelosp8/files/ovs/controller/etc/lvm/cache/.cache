@@ -1,0 +1,9 @@
+# This file is automatically maintained by lvm.
+
+persistent_filter_cache {
+	valid_devices=[
+		"/dev/block/252:2",
+		"/dev/disk/by-id/lvm-pv-uuid-z0qNZV-PVe5-2UCO-dynM-z1f6-T3BZ-dgT31u",
+		"/dev/vda2"
+	]
+}
