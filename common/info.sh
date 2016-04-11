@@ -9,8 +9,19 @@ fi
 tenant=$1; shift
 rcfile=~/keystonerc_${tenant}
 
-#do_command iptables -nL
-#do_command iptables -nL -t nat
+do_command iptables -nL
+do_command iptables -nL -t nat
+
+which virsh > /dev/null 2>&1
+if [ x"$?" = x"0" ]; then
+	do_command virsh list
+	virsh list | grep running | awk '{print $2}' | while read vm; do
+		do_command virsh dumpxml ${vm}
+	done
+else
+	echo "=> virsh not found"
+fi
+
 which brctl > /dev/null 2>&1 || yum install -y bridge-utils
 do_command brctl show
 which ovs-vsctl > /dev/null 2>&1
@@ -31,7 +42,7 @@ if [ x"$?" = x"0" ]; then
 		do_command ovs-dpctl show ${br}
 	done
 else
-	echo "=> no ovs"
+	echo "=> ovs-vsctl not found"
 fi
 do_command ip -d a
 do_command ip netns
@@ -40,8 +51,8 @@ for ns in $(ip netns | awk '{print $1}'); do
 	echo "==> netns: ${ns}"
 	do_command ip netns exec ${ns} ip -d a
 	do_command ip netns exec ${ns} ip -d r
-#	do_command ip netns exec ${ns} iptables -nL
-#	do_command ip netns exec ${ns} iptables -nL -t nat
+	do_command ip netns exec ${ns} iptables -nL
+	do_command ip netns exec ${ns} iptables -nL -t nat
 done
 
 file=~/keystonerc_admin
