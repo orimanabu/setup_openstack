@@ -12,7 +12,7 @@ rcfile=~/keystonerc_${tenant}
 do_command iptables -nL
 do_command iptables -nL -t nat
 
-which virsh > /dev/null 2>&1
+systemctl status libvirtd > /dev/null 2>&1
 if [ x"$?" = x"0" ]; then
 	do_command virsh list
 	virsh list | grep running | awk '{print $2}' | while read vm; do
@@ -128,6 +128,12 @@ openstack hypervisor list -f csv -c ID -c Name --quote none | grep -v ID | while
 done
 
 do_command nova usage-list
+
+do_command nova list
+openstack server list --all-projects -f csv -c ID -c Name --quote none | grep -v ID | while IFS=, read id name; do
+	echo "==> vm: ${name} / ${id}"
+	do_command nova show ${id}
+done
 
 source ${rcfile}
 do_command nova keypair-list
