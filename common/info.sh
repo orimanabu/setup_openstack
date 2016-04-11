@@ -25,6 +25,7 @@ if [ x"$?" = x"0" ]; then
 #		do_command ovs-ofctl dump-tables ${br}
 		do_command ovs-ofctl dump-ports ${br}
 		do_command ovs-ofctl dump-ports-desc ${br}
+		do_command ovs-ofctl dump-flows ${br}
 		do_command ovs-ofctl dump-aggregate ${br}
 		do_command ovs-ofctl queue-stats ${br}
 		do_command ovs-dpctl show ${br}
