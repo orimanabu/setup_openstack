@@ -40,6 +40,8 @@ if [ x"$?" = x"0" ]; then
 		do_command ovs-ofctl dump-aggregate ${br}
 		do_command ovs-ofctl queue-stats ${br}
 		do_command ovs-dpctl show ${br}
+		do_command ovs-appctl dpif/show
+		do_command ovs-appctl fdb/show ${br}
 	done
 else
 	echo "=> ovs-vsctl not found"
