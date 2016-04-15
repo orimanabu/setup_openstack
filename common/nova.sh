@@ -74,16 +74,16 @@ fi
 op=$1; shift
 
 export OS_REGION_NAME=${region}
-rcfile=/root/keystonerc
 tenant=${_tenant:-${OS_TENANT_NAME}}
 net=${_net:-${tenant}_net}
 key=${_key:-sshkey}
+rcfile=~/keystonerc_${tenant}
 
 if [ x"${region}" == x"" -o x"${tenant}" = x"" ]; then
 	echo "no region nor tenant specified."
 	usage
 fi
-source ${rcfile}_${tenant}
+source ${rcfile}
 
 echo "* rcfile:	${rcfile}"
 echo "* region:	${region}"
