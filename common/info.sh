@@ -29,6 +29,7 @@ if [ x"$?" = x"0" ]; then
 	echo "=> ovs"
 	do_command ovs-vsctl show
 	do_command ovs-vsctl list-br
+	do_command ovs-appctl dpif/show
 	ovs-vsctl list-br | while read br; do
 		echo "==> br: ${br}"
 		do_command ovs-vsctl list-ports ${br}
@@ -40,7 +41,6 @@ if [ x"$?" = x"0" ]; then
 		do_command ovs-ofctl dump-aggregate ${br}
 		do_command ovs-ofctl queue-stats ${br}
 		do_command ovs-dpctl show ${br}
-		do_command ovs-appctl dpif/show
 		do_command ovs-appctl fdb/show ${br}
 	done
 else
