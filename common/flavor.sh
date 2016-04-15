@@ -14,5 +14,5 @@ vcpu=$1; shift
 max_id=$(nova flavor-list | awk '!/^\+/ {print $2}' | tail -n 1)
 ((max_id = max_id + 1))
 
-source ~/keystonerc admin
+source ~/keystonerc_admin
 do_command nova flavor-create --is-public True ${flavor} ${max_id} ${ram} ${disk} ${vcpu}
