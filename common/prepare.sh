@@ -8,7 +8,7 @@ tenant=$1; shift
 source subr.sh
 rcfile=~/keystonerc_${tenant}
 keyname=sshkey
-secgroup=sg_demo
+secgroup=sg_${tenant}
 
 echo "* rcfile: ${rcfile}"
 echo "* tenant: ${tenant}"
