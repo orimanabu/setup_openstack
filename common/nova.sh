@@ -12,12 +12,15 @@ region=RegionOne
 region=regionOne
 image=cirros
 flavor=m1.tiny
-secgroup=sg_demo
 
 while [[ $# > 1 ]]; do
 	key="$1"
 	shift
 	case $key in
+	-a|--availability-zone)
+		az="$1"
+		shift
+		;;
 	-r|--region)
 		region="$1"
 		shift
@@ -78,6 +81,7 @@ tenant=${_tenant:-${OS_TENANT_NAME}}
 net=${_net:-${tenant}_net}
 key=${_key:-sshkey}
 rcfile=~/keystonerc_${tenant}
+secgroup=sg_${tenant}
 
 if [ x"${region}" == x"" -o x"${tenant}" = x"" ]; then
 	echo "no region nor tenant specified."
@@ -94,6 +98,7 @@ echo "* secgroup:	${secgroup}"
 echo "* image:	${image}"
 echo "* vm:	${vm}"
 echo "* volume:	${volume}"
+echo "* az:	${az}"
 
 case ${op} in
 delete_all)
@@ -118,7 +123,10 @@ boot)
 		usage
 	fi
 	if [ x"${user_data}" != x"" ]; then
-		extra_options="--user-data ${user_data}"
+		extra_options="${extra_options} --user-data ${user_data}"
+	fi
+	if [ x"${az}" != x"" ]; then
+		extra_options="${extra_options} --availability-zone ${az}"
 	fi
 	do_command nova boot ${extra_options} --poll --flavor ${flavor} --key-name ${key} --nic net-id=$(neutron net-list | awk '/'${net}'/ {print $2}') --image ${image} --security-groups ${secgroup} ${vm}
 	;;
