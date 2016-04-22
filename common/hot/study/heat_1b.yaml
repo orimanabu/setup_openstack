@@ -24,6 +24,11 @@ parameters:
     label: Private network name or ID
     description: Network to attach instance to.
     default: private-net
+  security_groups:
+    type: comma_delimited_list
+    label: Security Group in array
+    description: Security groups
+    default: default
 
 resources:
   my_instance:
@@ -32,6 +37,7 @@ resources:
       image: { get_param: image }
       flavor: { get_param: flavor }
       key_name: { get_param: key }
+      security_groups: {get_param: security_groups }
       networks:
         - network: { get_param: private_network }
 
