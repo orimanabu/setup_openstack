@@ -7,7 +7,7 @@ url=http://tamacom.com/global/${tarball}
 
 echo "=> installing dependent packages..."
 yum install -y ctags python-pygments gcc ncurses-devel
-if [ ! -f ${taball} ]; then
+if [ ! -f ${tarball} ]; then
 	echo "=> ${tarball} not found, fetching..."
 	curl -O "${url}"
 else
