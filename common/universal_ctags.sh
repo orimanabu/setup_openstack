@@ -21,9 +21,9 @@ else
 	git clone https://github.com/universal-ctags/ctags
 	pwd=$(pwd)
 	pushd ./ctags
-	git remote add masatake-ctags https://github.com/masatake/ctags
-	git fetch masatake-ctags
-	git checkout -b masatake-ctags/readtags-qualifier
+#	git remote add masatake-ctags https://github.com/masatake/ctags
+#	git fetch masatake-ctags
+#	git checkout -b masatake-ctags/readtags-qualifier
 	popd
 fi
 
