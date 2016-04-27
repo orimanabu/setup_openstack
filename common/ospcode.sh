@@ -81,7 +81,6 @@ glance,\
 haproxy,\
 heat,\
 httpd,\
-ipxe,\
 instack-undercloud,\
 ipxe,\
 ironic,\
@@ -100,9 +99,12 @@ pacemaker,\
 packstack,\
 puppet,\
 resource-agents,\
+ruby,\
+rubygems,\
 snmp,\
 sos,\
 tripleo*})
+
 varlib_files=$(echo \
 ./var/lib/{cloud,\
 dnsmasq,\
@@ -137,5 +139,11 @@ cd / && tar \
 --exclude='*.ez' \
 --exclude='*.pyc' \
 --exclude='*.pyo' \
+--exclude='*.rom' \
+--exclude='*.bz2' \
+--exclude='*.gz' \
+--exclude='*.beam' \
+--exclude='*.otf' \
+--exclude='*.pot' \
 -Jcvf ${output} \
 ${etc_files} ${usrlib_files} ${usrshare_files} ${varlib_files}
