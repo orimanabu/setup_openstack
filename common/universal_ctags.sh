@@ -41,3 +41,14 @@ else
 fi
 
 #u-ctags -o ./ctags.python_all.tags --fields='*' --extra='*' --kinds-'*'='*' --kinds-C=-l --kinds-Java=-l --excmd=mixed -R /usr/lib/python2.7/site-packages
+
+cat > ~/.ctags <<END
+--langdef=puppet
+--langmap=puppet:.pp
+--regex-puppet=/^class[ \t]*([:a-zA-Z0-9_\-]+)[ \t]*/\1/c,class/
+--regex-puppet=/^site[ \t]*([a-zA-Z0-9_\-]+)[ \t]*/\1/s,site/
+--regex-puppet=/^node[ \t]*([a-zA-Z0-9_\-]+)[ \t]*/\1/n,node/
+--regex-puppet=/^define[ \t]*([:a-zA-Z0-9_\-]+)[ \t]*/\1/d,definition/
+--regex-puppet=/^ *([a-zA-Zi:_]+) *{ *(.*) *:/\1[\2]/r,resource/
+--regex-puppet=/^ *([A-Z][a-zA-Z0-9_:]+) *{/\1/f,default/
+END
