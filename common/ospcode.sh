@@ -132,7 +132,7 @@ os-*,\
 usrbin_files=""
 for file in /usr/bin/*; do
 	rpm=$(rpm -qf ${file})
-	echo ${rpm} | grep -E 'openstack-|python.*client|dib|diskimage' > /dev/null 2>&1
+	echo ${rpm} | grep -E 'openstack-|python.*client|dib|diskimage|oslo' > /dev/null 2>&1
 	if [ x"$?" != x"0" ]; then
 		continue
 	fi
@@ -151,6 +151,12 @@ for dir in /usr/lib/python2.7/site-packages /usr/share/instack-undercloud /usr/s
 		(cd ${dir} && gtags -v)
 	fi
 done
+
+rpm -qa | sort > /tmp/rpm-qa.txt
+tmp_files=$(echo \
+./tmp{\
+rpm-qa.txt,\
+})
 
 cd / && tar \
 --exclude='*.db' \
@@ -177,4 +183,4 @@ cd / && tar \
 --exclude='*.otf' \
 --exclude='*.pot' \
 -Jcvf ${output} \
-${etc_files} ${usrlib_files} ${usrshare_files} ${varlib_files} ${usrlibexec_files} ${usrbin_files}
+${etc_files} ${usrlib_files} ${usrshare_files} ${varlib_files} ${usrlibexec_files} ${usrbin_files} ${tmp_files}
