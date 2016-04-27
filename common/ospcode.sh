@@ -121,6 +121,37 @@ puppet,\
 rabbitmq,\
 tripleo})
 
+usrlibexec_files=$(echo \
+./usr/libexec/{\
+cloud-init,\
+heartbeat,\
+openstack-tripleo,\
+os-*,\
+})
+
+usrbin_files=""
+for file in /usr/bin/*; do
+	rpm=$(rpm -qf ${file})
+	echo ${rpm} | grep -E 'openstack-|python.*client|dib|diskimage' > /dev/null 2>&1
+	if [ x"$?" != x"0" ]; then
+		continue
+	fi
+	file ${file} | grep ELF > /dev/null 2>&1
+	if [ x"$?" = x"0" ]; then
+		continue
+	fi
+	usrbin_files=".${file} ${usrbin_files}"
+	echo -n "${file}	${rpm}	"
+	file ${file} | sed -e 's/.*: //'
+done
+
+for dir in /usr/lib/python2.7/site-packages /usr/share/instack-undercloud /usr/share/ruby /usr/share/rubygems /usr/share/openstack-* /usr/share/tripleo-* /usr/libexec/cloud-init /usr/libexec/openstack-* /usr/libexec/os-*; do
+	if [ -d ${dir} ]; then
+		echo "=> ${dir}"
+		(cd ${dir} && gtags -v)
+	fi
+done
+
 cd / && tar \
 --exclude='*.db' \
 --exclude='*.builder' \
@@ -146,4 +177,4 @@ cd / && tar \
 --exclude='*.otf' \
 --exclude='*.pot' \
 -Jcvf ${output} \
-${etc_files} ${usrlib_files} ${usrshare_files} ${varlib_files}
+${etc_files} ${usrlib_files} ${usrshare_files} ${varlib_files} ${usrlibexec_files} ${usrbin_files}
