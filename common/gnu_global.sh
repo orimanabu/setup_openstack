@@ -16,14 +16,14 @@ fi
 echo "=> building ${global}..."
 tar zxvf ${tarball}
 cd ${global}
-./configure --prefix=/usr/local --with-exuberant-ctags=/usr/bin/ctags 2>&1 | tee log.configure
+./configure --prefix=/usr/local --with-exuberant-ctags=/usr/local/bin/u-ctags 2>&1 | tee log.configure
 make 2>&1 | tee log.make
 echo "=> installing ${global}..."
 sudo make install 2>&1 | tee log.install
 
 echo "=> setting global..."
 #cp /usr/local/share/gtags/gtags.conf /usr/local/etc/
-sed -e 's/:tc=native:/\0tc=pygments:/' /usr/local/share/gtags/gtags.conf > /usr/local/etc/gtags.conf
+sed -e 's/:tc=native:/\0tc=pygments:/' -e '/langmap=ctags/a\    :langmap=puppet\\:.pp:\\' -e '/langmap=Xtend/a\ :langmap=puppet\\:.pp:\\' /usr/local/share/gtags/gtags.conf > /usr/local/etc/gtags.conf
 
 mkdir -p ~/.vim/plugin
 cp /usr/local/share/gtags/gtags.vim ~/.vim/plugin/
