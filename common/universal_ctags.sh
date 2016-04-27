@@ -51,4 +51,8 @@ cat > ~/.ctags <<END
 --regex-puppet=/^define[ \t]*([:a-zA-Z0-9_\-]+)[ \t]*/\1/d,definition/
 --regex-puppet=/^ *([a-zA-Zi:_]+) *{ *(.*) *:/\1[\2]/r,resource/
 --regex-puppet=/^ *([A-Z][a-zA-Z0-9_:]+) *{/\1/f,default/
+
+--langdef=yaml
+--langmap=yaml:.yml.yaml
+--regex-yaml=/^([a-zA-Z0-9_:]+):/\1/d,definition/
 END
