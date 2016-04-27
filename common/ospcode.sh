@@ -75,6 +75,7 @@ ceph,\
 cinder,\
 cluster,\
 corosync,\
+diskimage-builder,\
 fence,\
 glance,\
 haproxy,\
