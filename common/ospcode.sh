@@ -11,4 +11,4 @@ usrlib_files=$(echo ./usr/lib/python2.7/site-packages)
 usrshare_files=$(echo ./usr/share/{cinder,glance,haproxy,heat,instack-undercloud,ipxe,ironic,javascript,keystone,libvirt,neutron,nova,novnc,openstack*,openvswitch,packstack,puppet,tripleo*})
 varlib_files=$(echo ./var/lib/{cloud,dnsmasq,haproxy,heat*,hiera,iscsi,NetworkManager,neutron,openstack-dashboard,openvswitch,os-*,puppet,rabbitmq,tripleo})
 
-cd / && tar --exclude='*.pyc' --exclude='*.pyo' -Jcvf ${output} ${etc_files} ${usrlib_files} ${usrshare_files} ${varlib_files}
+cd / && tar --exclude='*.db' --exclude='*.builder' --exclude='*.ring.gz' --exclude='*.bin' --exclude='*.png' --exclude='*.jpg' --exclude='*.gif' --exclude='*.dat' --exclude='*.eot' --exclude='*.ttf' --exclude='*.woff' --exclude='*.mo' --exclude='*.ico' --exclude='*.odt' --exclude='*.ez' --exclude='*.pyc' --exclude='*.pyo' -Jcvf ${output} ${etc_files} ${usrlib_files} ${usrshare_files} ${varlib_files}
