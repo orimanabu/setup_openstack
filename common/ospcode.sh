@@ -126,8 +126,7 @@ usrlibexec_files=$(echo \
 cloud-init,\
 heartbeat,\
 openstack-tripleo,\
-os-*,\
-})
+os-*})
 
 usrbin_files=""
 for file in /usr/bin/*; do
@@ -152,11 +151,9 @@ for dir in /usr/lib/python2.7/site-packages /usr/share/instack-undercloud /usr/s
 	fi
 done
 
-rpm -qa | sort > /tmp/rpm-qa.txt
-tmp_files=$(echo \
-./tmp{\
-rpm-qa.txt,\
-})
+rpm -qa | sort > /tmp/info.rpm-qa.txt
+uname -a > /tmp/info.uname-a.txt
+tmp_files=./tmp/info.*.txt
 
 cd / && tar \
 --exclude='*.db' \
