@@ -54,5 +54,5 @@ cat > ~/.ctags <<END
 
 --langdef=yaml
 --langmap=yaml:.yml.yaml
---regex-yaml=/^([a-zA-Z0-9_:]+):/\1/d,definition/
+--regex-yaml=/^((  )?[a-zA-Z0-9_:]+):/\1/d,definition/
 END
