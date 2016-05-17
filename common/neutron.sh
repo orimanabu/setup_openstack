@@ -1,21 +1,26 @@
 #!/bin/bash
 
 function usage {
-	echo "$0 -n NETWORK -s SUBNET -c CIDR -p PUBLIC_NETWORK -r ROUTER -t TENANT -v VM -f FLOATINGIP -h OP"
+	echo "$0 -n NETWORK -s SUBNET -c CIDR -p PUBLIC_NETWORK -r ROUTER -t TENANT -v VM -f FLOATINGIP -d DHCPV6 -h OP"
 	exit 1
 }
 
 source subr.sh
 
 #OPTIND
+config_v6=0
 ha=0
 tenant=
 cidr="192.168.99.0/24"
 #public_network=public
 public_network=external
+dhcpv6=slaac
 
-while getopts ":c:n:s:p:r:t:v:f:h" o; do
+while getopts ":d:c:n:s:p:r:t:v:f:h" o; do
 	case ${o} in
+	6)
+		config_v6=1
+		;;
 	h)      # ha
 		ha=1
 		;;
@@ -24,6 +29,9 @@ while getopts ":c:n:s:p:r:t:v:f:h" o; do
 		;;
 	n)
 		_network=${OPTARG}
+		;;
+	d)
+		dhcpv6=${OPTARG}
 		;;
 	s)
 		_subnet=${OPTARG}
@@ -56,16 +64,25 @@ if [ x"$#" != x"1" ]; then
 fi
 op=$1; shift
 
-str=$(echo ${cidr} | sed -e 's|^\([0-9.]*\)\.0/\([0-9]*\)|prefix=\1 prefixlen=\2|')
+#str=$(echo ${cidr} | sed -e 's|^\([0-9.]*\)\.0/\([0-9]*\)|prefix=\1 prefixlen=\2|')
+str=$(echo ${cidr} | sed -r -e 's|^(.*)/([0-9]*)|prefix=\1 prefixlen=\2|')
 eval ${str}
+prefix=$(echo ${prefix} | sed -e 's/\.0$//')
 tenant=${_tenant:-$OS_TENANT_NAME}
 network=${_network:-${tenant}_net}
 subnet=${_subnet:-${tenant}_net_subnet}
 router=${_router:-router_${tenant}}
 
-pool_start=${prefix}.100
-pool_end=${prefix}.199
-gateway=${prefix}.1
+echo ${prefix} | grep ':$' > /dev/null 2>&1
+if [ x"$?" = x"0" ]; then
+	pool_start=${prefix}100
+	pool_end=${prefix}199
+	gateway=${prefix}1
+else
+	pool_start=${prefix}.100
+	pool_end=${prefix}.199
+	gateway=${prefix}.1
+fi
 
 echo "* op: ${op}"
 echo "* ha: ${ha}"
@@ -86,6 +103,9 @@ if [ x"${router}" = x"" -o x"${network}" = x"" -o x"${cidr}" = x"" -o x"${prefix
 fi
 #exit
 
+v6prefix_public=2001:db8:db8:1::
+v6prefix_tenant=2001:db8:db8:99::
+
 case ${op} in
 delete-provisioned-demo)
 	source ~/keystonerc_admin
@@ -105,6 +125,12 @@ external-create)
 	do_command neutron subnet-create ${public_network} 172.16.99.0/24 --name ${public_network}_subnet --disable-dhcp --gateway 172.16.99.254 --allocation-pool start=172.16.99.100,end=172.16.99.199
 	#do_command neutron subnet-create ${public_network} 172.16.88.0/24 --name ${public_network}_subnet --disable-dhcp --gateway 172.16.88.254 --allocation-pool start=172.16.88.100,end=172.16.88.199
 	;;
+external-create-v6)
+	source ~/keystonerc_admin
+	v6opts="--ip-version 6"
+	subnet=${public_network}_subnet_v6
+	do_command neutron subnet-create ${public_network} ${v6prefix_public}/64 --name ${subnet} --disable-dhcp --allocation-pool start=${v6prefix_public}100,end=${v6prefix_public}199 ${v6opts}
+	;;
 create)
 	source ~/keystonerc_admin
 	extra_options=""
@@ -112,11 +138,34 @@ create)
 		extra_options="--ha True"
 	fi
 	#do_command neutron router-create --tenant-id $(keystone tenant-list | awk '/'${tenant}'/ {print $2}') ${extra_options} ${router}
-	do_command neutron router-create --tenant-id $(openstack project list | awk '/'${tenant}'/ {print $2}') ${extra_options} ${router}
+	neutron router-list | grep ${router} > /dev/null 2>&1
+	if [ x"$?" = x"0" ]; then
+		echo "!!! ${router} exists, skipping router-create..."
+	else
+		do_command neutron router-create --tenant-id $(openstack project list | awk '/'${tenant}'/ {print $2}') ${extra_options} ${router}
+	fi
 	source ~/keystonerc_${tenant}
 	do_command neutron router-gateway-set $(neutron router-list | awk '/'${router}'/ {print $2}') $(neutron net-list | awk '/'${public_network}'/ {print $2}')
 	do_command neutron net-create ${network}
 	do_command neutron subnet-create ${network} ${cidr} --name ${subnet} --enable_dhcp True --gateway ${gateway} --allocation-pool start=${pool_start},end=${pool_end}
+	do_command neutron router-interface-add $(neutron router-list | awk '/'${router}'/ {print $2}') ${subnet}
+	;;
+create-v6)
+	v6opts="--ip-version 6"
+	case ${dhcpv6} in
+	slaac)
+		v6opts="${v6opts} --ipv6-address-mode=slaac --ipv6-ra-mode=slaac"
+		;;
+	dhcpv6[-_]stateless)
+		v6opts="${v6opts} --ipv6-address-mode=dhcpv6-stateless --ipv6-ra-mode=dhcpv6-stateless"
+		;;
+	dhcpv6[-_]stateful)
+		v6opts="${v6opts} --ipv6-address-mode=dhcpv6-stateful --ipv6-ra-mode=dhcpv6-stateful"
+		;;
+	esac
+	#subnet=${subnet}_v6
+	#do_command neutron subnet-create ${network} ${v6prefix_tenant}/64 --name ${subnet} ${v6opts}
+	do_command neutron subnet-create ${network} ${cidr} --name ${subnet} ${v6opts}
 	do_command neutron router-interface-add $(neutron router-list | awk '/'${router}'/ {print $2}') ${subnet}
 	;;
 delete)
@@ -137,7 +186,7 @@ floatingip-create)
 floatingip-create-and-associate)
 	source ~/keystonerc_${tenant}
 	echo "* vm: ${vm}"
-	vmaddr=$(nova show ${vm} | awk '/network/ {print $5}')
+	vmaddr=$(nova show ${vm} | awk '/network/ {print $5}' | sed -e 's/,$//')
 	port_id=$(neutron port-list | awk '/'${vmaddr}'/ {print $2}')
 	echo "* vmaddr: ${vmaddr}"
 	echo "* port_id: ${port_id}"
