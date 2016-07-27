@@ -6,6 +6,6 @@ if [ x"$#" != x"1" ]; then
 fi
 tenant=$1; shift
 
-cat ~/overcloudrc ./rc_append.txt > ~/keystonerc_admin
+cat ~/overcloudrc ./rc_append_prompt.txt > ~/keystonerc_admin
 cat ~/keystonerc_admin | sed -e "s/admin/${tenant}/g" -e "s/OS_PASSWORD=.*$/OS_PASSWORD=${tenant}/" > ~/keystonerc_${tenant}
 cat rc_append_prompt.txt | sed -e 's/(overcloud_.*)/(undercloud)/' >> ~/stackrc
