@@ -1,1 +1,10 @@
+
+unset OS_IDENTITY_API_VERSION
+unset OS_PROJECT_DOMAIN_NAME
+unset OS_USER_DOMAIN_NAME
+
+export OS_IDENTITY_API_VERSION=2
+#export OS_PROJECT_DOMAIN_NAME=Default
+#export OS_USER_DOMAIN_NAME=Default
+
 export PS1="[\\u@\\h \\W(overcloud_${OS_USERNAME})]\\$ "
