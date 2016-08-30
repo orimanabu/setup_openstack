@@ -6,7 +6,8 @@ tarball=${global}.tar.gz
 url=http://tamacom.com/global/${tarball}
 
 echo "=> installing dependent packages..."
-yum install -y ctags python-pygments gcc ncurses-devel
+#yum install -y ctags python-pygments gcc ncurses-devel
+yum install -y python-pygments gcc ncurses-devel
 if [ ! -f ${tarball} ]; then
 	echo "=> ${tarball} not found, fetching..."
 	curl -O "${url}"
