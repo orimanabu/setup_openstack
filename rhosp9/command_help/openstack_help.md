@@ -40,6 +40,11 @@ usage: openstack [--version] [-v | -q] [--log-file LOG_FILE] [-h] [--debug]
                  [--os-orchestration-api-version <orchestration-api-version>]
                  [--os-data-processing-api-version <data-processing-api-version>]
                  [--os-data-processing-url OS_DATA_PROCESSING_URL]
+                 [--os-baremetal-api-version <baremetal-api-version>]
+                 [--os-key-manager-api-version <key-manager-api-version>]
+                 [--inspector-api-version INSPECTOR_API_VERSION]
+                 [--inspector-url INSPECTOR_URL]
+                 [--os-tripleoclient-api-version <tripleoclient-api-version>]
 
 Command-line interface to the OpenStack APIs
 
@@ -255,8 +260,28 @@ optional arguments:
   --os-data-processing-url OS_DATA_PROCESSING_URL
                         Data processing API URL, (Env:
                         OS_DATA_PROCESSING_API_URL)
+  --os-baremetal-api-version <baremetal-api-version>
+                        Baremetal API version, default=1.6 (Env:
+                        OS_BAREMETAL_API_VERSION)
+  --os-key-manager-api-version <key-manager-api-version>
+                        Barbican API version, default=1 (Env:
+                        OS_KEY_MANAGER_API_VERSION)
+  --inspector-api-version INSPECTOR_API_VERSION
+                        inspector API version, only 1 is supported now (env:
+                        INSPECTOR_VERSION).
+  --inspector-url INSPECTOR_URL
+                        inspector URL, defaults to localhost (env:
+                        INSPECTOR_URL).
+  --os-tripleoclient-api-version <tripleoclient-api-version>
+                        TripleO Client API version, default=1 (Env:
+                        OS_TRIPLEOCLIENT_API_VERSION)
 
 Commands:
+  acl delete     Delete ACLs for a secret or container as identified by its href.
+  acl get        Retrieve ACLs for a secret or container by providing its href.
+  acl submit     Submit ACL on a secret or container as identified by its href.
+  acl user add   Add ACL users to a secret or container as identified by its href.
+  acl user remove  Remove ACL users from a secret or container as identified by its href.
   aggregate add host  Add host to aggregate
   aggregate create  Create a new aggregate
   aggregate delete  Delete an existing aggregate
@@ -278,6 +303,30 @@ Commands:
   backup list    List backups
   backup restore  Restore backup
   backup show    Display backup details
+  baremetal configure boot  Configure baremetal boot for all nodes
+  baremetal configure ready state  Configure all baremetal nodes for enrollment
+  baremetal create  Register a new node with the baremetal service
+  baremetal delete  Unregister a baremetal node
+  baremetal import  Import baremetal nodes from a JSON, YAML or CSV file
+  baremetal instackenv validate  Validate `instackenv.json` which is used in `baremetal import`.
+  baremetal introspection abort  Abort running introspection for node.
+  baremetal introspection bulk start  Start bulk introspection on all baremetal nodes
+  baremetal introspection bulk status  Get the status of all baremetal nodes
+  baremetal introspection data save  Save or display raw introspection data.
+  baremetal introspection rule delete  Delete an introspection rule.
+  baremetal introspection rule import  Import one or several introspection rules from a json file.
+  baremetal introspection rule list  List all introspection rules.
+  baremetal introspection rule purge  Drop all introspection rules.
+  baremetal introspection rule show  Show an introspection rule.
+  baremetal introspection start  Start the introspection.
+  baremetal introspection status  Get introspection status.
+  baremetal list  List baremetal nodes
+  baremetal set  Set baremetal properties
+  baremetal show  Show baremetal node details
+  baremetal show capabilities  List the capabilities for all Nodes
+  baremetal unset  Unset baremetal properties
+  ca get         Retrieve a CA by providing its URI.
+  ca list        List cas.
   catalog list   List services in the service catalog
   catalog show   Display service catalog details
   command list   List recognized commands by group
@@ -415,6 +464,15 @@ Commands:
   orchestration template function list  List the available functions.
   orchestration template validate  Validate a template
   orchestration template version list  List the available template versions.
+Could not load EntryPoint.parse('overcloud_deploy = tripleoclient.v1.overcloud_deploy:DeployOvercloud')
+  overcloud image build  Build images for the overcloud
+  overcloud image upload  Create overcloud glance images from existing image files.
+  overcloud netenv validate  Validate the network environment file.
+  overcloud node delete  Delete overcloud nodes.
+  overcloud profiles list  List overcloud node profiles
+  overcloud profiles match  Assign and validate profiles on nodes
+  overcloud update stack  Updates packages on overcloud nodes
+  overcloud upgrade  Performs a major upgrade on overcloud nodes
   port delete    Delete port(s)
   port show      Display port details
   project create  Create new project
@@ -445,6 +503,19 @@ Commands:
   router list    List routers
   router set     Set router properties
   router show    Display router details
+  secret container create  Store a container in Barbican.
+  secret container delete  Delete a container by providing its href.
+  secret container get  Retrieve a container by providing its URI.
+  secret container list  List containers.
+  secret delete  Delete a secret by providing its URI.
+  secret get     Retrieve a secret by providing its URI.
+  secret list    List secrets.
+  secret order create  Create a new order.
+  secret order delete  Delete an order by providing its href.
+  secret order get  Retrieve an order by providing its URI.
+  secret order list  List orders.
+  secret store   Store a secret in Barbican.
+  secret update  Update a secret with no payload in Barbican.
   security group create  Create a new security group
   security group delete  Delete a security group
   security group list  List security groups
@@ -544,6 +615,8 @@ Commands:
   tld show       Show tld details
   token issue    Issue new token
   token revoke   Revoke existing token
+  undercloud install  Install and setup the undercloud
+  undercloud upgrade  Upgrade undercloud
   usage list     List resource usage per project
   usage show     Show resource usage for a single project
   user create    Create new user
@@ -591,6 +664,200 @@ Commands:
   zone transfer request list  List Zone Transfer Requests
   zone transfer request set  Set a Zone Transfer Request
   zone transfer request show  Show Zone Transfer Request Details
+```
+
+
+# openstack acl delete
+
+```
+usage: openstack acl delete [-h] URI
+
+Delete ACLs for a secret or container as identified by its href.
+
+positional arguments:
+  URI         The URI reference for the secret or container.
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+
+# openstack acl get
+
+```
+usage: openstack acl get [-h] [-f {csv,html,json,json,table,value,yaml,yaml}]
+                         [-c COLUMN] [--max-width <integer>] [--noindent]
+                         [--quote {all,minimal,none,nonnumeric}]
+                         URI
+
+Retrieve ACLs for a secret or container by providing its href.
+
+positional arguments:
+  URI                   The URI reference for the secret or container.
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+output formatters:
+  output formatter options
+
+  -f {csv,html,json,json,table,value,yaml,yaml}, --format {csv,html,json,json,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+CSV Formatter:
+  --quote {all,minimal,none,nonnumeric}
+                        when to include quotes, defaults to nonnumeric
+```
+
+
+# openstack acl submit
+
+```
+usage: openstack acl submit [-h]
+                            [-f {csv,html,json,json,table,value,yaml,yaml}]
+                            [-c COLUMN] [--max-width <integer>] [--noindent]
+                            [--quote {all,minimal,none,nonnumeric}]
+                            [--user [USERS]]
+                            [--project-access | --no-project-access]
+                            [--operation-type {read}]
+                            URI
+
+Submit ACL on a secret or container as identified by its href.
+
+positional arguments:
+  URI                   The URI reference for the secret or container.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --user [USERS], -u [USERS]
+                        Keystone userid(s) for ACL.
+  --project-access      Flag to enable project access behavior.
+  --no-project-access   Flag to disable project access behavior.
+  --operation-type {read}, -o {read}
+                        Type of Barbican operation ACL is set for
+
+output formatters:
+  output formatter options
+
+  -f {csv,html,json,json,table,value,yaml,yaml}, --format {csv,html,json,json,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+CSV Formatter:
+  --quote {all,minimal,none,nonnumeric}
+                        when to include quotes, defaults to nonnumeric
+```
+
+
+# openstack acl user add
+
+```
+usage: openstack acl user add [-h]
+                              [-f {csv,html,json,json,table,value,yaml,yaml}]
+                              [-c COLUMN] [--max-width <integer>] [--noindent]
+                              [--quote {all,minimal,none,nonnumeric}]
+                              [--user [USERS]]
+                              [--project-access | --no-project-access]
+                              [--operation-type {read}]
+                              URI
+
+Add ACL users to a secret or container as identified by its href.
+
+positional arguments:
+  URI                   The URI reference for the secret or container.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --user [USERS], -u [USERS]
+                        Keystone userid(s) for ACL.
+  --project-access      Flag to enable project access behavior.
+  --no-project-access   Flag to disable project access behavior.
+  --operation-type {read}, -o {read}
+                        Type of Barbican operation ACL is set for
+
+output formatters:
+  output formatter options
+
+  -f {csv,html,json,json,table,value,yaml,yaml}, --format {csv,html,json,json,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+CSV Formatter:
+  --quote {all,minimal,none,nonnumeric}
+                        when to include quotes, defaults to nonnumeric
+```
+
+
+# openstack acl user remove
+
+```
+usage: openstack acl user remove [-h]
+                                 [-f {csv,html,json,json,table,value,yaml,yaml}]
+                                 [-c COLUMN] [--max-width <integer>]
+                                 [--noindent]
+                                 [--quote {all,minimal,none,nonnumeric}]
+                                 [--user [USERS]]
+                                 [--project-access | --no-project-access]
+                                 [--operation-type {read}]
+                                 URI
+
+Remove ACL users from a secret or container as identified by its href.
+
+positional arguments:
+  URI                   The URI reference for the secret or container.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --user [USERS], -u [USERS]
+                        Keystone userid(s) for ACL.
+  --project-access      Flag to enable project access behavior.
+  --no-project-access   Flag to disable project access behavior.
+  --operation-type {read}, -o {read}
+                        Type of Barbican operation ACL is set for
+
+output formatters:
+  output formatter options
+
+  -f {csv,html,json,json,table,value,yaml,yaml}, --format {csv,html,json,json,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+CSV Formatter:
+  --quote {all,minimal,none,nonnumeric}
+                        when to include quotes, defaults to nonnumeric
 ```
 
 
@@ -1563,6 +1830,695 @@ shell formatter:
   a format a UNIX shell can parse (variable="value")
 
   --prefix PREFIX       add a prefix to all variable names
+```
+
+
+# openstack baremetal configure boot
+
+```
+usage: openstack baremetal configure boot [-h] [--deploy-kernel DEPLOY_KERNEL]
+                                          [--deploy-ramdisk DEPLOY_RAMDISK]
+                                          [--root-device ROOT_DEVICE]
+                                          [--root-device-minimum-size ROOT_DEVICE_MINIMUM_SIZE]
+                                          [--overwrite-root-device-hints]
+
+Configure baremetal boot for all nodes
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --deploy-kernel DEPLOY_KERNEL
+                        Image with deploy kernel.
+  --deploy-ramdisk DEPLOY_RAMDISK
+                        Image with deploy ramdisk.
+  --root-device ROOT_DEVICE
+                        Define the root device for nodes. Can be either a list
+                        of device names (without /dev) to choose from or one
+                        of two strategies: largest or smallest. For it to work
+                        this command should be run after the introspection.
+  --root-device-minimum-size ROOT_DEVICE_MINIMUM_SIZE
+                        Minimum size (in GiB) of the detected root device.
+                        Used with --detect-root-device.
+  --overwrite-root-device-hints
+                        Whether to overwrite existing root device hints when
+                        --detect-root-device is used.
+```
+
+
+# openstack baremetal configure ready state
+
+```
+usage: openstack baremetal configure ready state [-h]
+                                                 [--delete-existing-raid-volumes]
+
+Configure all baremetal nodes for enrollment
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --delete-existing-raid-volumes
+```
+
+
+# openstack baremetal create
+
+```
+usage: openstack baremetal create [-h]
+                                  [-f {html,json,json,shell,table,value,yaml,yaml}]
+                                  [-c COLUMN] [--max-width <integer>]
+                                  [--noindent] [--prefix PREFIX]
+                                  [--chassis-uuid <chassis>] --driver <driver>
+                                  [--driver-info <key=value>]
+                                  [--property <key=value>]
+                                  [--extra <key=value>] [--uuid <uuid>]
+                                  [--name <name>]
+
+Register a new node with the baremetal service
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --chassis-uuid <chassis>
+                        UUID of the chassis that this node belongs to.
+  --driver <driver>     Driver used to control the node [REQUIRED].
+  --driver-info <key=value>
+                        Key/value pair used by the driver, such as out-of-band
+                        management credentials. Can be specified multiple
+                        times.
+  --property <key=value>
+                        Key/value pair describing the physical characteristics
+                        of the node. This is exported to Nova and used by the
+                        scheduler. Can be specified multiple times.
+  --extra <key=value>   Record arbitrary key/value metadata. Can be specified
+                        multiple times.
+  --uuid <uuid>         Unique UUID for the node.
+  --name <name>         Unique name for the node.
+
+output formatters:
+  output formatter options
+
+  -f {html,json,json,shell,table,value,yaml,yaml}, --format {html,json,json,shell,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+shell formatter:
+  a format a UNIX shell can parse (variable="value")
+
+  --prefix PREFIX       add a prefix to all variable names
+```
+
+
+# openstack baremetal delete
+
+```
+usage: openstack baremetal delete [-h] <node>
+
+Unregister a baremetal node
+
+positional arguments:
+  <node>      Node to delete (name or ID)
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+
+# openstack baremetal import
+
+```
+usage: openstack baremetal import [-h] [-s SERVICE_HOST] [--json] [--csv]
+                                  file_in
+
+Import baremetal nodes from a JSON, YAML or CSV file
+
+positional arguments:
+  file_in
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -s SERVICE_HOST, --service-host SERVICE_HOST
+                        Nova compute service host to register nodes with
+  --json                Deprecated, now detected via file extension.
+  --csv                 Deprecated, now detected via file extension.
+```
+
+
+# openstack baremetal instackenv validate
+
+```
+usage: openstack baremetal instackenv validate [-h] [-f INSTACKENV]
+
+Validate `instackenv.json` which is used in `baremetal import`.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -f INSTACKENV, --file INSTACKENV
+                        Path to the instackenv.json file.
+```
+
+
+# openstack baremetal introspection abort
+
+```
+usage: openstack baremetal introspection abort [-h] uuid
+
+Abort running introspection for node.
+
+positional arguments:
+  uuid        baremetal node UUID
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+
+# openstack baremetal introspection bulk start
+
+```
+usage: openstack baremetal introspection bulk start [-h]
+
+Start bulk introspection on all baremetal nodes
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+
+# openstack baremetal introspection bulk status
+
+```
+usage: openstack baremetal introspection bulk status [-h]
+                                                     [-f {csv,html,json,json,table,value,yaml,yaml}]
+                                                     [-c COLUMN]
+                                                     [--max-width <integer>]
+                                                     [--noindent]
+                                                     [--quote {all,minimal,none,nonnumeric}]
+
+Get the status of all baremetal nodes
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+output formatters:
+  output formatter options
+
+  -f {csv,html,json,json,table,value,yaml,yaml}, --format {csv,html,json,json,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+CSV Formatter:
+  --quote {all,minimal,none,nonnumeric}
+                        when to include quotes, defaults to nonnumeric
+```
+
+
+# openstack baremetal introspection data save
+
+```
+usage: openstack baremetal introspection data save [-h] [--file <filename>]
+                                                   uuid
+
+Save or display raw introspection data.
+
+positional arguments:
+  uuid               baremetal node UUID
+
+optional arguments:
+  -h, --help         show this help message and exit
+  --file <filename>  downloaded introspection data filename (default: stdout)
+```
+
+
+# openstack baremetal introspection rule delete
+
+```
+usage: openstack baremetal introspection rule delete [-h] uuid
+
+Delete an introspection rule.
+
+positional arguments:
+  uuid        rule UUID
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+
+# openstack baremetal introspection rule import
+
+```
+usage: openstack baremetal introspection rule import [-h] file
+
+Import one or several introspection rules from a json file.
+
+positional arguments:
+  file        JSON file to import, may contain one or several rules
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+
+# openstack baremetal introspection rule list
+
+```
+usage: openstack baremetal introspection rule list [-h]
+                                                   [-f {csv,html,json,json,table,value,yaml,yaml}]
+                                                   [-c COLUMN]
+                                                   [--max-width <integer>]
+                                                   [--noindent]
+                                                   [--quote {all,minimal,none,nonnumeric}]
+
+List all introspection rules.
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+output formatters:
+  output formatter options
+
+  -f {csv,html,json,json,table,value,yaml,yaml}, --format {csv,html,json,json,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+CSV Formatter:
+  --quote {all,minimal,none,nonnumeric}
+                        when to include quotes, defaults to nonnumeric
+```
+
+
+# openstack baremetal introspection rule purge
+
+```
+usage: openstack baremetal introspection rule purge [-h]
+
+Drop all introspection rules.
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+
+# openstack baremetal introspection rule show
+
+```
+usage: openstack baremetal introspection rule show [-h]
+                                                   [-f {html,json,json,shell,table,value,yaml,yaml}]
+                                                   [-c COLUMN]
+                                                   [--max-width <integer>]
+                                                   [--noindent]
+                                                   [--prefix PREFIX]
+                                                   uuid
+
+Show an introspection rule.
+
+positional arguments:
+  uuid                  rule UUID
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+output formatters:
+  output formatter options
+
+  -f {html,json,json,shell,table,value,yaml,yaml}, --format {html,json,json,shell,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+shell formatter:
+  a format a UNIX shell can parse (variable="value")
+
+  --prefix PREFIX       add a prefix to all variable names
+```
+
+
+# openstack baremetal introspection start
+
+```
+usage: openstack baremetal introspection start [-h]
+                                               [-f {csv,html,json,json,table,value,yaml,yaml}]
+                                               [-c COLUMN]
+                                               [--max-width <integer>]
+                                               [--noindent]
+                                               [--quote {all,minimal,none,nonnumeric}]
+                                               [--new-ipmi-username NEW_IPMI_USERNAME]
+                                               [--new-ipmi-password NEW_IPMI_PASSWORD]
+                                               [--wait]
+                                               uuid [uuid ...]
+
+Start the introspection.
+
+positional arguments:
+  uuid                  baremetal node UUID(s)
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --new-ipmi-username NEW_IPMI_USERNAME
+                        if set, *Ironic Inspector* will update IPMI user name
+                        to this value
+  --new-ipmi-password NEW_IPMI_PASSWORD
+                        if set, *Ironic Inspector* will update IPMI password
+                        to this value
+  --wait                wait for introspection to finish; the result will be
+                        displayed in the end
+
+output formatters:
+  output formatter options
+
+  -f {csv,html,json,json,table,value,yaml,yaml}, --format {csv,html,json,json,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+CSV Formatter:
+  --quote {all,minimal,none,nonnumeric}
+                        when to include quotes, defaults to nonnumeric
+```
+
+
+# openstack baremetal introspection status
+
+```
+usage: openstack baremetal introspection status [-h]
+                                                [-f {html,json,json,shell,table,value,yaml,yaml}]
+                                                [-c COLUMN]
+                                                [--max-width <integer>]
+                                                [--noindent] [--prefix PREFIX]
+                                                uuid
+
+Get introspection status.
+
+positional arguments:
+  uuid                  baremetal node UUID
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+output formatters:
+  output formatter options
+
+  -f {html,json,json,shell,table,value,yaml,yaml}, --format {html,json,json,shell,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+shell formatter:
+  a format a UNIX shell can parse (variable="value")
+
+  --prefix PREFIX       add a prefix to all variable names
+```
+
+
+# openstack baremetal list
+
+```
+usage: openstack baremetal list [-h]
+                                [-f {csv,html,json,json,table,value,yaml,yaml}]
+                                [-c COLUMN] [--max-width <integer>]
+                                [--noindent]
+                                [--quote {all,minimal,none,nonnumeric}]
+                                [--limit <limit>] [--marker <node>]
+                                [--sort <key>[:<direction>]] [--maintenance]
+                                [--associated] [--long]
+
+List baremetal nodes
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --limit <limit>       Maximum number of nodes to return per request, 0 for
+                        no limit. Default is the maximum number used by the
+                        Baremetal API Service.
+  --marker <node>       Node UUID (for example, of the last node in the list
+                        from a previous request). Returns the list of nodes
+                        after this UUID.
+  --sort <key>[:<direction>]
+                        Sort output by selected keys and directions(asc or
+                        desc) (default: asc), multiple keys and directions can
+                        be specified separated by comma
+  --maintenance         List nodes in maintenance mode.
+  --associated          List only nodes associated with an instance.
+  --long                Show detailed information about the nodes.
+
+output formatters:
+  output formatter options
+
+  -f {csv,html,json,json,table,value,yaml,yaml}, --format {csv,html,json,json,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+CSV Formatter:
+  --quote {all,minimal,none,nonnumeric}
+                        when to include quotes, defaults to nonnumeric
+```
+
+
+# openstack baremetal set
+
+```
+usage: openstack baremetal set [-h] [--property <path=value>] <node>
+
+Set baremetal properties
+
+positional arguments:
+  <node>                Name or UUID of the node.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --property <path=value>
+                        Property to add to this baremetal host (repeat option
+                        to set multiple properties)
+```
+
+
+# openstack baremetal show
+
+```
+usage: openstack baremetal show [-h]
+                                [-f {html,json,json,shell,table,value,yaml,yaml}]
+                                [-c COLUMN] [--max-width <integer>]
+                                [--noindent] [--prefix PREFIX] [--instance]
+                                [--long]
+                                <node>
+
+Show baremetal node details
+
+positional arguments:
+  <node>                Name or UUID of the node (or instance UUID if
+                        --instance is specified)
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --instance            <node> is an instance UUID.
+  --long
+
+output formatters:
+  output formatter options
+
+  -f {html,json,json,shell,table,value,yaml,yaml}, --format {html,json,json,shell,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+shell formatter:
+  a format a UNIX shell can parse (variable="value")
+
+  --prefix PREFIX       add a prefix to all variable names
+```
+
+
+# openstack baremetal show capabilities
+
+```
+usage: openstack baremetal show [-h]
+                                [-f {html,json,json,shell,table,value,yaml,yaml}]
+                                [-c COLUMN] [--max-width <integer>]
+                                [--noindent] [--prefix PREFIX] [--instance]
+                                [--long]
+                                <node>
+
+Show baremetal node details
+
+positional arguments:
+  <node>                Name or UUID of the node (or instance UUID if
+                        --instance is specified)
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --instance            <node> is an instance UUID.
+  --long
+
+output formatters:
+  output formatter options
+
+  -f {html,json,json,shell,table,value,yaml,yaml}, --format {html,json,json,shell,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+shell formatter:
+  a format a UNIX shell can parse (variable="value")
+
+  --prefix PREFIX       add a prefix to all variable names
+```
+
+
+# openstack baremetal unset
+
+```
+usage: openstack baremetal unset [-h] [--property <path>] <node>
+
+Unset baremetal properties
+
+positional arguments:
+  <node>             Name or UUID of the node.
+
+optional arguments:
+  -h, --help         show this help message and exit
+  --property <path>  Property to unset on this baremetal host (repeat option
+                     to unset multiple properties)
+```
+
+
+# openstack ca get
+
+```
+usage: openstack ca get [-h] [-f {html,json,json,shell,table,value,yaml,yaml}]
+                        [-c COLUMN] [--max-width <integer>] [--noindent]
+                        [--prefix PREFIX]
+                        URI
+
+Retrieve a CA by providing its URI.
+
+positional arguments:
+  URI                   The URI reference for the CA.
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+output formatters:
+  output formatter options
+
+  -f {html,json,json,shell,table,value,yaml,yaml}, --format {html,json,json,shell,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+shell formatter:
+  a format a UNIX shell can parse (variable="value")
+
+  --prefix PREFIX       add a prefix to all variable names
+```
+
+
+# openstack ca list
+
+```
+usage: openstack ca list [-h] [-f {csv,html,json,json,table,value,yaml,yaml}]
+                         [-c COLUMN] [--max-width <integer>] [--noindent]
+                         [--quote {all,minimal,none,nonnumeric}]
+                         [--limit LIMIT] [--offset OFFSET] [--name NAME]
+
+List cas.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --limit LIMIT, -l LIMIT
+                        specify the limit to the number of items to list per
+                        page (default: 10; maximum: 100)
+  --offset OFFSET, -o OFFSET
+                        specify the page offset (default: 0)
+  --name NAME, -n NAME  specify the secret name (default: None)
+
+output formatters:
+  output formatter options
+
+  -f {csv,html,json,json,table,value,yaml,yaml}, --format {csv,html,json,json,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+CSV Formatter:
+  --quote {all,minimal,none,nonnumeric}
+                        when to include quotes, defaults to nonnumeric
 ```
 
 
@@ -5522,20 +6478,50 @@ shell formatter:
 # openstack ip floating delete
 
 ```
-Missing parameter(s): 
-Set a username with --os-username, OS_USERNAME, or auth.username
-Set an authentication URL, with --os-auth-url, OS_AUTH_URL or auth.auth_url
-Set a scope, such as a project or domain, set a project scope with --os-project-name, OS_PROJECT_NAME or auth.project_name, set a domain scope with --os-domain-name, OS_DOMAIN_NAME or auth.domain_name
+usage: openstack ip floating delete [-h] <floating-ip>
+
+Delete floating IP
+
+positional arguments:
+  <floating-ip>  Floating IP to delete (IP address or ID)
+
+optional arguments:
+  -h, --help     show this help message and exit
 ```
 
 
 # openstack ip floating list
 
 ```
-Missing parameter(s): 
-Set a username with --os-username, OS_USERNAME, or auth.username
-Set an authentication URL, with --os-auth-url, OS_AUTH_URL or auth.auth_url
-Set a scope, such as a project or domain, set a project scope with --os-project-name, OS_PROJECT_NAME or auth.project_name, set a domain scope with --os-domain-name, OS_DOMAIN_NAME or auth.domain_name
+usage: openstack ip floating list [-h]
+                                  [-f {csv,html,json,json,table,value,yaml,yaml}]
+                                  [-c COLUMN] [--max-width <integer>]
+                                  [--noindent]
+                                  [--quote {all,minimal,none,nonnumeric}]
+
+List floating IP(s)
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+output formatters:
+  output formatter options
+
+  -f {csv,html,json,json,table,value,yaml,yaml}, --format {csv,html,json,json,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+CSV Formatter:
+  --quote {all,minimal,none,nonnumeric}
+                        when to include quotes, defaults to nonnumeric
 ```
 
 
@@ -5593,10 +6579,39 @@ optional arguments:
 # openstack ip floating show
 
 ```
-Missing parameter(s): 
-Set a username with --os-username, OS_USERNAME, or auth.username
-Set an authentication URL, with --os-auth-url, OS_AUTH_URL or auth.auth_url
-Set a scope, such as a project or domain, set a project scope with --os-project-name, OS_PROJECT_NAME or auth.project_name, set a domain scope with --os-domain-name, OS_DOMAIN_NAME or auth.domain_name
+usage: openstack ip floating show [-h]
+                                  [-f {html,json,json,shell,table,value,yaml,yaml}]
+                                  [-c COLUMN] [--max-width <integer>]
+                                  [--noindent] [--prefix PREFIX]
+                                  <floating-ip>
+
+Show floating IP details
+
+positional arguments:
+  <floating-ip>         Floating IP to display (IP address or ID)
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+output formatters:
+  output formatter options
+
+  -f {html,json,json,shell,table,value,yaml,yaml}, --format {html,json,json,shell,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+shell formatter:
+  a format a UNIX shell can parse (variable="value")
+
+  --prefix PREFIX       add a prefix to all variable names
 ```
 
 
@@ -5813,30 +6828,108 @@ shell formatter:
 # openstack network create
 
 ```
-Missing parameter(s): 
-Set a username with --os-username, OS_USERNAME, or auth.username
-Set an authentication URL, with --os-auth-url, OS_AUTH_URL or auth.auth_url
-Set a scope, such as a project or domain, set a project scope with --os-project-name, OS_PROJECT_NAME or auth.project_name, set a domain scope with --os-domain-name, OS_DOMAIN_NAME or auth.domain_name
+usage: openstack network create [-h]
+                                [-f {html,json,json,shell,table,value,yaml,yaml}]
+                                [-c COLUMN] [--max-width <integer>]
+                                [--noindent] [--prefix PREFIX]
+                                [--share | --no-share] [--enable | --disable]
+                                [--project <project>]
+                                [--project-domain <project-domain>]
+                                [--availability-zone-hint <availability-zone>]
+                                <name>
+
+Create new network
+
+positional arguments:
+  <name>                New network name
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --share               Share the network between projects
+  --no-share            Do not share the network between projects
+  --enable              Enable network (default)
+  --disable             Disable network
+  --project <project>   Owner's project (name or ID)
+  --project-domain <project-domain>
+                        Domain the project belongs to (name or ID). This can
+                        be used in case collisions between project names
+                        exist.
+  --availability-zone-hint <availability-zone>
+                        Availability Zone in which to create this network
+                        (requires the Network Availability Zone extension,
+                        this option can be repeated).
+
+output formatters:
+  output formatter options
+
+  -f {html,json,json,shell,table,value,yaml,yaml}, --format {html,json,json,shell,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+shell formatter:
+  a format a UNIX shell can parse (variable="value")
+
+  --prefix PREFIX       add a prefix to all variable names
 ```
 
 
 # openstack network delete
 
 ```
-Missing parameter(s): 
-Set a username with --os-username, OS_USERNAME, or auth.username
-Set an authentication URL, with --os-auth-url, OS_AUTH_URL or auth.auth_url
-Set a scope, such as a project or domain, set a project scope with --os-project-name, OS_PROJECT_NAME or auth.project_name, set a domain scope with --os-domain-name, OS_DOMAIN_NAME or auth.domain_name
+usage: openstack network delete [-h] <network> [<network> ...]
+
+Delete network(s)
+
+positional arguments:
+  <network>   Network(s) to delete (name or ID)
+
+optional arguments:
+  -h, --help  show this help message and exit
 ```
 
 
 # openstack network list
 
 ```
-Missing parameter(s): 
-Set a username with --os-username, OS_USERNAME, or auth.username
-Set an authentication URL, with --os-auth-url, OS_AUTH_URL or auth.auth_url
-Set a scope, such as a project or domain, set a project scope with --os-project-name, OS_PROJECT_NAME or auth.project_name, set a domain scope with --os-domain-name, OS_DOMAIN_NAME or auth.domain_name
+usage: openstack network list [-h]
+                              [-f {csv,html,json,json,table,value,yaml,yaml}]
+                              [-c COLUMN] [--max-width <integer>] [--noindent]
+                              [--quote {all,minimal,none,nonnumeric}]
+                              [--external] [--long]
+
+List networks
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --external            List external networks
+  --long                List additional fields in output
+
+output formatters:
+  output formatter options
+
+  -f {csv,html,json,json,table,value,yaml,yaml}, --format {csv,html,json,json,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+CSV Formatter:
+  --quote {all,minimal,none,nonnumeric}
+                        when to include quotes, defaults to nonnumeric
 ```
 
 
@@ -5865,10 +6958,39 @@ optional arguments:
 # openstack network show
 
 ```
-Missing parameter(s): 
-Set a username with --os-username, OS_USERNAME, or auth.username
-Set an authentication URL, with --os-auth-url, OS_AUTH_URL or auth.auth_url
-Set a scope, such as a project or domain, set a project scope with --os-project-name, OS_PROJECT_NAME or auth.project_name, set a domain scope with --os-domain-name, OS_DOMAIN_NAME or auth.domain_name
+usage: openstack network show [-h]
+                              [-f {html,json,json,shell,table,value,yaml,yaml}]
+                              [-c COLUMN] [--max-width <integer>] [--noindent]
+                              [--prefix PREFIX]
+                              <network>
+
+Show network details
+
+positional arguments:
+  <network>             Network to display (name or ID)
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+output formatters:
+  output formatter options
+
+  -f {html,json,json,shell,table,value,yaml,yaml}, --format {html,json,json,shell,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+shell formatter:
+  a format a UNIX shell can parse (variable="value")
+
+  --prefix PREFIX       add a prefix to all variable names
 ```
 
 
@@ -6416,6 +7538,300 @@ json formatter:
 CSV Formatter:
   --quote {all,minimal,none,nonnumeric}
                         when to include quotes, defaults to nonnumeric
+```
+
+
+# openstack Could not load EntryPoint.parse('overcloud_deploy = tripleoclient.v1.overcloud_deploy:DeployOvercloud')
+
+```
+Unknown command ['Could', 'not', 'load', "EntryPoint.parse('overcloud_deploy", '=', "tripleoclient.v1.overcloud_deploy:DeployOvercloud')"]
+```
+
+
+# openstack overcloud image build
+
+```
+usage: openstack overcloud image build [-h] [--all] [--type <image type>]
+                                       [--base-image BASE_IMAGE]
+                                       [--instack-undercloud-elements INSTACK_UNDERCLOUD_ELEMENTS]
+                                       [--tripleo-puppet-elements TRIPLEO_PUPPET_ELEMENTS]
+                                       [--elements-path ELEMENTS_PATH]
+                                       [--tmp-dir TMP_DIR]
+                                       [--node-arch NODE_ARCH]
+                                       [--node-dist NODE_DIST]
+                                       [--registration-method REG_METHOD]
+                                       [--use-delorean-trunk]
+                                       [--delorean-trunk-repo DELOREAN_TRUNK_REPO]
+                                       [--delorean-repo-file DELOREAN_REPO_FILE]
+                                       [--overcloud-full-dib-extra-args OVERCLOUD_FULL_DIB_EXTRA_ARGS]
+                                       [--agent-dib-extra-args AGENT_DIB_EXTRA_ARGS]
+                                       [--overcloud-full-name OVERCLOUD_FULL_NAME]
+                                       [--fedora-user-name FEDORA_USER_NAME]
+                                       [--agent-name AGENT_NAME]
+                                       [--deploy-name DEPLOY_NAME]
+                                       [--discovery-name DISCOVERY_NAME]
+                                       [--agent-image-element AGENT_IMAGE_ELEMENT]
+                                       [--deploy-image-element DEPLOY_IMAGE_ELEMENT]
+                                       [--discovery-image-element DISCOVERY_IMAGE_ELEMENT]
+                                       [--builder-extra-args BUILDER_EXTRA_ARGS]
+                                       [--builder <builder>]
+
+Build images for the overcloud
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --all                 Build all images
+  --type <image type>   Build image by name. One of agent-ramdisk, deploy-
+                        ramdisk, discovery-ramdisk, fedora-user, overcloud-
+                        full
+  --base-image BASE_IMAGE
+                        Image file to use as a base for new images
+  --instack-undercloud-elements INSTACK_UNDERCLOUD_ELEMENTS
+                        Path to Instack Undercloud elements
+  --tripleo-puppet-elements TRIPLEO_PUPPET_ELEMENTS
+                        Path to TripleO Puppet elements
+  --elements-path ELEMENTS_PATH
+                        Full elements path, separated by :
+  --tmp-dir TMP_DIR     Path to a temporary directory for creating images
+  --node-arch NODE_ARCH
+                        Architecture of image to build
+  --node-dist NODE_DIST
+                        Distribution of image to build
+  --registration-method REG_METHOD
+                        Registration method
+  --use-delorean-trunk  Use Delorean trunk repo
+  --delorean-trunk-repo DELOREAN_TRUNK_REPO
+                        URL to Delorean trunk repo
+  --delorean-repo-file DELOREAN_REPO_FILE
+                        Filename for delorean repo config file
+  --overcloud-full-dib-extra-args OVERCLOUD_FULL_DIB_EXTRA_ARGS
+                        Extra args for Overcloud Full
+  --agent-dib-extra-args AGENT_DIB_EXTRA_ARGS
+                        Extra args for the IPA image
+  --overcloud-full-name OVERCLOUD_FULL_NAME
+                        Name of overcloud full image
+  --fedora-user-name FEDORA_USER_NAME
+                        Name of Fedora user image
+  --agent-name AGENT_NAME
+                        Name of the IPA ramdisk image
+  --deploy-name DEPLOY_NAME
+                        DEPRECATED: Name of deployment ramdisk image. This
+                        image has been replaced by the Ironic Python Agent
+                        ramdisk, so you should switch to that as soon as
+                        possible.
+  --discovery-name DISCOVERY_NAME
+                        DEPRECATED: Name of discovery ramdisk image. This
+                        image has been replaced by the Ironic Python Agent
+                        ramdisk, so you should switch to that as soon as
+                        possible.
+  --agent-image-element AGENT_IMAGE_ELEMENT
+                        DIB elements for the IPA image
+  --deploy-image-element DEPLOY_IMAGE_ELEMENT
+                        DIB elements for deploy image
+  --discovery-image-element DISCOVERY_IMAGE_ELEMENT
+                        DIB elements for discovery image
+  --builder-extra-args BUILDER_EXTRA_ARGS
+                        Extra arguments for the image builder
+  --builder <builder>   Image builder. One of dib
+```
+
+
+# openstack overcloud image upload
+
+```
+usage: openstack overcloud image upload [-h] [--image-path IMAGE_PATH]
+                                        [--os-image OS_IMAGE]
+                                        [--http-boot HTTP_BOOT]
+                                        [--update-existing]
+
+Create overcloud glance images from existing image files.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --image-path IMAGE_PATH
+                        Path to directory containing image files
+  --os-image OS_IMAGE   OpenStack disk image filename
+  --http-boot HTTP_BOOT
+                        Root directory for discovery images
+  --update-existing     Update images if already exist
+```
+
+
+# openstack overcloud netenv validate
+
+```
+usage: openstack overcloud netenv validate [-h] [-f NETENV]
+
+Validate the network environment file.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -f NETENV, --file NETENV
+                        Path to the network environment file
+```
+
+
+# openstack overcloud node delete
+
+```
+usage: openstack overcloud node delete [-h] [--stack STACK]
+                                       [--templates [TEMPLATES]]
+                                       [-e <HEAT ENVIRONMENT FILE>]
+                                       <node> [<node> ...]
+
+Delete overcloud nodes.
+
+positional arguments:
+  <node>                Node ID(s) to delete
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --stack STACK         Name or ID of heat stack to scale (default=Env:
+                        OVERCLOUD_STACK_NAME)
+  --templates [TEMPLATES]
+                        The directory containing the Heat templates to deploy
+  -e <HEAT ENVIRONMENT FILE>, --environment-file <HEAT ENVIRONMENT FILE>
+                        Environment files to be passed to the heat stack-
+                        create or heat stack-update command. (Can be specified
+                        more than once.)
+```
+
+
+# openstack overcloud profiles list
+
+```
+usage: openstack overcloud profiles list [-h]
+                                         [-f {csv,html,json,json,table,value,yaml,yaml}]
+                                         [-c COLUMN] [--max-width <integer>]
+                                         [--noindent]
+                                         [--quote {all,minimal,none,nonnumeric}]
+
+List overcloud node profiles
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+output formatters:
+  output formatter options
+
+  -f {csv,html,json,json,table,value,yaml,yaml}, --format {csv,html,json,json,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+CSV Formatter:
+  --quote {all,minimal,none,nonnumeric}
+                        when to include quotes, defaults to nonnumeric
+```
+
+
+# openstack overcloud profiles match
+
+```
+usage: openstack overcloud profiles match [-h] [--dry-run]
+                                          [--control-scale CONTROL_SCALE]
+                                          [--compute-scale COMPUTE_SCALE]
+                                          [--ceph-storage-scale CEPH_STORAGE_SCALE]
+                                          [--block-storage-scale BLOCK_STORAGE_SCALE]
+                                          [--swift-storage-scale SWIFT_STORAGE_SCALE]
+                                          [--control-flavor CONTROL_FLAVOR]
+                                          [--compute-flavor COMPUTE_FLAVOR]
+                                          [--ceph-storage-flavor CEPH_STORAGE_FLAVOR]
+                                          [--block-storage-flavor BLOCK_STORAGE_FLAVOR]
+                                          [--swift-storage-flavor SWIFT_STORAGE_FLAVOR]
+
+Assign and validate profiles on nodes
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --dry-run             Only run validations, but do not apply any changes.
+  --control-scale CONTROL_SCALE
+                        New number of control nodes.
+  --compute-scale COMPUTE_SCALE
+                        New number of compute nodes.
+  --ceph-storage-scale CEPH_STORAGE_SCALE
+                        New number of ceph storage nodes.
+  --block-storage-scale BLOCK_STORAGE_SCALE
+                        New number of cinder storage nodes.
+  --swift-storage-scale SWIFT_STORAGE_SCALE
+                        New number of swift storage nodes.
+  --control-flavor CONTROL_FLAVOR
+                        Nova flavor to use for control nodes.
+  --compute-flavor COMPUTE_FLAVOR
+                        Nova flavor to use for compute nodes.
+  --ceph-storage-flavor CEPH_STORAGE_FLAVOR
+                        Nova flavor to use for ceph storage nodes.
+  --block-storage-flavor BLOCK_STORAGE_FLAVOR
+                        Nova flavor to use for cinder storage nodes.
+  --swift-storage-flavor SWIFT_STORAGE_FLAVOR
+                        Nova flavor to use for swift storage nodes.
+```
+
+
+# openstack overcloud update stack
+
+```
+usage: openstack overcloud update stack [-h] [--templates [TEMPLATES]] [-i]
+                                        [-a] [-e <HEAT ENVIRONMENT FILE>]
+                                        [--answers-file ANSWERS_FILE]
+                                        [stack]
+
+Updates packages on overcloud nodes
+
+positional arguments:
+  stack                 Name or ID of heat stack to scale (default=Env:
+                        OVERCLOUD_STACK_NAME)
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --templates [TEMPLATES]
+                        The directory containing the Heat templates to deploy
+  -i, --interactive
+  -a, --abort
+  -e <HEAT ENVIRONMENT FILE>, --environment-file <HEAT ENVIRONMENT FILE>
+                        Environment files to be passed to the heat stack-
+                        create or heat stack-update command. (Can be specified
+                        more than once.)
+  --answers-file ANSWERS_FILE
+                        Path to a YAML file with arguments and parameters.
+```
+
+
+# openstack overcloud upgrade
+
+```
+usage: openstack overcloud upgrade [-h] [--stack STACK]
+                                   [-e <HEAT ENVIRONMENT FILE>]
+                                   (--templates [TEMPLATES] | --answers-file ANSWERS_FILE)
+                                   <prepare|start|finish>
+
+Performs a major upgrade on overcloud nodes
+
+positional arguments:
+  <prepare|start|finish>
+                        Stage of upgrade to perform.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --stack STACK         Name or ID of heat stack to upgrade (default=Env:
+                        OVERCLOUD_STACK_NAME)
+  -e <HEAT ENVIRONMENT FILE>, --environment-file <HEAT ENVIRONMENT FILE>
+                        Environment files to be passed to the heat stack-
+                        update command. (Can be specified more than once.)
+  --templates [TEMPLATES]
+                        The directory containing the Heat templates used for
+                        the upgraded deployment. Cannot be specified with
+                        --answers-file.
+  --answers-file ANSWERS_FILE
+                        Path to a YAML file with arguments and parameters.
+                        Cannot be used with --templates.
 ```
 
 
@@ -7444,6 +8860,510 @@ shell formatter:
 ```
 
 
+# openstack secret container create
+
+```
+usage: openstack secret container create [-h]
+                                         [-f {html,json,json,shell,table,value,yaml,yaml}]
+                                         [-c COLUMN] [--max-width <integer>]
+                                         [--noindent] [--prefix PREFIX]
+                                         [--name NAME] [--type TYPE]
+                                         [--secret SECRET]
+
+Store a container in Barbican.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --name NAME, -n NAME  a human-friendly name.
+  --type TYPE           type of container to create (default: generic).
+  --secret SECRET, -s SECRET
+                        one secret to store in a container (can be set
+                        multiple times). Example: --secret
+                        "private_key=https://url.test/v1/secrets/1-2-3-4"
+
+output formatters:
+  output formatter options
+
+  -f {html,json,json,shell,table,value,yaml,yaml}, --format {html,json,json,shell,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+shell formatter:
+  a format a UNIX shell can parse (variable="value")
+
+  --prefix PREFIX       add a prefix to all variable names
+```
+
+
+# openstack secret container delete
+
+```
+usage: openstack secret container delete [-h] URI
+
+Delete a container by providing its href.
+
+positional arguments:
+  URI         The URI reference for the container
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+
+# openstack secret container get
+
+```
+usage: openstack secret container get [-h]
+                                      [-f {html,json,json,shell,table,value,yaml,yaml}]
+                                      [-c COLUMN] [--max-width <integer>]
+                                      [--noindent] [--prefix PREFIX]
+                                      URI
+
+Retrieve a container by providing its URI.
+
+positional arguments:
+  URI                   The URI reference for the container.
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+output formatters:
+  output formatter options
+
+  -f {html,json,json,shell,table,value,yaml,yaml}, --format {html,json,json,shell,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+shell formatter:
+  a format a UNIX shell can parse (variable="value")
+
+  --prefix PREFIX       add a prefix to all variable names
+```
+
+
+# openstack secret container list
+
+```
+usage: openstack secret container list [-h]
+                                       [-f {csv,html,json,json,table,value,yaml,yaml}]
+                                       [-c COLUMN] [--max-width <integer>]
+                                       [--noindent]
+                                       [--quote {all,minimal,none,nonnumeric}]
+                                       [--limit LIMIT] [--offset OFFSET]
+                                       [--name NAME] [--type TYPE]
+
+List containers.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --limit LIMIT, -l LIMIT
+                        specify the limit to the number of items to list per
+                        page (default: 10; maximum: 100)
+  --offset OFFSET, -o OFFSET
+                        specify the page offset (default: 0)
+  --name NAME, -n NAME  specify the container name (default: None)
+  --type TYPE, -t TYPE  specify the type filter for the list (default: None).
+
+output formatters:
+  output formatter options
+
+  -f {csv,html,json,json,table,value,yaml,yaml}, --format {csv,html,json,json,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+CSV Formatter:
+  --quote {all,minimal,none,nonnumeric}
+                        when to include quotes, defaults to nonnumeric
+```
+
+
+# openstack secret delete
+
+```
+usage: openstack secret delete [-h] URI
+
+Delete a secret by providing its URI.
+
+positional arguments:
+  URI         The URI reference for the secret
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+
+# openstack secret get
+
+```
+usage: openstack secret get [-h]
+                            [-f {html,json,json,shell,table,value,yaml,yaml}]
+                            [-c COLUMN] [--max-width <integer>] [--noindent]
+                            [--prefix PREFIX] [--decrypt] [--payload]
+                            [--payload_content_type PAYLOAD_CONTENT_TYPE]
+                            URI
+
+Retrieve a secret by providing its URI.
+
+positional arguments:
+  URI                   The URI reference for the secret.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --decrypt, -d         if specified, retrieve the unencrypted secret data;
+                        the data type can be specified with --payload-content-
+                        type.
+  --payload, -p         if specified, retrieve the unencrypted secret data;
+                        the data type can be specified with --payload-content-
+                        type. If the user wishes to only retrieve the value of
+                        the payload they must add "-f value" to format
+                        returning only the value of the payload
+  --payload_content_type PAYLOAD_CONTENT_TYPE, -t PAYLOAD_CONTENT_TYPE
+                        the content type of the decrypted secret (default:
+                        text/plain.
+
+output formatters:
+  output formatter options
+
+  -f {html,json,json,shell,table,value,yaml,yaml}, --format {html,json,json,shell,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+shell formatter:
+  a format a UNIX shell can parse (variable="value")
+
+  --prefix PREFIX       add a prefix to all variable names
+```
+
+
+# openstack secret list
+
+```
+usage: openstack secret list [-h]
+                             [-f {csv,html,json,json,table,value,yaml,yaml}]
+                             [-c COLUMN] [--max-width <integer>] [--noindent]
+                             [--quote {all,minimal,none,nonnumeric}]
+                             [--limit LIMIT] [--offset OFFSET] [--name NAME]
+                             [--algorithm ALGORITHM] [--bit-length BIT_LENGTH]
+                             [--mode MODE]
+
+List secrets.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --limit LIMIT, -l LIMIT
+                        specify the limit to the number of items to list per
+                        page (default: 10; maximum: 100)
+  --offset OFFSET, -o OFFSET
+                        specify the page offset (default: 0)
+  --name NAME, -n NAME  specify the secret name (default: None)
+  --algorithm ALGORITHM, -a ALGORITHM
+                        the algorithm filter for the list(default: None).
+  --bit-length BIT_LENGTH, -b BIT_LENGTH
+                        the bit length filter for the list (default: 0).
+  --mode MODE, -m MODE  the algorithm mode filter for the list (default:
+                        None).
+
+output formatters:
+  output formatter options
+
+  -f {csv,html,json,json,table,value,yaml,yaml}, --format {csv,html,json,json,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+CSV Formatter:
+  --quote {all,minimal,none,nonnumeric}
+                        when to include quotes, defaults to nonnumeric
+```
+
+
+# openstack secret order create
+
+```
+usage: openstack secret order create [-h]
+                                     [-f {html,json,json,shell,table,value,yaml,yaml}]
+                                     [-c COLUMN] [--max-width <integer>]
+                                     [--noindent] [--prefix PREFIX]
+                                     [--name NAME] [--algorithm ALGORITHM]
+                                     [--bit-length BIT_LENGTH] [--mode MODE]
+                                     [--payload-content-type PAYLOAD_CONTENT_TYPE]
+                                     [--expiration EXPIRATION]
+                                     [--request-type REQUEST_TYPE]
+                                     [--subject-dn SUBJECT_DN]
+                                     [--source-container-ref SOURCE_CONTAINER_REF]
+                                     [--ca-id CA_ID] [--profile PROFILE]
+                                     [--request-file REQUEST_FILE]
+                                     type
+
+Create a new order.
+
+positional arguments:
+  type                  the type of the order to create.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --name NAME, -n NAME  a human-friendly name.
+  --algorithm ALGORITHM, -a ALGORITHM
+                        the algorithm to be used with the requested key
+                        (default: aes).
+  --bit-length BIT_LENGTH, -b BIT_LENGTH
+                        the bit length of the requested secret key (default:
+                        256).
+  --mode MODE, -m MODE  the algorithm mode to be used with the requested key
+                        (default: cbc).
+  --payload-content-type PAYLOAD_CONTENT_TYPE, -t PAYLOAD_CONTENT_TYPE
+                        the type/format of the secret to be generated
+                        (default: application/octet-stream).
+  --expiration EXPIRATION, -x EXPIRATION
+                        the expiration time for the secret in ISO 8601 format.
+  --request-type REQUEST_TYPE
+                        the type of the certificate request.
+  --subject-dn SUBJECT_DN
+                        the subject of the certificate.
+  --source-container-ref SOURCE_CONTAINER_REF
+                        the source of the certificate when using stored-key
+                        requests.
+  --ca-id CA_ID         the identifier of the CA to use for the certificate
+                        request.
+  --profile PROFILE     the profile of certificate to use.
+  --request-file REQUEST_FILE
+                        the file containing the CSR.
+
+output formatters:
+  output formatter options
+
+  -f {html,json,json,shell,table,value,yaml,yaml}, --format {html,json,json,shell,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+shell formatter:
+  a format a UNIX shell can parse (variable="value")
+
+  --prefix PREFIX       add a prefix to all variable names
+```
+
+
+# openstack secret order delete
+
+```
+usage: openstack secret order delete [-h] URI
+
+Delete an order by providing its href.
+
+positional arguments:
+  URI         The URI reference for the order
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+
+# openstack secret order get
+
+```
+usage: openstack secret order get [-h]
+                                  [-f {html,json,json,shell,table,value,yaml,yaml}]
+                                  [-c COLUMN] [--max-width <integer>]
+                                  [--noindent] [--prefix PREFIX]
+                                  URI
+
+Retrieve an order by providing its URI.
+
+positional arguments:
+  URI                   The URI reference order.
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+output formatters:
+  output formatter options
+
+  -f {html,json,json,shell,table,value,yaml,yaml}, --format {html,json,json,shell,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+shell formatter:
+  a format a UNIX shell can parse (variable="value")
+
+  --prefix PREFIX       add a prefix to all variable names
+```
+
+
+# openstack secret order list
+
+```
+usage: openstack secret order list [-h]
+                                   [-f {csv,html,json,json,table,value,yaml,yaml}]
+                                   [-c COLUMN] [--max-width <integer>]
+                                   [--noindent]
+                                   [--quote {all,minimal,none,nonnumeric}]
+                                   [--limit LIMIT] [--offset OFFSET]
+
+List orders.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --limit LIMIT, -l LIMIT
+                        specify the limit to the number of items to list per
+                        page (default: 10; maximum: 100)
+  --offset OFFSET, -o OFFSET
+                        specify the page offset (default: 0)
+
+output formatters:
+  output formatter options
+
+  -f {csv,html,json,json,table,value,yaml,yaml}, --format {csv,html,json,json,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+CSV Formatter:
+  --quote {all,minimal,none,nonnumeric}
+                        when to include quotes, defaults to nonnumeric
+```
+
+
+# openstack secret store
+
+```
+usage: openstack secret store [-h]
+                              [-f {html,json,json,shell,table,value,yaml,yaml}]
+                              [-c COLUMN] [--max-width <integer>] [--noindent]
+                              [--prefix PREFIX] [--name NAME]
+                              [--payload PAYLOAD] [--secret-type SECRET_TYPE]
+                              [--payload-content-type PAYLOAD_CONTENT_TYPE]
+                              [--payload-content-encoding PAYLOAD_CONTENT_ENCODING]
+                              [--algorithm ALGORITHM]
+                              [--bit-length BIT_LENGTH] [--mode MODE]
+                              [--expiration EXPIRATION]
+
+Store a secret in Barbican.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --name NAME, -n NAME  a human-friendly name.
+  --payload PAYLOAD, -p PAYLOAD
+                        the unencrypted secret; if provided, you must also
+                        provide a payload_content_type
+  --secret-type SECRET_TYPE, -s SECRET_TYPE
+                        the secret type; must be one of symmetric, public,
+                        private, certificate, passphrase, opaque (default)
+  --payload-content-type PAYLOAD_CONTENT_TYPE, -t PAYLOAD_CONTENT_TYPE
+                        the type/format of the provided secret data;
+                        "text/plain" is assumed to be UTF-8; required when
+                        --payload is supplied.
+  --payload-content-encoding PAYLOAD_CONTENT_ENCODING, -e PAYLOAD_CONTENT_ENCODING
+                        required if --payload-content-type is "application
+                        /octet-stream".
+  --algorithm ALGORITHM, -a ALGORITHM
+                        the algorithm (default: aes).
+  --bit-length BIT_LENGTH, -b BIT_LENGTH
+                        the bit length (default: 256).
+  --mode MODE, -m MODE  the algorithm mode; used only for reference (default:
+                        cbc)
+  --expiration EXPIRATION, -x EXPIRATION
+                        the expiration time for the secret in ISO 8601 format.
+
+output formatters:
+  output formatter options
+
+  -f {html,json,json,shell,table,value,yaml,yaml}, --format {html,json,json,shell,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+shell formatter:
+  a format a UNIX shell can parse (variable="value")
+
+  --prefix PREFIX       add a prefix to all variable names
+```
+
+
+# openstack secret update
+
+```
+usage: openstack secret update [-h] URI payload
+
+Update a secret with no payload in Barbican.
+
+positional arguments:
+  URI         The URI reference for the secret.
+  payload     the unencrypted secret
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+
 # openstack security group create
 
 ```
@@ -7489,20 +9409,50 @@ shell formatter:
 # openstack security group delete
 
 ```
-Missing parameter(s): 
-Set a username with --os-username, OS_USERNAME, or auth.username
-Set an authentication URL, with --os-auth-url, OS_AUTH_URL or auth.auth_url
-Set a scope, such as a project or domain, set a project scope with --os-project-name, OS_PROJECT_NAME or auth.project_name, set a domain scope with --os-domain-name, OS_DOMAIN_NAME or auth.domain_name
+usage: openstack security group delete [-h] <group>
+
+Delete a security group
+
+positional arguments:
+  <group>     Security group to delete (name or ID)
+
+optional arguments:
+  -h, --help  show this help message and exit
 ```
 
 
 # openstack security group list
 
 ```
-Missing parameter(s): 
-Set a username with --os-username, OS_USERNAME, or auth.username
-Set an authentication URL, with --os-auth-url, OS_AUTH_URL or auth.auth_url
-Set a scope, such as a project or domain, set a project scope with --os-project-name, OS_PROJECT_NAME or auth.project_name, set a domain scope with --os-domain-name, OS_DOMAIN_NAME or auth.domain_name
+usage: openstack security group list [-h]
+                                     [-f {csv,html,json,json,table,value,yaml,yaml}]
+                                     [-c COLUMN] [--max-width <integer>]
+                                     [--noindent]
+                                     [--quote {all,minimal,none,nonnumeric}]
+
+List security groups
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+output formatters:
+  output formatter options
+
+  -f {csv,html,json,json,table,value,yaml,yaml}, --format {csv,html,json,json,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+CSV Formatter:
+  --quote {all,minimal,none,nonnumeric}
+                        when to include quotes, defaults to nonnumeric
 ```
 
 
@@ -7560,10 +9510,15 @@ shell formatter:
 # openstack security group rule delete
 
 ```
-Missing parameter(s): 
-Set a username with --os-username, OS_USERNAME, or auth.username
-Set an authentication URL, with --os-auth-url, OS_AUTH_URL or auth.auth_url
-Set a scope, such as a project or domain, set a project scope with --os-project-name, OS_PROJECT_NAME or auth.project_name, set a domain scope with --os-domain-name, OS_DOMAIN_NAME or auth.domain_name
+usage: openstack security group rule delete [-h] <rule>
+
+Delete a security group rule
+
+positional arguments:
+  <rule>      Security group rule to delete (ID only)
+
+optional arguments:
+  -h, --help  show this help message and exit
 ```
 
 
@@ -7609,10 +9564,39 @@ CSV Formatter:
 # openstack security group rule show
 
 ```
-Missing parameter(s): 
-Set a username with --os-username, OS_USERNAME, or auth.username
-Set an authentication URL, with --os-auth-url, OS_AUTH_URL or auth.auth_url
-Set a scope, such as a project or domain, set a project scope with --os-project-name, OS_PROJECT_NAME or auth.project_name, set a domain scope with --os-domain-name, OS_DOMAIN_NAME or auth.domain_name
+usage: openstack security group rule show [-h]
+                                          [-f {html,json,json,shell,table,value,yaml,yaml}]
+                                          [-c COLUMN] [--max-width <integer>]
+                                          [--noindent] [--prefix PREFIX]
+                                          <rule>
+
+Display security group rule details
+
+positional arguments:
+  <rule>                Security group rule to display (ID only)
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+output formatters:
+  output formatter options
+
+  -f {html,json,json,shell,table,value,yaml,yaml}, --format {html,json,json,shell,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+shell formatter:
+  a format a UNIX shell can parse (variable="value")
+
+  --prefix PREFIX       add a prefix to all variable names
 ```
 
 
@@ -10589,6 +12573,30 @@ Revoke existing token
 
 positional arguments:
   <token>     Token to be deleted
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+
+# openstack undercloud install
+
+```
+usage: openstack undercloud install [-h]
+
+Install and setup the undercloud
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+
+# openstack undercloud upgrade
+
+```
+usage: openstack undercloud upgrade [-h]
+
+Upgrade undercloud
 
 optional arguments:
   -h, --help  show this help message and exit
