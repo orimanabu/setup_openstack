@@ -4,7 +4,7 @@ source ./subr.sh
 outdir=./command_help
 
 mkdir -p ${outdir}
-yum install -y python-tripleoclient
+yum install -y python-tripleoclient python-zaqarclient python-keystoneclient-kerberos
 
 ## core projects without neutron and swift
 os_projects_core="nova neutron keystone cinder glance ceilometer heat swift"
@@ -66,7 +66,6 @@ done
 
 ## some clients which has similar output format with openstackclient
 os_projects_osclient_format="openstack aodh gnocchi barbican designate"
-os_projects_osclient_format="openstack"
 for p in ${os_projects_osclient_format}; do
 	output=${outdir}/${p}_help.md
 	echo "# ${p} --help" 2>&1 | tee ${output}
