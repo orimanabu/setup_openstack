@@ -1,6 +1,6 @@
 #!/bin/bash
 
-global=global-6.5.2
+global=global-6.5.4
 tarball=${global}.tar.gz
 
 url=http://tamacom.com/global/${tarball}
@@ -17,7 +17,7 @@ fi
 echo "=> building ${global}..."
 tar zxvf ${tarball}
 cd ${global}
-./configure --prefix=/usr/local --with-exuberant-ctags=/usr/local/bin/u-ctags 2>&1 | tee log.configure
+./configure --prefix=/usr/local --with-universal-ctags=/usr/local/bin/u-ctags 2>&1 | tee log.configure
 make 2>&1 | tee log.make
 echo "=> installing ${global}..."
 sudo make install 2>&1 | tee log.install
