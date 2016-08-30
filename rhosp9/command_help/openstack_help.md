@@ -45,6 +45,7 @@ usage: openstack [--version] [-v | -q] [--log-file LOG_FILE] [-h] [--debug]
                  [--inspector-api-version INSPECTOR_API_VERSION]
                  [--inspector-url INSPECTOR_URL]
                  [--os-tripleoclient-api-version <tripleoclient-api-version>]
+                 [--os-queues-api-version <queues-api-version>]
 
 Command-line interface to the OpenStack APIs
 
@@ -96,8 +97,8 @@ optional arguments:
                         v2token, admin_token, v2password, v3password,
                         v3scopedsaml, v3oidcpassword, v3unscopedadfs, token,
                         v3token, password, v3unscopedsaml, osc_password,
-                        token_endpoint. Default: selected based on --os-
-                        username/--os-token (Env: OS_AUTH_TYPE)
+                        token_endpoint, v3kerberos. Default: selected based on
+                        --os-username/--os-token (Env: OS_AUTH_TYPE)
   --os-project-domain-id <auth-project-domain-id>
                         With v3password: Domain ID containing project With
                         v3scopedsaml: Domain ID containing project With
@@ -107,6 +108,7 @@ optional arguments:
                         Domain ID containing project With password: Domain ID
                         containing project With v3unscopedsaml: Domain ID
                         containing project With osc_password: Domain ID
+                        containing project With v3kerberos: Domain ID
                         containing project (Env: OS_PROJECT_DOMAIN_ID)
   --os-protocol <auth-protocol>
                         With v3oidcpassword: Name of the federated protocol
@@ -122,7 +124,8 @@ optional arguments:
                         Project name to scope to With v3token: Project name to
                         scope to With password: Project name to scope to With
                         v3unscopedsaml: Project name to scope to With
-                        osc_password: Project name to scope to (Env:
+                        osc_password: Project name to scope to With
+                        v3kerberos: Project name to scope to (Env:
                         OS_PROJECT_NAME)
   --os-trust-id <auth-trust-id>
                         With v2token: Trust ID With v2password: Trust ID With
@@ -130,7 +133,8 @@ optional arguments:
                         v3oidcpassword: Trust ID With v3unscopedadfs: Trust ID
                         With token: Trust ID With v3token: Trust ID With
                         password: Trust ID With v3unscopedsaml: Trust ID With
-                        osc_password: Trust ID (Env: OS_TRUST_ID)
+                        osc_password: Trust ID With v3kerberos: Trust ID (Env:
+                        OS_TRUST_ID)
   --os-service-provider-endpoint <auth-service-provider-endpoint>
                         With v3unscopedadfs: Service Provider's Endpoint (Env:
                         OS_SERVICE_PROVIDER_ENDPOINT)
@@ -142,8 +146,8 @@ optional arguments:
                         Domain name to scope to With v3token: Domain name to
                         scope to With password: Domain name to scope to With
                         v3unscopedsaml: Domain name to scope to With
-                        osc_password: Domain name to scope to (Env:
-                        OS_DOMAIN_NAME)
+                        osc_password: Domain name to scope to With v3kerberos:
+                        Domain name to scope to (Env: OS_DOMAIN_NAME)
   --os-user-domain-id <auth-user-domain-id>
                         With v3password: User's domain id With password:
                         User's domain id With osc_password: User's domain id
@@ -163,8 +167,8 @@ optional arguments:
                         Domain ID to scope to With v3token: Domain ID to scope
                         to With password: Domain ID to scope to With
                         v3unscopedsaml: Domain ID to scope to With
-                        osc_password: Domain ID to scope to (Env:
-                        OS_DOMAIN_ID)
+                        osc_password: Domain ID to scope to With v3kerberos:
+                        Domain ID to scope to (Env: OS_DOMAIN_ID)
   --os-user-domain-name <auth-user-domain-name>
                         With v3password: User's domain name With password:
                         User's domain name With osc_password: User's domain
@@ -196,7 +200,8 @@ optional arguments:
                         Authentication URL With v3token: Authentication URL
                         With password: Authentication URL With v3unscopedsaml:
                         Authentication URL With osc_password: Authentication
-                        URL (Env: OS_AUTH_URL)
+                        URL With v3kerberos: Authentication URL (Env:
+                        OS_AUTH_URL)
   --os-client-secret <auth-client-secret>
                         With v3oidcpassword: OAuth 2.0 Client Secret (Env:
                         OS_CLIENT_SECRET)
@@ -212,6 +217,7 @@ optional arguments:
                         Domain name containing project With password: Domain
                         name containing project With v3unscopedsaml: Domain
                         name containing project With osc_password: Domain name
+                        containing project With v3kerberos: Domain name
                         containing project (Env: OS_PROJECT_DOMAIN_NAME)
   --os-password <auth-password>
                         With v2password: Password to use With v3password:
@@ -241,8 +247,8 @@ optional arguments:
                         Project ID to scope to With v3token: Project ID to
                         scope to With password: Project ID to scope to With
                         v3unscopedsaml: Project ID to scope to With
-                        osc_password: Project ID to scope to (Env:
-                        OS_PROJECT_ID)
+                        osc_password: Project ID to scope to With v3kerberos:
+                        Project ID to scope to (Env: OS_PROJECT_ID)
   --os-object-api-version <object-api-version>
                         Object API version, default=1 (Env:
                         OS_OBJECT_API_VERSION)
@@ -275,6 +281,9 @@ optional arguments:
   --os-tripleoclient-api-version <tripleoclient-api-version>
                         TripleO Client API version, default=1 (Env:
                         OS_TRIPLEOCLIENT_API_VERSION)
+  --os-queues-api-version <queues-api-version>
+                        Queues API version, default=1.1 (Env:
+                        OS_QUEUES_API_VERSION)
 
 Commands:
   acl delete     Delete ACLs for a secret or container as identified by its href.
@@ -329,6 +338,10 @@ Commands:
   ca list        List cas.
   catalog list   List services in the service catalog
   catalog show   Display service catalog details
+  claim create   Create claim and return a list of claimed messages
+  claim query    Display claim details
+  claim release  Delete a claim
+  claim renew    Renew a claim
   command list   List recognized commands by group
   complete       print bash completion command
   compute agent create  Create compute agent command
@@ -441,6 +454,11 @@ Commands:
   keypair list   List public key fingerprints
   keypair show   Display public key details
   limits show    Show compute and block storage limits
+  messaging flavor create  Create a pool flavor
+  messaging flavor delete  Delete a flavor
+  messaging flavor list  List available flavors
+  messaging flavor show  Display flavor details
+  messaging flavor update  Update a flavor's attributes
   module list    List module versions
   network create  Create new network
   network delete  Delete network(s)
@@ -473,6 +491,11 @@ Could not load EntryPoint.parse('overcloud_deploy = tripleoclient.v1.overcloud_d
   overcloud profiles match  Assign and validate profiles on nodes
   overcloud update stack  Updates packages on overcloud nodes
   overcloud upgrade  Performs a major upgrade on overcloud nodes
+  pool create    Create a pool
+  pool delete    Delete a pool
+  pool list      List available Pools
+  pool show      Display pool details
+  pool update    Update a pool attribute
   port delete    Delete port(s)
   port show      Display port details
   project create  Create new project
@@ -485,6 +508,13 @@ Could not load EntryPoint.parse('overcloud_deploy = tripleoclient.v1.overcloud_d
   ptr record set  Set floatingip ptr record
   ptr record show  Show floatingip ptr record details
   ptr record unset  Unset floatingip ptr record
+  queue create   Create a queue
+  queue delete   Delete a queue
+  queue exists   Check queue existence
+  queue get metadata  Get queue metadata
+  queue list     List available queues
+  queue set metadata  Set queue metadata
+  queue stats    Get queue stats
   quota set      Set quotas for project or class
   quota show     Show quotas for project or class
   recordset create  Create new recordset
@@ -2592,6 +2622,146 @@ shell formatter:
   a format a UNIX shell can parse (variable="value")
 
   --prefix PREFIX       add a prefix to all variable names
+```
+
+
+# openstack claim create
+
+```
+usage: openstack claim create [-h]
+                              [-f {csv,html,json,json,table,value,yaml,yaml}]
+                              [-c COLUMN] [--max-width <integer>] [--noindent]
+                              [--quote {all,minimal,none,nonnumeric}]
+                              [--ttl <ttl>] [--grace <grace>]
+                              [--limit <limit>]
+                              <queue_name>
+
+Create claim and return a list of claimed messages
+
+positional arguments:
+  <queue_name>          Name of the queue to be claim
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --ttl <ttl>           Time to live in seconds for claim
+  --grace <grace>       The message grace period in seconds
+  --limit <limit>       Claims a set of messages, up to limit
+
+output formatters:
+  output formatter options
+
+  -f {csv,html,json,json,table,value,yaml,yaml}, --format {csv,html,json,json,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+CSV Formatter:
+  --quote {all,minimal,none,nonnumeric}
+                        when to include quotes, defaults to nonnumeric
+```
+
+
+# openstack claim query
+
+```
+usage: openstack claim query [-h]
+                             [-f {csv,html,json,json,table,value,yaml,yaml}]
+                             [-c COLUMN] [--max-width <integer>] [--noindent]
+                             [--quote {all,minimal,none,nonnumeric}]
+                             <queue_name> <claim_id>
+
+Display claim details
+
+positional arguments:
+  <queue_name>          Name of the claimed queue
+  <claim_id>            ID of the claim
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+output formatters:
+  output formatter options
+
+  -f {csv,html,json,json,table,value,yaml,yaml}, --format {csv,html,json,json,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+CSV Formatter:
+  --quote {all,minimal,none,nonnumeric}
+                        when to include quotes, defaults to nonnumeric
+```
+
+
+# openstack claim release
+
+```
+usage: openstack claim release [-h] <queue_name> <claim_id>
+
+Delete a claim
+
+positional arguments:
+  <queue_name>  Name of the claimed queue
+  <claim_id>    Claim ID to delete
+
+optional arguments:
+  -h, --help    show this help message and exit
+```
+
+
+# openstack claim renew
+
+```
+usage: openstack claim renew [-h]
+                             [-f {csv,html,json,json,table,value,yaml,yaml}]
+                             [-c COLUMN] [--max-width <integer>] [--noindent]
+                             [--quote {all,minimal,none,nonnumeric}]
+                             [--ttl <ttl>] [--grace <grace>]
+                             <queue_name> <claim_id>
+
+Renew a claim
+
+positional arguments:
+  <queue_name>          Name of the claimed queue
+  <claim_id>            Claim ID
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --ttl <ttl>           Time to live in seconds for claim
+  --grace <grace>       The message grace period in seconds
+
+output formatters:
+  output formatter options
+
+  -f {csv,html,json,json,table,value,yaml,yaml}, --format {csv,html,json,json,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+CSV Formatter:
+  --quote {all,minimal,none,nonnumeric}
+                        when to include quotes, defaults to nonnumeric
 ```
 
 
@@ -6789,6 +6959,192 @@ CSV Formatter:
 ```
 
 
+# openstack messaging flavor create
+
+```
+usage: openstack messaging flavor create [-h]
+                                         [-f {html,json,json,shell,table,value,yaml,yaml}]
+                                         [-c COLUMN] [--max-width <integer>]
+                                         [--noindent] [--prefix PREFIX]
+                                         [--capabilities <capabilities>]
+                                         <flavor_name> <pool_group>
+
+Create a pool flavor
+
+positional arguments:
+  <flavor_name>         Name of the flavor
+  <pool_group>          Pool group for flavor
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --capabilities <capabilities>
+                        Describes flavor-specific capabilities, This option is
+                        only available in client api version < 2 .
+
+output formatters:
+  output formatter options
+
+  -f {html,json,json,shell,table,value,yaml,yaml}, --format {html,json,json,shell,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+shell formatter:
+  a format a UNIX shell can parse (variable="value")
+
+  --prefix PREFIX       add a prefix to all variable names
+```
+
+
+# openstack messaging flavor delete
+
+```
+usage: openstack messaging flavor delete [-h] <flavor_name>
+
+Delete a flavor
+
+positional arguments:
+  <flavor_name>  Name of the flavor
+
+optional arguments:
+  -h, --help     show this help message and exit
+```
+
+
+# openstack messaging flavor list
+
+```
+usage: openstack messaging flavor list [-h]
+                                       [-f {csv,html,json,json,table,value,yaml,yaml}]
+                                       [-c COLUMN] [--max-width <integer>]
+                                       [--noindent]
+                                       [--quote {all,minimal,none,nonnumeric}]
+                                       [--marker <flavor_name>]
+                                       [--limit <limit>]
+                                       [--detailed <detailed>]
+
+List available flavors
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --marker <flavor_name>
+                        Flavor's paging marker
+  --limit <limit>       Page size limit
+  --detailed <detailed>
+                        If show detailed capabilities of flavor
+
+output formatters:
+  output formatter options
+
+  -f {csv,html,json,json,table,value,yaml,yaml}, --format {csv,html,json,json,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+CSV Formatter:
+  --quote {all,minimal,none,nonnumeric}
+                        when to include quotes, defaults to nonnumeric
+```
+
+
+# openstack messaging flavor show
+
+```
+usage: openstack messaging flavor show [-h]
+                                       [-f {html,json,json,shell,table,value,yaml,yaml}]
+                                       [-c COLUMN] [--max-width <integer>]
+                                       [--noindent] [--prefix PREFIX]
+                                       <flavor_name>
+
+Display flavor details
+
+positional arguments:
+  <flavor_name>         Flavor to display (name)
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+output formatters:
+  output formatter options
+
+  -f {html,json,json,shell,table,value,yaml,yaml}, --format {html,json,json,shell,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+shell formatter:
+  a format a UNIX shell can parse (variable="value")
+
+  --prefix PREFIX       add a prefix to all variable names
+```
+
+
+# openstack messaging flavor update
+
+```
+usage: openstack messaging flavor update [-h]
+                                         [-f {html,json,json,shell,table,value,yaml,yaml}]
+                                         [-c COLUMN] [--max-width <integer>]
+                                         [--noindent] [--prefix PREFIX]
+                                         [--pool_group <pool_group>]
+                                         [--capabilities <capabilities>]
+                                         <flavor_name>
+
+Update a flavor's attributes
+
+positional arguments:
+  <flavor_name>         Name of the flavor
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --pool_group <pool_group>
+                        Pool group the flavor sits on
+  --capabilities <capabilities>
+                        Describes flavor-specific capabilities.
+
+output formatters:
+  output formatter options
+
+  -f {html,json,json,shell,table,value,yaml,yaml}, --format {html,json,json,shell,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+shell formatter:
+  a format a UNIX shell can parse (variable="value")
+
+  --prefix PREFIX       add a prefix to all variable names
+```
+
+
 # openstack module list
 
 ```
@@ -7835,6 +8191,198 @@ optional arguments:
 ```
 
 
+# openstack pool create
+
+```
+usage: openstack pool create [-h]
+                             [-f {html,json,json,shell,table,value,yaml,yaml}]
+                             [-c COLUMN] [--max-width <integer>] [--noindent]
+                             [--prefix PREFIX] [--pool_group <pool_group>]
+                             [--pool_options <pool_options>]
+                             <pool_name> <pool_uri> <pool_weight>
+
+Create a pool
+
+positional arguments:
+  <pool_name>           Name of the pool
+  <pool_uri>            Storage engine URI
+  <pool_weight>         weight of the pool
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --pool_group <pool_group>
+                        Group of the pool
+  --pool_options <pool_options>
+                        An optional request component related to storage-
+                        specific options
+
+output formatters:
+  output formatter options
+
+  -f {html,json,json,shell,table,value,yaml,yaml}, --format {html,json,json,shell,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+shell formatter:
+  a format a UNIX shell can parse (variable="value")
+
+  --prefix PREFIX       add a prefix to all variable names
+```
+
+
+# openstack pool delete
+
+```
+usage: openstack pool delete [-h] <pool_name>
+
+Delete a pool
+
+positional arguments:
+  <pool_name>  Name of the pool
+
+optional arguments:
+  -h, --help   show this help message and exit
+```
+
+
+# openstack pool list
+
+```
+usage: openstack pool list [-h]
+                           [-f {csv,html,json,json,table,value,yaml,yaml}]
+                           [-c COLUMN] [--max-width <integer>] [--noindent]
+                           [--quote {all,minimal,none,nonnumeric}]
+                           [--marker <pool_name>] [--limit <limit>]
+                           [--detailed <detailed>]
+
+List available Pools
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --marker <pool_name>  Pool's paging marker
+  --limit <limit>       Page size limit
+  --detailed <detailed>
+                        Detailed output
+
+output formatters:
+  output formatter options
+
+  -f {csv,html,json,json,table,value,yaml,yaml}, --format {csv,html,json,json,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+CSV Formatter:
+  --quote {all,minimal,none,nonnumeric}
+                        when to include quotes, defaults to nonnumeric
+```
+
+
+# openstack pool show
+
+```
+usage: openstack pool show [-h]
+                           [-f {html,json,json,shell,table,value,yaml,yaml}]
+                           [-c COLUMN] [--max-width <integer>] [--noindent]
+                           [--prefix PREFIX]
+                           <pool_name>
+
+Display pool details
+
+positional arguments:
+  <pool_name>           Pool to display (name)
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+output formatters:
+  output formatter options
+
+  -f {html,json,json,shell,table,value,yaml,yaml}, --format {html,json,json,shell,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+shell formatter:
+  a format a UNIX shell can parse (variable="value")
+
+  --prefix PREFIX       add a prefix to all variable names
+```
+
+
+# openstack pool update
+
+```
+usage: openstack pool update [-h]
+                             [-f {html,json,json,shell,table,value,yaml,yaml}]
+                             [-c COLUMN] [--max-width <integer>] [--noindent]
+                             [--prefix PREFIX] [--pool_uri <pool_uri>]
+                             [--pool_weight <pool_weight>]
+                             [--pool_group <pool_group>]
+                             [--pool_options <pool_options>]
+                             <pool_name>
+
+Update a pool attribute
+
+positional arguments:
+  <pool_name>           Name of the pool
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --pool_uri <pool_uri>
+                        Storage engine URI
+  --pool_weight <pool_weight>
+                        Weight of the pool
+  --pool_group <pool_group>
+                        Group of the pool
+  --pool_options <pool_options>
+                        An optional request component related to storage-
+                        specific options
+
+output formatters:
+  output formatter options
+
+  -f {html,json,json,shell,table,value,yaml,yaml}, --format {html,json,json,shell,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+shell formatter:
+  a format a UNIX shell can parse (variable="value")
+
+  --prefix PREFIX       add a prefix to all variable names
+```
+
+
 # openstack port delete
 
 ```
@@ -8204,6 +8752,230 @@ positional arguments:
 
 optional arguments:
   -h, --help     show this help message and exit
+```
+
+
+# openstack queue create
+
+```
+usage: openstack queue create [-h]
+                              [-f {html,json,json,shell,table,value,yaml,yaml}]
+                              [-c COLUMN] [--max-width <integer>] [--noindent]
+                              [--prefix PREFIX]
+                              <queue_name>
+
+Create a queue
+
+positional arguments:
+  <queue_name>          Name of the queue
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+output formatters:
+  output formatter options
+
+  -f {html,json,json,shell,table,value,yaml,yaml}, --format {html,json,json,shell,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+shell formatter:
+  a format a UNIX shell can parse (variable="value")
+
+  --prefix PREFIX       add a prefix to all variable names
+```
+
+
+# openstack queue delete
+
+```
+usage: openstack queue delete [-h] <queue_name>
+
+Delete a queue
+
+positional arguments:
+  <queue_name>  Name of the queue
+
+optional arguments:
+  -h, --help    show this help message and exit
+```
+
+
+# openstack queue exists
+
+```
+usage: openstack queue exists [-h]
+                              [-f {html,json,json,shell,table,value,yaml,yaml}]
+                              [-c COLUMN] [--max-width <integer>] [--noindent]
+                              [--prefix PREFIX]
+                              <queue_name>
+
+Check queue existence
+
+positional arguments:
+  <queue_name>          Name of the queue
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+output formatters:
+  output formatter options
+
+  -f {html,json,json,shell,table,value,yaml,yaml}, --format {html,json,json,shell,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+shell formatter:
+  a format a UNIX shell can parse (variable="value")
+
+  --prefix PREFIX       add a prefix to all variable names
+```
+
+
+# openstack queue get metadata
+
+```
+usage: openstack queue get metadata [-h]
+                                    [-f {html,json,json,shell,table,value,yaml,yaml}]
+                                    [-c COLUMN] [--max-width <integer>]
+                                    [--noindent] [--prefix PREFIX]
+                                    <queue_name>
+
+Get queue metadata
+
+positional arguments:
+  <queue_name>          Name of the queue
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+output formatters:
+  output formatter options
+
+  -f {html,json,json,shell,table,value,yaml,yaml}, --format {html,json,json,shell,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+shell formatter:
+  a format a UNIX shell can parse (variable="value")
+
+  --prefix PREFIX       add a prefix to all variable names
+```
+
+
+# openstack queue list
+
+```
+usage: openstack queue list [-h]
+                            [-f {csv,html,json,json,table,value,yaml,yaml}]
+                            [-c COLUMN] [--max-width <integer>] [--noindent]
+                            [--quote {all,minimal,none,nonnumeric}]
+                            [--marker <queue_id>] [--limit <limit>]
+
+List available queues
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --marker <queue_id>   Queue's paging marker
+  --limit <limit>       Page size limit
+
+output formatters:
+  output formatter options
+
+  -f {csv,html,json,json,table,value,yaml,yaml}, --format {csv,html,json,json,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+CSV Formatter:
+  --quote {all,minimal,none,nonnumeric}
+                        when to include quotes, defaults to nonnumeric
+```
+
+
+# openstack queue set metadata
+
+```
+usage: openstack queue set metadata [-h] <queue_name> <queue_metadata>
+
+Set queue metadata
+
+positional arguments:
+  <queue_name>      Name of the queue
+  <queue_metadata>  Queue metadata
+
+optional arguments:
+  -h, --help        show this help message and exit
+```
+
+
+# openstack queue stats
+
+```
+usage: openstack queue stats [-h]
+                             [-f {html,json,json,shell,table,value,yaml,yaml}]
+                             [-c COLUMN] [--max-width <integer>] [--noindent]
+                             [--prefix PREFIX]
+                             <queue_name>
+
+Get queue stats
+
+positional arguments:
+  <queue_name>          Name of the queue
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+output formatters:
+  output formatter options
+
+  -f {html,json,json,shell,table,value,yaml,yaml}, --format {html,json,json,shell,table,value,yaml,yaml}
+                        the output format, defaults to table
+  -c COLUMN, --column COLUMN
+                        specify the column(s) to include, can be repeated
+
+table formatter:
+  --max-width <integer>
+                        Maximum display width, 0 to disable
+
+json formatter:
+  --noindent            whether to disable indenting the JSON
+
+shell formatter:
+  a format a UNIX shell can parse (variable="value")
+
+  --prefix PREFIX       add a prefix to all variable names
 ```
 
 
