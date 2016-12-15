@@ -136,11 +136,11 @@ CONFIG_VCENTER_CLUSTER_NAMES=
 
 # (Unsupported!) Server on which to install OpenStack services
 # specific to storage servers such as Image or Block Storage services.
-CONFIG_STORAGE_HOST=10.0.1.111
+CONFIG_STORAGE_HOST=10.64.193.117
 
 # (Unsupported!) Server on which to install OpenStack services
 # specific to OpenStack Data Processing (sahara).
-CONFIG_SAHARA_HOST=10.0.1.111
+CONFIG_SAHARA_HOST=10.64.193.117
 
 # Specify 'y' to enable the EPEL repository (Extra Packages for
 # Enterprise Linux). ['y', 'n']
@@ -350,7 +350,7 @@ CONFIG_KEYSTONE_SERVICE_NAME=httpd
 CONFIG_KEYSTONE_IDENTITY_BACKEND=sql
 
 # URL for the Identity service LDAP backend.
-CONFIG_KEYSTONE_LDAP_URL=ldap://10.0.1.111
+CONFIG_KEYSTONE_LDAP_URL=ldap://10.64.193.117
 
 # User DN for the Identity service LDAP backend.  Used to bind to the
 # LDAP server if the LDAP server does not allow anonymous
@@ -1125,14 +1125,14 @@ CONFIG_SWIFT_STORAGE_FSTYPE=ext4
 # Custom seed number to use for swift_hash_path_suffix in
 # /etc/swift/swift.conf. If you do not provide a value, a seed number
 # is automatically generated.
-CONFIG_SWIFT_HASH=0fee6b1f26284805
+CONFIG_SWIFT_HASH=fb46d9e998174025
 
 # Size of the Object Storage loopback file storage device.
 CONFIG_SWIFT_STORAGE_SIZE=2G
 
 # Password used by Orchestration service user to authenticate against
 # the database.
-CONFIG_HEAT_DB_PW=PW_PLACEHOLDER
+CONFIG_HEAT_DB_PW=password
 
 # Encryption key to use for authentication in the Orchestration
 # database (16, 24, or 32 chars).
@@ -1140,7 +1140,7 @@ CONFIG_HEAT_AUTH_ENC_KEY=d42ec4191e7a420e
 
 # Password to use for the Orchestration service to authenticate with
 # the Identity service.
-CONFIG_HEAT_KS_PW=PW_PLACEHOLDER
+CONFIG_HEAT_KS_PW=password
 
 # Specify 'y' to install the Orchestration CloudWatch API. ['y', 'n']
 CONFIG_HEAT_CLOUDWATCH_INSTALL=n
@@ -1157,7 +1157,7 @@ CONFIG_HEAT_DOMAIN_ADMIN=heat_admin
 
 # Password for the Identity domain administrative user for
 # Orchestration.
-CONFIG_HEAT_DOMAIN_PASSWORD=PW_PLACEHOLDER
+CONFIG_HEAT_DOMAIN_PASSWORD=password
 
 # Specify 'y' to provision for demo usage and testing. ['y', 'n']
 CONFIG_PROVISION_DEMO=n
@@ -1223,7 +1223,7 @@ CONFIG_GNOCCHI_DB_PW=PW_PLACEHOLDER
 CONFIG_GNOCCHI_KS_PW=PW_PLACEHOLDER
 
 # Secret key for signing Telemetry service (ceilometer) messages.
-CONFIG_CEILOMETER_SECRET=2240497bc928441e
+CONFIG_CEILOMETER_SECRET=36da11af650a4d4b
 
 # Password to use for Telemetry to authenticate with the Identity
 # service.
@@ -1241,7 +1241,7 @@ CONFIG_CEILOMETER_COORDINATION_BACKEND=redis
 CONFIG_CEILOMETER_METERING_BACKEND=database
 
 # IP address of the server on which to install MongoDB.
-CONFIG_MONGODB_HOST=10.0.1.111
+CONFIG_MONGODB_HOST=10.64.193.117
 
 # IP address of the server on which to install the Redis master
 # server.
@@ -1297,11 +1297,11 @@ CONFIG_TROVE_NOVA_PW=PW_PLACEHOLDER
 
 # Password to use for OpenStack Data Processing (sahara) to access
 # the database.
-CONFIG_SAHARA_DB_PW=PW_PLACEHOLDER
+CONFIG_SAHARA_DB_PW=password
 
 # Password to use for OpenStack Data Processing to authenticate with
 # the Identity service.
-CONFIG_SAHARA_KS_PW=PW_PLACEHOLDER
+CONFIG_SAHARA_KS_PW=password
 
 # Password of the nagiosadmin user on the Nagios server.
 CONFIG_NAGIOS_PW=PW_PLACEHOLDER
