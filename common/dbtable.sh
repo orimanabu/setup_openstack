@@ -13,8 +13,9 @@
 #done
 
 user=root
-password=e0a2def876374a94
-mysql -u${user} -p${password} -N -B -e "show databases" | grep -Ev '_schema|test|mysql' | while read db; do
+password=mysql
+#mysql -u${user} -p${password} -N -B -e "show databases" | grep -Ev '_schema|test|mysql' | while read db; do
+for db in neutron; do
 	echo "=> db: ${db}"
 	mysql -u${user} -p${password} neutron -N -B -e "show tables" | while read table; do
 		echo "==> table: ${table}"
