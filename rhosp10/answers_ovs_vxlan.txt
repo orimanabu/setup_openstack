@@ -330,10 +330,10 @@ CONFIG_KEYSTONE_ADMIN_EMAIL=root@localhost
 CONFIG_KEYSTONE_ADMIN_USERNAME=admin
 
 # Password to use for the Identity service 'admin' user.
-CONFIG_KEYSTONE_ADMIN_PW=c2fde41764354c17
+CONFIG_KEYSTONE_ADMIN_PW=admin
 
 # Password to use for the Identity service 'demo' user.
-CONFIG_KEYSTONE_DEMO_PW=d8c71160883e4348
+CONFIG_KEYSTONE_DEMO_PW=demo
 
 # Identity service API version string. ['v2.0', 'v3']
 CONFIG_KEYSTONE_API_VERSION=v2.0
@@ -1176,7 +1176,7 @@ CONFIG_HEAT_DOMAIN_ADMIN=heat_admin
 CONFIG_HEAT_DOMAIN_PASSWORD=PW_PLACEHOLDER
 
 # Specify 'y' to provision for demo usage and testing. ['y', 'n']
-CONFIG_PROVISION_DEMO=y
+CONFIG_PROVISION_DEMO=n
 
 # Specify 'y' to configure the OpenStack Integration Test Suite
 # (tempest) for testing. The test suite requires OpenStack Networking
