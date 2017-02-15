@@ -54,10 +54,10 @@ CONFIG_GNOCCHI_INSTALL=n
 
 # Specify 'y' to install OpenStack Data Processing (sahara). In case
 # of sahara installation packstack also installs heat.['y', 'n']
-CONFIG_SAHARA_INSTALL=y
+CONFIG_SAHARA_INSTALL=n
 
 # Specify 'y' to install OpenStack Orchestration (heat). ['y', 'n']
-CONFIG_HEAT_INSTALL=y
+CONFIG_HEAT_INSTALL=n
 
 # Specify 'y' to install OpenStack Database (trove) ['y', 'n']
 CONFIG_TROVE_INSTALL=n
@@ -555,7 +555,7 @@ CONFIG_CINDER_BACKEND=lvm
 # proof-of-concept installation of the Block Storage service (a file-
 # backed volume group is not suitable for production usage). ['y',
 # 'n']
-CONFIG_CINDER_VOLUMES_CREATE=y
+CONFIG_CINDER_VOLUMES_CREATE=n
 
 # Size of Block Storage volumes group. Actual volume size will be
 # extended with 3% more space for VG metadata. Remember that the size
@@ -752,6 +752,11 @@ CONFIG_NOVA_PCI_ALIAS=
 # controller eg. [{"vendor_id":"1234", "product_id":"5678",
 # "name':"default"}, {...}]
 CONFIG_NOVA_PCI_PASSTHROUGH_WHITELIST=
+
+# The hypervisor driver to use with Nova. Can be either 'qemu' or
+# 'kvm'. Defaults to 'qemu' on virtual machines and 'kvm' on bare
+# metal hardware.
+CONFIG_NOVA_LIBVIRT_VIRT_TYPE=%{::default_hypervisor}
 
 # Private interface for flat DHCP on the Compute servers.
 CONFIG_NOVA_COMPUTE_PRIVIF=
@@ -1125,22 +1130,22 @@ CONFIG_SWIFT_STORAGE_FSTYPE=ext4
 # Custom seed number to use for swift_hash_path_suffix in
 # /etc/swift/swift.conf. If you do not provide a value, a seed number
 # is automatically generated.
-CONFIG_SWIFT_HASH=fb46d9e998174025
+CONFIG_SWIFT_HASH=3a4eeb9043f04adb
 
 # Size of the Object Storage loopback file storage device.
 CONFIG_SWIFT_STORAGE_SIZE=2G
 
 # Password used by Orchestration service user to authenticate against
 # the database.
-CONFIG_HEAT_DB_PW=password
+CONFIG_HEAT_DB_PW=PW_PLACEHOLDER
 
 # Encryption key to use for authentication in the Orchestration
 # database (16, 24, or 32 chars).
-CONFIG_HEAT_AUTH_ENC_KEY=d42ec4191e7a420e
+CONFIG_HEAT_AUTH_ENC_KEY=2b2c2e9ca82240bc
 
 # Password to use for the Orchestration service to authenticate with
 # the Identity service.
-CONFIG_HEAT_KS_PW=password
+CONFIG_HEAT_KS_PW=PW_PLACEHOLDER
 
 # Specify 'y' to install the Orchestration CloudWatch API. ['y', 'n']
 CONFIG_HEAT_CLOUDWATCH_INSTALL=n
@@ -1157,7 +1162,7 @@ CONFIG_HEAT_DOMAIN_ADMIN=heat_admin
 
 # Password for the Identity domain administrative user for
 # Orchestration.
-CONFIG_HEAT_DOMAIN_PASSWORD=password
+CONFIG_HEAT_DOMAIN_PASSWORD=PW_PLACEHOLDER
 
 # Specify 'y' to provision for demo usage and testing. ['y', 'n']
 CONFIG_PROVISION_DEMO=n
@@ -1184,6 +1189,22 @@ CONFIG_PROVISION_IMAGE_FORMAT=qcow2
 # User to use when connecting to instances booted from the demo
 # image.
 CONFIG_PROVISION_IMAGE_SSH_USER=cirros
+
+# Name of the uec image created in Glance used in tempest tests
+# (default "cirros-uec").
+CONFIG_PROVISION_UEC_IMAGE_NAME=cirros-uec
+
+# URL of the kernel image copied to Glance image for uec image
+# (defaults to a URL for a recent "cirros" uec image).
+CONFIG_PROVISION_UEC_IMAGE_KERNEL_URL=http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-kernel
+
+# URL of the ramdisk image copied to Glance image for uec image
+# (defaults to a URL for a recent "cirros" uec image).
+CONFIG_PROVISION_UEC_IMAGE_RAMDISK_URL=http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-initramfs
+
+# URL of the disk image copied to Glance image for uec image
+# (defaults to a URL for a recent "cirros" uec image).
+CONFIG_PROVISION_UEC_IMAGE_DISK_URL=http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img
 
 CONFIG_TEMPEST_HOST=
 
@@ -1223,7 +1244,7 @@ CONFIG_GNOCCHI_DB_PW=PW_PLACEHOLDER
 CONFIG_GNOCCHI_KS_PW=PW_PLACEHOLDER
 
 # Secret key for signing Telemetry service (ceilometer) messages.
-CONFIG_CEILOMETER_SECRET=36da11af650a4d4b
+CONFIG_CEILOMETER_SECRET=bd32b63fc11e40d9
 
 # Password to use for Telemetry to authenticate with the Identity
 # service.
@@ -1297,11 +1318,11 @@ CONFIG_TROVE_NOVA_PW=PW_PLACEHOLDER
 
 # Password to use for OpenStack Data Processing (sahara) to access
 # the database.
-CONFIG_SAHARA_DB_PW=password
+CONFIG_SAHARA_DB_PW=PW_PLACEHOLDER
 
 # Password to use for OpenStack Data Processing to authenticate with
 # the Identity service.
-CONFIG_SAHARA_KS_PW=password
+CONFIG_SAHARA_KS_PW=PW_PLACEHOLDER
 
 # Password of the nagiosadmin user on the Nagios server.
 CONFIG_NAGIOS_PW=PW_PLACEHOLDER
