@@ -15,11 +15,11 @@
 user=root
 password=mysql
 #mysql -u${user} -p${password} -N -B -e "show databases" | grep -Ev '_schema|test|mysql' | while read db; do
-for db in neutron; do
+for db in nova; do
 	echo "=> db: ${db}"
-	mysql -u${user} -p${password} neutron -N -B -e "show tables" | while read table; do
+	mysql ${db} -N -B -e "show tables" | while read table; do
 		echo "==> table: ${table}"
-		mysql -u${user} -p${password} neutron -t -e "desc ${table}"
-		mysql -u${user} -p${password} neutron -t -e "select * from ${table}"
+		mysql ${db} -t -e "desc ${table}"
+		mysql ${db} -t -e "select * from ${table}"
 	done
 done
