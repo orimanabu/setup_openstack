@@ -141,7 +141,14 @@ boot_from_volume)
 	vol_id=$(echo "${clist}" | awk '/'${volume}'/ {print $2}')
 	echo "* volume_id: ${vol_id}"
 	#do_command nova boot --flavor $(nova flavor-list | awk '/'${flavor}'/ {print $2}') --block-device-mapping vda=${vol_id}:::0 --key-name ${key} ${vm}
-	do_command nova boot --flavor ${flavor} --key-name ${key} --nic net-id=$(neutron net-list | awk '/'${net}'/ {print $2}') --block-device-mapping vda=${vol_id}:::0 ${vm}
+	do_command nova boot --poll --flavor ${flavor} --key-name ${key} --nic net-id=$(neutron net-list | awk '/'${net}'/ {print $2}') --block-device-mapping vda=${vol_id}:::0 --security-groups ${secgroup} ${vm}
 	sleep 3
 	do_command targetcli ls
+boot_from_volume2)
+	if [ x"${vm}" == x"" -o x"${volume}" == x"" -o x"${size}" == x"" ]; then
+		usage
+	fi
+	shutdown=remove
+	#shutdown=preserve
+	do_command nova boot --poll --flavor ${flavor} --key-name ${key} --nic net-name=${net} --security-groups ${secgroup} --block-device id=$(openstack image list | awk '/ '${image}' / {print $2}'),source=image,dest=volume,size=${siz},bootindex=0,shutdown=${shutdown} ${vm}
 esac
