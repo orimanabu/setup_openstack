@@ -118,12 +118,12 @@ baremetal-create)
 	;;
 external-create)
 	source ~/keystonerc_admin
-	#do_command neutron net-create ${public_network} --router:external
+	### flat external for packstack
 	do_command neutron net-create ${public_network} --provider:network_type flat --provider:physical_network physnet-external --router:external
-	#do_command neutron net-create ${public_network} --provider:network_type vlan --provider:physical_network physnet-external --router:external --provider:segmentation_id 100
-	#do_command neutron net-create ${public_network} --provider:network_type vlan --provider:physical_network datacentre --router:external --provider:segmentation_id 1000
 	do_command neutron subnet-create ${public_network} 172.16.99.0/24 --name ${public_network}_subnet --disable-dhcp --gateway 172.16.99.254 --allocation-pool start=172.16.99.100,end=172.16.99.199
-	#do_command neutron subnet-create ${public_network} 172.16.88.0/24 --name ${public_network}_subnet --disable-dhcp --gateway 172.16.88.254 --allocation-pool start=172.16.88.100,end=172.16.88.199
+	### vlan external for tripleo
+	#do_command neutron net-create ${public_network} --provider:network_type vlan --provider:physical_network datacentre --router:external --provider:segmentation_id 100
+	#do_command neutron subnet-create ${public_network} 10.10.1.0/24 --name ${public_network}_subnet --disable-dhcp --gateway 10.10.1.254 --allocation-pool start=10.10.1.100,end=10.10.1.199
 	;;
 external-create-v6)
 	source ~/keystonerc_admin
