@@ -29,4 +29,5 @@ do_command openstack role add --user ${user} --project ${tenant} ${role}
 do_command openstack project list
 do_command openstack user list
 do_command openstack user show ${user}
-do_command openstack user role list --project demo demo
+do_command openstack user role list --project ${tenant} ${user}
+do_command openstack role assignment list --user ${user} --project ${tenant} --names
