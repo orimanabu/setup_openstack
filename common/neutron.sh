@@ -119,11 +119,11 @@ baremetal-create)
 external-create)
 	source ~/keystonerc_admin
 	### flat external for packstack
-	do_command neutron net-create ${public_network} --provider:network_type flat --provider:physical_network physnet-external --router:external
-	do_command neutron subnet-create ${public_network} 172.16.99.0/24 --name ${public_network}_subnet --disable-dhcp --gateway 172.16.99.254 --allocation-pool start=172.16.99.100,end=172.16.99.199
+	#do_command neutron net-create ${public_network} --provider:network_type flat --provider:physical_network physnet-external --router:external
+	#do_command neutron subnet-create ${public_network} 172.16.99.0/24 --name ${public_network}_subnet --disable-dhcp --gateway 172.16.99.254 --allocation-pool start=172.16.99.100,end=172.16.99.199
 	### vlan external for tripleo
-	#do_command neutron net-create ${public_network} --provider:network_type vlan --provider:physical_network datacentre --router:external --provider:segmentation_id 100
-	#do_command neutron subnet-create ${public_network} 10.10.1.0/24 --name ${public_network}_subnet --disable-dhcp --gateway 10.10.1.254 --allocation-pool start=10.10.1.100,end=10.10.1.199
+	do_command neutron net-create ${public_network} --provider:network_type vlan --provider:physical_network datacentre --router:external --provider:segmentation_id 100
+	do_command neutron subnet-create ${public_network} 10.10.1.0/24 --name ${public_network}_subnet --disable-dhcp --gateway 10.10.1.254 --allocation-pool start=10.10.1.100,end=10.10.1.199
 	;;
 external-create-v6)
 	source ~/keystonerc_admin
