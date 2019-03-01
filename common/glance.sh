@@ -40,6 +40,7 @@ for name in $(echo ${images} | tr ',' ' '); do
 	case ${name} in
 	cirros)
 		cirros_version=0.3.4
+		#cirros_version=0.4.0
 		cirrosimg=cirros-${cirros_version}-x86_64-disk.img
 		cirros=${imagedir}/${cirrosimg}
 		mkdir -p ${imagedir}

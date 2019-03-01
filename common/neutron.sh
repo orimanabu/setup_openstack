@@ -121,9 +121,12 @@ external-create)
 	### flat external for packstack
 	#do_command neutron net-create ${public_network} --provider:network_type flat --provider:physical_network physnet-external --router:external
 	#do_command neutron subnet-create ${public_network} 172.16.99.0/24 --name ${public_network}_subnet --disable-dhcp --gateway 172.16.99.254 --allocation-pool start=172.16.99.100,end=172.16.99.199
+
 	### vlan external for tripleo
-	do_command neutron net-create ${public_network} --provider:network_type vlan --provider:physical_network datacentre --router:external --provider:segmentation_id 100
-	do_command neutron subnet-create ${public_network} 10.10.1.0/24 --name ${public_network}_subnet --disable-dhcp --gateway 10.10.1.254 --allocation-pool start=10.10.1.100,end=10.10.1.199
+	#do_command neutron net-create ${public_network} --provider:network_type vlan --provider:physical_network datacentre --router:external --provider:segmentation_id 100
+	do_command openstack network create ${public_network} --provider-network-type vlan --provider-physical-network datacentre --external --provider-segment 100
+	#do_command neutron subnet-create ${public_network} 10.10.1.0/24 --name ${public_network}_subnet --disable-dhcp --gateway 10.10.1.254 --allocation-pool start=10.10.1.100,end=10.10.1.199
+	do_command openstack subnet create ${public_network}_subnet --network ${public_network} --subnet-range 10.10.1.0/24 --no-dhcp --gateway 10.10.1.254 --allocation-pool start=10.10.1.100,end=10.10.1.199
 	;;
 external-create-v6)
 	source ~/keystonerc_admin
@@ -135,20 +138,31 @@ create)
 	source ~/keystonerc_admin
 	extra_options=""
 	if [ x"${ha}" = x"1" ]; then
-		extra_options="--ha True"
+		#extra_options="--ha True"
+		extra_options="--ha"
 	fi
 	#do_command neutron router-create --tenant-id $(keystone tenant-list | awk '/'${tenant}'/ {print $2}') ${extra_options} ${router}
-	neutron router-list | grep ${router} > /dev/null 2>&1
+	#neutron router-list | grep ${router} > /dev/null 2>&1
+	openstack router list | grep ${router} > /dev/null 2>&1
 	if [ x"$?" = x"0" ]; then
 		echo "!!! ${router} exists, skipping router-create..."
 	else
-		do_command neutron router-create --tenant-id $(openstack project list | awk '/'${tenant}'/ {print $2}') ${extra_options} ${router}
+		#do_command neutron router-create --tenant-id $(openstack project list | awk '/'${tenant}'/ {print $2}') ${extra_options} ${router}
+		do_command openstack router create ${router} --project ${tenant} ${extra_options}
 	fi
 	source ~/keystonerc_${tenant}
-	do_command neutron router-gateway-set $(neutron router-list | awk '/'${router}'/ {print $2}') $(neutron net-list | awk '/'${public_network}'/ {print $2}')
-	do_command neutron net-create ${network}
-	do_command neutron subnet-create ${network} ${cidr} --name ${subnet} --enable_dhcp True --gateway ${gateway} --allocation-pool start=${pool_start},end=${pool_end}
-	do_command neutron router-interface-add $(neutron router-list | awk '/'${router}'/ {print $2}') ${subnet}
+	#do_command neutron router-gateway-set $(neutron router-list | awk '/'${router}'/ {print $2}') $(neutron net-list | awk '/'${public_network}'/ {print $2}')
+	do_command openstack router set ${router} --external-gateway ${public_network}
+	#do_command neutron net-create ${network}
+	do_command openstack network create ${network}
+	#do_command neutron subnet-create ${network} ${cidr} --name ${subnet} --enable_dhcp True --gateway ${gateway} --allocation-pool start=${pool_start},end=${pool_end}
+	do_command openstack subnet create ${subnet} --network ${network} --subnet-range ${cidr} --dhcp --gateway ${gateway} --allocation-pool start=${pool_start},end=${pool_end}
+	#do_command neutron router-interface-add $(neutron router-list | awk '/'${router}'/ {print $2}') ${subnet}
+	do_command openstack router add subnet ${router} ${subnet}
+
+	source ~/keystonerc_admin
+	openstack network agent list --router ${router} --long
+	openstack network agent list --network ${network} --long
 	;;
 create-v6)
 	v6opts="--ip-version 6"
@@ -186,11 +200,18 @@ floatingip-create)
 floatingip-create-and-associate)
 	source ~/keystonerc_${tenant}
 	echo "* vm: ${vm}"
-	vmaddr=$(nova show ${vm} | awk '/network/ {print $5}' | sed -e 's/,$//')
-	port_id=$(neutron port-list | awk '/'${vmaddr}'/ {print $2}')
-	echo "* vmaddr: ${vmaddr}"
-	echo "* port_id: ${port_id}"
-	do_command neutron floatingip-create --port-id ${port_id} --fixed-ip-address ${vmaddr} ${public_network}
+
+	#vmaddr=$(nova show ${vm} | awk '/network/ {print $5}' | sed -e 's/,$//')
+	#port_id=$(neutron port-list | awk '/'${vmaddr}'/ {print $2}')
+	#echo "* vmaddr: ${vmaddr}"
+	#echo "* port_id: ${port_id}"
+
+	#vmaddr=$(openstack server show ${vm} | awk '/addresses/ {print $4}' | sed -r -e "s/${net}=([0-9.]+)/\1/")
+	#vmaddr=$(openstack port list --server ${vm} --network ${network} -c 'Fixed IP Addresses' -f value | sed -r -e "s/ip_address='([0-9.]+)'.*$/\1/")
+	#port_id=$(openstack port list --server ${vm} --network ${network} -c ID -f value)
+
+	#do_command neutron floatingip-create --port-id ${port_id} --fixed-ip-address ${vmaddr} ${public_network}
+	do_command openstack floating ip create ${public_network} --port $(openstack port list --server ${vm} --network ${network} -c ID -f value)
 	;;
 floatingip-associate)
 	echo "* vm: ${vm}"
