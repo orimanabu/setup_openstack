@@ -1,6 +1,9 @@
 #!/bin/bash
 
 export LANG=C
+export OS_IDENTITY_API_VERSION=3
+export OS_PROJECT_DOMAIN_NAME=Default
+
 
 function upper_path {
         local path=$1; shift
@@ -17,7 +20,9 @@ function do_command {
 	local OPTIND
 	local silent=""
 	local host="(local)"
-	local ssh_prefix="bash -c"
+#	local ssh_prefix="bash -c"
+#	local ssh_prefix="eval "
+#	local ssh_prefix="eval "
 	while getopts ":r:sn" o; do
 		case ${o} in
 		s)	# silent
@@ -38,7 +43,8 @@ function do_command {
 	shift $((OPTIND - 1))
 
 	test -z ${silent} && echo "=====> [$(date '+%Y%m%d-%H%M%S')] host: ${host}, command: $*"
-	${ssh_prefix} "$*"
+#	${ssh_prefix} "$*"
+	eval "$*"
 }
 
 function do_query {

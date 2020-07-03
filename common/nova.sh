@@ -14,9 +14,9 @@ image=cirros
 flavor=m1.tiny
 
 while [[ $# > 1 ]]; do
-	key="$1"
+	_opt_="$1"
 	shift
-	case $key in
+	case $_opt_ in
 	-a|--availability-zone)
 		az="$1"
 		shift
@@ -37,8 +37,8 @@ while [[ $# > 1 ]]; do
 		flavor="$1"
 		shift
 		;;
-	-k|--key)
-		_key="$1"
+	-k|--sshkey)
+		_sshkey="$1"
 		shift
 		;;
 	-i|--image)
@@ -66,7 +66,7 @@ while [[ $# > 1 ]]; do
 		shift
 		;;
 	*)
-		echo "unknown option: $key"
+		echo "unknown option: $_opt_"
 		;;
 	esac
 done
@@ -79,7 +79,7 @@ op=$1; shift
 export OS_REGION_NAME=${region}
 tenant=${_tenant:-${OS_TENANT_NAME}}
 net=${_net:-${tenant}_net}
-key=${_key:-sshkey}
+sshkey=${_sshkey:-sshkey}
 rcfile=~/keystonerc_${tenant}
 secgroup=sg_${tenant}
 
@@ -94,6 +94,7 @@ echo "* region:	${region}"
 echo "* tenant:	${tenant}"
 echo "* flavor:	${flavor}"
 echo "* network:	${net}"
+echo "* sshkey:	${sshkey}, ${_sshkey}"
 echo "* secgroup:	${secgroup}"
 echo "* image:	${image}"
 echo "* vm:	${vm}"
@@ -128,7 +129,8 @@ boot)
 	if [ x"${az}" != x"" ]; then
 		extra_options="${extra_options} --availability-zone ${az}"
 	fi
-	do_command nova boot ${extra_options} --poll --flavor ${flavor} --key-name ${key} --nic net-id=$(neutron net-list | awk '/'${net}'/ {print $2}') --image ${image} --security-groups ${secgroup} ${vm}
+	#do_command nova boot ${extra_options} --poll --flavor ${flavor} --key-name ${sshkey} --nic net-id=$(neutron net-list | awk '/'${net}'/ {print $2}') --image ${image} --security-groups ${secgroup} ${vm}
+	do_command openstack server create ${extra_options} --wait --flavor ${flavor} --image ${image} --key-name ${sshkey} --network ${net} --security-group ${secgroup} ${vm}
 	;;
 boot_from_volume)
 	if [ x"${vm}" == x"" -o x"${volume}" == x"" -o x"${size}" == x"" ]; then
@@ -140,8 +142,8 @@ boot_from_volume)
 	clist=$(cinder list)
 	vol_id=$(echo "${clist}" | awk '/'${volume}'/ {print $2}')
 	echo "* volume_id: ${vol_id}"
-	#do_command nova boot --flavor $(nova flavor-list | awk '/'${flavor}'/ {print $2}') --block-device-mapping vda=${vol_id}:::0 --key-name ${key} ${vm}
-	do_command nova boot --poll --flavor ${flavor} --key-name ${key} --nic net-id=$(neutron net-list | awk '/'${net}'/ {print $2}') --block-device-mapping vda=${vol_id}:::0 --security-groups ${secgroup} ${vm}
+	#do_command nova boot --flavor $(nova flavor-list | awk '/'${flavor}'/ {print $2}') --block-device-mapping vda=${vol_id}:::0 --key-name ${sshkey} ${vm}
+	do_command nova boot --poll --flavor ${flavor} --key-name ${sshkey} --nic net-id=$(neutron net-list | awk '/'${net}'/ {print $2}') --block-device-mapping vda=${vol_id}:::0 --security-groups ${secgroup} ${vm}
 	sleep 3
 	do_command targetcli ls
 	;;
@@ -151,5 +153,5 @@ boot_from_volume2)
 	fi
 	shutdown=remove
 	#shutdown=preserve
-	do_command nova boot --poll --flavor ${flavor} --key-name ${key} --nic net-name=${net} --security-groups ${secgroup} --block-device id=$(openstack image list | awk '/ '${image}' / {print $2}'),source=image,dest=volume,size=${size},bootindex=0,shutdown=${shutdown} ${vm}
+	do_command nova boot --poll --flavor ${flavor} --key-name ${sshkey} --nic net-name=${net} --security-groups ${secgroup} --block-device id=$(openstack image list | awk '/ '${image}' / {print $2}'),source=image,dest=volume,size=${size},bootindex=0,shutdown=${shutdown} ${vm}
 esac

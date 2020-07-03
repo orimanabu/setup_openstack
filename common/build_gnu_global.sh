@@ -10,7 +10,7 @@ echo "=> installing dependent packages..."
 yum install -y python-pygments gcc ncurses-devel
 if [ ! -f ${tarball} ]; then
 	echo "=> ${tarball} not found, fetching..."
-	curl -O "${url}"
+	curl -L -O "${url}"
 else
 	echo "=> found ${tarball}, use it..."
 fi
