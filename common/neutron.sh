@@ -150,6 +150,7 @@ create)
 		#do_command neutron router-create --tenant-id $(openstack project list | awk '/'${tenant}'/ {print $2}') ${extra_options} ${router}
 		do_command openstack router create ${router} --project ${tenant} ${extra_options}
 	fi
+
 	source ~/keystonerc_${tenant}_v3
 	#do_command neutron router-gateway-set $(neutron router-list | awk '/'${router}'/ {print $2}') $(neutron net-list | awk '/'${public_network}'/ {print $2}')
 	do_command openstack router set ${router} --external-gateway ${public_network}
